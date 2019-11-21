@@ -1,0 +1,36 @@
+C:\Users\leo\Downloads\Sistema de ventas\Capa_negocio\bin\Release\Capa_negocio.dll
+C:\Users\leo\Downloads\Sistema de ventas\Capa_negocio\bin\Release\Capa_negocio.pdb
+C:\Users\leo\Downloads\Sistema de ventas\Capa_negocio\bin\Release\BarcodeLib.dll
+C:\Users\leo\Downloads\Sistema de ventas\Capa_negocio\bin\Release\Capa_Datos.dll
+C:\Users\leo\Downloads\Sistema de ventas\Capa_negocio\bin\Release\PlaceholderTextBox.dll
+C:\Users\leo\Downloads\Sistema de ventas\Capa_negocio\bin\Release\Capa_Datos.pdb
+C:\Users\leo\Downloads\Sistema de ventas\Capa_negocio\obj\Release\Capa_negocio.csprojResolveAssemblyReference.cache
+C:\Users\leo\Downloads\Sistema de ventas\Capa_negocio\obj\Release\Capa_negocio.dll
+C:\Users\leo\Downloads\Sistema de ventas\Capa_negocio\obj\Release\Capa_negocio.pdb
+C:\Users\leo\Downloads\Sistema de ventas (Ultimo)\Sistema de ventas\Capa_negocio\bin\Release\Capa_negocio.dll
+C:\Users\leo\Downloads\Sistema de ventas (Ultimo)\Sistema de ventas\Capa_negocio\bin\Release\Capa_negocio.pdb
+C:\Users\leo\Downloads\Sistema de ventas (Ultimo)\Sistema de ventas\Capa_negocio\bin\Release\BarcodeLib.dll
+C:\Users\leo\Downloads\Sistema de ventas (Ultimo)\Sistema de ventas\Capa_negocio\bin\Release\Capa_Datos.dll
+C:\Users\leo\Downloads\Sistema de ventas (Ultimo)\Sistema de ventas\Capa_negocio\bin\Release\PlaceholderTextBox.dll
+C:\Users\leo\Downloads\Sistema de ventas (Ultimo)\Sistema de ventas\Capa_negocio\bin\Release\Capa_Datos.pdb
+C:\Users\leo\Downloads\Sistema de ventas (Ultimo)\Sistema de ventas\Capa_negocio\obj\Release\Capa_negocio.csprojResolveAssemblyReference.cache
+C:\Users\leo\Downloads\Sistema de ventas (Ultimo)\Sistema de ventas\Capa_negocio\obj\Release\Capa_negocio.dll
+C:\Users\leo\Downloads\Sistema de ventas (Ultimo)\Sistema de ventas\Capa_negocio\obj\Release\Capa_negocio.pdb
+C:\Users\LEOX\Downloads\Sistema de ventas (Ultimo)\Sistema de ventas\Capa_negocio\bin\Release\Capa_negocio.dll
+C:\Users\LEOX\Downloads\Sistema de ventas (Ultimo)\Sistema de ventas\Capa_negocio\bin\Release\Capa_negocio.pdb
+C:\Users\LEOX\Downloads\Sistema de ventas (Ultimo)\Sistema de ventas\Capa_negocio\bin\Release\BarcodeLib.dll
+C:\Users\LEOX\Downloads\Sistema de ventas (Ultimo)\Sistema de ventas\Capa_negocio\bin\Release\Capa_Datos.dll
+C:\Users\LEOX\Downloads\Sistema de ventas (Ultimo)\Sistema de ventas\Capa_negocio\bin\Release\PlaceholderTextBox.dll
+C:\Users\LEOX\Downloads\Sistema de ventas (Ultimo)\Sistema de ventas\Capa_negocio\bin\Release\Capa_Datos.pdb
+C:\Users\LEOX\Downloads\Sistema de ventas (Ultimo)\Sistema de ventas\Capa_negocio\obj\Release\Capa_negocio.csprojResolveAssemblyReference.cache
+C:\Users\LEOX\Downloads\Sistema de ventas (Ultimo)\Sistema de ventas\Capa_negocio\obj\Release\Capa_negocio.dll
+C:\Users\LEOX\Downloads\Sistema de ventas (Ultimo)\Sistema de ventas\Capa_negocio\obj\Release\Capa_negocio.pdb
+D:\Desarrollo\SOFTINTEGRAL 20-05-2019\Sistema de ventas (Ultimo)\Sistema de ventas\Capa_negocio\bin\Release\Capa_negocio.dll
+D:\Desarrollo\SOFTINTEGRAL 20-05-2019\Sistema de ventas (Ultimo)\Sistema de ventas\Capa_negocio\bin\Release\Capa_negocio.pdb
+D:\Desarrollo\SOFTINTEGRAL 20-05-2019\Sistema de ventas (Ultimo)\Sistema de ventas\Capa_negocio\bin\Release\BarcodeLib.dll
+D:\Desarrollo\SOFTINTEGRAL 20-05-2019\Sistema de ventas (Ultimo)\Sistema de ventas\Capa_negocio\bin\Release\Capa_Datos.dll
+D:\Desarrollo\SOFTINTEGRAL 20-05-2019\Sistema de ventas (Ultimo)\Sistema de ventas\Capa_negocio\bin\Release\PlaceholderTextBox.dll
+D:\Desarrollo\SOFTINTEGRAL 20-05-2019\Sistema de ventas (Ultimo)\Sistema de ventas\Capa_negocio\bin\Release\Capa_Datos.pdb
+D:\Desarrollo\SOFTINTEGRAL 20-05-2019\Sistema de ventas (Ultimo)\Sistema de ventas\Capa_negocio\obj\Release\Capa_negocio.csprojResolveAssemblyReference.cache
+D:\Desarrollo\SOFTINTEGRAL 20-05-2019\Sistema de ventas (Ultimo)\Sistema de ventas\Capa_negocio\obj\Release\Capa_negocio.dll
+D:\Desarrollo\SOFTINTEGRAL 20-05-2019\Sistema de ventas (Ultimo)\Sistema de ventas\Capa_negocio\obj\Release\Capa_negocio.pdb

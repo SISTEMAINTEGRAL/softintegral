@@ -1,0 +1,84 @@
+C:\Users\LEO\documents\visual studio 2012\Projects\Sistema de ventas\Capa_Datos\bin\Debug\Capa_Datos.dll
+C:\Users\LEO\documents\visual studio 2012\Projects\Sistema de ventas\Capa_Datos\bin\Debug\Capa_Datos.pdb
+C:\Users\LEO\documents\visual studio 2012\Projects\Sistema de ventas\Capa_Datos\obj\Debug\Capa_Datos.csprojResolveAssemblyReference.cache
+C:\Users\LEO\documents\visual studio 2012\Projects\Sistema de ventas\Capa_Datos\obj\Debug\Capa_Datos.dll
+C:\Users\LEO\documents\visual studio 2012\Projects\Sistema de ventas\Capa_Datos\obj\Debug\Capa_Datos.pdb
+C:\Users\LEO\documents\visual studio 2012\Projects\Sistema de ventas\Capa_Datos\bin\Debug\BarcodeLib.dll
+C:\Users\LEO\documents\visual studio 2012\Projects\Sistema de ventas\Capa_Datos\bin\Debug\Capa_Datos.dll.config
+C:\Users\LEO\documents\visual studio 2012\Projects\Sistema de ventas\Capa_Datos\bin\Debug\PlaceholderTextBox.dll
+E:\repositorioRamirez\sis\sistemaventas\Sistema de ventas\Capa_Datos\bin\Debug\Capa_Datos.dll.config
+E:\repositorioRamirez\sis\sistemaventas\Sistema de ventas\Capa_Datos\bin\Debug\Capa_Datos.dll
+E:\repositorioRamirez\sis\sistemaventas\Sistema de ventas\Capa_Datos\bin\Debug\Capa_Datos.pdb
+E:\repositorioRamirez\sis\sistemaventas\Sistema de ventas\Capa_Datos\bin\Debug\BarcodeLib.dll
+E:\repositorioRamirez\sis\sistemaventas\Sistema de ventas\Capa_Datos\bin\Debug\PlaceholderTextBox.dll
+E:\repositorioRamirez\sis\sistemaventas\Sistema de ventas\Capa_Datos\obj\Debug\Capa_Datos.csprojResolveAssemblyReference.cache
+E:\repositorioRamirez\sis\sistemaventas\Sistema de ventas\Capa_Datos\obj\Debug\Capa_Datos.dll
+E:\repositorioRamirez\sis\sistemaventas\Sistema de ventas\Capa_Datos\obj\Debug\Capa_Datos.pdb
+C:\Users\LEOX\Documents\Visual Studio 2012\Projects\Sistema de ventas\Capa_Datos\bin\Debug\Capa_Datos.dll.config
+C:\Users\LEOX\Documents\Visual Studio 2012\Projects\Sistema de ventas\Capa_Datos\bin\Debug\Capa_Datos.dll
+C:\Users\LEOX\Documents\Visual Studio 2012\Projects\Sistema de ventas\Capa_Datos\bin\Debug\Capa_Datos.pdb
+C:\Users\LEOX\Documents\Visual Studio 2012\Projects\Sistema de ventas\Capa_Datos\bin\Debug\BarcodeLib.dll
+C:\Users\LEOX\Documents\Visual Studio 2012\Projects\Sistema de ventas\Capa_Datos\bin\Debug\PlaceholderTextBox.dll
+C:\Users\LEOX\Documents\Visual Studio 2012\Projects\Sistema de ventas\Capa_Datos\obj\Debug\Capa_Datos.csprojResolveAssemblyReference.cache
+C:\Users\LEOX\Documents\Visual Studio 2012\Projects\Sistema de ventas\Capa_Datos\obj\Debug\Capa_Datos.dll
+C:\Users\LEOX\Documents\Visual Studio 2012\Projects\Sistema de ventas\Capa_Datos\obj\Debug\Capa_Datos.pdb
+C:\Desarrollo\backup sistema de leo\Sistema de ventas\Capa_Datos\bin\Debug\Capa_Datos.dll.config
+C:\Desarrollo\backup sistema de leo\Sistema de ventas\Capa_Datos\bin\Debug\Capa_Datos.dll
+C:\Desarrollo\backup sistema de leo\Sistema de ventas\Capa_Datos\bin\Debug\Capa_Datos.pdb
+C:\Desarrollo\backup sistema de leo\Sistema de ventas\Capa_Datos\bin\Debug\BarcodeLib.dll
+C:\Desarrollo\backup sistema de leo\Sistema de ventas\Capa_Datos\bin\Debug\PlaceholderTextBox.dll
+C:\Desarrollo\backup sistema de leo\Sistema de ventas\Capa_Datos\obj\Debug\Capa_Datos.csprojResolveAssemblyReference.cache
+C:\Desarrollo\backup sistema de leo\Sistema de ventas\Capa_Datos\obj\Debug\Capa_Datos.dll
+C:\Desarrollo\backup sistema de leo\Sistema de ventas\Capa_Datos\obj\Debug\Capa_Datos.pdb
+C:\Users\leo\Downloads\backup sistema de leo\Sistema de ventas\Capa_Datos\bin\Debug\Capa_Datos.dll.config
+C:\Users\leo\Downloads\backup sistema de leo\Sistema de ventas\Capa_Datos\bin\Debug\Capa_Datos.dll
+C:\Users\leo\Downloads\backup sistema de leo\Sistema de ventas\Capa_Datos\bin\Debug\Capa_Datos.pdb
+C:\Users\leo\Downloads\backup sistema de leo\Sistema de ventas\Capa_Datos\bin\Debug\BarcodeLib.dll
+C:\Users\leo\Downloads\backup sistema de leo\Sistema de ventas\Capa_Datos\bin\Debug\PlaceholderTextBox.dll
+C:\Users\leo\Downloads\backup sistema de leo\Sistema de ventas\Capa_Datos\obj\Debug\Capa_Datos.dll
+C:\Users\leo\Downloads\backup sistema de leo\Sistema de ventas\Capa_Datos\obj\Debug\Capa_Datos.pdb
+C:\Users\leo\Downloads\backup sistema de leo\Sistema de ventas\Capa_Datos\obj\Debug\Capa_Datos.csprojResolveAssemblyReference.cache
+C:\Users\leo\Downloads\Sistema de ventas\Capa_Datos\bin\Debug\Capa_Datos.dll
+C:\Users\leo\Downloads\Sistema de ventas\Capa_Datos\bin\Debug\Capa_Datos.pdb
+C:\Users\leo\Downloads\Sistema de ventas\Capa_Datos\bin\Debug\BarcodeLib.dll
+C:\Users\leo\Downloads\Sistema de ventas\Capa_Datos\bin\Debug\PlaceholderTextBox.dll
+C:\Users\leo\Downloads\Sistema de ventas\Capa_Datos\obj\Debug\Capa_Datos.csprojResolveAssemblyReference.cache
+C:\Users\leo\Downloads\Sistema de ventas\Capa_Datos\obj\Debug\Capa_Datos.dll
+C:\Users\leo\Downloads\Sistema de ventas\Capa_Datos\obj\Debug\Capa_Datos.pdb
+C:\Users\leo\Downloads\Sistema de ventas (Ultimo)\Sistema de ventas\Capa_Datos\bin\Debug\Capa_Datos.dll
+C:\Users\leo\Downloads\Sistema de ventas (Ultimo)\Sistema de ventas\Capa_Datos\bin\Debug\Capa_Datos.pdb
+C:\Users\leo\Downloads\Sistema de ventas (Ultimo)\Sistema de ventas\Capa_Datos\bin\Debug\BarcodeLib.dll
+C:\Users\leo\Downloads\Sistema de ventas (Ultimo)\Sistema de ventas\Capa_Datos\bin\Debug\PlaceholderTextBox.dll
+C:\Users\leo\Downloads\Sistema de ventas (Ultimo)\Sistema de ventas\Capa_Datos\obj\Debug\Capa_Datos.dll
+C:\Users\leo\Downloads\Sistema de ventas (Ultimo)\Sistema de ventas\Capa_Datos\obj\Debug\Capa_Datos.pdb
+C:\Users\LEOX\Downloads\Sistema de ventas (Ultimo)\Sistema de ventas\Capa_Datos\bin\Debug\Capa_Datos.dll
+C:\Users\LEOX\Downloads\Sistema de ventas (Ultimo)\Sistema de ventas\Capa_Datos\bin\Debug\Capa_Datos.pdb
+C:\Users\LEOX\Downloads\Sistema de ventas (Ultimo)\Sistema de ventas\Capa_Datos\bin\Debug\BarcodeLib.dll
+C:\Users\LEOX\Downloads\Sistema de ventas (Ultimo)\Sistema de ventas\Capa_Datos\bin\Debug\PlaceholderTextBox.dll
+C:\Users\LEOX\Downloads\Sistema de ventas (Ultimo)\Sistema de ventas\Capa_Datos\obj\Debug\Capa_Datos.csprojResolveAssemblyReference.cache
+C:\Users\LEOX\Downloads\Sistema de ventas (Ultimo)\Sistema de ventas\Capa_Datos\obj\Debug\Capa_Datos.dll
+C:\Users\LEOX\Downloads\Sistema de ventas (Ultimo)\Sistema de ventas\Capa_Datos\obj\Debug\Capa_Datos.pdb
+D:\Desarrollo\SOFTINTEGRAL 20-05-2019\Sistema de ventas (Ultimo)\Sistema de ventas\Capa_Datos\bin\Debug\Capa_Datos.dll
+D:\Desarrollo\SOFTINTEGRAL 20-05-2019\Sistema de ventas (Ultimo)\Sistema de ventas\Capa_Datos\bin\Debug\Capa_Datos.pdb
+D:\Desarrollo\SOFTINTEGRAL 20-05-2019\Sistema de ventas (Ultimo)\Sistema de ventas\Capa_Datos\bin\Debug\BarcodeLib.dll
+D:\Desarrollo\SOFTINTEGRAL 20-05-2019\Sistema de ventas (Ultimo)\Sistema de ventas\Capa_Datos\bin\Debug\PlaceholderTextBox.dll
+D:\Desarrollo\SOFTINTEGRAL 20-05-2019\Sistema de ventas (Ultimo)\Sistema de ventas\Capa_Datos\obj\Debug\Capa_Datos.csprojResolveAssemblyReference.cache
+D:\Desarrollo\SOFTINTEGRAL 20-05-2019\Sistema de ventas (Ultimo)\Sistema de ventas\Capa_Datos\obj\Debug\Capa_Datos.dll
+D:\Desarrollo\SOFTINTEGRAL 20-05-2019\Sistema de ventas (Ultimo)\Sistema de ventas\Capa_Datos\obj\Debug\Capa_Datos.pdb
+C:\desarrollo\Sistema de ventas\Capa_Datos\bin\Debug\Capa_Datos.dll
+C:\desarrollo\Sistema de ventas\Capa_Datos\bin\Debug\Capa_Datos.pdb
+C:\desarrollo\Sistema de ventas\Capa_Datos\bin\Debug\BarcodeLib.dll
+C:\desarrollo\Sistema de ventas\Capa_Datos\bin\Debug\PlaceholderTextBox.dll
+C:\desarrollo\Sistema de ventas\Capa_Datos\obj\Debug\Interop.FiscalPrinterLib.dll
+C:\desarrollo\Sistema de ventas\Capa_Datos\obj\Debug\Capa_Datos.csproj.ResolveComReference.cache
+C:\desarrollo\Sistema de ventas\Capa_Datos\obj\Debug\Capa_Datos.dll
+C:\desarrollo\Sistema de ventas\Capa_Datos\obj\Debug\Capa_Datos.pdb
+C:\Backup\Sistema de ventas\Capa_Datos\bin\Debug\Capa_Datos.dll
+C:\Backup\Sistema de ventas\Capa_Datos\bin\Debug\Capa_Datos.pdb
+C:\Backup\Sistema de ventas\Capa_Datos\bin\Debug\BarcodeLib.dll
+C:\Backup\Sistema de ventas\Capa_Datos\bin\Debug\PlaceholderTextBox.dll
+C:\Backup\Sistema de ventas\Capa_Datos\obj\Debug\Interop.FiscalPrinterLib.dll
+C:\Backup\Sistema de ventas\Capa_Datos\obj\Debug\Capa_Datos.csproj.ResolveComReference.cache
+C:\Backup\Sistema de ventas\Capa_Datos\obj\Debug\Capa_Datos.dll
+C:\Backup\Sistema de ventas\Capa_Datos\obj\Debug\Capa_Datos.pdb
+C:\Backup\Sistema de ventas\Capa_Datos\obj\Debug\Capa_Datos.csprojResolveAssemblyReference.cache

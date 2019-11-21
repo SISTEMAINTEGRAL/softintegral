@@ -1,0 +1,11 @@
+c:\users\leo\documents\visual studio 2012\Projects\Sistema de ventas\Sistema de ventas\bin\Debug\Sistema de ventas.exe.config
+C:\Users\LEO\documents\visual studio 2012\Projects\Sistema de ventas\Sistema de ventas\bin\Debug\Sistema de ventas.exe
+C:\Users\LEO\documents\visual studio 2012\Projects\Sistema de ventas\Sistema de ventas\bin\Debug\Sistema de ventas.pdb
+C:\Users\LEO\documents\visual studio 2012\Projects\Sistema de ventas\Sistema de ventas\bin\Debug\Capa_Presentacion.dll
+C:\Users\LEO\documents\visual studio 2012\Projects\Sistema de ventas\Sistema de ventas\bin\Debug\Capa_Presentacion.pdb
+C:\Users\LEO\documents\visual studio 2012\Projects\Sistema de ventas\Sistema de ventas\obj\Debug\Sistema de ventas.csprojResolveAssemblyReference.cache
+C:\Users\LEO\documents\visual studio 2012\Projects\Sistema de ventas\Sistema de ventas\obj\Debug\Sistema_de_ventas.FormPrincipal.resources
+C:\Users\LEO\documents\visual studio 2012\Projects\Sistema de ventas\Sistema de ventas\obj\Debug\Sistema_de_ventas.Properties.Resources.resources
+C:\Users\LEO\documents\visual studio 2012\Projects\Sistema de ventas\Sistema de ventas\obj\Debug\Sistema de ventas.csproj.GenerateResource.Cache
+C:\Users\LEO\documents\visual studio 2012\Projects\Sistema de ventas\Sistema de ventas\obj\Debug\Sistema de ventas.exe
+C:\Users\LEO\documents\visual studio 2012\Projects\Sistema de ventas\Sistema de ventas\obj\Debug\Sistema de ventas.pdb

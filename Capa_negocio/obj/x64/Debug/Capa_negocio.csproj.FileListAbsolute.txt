@@ -1,0 +1,11 @@
+D:\Desarrollo\SOFTINTEGRAL 20-05-2019\Sistema de ventas (Ultimo)\Sistema de ventas\Capa_negocio\bin\x64\Debug\Capa_negocio.dll
+D:\Desarrollo\SOFTINTEGRAL 20-05-2019\Sistema de ventas (Ultimo)\Sistema de ventas\Capa_negocio\bin\x64\Debug\Capa_negocio.pdb
+D:\Desarrollo\SOFTINTEGRAL 20-05-2019\Sistema de ventas (Ultimo)\Sistema de ventas\Capa_negocio\bin\x64\Debug\BarcodeLib.dll
+D:\Desarrollo\SOFTINTEGRAL 20-05-2019\Sistema de ventas (Ultimo)\Sistema de ventas\Capa_negocio\bin\x64\Debug\Capa_Datos.dll
+D:\Desarrollo\SOFTINTEGRAL 20-05-2019\Sistema de ventas (Ultimo)\Sistema de ventas\Capa_negocio\bin\x64\Debug\PlaceholderTextBox.dll
+D:\Desarrollo\SOFTINTEGRAL 20-05-2019\Sistema de ventas (Ultimo)\Sistema de ventas\Capa_negocio\bin\x64\Debug\Capa_Datos.pdb
+D:\Desarrollo\SOFTINTEGRAL 20-05-2019\Sistema de ventas (Ultimo)\Sistema de ventas\Capa_negocio\obj\x64\Debug\Capa_negocio.csprojResolveAssemblyReference.cache
+D:\Desarrollo\SOFTINTEGRAL 20-05-2019\Sistema de ventas (Ultimo)\Sistema de ventas\Capa_negocio\obj\x64\Debug\Interop.FiscalPrinterLib.dll
+D:\Desarrollo\SOFTINTEGRAL 20-05-2019\Sistema de ventas (Ultimo)\Sistema de ventas\Capa_negocio\obj\x64\Debug\Capa_negocio.csproj.ResolveComReference.cache
+D:\Desarrollo\SOFTINTEGRAL 20-05-2019\Sistema de ventas (Ultimo)\Sistema de ventas\Capa_negocio\obj\x64\Debug\Capa_negocio.dll
+D:\Desarrollo\SOFTINTEGRAL 20-05-2019\Sistema de ventas (Ultimo)\Sistema de ventas\Capa_negocio\obj\x64\Debug\Capa_negocio.pdb

@@ -1,0 +1,116 @@
+C:\Users\leo\Downloads\Sistema de ventas\SistemaVentas\bin\Release\SistemaVentas.exe
+C:\Users\leo\Downloads\Sistema de ventas\SistemaVentas\bin\Release\SistemaVentas.pdb
+C:\Users\leo\Downloads\Sistema de ventas\SistemaVentas\bin\Release\BarcodeLib.dll
+C:\Users\leo\Downloads\Sistema de ventas\SistemaVentas\bin\Release\Bunifu_UI_v1.5.3.dll
+C:\Users\leo\Downloads\Sistema de ventas\SistemaVentas\bin\Release\Capa_Datos.dll
+C:\Users\leo\Downloads\Sistema de ventas\SistemaVentas\bin\Release\Capa_Presentacion.dll
+C:\Users\leo\Downloads\Sistema de ventas\SistemaVentas\bin\Release\Microsoft.ReportViewer.Common.dll
+C:\Users\leo\Downloads\Sistema de ventas\SistemaVentas\bin\Release\Microsoft.ReportViewer.ProcessingObjectModel.DLL
+C:\Users\leo\Downloads\Sistema de ventas\SistemaVentas\bin\Release\Microsoft.ReportViewer.WebForms.DLL
+C:\Users\leo\Downloads\Sistema de ventas\SistemaVentas\bin\Release\PlaceholderTextBox.dll
+C:\Users\leo\Downloads\Sistema de ventas\SistemaVentas\bin\Release\Capa_negocio.dll
+C:\Users\leo\Downloads\Sistema de ventas\SistemaVentas\bin\Release\Capa_Datos.pdb
+C:\Users\leo\Downloads\Sistema de ventas\SistemaVentas\bin\Release\Capa_Presentacion.pdb
+C:\Users\leo\Downloads\Sistema de ventas\SistemaVentas\bin\Release\Capa_negocio.pdb
+C:\Users\leo\Downloads\Sistema de ventas\SistemaVentas\obj\Release\SistemaVentas.csprojResolveAssemblyReference.cache
+C:\Users\leo\Downloads\Sistema de ventas\SistemaVentas\obj\Release\SistemaVentas.Form1.resources
+C:\Users\leo\Downloads\Sistema de ventas\SistemaVentas\obj\Release\SistemaVentas.SplashScreen.resources
+C:\Users\leo\Downloads\Sistema de ventas\SistemaVentas\obj\Release\SistemaVentas.FrmInicio.resources
+C:\Users\leo\Downloads\Sistema de ventas\SistemaVentas\obj\Release\SistemaVentas.Properties.Resources.resources
+C:\Users\leo\Downloads\Sistema de ventas\SistemaVentas\obj\Release\SistemaVentas.csproj.GenerateResource.Cache
+C:\Users\leo\Downloads\Sistema de ventas\SistemaVentas\obj\Release\SistemaVentas.exe
+C:\Users\leo\Downloads\Sistema de ventas\SistemaVentas\obj\Release\SistemaVentas.pdb
+C:\Users\leo\Downloads\Sistema de ventas\SistemaVentas\bin\Release\SistemaVentas.exe.manifest
+C:\Users\leo\Downloads\Sistema de ventas\SistemaVentas\bin\Release\SistemaVentas.application
+C:\Users\leo\Downloads\Sistema de ventas\SistemaVentas\obj\Release\SistemaVentas.exe.manifest
+C:\Users\leo\Downloads\Sistema de ventas\SistemaVentas\obj\Release\SistemaVentas.application
+C:\Users\leo\Downloads\Sistema de ventas\SistemaVentas\bin\Release\SistemaVentas.exe.config
+C:\Users\leo\Downloads\Sistema de ventas\SistemaVentas\obj\Release\SistemaVentas.FrmLogin.resources
+C:\Users\leo\Downloads\Sistema de ventas (Ultimo)\Sistema de ventas\SistemaVentas\bin\Release\SistemaVentas.exe.config
+C:\Users\leo\Downloads\Sistema de ventas (Ultimo)\Sistema de ventas\SistemaVentas\obj\Release\SistemaVentas.exe
+C:\Users\leo\Downloads\Sistema de ventas (Ultimo)\Sistema de ventas\SistemaVentas\obj\Release\SistemaVentas.pdb
+C:\Users\leo\Downloads\Sistema de ventas (Ultimo)\Sistema de ventas\SistemaVentas\bin\Release\SistemaVentas.exe.manifest
+C:\Users\leo\Downloads\Sistema de ventas (Ultimo)\Sistema de ventas\SistemaVentas\bin\Release\SistemaVentas.application
+C:\Users\leo\Downloads\Sistema de ventas (Ultimo)\Sistema de ventas\SistemaVentas\bin\Release\SistemaVentas.exe
+C:\Users\leo\Downloads\Sistema de ventas (Ultimo)\Sistema de ventas\SistemaVentas\bin\Release\SistemaVentas.pdb
+C:\Users\leo\Downloads\Sistema de ventas (Ultimo)\Sistema de ventas\SistemaVentas\bin\Release\BarcodeLib.dll
+C:\Users\leo\Downloads\Sistema de ventas (Ultimo)\Sistema de ventas\SistemaVentas\bin\Release\Bunifu_UI_v1.5.3.dll
+C:\Users\leo\Downloads\Sistema de ventas (Ultimo)\Sistema de ventas\SistemaVentas\bin\Release\Capa_Datos.dll
+C:\Users\leo\Downloads\Sistema de ventas (Ultimo)\Sistema de ventas\SistemaVentas\bin\Release\Capa_Presentacion.dll
+C:\Users\leo\Downloads\Sistema de ventas (Ultimo)\Sistema de ventas\SistemaVentas\bin\Release\Microsoft.ReportViewer.Common.dll
+C:\Users\leo\Downloads\Sistema de ventas (Ultimo)\Sistema de ventas\SistemaVentas\bin\Release\Microsoft.ReportViewer.ProcessingObjectModel.DLL
+C:\Users\leo\Downloads\Sistema de ventas (Ultimo)\Sistema de ventas\SistemaVentas\bin\Release\Microsoft.ReportViewer.WebForms.DLL
+C:\Users\leo\Downloads\Sistema de ventas (Ultimo)\Sistema de ventas\SistemaVentas\bin\Release\PlaceholderTextBox.dll
+C:\Users\leo\Downloads\Sistema de ventas (Ultimo)\Sistema de ventas\SistemaVentas\bin\Release\Capa_negocio.dll
+C:\Users\leo\Downloads\Sistema de ventas (Ultimo)\Sistema de ventas\SistemaVentas\bin\Release\Capa_Datos.pdb
+C:\Users\leo\Downloads\Sistema de ventas (Ultimo)\Sistema de ventas\SistemaVentas\bin\Release\Capa_Presentacion.pdb
+C:\Users\leo\Downloads\Sistema de ventas (Ultimo)\Sistema de ventas\SistemaVentas\bin\Release\Capa_negocio.pdb
+C:\Users\leo\Downloads\Sistema de ventas (Ultimo)\Sistema de ventas\SistemaVentas\obj\Release\SistemaVentas.csprojResolveAssemblyReference.cache
+C:\Users\leo\Downloads\Sistema de ventas (Ultimo)\Sistema de ventas\SistemaVentas\obj\Release\SistemaVentas.Form1.resources
+C:\Users\leo\Downloads\Sistema de ventas (Ultimo)\Sistema de ventas\SistemaVentas\obj\Release\SistemaVentas.FrmLogin.resources
+C:\Users\leo\Downloads\Sistema de ventas (Ultimo)\Sistema de ventas\SistemaVentas\obj\Release\SistemaVentas.SplashScreen.resources
+C:\Users\leo\Downloads\Sistema de ventas (Ultimo)\Sistema de ventas\SistemaVentas\obj\Release\SistemaVentas.FrmInicio.resources
+C:\Users\leo\Downloads\Sistema de ventas (Ultimo)\Sistema de ventas\SistemaVentas\obj\Release\SistemaVentas.Properties.Resources.resources
+C:\Users\leo\Downloads\Sistema de ventas (Ultimo)\Sistema de ventas\SistemaVentas\obj\Release\SistemaVentas.csproj.GenerateResource.Cache
+C:\Users\leo\Downloads\Sistema de ventas (Ultimo)\Sistema de ventas\SistemaVentas\obj\Release\SistemaVentas.exe.manifest
+C:\Users\leo\Downloads\Sistema de ventas (Ultimo)\Sistema de ventas\SistemaVentas\obj\Release\SistemaVentas.application
+C:\Users\LEOX\Downloads\Sistema de ventas (Ultimo)\Sistema de ventas\SistemaVentas\bin\Release\SistemaVentas.exe.config
+C:\Users\LEOX\Downloads\Sistema de ventas (Ultimo)\Sistema de ventas\SistemaVentas\obj\Release\SistemaVentas.exe
+C:\Users\LEOX\Downloads\Sistema de ventas (Ultimo)\Sistema de ventas\SistemaVentas\obj\Release\SistemaVentas.pdb
+C:\Users\LEOX\Downloads\Sistema de ventas (Ultimo)\Sistema de ventas\SistemaVentas\bin\Release\SistemaVentas.exe.manifest
+C:\Users\LEOX\Downloads\Sistema de ventas (Ultimo)\Sistema de ventas\SistemaVentas\bin\Release\SistemaVentas.application
+C:\Users\LEOX\Downloads\Sistema de ventas (Ultimo)\Sistema de ventas\SistemaVentas\bin\Release\SistemaVentas.exe
+C:\Users\LEOX\Downloads\Sistema de ventas (Ultimo)\Sistema de ventas\SistemaVentas\bin\Release\SistemaVentas.pdb
+C:\Users\LEOX\Downloads\Sistema de ventas (Ultimo)\Sistema de ventas\SistemaVentas\bin\Release\BarcodeLib.dll
+C:\Users\LEOX\Downloads\Sistema de ventas (Ultimo)\Sistema de ventas\SistemaVentas\bin\Release\Bunifu_UI_v1.5.3.dll
+C:\Users\LEOX\Downloads\Sistema de ventas (Ultimo)\Sistema de ventas\SistemaVentas\bin\Release\Capa_Datos.dll
+C:\Users\LEOX\Downloads\Sistema de ventas (Ultimo)\Sistema de ventas\SistemaVentas\bin\Release\Capa_Presentacion.dll
+C:\Users\LEOX\Downloads\Sistema de ventas (Ultimo)\Sistema de ventas\SistemaVentas\bin\Release\Microsoft.ReportViewer.Common.dll
+C:\Users\LEOX\Downloads\Sistema de ventas (Ultimo)\Sistema de ventas\SistemaVentas\bin\Release\Microsoft.ReportViewer.ProcessingObjectModel.DLL
+C:\Users\LEOX\Downloads\Sistema de ventas (Ultimo)\Sistema de ventas\SistemaVentas\bin\Release\Microsoft.ReportViewer.WebForms.DLL
+C:\Users\LEOX\Downloads\Sistema de ventas (Ultimo)\Sistema de ventas\SistemaVentas\bin\Release\PlaceholderTextBox.dll
+C:\Users\LEOX\Downloads\Sistema de ventas (Ultimo)\Sistema de ventas\SistemaVentas\bin\Release\ProgressBar.dll
+C:\Users\LEOX\Downloads\Sistema de ventas (Ultimo)\Sistema de ventas\SistemaVentas\bin\Release\Capa_negocio.dll
+C:\Users\LEOX\Downloads\Sistema de ventas (Ultimo)\Sistema de ventas\SistemaVentas\bin\Release\Capa_Datos.pdb
+C:\Users\LEOX\Downloads\Sistema de ventas (Ultimo)\Sistema de ventas\SistemaVentas\bin\Release\Capa_Presentacion.pdb
+C:\Users\LEOX\Downloads\Sistema de ventas (Ultimo)\Sistema de ventas\SistemaVentas\bin\Release\ProgressBar.xml
+C:\Users\LEOX\Downloads\Sistema de ventas (Ultimo)\Sistema de ventas\SistemaVentas\bin\Release\Capa_negocio.pdb
+C:\Users\LEOX\Downloads\Sistema de ventas (Ultimo)\Sistema de ventas\SistemaVentas\obj\Release\SistemaVentas.csprojResolveAssemblyReference.cache
+C:\Users\LEOX\Downloads\Sistema de ventas (Ultimo)\Sistema de ventas\SistemaVentas\obj\Release\SistemaVentas.Form1.resources
+C:\Users\LEOX\Downloads\Sistema de ventas (Ultimo)\Sistema de ventas\SistemaVentas\obj\Release\SistemaVentas.FrmLogin.resources
+C:\Users\LEOX\Downloads\Sistema de ventas (Ultimo)\Sistema de ventas\SistemaVentas\obj\Release\SistemaVentas.SplashScreen.resources
+C:\Users\LEOX\Downloads\Sistema de ventas (Ultimo)\Sistema de ventas\SistemaVentas\obj\Release\SistemaVentas.FrmInicio.resources
+C:\Users\LEOX\Downloads\Sistema de ventas (Ultimo)\Sistema de ventas\SistemaVentas\obj\Release\SistemaVentas.Properties.Resources.resources
+C:\Users\LEOX\Downloads\Sistema de ventas (Ultimo)\Sistema de ventas\SistemaVentas\obj\Release\SistemaVentas.csproj.GenerateResource.Cache
+C:\Users\LEOX\Downloads\Sistema de ventas (Ultimo)\Sistema de ventas\SistemaVentas\obj\Release\SistemaVentas.exe.manifest
+C:\Users\LEOX\Downloads\Sistema de ventas (Ultimo)\Sistema de ventas\SistemaVentas\obj\Release\SistemaVentas.application
+D:\Desarrollo\SOFTINTEGRAL 20-05-2019\Sistema de ventas (Ultimo)\Sistema de ventas\SistemaVentas\bin\Release\SistemaVentas.exe.config
+D:\Desarrollo\SOFTINTEGRAL 20-05-2019\Sistema de ventas (Ultimo)\Sistema de ventas\SistemaVentas\obj\Release\SistemaVentas.exe
+D:\Desarrollo\SOFTINTEGRAL 20-05-2019\Sistema de ventas (Ultimo)\Sistema de ventas\SistemaVentas\obj\Release\SistemaVentas.pdb
+D:\Desarrollo\SOFTINTEGRAL 20-05-2019\Sistema de ventas (Ultimo)\Sistema de ventas\SistemaVentas\bin\Release\SistemaVentas.exe.manifest
+D:\Desarrollo\SOFTINTEGRAL 20-05-2019\Sistema de ventas (Ultimo)\Sistema de ventas\SistemaVentas\bin\Release\SistemaVentas.application
+D:\Desarrollo\SOFTINTEGRAL 20-05-2019\Sistema de ventas (Ultimo)\Sistema de ventas\SistemaVentas\bin\Release\SistemaVentas.exe
+D:\Desarrollo\SOFTINTEGRAL 20-05-2019\Sistema de ventas (Ultimo)\Sistema de ventas\SistemaVentas\bin\Release\SistemaVentas.pdb
+D:\Desarrollo\SOFTINTEGRAL 20-05-2019\Sistema de ventas (Ultimo)\Sistema de ventas\SistemaVentas\bin\Release\BarcodeLib.dll
+D:\Desarrollo\SOFTINTEGRAL 20-05-2019\Sistema de ventas (Ultimo)\Sistema de ventas\SistemaVentas\bin\Release\Bunifu_UI_v1.5.3.dll
+D:\Desarrollo\SOFTINTEGRAL 20-05-2019\Sistema de ventas (Ultimo)\Sistema de ventas\SistemaVentas\bin\Release\Capa_Datos.dll
+D:\Desarrollo\SOFTINTEGRAL 20-05-2019\Sistema de ventas (Ultimo)\Sistema de ventas\SistemaVentas\bin\Release\Capa_Presentacion.dll
+D:\Desarrollo\SOFTINTEGRAL 20-05-2019\Sistema de ventas (Ultimo)\Sistema de ventas\SistemaVentas\bin\Release\Microsoft.ReportViewer.Common.dll
+D:\Desarrollo\SOFTINTEGRAL 20-05-2019\Sistema de ventas (Ultimo)\Sistema de ventas\SistemaVentas\bin\Release\Microsoft.ReportViewer.ProcessingObjectModel.DLL
+D:\Desarrollo\SOFTINTEGRAL 20-05-2019\Sistema de ventas (Ultimo)\Sistema de ventas\SistemaVentas\bin\Release\Microsoft.ReportViewer.WebForms.DLL
+D:\Desarrollo\SOFTINTEGRAL 20-05-2019\Sistema de ventas (Ultimo)\Sistema de ventas\SistemaVentas\bin\Release\PlaceholderTextBox.dll
+D:\Desarrollo\SOFTINTEGRAL 20-05-2019\Sistema de ventas (Ultimo)\Sistema de ventas\SistemaVentas\bin\Release\ProgressBar.dll
+D:\Desarrollo\SOFTINTEGRAL 20-05-2019\Sistema de ventas (Ultimo)\Sistema de ventas\SistemaVentas\bin\Release\Capa_negocio.dll
+D:\Desarrollo\SOFTINTEGRAL 20-05-2019\Sistema de ventas (Ultimo)\Sistema de ventas\SistemaVentas\bin\Release\Capa_Datos.pdb
+D:\Desarrollo\SOFTINTEGRAL 20-05-2019\Sistema de ventas (Ultimo)\Sistema de ventas\SistemaVentas\bin\Release\Capa_Presentacion.pdb
+D:\Desarrollo\SOFTINTEGRAL 20-05-2019\Sistema de ventas (Ultimo)\Sistema de ventas\SistemaVentas\bin\Release\ProgressBar.xml
+D:\Desarrollo\SOFTINTEGRAL 20-05-2019\Sistema de ventas (Ultimo)\Sistema de ventas\SistemaVentas\bin\Release\Capa_negocio.pdb
+D:\Desarrollo\SOFTINTEGRAL 20-05-2019\Sistema de ventas (Ultimo)\Sistema de ventas\SistemaVentas\obj\Release\SistemaVentas.csprojResolveAssemblyReference.cache
+D:\Desarrollo\SOFTINTEGRAL 20-05-2019\Sistema de ventas (Ultimo)\Sistema de ventas\SistemaVentas\obj\Release\SistemaVentas.Form1.resources
+D:\Desarrollo\SOFTINTEGRAL 20-05-2019\Sistema de ventas (Ultimo)\Sistema de ventas\SistemaVentas\obj\Release\SistemaVentas.FrmLogin.resources
+D:\Desarrollo\SOFTINTEGRAL 20-05-2019\Sistema de ventas (Ultimo)\Sistema de ventas\SistemaVentas\obj\Release\SistemaVentas.SplashScreen.resources
+D:\Desarrollo\SOFTINTEGRAL 20-05-2019\Sistema de ventas (Ultimo)\Sistema de ventas\SistemaVentas\obj\Release\SistemaVentas.FrmInicio.resources
+D:\Desarrollo\SOFTINTEGRAL 20-05-2019\Sistema de ventas (Ultimo)\Sistema de ventas\SistemaVentas\obj\Release\SistemaVentas.Properties.Resources.resources
+D:\Desarrollo\SOFTINTEGRAL 20-05-2019\Sistema de ventas (Ultimo)\Sistema de ventas\SistemaVentas\obj\Release\SistemaVentas.csproj.GenerateResource.Cache
+D:\Desarrollo\SOFTINTEGRAL 20-05-2019\Sistema de ventas (Ultimo)\Sistema de ventas\SistemaVentas\obj\Release\SistemaVentas.exe.manifest
+D:\Desarrollo\SOFTINTEGRAL 20-05-2019\Sistema de ventas (Ultimo)\Sistema de ventas\SistemaVentas\obj\Release\SistemaVentas.application

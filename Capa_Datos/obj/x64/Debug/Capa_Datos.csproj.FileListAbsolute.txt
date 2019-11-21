@@ -1,0 +1,6 @@
+D:\Desarrollo\SOFTINTEGRAL 20-05-2019\Sistema de ventas (Ultimo)\Sistema de ventas\Capa_Datos\bin\x64\Debug\Capa_Datos.dll
+D:\Desarrollo\SOFTINTEGRAL 20-05-2019\Sistema de ventas (Ultimo)\Sistema de ventas\Capa_Datos\bin\x64\Debug\Capa_Datos.pdb
+D:\Desarrollo\SOFTINTEGRAL 20-05-2019\Sistema de ventas (Ultimo)\Sistema de ventas\Capa_Datos\bin\x64\Debug\BarcodeLib.dll
+D:\Desarrollo\SOFTINTEGRAL 20-05-2019\Sistema de ventas (Ultimo)\Sistema de ventas\Capa_Datos\bin\x64\Debug\PlaceholderTextBox.dll
+D:\Desarrollo\SOFTINTEGRAL 20-05-2019\Sistema de ventas (Ultimo)\Sistema de ventas\Capa_Datos\obj\x64\Debug\Capa_Datos.dll
+D:\Desarrollo\SOFTINTEGRAL 20-05-2019\Sistema de ventas (Ultimo)\Sistema de ventas\Capa_Datos\obj\x64\Debug\Capa_Datos.pdb
