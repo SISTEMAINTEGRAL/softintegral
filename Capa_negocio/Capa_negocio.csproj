@@ -78,6 +78,7 @@
     <Compile Include="NegocioCliente.cs" />
     <Compile Include="NegocioMovStock.cs" />
     <Compile Include="NegocioProveedor.cs" />
+    <Compile Include="Negocioserviciotecnico.cs" />
     <Compile Include="NegocioTarjeta.cs" />
     <Compile Include="NegocioUnidades.cs" />
     <Compile Include="NegocioUsuario.cs" />

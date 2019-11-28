@@ -164,7 +164,7 @@ namespace Capa_Datos
                 SqlParameter parModo = ProcAlmacenado.asignarParametros("@modo", SqlDbType.Int, 1);
                 comando.Parameters.Add(parModo);
 
-                SqlParameter parIdArticulo= ProcAlmacenado.asignarParametros("@idarticulo", SqlDbType.Int);
+                SqlParameter parIdArticulo= ProcAlmacenado.asignarParametros("@idarticulo", SqlDbType.Int,articulo.idArticulo);
                 //le paso al sqlcommand los parametros asignados
                 comando.Parameters.Add(parIdArticulo);
 

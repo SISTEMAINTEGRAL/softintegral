@@ -612,3 +612,4 @@ C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\obj\Debug\Capa_Presen
 C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\obj\Debug\Capa_Presentacion.csproj.GenerateResource.Cache
 C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\obj\Debug\Capa_Presentacion.dll
 C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\obj\Debug\Capa_Presentacion.pdb
+C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\obj\Debug\Capa_Presentacion.FrmEquipo.resources

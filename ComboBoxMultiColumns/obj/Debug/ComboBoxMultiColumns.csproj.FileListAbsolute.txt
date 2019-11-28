@@ -30,3 +30,11 @@ C:\Backup\Sistema de ventas\ComboBoxMultiColumns\obj\Debug\ComboBoxMultiColumns.
 C:\Backup\Sistema de ventas\ComboBoxMultiColumns\obj\Debug\ComboBoxMultiColumns.csproj.GenerateResource.Cache
 C:\Backup\Sistema de ventas\ComboBoxMultiColumns\obj\Debug\ComboBoxMultiColumns.dll
 C:\Backup\Sistema de ventas\ComboBoxMultiColumns\obj\Debug\ComboBoxMultiColumns.pdb
+C:\Backup\Sistema de ventas\softintegral\ComboBoxMultiColumns\bin\Debug\ComboBoxMultiColumns.dll
+C:\Backup\Sistema de ventas\softintegral\ComboBoxMultiColumns\bin\Debug\ComboBoxMultiColumns.pdb
+C:\Backup\Sistema de ventas\softintegral\ComboBoxMultiColumns\obj\Debug\ComboBoxMultiColumns.csprojResolveAssemblyReference.cache
+C:\Backup\Sistema de ventas\softintegral\ComboBoxMultiColumns\obj\Debug\ComboBoxMultiColumns.ComboBoxColumnEditor.resources
+C:\Backup\Sistema de ventas\softintegral\ComboBoxMultiColumns\obj\Debug\ComboBoxMultiColumns.Properties.Resources.resources
+C:\Backup\Sistema de ventas\softintegral\ComboBoxMultiColumns\obj\Debug\ComboBoxMultiColumns.csproj.GenerateResource.Cache
+C:\Backup\Sistema de ventas\softintegral\ComboBoxMultiColumns\obj\Debug\ComboBoxMultiColumns.dll
+C:\Backup\Sistema de ventas\softintegral\ComboBoxMultiColumns\obj\Debug\ComboBoxMultiColumns.pdb
