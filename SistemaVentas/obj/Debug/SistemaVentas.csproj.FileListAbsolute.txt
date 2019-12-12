@@ -132,7 +132,6 @@ C:\Backup\Sistema de ventas\softintegral\SistemaVentas\bin\Debug\Microsoft.Repor
 C:\Backup\Sistema de ventas\softintegral\SistemaVentas\bin\Debug\CrystalDecisions.CrystalReports.Engine.dll
 C:\Backup\Sistema de ventas\softintegral\SistemaVentas\bin\Debug\ComboBoxMultiColumns.dll
 C:\Backup\Sistema de ventas\softintegral\SistemaVentas\bin\Debug\Guna.UI.dll
-C:\Backup\Sistema de ventas\softintegral\SistemaVentas\bin\Debug\XanderUI.dll
 C:\Backup\Sistema de ventas\softintegral\SistemaVentas\bin\Debug\CrystalDecisions.ReportAppServer.Controllers.dll
 C:\Backup\Sistema de ventas\softintegral\SistemaVentas\bin\Debug\CrystalDecisions.ReportAppServer.DataDefModel.dll
 C:\Backup\Sistema de ventas\softintegral\SistemaVentas\bin\Debug\CrystalDecisions.ReportAppServer.CommonObjectModel.dll

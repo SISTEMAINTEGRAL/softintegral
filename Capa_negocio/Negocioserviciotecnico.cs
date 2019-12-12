@@ -23,9 +23,9 @@ namespace Capa_negocio
             DatosServicioTecnico dservicio = new Capa_Datos.DatosServicioTecnico(idequipo, idmarca, idmodelo, idcategoria, nombreequipo, descripcionequipo);
             return dservicio.agregareditarequipo(dservicio, "modificarequipo");
         }
-        public static string agregarserieequipo(string serie, int idequipo)
+        public static string agregarserieequipo(string serie,int idequipo,int idmarca,int idmodelo)
         {
-            DatosServicioTecnico dservicio = new Capa_Datos.DatosServicioTecnico(serie,idequipo);
+            DatosServicioTecnico dservicio = new Capa_Datos.DatosServicioTecnico(serie,idequipo,idmarca,idmodelo);
             return dservicio.agregareditarequipo(dservicio, "agregarserieequipo");  
         }
         public static DataTable buscarmarca()
@@ -33,16 +33,35 @@ namespace Capa_negocio
             DatosServicioTecnico dservicio = new DatosServicioTecnico();
             return dservicio.buscarmarca(dservicio);
         }
-        public static DataTable buscarmodelo(int idmarca)
+        public static DataTable buscarmodelo(int idmarca,int idequipo)
         {
-            DatosServicioTecnico dservicio = new DatosServicioTecnico(idmarca);
+            DatosServicioTecnico dservicio = new DatosServicioTecnico(idmarca,idequipo);
             return dservicio.buscarmodelo(dservicio);
         }
-        public static DataTable buscarequipo(int varidmarca, int varidmodelo, int varidcategoria, string vardescripcionequipo,bool pormarca = false, bool pormodelo = false, bool porcategoria = false)
+        public static DataTable buscarequipo(string varserie, int varidmarca, int varidmodelo, int varidequipo,bool pormarca = false, bool pormodelo = false, bool porequipo = false)
         {
-            DatosServicioTecnico stecnico = new DatosServicioTecnico(0,varidmarca,varidmodelo,varidcategoria,"",vardescripcionequipo);
-            return stecnico.Buscarequipo(stecnico,pormarca,pormodelo,porcategoria);
+            DatosServicioTecnico stecnico = new DatosServicioTecnico(varserie,varidequipo,varidmarca,varidmodelo);
+            return stecnico.Buscarequipo(stecnico,pormarca,pormodelo,porequipo);
         }
-
+        public static void agregarmarca(string varmarca)
+        {
+            DatosServicioTecnico stecnico = new DatosServicioTecnico(varmarca, "");
+            stecnico.agregarmarcaymodelo(stecnico, "agregarmarca");
+        }
+        public static void agregarmodelo(string varmodelo, int idmarca,int idequipo )
+        {
+            DatosServicioTecnico stecnico = new DatosServicioTecnico("", varmodelo,idmarca,idequipo);
+            stecnico.agregarmarcaymodelo(stecnico, "agregarmodelo");
+        }
+        public static void agregarequipo(string equipo)
+        {
+            DatosServicioTecnico servicio = new DatosServicioTecnico(equipo);
+            servicio.agregareditarequipo(servicio, "agregarequipo");
+        }
+        public static string editarseriequipo(string serie, int idequipo, int idmarca, int idmodelo, int idserieyequipo)
+        {
+            DatosServicioTecnico dservicio = new Capa_Datos.DatosServicioTecnico(serie, idequipo, idmarca, idmodelo,idserieyequipo);
+            return dservicio.agregareditarequipo(dservicio, "modificarserie");
+        }
     }
 }

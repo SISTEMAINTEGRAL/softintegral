@@ -558,7 +558,7 @@ namespace Capa_Presentacion
                 this.CBlocalidad.ValueMember = "id";
                 //lo que se muestra
                 this.CBlocalidad.DisplayMember = "localidad";
-                CBlocalidad.AutoCompleteCustomSource = UtilityFrm.LoadAutoComplete(NegocioCliente.localidad(Convert.ToInt32(Cbprovincia.SelectedValue)));
+                CBlocalidad.AutoCompleteCustomSource = UtilityFrm.LoadAutoComplete(NegocioCliente.localidad(Convert.ToInt32(Cbprovincia.SelectedValue)),"localidad");
                 CBlocalidad.AutoCompleteMode = AutoCompleteMode.Suggest;
                 CBlocalidad.AutoCompleteSource = AutoCompleteSource.CustomSource;
                 // Cbprovincia.SelectedValue = 429;

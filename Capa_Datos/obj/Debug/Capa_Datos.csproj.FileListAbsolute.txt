@@ -86,8 +86,8 @@ C:\Backup\Sistema de ventas\softintegral\Capa_Datos\bin\Debug\Capa_Datos.dll
 C:\Backup\Sistema de ventas\softintegral\Capa_Datos\bin\Debug\Capa_Datos.pdb
 C:\Backup\Sistema de ventas\softintegral\Capa_Datos\bin\Debug\BarcodeLib.dll
 C:\Backup\Sistema de ventas\softintegral\Capa_Datos\bin\Debug\PlaceholderTextBox.dll
-C:\Backup\Sistema de ventas\softintegral\Capa_Datos\obj\Debug\Capa_Datos.csprojResolveAssemblyReference.cache
 C:\Backup\Sistema de ventas\softintegral\Capa_Datos\obj\Debug\Interop.FiscalPrinterLib.dll
 C:\Backup\Sistema de ventas\softintegral\Capa_Datos\obj\Debug\Capa_Datos.csproj.ResolveComReference.cache
 C:\Backup\Sistema de ventas\softintegral\Capa_Datos\obj\Debug\Capa_Datos.dll
 C:\Backup\Sistema de ventas\softintegral\Capa_Datos\obj\Debug\Capa_Datos.pdb
+C:\Backup\Sistema de ventas\softintegral\Capa_Datos\obj\Debug\Capa_Datos.csprojResolveAssemblyReference.cache

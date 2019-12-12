@@ -43,7 +43,7 @@
             this.txtCambio.Enabled = false;
             this.txtCambio.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCambio.Location = new System.Drawing.Point(36, 164);
-            this.txtCambio.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtCambio.Margin = new System.Windows.Forms.Padding(4);
             this.txtCambio.Name = "txtCambio";
             this.txtCambio.ReadOnly = true;
             this.txtCambio.Size = new System.Drawing.Size(285, 44);
@@ -64,7 +64,7 @@
             // 
             this.txtAbono.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtAbono.Location = new System.Drawing.Point(36, 69);
-            this.txtAbono.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtAbono.Margin = new System.Windows.Forms.Padding(4);
             this.txtAbono.Name = "txtAbono";
             this.txtAbono.Size = new System.Drawing.Size(285, 44);
             this.txtAbono.TabIndex = 1;
@@ -89,9 +89,9 @@
             this.gbxEfectivo.Controls.Add(this.lblAbono);
             this.gbxEfectivo.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbxEfectivo.Location = new System.Drawing.Point(13, 13);
-            this.gbxEfectivo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gbxEfectivo.Margin = new System.Windows.Forms.Padding(4);
             this.gbxEfectivo.Name = "gbxEfectivo";
-            this.gbxEfectivo.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gbxEfectivo.Padding = new System.Windows.Forms.Padding(4);
             this.gbxEfectivo.Size = new System.Drawing.Size(344, 223);
             this.gbxEfectivo.TabIndex = 1;
             this.gbxEfectivo.TabStop = false;
@@ -112,7 +112,7 @@
             this.ClientSize = new System.Drawing.Size(624, 400);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.gbxEfectivo);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);

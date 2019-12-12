@@ -154,7 +154,7 @@ namespace Capa_Presentacion
         private void button1_Click(object sender, EventArgs e)
         {
 
-           Frmetiquetareport  objmasivo = new Frmetiquetareport();
+           Frmserviciotecnico  objmasivo = new Frmserviciotecnico();
            objmasivo.ShowDialog();
             // string algo = UtilityFrm.GetImpresoraDefecto();
         }

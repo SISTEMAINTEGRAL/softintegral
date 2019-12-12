@@ -10,6 +10,7 @@ namespace Capa_Datos
 {
    public class DatosServicioTecnico
     {
+        private int idserieyequipo;
         private int idordenservicio;
 
         public int Idordenservicio
@@ -363,6 +364,19 @@ namespace Capa_Datos
             }
         }
 
+        public int Idserieyequipo
+        {
+            get
+            {
+                return idserieyequipo;
+            }
+
+            set
+            {
+                idserieyequipo = value;
+            }
+        }
+
         private DateTime fecha;
 
         private string idestado;
@@ -428,38 +442,42 @@ namespace Capa_Datos
             this.nombreequipo = varnombreequipo;
             this.descripcionequipo = vardescripcionequipo;
          }
-        public DatosServicioTecnico(string varserie, int varidequipo)
+        public DatosServicioTecnico(string varserie, int varidequipo, int varidmarca, int varidmodelo, int varidserieyequipo = 0)
         {
             this.serie = varserie;
             this.idequipo = varidequipo;
+            this.idmarca = varidmarca;
+            this.idmodelo = varidmodelo;
+            this.idserieyequipo = varidserieyequipo;
         }
+        public DatosServicioTecnico( string varequipo)
+        {
+            
+            this.nombreequipo = varequipo;
 
-        public DatosServicioTecnico(int varidmarca)
+        }
+        public DatosServicioTecnico(int varidmarca, int varidequipo)
         {
             this.idmarca = varidmarca;
+            this.idequipo = varidequipo;
           
         }
+        public DatosServicioTecnico(string varmarca, string varmodelo, int varidmarca = 0,int varidequipo = 0)
+        {
+            this.marca = varmarca;
+            this.modelo = varmodelo;
+            this.idmarca = varidmarca;
+            this.idequipo = varidequipo;
+        }
+
         //metodos de equipo 
         // modo = agregarequipo, modo = modificarequipo, modo = agregarserieequipo
         public string agregareditarequipo(DatosServicioTecnico datosequipo, string modo)
         {
             string respuesta = "";
             
-            DatosArticulo objart = new DatosArticulo(this.nombreequipo,"0",this.descripcionequipo,this.idcategoria,0,0,0,0,0,0);
-            if (modo == "agregarequipo")
-            {
-                respuesta = objart.agregar(objart);
-                idequipo = objart.IdArticulo;
-            }
-            else if (modo == "modificarequipo")
-            {
-                respuesta = objart.editar(objart);
-            }
             
-            if (respuesta != "ok")
-            {
-                return respuesta;
-            }
+            
             SqlConnection cn = new SqlConnection(Conexion.conexion);
             
 
@@ -474,8 +492,10 @@ namespace Capa_Datos
                         ProcAlmacenado2.MakeParam ("@idequipo",SqlDbType.Int,0,datosequipo.idequipo),
                         ProcAlmacenado2.MakeParam ("@idmarca",SqlDbType.Int,0,datosequipo.idmarca),
                         ProcAlmacenado2.MakeParam ("@idmodelo",SqlDbType.Int,0,datosequipo.idmodelo),
-                        ProcAlmacenado2.MakeParam ("@idcategoria",SqlDbType.Int,0,datosequipo.idcategoria),
-                        ProcAlmacenado2.MakeParam ("@serie",SqlDbType.Int,0,datosequipo.serie)
+                        ProcAlmacenado2.MakeParam ("@serie",SqlDbType.NVarChar,300,datosequipo.serie),
+                        ProcAlmacenado2.MakeParam ("@equipo",SqlDbType.NVarChar,300,datosequipo.nombreequipo),
+                        ProcAlmacenado2.MakeParam ("@idordenservicio",SqlDbType.Int,0,datosequipo.idordenservicio),
+                        ProcAlmacenado2.MakeParam ("@idserieyequipo",SqlDbType.Int,0,datosequipo.idserieyequipo)
 
                     };
                 ProcAlmacenado2.ExecuteNonQuery("SP_ORDENSERVICIOS", dbParams);
@@ -490,7 +510,7 @@ namespace Capa_Datos
         }
 
         
-        public DataTable Buscarequipo(DatosServicioTecnico datosequipo, bool pormarca = false, bool pormodelo = false , bool porcategoria = false)
+        public DataTable Buscarequipo(DatosServicioTecnico datosequipo, bool pormarca = false, bool pormodelo = false , bool porequipo = false)
         {
             SqlConnection cn = new SqlConnection(Conexion.conexion);
             DataTable dtResult = new DataTable("datosequipo");
@@ -499,14 +519,15 @@ namespace Capa_Datos
             {
                 SqlParameter[] dbParams = new SqlParameter[]
                    {
-                        ProcAlmacenado2.MakeParam ("@modo",SqlDbType.NVarChar,50,"consultarequipo"),
+                        ProcAlmacenado2.MakeParam ("@modo",SqlDbType.NVarChar,50,"consultarequipoconcatenado"),
                         ProcAlmacenado2.MakeParam ("@idequipo",SqlDbType.NVarChar,300,datosequipo.idequipo),
                         ProcAlmacenado2.MakeParam ("@idmarca",SqlDbType.Int,0,datosequipo.idmarca),
                         ProcAlmacenado2.MakeParam ("@idmodelo",SqlDbType.Int,0,datosequipo.idmodelo),
-                        ProcAlmacenado2.MakeParam ("@idcategoria",SqlDbType.Int,0,datosequipo.idcategoria),
-                        ProcAlmacenado2.MakeParam ("@porcategoria",SqlDbType.Bit,0,porcategoria),
+                        ProcAlmacenado2.MakeParam ("@porequipo",SqlDbType.Bit,0,porequipo),
                         ProcAlmacenado2.MakeParam ("@pormarca",SqlDbType.Bit,0,pormarca),
-                        ProcAlmacenado2.MakeParam ("@pormodelo",SqlDbType.Bit,0,pormodelo)
+                        ProcAlmacenado2.MakeParam ("@pormodelo",SqlDbType.Bit,0,pormodelo),
+                        ProcAlmacenado2.MakeParam ("@serie",SqlDbType.NVarChar,300,serie),
+                        ProcAlmacenado2.MakeParam ("@idordenservicio",SqlDbType.Int,0,datosequipo.idordenservicio)
 
                    };
                dtResult =  ProcAlmacenado2.ExecuteDatatable("SP_ORDENSERVICIOS", dbParams);
@@ -530,7 +551,8 @@ namespace Capa_Datos
             {
                 SqlParameter[] dbParams = new SqlParameter[]
                    {
-                        ProcAlmacenado2.MakeParam ("@modo",SqlDbType.NVarChar,50,"consultarmarca")
+                        ProcAlmacenado2.MakeParam ("@modo",SqlDbType.NVarChar,50,"consultarmarca"),
+                        ProcAlmacenado2.MakeParam ("@idordenservicio",SqlDbType.Int,0,idordenservicio)
 
                    };
                 dtResult = ProcAlmacenado2.ExecuteDatatable("SP_ORDENSERVICIOS", dbParams);
@@ -553,7 +575,9 @@ namespace Capa_Datos
                 SqlParameter[] dbParams = new SqlParameter[]
                   {
                         ProcAlmacenado2.MakeParam ("@modo",SqlDbType.NVarChar,50,"consultarmodelo"),
-                        ProcAlmacenado2.MakeParam ("@idmarca",SqlDbType.Int,0,serviciotecnico.idmarca)
+                        ProcAlmacenado2.MakeParam ("@idmarca",SqlDbType.Int,0,serviciotecnico.idmarca),
+                        ProcAlmacenado2.MakeParam ("@idequipo",SqlDbType.Int,0,serviciotecnico.idequipo),
+                        ProcAlmacenado2.MakeParam ("@idordenservicio",SqlDbType.Int,0,idordenservicio)
 
                   };
                 dtResult = ProcAlmacenado2.ExecuteDatatable("SP_ORDENSERVICIOS", dbParams);
@@ -564,6 +588,55 @@ namespace Capa_Datos
                 throw;
             }
             return dtResult;
+        }
+        public void agregarmarcaymodelo(DatosServicioTecnico serviciotecnico, string varmodo)
+        {
+            try
+            {
+                SqlParameter[] dbParams = new SqlParameter[]
+                   {
+                        ProcAlmacenado2.MakeParam ("@modo",SqlDbType.NVarChar,50,varmodo),
+                        ProcAlmacenado2.MakeParam ("@idordenservicio",SqlDbType.Int,0,idordenservicio),
+                        ProcAlmacenado2.MakeParam ("@marca",SqlDbType.NVarChar,300,serviciotecnico.marca),
+                        ProcAlmacenado2.MakeParam ("@modelo",SqlDbType.NVarChar,300,serviciotecnico.modelo),
+                        ProcAlmacenado2.MakeParam ("@idmarca",SqlDbType.Int,0,serviciotecnico.idmarca),
+                        ProcAlmacenado2.MakeParam ("@idequipo",SqlDbType.Int,0,serviciotecnico.idequipo)
+
+                   };
+                 
+                ProcAlmacenado2.ExecuteNonQuery("SP_ORDENSERVICIOS", dbParams);
+            }
+            catch (Exception)
+            {
+
+                throw;
+
+            }
+        }
+
+        public void agregaryeditarserviciotecnico(DatosServicioTecnico servicio, string varmodo)
+        {
+            try
+            {
+                SqlParameter[] dbParams = new SqlParameter[]
+                   {
+                        ProcAlmacenado2.MakeParam ("@modo",SqlDbType.NVarChar,50,varmodo),
+                        ProcAlmacenado2.MakeParam ("@idordenservicio",SqlDbType.Int,0,idordenservicio),
+                        ProcAlmacenado2.MakeParam ("@marca",SqlDbType.NVarChar,300,servicio.marca),
+                        ProcAlmacenado2.MakeParam ("@modelo",SqlDbType.NVarChar,300,servicio.modelo),
+                        ProcAlmacenado2.MakeParam ("@idmarca",SqlDbType.Int,0,servicio.idmarca),
+                        ProcAlmacenado2.MakeParam ("@idequipo",SqlDbType.Int,0,servicio.idequipo)
+
+                   };
+
+                ProcAlmacenado2.ExecuteNonQuery("SP_ORDENSERVICIOS", dbParams);
+            }
+            catch (Exception)
+            {
+
+                throw;
+
+            }
         }
 
     }

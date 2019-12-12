@@ -12,10 +12,39 @@ namespace Capa_Presentacion
 {
     public partial class FrmClientes : Form
     {
+        private bool modoshowdialog;
+        private int idcliente;
          bool isEditar = false;
          bool isNuevo = false;
          int posY = 0;
          int posX = 0;
+
+        public bool Modoshowdialog
+        {
+            get
+            {
+                return modoshowdialog;
+            }
+
+            set
+            {
+                modoshowdialog = value;
+            }
+        }
+
+        public int Idcliente
+        {
+            get
+            {
+                return idcliente;
+            }
+
+            set
+            {
+                idcliente = value;
+            }
+        }
+
         public FrmClientes()
         {
             InitializeComponent();
@@ -392,39 +421,48 @@ namespace Capa_Presentacion
 
         private void dataLista_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            string categoriaiva = "";
-            txtCodigo.Text = Convert.ToString(this.dataLista.CurrentRow.Cells["idcliente"].Value);
-            txtRazonSocial.Text = Convert.ToString(this.dataLista.CurrentRow.Cells["razon_social"].Value);
-            txtCuit.Text = Convert.ToString(this.dataLista.CurrentRow.Cells["cuit"].Value);
-            txtDireccion.Text = Convert.ToString(this.dataLista.CurrentRow.Cells["direccion"].Value);
-            txtTelefono.Text = Convert.ToString(this.dataLista.CurrentRow.Cells["telefono"].Value);
-            txtEmail.Text = Convert.ToString(this.dataLista.CurrentRow.Cells["email"].Value);
-            txtDocumento.Text = Convert.ToString(this.dataLista.CurrentRow.Cells["num_documento"].Value);
-            categoriaiva = Convert.ToString(this.dataLista.CurrentRow.Cells["responsabilidadiva"].Value);
-            Cbprovincia.SelectedValue = Convert.ToInt32(this.dataLista.CurrentRow.Cells["idprovincia"].Value);
-            CBlocalidad.SelectedValue = Convert.ToInt32(this.dataLista.CurrentRow.Cells["idlocalidad"].Value);
+            if (modoshowdialog == true)
+            {
+                idcliente = Convert.ToInt32 ( this.dataLista.CurrentRow.Cells["idcliente"].Value);
+                this.Close();
+            }
+            else
+            {
+                string categoriaiva = "";
+                txtCodigo.Text = Convert.ToString(this.dataLista.CurrentRow.Cells["idcliente"].Value);
+                txtRazonSocial.Text = Convert.ToString(this.dataLista.CurrentRow.Cells["razon_social"].Value);
+                txtCuit.Text = Convert.ToString(this.dataLista.CurrentRow.Cells["cuit"].Value);
+                txtDireccion.Text = Convert.ToString(this.dataLista.CurrentRow.Cells["direccion"].Value);
+                txtTelefono.Text = Convert.ToString(this.dataLista.CurrentRow.Cells["telefono"].Value);
+                txtEmail.Text = Convert.ToString(this.dataLista.CurrentRow.Cells["email"].Value);
+                txtDocumento.Text = Convert.ToString(this.dataLista.CurrentRow.Cells["num_documento"].Value);
+                categoriaiva = Convert.ToString(this.dataLista.CurrentRow.Cells["responsabilidadiva"].Value);
+                Cbprovincia.SelectedValue = Convert.ToInt32(this.dataLista.CurrentRow.Cells["idprovincia"].Value);
+                CBlocalidad.SelectedValue = Convert.ToInt32(this.dataLista.CurrentRow.Cells["idlocalidad"].Value);
 
-            if (categoriaiva == "CF")
-            {
-                cbrespiva.SelectedIndex = 2;
-            }
-            if (categoriaiva == "EX")
-            {
-                cbrespiva.SelectedIndex = 3;
-            }
-            if (categoriaiva == "RI")
-            {
-                cbrespiva.SelectedIndex = 0;
-            }
+                if (categoriaiva == "CF")
+                {
+                    cbrespiva.SelectedIndex = 2;
+                }
+                if (categoriaiva == "EX")
+                {
+                    cbrespiva.SelectedIndex = 3;
+                }
+                if (categoriaiva == "RI")
+                {
+                    cbrespiva.SelectedIndex = 0;
+                }
 
-            if (categoriaiva == "MN")
-            {
-                cbrespiva.SelectedIndex = 1;
-            }
+                if (categoriaiva == "MN")
+                {
+                    cbrespiva.SelectedIndex = 1;
+                }
 
+
+                habilitarbotones(true, false, false, false);
+                this.tabControl1.SelectedTab = tabAgregarOcambiar;
+            }
             
-            habilitarbotones(true, false, false, false);
-            this.tabControl1.SelectedTab = tabAgregarOcambiar;
         }
 
         private void label3_Click(object sender, EventArgs e)

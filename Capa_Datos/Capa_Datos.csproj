@@ -75,6 +75,7 @@
     <Compile Include="DatosConfigEmpresa.cs" />
     <Compile Include="DatosDetalleMovStock.cs" />
     <Compile Include="DatosFormaDePago.cs" />
+    <Compile Include="Datosgenerales.cs" />
     <Compile Include="DatosMovStock.cs" />
     <Compile Include="DatosProveedor.cs" />
     <Compile Include="DatosServicioTecnico.cs" />

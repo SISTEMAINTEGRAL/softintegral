@@ -282,6 +282,7 @@ namespace SistemaVentas
         {
 
             Application.Run( new SplashScreen());
+           
         }
 
         //color panelprincipal 65; 39; 60
@@ -590,6 +591,7 @@ namespace SistemaVentas
         private void btnClientes_Click(object sender, EventArgs e)
         {
             FrmClientes clientes = this.Forminstanciacliente;
+            clientes.Modoshowdialog = false;
             clientes.Show();
             clientes.WindowState = FormWindowState.Maximized;
             clientes.BringToFront();
