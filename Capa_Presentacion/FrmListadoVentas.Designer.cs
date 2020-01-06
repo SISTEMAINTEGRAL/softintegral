@@ -35,21 +35,13 @@
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.Windows.Forms.DataVisualization.Charting.Title title1 = new System.Windows.Forms.DataVisualization.Charting.Title();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.REPORTE_VENTAPRODUCTOBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.DVentaproducto = new Capa_Presentacion.DVentaproducto();
             this.label1 = new System.Windows.Forms.Label();
             this.dtpFechaFin = new System.Windows.Forms.DateTimePicker();
             this.dtpFechaIni = new System.Windows.Forms.DateTimePicker();
             this.dataLista = new System.Windows.Forms.DataGridView();
-            this.Codigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.razon_social = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Fecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Tipo_comprobante = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Total = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Estado = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.caja = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.idcliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cuit = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lblFechaIni = new System.Windows.Forms.Label();
             this.txtTotal = new System.Windows.Forms.TextBox();
             this.lblTotal = new System.Windows.Forms.Label();
@@ -86,6 +78,16 @@
             this.DTDetalleventa = new System.Windows.Forms.DataGridView();
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.REPORTE_VENTAPRODUCTOTableAdapter = new Capa_Presentacion.DVentaproductoTableAdapters.REPORTE_VENTAPRODUCTOTableAdapter();
+            this.Codigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.razon_social = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Fecha = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Tipo_comprobante = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Total = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Estado = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.caja = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.idcliente = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cuit = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Nrocomprobante = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.REPORTE_VENTAPRODUCTOBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DVentaproducto)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataLista)).BeginInit();
@@ -159,7 +161,8 @@
             this.Estado,
             this.caja,
             this.idcliente,
-            this.cuit});
+            this.cuit,
+            this.Nrocomprobante});
             this.dataLista.Location = new System.Drawing.Point(22, 142);
             this.dataLista.MultiSelect = false;
             this.dataLista.Name = "dataLista";
@@ -173,69 +176,6 @@
             this.dataLista.SelectionChanged += new System.EventHandler(this.dataLista_SelectionChanged);
             this.dataLista.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dataLista_KeyDown);
             this.dataLista.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dataLista_MouseClick);
-            // 
-            // Codigo
-            // 
-            this.Codigo.FillWeight = 97.36993F;
-            this.Codigo.HeaderText = "Codigo";
-            this.Codigo.Name = "Codigo";
-            this.Codigo.ReadOnly = true;
-            // 
-            // razon_social
-            // 
-            this.razon_social.FillWeight = 97.36993F;
-            this.razon_social.HeaderText = "Razon_social";
-            this.razon_social.Name = "razon_social";
-            this.razon_social.ReadOnly = true;
-            // 
-            // Fecha
-            // 
-            this.Fecha.FillWeight = 97.36993F;
-            this.Fecha.HeaderText = "Fecha";
-            this.Fecha.Name = "Fecha";
-            this.Fecha.ReadOnly = true;
-            // 
-            // Tipo_comprobante
-            // 
-            this.Tipo_comprobante.FillWeight = 97.36993F;
-            this.Tipo_comprobante.HeaderText = "Tipo_comprobante";
-            this.Tipo_comprobante.Name = "Tipo_comprobante";
-            this.Tipo_comprobante.ReadOnly = true;
-            // 
-            // Total
-            // 
-            this.Total.FillWeight = 97.36993F;
-            this.Total.HeaderText = "Total";
-            this.Total.Name = "Total";
-            this.Total.ReadOnly = true;
-            // 
-            // Estado
-            // 
-            this.Estado.FillWeight = 97.36993F;
-            this.Estado.HeaderText = "Estado";
-            this.Estado.Name = "Estado";
-            this.Estado.ReadOnly = true;
-            // 
-            // caja
-            // 
-            this.caja.FillWeight = 23.79567F;
-            this.caja.HeaderText = "Caja";
-            this.caja.Name = "caja";
-            this.caja.ReadOnly = true;
-            // 
-            // idcliente
-            // 
-            this.idcliente.FillWeight = 40.6599F;
-            this.idcliente.HeaderText = "Idcliente";
-            this.idcliente.Name = "idcliente";
-            this.idcliente.ReadOnly = true;
-            // 
-            // cuit
-            // 
-            this.cuit.FillWeight = 152.3249F;
-            this.cuit.HeaderText = "Cuit";
-            this.cuit.Name = "cuit";
-            this.cuit.ReadOnly = true;
             // 
             // lblFechaIni
             // 
@@ -629,6 +569,7 @@
             // 
             // contextMenuStrip1
             // 
+            this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.menuconfventa,
             this.menureimpresion});
@@ -672,7 +613,7 @@
             reportDataSource1.Value = this.REPORTE_VENTAPRODUCTOBindingSource;
             this.reportViewer1.LocalReport.DataSources.Add(reportDataSource1);
             this.reportViewer1.LocalReport.ReportEmbeddedResource = "Capa_Presentacion.Reporteproductoventa.rdlc";
-            this.reportViewer1.Location = new System.Drawing.Point(24, 142);
+            this.reportViewer1.Location = new System.Drawing.Point(26, 144);
             this.reportViewer1.Name = "reportViewer1";
             this.reportViewer1.Size = new System.Drawing.Size(1031, 350);
             this.reportViewer1.TabIndex = 67;
@@ -681,6 +622,78 @@
             // REPORTE_VENTAPRODUCTOTableAdapter
             // 
             this.REPORTE_VENTAPRODUCTOTableAdapter.ClearBeforeFill = true;
+            // 
+            // Codigo
+            // 
+            this.Codigo.FillWeight = 97.36993F;
+            this.Codigo.HeaderText = "Codigo";
+            this.Codigo.Name = "Codigo";
+            this.Codigo.ReadOnly = true;
+            // 
+            // razon_social
+            // 
+            this.razon_social.FillWeight = 97.36993F;
+            this.razon_social.HeaderText = "Razon_social";
+            this.razon_social.Name = "razon_social";
+            this.razon_social.ReadOnly = true;
+            // 
+            // Fecha
+            // 
+            dataGridViewCellStyle1.Format = "G";
+            dataGridViewCellStyle1.NullValue = null;
+            this.Fecha.DefaultCellStyle = dataGridViewCellStyle1;
+            this.Fecha.FillWeight = 97.36993F;
+            this.Fecha.HeaderText = "Fecha";
+            this.Fecha.Name = "Fecha";
+            this.Fecha.ReadOnly = true;
+            // 
+            // Tipo_comprobante
+            // 
+            this.Tipo_comprobante.FillWeight = 97.36993F;
+            this.Tipo_comprobante.HeaderText = "Tipo_comprobante";
+            this.Tipo_comprobante.Name = "Tipo_comprobante";
+            this.Tipo_comprobante.ReadOnly = true;
+            // 
+            // Total
+            // 
+            this.Total.FillWeight = 97.36993F;
+            this.Total.HeaderText = "Total";
+            this.Total.Name = "Total";
+            this.Total.ReadOnly = true;
+            // 
+            // Estado
+            // 
+            this.Estado.FillWeight = 97.36993F;
+            this.Estado.HeaderText = "Estado";
+            this.Estado.Name = "Estado";
+            this.Estado.ReadOnly = true;
+            // 
+            // caja
+            // 
+            this.caja.FillWeight = 23.79567F;
+            this.caja.HeaderText = "Caja";
+            this.caja.Name = "caja";
+            this.caja.ReadOnly = true;
+            // 
+            // idcliente
+            // 
+            this.idcliente.FillWeight = 40.6599F;
+            this.idcliente.HeaderText = "Idcliente";
+            this.idcliente.Name = "idcliente";
+            this.idcliente.ReadOnly = true;
+            // 
+            // cuit
+            // 
+            this.cuit.FillWeight = 152.3249F;
+            this.cuit.HeaderText = "Cuit";
+            this.cuit.Name = "cuit";
+            this.cuit.ReadOnly = true;
+            // 
+            // Nrocomprobante
+            // 
+            this.Nrocomprobante.HeaderText = "Nrocomprobante";
+            this.Nrocomprobante.Name = "Nrocomprobante";
+            this.Nrocomprobante.ReadOnly = true;
             // 
             // FrmListadoVentas
             // 
@@ -781,6 +794,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn caja;
         private System.Windows.Forms.DataGridViewTextBoxColumn idcliente;
         private System.Windows.Forms.DataGridViewTextBoxColumn cuit;
-
+        private System.Windows.Forms.DataGridViewTextBoxColumn Nrocomprobante;
     }
 }

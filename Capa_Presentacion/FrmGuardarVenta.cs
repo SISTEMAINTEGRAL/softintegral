@@ -357,7 +357,7 @@ namespace Capa_Presentacion
               {
                   UtilityFrm.mensajeError(e.Message);
               }
-              string Rta = objventa.Insertar(this.idCliente, DateTime.Today, Tipo_comprobante, "0000", msg.Substring(0, 2) == "ok" ? nrocomprobante : "0", IVA, this.concaja, this.constock, NegocioConfigEmpresa.usuarioconectado, dt, Convert.ToDecimal(txtBonificacion.Text == "" ? txtBonificacion.Text = "0" : txtBonificacion.Text), Convert.ToDecimal(txtTotalAPagar.Text), Convert.ToDecimal(lblsubtotal.Text), estadofactura, NegocioConfigEmpresa.confsistema("stock").ToString() == this.Name ? true : false, nroterminal, codtarjeta, cupon, lote, importe, cuota, codformapago);
+              string Rta = objventa.Insertar(this.idCliente, DateTime.Now, Tipo_comprobante, "0000", msg.Substring(0, 2) == "ok" ? nrocomprobante : "0", IVA, this.concaja, this.constock, NegocioConfigEmpresa.usuarioconectado, dt, Convert.ToDecimal(txtBonificacion.Text == "" ? txtBonificacion.Text = "0" : txtBonificacion.Text), Convert.ToDecimal(txtTotalAPagar.Text), Convert.ToDecimal(lblsubtotal.Text), estadofactura, NegocioConfigEmpresa.confsistema("stock").ToString() == this.Name ? true : false, nroterminal, codtarjeta, cupon, lote, importe, cuota, codformapago);
                
                 int objnum = objventa.Idventa;
 

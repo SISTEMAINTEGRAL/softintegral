@@ -374,20 +374,21 @@ namespace Capa_Presentacion
 
 
 
-            txtNombre.Text = txtNombre.TextLength == 12 ? "0" + txtNombre.Text : txtNombre.Text;
+            txtNombre.Text = txtNombre.TextLength == 12 && IsNumeric (txtNombre.Text)? "0" + txtNombre.Text : txtNombre.Text;
             if (txtNombre.TextLength >= 13 && IsNumeric(txtNombre.Text) == true)
                     {
                         dataLista.DataSource = NegocioArticulo.buscarCodigoBarra(txtNombre.Text);
                         
                         txtNombre.Focus();
                         txtNombre.SelectAll();
-
-                    }
+                        textBox1.Text = decimal.Round(Convert.ToDecimal(this.dataLista.CurrentRow.Cells["Precio"].Value), 2).ToString();
+            }
             else if (IsNumeric(txtNombre.Text) == true)
             {
                 dataLista.DataSource = NegocioArticulo.buscarIdProducto(txtNombre.Text);
                 txtNombre.Focus();
                 txtNombre.SelectAll();
+                textBox1.Text = decimal.Round(Convert.ToDecimal(this.dataLista.CurrentRow.Cells["Precio"].Value), 2).ToString();
             }
 
             else
@@ -1277,6 +1278,13 @@ namespace Capa_Presentacion
         private void txtUtilidad_KeyPress(object sender, KeyPressEventArgs e)
         {
             UtilityFrm.NumDecTeclado(e, txtUtilidad);
+        }
+
+        private void dataLista_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            
+            textBox1.Text = decimal.Round(Convert.ToDecimal(this.dataLista.CurrentRow.Cells["Precio"].Value), 2).ToString();
+
         }
 
         private void Txtflete_KeyPress(object sender, KeyPressEventArgs e)

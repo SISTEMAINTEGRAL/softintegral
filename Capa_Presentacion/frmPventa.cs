@@ -914,7 +914,7 @@ namespace Capa_Presentacion
                
                 try
                 {
-                    txtNombreProducto.Text = txtNombreProducto.TextLength == 12 ? "0" + txtNombreProducto.Text : txtNombreProducto.Text;  
+                    txtNombreProducto.Text = txtNombreProducto.TextLength == 12 && IsNumeric(txtNombreProducto.Text) == true ? "0" + txtNombreProducto.Text : txtNombreProducto.Text;  
                     if (txtNombreProducto.TextLength >= 13 && IsNumeric(txtNombreProducto.Text) == true)
                     {
                         Buscar_producto(Convert.ToInt64(txtNombreProducto.Text), "porbarra",!chkporcantidad.Checked,1,txtNombreProducto.Text);
@@ -950,8 +950,11 @@ namespace Capa_Presentacion
                     
                     }
                     DGVenta.Rows[DGVenta.Rows.Count - 1].Cells[2].Selected = true;
-
-                    cambiartextbox();
+                    if (chkporcantidad.Checked == true)
+                    {
+                        cambiartextbox();
+                    }
+                    
                     //txtNombreProducto.Focus();
                 }
                 catch (Exception ex)

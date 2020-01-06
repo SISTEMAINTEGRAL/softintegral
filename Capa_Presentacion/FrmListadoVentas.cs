@@ -136,7 +136,7 @@ namespace Capa_Presentacion
             
                    if(dataLista.Rows.Count>0){
                        //le paso el formato adecuado para los valores decimales pasando desde la fila 2 hasta datalista.rows.count+1 osea hasta el ultimo elemento
-                       hoja_trabajo.Range[hoja_trabajo.Cells[2, 5], hoja_trabajo.Cells[dataLista.Rows.Count+1, 5]].NumberFormat = "0,00";
+                       hoja_trabajo.Range[hoja_trabajo.Cells[2, 6], hoja_trabajo.Cells[dataLista.Rows.Count+1, 5]].NumberFormat = "0,00";
                    
                    }
                     //Recorremos el DataGridView rellenando la hoja de trabajo
@@ -157,7 +157,8 @@ namespace Capa_Presentacion
                         hoja_trabajo.Cells[i + 2, 4] = dataLista.Rows[i].Cells["tipo_comprobante"].Value.ToString();
                         hoja_trabajo.Cells[i + 2, 5] =  dataLista.Rows[i].Cells["total"].Value;
                         hoja_trabajo.Cells[i + 2, 6] = dataLista.Rows[i].Cells["estado"].Value.ToString();
-               
+                        hoja_trabajo.Cells[i + 2, 10] = dataLista.Rows[i].Cells["Nrocomprobante"].Value.ToString();
+
                     }
                     //ajustar el tamaño de las celdas deacuerdo al tamaño de las columnas agregadas
                     hoja_trabajo.Cells.Columns.AutoFit();
@@ -209,7 +210,7 @@ namespace Capa_Presentacion
             dataLista.Rows.Clear();
             try
             {
-                DataTable dt = NegocioVenta.BuscarFechas(dtpFechaIni.Value.ToString("dd/MM/yyyy"), dtpFechaFin.Value.ToString("dd/MM/yyyy"), ChkFactura.Checked == true ? 'P' : 'F',Chkcaja.Checked == true ? false : true, rdBPresupuesto.Checked == true ? "PRESUPUESTO" : "NOTA DE VENTA" );
+                DataTable dt = NegocioVenta.BuscarFechas(dtpFechaIni.Value.ToString("dd/MM/yyyy") + " 00:00:00", dtpFechaFin.Value.ToString("dd/MM/yyyy") + " 23:59:59", ChkFactura.Checked == true ? 'P' : 'F',Chkcaja.Checked == true ? false : true, rdBPresupuesto.Checked == true ? "PRESUPUESTO" : "NOTA DE VENTA" );
                 foreach (DataRow venta in dt.Rows)
                 {
 
@@ -232,7 +233,7 @@ namespace Capa_Presentacion
                     {
                         estado = "PRESUPUESTADO";
                     }
-                    dataLista.Rows.Add(venta["idventa"], venta["razon_social"], venta["fecha"], venta["tipo_comprobante"], venta["total"], estado, venta ["caja"], venta ["idcliente"], venta ["cuit"]);
+                    dataLista.Rows.Add(venta["idventa"], venta["razon_social"], venta["fecha"], venta["tipo_comprobante"], venta["total"], estado, venta ["caja"], venta ["idcliente"], venta ["cuit"], venta["Nrocomprobante"]);
                 }
        
             }
