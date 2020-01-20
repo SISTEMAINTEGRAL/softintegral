@@ -114,3 +114,15 @@ D:\Desarrollo\SOFTINTEGRAL 20-05-2019\Sistema de ventas (Ultimo)\Sistema de vent
 D:\Desarrollo\SOFTINTEGRAL 20-05-2019\Sistema de ventas (Ultimo)\Sistema de ventas\SistemaVentas\obj\Release\SistemaVentas.csproj.GenerateResource.Cache
 D:\Desarrollo\SOFTINTEGRAL 20-05-2019\Sistema de ventas (Ultimo)\Sistema de ventas\SistemaVentas\obj\Release\SistemaVentas.exe.manifest
 D:\Desarrollo\SOFTINTEGRAL 20-05-2019\Sistema de ventas (Ultimo)\Sistema de ventas\SistemaVentas\obj\Release\SistemaVentas.application
+C:\Backup\Sistema de ventas\softintegral\SistemaVentas\bin\Release\SistemaVentas.exe.config
+C:\Backup\Sistema de ventas\softintegral\SistemaVentas\obj\Release\Interop.FiscalPrinterLib.dll
+C:\Backup\Sistema de ventas\softintegral\SistemaVentas\obj\Release\SistemaVentas.csproj.ResolveComReference.cache
+C:\Backup\Sistema de ventas\softintegral\SistemaVentas\obj\Release\SistemaVentas.exe
+C:\Backup\Sistema de ventas\softintegral\SistemaVentas\obj\Release\SistemaVentas.pdb
+C:\Backup\Sistema de ventas\softintegral\SistemaVentas\obj\Release\SistemaVentas.csprojResolveAssemblyReference.cache
+C:\Backup\Sistema de ventas\softintegral\SistemaVentas\obj\Release\SistemaVentas.Form1.resources
+C:\Backup\Sistema de ventas\softintegral\SistemaVentas\obj\Release\SistemaVentas.FrmLogin.resources
+C:\Backup\Sistema de ventas\softintegral\SistemaVentas\obj\Release\SistemaVentas.SplashScreen.resources
+C:\Backup\Sistema de ventas\softintegral\SistemaVentas\obj\Release\SistemaVentas.FrmInicio.resources
+C:\Backup\Sistema de ventas\softintegral\SistemaVentas\obj\Release\SistemaVentas.Properties.Resources.resources
+C:\Backup\Sistema de ventas\softintegral\SistemaVentas\obj\Release\SistemaVentas.csproj.GenerateResource.Cache

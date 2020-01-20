@@ -40,7 +40,7 @@ namespace Capa_negocio
 
         public static string insertar(string nombre, string codigo, string descripcion, int idCategoria, decimal precio,int cantInicial,int pesable, decimal preciocompra, decimal utilidad,decimal flete)
         {
-            DatosArticulo dArticulo= new DatosArticulo(nombre,codigo,descripcion,idCategoria,precio,cantInicial,pesable,preciocompra,utilidad,flete);
+            DatosArticulo dArticulo= new DatosArticulo(nombre,codigo,descripcion,idCategoria,precio,cantInicial,pesable,preciocompra,utilidad,flete, DateTime.Now);
             return dArticulo.agregar(dArticulo);
 
         }
@@ -51,9 +51,9 @@ namespace Capa_negocio
             dArticulo.IdArticulo = idArticulo;
             return dArticulo.eliminar(dArticulo);
         }
-        public static string editar(int idArticulo,string nombre, string codigo, string descripcion, int idCategoria,decimal precio,decimal cantInicial,int pesable,decimal preciocompra,decimal utilidad, decimal flete)
+        public static string editar(int idArticulo,string nombre, string codigo, string descripcion, int idCategoria,decimal precio,decimal cantInicial,int pesable,decimal preciocompra,decimal utilidad, decimal flete,  DateTime fecha  ,int edicionusuario = 0, string edicionlugar = "")
         {
-            DatosArticulo dArticulo = new DatosArticulo(nombre, codigo, descripcion,idCategoria,precio,cantInicial,pesable,preciocompra,utilidad,flete);
+            DatosArticulo dArticulo = new DatosArticulo(nombre, codigo, descripcion,idCategoria,precio,cantInicial,pesable,preciocompra,utilidad,flete,fecha,edicionusuario,edicionlugar);
             dArticulo.IdArticulo= idArticulo;
             return dArticulo.editar(dArticulo);
         }

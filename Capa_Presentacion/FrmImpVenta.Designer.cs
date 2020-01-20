@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.CRVVenta = new CrystalDecisions.Windows.Forms.CrystalReportViewer();
-            this.NotaDeVenta1 = new Capa_Presentacion.Reportes.NotaDeVenta();
+            this.VentasReducida1 = new Capa_Presentacion.Reportes.VentasReducida();
             this.SuspendLayout();
             // 
             // CRVVenta
@@ -39,23 +39,21 @@
             this.CRVVenta.Cursor = System.Windows.Forms.Cursors.Default;
             this.CRVVenta.Dock = System.Windows.Forms.DockStyle.Fill;
             this.CRVVenta.Location = new System.Drawing.Point(0, 0);
+            this.CRVVenta.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.CRVVenta.Name = "CRVVenta";
-            this.CRVVenta.ReportSource = this.NotaDeVenta1;
-            this.CRVVenta.Size = new System.Drawing.Size(1002, 722);
+            this.CRVVenta.ReportSource = this.VentasReducida1;
+            this.CRVVenta.Size = new System.Drawing.Size(1336, 889);
             this.CRVVenta.TabIndex = 0;
             this.CRVVenta.ToolPanelView = CrystalDecisions.Windows.Forms.ToolPanelViewType.None;
             this.CRVVenta.Load += new System.EventHandler(this.CRVVenta_Load);
             // 
-            // NotaDeVenta1
-            // 
-            this.NotaDeVenta1.InitReport += new System.EventHandler(this.NotaDeVenta1_InitReport);
-            // 
             // FrmImpVenta
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1002, 722);
+            this.ClientSize = new System.Drawing.Size(1336, 889);
             this.Controls.Add(this.CRVVenta);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "FrmImpVenta";
             this.Text = "FrmImpVenta";
             this.ResumeLayout(false);
@@ -66,5 +64,6 @@
 
         private CrystalDecisions.Windows.Forms.CrystalReportViewer CRVVenta;
         private Reportes.NotaDeVenta NotaDeVenta1;
+        private Reportes.VentasReducida VentasReducida1;
     }
 }

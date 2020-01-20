@@ -527,7 +527,6 @@ C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\bin\Debug\CrystalDeci
 C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\bin\Debug\CrystalDecisions.Shared.dll
 C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\bin\Debug\CrystalDecisions.Windows.Forms.dll
 C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\bin\Debug\FlashControlV71.dll
-C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\bin\Debug\Guna.UI.dll
 C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\bin\Debug\Microsoft.ReportViewer.WinForms.dll
 C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\bin\Debug\PlaceholderTextBox.dll
 C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\bin\Debug\XanderUI.dll
@@ -563,6 +562,7 @@ C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\obj\Debug\Capa_Presen
 C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\obj\Debug\Interop.FiscalPrinterLib.dll
 C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\obj\Debug\Capa_Presentacion.csproj.ResolveComReference.cache
 C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\obj\Debug\Capa_Presentacion.Acerca.resources
+C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\obj\Debug\Capa_Presentacion.FrmAltasvarios.resources
 C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\obj\Debug\Capa_Presentacion.FrmAperturacaja.resources
 C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\obj\Debug\Capa_Presentacion.FrmArticulos.resources
 C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\obj\Debug\Capa_Presentacion.FrmAsignarPrecio.resources
@@ -581,6 +581,7 @@ C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\obj\Debug\Capa_Presen
 C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\obj\Debug\Capa_Presentacion.FrmConfig.resources
 C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\obj\Debug\Capa_Presentacion.FrmDetallesDeStock.resources
 C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\obj\Debug\Capa_Presentacion.FrmDetalleVentas.resources
+C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\obj\Debug\Capa_Presentacion.FrmEquipo.resources
 C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\obj\Debug\Capa_Presentacion.Frmetiquetareport.resources
 C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\obj\Debug\Capa_Presentacion.FrmEtiquetas.resources
 C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\obj\Debug\Capa_Presentacion.FrmFactura.resources
@@ -612,5 +613,4 @@ C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\obj\Debug\Capa_Presen
 C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\obj\Debug\Capa_Presentacion.csproj.GenerateResource.Cache
 C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\obj\Debug\Capa_Presentacion.dll
 C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\obj\Debug\Capa_Presentacion.pdb
-C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\obj\Debug\Capa_Presentacion.FrmEquipo.resources
-C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\obj\Debug\Capa_Presentacion.FrmAltasvarios.resources
+C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\bin\Debug\Guna.UI.dll

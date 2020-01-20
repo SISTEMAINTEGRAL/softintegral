@@ -496,7 +496,7 @@ namespace Capa_Presentacion
                     {
 
                         //respuesta = NegocioArticulo.editar(Convert.ToInt32(txtCodigo.Text.Trim()), Convert.ToString(txtNombreConfig.Text.Trim()), txtCodigoBarra.Text.Trim(), Convert.ToString(txtDescripcion.Text.Trim()), Convert.ToInt32(cbxCategoria.SelectedValue));
-                        respuesta = NegocioArticulo.editar(Convert.ToInt32(txtCodigo.Text.Trim()), Convert.ToString(txtNombreConfig.Text.Trim()), txtCodigoBarra.Text.Trim(), Convert.ToString(txtDescripcion.Text.Trim()), Convert.ToInt32(cbxCategoria.SelectedValue), Convert.ToDecimal(txtPrecio.Text.Trim()), Convert.ToDecimal(txtCantInicial.Text.Trim()), pesable,Convert.ToDecimal(TxtPcompra.Text),Convert.ToDecimal(txtUtilidad.Text),Convert.ToDecimal (Txtflete.Text == "" ? "0":Txtflete.Text));
+                        respuesta = NegocioArticulo.editar(Convert.ToInt32(txtCodigo.Text.Trim()), Convert.ToString(txtNombreConfig.Text.Trim()), txtCodigoBarra.Text.Trim(), Convert.ToString(txtDescripcion.Text.Trim()), Convert.ToInt32(cbxCategoria.SelectedValue), Convert.ToDecimal(txtPrecio.Text.Trim()), Convert.ToDecimal(txtCantInicial.Text.Trim()), pesable,Convert.ToDecimal(TxtPcompra.Text),Convert.ToDecimal(txtUtilidad.Text),Convert.ToDecimal (Txtflete.Text == "" ? "0":Txtflete.Text),DateTime.Now,NegocioConfigEmpresa.idusuario,"formulario articulo");
 
                         if (respuesta.Equals("ok"))
                         {

@@ -377,19 +377,19 @@ namespace Capa_Presentacion
                     {
                         trans = Rta;
 
-                        Reporteventa mireporteventa = new Reporteventa();
-                        //Frmimpnotaventa miformnotaventa = new Frmimpnotaventa();
-                       // Frmimpventicket miformticket = new Frmimpventicket();
+                        //Reporteventa mireporteventa = new Reporteventa();
+                        Frmimpnotaventa miformnotaventa = new Frmimpnotaventa();
+                        // Frmimpventicket miformticket = new Frmimpventicket();
 
                         if (NegocioConfigEmpresa.confsistema("imprimirventa").ToString() == "True")
                         {
                             if (NegocioConfigEmpresa.confsistema("tipoimpresion").ToString() == "tipocarro")
                             {
-                                //miformnotaventa.Tipoimp = Convert.ToString(NegocioConfigEmpresa.confsistema("modoimpventa"));
-                                //miformnotaventa.Codventa = objventa.Idventa;
-                                //miformnotaventa.Show();
-                                mireporteventa.Idventa = objventa.Idventa;
-                                mireporteventa.ShowDialog ();
+                                miformnotaventa.Tipoimp = Convert.ToString(NegocioConfigEmpresa.confsistema("modoimpventa"));
+                                miformnotaventa.Codventa = objventa.Idventa;
+                                miformnotaventa.Show();
+                                //mireporteventa.Idventa = objventa.Idventa;
+                                //mireporteventa.ShowDialog ();
 
                             }
 

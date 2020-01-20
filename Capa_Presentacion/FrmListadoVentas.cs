@@ -31,7 +31,7 @@ namespace Capa_Presentacion
             this.actualizarTotal();
             this.mensajesDeAyuda();
             this.dataLista.Columns["Total"].DefaultCellStyle.Format = String.Format("###,##0.00");
-            this.dataLista.Columns["fecha"].DefaultCellStyle.Format = "dd/MM/yyyy";
+            this.dataLista.Columns["fecha"].DefaultCellStyle.Format = "dd/MM/yyyy hh:mm:ss";
 
             groupBox1.Enabled = checkradiobuton();
             this.reportViewer1.RefreshReport();
@@ -651,15 +651,17 @@ namespace Capa_Presentacion
         {
             DataGridViewRow row = dataLista.CurrentRow;
             //Frmimpnotaventa miformnotaventa = new Frmimpnotaventa();
-            Reporteventa mireporteventa = new Reporteventa();
+            //Reporteventa mireporteventa = new Reporteventa();
+            Frmimpnotaventa mireporteventa = new Frmimpnotaventa();
            // Frmimpventicket miformticket = new Frmimpventicket();
 
             if (NegocioConfigEmpresa.confsistema("imprimirventa").ToString() == "True")
             {
                 if (NegocioConfigEmpresa.confsistema("tipoimpresion").ToString () == "tipocarro")
                 {
-                   // miformnotaventa.Tipoimp = Convert.ToString(NegocioConfigEmpresa.confsistema("modoimpventa"));
-                    mireporteventa.Idventa = Convert.ToInt32(row.Cells["codigo"].Value.ToString());
+                    // miformnotaventa.Tipoimp = Convert.ToString(NegocioConfigEmpresa.confsistema("modoimpventa"));
+                    mireporteventa.Tipoimp = Convert.ToString(NegocioConfigEmpresa.confsistema("modoimpventa"));
+                    mireporteventa.Codventa = Convert.ToInt32(row.Cells["codigo"].Value.ToString());
                     mireporteventa.Show();
 
                 }
@@ -694,7 +696,7 @@ namespace Capa_Presentacion
             
             parametros[0] = new ReportParameter("fechaini", dtpFechaIni.Text);
             parametros[1] = new ReportParameter("fechafin", dtpFechaFin.Text);
-            REPORTE_VENTAPRODUCTOTableAdapter.Fill(DVentaproducto.REPORTE_VENTAPRODUCTO, Convert.ToDateTime(dtpFechaIni.Text), Convert.ToDateTime(dtpFechaFin.Text));
+            REPORTE_VENTAPRODUCTOTableAdapter.Fill(DVentaproducto.REPORTE_VENTAPRODUCTO, Convert.ToDateTime(dtpFechaIni.Text + " 00:00:00"), Convert.ToDateTime(dtpFechaFin.Text + " 23:59:59"));
             
             reportViewer1.LocalReport.SetParameters(parametros);
             this.reportViewer1.RefreshReport();

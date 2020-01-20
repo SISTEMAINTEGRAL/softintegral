@@ -25,3 +25,12 @@ D:\Desarrollo\SOFTINTEGRAL 20-05-2019\Sistema de ventas (Ultimo)\Sistema de vent
 D:\Desarrollo\SOFTINTEGRAL 20-05-2019\Sistema de ventas (Ultimo)\Sistema de ventas\Capa_Datos\obj\Release\Capa_Datos.csprojResolveAssemblyReference.cache
 D:\Desarrollo\SOFTINTEGRAL 20-05-2019\Sistema de ventas (Ultimo)\Sistema de ventas\Capa_Datos\obj\Release\Capa_Datos.dll
 D:\Desarrollo\SOFTINTEGRAL 20-05-2019\Sistema de ventas (Ultimo)\Sistema de ventas\Capa_Datos\obj\Release\Capa_Datos.pdb
+C:\Backup\Sistema de ventas\softintegral\Capa_Datos\bin\Release\Capa_Datos.dll
+C:\Backup\Sistema de ventas\softintegral\Capa_Datos\bin\Release\Capa_Datos.pdb
+C:\Backup\Sistema de ventas\softintegral\Capa_Datos\bin\Release\BarcodeLib.dll
+C:\Backup\Sistema de ventas\softintegral\Capa_Datos\bin\Release\PlaceholderTextBox.dll
+C:\Backup\Sistema de ventas\softintegral\Capa_Datos\obj\Release\Capa_Datos.csprojResolveAssemblyReference.cache
+C:\Backup\Sistema de ventas\softintegral\Capa_Datos\obj\Release\Interop.FiscalPrinterLib.dll
+C:\Backup\Sistema de ventas\softintegral\Capa_Datos\obj\Release\Capa_Datos.csproj.ResolveComReference.cache
+C:\Backup\Sistema de ventas\softintegral\Capa_Datos\obj\Release\Capa_Datos.dll
+C:\Backup\Sistema de ventas\softintegral\Capa_Datos\obj\Release\Capa_Datos.pdb

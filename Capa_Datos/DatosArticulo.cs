@@ -25,6 +25,9 @@ namespace Capa_Datos
         private int pesable;
         private string nombrecategoria;
         private decimal flete;
+        private DateTime fecha;
+        private int editarusuario;
+        private string editarlugar;
 
         public decimal Flete
         {
@@ -100,14 +103,53 @@ namespace Capa_Datos
             set { pesable = value; }
         }
 
-        
-       
-      
+        public DateTime Fecha
+        {
+            get
+            {
+                return fecha;
+            }
+
+            set
+            {
+                fecha = value;
+            }
+        }
+
+        public int Editarusuario
+        {
+            get
+            {
+                return editarusuario;
+            }
+
+            set
+            {
+                editarusuario = value;
+            }
+        }
+
+        public string Editarlugar
+        {
+            get
+            {
+                return editarlugar;
+            }
+
+            set
+            {
+                editarlugar = value;
+            }
+        }
+
+
+
+
         //constructores
         public DatosArticulo() { 
         
         }
-        public DatosArticulo(string nombre,string codigo,string descripcion,int idCategoria,decimal precio,decimal cantInicial, int pesable,decimal varpreciocompra, decimal varutilidad, decimal varflete)
+        public DatosArticulo(string nombre,string codigo,string descripcion,int idCategoria,decimal precio,decimal cantInicial, int pesable,decimal varpreciocompra, decimal varutilidad, decimal varflete, DateTime varfecha, int varedicionusuario = 0, string varlugaredicion = "")
         {
             this.idCategoria = idCategoria;
             this.nombre = nombre;
@@ -119,6 +161,10 @@ namespace Capa_Datos
             this.utilidad = varutilidad;
             this.precioCompra = varpreciocompra;
             this.flete = varflete;
+            this.fecha = varfecha;
+            this.editarlugar = varlugaredicion;
+            this.editarusuario = varedicionusuario;
+
          }
         public DatosArticulo(int idArticulo,decimal precio)
         {
@@ -267,6 +313,15 @@ namespace Capa_Datos
 
                 SqlParameter parFlete = ProcAlmacenado.asignarParametros("@flete", SqlDbType.Decimal, articulo.flete);
                 comando.Parameters.Add(parFlete);
+
+                SqlParameter paredicionusuario = ProcAlmacenado.asignarParametros("@edicionusuario", SqlDbType.Int, articulo.editarusuario);
+                comando.Parameters.Add(paredicionusuario);
+
+                SqlParameter paredicionfecha = ProcAlmacenado.asignarParametros("@edicionfecha", SqlDbType.DateTime, articulo.fecha);
+                comando.Parameters.Add(paredicionfecha);
+
+                SqlParameter paredicionlugar = ProcAlmacenado.asignarParametros("@edicionlugar", SqlDbType.NVarChar, articulo.editarlugar);
+                comando.Parameters.Add(paredicionlugar);
 
                 if (comando.ExecuteNonQuery() == 1)
                 {
@@ -545,9 +600,9 @@ namespace Capa_Datos
             string stock = "select stock_actual from articulo where idarticulo=@idarticulo";
             string respuesta = "";
             string queryIngreso = 
-                "update articulo set precio=@precio,stock_actual=("+ stock+")+ @stock_actual where idarticulo=@idarticulo ";
+                "update articulo set stock_actual=("+ stock+")+ @stock_actual where idarticulo=@idarticulo ";
             string queryEgreso =
-                "update articulo set precio=@precio,stock_actual=(" + stock + ")- @stock_actual where idarticulo=@idarticulo ";
+                "update articulo set stock_actual=(" + stock + ")- @stock_actual where idarticulo=@idarticulo ";
             try
             {
 
@@ -555,7 +610,7 @@ namespace Capa_Datos
                 //si movStock es ingreso asigno queryIngreso sino queryEgreso
                 comando.CommandText= (movStock=="INGRESO") ?  queryIngreso :  queryEgreso;
 
-                comando.Parameters.AddWithValue("@precio", articulos.Precio);
+                //comando.Parameters.AddWithValue("@precio", articulos.Precio);
                 comando.Parameters.AddWithValue("@stock_actual", articulos.StockActual);
                 comando.Parameters.AddWithValue("@idarticulo", articulos.idArticulo);
                 if (comando.ExecuteNonQuery() == 1)
@@ -817,6 +872,15 @@ namespace Capa_Datos
 
                 SqlParameter parUtilidad = ProcAlmacenado.asignarParametros("@utilidad", SqlDbType.Int, articulo.Utilidad, 50);
                 comando.Parameters.Add(parUtilidad);
+
+                //SqlParameter par = ProcAlmacenado.asignarParametros("@utilidad", SqlDbType.Int, articulo.Utilidad, 50);
+                //comando.Parameters.Add(parUtilidad);
+
+                //SqlParameter parUtilidad = ProcAlmacenado.asignarParametros("@utilidad", SqlDbType.Int, articulo.Utilidad, 50);
+                //comando.Parameters.Add(parUtilidad);
+
+                //SqlParameter parUtilidad = ProcAlmacenado.asignarParametros("@utilidad", SqlDbType.Int, articulo.Utilidad, 50);
+                //comando.Parameters.Add(parUtilidad);
 
                 if (comando.ExecuteNonQuery() == 1)
                 {
