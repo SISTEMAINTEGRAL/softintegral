@@ -1,6 +1,8 @@
-﻿namespace Capa_Presentacion.DataSet {
-    
-    
-    public partial class venta {
+﻿namespace Capa_Presentacion.DataSet
+{
+
+
+    public partial class venta
+    {
     }
 }

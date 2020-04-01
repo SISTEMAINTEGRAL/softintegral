@@ -10,6 +10,10 @@ namespace Capa_Datos
 {
    public class DatosConfigEmpresa
     {
+        private string sign;
+        private string token;
+
+        private string puntoventa;
         private string condicionFrenteIVA;
         private string razonSocial;
         private long cuit;
@@ -153,10 +157,45 @@ namespace Capa_Datos
             set { cuit = value; }
         }
 
+        public string Puntoventa
+        {
+            get
+            {
+                return puntoventa;
+            }
 
-      
+            set
+            {
+                puntoventa = value;
+            }
+        }
 
+        public string Sign
+        {
+            get
+            {
+                return sign;
+            }
 
+            set
+            {
+                sign = value;
+            }
+        }
+
+        public string Token
+        {
+            get
+            {
+                return token;
+            }
+
+            set
+            {
+                token = value;
+            }
+        }
+       
         public DataTable mostrar()
        {
 
@@ -190,8 +229,98 @@ namespace Capa_Datos
            return dtResult;
        }
 
+        public bool verificartiketfiscal()
+        {
+            bool chequear = true;
+            //Modo 1 para DB
+            SqlConnection cn = new SqlConnection(Conexion.conexion);
+            
+            try
+            {
+                cn.Open();
 
-       public string agregarEmpresa(DatosConfigEmpresa configEmpresa)
+                SqlCommand comando = ProcAlmacenado.CrearProc(cn, "SP_TA");
+                //Modo 1 MOSTRAR
+                SqlParameter parModo = ProcAlmacenado.asignarParametros("@modo", SqlDbType.NVarChar, "VERIFICARTICKET");
+                comando.Parameters.Add(parModo);
+                
+
+                //creo el objeto adapter del data provider le paso el sqlcommand
+              //  SqlDataAdapter datosResult = new SqlDataAdapter(comando);
+                //los resultados los actualizo en el datatable dtResult
+                SqlDataReader dr = comando.ExecuteReader();
+
+                if (dr.Read() == true)
+                {
+
+                    this.sign = Convert.ToString (dr["signn"]);
+                    this.token = Convert.ToString(dr["token"]);
+                    this.fecha = Convert.ToDateTime(dr["expiration_time"]);
+
+                   
+                }
+                else
+                {
+                    chequear = false;
+                }
+
+                    
+
+
+            }
+            catch (Exception ex)
+            {
+                
+                throw ex;
+            }
+            return chequear;
+        }
+        public string agregarticket(DatosConfigEmpresa configEmpresa)
+        {
+            string respuesta = "";
+            //Modo 3 para DB
+            SqlConnection cn = new SqlConnection(Conexion.conexion);
+            //le asigno en el constructor el nombre de la tabla
+            DataTable dtResult = new DataTable("TA");
+            try
+            {
+                cn.Open();
+
+                SqlCommand comando = ProcAlmacenado.CrearProc(cn, "SP_TA");
+                //Modo 3 agregar
+                SqlParameter parModo = ProcAlmacenado.asignarParametros("@modo", SqlDbType.NVarChar, "INSERTARTICKET");
+                comando.Parameters.Add(parModo);
+
+                SqlParameter parSign = ProcAlmacenado.asignarParametros("@sign", SqlDbType.NVarChar,configEmpresa.Sign );
+                comando.Parameters.Add(parSign);
+
+                SqlParameter parToken = ProcAlmacenado.asignarParametros("@token", SqlDbType.NVarChar, configEmpresa.Token);
+                comando.Parameters.Add(parToken);
+
+                SqlParameter parFecha = ProcAlmacenado.asignarParametros("@espirationtime", SqlDbType.DateTime, configEmpresa.fecha);
+                comando.Parameters.Add(parFecha);
+                           
+
+                if (comando.ExecuteNonQuery() > 1)
+                {
+                    respuesta = "ok";
+                }
+                else
+                {
+
+                    respuesta = "error";
+                }
+                cn.Close();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+
+            }
+            return respuesta;
+        }
+
+        public string agregarEmpresa(DatosConfigEmpresa configEmpresa)
        {
            string respuesta = "";
            //Modo 3 para DB
@@ -326,8 +455,9 @@ namespace Capa_Datos
                        ProcAlmacenado2.MakeParam("@marcafiscal", SqlDbType.NVarChar, 0, configequipo.marcafiscal),
                        ProcAlmacenado2.MakeParam("@cod_empresa", SqlDbType.Int, 0, 1),
                  ProcAlmacenado2.MakeParam("@impticket", SqlDbType.NVarChar, 0, configequipo.impticket),
-                 ProcAlmacenado2.MakeParam("@impreporte", SqlDbType.NVarChar, 0, configequipo.impreporte)
-                 
+                 ProcAlmacenado2.MakeParam("@impreporte", SqlDbType.NVarChar, 0, configequipo.impreporte),
+                 ProcAlmacenado2.MakeParam("@Puntoventa", SqlDbType.NVarChar, 0, configequipo.puntoventa)
+
                  };
                 ProcAlmacenado2.ExecuteNonQuery("SP_CONFIG_EMPRESA", dbParams);
                 
@@ -442,9 +572,10 @@ namespace Capa_Datos
                    this.marcafiscal = Convert.ToString(dr["marcafiscal"]);
                    this.impreporte = Convert.ToString(dr["ImpReporte"]);
                    this.impticket = Convert.ToString(dr["Impticket"]);
-                   
+                    this.puntoventa = Convert.ToString(dr["Puntoventa"]);
 
-                   login = true;
+
+                    login = true;
                    
                }
                else

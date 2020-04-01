@@ -179,6 +179,107 @@ using Capa_Datos;
             get { return subtotal; }
             set { subtotal = value; }
         }
+
+   
+
+    public decimal Totalneto
+    {
+        get
+        {
+            return totalneto;
+        }
+
+        set
+        {
+            totalneto = value;
+        }
+    }
+
+    public decimal Precioiva
+    {
+        get
+        {
+            return precioiva;
+        }
+
+        set
+        {
+            precioiva = value;
+        }
+    }
+
+    public string Cae
+    {
+        get
+        {
+            return cae;
+        }
+
+        set
+        {
+            cae = value;
+        }
+    }
+
+    public string Caevencimiento
+    {
+        get
+        {
+            return caevencimiento;
+        }
+
+        set
+        {
+            caevencimiento = value;
+        }
+    }
+
+    public string Numerotipofactura
+    {
+        get
+        {
+            return numerotipofactura;
+        }
+
+        set
+        {
+            numerotipofactura = value;
+        }
+    }
+
+    public int Idequipo
+    {
+        get
+        {
+            return idequipo;
+        }
+
+        set
+        {
+            idequipo = value;
+        }
+    }
+
+    public string Puntoventa
+    {
+        get
+        {
+            return puntoventa;
+        }
+
+        set
+        {
+            puntoventa = value;
+        }
+    }
+
+    private int idequipo;
+    private decimal totalneto;
+    private decimal precioiva;
+    private string cae;
+    private string caevencimiento;
+    private string numerotipofactura;
+    private string puntoventa;
         public Dventa()
         { }
         public Dventa(int trabajador, int idventa, int idcliente, DateTime fecha, string tipo_comprobante, string serie,string varnrocomprobante, decimal iva)
@@ -201,6 +302,12 @@ using Capa_Datos;
             this.tipo_comprobante = tipocomprobante;
           
         }
+
+    public Dventa(int varidventa, int idequipo)
+    {
+        this.idventa = varidventa;
+        this.idequipo = idequipo;
+    }
 
         //Metodo
 
@@ -316,7 +423,22 @@ using Capa_Datos;
                 SqlParameter parNrocomprobante = ProcAlmacenado.asignarParametros("@nrocomprobante", SqlDbType.NVarChar, Venta.nrocomprobante);
                 sqlcmd.Parameters.Add(parNrocomprobante);
 
-                rpta = sqlcmd.ExecuteNonQuery () >= 1 ? "OK" : "No se ingreso el registro";
+            SqlParameter parTotalneto = ProcAlmacenado.asignarParametros("@totalneto", SqlDbType.Decimal, Venta.totalneto);
+            sqlcmd.Parameters.Add(parTotalneto);
+            SqlParameter parPrecioiva = ProcAlmacenado.asignarParametros("@precioiva", SqlDbType.Decimal, Venta.precioiva);
+            sqlcmd.Parameters.Add(parPrecioiva);
+            SqlParameter parcae = ProcAlmacenado.asignarParametros("@cae", SqlDbType.NVarChar, Venta.cae );
+            sqlcmd.Parameters.Add(parcae);
+            SqlParameter parcaefechavto = ProcAlmacenado.asignarParametros("@caefechavencimiento", SqlDbType.NVarChar, Venta.caevencimiento);
+            sqlcmd.Parameters.Add(parcaefechavto);
+            
+            SqlParameter partipofactura = ProcAlmacenado.asignarParametros("@tipofactura", SqlDbType.NVarChar, Venta.numerotipofactura);
+            sqlcmd.Parameters.Add(partipofactura);
+
+            SqlParameter parpuntoventa = ProcAlmacenado.asignarParametros("@puntoventa", SqlDbType.NVarChar, Venta.puntoventa);
+            sqlcmd.Parameters.Add(parpuntoventa);
+
+            rpta = sqlcmd.ExecuteNonQuery () >= 1 ? "OK" : "No se ingreso el registro";
 
                 if (rpta.Equals("OK"))
                 {
@@ -626,6 +748,36 @@ using Capa_Datos;
             }
         
         }
+    public DataTable reporteventa(Dventa parventa)
+    {
+        try
+        {
+            SqlConnection cn = new SqlConnection(Conexion.conexion);
+            DataTable midata = new DataTable();
+            cn.Open();
+            SqlCommand comando = ProcAlmacenado.CrearProc(cn, "REPORTE_VENTAS");
+
+            SqlParameter parVenta = ProcAlmacenado.asignarParametros("@idventa", SqlDbType.Int, parventa.idventa);
+            comando.Parameters.Add(parVenta);
+
+            SqlParameter parPuntoventa = ProcAlmacenado.asignarParametros("@idequipo", SqlDbType.Int, parventa.idequipo);
+            comando.Parameters.Add(parPuntoventa);
+
+            SqlDataAdapter datosResult = new SqlDataAdapter(comando);
+            //los resultados los actualizo en el datatable dtResult
+
+            datosResult.Fill(midata);
+            cn.Close();
+            return midata;
+        }
+        catch (Exception)
+        {
+
+            throw;
+        }
+
+    }
+   
     }   
 
 

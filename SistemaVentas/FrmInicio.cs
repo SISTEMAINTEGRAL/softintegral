@@ -496,7 +496,7 @@ namespace SistemaVentas
      
         private void btnVentas_Click(object sender, EventArgs e)
         {
-
+            
             //valor constante que se tienen que mover los botones
             int movimiento = 100;
 

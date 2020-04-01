@@ -63,6 +63,7 @@
             this.Calculo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.gbDetalleMovimento = new System.Windows.Forms.GroupBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.cbMCuota = new ComboBoxMultiColumns.ComboBoxMultiColumns();
             this.cbTarjeta = new System.Windows.Forms.ComboBox();
             this.rTarjeta = new System.Windows.Forms.RadioButton();
             this.rContado = new System.Windows.Forms.RadioButton();
@@ -100,7 +101,6 @@
             this.btnCalculadora = new System.Windows.Forms.Button();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.Menudeleteselect = new System.Windows.Forms.ToolStripMenuItem();
-            this.cbMCuota = new ComboBoxMultiColumns.ComboBoxMultiColumns();
             this.grpboxProveedor.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DGVenta)).BeginInit();
             this.gbDetalleMovimento.SuspendLayout();
@@ -549,6 +549,16 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Forma de pago";
             // 
+            // cbMCuota
+            // 
+            this.cbMCuota.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.cbMCuota.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cbMCuota.Location = new System.Drawing.Point(543, 24);
+            this.cbMCuota.Name = "cbMCuota";
+            this.cbMCuota.Size = new System.Drawing.Size(121, 33);
+            this.cbMCuota.TabIndex = 79;
+            this.cbMCuota.SelectedIndexChanged += new System.EventHandler(this.cbMCuota_SelectedIndexChanged);
+            // 
             // cbTarjeta
             // 
             this.cbTarjeta.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
@@ -986,6 +996,7 @@
             // 
             // contextMenuStrip1
             // 
+            this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.Menudeleteselect});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
@@ -997,16 +1008,6 @@
             this.Menudeleteselect.Size = new System.Drawing.Size(197, 24);
             this.Menudeleteselect.Text = "Eliminar seleccion";
             this.Menudeleteselect.Click += new System.EventHandler(this.Menudeleteselect_Click);
-            // 
-            // cbMCuota
-            // 
-            this.cbMCuota.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.cbMCuota.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cbMCuota.Location = new System.Drawing.Point(543, 24);
-            this.cbMCuota.Name = "cbMCuota";
-            this.cbMCuota.Size = new System.Drawing.Size(121, 33);
-            this.cbMCuota.TabIndex = 79;
-            this.cbMCuota.SelectedIndexChanged += new System.EventHandler(this.cbMCuota_SelectedIndexChanged);
             // 
             // frmPventa
             // 

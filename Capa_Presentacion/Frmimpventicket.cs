@@ -37,6 +37,8 @@ namespace Capa_Presentacion
             set { codventa = value; }
         }
 
+        public object VentasTicket1 { get; private set; }
+
         public Frmimpventicket()
         {
             InitializeComponent();
@@ -45,13 +47,13 @@ namespace Capa_Presentacion
         private void Frmimpventicket_Load(object sender, EventArgs e)
         {
              
-            //ReportDocument reportprint = new ReportDocument();
+          //  ReportDocument reportprint = new ReportDocument();
             //PrinterSettings ps = new PrinterSettings ();
             //ps.PrinterName = "Generic / Text Only (Copiar 2)";
             //Boolean impresoravalida = ps.IsValid;
             //PageSettings pg = new PageSettings ();
            // ps.Copies = 1;
-            //VentasTicket1.Load (Application.StartupPath.Replace("D:\\PROYECTO SOFTINTEGRAL\\Sistema de ventas (Ultimo)\\Sistema de ventas\\Capa_Presentacion\\Reportes","VentasTicket.rpt"));
+          //  VentasTicket1.Load (Application.StartupPath.Replace("D:\\PROYECTO SOFTINTEGRAL\\Sistema de ventas (Ultimo)\\Sistema de ventas\\Capa_Presentacion\\Reportes","VentasTicket.rpt"));
              
             // reportprint.SetDataSource ( VentasTicket1);
             //reportprint.PrintToPrinter(ps, pg, false);
@@ -62,8 +64,8 @@ namespace Capa_Presentacion
                 
                 if ("directo" == NegocioConfigEmpresa.confsistema("modoimpventa"))
                 {
-                    
-                    //VentasTicket1.PrintOptions.PrinterName = NegocioConfigEmpresa.impticket != "" ? NegocioConfigEmpresa.impticket : UtilityFrm.GetImpresoraDefecto();
+                  //  PrintDocument imprimirdirecto = new PrintDocument();
+                  //  VentasTicket1.PrintOptions.PrinterName = NegocioConfigEmpresa.impticket != "" ? NegocioConfigEmpresa.impticket : UtilityFrm.GetImpresoraDefecto();
                     //VentasTicket1.PrintToPrinter(1, false, 0, 0);
                     this.Close();
                 }

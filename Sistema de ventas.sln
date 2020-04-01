@@ -1,6 +1,8 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Capa_Datos", "Capa_Datos\Capa_Datos.csproj", "{A0F52470-69D2-45E3-AB50-E160DDC8666C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Capa_negocio", "Capa_negocio\Capa_negocio.csproj", "{0989E9D1-52DF-43C4-A34B-145CEBF4776A}"
@@ -29,6 +31,7 @@ Global
 		{A0F52470-69D2-45E3-AB50-E160DDC8666C}.Release|x64.Build.0 = Release|x64
 		{0989E9D1-52DF-43C4-A34B-145CEBF4776A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{0989E9D1-52DF-43C4-A34B-145CEBF4776A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0989E9D1-52DF-43C4-A34B-145CEBF4776A}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
 		{0989E9D1-52DF-43C4-A34B-145CEBF4776A}.Debug|x64.ActiveCfg = Debug|x64
 		{0989E9D1-52DF-43C4-A34B-145CEBF4776A}.Debug|x64.Build.0 = Debug|x64
 		{0989E9D1-52DF-43C4-A34B-145CEBF4776A}.Release|Any CPU.ActiveCfg = Release|Any CPU

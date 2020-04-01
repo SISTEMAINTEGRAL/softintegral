@@ -22,9 +22,10 @@ namespace Capa_negocio
            this.montoivanoinscripto = 0;
            this.montoimpuestosinternos = 0;
        }
-
+        private string cae;
+        private string fechavto; 
         private  object numerofactura;
-
+        private string url = "https://wsaahomo.afip.gov.ar/ws/services/LoginCms";
         public object Numerofactura
         {
             get { return numerofactura; }
@@ -79,13 +80,73 @@ namespace Capa_negocio
             set { montoimpuestosinternos = value; }
         }
 
-       
-       
+        public string Cae
+        {
+            get
+            {
+                return cae;
+            }
+
+            set
+            {
+                cae = value;
+            }
+        }
+
+        public string Fechavto
+        {
+            get
+            {
+                return fechavto;
+            }
+
+            set
+            {
+                fechavto = value;
+            }
+        }
+
+        public string Numerotipofactura
+        {
+            get
+            {
+                return numerotipofactura;
+            }
+
+            set
+            {
+                numerotipofactura = value;
+            }
+        }
+
+        public string Puntoventa
+        {
+            get
+            {
+                return puntoventa;
+            }
+
+            set
+            {
+                puntoventa = value;
+            }
+        }
+
+        private string numerotipofactura;
+        private string puntoventa;
+
+        const int TIPOCOMPROBANTE_FACTURA_C = 11;
+        const int TIPOCOMPROBANTE_FACTURA_A = 1;
+        const int TIPOCOMPROBANTE_FACTURA_B = 6;
+        // VER QUE NUMERO ES = const int TIPOCOMPROBANTE_NOTACREDITO_C = 1;
+        const int TIPOCOMPROBANTE_NOTACREDITO_A = 3;
+        const int TIPOCOMPROBANTE_NOTACREDITO_B = 8;
+
 
         NegocioFHasar objhasar = new NegocioFHasar();
+        NegocioFElectronica objelectronica;
         
-        
-        public string factura(string marca, DataTable dt, double total,int modelofiscal, int puerto,int tiporesponsabilidad,string razonsocial = "CONSUMIDOR FINAL",string cuit = "9999999999", string domicilio = "", string tipoticket = "", string responsableiva = "CF", string tipocomprobante = "FACTURA")
+        public string factura(string marca, DataTable dt, double total,int modelofiscal, int puerto,int tiporesponsabilidad,string razonsocial = "CONSUMIDOR FINAL",string cuit = "9999999999", string domicilio = "", string tipoticket = "", string responsableiva = "CF", string tipocomprobante = "FACTURA",string tipofactura = "B",double neto = 0.00,double civa = 0.00)
         {
             string msg = "ok";
             try
@@ -108,8 +169,30 @@ namespace Capa_negocio
                             msg =  objepson.comprobantefiscal(tipoticket,responsableiva,dt,tipocomprobante);
                             break;
                         }
-                    case "electronica":
+                    case "elec":
                         {
+                            NegocioFElectronica miclase = new Capa_negocio.NegocioFElectronica();
+                            int tiponumerofactura = 0;
+                            switch (tipofactura)
+                            {
+                                case "A":
+                                    {
+                                        tiponumerofactura = TIPOCOMPROBANTE_FACTURA_A;
+                                        break;
+                                    }
+                                case "B":
+                                    {
+                                        tiponumerofactura = TIPOCOMPROBANTE_FACTURA_B;
+                                        break;
+                                    }
+                                case "C":
+                                    {
+                                        tiponumerofactura = TIPOCOMPROBANTE_FACTURA_C;
+                                        break;
+                                    }
+                                   
+                            }
+                         msg =   miclase.comprobante_electronico(tiponumerofactura,Convert.ToInt64 (cuit),total,neto,civa, ref cae, ref fechavto, ref numerotipofactura, ref puntoventa );
                             break;
                         }
                 }

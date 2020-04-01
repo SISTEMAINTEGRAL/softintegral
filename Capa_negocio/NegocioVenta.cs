@@ -16,6 +16,7 @@ namespace Capa_negocio
         private int importe;
         private int idventa;
         private decimal cantidad;
+        private string puntoventa;
 
         private bool concaja;
 
@@ -92,8 +93,26 @@ namespace Capa_negocio
             set { precio = value; }
         }
 
+        public string Puntoventa
+        {
+            get
+            {
+                return puntoventa;
+            }
 
-       public string Insertar(int idcliente, DateTime fecha, string tipo_comprobante, string serie, string varnrocomprobante, decimal iva,bool concaja,bool constock,string usuario, DataTable dtDetalles, decimal descuento,decimal total,decimal subtotal, char estado,bool distock = false, int nroterminal = 0, int codtarjeta = 0, string cupon = "",string lote = "", decimal importe = 0, int cuota = 0, int codformapago = 1)
+            set
+            {
+                puntoventa = value;
+            }
+        }
+
+        public string Insertar(int idcliente, DateTime fecha, string tipo_comprobante, string serie
+           , string varnrocomprobante, decimal iva,bool concaja,bool constock,string usuario, 
+           DataTable dtDetalles, decimal descuento,  decimal total,decimal subtotal,
+           char estado,bool distock = false, int nroterminal = 0,
+           int codtarjeta = 0, string cupon = "",string lote = "", decimal importe = 0, 
+           int cuota = 0, int codformapago = 1, decimal totalneto = 0, decimal precioiva = 0,
+           string cae = "", string caefechavto = "",string numerotipofactura = "", string puntoventa = "")
        {
 
            string rpta = "";
@@ -118,6 +137,13 @@ namespace Capa_negocio
            objVenta.Importe = importe;
            objVenta.Cuotas = cuota;
            objVenta.Codformapago = codformapago;
+            objVenta.Totalneto = totalneto;
+            objVenta.Precioiva = precioiva;
+            objVenta.Cae = cae;
+            objVenta.Caevencimiento = caefechavto;
+            objVenta.Numerotipofactura = numerotipofactura;
+            objVenta.Puntoventa = puntoventa;
+            
 
            List<DDetalle_Venta> detalles = new List<DDetalle_Venta>();
            
@@ -207,6 +233,12 @@ namespace Capa_negocio
             return Obj.MostrarDetalle(textobuscar);
 
 
+        }
+
+        public static DataTable Reporteventa(int idventa)
+        {
+            Dventa obj = new Dventa(idventa,NegocioConfigEmpresa.idequipo);
+            return obj.reporteventa(obj);
         }
         public static DataTable MostrarRanking5Productos(){
 

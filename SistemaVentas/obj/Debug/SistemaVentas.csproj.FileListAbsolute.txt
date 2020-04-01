@@ -114,8 +114,6 @@ C:\Backup\Sistema de ventas\softintegral\SistemaVentas\obj\Debug\SistemaVentas.S
 C:\Backup\Sistema de ventas\softintegral\SistemaVentas\obj\Debug\SistemaVentas.FrmInicio.resources
 C:\Backup\Sistema de ventas\softintegral\SistemaVentas\obj\Debug\SistemaVentas.Properties.Resources.resources
 C:\Backup\Sistema de ventas\softintegral\SistemaVentas\obj\Debug\SistemaVentas.csproj.GenerateResource.Cache
-C:\Backup\Sistema de ventas\softintegral\SistemaVentas\obj\Debug\SistemaVentas.exe
-C:\Backup\Sistema de ventas\softintegral\SistemaVentas\obj\Debug\SistemaVentas.pdb
 C:\Backup\Sistema de ventas\softintegral\SistemaVentas\bin\Debug\SistemaVentas.exe.config
 C:\Backup\Sistema de ventas\softintegral\SistemaVentas\bin\Debug\SistemaVentas.exe.manifest
 C:\Backup\Sistema de ventas\softintegral\SistemaVentas\bin\Debug\SistemaVentas.application
@@ -177,3 +175,11 @@ C:\Backup\Sistema de ventas\softintegral\SistemaVentas\bin\Debug\zh-CHT\Microsof
 C:\Backup\Sistema de ventas\softintegral\SistemaVentas\bin\Debug\es\Microsoft.TeamFoundation.Diff.resources.dll
 C:\Backup\Sistema de ventas\softintegral\SistemaVentas\obj\Debug\SistemaVentas.exe.manifest
 C:\Backup\Sistema de ventas\softintegral\SistemaVentas\obj\Debug\SistemaVentas.application
+C:\Backup\Sistema de ventas\softintegral\SistemaVentas\obj\Debug\SistemaVentas.exe
+C:\Backup\Sistema de ventas\softintegral\SistemaVentas\obj\Debug\SistemaVentas.pdb
+C:\Backup\Sistema de ventas\softintegral\SistemaVentas\bin\Debug\Telerik.Reporting.dll
+C:\Backup\Sistema de ventas\softintegral\SistemaVentas\bin\Debug\Telerik.ReportViewer.WinForms.dll
+C:\Backup\Sistema de ventas\softintegral\SistemaVentas\bin\Debug\Telerik.Reporting.pdb
+C:\Backup\Sistema de ventas\softintegral\SistemaVentas\bin\Debug\Telerik.Reporting.xml
+C:\Backup\Sistema de ventas\softintegral\SistemaVentas\bin\Debug\Telerik.ReportViewer.WinForms.pdb
+C:\Backup\Sistema de ventas\softintegral\SistemaVentas\bin\Debug\Telerik.ReportViewer.WinForms.xml

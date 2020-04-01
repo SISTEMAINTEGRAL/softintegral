@@ -18,7 +18,7 @@ namespace Capa_negocio
         private int retorno = 0;
         private int tipocontribuyente;
         const int ERROR_NINGUNO = 0;
-
+        
         // ConfigurarVelocidad()
         [System.Runtime.InteropServices.DllImport("EpsonFiscalInterface.dll", CharSet = System.Runtime.InteropServices.CharSet.Ansi,
                                                                                 CallingConvention = System.Runtime.InteropServices.CallingConvention.StdCall)]

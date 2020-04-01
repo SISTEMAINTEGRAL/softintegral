@@ -67,6 +67,7 @@
   <ItemGroup>
     <Compile Include="Class1.cs" />
     <Compile Include="Conexion.cs" />
+    <Compile Include="Datodetalleordenpedido.cs" />
     <Compile Include="DatosArticulo.cs" />
     <Compile Include="DatosBackup.cs" />
     <Compile Include="DatosCaja.cs" />
@@ -77,6 +78,7 @@
     <Compile Include="DatosFormaDePago.cs" />
     <Compile Include="Datosgenerales.cs" />
     <Compile Include="DatosMovStock.cs" />
+    <Compile Include="DatosOrdenpedido.cs" />
     <Compile Include="DatosProveedor.cs" />
     <Compile Include="DatosServicioTecnico.cs" />
     <Compile Include="DatosTarjeta.cs" />
@@ -101,6 +103,9 @@
       <Isolated>False</Isolated>
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

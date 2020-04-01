@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -11,6 +11,7 @@
     <AssemblyName>Capa_Presentacion</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -94,6 +95,8 @@
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
+    <Reference Include="Telerik.Reporting, Version=10.0.16.204, Culture=neutral, PublicKeyToken=a9d7983dfcc261be" />
+    <Reference Include="Telerik.ReportViewer.WinForms, Version=10.0.16.204, Culture=neutral, PublicKeyToken=a9d7983dfcc261be, processorArchitecture=MSIL" />
     <Reference Include="XanderUI">
       <HintPath>..\SistemaVentas\bin\Debug\XanderUI.dll</HintPath>
     </Reference>
@@ -154,6 +157,12 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>DVentaproducto.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Formreportes\Ticketventa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formreportes\Ticketventa.Designer.cs">
+      <DependentUpon>Ticketventa.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmAltasvarios.cs">
       <SubType>Form</SubType>
@@ -365,6 +374,12 @@
     <Compile Include="FrmConsulta.Designer.cs">
       <DependentUpon>FrmConsulta.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmOrdenPedido.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmOrdenPedido.Designer.cs">
+      <DependentUpon>FrmOrdenPedido.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmPreciosmasivos.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -388,6 +403,12 @@
     </Compile>
     <Compile Include="FrmReporteCaja.Designer.cs">
       <DependentUpon>FrmReporteCaja.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmRetiroMercaderia.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmRetiroMercaderia.Designer.cs">
+      <DependentUpon>FrmRetiroMercaderia.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmSeleccionarProductos.cs">
       <SubType>Form</SubType>
@@ -465,6 +486,12 @@
       <DependentUpon>ReporteEtiqueta.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Reportes\REPORT_TICKET.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reportes\REPORT_TICKET.Designer.cs">
+      <DependentUpon>REPORT_TICKET.cs</DependentUpon>
+    </Compile>
     <Compile Include="Reportes\VentasReducida.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -497,6 +524,9 @@
   <ItemGroup>
     <EmbeddedResource Include="AboutBox1.resx">
       <DependentUpon>AboutBox1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formreportes\Ticketventa.resx">
+      <DependentUpon>Ticketventa.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmAltasvarios.resx">
       <DependentUpon>FrmAltasvarios.cs</DependentUpon>
@@ -603,6 +633,9 @@
     <EmbeddedResource Include="FrmConsulta.resx">
       <DependentUpon>FrmConsulta.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmOrdenPedido.resx">
+      <DependentUpon>FrmOrdenPedido.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmPreciosmasivos.resx">
       <DependentUpon>FrmPreciosmasivos.cs</DependentUpon>
     </EmbeddedResource>
@@ -614,6 +647,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmReporteCaja.resx">
       <DependentUpon>FrmReporteCaja.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmRetiroMercaderia.resx">
+      <DependentUpon>FrmRetiroMercaderia.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmSeleccionarProductos.resx">
       <DependentUpon>FrmSeleccionarProductos.cs</DependentUpon>
@@ -636,6 +672,7 @@
     <EmbeddedResource Include="FrmUsuariolista.resx">
       <DependentUpon>FrmUsuariolista.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
@@ -661,6 +698,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes\ReportEtiq.rdlc" />
     <EmbeddedResource Include="Reportes\Reporteventas.rdlc" />
+    <EmbeddedResource Include="Reportes\REPORT_TICKET.resx">
+      <DependentUpon>REPORT_TICKET.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Reportes\VentasReducida.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>VentasReducida.cs</LastGenOutput>
@@ -835,6 +875,9 @@
     </COMReference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\otronombre.jpeg" />
+    <None Include="Resources\WhatsApp Image 2020-03-21 at 12.59.55.jpeg" />
+    <None Include="Resources\WhatsApp Image 2020-03-21 at 13.06.33.jpeg" />
     <None Include="Resources\Synchronize_20px.png" />
     <None Include="Resources\Remove Image_20px.png" />
     <None Include="Resources\Save_20px.png" />
@@ -876,6 +919,11 @@
     <None Include="Resources\Area Chart_20px.png" />
     <None Include="Resources\Database Backup_100px.png" />
     <None Include="Resources\Credit Card_96px.png" />
+    <None Include="Resources\AFIP.jpg" />
+    <None Include="Resources\AFIP.png" />
+    <None Include="Resources\AFIP1.jpg" />
+    <None Include="Resources\afipc.png" />
+    <None Include="Resources\AFIP2.jpeg" />
     <Content Include="Resources\limpiar4.png" />
     <None Include="Resources\User Male_50px.png" />
   </ItemGroup>

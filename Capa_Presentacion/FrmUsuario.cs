@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Capa_negocio;
+using Capa_Presentacion.Formreportes;
 
 namespace Capa_Presentacion
 {
@@ -154,8 +155,14 @@ namespace Capa_Presentacion
         private void button1_Click(object sender, EventArgs e)
         {
 
-           Frmserviciotecnico  objmasivo = new Frmserviciotecnico();
-           objmasivo.ShowDialog();
+            FrmOrdenPedido pedido = new FrmOrdenPedido();
+            pedido.Show();
+            //NegocioFElectronica miclase = new Capa_negocio.NegocioFElectronica();
+            // miclase.comprobante_electronico(11, 31472915);
+            //Application.StartupPath + @"\" + "Certificado"  + @"\" + "certificado.pfx"
+
+            // Frmserviciotecnico  objmasivo = new Frmserviciotecnico();
+            //objmasivo.ShowDialog();
             // string algo = UtilityFrm.GetImpresoraDefecto();
         }
     }

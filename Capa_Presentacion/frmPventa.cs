@@ -226,8 +226,8 @@ namespace Capa_Presentacion
 
                       bool encontrado = false;
 
-                      if (agregardatagrid == true)
-                      {
+                      //if (agregardatagrid == true)
+                      //{
                           foreach (DataGridViewRow row in DGVenta.Rows)
                           {
 
@@ -256,7 +256,7 @@ namespace Capa_Presentacion
 
                           }
 
-                      }
+                      
 
                       if (encontrado == false)
                       {
@@ -268,8 +268,8 @@ namespace Capa_Presentacion
                           precio = precio - ((precio * descuento) / 100);
                           // precio = precio * cantidad;
                           //no calculo el precio por la cantidad porque da el mismo numero
-                          if (agregardatagrid == true)
-                          { DGVenta.Rows.Add(TxtCodigo.Text, TxtDetalle.Text, precio, cantidad, "0", TxtDesc.Text, precio,pesable,"cantidad"); }
+                         
+                           DGVenta.Rows.Add(TxtCodigo.Text, TxtDetalle.Text, precio, cantidad, "0", TxtDesc.Text, precio,pesable,"cantidad"); 
 
 
 
@@ -298,7 +298,7 @@ namespace Capa_Presentacion
 
                   }
 
-                  if (agregardatagrid == false) { txtcant.SelectAll(); txtcant.Focus(); }
+                   txtcant.SelectAll(); txtcant.Focus(); 
               }
               catch (Exception)
               {
@@ -662,7 +662,7 @@ namespace Capa_Presentacion
 
 
             
-            FrmGuardarVenta venta = new FrmGuardarVenta(decimal.Round(Convert.ToDecimal(txtTotalPagar.Text), 2), Convert.ToInt32(txtIdCliente.Text), decimal.Round(Convert.ToDecimal(txtNeto.Text), 2), decimal.Round(Convert.ToDecimal(txtIVA.Text), 2), rContado.Checked == true ? "contado" : "tarjeta", nombretarjeta, importecuota, cuota, Convert.ToInt32(cbTarjeta.SelectedValue),cuit,txtRazonSocial.Text ,cbxCategoria.Text ,riva,domicilio);
+            FrmGuardarVenta venta = new FrmGuardarVenta(decimal.Round(Convert.ToDecimal(txtTotalPagar.Text), 2), Convert.ToInt32(txtIdCliente.Text), decimal.Round(Convert.ToDecimal(txtIVA.Text), 2), decimal.Round(Convert.ToDecimal(txtNeto.Text), 2), rContado.Checked == true ? "contado" : "tarjeta", nombretarjeta, importecuota, cuota, Convert.ToInt32(cbTarjeta.SelectedValue),cuit,txtRazonSocial.Text ,cbxCategoria.Text ,riva,domicilio);
             venta.ListadoDeProducto = DGVenta;
             venta.Tipo_comprobante = cbTipoComprobante.SelectedItem.ToString();
             venta.Concaja = objcaja.chequeocaja (this.Name,ref mensaje);

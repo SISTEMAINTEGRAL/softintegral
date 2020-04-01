@@ -87,38 +87,38 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Capa_Datos.dll" size="78336">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Capa_Datos.dll" size="85504">
       <assemblyIdentity name="Capa_Datos" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>wZUCDCop0bczQ15Y/H8n5G7bKqXK/hMJff6CzL/9gRQ=</dsig:DigestValue>
+        <dsig:DigestValue>wFIE5M8BqXZUuZfmDEUYCT2lO3eKWsT1lil0TsF6wWI=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Capa_negocio.dll" size="51712">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Capa_negocio.dll" size="152064">
       <assemblyIdentity name="Capa_negocio" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>RspX3FM/ys+F233GDgfHYejzfHLtLY971DWjqEYjCeQ=</dsig:DigestValue>
+        <dsig:DigestValue>JFc+gtojSpQj2dIw3QnNPOK9PB487wJCsy6gGRJxfLU=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Capa_Presentacion.dll" size="2462720">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Capa_Presentacion.dll" size="2722304">
       <assemblyIdentity name="Capa_Presentacion" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>BQjLEl7n+zLJyTFA5cmFy0/f+di7OXSKSK51aPv/+V4=</dsig:DigestValue>
+        <dsig:DigestValue>jylWDM9reeVjvbrwRtoKAZvd74fCaZX8taddF6c8Vg0=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -130,7 +130,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>watvGSX8lCtbrdA0z+O+bCOwZmWUqCxnqmfWC7FvRnI=</dsig:DigestValue>
+        <dsig:DigestValue>moVZgfzuc//vQugZv0IMdbjQEWCh8J5KbTOPccKtg7s=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -658,7 +658,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>bASfu9/1A5sbgwsgKcR5+MOHKh6n3lrzOSCA20FAV7Q=</dsig:DigestValue>
+        <dsig:DigestValue>JDostHka9hpUD+7OckAzixT7XAJKXEPaA31H4NysTzw=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -671,6 +671,30 @@
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
         <dsig:DigestValue>cIq9imgoDt+GxOFQczv6npUQ3lA/YBrtHKrixl+0mfw=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Telerik.Reporting.dll" size="8462848">
+      <assemblyIdentity name="Telerik.Reporting" version="10.0.16.204" publicKeyToken="A9D7983DFCC261BE" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>XpqQaphhADJtQFYi5T5pLI3cWTAWD9Ij9UL43YxHeXk=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Telerik.ReportViewer.WinForms.dll" size="187904">
+      <assemblyIdentity name="Telerik.ReportViewer.WinForms" version="10.0.16.204" publicKeyToken="A9D7983DFCC261BE" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>PO6DHyQBh2gRmrv20uEBSKy5ggShN00vwRyGCJFp46s=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -806,13 +830,13 @@
       <dsig:DigestValue>KQZ9VcDq9cHLZgP/U6rqlTUlf6caOYOG/NujIYEwak8=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="SistemaVentas.exe.config" size="630">
+  <file name="SistemaVentas.exe.config" size="629">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>4yFfevrUl+MKo+Wq/NxAYsArCYtfO3j5FfomkPDFhGk=</dsig:DigestValue>
+      <dsig:DigestValue>c+80I+OqVwZ49JT6aXH89tHIwM9wkx9Iab7Wy8uDvUA=</dsig:DigestValue>
     </hash>
   </file>
   <file name="softIntegralIcon.ico" size="268286">
@@ -822,6 +846,15 @@
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
       <dsig:DigestValue>64cvLkFZgOY3nT/bwcUInuxxXXJtVAhhrpxcy5XUNqA=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Template\LoginTemplate.xml" size="242" writeableType="applicationData">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>H63i5dWSbZpzG/UtDy3Fw255eGvCBWoLw1NRF7hVIJo=</dsig:DigestValue>
     </hash>
   </file>
 </asmv1:assembly>

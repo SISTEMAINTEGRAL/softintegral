@@ -143,6 +143,56 @@ namespace Capa_Presentacion.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap AFIP {
+            get {
+                object obj = ResourceManager.GetObject("AFIP", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap AFIP1 {
+            get {
+                object obj = ResourceManager.GetObject("AFIP1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap AFIP2 {
+            get {
+                object obj = ResourceManager.GetObject("AFIP2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap AFIP21 {
+            get {
+                object obj = ResourceManager.GetObject("AFIP21", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap afipc {
+            get {
+                object obj = ResourceManager.GetObject("afipc", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap agregar {
             get {
                 object obj = ResourceManager.GetObject("agregar", resourceCulture);
@@ -563,6 +613,16 @@ namespace Capa_Presentacion.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap otronombre {
+            get {
+                object obj = ResourceManager.GetObject("otronombre", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap pantallaPrincipal {
             get {
                 object obj = ResourceManager.GetObject("pantallaPrincipal", resourceCulture);
@@ -766,6 +826,26 @@ namespace Capa_Presentacion.Properties {
         internal static System.Drawing.Bitmap View_All_15px {
             get {
                 object obj = ResourceManager.GetObject("View All_15px", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap WhatsApp_Image_2020_03_21_at_12_59_55 {
+            get {
+                object obj = ResourceManager.GetObject("WhatsApp Image 2020-03-21 at 12.59.55", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap WhatsApp_Image_2020_03_21_at_13_06_33 {
+            get {
+                object obj = ResourceManager.GetObject("WhatsApp Image 2020-03-21 at 13.06.33", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

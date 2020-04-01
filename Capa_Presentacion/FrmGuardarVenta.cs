@@ -9,8 +9,9 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Capa_negocio;
 using System.Globalization;
-
-
+using Capa_Presentacion.Formreportes;
+using Telerik.Reporting.Processing;
+using Telerik.Reporting;
 namespace Capa_Presentacion
 {
     public partial class FrmGuardarVenta : Form
@@ -334,7 +335,7 @@ namespace Capa_Presentacion
                   if (NegocioConfigEmpresa.confsistema("facturar").ToString() == "True" && tipo_comprobante == "NOTA DE VENTA") 
                   { 
                      msg = objcomprobante.factura(NegocioConfigEmpresa.marcafiscal, dt, Convert.ToDouble(txtTotalAPagar.Text), NegocioConfigEmpresa.modelofiscal, NegocioConfigEmpresa.puertofiscal, 
-                      1,razonsocial,razonsocial == "CONSUMIDOR FINAL" ? "99999999999": cuit,domicilio,tipofactura,responsableiva);
+                      1,razonsocial,razonsocial == "CONSUMIDOR FINAL" ? "99999999999": cuit,domicilio,tipofactura,responsableiva,tipofactura,tipofactura,Convert.ToDouble ( neto), Convert.ToDouble(iva));
                   if (msg.Substring (0,2) != "ok")
                   {
                       UtilityFrm.mensajeError(msg);
@@ -343,8 +344,16 @@ namespace Capa_Presentacion
                   }
                   else
                   {
+
                       estadofactura = 'F';
-                      nrocomprobante = msg.Substring(2, 8);
+                            //corregir para que no genere errores
+                            int nrocaracteres = Convert.ToInt32 ( msg.Length.ToString ());
+                            nrocomprobante = msg.Substring(2, nrocaracteres - 2);
+                            if (NegocioConfigEmpresa.marcafiscal == "electronica")
+                            {
+
+                            }
+
                   }
                   }
                   else
@@ -357,7 +366,14 @@ namespace Capa_Presentacion
               {
                   UtilityFrm.mensajeError(e.Message);
               }
-              string Rta = objventa.Insertar(this.idCliente, DateTime.Now, Tipo_comprobante, "0000", msg.Substring(0, 2) == "ok" ? nrocomprobante : "0", IVA, this.concaja, this.constock, NegocioConfigEmpresa.usuarioconectado, dt, Convert.ToDecimal(txtBonificacion.Text == "" ? txtBonificacion.Text = "0" : txtBonificacion.Text), Convert.ToDecimal(txtTotalAPagar.Text), Convert.ToDecimal(lblsubtotal.Text), estadofactura, NegocioConfigEmpresa.confsistema("stock").ToString() == this.Name ? true : false, nroterminal, codtarjeta, cupon, lote, importe, cuota, codformapago);
+              string Rta = objventa.Insertar(this.idCliente, DateTime.Now, Tipo_comprobante, 
+                  objcomprobante.Puntoventa.PadLeft(5,'0'), msg.Substring(0, 2) == "ok" ? nrocomprobante.PadLeft(8, '0') : "0", 
+                  IVA, this.concaja, this.constock, NegocioConfigEmpresa.usuarioconectado, dt, 
+                  Convert.ToDecimal(txtBonificacion.Text == "" ? txtBonificacion.Text = "0" : txtBonificacion.Text),
+                  Convert.ToDecimal(txtTotalAPagar.Text), Convert.ToDecimal(lblsubtotal.Text), estadofactura,
+                  NegocioConfigEmpresa.confsistema("stock").ToString() == this.Name ? true : false, nroterminal,
+                  codtarjeta, cupon, lote, importe, cuota, codformapago, neto,iva,objcomprobante.Cae,objcomprobante.Fechavto,
+                  objcomprobante.Numerotipofactura.PadLeft (3,'0'),objcomprobante.Puntoventa.PadLeft (5,'0'));
                
                 int objnum = objventa.Idventa;
 
@@ -377,28 +393,36 @@ namespace Capa_Presentacion
                     {
                         trans = Rta;
 
-                        //Reporteventa mireporteventa = new Reporteventa();
-                        Frmimpnotaventa miformnotaventa = new Frmimpnotaventa();
+                        Reporteventa mireporteventa = new Reporteventa();
+                       // Frmimpnotaventa miformnotaventa = new Frmimpnotaventa();
                         // Frmimpventicket miformticket = new Frmimpventicket();
 
                         if (NegocioConfigEmpresa.confsistema("imprimirventa").ToString() == "True")
                         {
                             if (NegocioConfigEmpresa.confsistema("tipoimpresion").ToString() == "tipocarro")
                             {
-                                miformnotaventa.Tipoimp = Convert.ToString(NegocioConfigEmpresa.confsistema("modoimpventa"));
-                                miformnotaventa.Codventa = objventa.Idventa;
-                                miformnotaventa.Show();
-                                //mireporteventa.Idventa = objventa.Idventa;
-                                //mireporteventa.ShowDialog ();
+                                //con crystal report
+                              //  miformnotaventa.Tipoimp = Convert.ToString(NegocioConfigEmpresa.confsistema("modoimpventa"));
+                             //   miformnotaventa.Codventa = objventa.Idventa;
+                             //   miformnotaventa.Show();
+                             // con reportviewer
+                                mireporteventa.Idventa = objventa.Idventa;
+                                mireporteventa.ShowDialog ();
 
                             }
 
                             else
                             {
+                                if (NegocioConfigEmpresa.marcafiscal == "elec")
+                                {
+                                    Ticketventa miticket = new Formreportes.Ticketventa(objventa.Idventa);
+                                    miticket.ShowDialog();
+                                    
+                                }
                                 //miformticket.Tipoimp = Convert.ToString(NegocioConfigEmpresa.confsistema("modoimpventa"));
                                 //miformticket.Codventa = objventa.Idventa;
                                 //miformticket.Show();
-                            
+
                             }
                            
 

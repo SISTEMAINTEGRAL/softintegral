@@ -27,6 +27,7 @@ namespace Capa_negocio
         public static string nombreusuario;
         public static string impticket;
         public static string impreporte;
+        public static string puntoventa;
         public static string[] ReglasUsuario { get; set; }
         public static int idroles;
 
@@ -182,6 +183,7 @@ namespace Capa_negocio
                 NegocioConfigEmpresa.marcafiscal = objempresa.Marcafiscal;
                 NegocioConfigEmpresa.impreporte = objempresa.Impreporte;
                 NegocioConfigEmpresa.impticket = objempresa.Impticket;
+                NegocioConfigEmpresa.puntoventa = objempresa.Puntoventa;
 
             }
             else

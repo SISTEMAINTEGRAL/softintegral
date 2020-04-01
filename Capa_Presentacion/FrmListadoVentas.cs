@@ -11,6 +11,10 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
 using Microsoft.Reporting.WinForms;
+using Capa_Presentacion.Formreportes;
+using Telerik.Reporting.Processing;
+
+
 namespace Capa_Presentacion
 {
     public partial class FrmListadoVentas : Form
@@ -157,6 +161,7 @@ namespace Capa_Presentacion
                         hoja_trabajo.Cells[i + 2, 4] = dataLista.Rows[i].Cells["tipo_comprobante"].Value.ToString();
                         hoja_trabajo.Cells[i + 2, 5] =  dataLista.Rows[i].Cells["total"].Value;
                         hoja_trabajo.Cells[i + 2, 6] = dataLista.Rows[i].Cells["estado"].Value.ToString();
+                        hoja_trabajo.Cells[i + 2, 9] = dataLista.Rows[i].Cells["cuit"].Value.ToString();
                         hoja_trabajo.Cells[i + 2, 10] = dataLista.Rows[i].Cells["Nrocomprobante"].Value.ToString();
 
                     }
@@ -650,27 +655,40 @@ namespace Capa_Presentacion
         private void menureimpresion_Click(object sender, EventArgs e)
         {
             DataGridViewRow row = dataLista.CurrentRow;
-            //Frmimpnotaventa miformnotaventa = new Frmimpnotaventa();
+            Reporteventa miformnotaventa = new Reporteventa();
             //Reporteventa mireporteventa = new Reporteventa();
-            Frmimpnotaventa mireporteventa = new Frmimpnotaventa();
+          //  Frmimpnotaventa mireporteventa = new Frmimpnotaventa();
            // Frmimpventicket miformticket = new Frmimpventicket();
 
             if (NegocioConfigEmpresa.confsistema("imprimirventa").ToString() == "True")
             {
                 if (NegocioConfigEmpresa.confsistema("tipoimpresion").ToString () == "tipocarro")
                 {
-                    // miformnotaventa.Tipoimp = Convert.ToString(NegocioConfigEmpresa.confsistema("modoimpventa"));
-                    mireporteventa.Tipoimp = Convert.ToString(NegocioConfigEmpresa.confsistema("modoimpventa"));
-                    mireporteventa.Codventa = Convert.ToInt32(row.Cells["codigo"].Value.ToString());
-                    mireporteventa.Show();
+                    //miformnotaventa.Tipoimp = Convert.ToString(NegocioConfigEmpresa.confsistema("modoimpventa"));
+                    miformnotaventa.Idventa = Convert.ToInt32(row.Cells["codigo"].Value.ToString()); 
+                    miformnotaventa.ShowDialog();
+                    //mireporteventa.Tipoimp = Convert.ToString(NegocioConfigEmpresa.confsistema("modoimpventa"));
+                    //mireporteventa.Codventa = Convert.ToInt32(row.Cells["codigo"].Value.ToString());
+                    //mireporteventa.Show();
 
                 }
 
                 else
                 {
-             //       miformticket.Tipoimp = Convert.ToString(NegocioConfigEmpresa.confsistema("modoimpventa"));
-               //     miformticket.Codventa = Convert.ToInt32(row.Cells["codigo"].Value.ToString());
-                 //   miformticket.Show();
+                  //  Ticketventa miticket = new Ticketventa(Convert.ToInt32(row.Cells["codigo"].Value.ToString()));
+                    //miticket.ShowDialog();
+
+                    
+                    Ticketventa miticket = new Formreportes.Ticketventa(Convert.ToInt32(row.Cells["codigo"].Value.ToString()));
+                    miticket.ShowDialog();
+
+                    // reportName is the Assembly Qualified Name of the report
+
+
+
+                    //       miformticket.Tipoimp = Convert.ToString(NegocioConfigEmpresa.confsistema("modoimpventa"));
+                    //     miformticket.Codventa = Convert.ToInt32(row.Cells["codigo"].Value.ToString());
+                    //   miformticket.Show();
 
                 }
 

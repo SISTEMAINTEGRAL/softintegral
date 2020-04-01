@@ -40,19 +40,21 @@
             this.vistaReporte.DisplayStatusBar = false;
             this.vistaReporte.Dock = System.Windows.Forms.DockStyle.Fill;
             this.vistaReporte.Location = new System.Drawing.Point(0, 0);
+            this.vistaReporte.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.vistaReporte.Name = "vistaReporte";
             this.vistaReporte.ReportSource = this.ReporteEtiqueta1;
-            this.vistaReporte.Size = new System.Drawing.Size(835, 459);
+            this.vistaReporte.Size = new System.Drawing.Size(1113, 565);
             this.vistaReporte.TabIndex = 0;
             this.vistaReporte.ToolPanelView = CrystalDecisions.Windows.Forms.ToolPanelViewType.None;
             this.vistaReporte.Load += new System.EventHandler(this.vistaReporte_Load);
             // 
             // FrmImpEtiquetas
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(835, 459);
+            this.ClientSize = new System.Drawing.Size(1113, 565);
             this.Controls.Add(this.vistaReporte);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "FrmImpEtiquetas";
             this.Text = "FrmEtiquetas";
             this.Load += new System.EventHandler(this.FrmEtiquetas_Load);

@@ -47,15 +47,10 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panelHorizontal = new System.Windows.Forms.Panel();
             this.label16 = new System.Windows.Forms.Label();
-            this.btnMaximizar = new System.Windows.Forms.PictureBox();
-            this.btnRestaurar = new System.Windows.Forms.PictureBox();
-            this.btnMinimizar = new System.Windows.Forms.PictureBox();
-            this.btnCerrar = new System.Windows.Forms.PictureBox();
             this.lblSistemaVenta = new System.Windows.Forms.Label();
             this.xuiFlatTab1 = new XanderUI.XUIFlatTab();
             this.tabordenservicio = new System.Windows.Forms.TabPage();
             this.xuiCustomGroupbox5 = new XanderUI.XUICustomGroupbox();
-            this.xuiSuperButton2 = new XanderUI.XUISuperButton();
             this.gunaLabel6 = new Guna.UI.WinForms.GunaLabel();
             this.TxtOrden = new Guna.UI.WinForms.GunaTextBox();
             this.xuiCustomGroupbox4 = new XanderUI.XUICustomGroupbox();
@@ -66,12 +61,10 @@
             this.gunaLabel4 = new Guna.UI.WinForms.GunaLabel();
             this.gunaLabel5 = new Guna.UI.WinForms.GunaLabel();
             this.TxtDetalle = new WindowsFormsControlLibrary1.BunifuCustomTextbox();
-            this.BtnAgregarAccesorio = new XanderUI.XUISuperButton();
             this.TxtAccesorioequipo = new WindowsFormsControlLibrary1.BunifuCustomTextbox();
             this.DGAccesorio = new Guna.UI.WinForms.GunaDataGridView();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.gunaLabel12 = new Guna.UI.WinForms.GunaLabel();
-            this.BtnAgregarItem = new XanderUI.XUISuperButton();
             this.Txtfallareclamada = new WindowsFormsControlLibrary1.BunifuCustomTextbox();
             this.CBestadoequipo = new System.Windows.Forms.ComboBox();
             this.DGDetalleitems = new Guna.UI.WinForms.GunaDataGridView();
@@ -80,8 +73,6 @@
             this.CPrecio = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CCantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CImporte = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.xuiSuperButton1 = new XanderUI.XUISuperButton();
-            this.BtnGuardar = new XanderUI.XUISuperButton();
             this.txtTotalPagar = new System.Windows.Forms.TextBox();
             this.lblTotalPagar = new System.Windows.Forms.Label();
             this.gunaLabel7 = new Guna.UI.WinForms.GunaLabel();
@@ -99,14 +90,12 @@
             this.CBMod = new System.Windows.Forms.ComboBox();
             this.CBMar = new System.Windows.Forms.ComboBox();
             this.CBEquipo = new System.Windows.Forms.ComboBox();
-            this.TxtBuscarEquipo = new XanderUI.XUISuperButton();
             this.xuiCustomGroupbox1 = new XanderUI.XUICustomGroupbox();
             this.LbIdcliente = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.bunifuCustomLabel3 = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.bunifuCustomLabel2 = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.LblDNI = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.CBCliente = new System.Windows.Forms.ComboBox();
-            this.TxtBuscarCliente = new XanderUI.XUISuperButton();
             this.tablista = new System.Windows.Forms.TabPage();
             this.gunaLabel11 = new Guna.UI.WinForms.GunaLabel();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
@@ -118,14 +107,21 @@
             this.gunaLabel10 = new Guna.UI.WinForms.GunaLabel();
             this.gunaLabel9 = new Guna.UI.WinForms.GunaLabel();
             this.gunaLabel8 = new Guna.UI.WinForms.GunaLabel();
-            this.xuiSuperButton3 = new XanderUI.XUISuperButton();
             this.Menucontextual = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.MenuEliminar = new System.Windows.Forms.ToolStripMenuItem();
+            this.xuiSuperButton2 = new XanderUI.XUISuperButton();
+            this.BtnAgregarAccesorio = new XanderUI.XUISuperButton();
+            this.BtnAgregarItem = new XanderUI.XUISuperButton();
+            this.xuiSuperButton1 = new XanderUI.XUISuperButton();
+            this.BtnGuardar = new XanderUI.XUISuperButton();
+            this.TxtBuscarEquipo = new XanderUI.XUISuperButton();
+            this.TxtBuscarCliente = new XanderUI.XUISuperButton();
+            this.xuiSuperButton3 = new XanderUI.XUISuperButton();
+            this.btnMaximizar = new System.Windows.Forms.PictureBox();
+            this.btnRestaurar = new System.Windows.Forms.PictureBox();
+            this.btnMinimizar = new System.Windows.Forms.PictureBox();
+            this.btnCerrar = new System.Windows.Forms.PictureBox();
             this.panelHorizontal.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.btnMaximizar)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnRestaurar)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnMinimizar)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnCerrar)).BeginInit();
             this.xuiFlatTab1.SuspendLayout();
             this.tabordenservicio.SuspendLayout();
             this.xuiCustomGroupbox5.SuspendLayout();
@@ -139,6 +135,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.DGDetalletrabajo)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DGordenservicio)).BeginInit();
             this.Menucontextual.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnMaximizar)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnRestaurar)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnMinimizar)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnCerrar)).BeginInit();
             this.SuspendLayout();
             // 
             // panelHorizontal
@@ -174,65 +174,6 @@
             this.label16.TabIndex = 7;
             this.label16.Text = "SERVICIO TECNICO";
             this.label16.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // btnMaximizar
-            // 
-            this.btnMaximizar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnMaximizar.BackgroundImage = global::Capa_Presentacion.Properties.Resources.maximize_Checkbox_16px;
-            this.btnMaximizar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnMaximizar.Location = new System.Drawing.Point(1228, 6);
-            this.btnMaximizar.Margin = new System.Windows.Forms.Padding(4);
-            this.btnMaximizar.Name = "btnMaximizar";
-            this.btnMaximizar.Size = new System.Drawing.Size(29, 31);
-            this.btnMaximizar.TabIndex = 5;
-            this.btnMaximizar.TabStop = false;
-            this.btnMaximizar.Click += new System.EventHandler(this.btnMaximizar_Click);
-            this.btnMaximizar.MouseLeave += new System.EventHandler(this.btnMaximizar_MouseLeave);
-            this.btnMaximizar.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btnMaximizar_MouseMove);
-            // 
-            // btnRestaurar
-            // 
-            this.btnRestaurar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnRestaurar.BackgroundImage = global::Capa_Presentacion.Properties.Resources.Restore_Window_20px;
-            this.btnRestaurar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnRestaurar.Location = new System.Drawing.Point(1228, 6);
-            this.btnRestaurar.Margin = new System.Windows.Forms.Padding(4);
-            this.btnRestaurar.Name = "btnRestaurar";
-            this.btnRestaurar.Size = new System.Drawing.Size(29, 31);
-            this.btnRestaurar.TabIndex = 2;
-            this.btnRestaurar.TabStop = false;
-            this.btnRestaurar.Click += new System.EventHandler(this.btnRestaurar_Click);
-            // 
-            // btnMinimizar
-            // 
-            this.btnMinimizar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnMinimizar.BackgroundImage = global::Capa_Presentacion.Properties.Resources.Minus_20px;
-            this.btnMinimizar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnMinimizar.Location = new System.Drawing.Point(1184, 6);
-            this.btnMinimizar.Margin = new System.Windows.Forms.Padding(4);
-            this.btnMinimizar.Name = "btnMinimizar";
-            this.btnMinimizar.Size = new System.Drawing.Size(29, 31);
-            this.btnMinimizar.TabIndex = 1;
-            this.btnMinimizar.TabStop = false;
-            this.btnMinimizar.Click += new System.EventHandler(this.btnMinimizar_Click);
-            this.btnMinimizar.MouseLeave += new System.EventHandler(this.btnMinimizar_MouseLeave);
-            this.btnMinimizar.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btnMinimizar_MouseMove);
-            // 
-            // btnCerrar
-            // 
-            this.btnCerrar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnCerrar.BackgroundImage = global::Capa_Presentacion.Properties.Resources.Delete_20px;
-            this.btnCerrar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnCerrar.ErrorImage = null;
-            this.btnCerrar.Location = new System.Drawing.Point(1272, 6);
-            this.btnCerrar.Margin = new System.Windows.Forms.Padding(4);
-            this.btnCerrar.Name = "btnCerrar";
-            this.btnCerrar.Size = new System.Drawing.Size(29, 31);
-            this.btnCerrar.TabIndex = 0;
-            this.btnCerrar.TabStop = false;
-            this.btnCerrar.Click += new System.EventHandler(this.btnCerrar_Click);
-            this.btnCerrar.MouseLeave += new System.EventHandler(this.btnCerrar_MouseLeave);
-            this.btnCerrar.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btnCerrar_MouseMove);
             // 
             // lblSistemaVenta
             // 
@@ -296,28 +237,6 @@
             this.xuiCustomGroupbox5.TabStop = false;
             this.xuiCustomGroupbox5.Text = "Orden de servicio";
             this.xuiCustomGroupbox5.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(79)))), ((int)(((byte)(101)))));
-            // 
-            // xuiSuperButton2
-            // 
-            this.xuiSuperButton2.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(144)))), ((int)(((byte)(247)))));
-            this.xuiSuperButton2.ButtonImage = global::Capa_Presentacion.Properties.Resources.search_magnifier_interface_symbol;
-            this.xuiSuperButton2.ButtonSmoothing = System.Drawing.Drawing2D.SmoothingMode.HighSpeed;
-            this.xuiSuperButton2.ButtonStyle = XanderUI.XUISuperButton.Style.RoundedEdges;
-            this.xuiSuperButton2.ButtonText = "";
-            this.xuiSuperButton2.CornerRadius = 5;
-            this.xuiSuperButton2.Horizontal_Alignment = System.Drawing.StringAlignment.Center;
-            this.xuiSuperButton2.HoverBackgroundColor = System.Drawing.Color.IndianRed;
-            this.xuiSuperButton2.HoverTextColor = System.Drawing.Color.Yellow;
-            this.xuiSuperButton2.ImagePosition = XanderUI.XUISuperButton.imgPosition.Left;
-            this.xuiSuperButton2.Location = new System.Drawing.Point(166, 17);
-            this.xuiSuperButton2.Name = "xuiSuperButton2";
-            this.xuiSuperButton2.SelectedBackColor = System.Drawing.Color.LimeGreen;
-            this.xuiSuperButton2.SelectedTextColor = System.Drawing.Color.White;
-            this.xuiSuperButton2.Size = new System.Drawing.Size(35, 30);
-            this.xuiSuperButton2.SuperSelected = false;
-            this.xuiSuperButton2.TabIndex = 91;
-            this.xuiSuperButton2.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(245)))), ((int)(((byte)(255)))));
-            this.xuiSuperButton2.Vertical_Alignment = System.Drawing.StringAlignment.Center;
             // 
             // gunaLabel6
             // 
@@ -480,30 +399,6 @@
             this.TxtDetalle.Size = new System.Drawing.Size(190, 22);
             this.TxtDetalle.TabIndex = 116;
             // 
-            // BtnAgregarAccesorio
-            // 
-            this.BtnAgregarAccesorio.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.BtnAgregarAccesorio.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(144)))), ((int)(((byte)(247)))));
-            this.BtnAgregarAccesorio.ButtonImage = global::Capa_Presentacion.Properties.Resources.Add_Image_20px;
-            this.BtnAgregarAccesorio.ButtonSmoothing = System.Drawing.Drawing2D.SmoothingMode.HighSpeed;
-            this.BtnAgregarAccesorio.ButtonStyle = XanderUI.XUISuperButton.Style.RoundedEdges;
-            this.BtnAgregarAccesorio.ButtonText = "Agregar";
-            this.BtnAgregarAccesorio.CornerRadius = 5;
-            this.BtnAgregarAccesorio.Horizontal_Alignment = System.Drawing.StringAlignment.Center;
-            this.BtnAgregarAccesorio.HoverBackgroundColor = System.Drawing.Color.IndianRed;
-            this.BtnAgregarAccesorio.HoverTextColor = System.Drawing.Color.Yellow;
-            this.BtnAgregarAccesorio.ImagePosition = XanderUI.XUISuperButton.imgPosition.Left;
-            this.BtnAgregarAccesorio.Location = new System.Drawing.Point(310, 17);
-            this.BtnAgregarAccesorio.Name = "BtnAgregarAccesorio";
-            this.BtnAgregarAccesorio.SelectedBackColor = System.Drawing.Color.LimeGreen;
-            this.BtnAgregarAccesorio.SelectedTextColor = System.Drawing.Color.White;
-            this.BtnAgregarAccesorio.Size = new System.Drawing.Size(96, 30);
-            this.BtnAgregarAccesorio.SuperSelected = false;
-            this.BtnAgregarAccesorio.TabIndex = 115;
-            this.BtnAgregarAccesorio.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(245)))), ((int)(((byte)(255)))));
-            this.BtnAgregarAccesorio.Vertical_Alignment = System.Drawing.StringAlignment.Center;
-            this.BtnAgregarAccesorio.Click += new System.EventHandler(this.BtnAgregarAccesorio_Click);
-            // 
             // TxtAccesorioequipo
             // 
             this.TxtAccesorioequipo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
@@ -604,29 +499,6 @@
             this.gunaLabel12.Size = new System.Drawing.Size(81, 20);
             this.gunaLabel12.TabIndex = 112;
             this.gunaLabel12.Text = "Accesorio :";
-            // 
-            // BtnAgregarItem
-            // 
-            this.BtnAgregarItem.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.BtnAgregarItem.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(144)))), ((int)(((byte)(247)))));
-            this.BtnAgregarItem.ButtonImage = global::Capa_Presentacion.Properties.Resources.Add_Image_20px;
-            this.BtnAgregarItem.ButtonSmoothing = System.Drawing.Drawing2D.SmoothingMode.HighSpeed;
-            this.BtnAgregarItem.ButtonStyle = XanderUI.XUISuperButton.Style.RoundedEdges;
-            this.BtnAgregarItem.ButtonText = "Agregar";
-            this.BtnAgregarItem.CornerRadius = 5;
-            this.BtnAgregarItem.Horizontal_Alignment = System.Drawing.StringAlignment.Center;
-            this.BtnAgregarItem.HoverBackgroundColor = System.Drawing.Color.IndianRed;
-            this.BtnAgregarItem.HoverTextColor = System.Drawing.Color.Yellow;
-            this.BtnAgregarItem.ImagePosition = XanderUI.XUISuperButton.imgPosition.Left;
-            this.BtnAgregarItem.Location = new System.Drawing.Point(1068, 238);
-            this.BtnAgregarItem.Name = "BtnAgregarItem";
-            this.BtnAgregarItem.SelectedBackColor = System.Drawing.Color.LimeGreen;
-            this.BtnAgregarItem.SelectedTextColor = System.Drawing.Color.White;
-            this.BtnAgregarItem.Size = new System.Drawing.Size(97, 30);
-            this.BtnAgregarItem.SuperSelected = false;
-            this.BtnAgregarItem.TabIndex = 111;
-            this.BtnAgregarItem.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(245)))), ((int)(((byte)(255)))));
-            this.BtnAgregarItem.Vertical_Alignment = System.Drawing.StringAlignment.Center;
             // 
             // Txtfallareclamada
             // 
@@ -755,53 +627,6 @@
             // 
             this.CImporte.HeaderText = "Importe";
             this.CImporte.Name = "CImporte";
-            // 
-            // xuiSuperButton1
-            // 
-            this.xuiSuperButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.xuiSuperButton1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(144)))), ((int)(((byte)(247)))));
-            this.xuiSuperButton1.ButtonImage = global::Capa_Presentacion.Properties.Resources.search_magnifier_interface_symbol;
-            this.xuiSuperButton1.ButtonSmoothing = System.Drawing.Drawing2D.SmoothingMode.HighSpeed;
-            this.xuiSuperButton1.ButtonStyle = XanderUI.XUISuperButton.Style.RoundedEdges;
-            this.xuiSuperButton1.ButtonText = "Buscar";
-            this.xuiSuperButton1.CornerRadius = 5;
-            this.xuiSuperButton1.Horizontal_Alignment = System.Drawing.StringAlignment.Center;
-            this.xuiSuperButton1.HoverBackgroundColor = System.Drawing.Color.IndianRed;
-            this.xuiSuperButton1.HoverTextColor = System.Drawing.Color.Yellow;
-            this.xuiSuperButton1.ImagePosition = XanderUI.XUISuperButton.imgPosition.Left;
-            this.xuiSuperButton1.Location = new System.Drawing.Point(1171, 238);
-            this.xuiSuperButton1.Name = "xuiSuperButton1";
-            this.xuiSuperButton1.SelectedBackColor = System.Drawing.Color.LimeGreen;
-            this.xuiSuperButton1.SelectedTextColor = System.Drawing.Color.White;
-            this.xuiSuperButton1.Size = new System.Drawing.Size(89, 30);
-            this.xuiSuperButton1.SuperSelected = false;
-            this.xuiSuperButton1.TabIndex = 91;
-            this.xuiSuperButton1.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(245)))), ((int)(((byte)(255)))));
-            this.xuiSuperButton1.Vertical_Alignment = System.Drawing.StringAlignment.Center;
-            // 
-            // BtnGuardar
-            // 
-            this.BtnGuardar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.BtnGuardar.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(144)))), ((int)(((byte)(247)))));
-            this.BtnGuardar.ButtonImage = global::Capa_Presentacion.Properties.Resources.Save_20px;
-            this.BtnGuardar.ButtonSmoothing = System.Drawing.Drawing2D.SmoothingMode.HighSpeed;
-            this.BtnGuardar.ButtonStyle = XanderUI.XUISuperButton.Style.RoundedEdges;
-            this.BtnGuardar.ButtonText = "Guardar";
-            this.BtnGuardar.CornerRadius = 5;
-            this.BtnGuardar.Horizontal_Alignment = System.Drawing.StringAlignment.Center;
-            this.BtnGuardar.HoverBackgroundColor = System.Drawing.Color.IndianRed;
-            this.BtnGuardar.HoverTextColor = System.Drawing.Color.Yellow;
-            this.BtnGuardar.ImagePosition = XanderUI.XUISuperButton.imgPosition.Left;
-            this.BtnGuardar.Location = new System.Drawing.Point(18, 565);
-            this.BtnGuardar.Name = "BtnGuardar";
-            this.BtnGuardar.SelectedBackColor = System.Drawing.Color.LimeGreen;
-            this.BtnGuardar.SelectedTextColor = System.Drawing.Color.White;
-            this.BtnGuardar.Size = new System.Drawing.Size(174, 46);
-            this.BtnGuardar.SuperSelected = false;
-            this.BtnGuardar.TabIndex = 84;
-            this.BtnGuardar.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(245)))), ((int)(((byte)(255)))));
-            this.BtnGuardar.Vertical_Alignment = System.Drawing.StringAlignment.Center;
-            this.BtnGuardar.Click += new System.EventHandler(this.BtnGuardar_Click);
             // 
             // txtTotalPagar
             // 
@@ -1011,29 +836,6 @@
             this.CBEquipo.TabIndex = 101;
             this.CBEquipo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.CBEquipo_KeyDown);
             // 
-            // TxtBuscarEquipo
-            // 
-            this.TxtBuscarEquipo.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(144)))), ((int)(((byte)(247)))));
-            this.TxtBuscarEquipo.ButtonImage = global::Capa_Presentacion.Properties.Resources.search_magnifier_interface_symbol;
-            this.TxtBuscarEquipo.ButtonSmoothing = System.Drawing.Drawing2D.SmoothingMode.HighSpeed;
-            this.TxtBuscarEquipo.ButtonStyle = XanderUI.XUISuperButton.Style.RoundedEdges;
-            this.TxtBuscarEquipo.ButtonText = "Buscar";
-            this.TxtBuscarEquipo.CornerRadius = 5;
-            this.TxtBuscarEquipo.Horizontal_Alignment = System.Drawing.StringAlignment.Center;
-            this.TxtBuscarEquipo.HoverBackgroundColor = System.Drawing.Color.IndianRed;
-            this.TxtBuscarEquipo.HoverTextColor = System.Drawing.Color.Yellow;
-            this.TxtBuscarEquipo.ImagePosition = XanderUI.XUISuperButton.imgPosition.Left;
-            this.TxtBuscarEquipo.Location = new System.Drawing.Point(221, 17);
-            this.TxtBuscarEquipo.Name = "TxtBuscarEquipo";
-            this.TxtBuscarEquipo.SelectedBackColor = System.Drawing.Color.LimeGreen;
-            this.TxtBuscarEquipo.SelectedTextColor = System.Drawing.Color.White;
-            this.TxtBuscarEquipo.Size = new System.Drawing.Size(98, 30);
-            this.TxtBuscarEquipo.SuperSelected = false;
-            this.TxtBuscarEquipo.TabIndex = 91;
-            this.TxtBuscarEquipo.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(245)))), ((int)(((byte)(255)))));
-            this.TxtBuscarEquipo.Vertical_Alignment = System.Drawing.StringAlignment.Center;
-            this.TxtBuscarEquipo.Click += new System.EventHandler(this.TxtBuscarEquipo_Click);
-            // 
             // xuiCustomGroupbox1
             // 
             this.xuiCustomGroupbox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
@@ -1106,30 +908,6 @@
             this.CBCliente.TabIndex = 92;
             this.CBCliente.SelectedValueChanged += new System.EventHandler(this.CBCliente_SelectedValueChanged);
             this.CBCliente.KeyDown += new System.Windows.Forms.KeyEventHandler(this.CBCliente_KeyDown);
-            // 
-            // TxtBuscarCliente
-            // 
-            this.TxtBuscarCliente.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.TxtBuscarCliente.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(144)))), ((int)(((byte)(247)))));
-            this.TxtBuscarCliente.ButtonImage = global::Capa_Presentacion.Properties.Resources.search_magnifier_interface_symbol;
-            this.TxtBuscarCliente.ButtonSmoothing = System.Drawing.Drawing2D.SmoothingMode.HighSpeed;
-            this.TxtBuscarCliente.ButtonStyle = XanderUI.XUISuperButton.Style.RoundedEdges;
-            this.TxtBuscarCliente.ButtonText = "Buscar";
-            this.TxtBuscarCliente.CornerRadius = 5;
-            this.TxtBuscarCliente.Horizontal_Alignment = System.Drawing.StringAlignment.Center;
-            this.TxtBuscarCliente.HoverBackgroundColor = System.Drawing.Color.IndianRed;
-            this.TxtBuscarCliente.HoverTextColor = System.Drawing.Color.Yellow;
-            this.TxtBuscarCliente.ImagePosition = XanderUI.XUISuperButton.imgPosition.Left;
-            this.TxtBuscarCliente.Location = new System.Drawing.Point(263, 21);
-            this.TxtBuscarCliente.Name = "TxtBuscarCliente";
-            this.TxtBuscarCliente.SelectedBackColor = System.Drawing.Color.LimeGreen;
-            this.TxtBuscarCliente.SelectedTextColor = System.Drawing.Color.White;
-            this.TxtBuscarCliente.Size = new System.Drawing.Size(115, 30);
-            this.TxtBuscarCliente.SuperSelected = false;
-            this.TxtBuscarCliente.TabIndex = 90;
-            this.TxtBuscarCliente.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(245)))), ((int)(((byte)(255)))));
-            this.TxtBuscarCliente.Vertical_Alignment = System.Drawing.StringAlignment.Center;
-            this.TxtBuscarCliente.Click += new System.EventHandler(this.TxtBuscarCliente_Click);
             // 
             // tablista
             // 
@@ -1410,6 +1188,185 @@
             this.gunaLabel8.TabIndex = 73;
             this.gunaLabel8.Text = "Desde :";
             // 
+            // Menucontextual
+            // 
+            this.Menucontextual.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.Menucontextual.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.MenuEliminar});
+            this.Menucontextual.Name = "Menucontextual";
+            this.Menucontextual.Size = new System.Drawing.Size(133, 28);
+            // 
+            // MenuEliminar
+            // 
+            this.MenuEliminar.Name = "MenuEliminar";
+            this.MenuEliminar.Size = new System.Drawing.Size(132, 24);
+            this.MenuEliminar.Text = "Eliminar";
+            this.MenuEliminar.Visible = false;
+            this.MenuEliminar.Click += new System.EventHandler(this.MenuEliminar_Click_1);
+            // 
+            // xuiSuperButton2
+            // 
+            this.xuiSuperButton2.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(144)))), ((int)(((byte)(247)))));
+            this.xuiSuperButton2.ButtonImage = global::Capa_Presentacion.Properties.Resources.search_magnifier_interface_symbol;
+            this.xuiSuperButton2.ButtonSmoothing = System.Drawing.Drawing2D.SmoothingMode.HighSpeed;
+            this.xuiSuperButton2.ButtonStyle = XanderUI.XUISuperButton.Style.RoundedEdges;
+            this.xuiSuperButton2.ButtonText = "";
+            this.xuiSuperButton2.CornerRadius = 5;
+            this.xuiSuperButton2.Horizontal_Alignment = System.Drawing.StringAlignment.Center;
+            this.xuiSuperButton2.HoverBackgroundColor = System.Drawing.Color.IndianRed;
+            this.xuiSuperButton2.HoverTextColor = System.Drawing.Color.Yellow;
+            this.xuiSuperButton2.ImagePosition = XanderUI.XUISuperButton.imgPosition.Left;
+            this.xuiSuperButton2.Location = new System.Drawing.Point(166, 17);
+            this.xuiSuperButton2.Name = "xuiSuperButton2";
+            this.xuiSuperButton2.SelectedBackColor = System.Drawing.Color.LimeGreen;
+            this.xuiSuperButton2.SelectedTextColor = System.Drawing.Color.White;
+            this.xuiSuperButton2.Size = new System.Drawing.Size(35, 30);
+            this.xuiSuperButton2.SuperSelected = false;
+            this.xuiSuperButton2.TabIndex = 91;
+            this.xuiSuperButton2.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(245)))), ((int)(((byte)(255)))));
+            this.xuiSuperButton2.Vertical_Alignment = System.Drawing.StringAlignment.Center;
+            // 
+            // BtnAgregarAccesorio
+            // 
+            this.BtnAgregarAccesorio.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.BtnAgregarAccesorio.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(144)))), ((int)(((byte)(247)))));
+            this.BtnAgregarAccesorio.ButtonImage = global::Capa_Presentacion.Properties.Resources.Add_Image_20px;
+            this.BtnAgregarAccesorio.ButtonSmoothing = System.Drawing.Drawing2D.SmoothingMode.HighSpeed;
+            this.BtnAgregarAccesorio.ButtonStyle = XanderUI.XUISuperButton.Style.RoundedEdges;
+            this.BtnAgregarAccesorio.ButtonText = "Agregar";
+            this.BtnAgregarAccesorio.CornerRadius = 5;
+            this.BtnAgregarAccesorio.Horizontal_Alignment = System.Drawing.StringAlignment.Center;
+            this.BtnAgregarAccesorio.HoverBackgroundColor = System.Drawing.Color.IndianRed;
+            this.BtnAgregarAccesorio.HoverTextColor = System.Drawing.Color.Yellow;
+            this.BtnAgregarAccesorio.ImagePosition = XanderUI.XUISuperButton.imgPosition.Left;
+            this.BtnAgregarAccesorio.Location = new System.Drawing.Point(310, 17);
+            this.BtnAgregarAccesorio.Name = "BtnAgregarAccesorio";
+            this.BtnAgregarAccesorio.SelectedBackColor = System.Drawing.Color.LimeGreen;
+            this.BtnAgregarAccesorio.SelectedTextColor = System.Drawing.Color.White;
+            this.BtnAgregarAccesorio.Size = new System.Drawing.Size(96, 30);
+            this.BtnAgregarAccesorio.SuperSelected = false;
+            this.BtnAgregarAccesorio.TabIndex = 115;
+            this.BtnAgregarAccesorio.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(245)))), ((int)(((byte)(255)))));
+            this.BtnAgregarAccesorio.Vertical_Alignment = System.Drawing.StringAlignment.Center;
+            this.BtnAgregarAccesorio.Click += new System.EventHandler(this.BtnAgregarAccesorio_Click);
+            // 
+            // BtnAgregarItem
+            // 
+            this.BtnAgregarItem.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.BtnAgregarItem.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(144)))), ((int)(((byte)(247)))));
+            this.BtnAgregarItem.ButtonImage = global::Capa_Presentacion.Properties.Resources.Add_Image_20px;
+            this.BtnAgregarItem.ButtonSmoothing = System.Drawing.Drawing2D.SmoothingMode.HighSpeed;
+            this.BtnAgregarItem.ButtonStyle = XanderUI.XUISuperButton.Style.RoundedEdges;
+            this.BtnAgregarItem.ButtonText = "Agregar";
+            this.BtnAgregarItem.CornerRadius = 5;
+            this.BtnAgregarItem.Horizontal_Alignment = System.Drawing.StringAlignment.Center;
+            this.BtnAgregarItem.HoverBackgroundColor = System.Drawing.Color.IndianRed;
+            this.BtnAgregarItem.HoverTextColor = System.Drawing.Color.Yellow;
+            this.BtnAgregarItem.ImagePosition = XanderUI.XUISuperButton.imgPosition.Left;
+            this.BtnAgregarItem.Location = new System.Drawing.Point(1068, 238);
+            this.BtnAgregarItem.Name = "BtnAgregarItem";
+            this.BtnAgregarItem.SelectedBackColor = System.Drawing.Color.LimeGreen;
+            this.BtnAgregarItem.SelectedTextColor = System.Drawing.Color.White;
+            this.BtnAgregarItem.Size = new System.Drawing.Size(97, 30);
+            this.BtnAgregarItem.SuperSelected = false;
+            this.BtnAgregarItem.TabIndex = 111;
+            this.BtnAgregarItem.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(245)))), ((int)(((byte)(255)))));
+            this.BtnAgregarItem.Vertical_Alignment = System.Drawing.StringAlignment.Center;
+            // 
+            // xuiSuperButton1
+            // 
+            this.xuiSuperButton1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.xuiSuperButton1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(144)))), ((int)(((byte)(247)))));
+            this.xuiSuperButton1.ButtonImage = global::Capa_Presentacion.Properties.Resources.search_magnifier_interface_symbol;
+            this.xuiSuperButton1.ButtonSmoothing = System.Drawing.Drawing2D.SmoothingMode.HighSpeed;
+            this.xuiSuperButton1.ButtonStyle = XanderUI.XUISuperButton.Style.RoundedEdges;
+            this.xuiSuperButton1.ButtonText = "Buscar";
+            this.xuiSuperButton1.CornerRadius = 5;
+            this.xuiSuperButton1.Horizontal_Alignment = System.Drawing.StringAlignment.Center;
+            this.xuiSuperButton1.HoverBackgroundColor = System.Drawing.Color.IndianRed;
+            this.xuiSuperButton1.HoverTextColor = System.Drawing.Color.Yellow;
+            this.xuiSuperButton1.ImagePosition = XanderUI.XUISuperButton.imgPosition.Left;
+            this.xuiSuperButton1.Location = new System.Drawing.Point(1171, 238);
+            this.xuiSuperButton1.Name = "xuiSuperButton1";
+            this.xuiSuperButton1.SelectedBackColor = System.Drawing.Color.LimeGreen;
+            this.xuiSuperButton1.SelectedTextColor = System.Drawing.Color.White;
+            this.xuiSuperButton1.Size = new System.Drawing.Size(89, 30);
+            this.xuiSuperButton1.SuperSelected = false;
+            this.xuiSuperButton1.TabIndex = 91;
+            this.xuiSuperButton1.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(245)))), ((int)(((byte)(255)))));
+            this.xuiSuperButton1.Vertical_Alignment = System.Drawing.StringAlignment.Center;
+            // 
+            // BtnGuardar
+            // 
+            this.BtnGuardar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.BtnGuardar.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(144)))), ((int)(((byte)(247)))));
+            this.BtnGuardar.ButtonImage = global::Capa_Presentacion.Properties.Resources.Save_20px;
+            this.BtnGuardar.ButtonSmoothing = System.Drawing.Drawing2D.SmoothingMode.HighSpeed;
+            this.BtnGuardar.ButtonStyle = XanderUI.XUISuperButton.Style.RoundedEdges;
+            this.BtnGuardar.ButtonText = "Guardar";
+            this.BtnGuardar.CornerRadius = 5;
+            this.BtnGuardar.Horizontal_Alignment = System.Drawing.StringAlignment.Center;
+            this.BtnGuardar.HoverBackgroundColor = System.Drawing.Color.IndianRed;
+            this.BtnGuardar.HoverTextColor = System.Drawing.Color.Yellow;
+            this.BtnGuardar.ImagePosition = XanderUI.XUISuperButton.imgPosition.Left;
+            this.BtnGuardar.Location = new System.Drawing.Point(18, 565);
+            this.BtnGuardar.Name = "BtnGuardar";
+            this.BtnGuardar.SelectedBackColor = System.Drawing.Color.LimeGreen;
+            this.BtnGuardar.SelectedTextColor = System.Drawing.Color.White;
+            this.BtnGuardar.Size = new System.Drawing.Size(174, 46);
+            this.BtnGuardar.SuperSelected = false;
+            this.BtnGuardar.TabIndex = 84;
+            this.BtnGuardar.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(245)))), ((int)(((byte)(255)))));
+            this.BtnGuardar.Vertical_Alignment = System.Drawing.StringAlignment.Center;
+            this.BtnGuardar.Click += new System.EventHandler(this.BtnGuardar_Click);
+            // 
+            // TxtBuscarEquipo
+            // 
+            this.TxtBuscarEquipo.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(144)))), ((int)(((byte)(247)))));
+            this.TxtBuscarEquipo.ButtonImage = global::Capa_Presentacion.Properties.Resources.search_magnifier_interface_symbol;
+            this.TxtBuscarEquipo.ButtonSmoothing = System.Drawing.Drawing2D.SmoothingMode.HighSpeed;
+            this.TxtBuscarEquipo.ButtonStyle = XanderUI.XUISuperButton.Style.RoundedEdges;
+            this.TxtBuscarEquipo.ButtonText = "Buscar";
+            this.TxtBuscarEquipo.CornerRadius = 5;
+            this.TxtBuscarEquipo.Horizontal_Alignment = System.Drawing.StringAlignment.Center;
+            this.TxtBuscarEquipo.HoverBackgroundColor = System.Drawing.Color.IndianRed;
+            this.TxtBuscarEquipo.HoverTextColor = System.Drawing.Color.Yellow;
+            this.TxtBuscarEquipo.ImagePosition = XanderUI.XUISuperButton.imgPosition.Left;
+            this.TxtBuscarEquipo.Location = new System.Drawing.Point(221, 17);
+            this.TxtBuscarEquipo.Name = "TxtBuscarEquipo";
+            this.TxtBuscarEquipo.SelectedBackColor = System.Drawing.Color.LimeGreen;
+            this.TxtBuscarEquipo.SelectedTextColor = System.Drawing.Color.White;
+            this.TxtBuscarEquipo.Size = new System.Drawing.Size(98, 30);
+            this.TxtBuscarEquipo.SuperSelected = false;
+            this.TxtBuscarEquipo.TabIndex = 91;
+            this.TxtBuscarEquipo.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(245)))), ((int)(((byte)(255)))));
+            this.TxtBuscarEquipo.Vertical_Alignment = System.Drawing.StringAlignment.Center;
+            this.TxtBuscarEquipo.Click += new System.EventHandler(this.TxtBuscarEquipo_Click);
+            // 
+            // TxtBuscarCliente
+            // 
+            this.TxtBuscarCliente.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.TxtBuscarCliente.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(144)))), ((int)(((byte)(247)))));
+            this.TxtBuscarCliente.ButtonImage = global::Capa_Presentacion.Properties.Resources.search_magnifier_interface_symbol;
+            this.TxtBuscarCliente.ButtonSmoothing = System.Drawing.Drawing2D.SmoothingMode.HighSpeed;
+            this.TxtBuscarCliente.ButtonStyle = XanderUI.XUISuperButton.Style.RoundedEdges;
+            this.TxtBuscarCliente.ButtonText = "Buscar";
+            this.TxtBuscarCliente.CornerRadius = 5;
+            this.TxtBuscarCliente.Horizontal_Alignment = System.Drawing.StringAlignment.Center;
+            this.TxtBuscarCliente.HoverBackgroundColor = System.Drawing.Color.IndianRed;
+            this.TxtBuscarCliente.HoverTextColor = System.Drawing.Color.Yellow;
+            this.TxtBuscarCliente.ImagePosition = XanderUI.XUISuperButton.imgPosition.Left;
+            this.TxtBuscarCliente.Location = new System.Drawing.Point(263, 21);
+            this.TxtBuscarCliente.Name = "TxtBuscarCliente";
+            this.TxtBuscarCliente.SelectedBackColor = System.Drawing.Color.LimeGreen;
+            this.TxtBuscarCliente.SelectedTextColor = System.Drawing.Color.White;
+            this.TxtBuscarCliente.Size = new System.Drawing.Size(115, 30);
+            this.TxtBuscarCliente.SuperSelected = false;
+            this.TxtBuscarCliente.TabIndex = 90;
+            this.TxtBuscarCliente.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(245)))), ((int)(((byte)(255)))));
+            this.TxtBuscarCliente.Vertical_Alignment = System.Drawing.StringAlignment.Center;
+            this.TxtBuscarCliente.Click += new System.EventHandler(this.TxtBuscarCliente_Click);
+            // 
             // xuiSuperButton3
             // 
             this.xuiSuperButton3.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(144)))), ((int)(((byte)(247)))));
@@ -1432,21 +1389,64 @@
             this.xuiSuperButton3.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(245)))), ((int)(((byte)(255)))));
             this.xuiSuperButton3.Vertical_Alignment = System.Drawing.StringAlignment.Center;
             // 
-            // Menucontextual
+            // btnMaximizar
             // 
-            this.Menucontextual.ImageScalingSize = new System.Drawing.Size(20, 20);
-            this.Menucontextual.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.MenuEliminar});
-            this.Menucontextual.Name = "Menucontextual";
-            this.Menucontextual.Size = new System.Drawing.Size(133, 28);
+            this.btnMaximizar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnMaximizar.BackgroundImage = global::Capa_Presentacion.Properties.Resources.maximize_Checkbox_16px;
+            this.btnMaximizar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnMaximizar.Location = new System.Drawing.Point(1228, 6);
+            this.btnMaximizar.Margin = new System.Windows.Forms.Padding(4);
+            this.btnMaximizar.Name = "btnMaximizar";
+            this.btnMaximizar.Size = new System.Drawing.Size(29, 31);
+            this.btnMaximizar.TabIndex = 5;
+            this.btnMaximizar.TabStop = false;
+            this.btnMaximizar.Click += new System.EventHandler(this.btnMaximizar_Click);
+            this.btnMaximizar.MouseLeave += new System.EventHandler(this.btnMaximizar_MouseLeave);
+            this.btnMaximizar.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btnMaximizar_MouseMove);
             // 
-            // MenuEliminar
+            // btnRestaurar
             // 
-            this.MenuEliminar.Name = "MenuEliminar";
-            this.MenuEliminar.Size = new System.Drawing.Size(132, 24);
-            this.MenuEliminar.Text = "Eliminar";
-            this.MenuEliminar.Visible = false;
-            this.MenuEliminar.Click += new System.EventHandler(this.MenuEliminar_Click_1);
+            this.btnRestaurar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnRestaurar.BackgroundImage = global::Capa_Presentacion.Properties.Resources.Restore_Window_20px;
+            this.btnRestaurar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnRestaurar.Location = new System.Drawing.Point(1228, 6);
+            this.btnRestaurar.Margin = new System.Windows.Forms.Padding(4);
+            this.btnRestaurar.Name = "btnRestaurar";
+            this.btnRestaurar.Size = new System.Drawing.Size(29, 31);
+            this.btnRestaurar.TabIndex = 2;
+            this.btnRestaurar.TabStop = false;
+            this.btnRestaurar.Click += new System.EventHandler(this.btnRestaurar_Click);
+            // 
+            // btnMinimizar
+            // 
+            this.btnMinimizar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnMinimizar.BackgroundImage = global::Capa_Presentacion.Properties.Resources.Minus_20px;
+            this.btnMinimizar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnMinimizar.Location = new System.Drawing.Point(1184, 6);
+            this.btnMinimizar.Margin = new System.Windows.Forms.Padding(4);
+            this.btnMinimizar.Name = "btnMinimizar";
+            this.btnMinimizar.Size = new System.Drawing.Size(29, 31);
+            this.btnMinimizar.TabIndex = 1;
+            this.btnMinimizar.TabStop = false;
+            this.btnMinimizar.Click += new System.EventHandler(this.btnMinimizar_Click);
+            this.btnMinimizar.MouseLeave += new System.EventHandler(this.btnMinimizar_MouseLeave);
+            this.btnMinimizar.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btnMinimizar_MouseMove);
+            // 
+            // btnCerrar
+            // 
+            this.btnCerrar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnCerrar.BackgroundImage = global::Capa_Presentacion.Properties.Resources.Delete_20px;
+            this.btnCerrar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnCerrar.ErrorImage = null;
+            this.btnCerrar.Location = new System.Drawing.Point(1272, 6);
+            this.btnCerrar.Margin = new System.Windows.Forms.Padding(4);
+            this.btnCerrar.Name = "btnCerrar";
+            this.btnCerrar.Size = new System.Drawing.Size(29, 31);
+            this.btnCerrar.TabIndex = 0;
+            this.btnCerrar.TabStop = false;
+            this.btnCerrar.Click += new System.EventHandler(this.btnCerrar_Click);
+            this.btnCerrar.MouseLeave += new System.EventHandler(this.btnCerrar_MouseLeave);
+            this.btnCerrar.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btnCerrar_MouseMove);
             // 
             // Frmserviciotecnico
             // 
@@ -1465,10 +1465,6 @@
             this.Load += new System.EventHandler(this.Frmserviciotecnico_Load);
             this.panelHorizontal.ResumeLayout(false);
             this.panelHorizontal.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.btnMaximizar)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnRestaurar)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnMinimizar)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.btnCerrar)).EndInit();
             this.xuiFlatTab1.ResumeLayout(false);
             this.tabordenservicio.ResumeLayout(false);
             this.xuiCustomGroupbox5.ResumeLayout(false);
@@ -1488,6 +1484,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.DGDetalletrabajo)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DGordenservicio)).EndInit();
             this.Menucontextual.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.btnMaximizar)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnRestaurar)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnMinimizar)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.btnCerrar)).EndInit();
             this.ResumeLayout(false);
 
         }
