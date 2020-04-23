@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             this.xuiFlatTab1 = new XanderUI.XUIFlatTab();
             this.TabEquipo = new System.Windows.Forms.TabPage();
             this.Txtserie = new WindowsFormsControlLibrary1.BunifuCustomTextbox();
@@ -87,12 +87,13 @@
             this.xuiFlatTab1.InActiveHeaderColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(98)))), ((int)(((byte)(147)))));
             this.xuiFlatTab1.InActiveTextColor = System.Drawing.Color.White;
             this.xuiFlatTab1.ItemSize = new System.Drawing.Size(240, 16);
-            this.xuiFlatTab1.Location = new System.Drawing.Point(9, 43);
+            this.xuiFlatTab1.Location = new System.Drawing.Point(10, 54);
+            this.xuiFlatTab1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.xuiFlatTab1.Name = "xuiFlatTab1";
             this.xuiFlatTab1.PageColor = System.Drawing.Color.White;
             this.xuiFlatTab1.SelectedIndex = 0;
             this.xuiFlatTab1.ShowBorder = true;
-            this.xuiFlatTab1.Size = new System.Drawing.Size(1297, 807);
+            this.xuiFlatTab1.Size = new System.Drawing.Size(1459, 1009);
             this.xuiFlatTab1.TabIndex = 0;
             // 
             // TabEquipo
@@ -111,18 +112,20 @@
             this.TabEquipo.Controls.Add(this.gunaLabel3);
             this.TabEquipo.Controls.Add(this.gunaLabel2);
             this.TabEquipo.Location = new System.Drawing.Point(4, 20);
+            this.TabEquipo.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.TabEquipo.Name = "TabEquipo";
-            this.TabEquipo.Padding = new System.Windows.Forms.Padding(3);
-            this.TabEquipo.Size = new System.Drawing.Size(1289, 783);
+            this.TabEquipo.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.TabEquipo.Size = new System.Drawing.Size(1451, 985);
             this.TabEquipo.TabIndex = 0;
             this.TabEquipo.Text = "Equipo";
             // 
             // Txtserie
             // 
             this.Txtserie.BorderColor = System.Drawing.Color.SeaGreen;
-            this.Txtserie.Location = new System.Drawing.Point(271, 97);
+            this.Txtserie.Location = new System.Drawing.Point(305, 121);
+            this.Txtserie.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Txtserie.Name = "Txtserie";
-            this.Txtserie.Size = new System.Drawing.Size(216, 22);
+            this.Txtserie.Size = new System.Drawing.Size(242, 26);
             this.Txtserie.TabIndex = 98;
             // 
             // CBMod
@@ -130,9 +133,10 @@
             this.CBMod.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
             this.CBMod.Enabled = false;
             this.CBMod.FormattingEnabled = true;
-            this.CBMod.Location = new System.Drawing.Point(271, 302);
+            this.CBMod.Location = new System.Drawing.Point(305, 378);
+            this.CBMod.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.CBMod.Name = "CBMod";
-            this.CBMod.Size = new System.Drawing.Size(216, 24);
+            this.CBMod.Size = new System.Drawing.Size(242, 28);
             this.CBMod.TabIndex = 93;
             this.CBMod.KeyDown += new System.Windows.Forms.KeyEventHandler(this.CBMod_KeyDown);
             // 
@@ -141,9 +145,10 @@
             this.CBMar.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
             this.CBMar.Enabled = false;
             this.CBMar.FormattingEnabled = true;
-            this.CBMar.Location = new System.Drawing.Point(271, 233);
+            this.CBMar.Location = new System.Drawing.Point(305, 291);
+            this.CBMar.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.CBMar.Name = "CBMar";
-            this.CBMar.Size = new System.Drawing.Size(216, 24);
+            this.CBMar.Size = new System.Drawing.Size(242, 28);
             this.CBMar.TabIndex = 92;
             this.CBMar.SelectedValueChanged += new System.EventHandler(this.CBMar_SelectedValueChanged);
             this.CBMar.KeyDown += new System.Windows.Forms.KeyEventHandler(this.CBMar_KeyDown);
@@ -154,9 +159,10 @@
             this.CBEquipo.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
             this.CBEquipo.Enabled = false;
             this.CBEquipo.FormattingEnabled = true;
-            this.CBEquipo.Location = new System.Drawing.Point(271, 160);
+            this.CBEquipo.Location = new System.Drawing.Point(305, 200);
+            this.CBEquipo.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.CBEquipo.Name = "CBEquipo";
-            this.CBEquipo.Size = new System.Drawing.Size(216, 24);
+            this.CBEquipo.Size = new System.Drawing.Size(242, 28);
             this.CBEquipo.TabIndex = 91;
             this.CBEquipo.SelectedValueChanged += new System.EventHandler(this.CBEquipo_SelectedValueChanged);
             this.CBEquipo.KeyDown += new System.Windows.Forms.KeyEventHandler(this.CBEquipo_KeyDown);
@@ -175,11 +181,12 @@
             this.BtnCancelar.HoverBackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(149)))), ((int)(((byte)(183)))));
             this.BtnCancelar.HoverTextColor = System.Drawing.Color.Yellow;
             this.BtnCancelar.ImagePosition = XanderUI.XUISuperButton.imgPosition.Left;
-            this.BtnCancelar.Location = new System.Drawing.Point(900, 672);
+            this.BtnCancelar.Location = new System.Drawing.Point(1012, 840);
+            this.BtnCancelar.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.BtnCancelar.Name = "BtnCancelar";
             this.BtnCancelar.SelectedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(144)))), ((int)(((byte)(247)))));
             this.BtnCancelar.SelectedTextColor = System.Drawing.Color.White;
-            this.BtnCancelar.Size = new System.Drawing.Size(132, 47);
+            this.BtnCancelar.Size = new System.Drawing.Size(148, 59);
             this.BtnCancelar.SuperSelected = false;
             this.BtnCancelar.TabIndex = 84;
             this.BtnCancelar.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(245)))), ((int)(((byte)(255)))));
@@ -199,11 +206,12 @@
             this.BtnAceptar.HoverBackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(149)))), ((int)(((byte)(183)))));
             this.BtnAceptar.HoverTextColor = System.Drawing.Color.Yellow;
             this.BtnAceptar.ImagePosition = XanderUI.XUISuperButton.imgPosition.Left;
-            this.BtnAceptar.Location = new System.Drawing.Point(757, 672);
+            this.BtnAceptar.Location = new System.Drawing.Point(852, 840);
+            this.BtnAceptar.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.BtnAceptar.Name = "BtnAceptar";
             this.BtnAceptar.SelectedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(144)))), ((int)(((byte)(247)))));
             this.BtnAceptar.SelectedTextColor = System.Drawing.Color.White;
-            this.BtnAceptar.Size = new System.Drawing.Size(137, 47);
+            this.BtnAceptar.Size = new System.Drawing.Size(154, 59);
             this.BtnAceptar.SuperSelected = false;
             this.BtnAceptar.TabIndex = 83;
             this.BtnAceptar.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(245)))), ((int)(((byte)(255)))));
@@ -223,11 +231,12 @@
             this.BtnEditar.HoverBackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(149)))), ((int)(((byte)(183)))));
             this.BtnEditar.HoverTextColor = System.Drawing.Color.Yellow;
             this.BtnEditar.ImagePosition = XanderUI.XUISuperButton.imgPosition.Left;
-            this.BtnEditar.Location = new System.Drawing.Point(227, 672);
+            this.BtnEditar.Location = new System.Drawing.Point(255, 840);
+            this.BtnEditar.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.BtnEditar.Name = "BtnEditar";
             this.BtnEditar.SelectedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(144)))), ((int)(((byte)(247)))));
             this.BtnEditar.SelectedTextColor = System.Drawing.Color.White;
-            this.BtnEditar.Size = new System.Drawing.Size(127, 49);
+            this.BtnEditar.Size = new System.Drawing.Size(143, 61);
             this.BtnEditar.SuperSelected = false;
             this.BtnEditar.TabIndex = 82;
             this.BtnEditar.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(245)))), ((int)(((byte)(255)))));
@@ -247,11 +256,12 @@
             this.BtnAgregar.HoverBackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(48)))), ((int)(((byte)(149)))), ((int)(((byte)(183)))));
             this.BtnAgregar.HoverTextColor = System.Drawing.Color.Yellow;
             this.BtnAgregar.ImagePosition = XanderUI.XUISuperButton.imgPosition.Left;
-            this.BtnAgregar.Location = new System.Drawing.Point(74, 672);
+            this.BtnAgregar.Location = new System.Drawing.Point(83, 840);
+            this.BtnAgregar.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.BtnAgregar.Name = "BtnAgregar";
             this.BtnAgregar.SelectedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(144)))), ((int)(((byte)(247)))));
             this.BtnAgregar.SelectedTextColor = System.Drawing.Color.White;
-            this.BtnAgregar.Size = new System.Drawing.Size(138, 47);
+            this.BtnAgregar.Size = new System.Drawing.Size(155, 59);
             this.BtnAgregar.SuperSelected = false;
             this.BtnAgregar.TabIndex = 81;
             this.BtnAgregar.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(245)))), ((int)(((byte)(255)))));
@@ -264,9 +274,9 @@
             this.gunaLabel5.BackColor = System.Drawing.Color.White;
             this.gunaLabel5.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.gunaLabel5.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(79)))), ((int)(((byte)(101)))));
-            this.gunaLabel5.Location = new System.Drawing.Point(108, 160);
+            this.gunaLabel5.Location = new System.Drawing.Point(122, 200);
             this.gunaLabel5.Name = "gunaLabel5";
-            this.gunaLabel5.Size = new System.Drawing.Size(63, 20);
+            this.gunaLabel5.Size = new System.Drawing.Size(77, 25);
             this.gunaLabel5.TabIndex = 80;
             this.gunaLabel5.Text = "Equipo :";
             // 
@@ -276,9 +286,9 @@
             this.gunaLabel4.BackColor = System.Drawing.Color.White;
             this.gunaLabel4.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.gunaLabel4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(79)))), ((int)(((byte)(101)))));
-            this.gunaLabel4.Location = new System.Drawing.Point(108, 306);
+            this.gunaLabel4.Location = new System.Drawing.Point(122, 382);
             this.gunaLabel4.Name = "gunaLabel4";
-            this.gunaLabel4.Size = new System.Drawing.Size(68, 20);
+            this.gunaLabel4.Size = new System.Drawing.Size(83, 25);
             this.gunaLabel4.TabIndex = 78;
             this.gunaLabel4.Text = "Modelo :";
             // 
@@ -288,9 +298,9 @@
             this.gunaLabel3.BackColor = System.Drawing.Color.White;
             this.gunaLabel3.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.gunaLabel3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(79)))), ((int)(((byte)(101)))));
-            this.gunaLabel3.Location = new System.Drawing.Point(119, 233);
+            this.gunaLabel3.Location = new System.Drawing.Point(134, 291);
             this.gunaLabel3.Name = "gunaLabel3";
-            this.gunaLabel3.Size = new System.Drawing.Size(57, 20);
+            this.gunaLabel3.Size = new System.Drawing.Size(69, 25);
             this.gunaLabel3.TabIndex = 77;
             this.gunaLabel3.Text = "Marca :";
             // 
@@ -300,9 +310,9 @@
             this.gunaLabel2.BackColor = System.Drawing.Color.White;
             this.gunaLabel2.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.gunaLabel2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(60)))), ((int)(((byte)(79)))), ((int)(((byte)(101)))));
-            this.gunaLabel2.Location = new System.Drawing.Point(108, 99);
+            this.gunaLabel2.Location = new System.Drawing.Point(122, 124);
             this.gunaLabel2.Name = "gunaLabel2";
-            this.gunaLabel2.Size = new System.Drawing.Size(49, 20);
+            this.gunaLabel2.Size = new System.Drawing.Size(59, 25);
             this.gunaLabel2.TabIndex = 75;
             this.gunaLabel2.Text = "Serie :";
             // 
@@ -314,9 +324,10 @@
             this.TabLista.Controls.Add(this.TxtBuscarCliente);
             this.TabLista.Controls.Add(this.DGordenservicio);
             this.TabLista.Location = new System.Drawing.Point(4, 20);
+            this.TabLista.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.TabLista.Name = "TabLista";
-            this.TabLista.Padding = new System.Windows.Forms.Padding(3);
-            this.TabLista.Size = new System.Drawing.Size(1289, 783);
+            this.TabLista.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.TabLista.Size = new System.Drawing.Size(1451, 985);
             this.TabLista.TabIndex = 1;
             this.TabLista.Text = "Lista";
             // 
@@ -328,9 +339,11 @@
             this.groupBox2.Controls.Add(this.CHKMarca);
             this.groupBox2.Controls.Add(this.CHKModelo);
             this.groupBox2.Controls.Add(this.CHKEquipo);
-            this.groupBox2.Location = new System.Drawing.Point(258, 9);
+            this.groupBox2.Location = new System.Drawing.Point(290, 11);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(1025, 99);
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.groupBox2.Size = new System.Drawing.Size(1153, 124);
             this.groupBox2.TabIndex = 91;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Equipo";
@@ -340,9 +353,10 @@
             this.cbmodelocons.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.cbmodelocons.Enabled = false;
             this.cbmodelocons.FormattingEnabled = true;
-            this.cbmodelocons.Location = new System.Drawing.Point(565, 18);
+            this.cbmodelocons.Location = new System.Drawing.Point(636, 22);
+            this.cbmodelocons.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.cbmodelocons.Name = "cbmodelocons";
-            this.cbmodelocons.Size = new System.Drawing.Size(216, 24);
+            this.cbmodelocons.Size = new System.Drawing.Size(242, 28);
             this.cbmodelocons.TabIndex = 94;
             // 
             // cbmarca2
@@ -350,9 +364,10 @@
             this.cbmarca2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.cbmarca2.Enabled = false;
             this.cbmarca2.FormattingEnabled = true;
-            this.cbmarca2.Location = new System.Drawing.Point(146, 63);
+            this.cbmarca2.Location = new System.Drawing.Point(164, 79);
+            this.cbmarca2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.cbmarca2.Name = "cbmarca2";
-            this.cbmarca2.Size = new System.Drawing.Size(216, 24);
+            this.cbmarca2.Size = new System.Drawing.Size(242, 28);
             this.cbmarca2.TabIndex = 93;
             // 
             // CBEquipoLista
@@ -360,9 +375,10 @@
             this.CBEquipoLista.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.CBEquipoLista.Enabled = false;
             this.CBEquipoLista.FormattingEnabled = true;
-            this.CBEquipoLista.Location = new System.Drawing.Point(147, 18);
+            this.CBEquipoLista.Location = new System.Drawing.Point(165, 22);
+            this.CBEquipoLista.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.CBEquipoLista.Name = "CBEquipoLista";
-            this.CBEquipoLista.Size = new System.Drawing.Size(216, 24);
+            this.CBEquipoLista.Size = new System.Drawing.Size(242, 28);
             this.CBEquipoLista.TabIndex = 92;
             // 
             // CHKMarca
@@ -373,9 +389,10 @@
             this.CHKMarca.CheckedOnColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
             this.CHKMarca.Enabled = false;
             this.CHKMarca.FillColor = System.Drawing.Color.White;
-            this.CHKMarca.Location = new System.Drawing.Point(10, 69);
+            this.CHKMarca.Location = new System.Drawing.Point(11, 86);
+            this.CHKMarca.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.CHKMarca.Name = "CHKMarca";
-            this.CHKMarca.Size = new System.Drawing.Size(92, 20);
+            this.CHKMarca.Size = new System.Drawing.Size(107, 22);
             this.CHKMarca.TabIndex = 83;
             this.CHKMarca.Text = "Por marca";
             this.CHKMarca.CheckedChanged += new System.EventHandler(this.CHKMarca_CheckedChanged);
@@ -388,9 +405,10 @@
             this.CHKModelo.CheckedOnColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
             this.CHKModelo.Enabled = false;
             this.CHKModelo.FillColor = System.Drawing.Color.White;
-            this.CHKModelo.Location = new System.Drawing.Point(408, 22);
+            this.CHKModelo.Location = new System.Drawing.Point(459, 28);
+            this.CHKModelo.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.CHKModelo.Name = "CHKModelo";
-            this.CHKModelo.Size = new System.Drawing.Size(99, 20);
+            this.CHKModelo.Size = new System.Drawing.Size(115, 22);
             this.CHKModelo.TabIndex = 84;
             this.CHKModelo.Text = "Por modelo";
             this.CHKModelo.CheckedChanged += new System.EventHandler(this.CHKModelo_CheckedChanged);
@@ -402,9 +420,10 @@
             this.CHKEquipo.CheckedOffColor = System.Drawing.Color.Gray;
             this.CHKEquipo.CheckedOnColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
             this.CHKEquipo.FillColor = System.Drawing.Color.White;
-            this.CHKEquipo.Location = new System.Drawing.Point(12, 24);
+            this.CHKEquipo.Location = new System.Drawing.Point(14, 30);
+            this.CHKEquipo.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.CHKEquipo.Name = "CHKEquipo";
-            this.CHKEquipo.Size = new System.Drawing.Size(96, 20);
+            this.CHKEquipo.Size = new System.Drawing.Size(113, 22);
             this.CHKEquipo.TabIndex = 85;
             this.CHKEquipo.Text = "Por Equipo";
             this.CHKEquipo.CheckedChanged += new System.EventHandler(this.CHKCategoria_CheckedChanged);
@@ -412,9 +431,11 @@
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.TxtEquipo);
-            this.groupBox1.Location = new System.Drawing.Point(14, 6);
+            this.groupBox1.Location = new System.Drawing.Point(16, 8);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(238, 60);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.groupBox1.Size = new System.Drawing.Size(268, 75);
             this.groupBox1.TabIndex = 90;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Serie";
@@ -428,10 +449,11 @@
             this.TxtEquipo.FocusedBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(245)))), ((int)(((byte)(255)))));
             this.TxtEquipo.FocusedForeColor = System.Drawing.SystemColors.ControlText;
             this.TxtEquipo.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.TxtEquipo.Location = new System.Drawing.Point(22, 21);
+            this.TxtEquipo.Location = new System.Drawing.Point(25, 26);
+            this.TxtEquipo.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.TxtEquipo.Name = "TxtEquipo";
             this.TxtEquipo.PasswordChar = '\0';
-            this.TxtEquipo.Size = new System.Drawing.Size(200, 30);
+            this.TxtEquipo.Size = new System.Drawing.Size(225, 42);
             this.TxtEquipo.TabIndex = 82;
             // 
             // TxtBuscarCliente
@@ -446,11 +468,12 @@
             this.TxtBuscarCliente.HoverBackgroundColor = System.Drawing.Color.IndianRed;
             this.TxtBuscarCliente.HoverTextColor = System.Drawing.Color.Yellow;
             this.TxtBuscarCliente.ImagePosition = XanderUI.XUISuperButton.imgPosition.Left;
-            this.TxtBuscarCliente.Location = new System.Drawing.Point(17, 72);
+            this.TxtBuscarCliente.Location = new System.Drawing.Point(19, 90);
+            this.TxtBuscarCliente.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.TxtBuscarCliente.Name = "TxtBuscarCliente";
             this.TxtBuscarCliente.SelectedBackColor = System.Drawing.Color.LimeGreen;
             this.TxtBuscarCliente.SelectedTextColor = System.Drawing.Color.White;
-            this.TxtBuscarCliente.Size = new System.Drawing.Size(115, 30);
+            this.TxtBuscarCliente.Size = new System.Drawing.Size(129, 38);
             this.TxtBuscarCliente.SuperSelected = false;
             this.TxtBuscarCliente.TabIndex = 89;
             this.TxtBuscarCliente.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(245)))), ((int)(((byte)(255)))));
@@ -460,47 +483,48 @@
             // DGordenservicio
             // 
             this.DGordenservicio.AllowUserToAddRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
-            this.DGordenservicio.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.White;
+            this.DGordenservicio.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
             this.DGordenservicio.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.DGordenservicio.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.DGordenservicio.BackgroundColor = System.Drawing.Color.White;
             this.DGordenservicio.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.DGordenservicio.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.DGordenservicio.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 10.5F);
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DGordenservicio.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 10.5F);
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DGordenservicio.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.DGordenservicio.ColumnHeadersHeight = 38;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 10.5F);
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.DGordenservicio.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Segoe UI", 10.5F);
+            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.DGordenservicio.DefaultCellStyle = dataGridViewCellStyle7;
             this.DGordenservicio.EnableHeadersVisualStyles = false;
             this.DGordenservicio.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            this.DGordenservicio.Location = new System.Drawing.Point(14, 114);
+            this.DGordenservicio.Location = new System.Drawing.Point(16, 142);
+            this.DGordenservicio.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.DGordenservicio.Name = "DGordenservicio";
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DGordenservicio.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DGordenservicio.RowHeadersDefaultCellStyle = dataGridViewCellStyle8;
             this.DGordenservicio.RowHeadersVisible = false;
             this.DGordenservicio.RowTemplate.Height = 24;
             this.DGordenservicio.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.DGordenservicio.Size = new System.Drawing.Size(1269, 642);
+            this.DGordenservicio.Size = new System.Drawing.Size(1428, 802);
             this.DGordenservicio.TabIndex = 80;
             this.DGordenservicio.Theme = Guna.UI.WinForms.GunaDataGridViewPresetThemes.Guna;
             this.DGordenservicio.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
@@ -537,8 +561,9 @@
             this.panelHorizontal.Controls.Add(this.BtnRestaurar);
             this.panelHorizontal.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelHorizontal.Location = new System.Drawing.Point(0, 0);
+            this.panelHorizontal.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panelHorizontal.Name = "panelHorizontal";
-            this.panelHorizontal.Size = new System.Drawing.Size(1307, 37);
+            this.panelHorizontal.Size = new System.Drawing.Size(1470, 46);
             this.panelHorizontal.TabIndex = 65;
             this.panelHorizontal.MouseClick += new System.Windows.Forms.MouseEventHandler(this.panelHorizontal_MouseClick);
             this.panelHorizontal.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.panelHorizontal_MouseDoubleClick);
@@ -567,14 +592,14 @@
             this.btnMinimizar.IconVisible = true;
             this.btnMinimizar.IconZoom = 90D;
             this.btnMinimizar.IsTab = false;
-            this.btnMinimizar.Location = new System.Drawing.Point(1178, 2);
-            this.btnMinimizar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnMinimizar.Location = new System.Drawing.Point(1325, 2);
+            this.btnMinimizar.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnMinimizar.Name = "btnMinimizar";
             this.btnMinimizar.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(100)))), ((int)(((byte)(200)))));
             this.btnMinimizar.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(98)))), ((int)(((byte)(147)))));
             this.btnMinimizar.OnHoverTextColor = System.Drawing.Color.White;
             this.btnMinimizar.selected = false;
-            this.btnMinimizar.Size = new System.Drawing.Size(29, 31);
+            this.btnMinimizar.Size = new System.Drawing.Size(33, 39);
             this.btnMinimizar.TabIndex = 97;
             this.btnMinimizar.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnMinimizar.Textcolor = System.Drawing.Color.White;
@@ -604,14 +629,14 @@
             this.btnMaximizar.IconVisible = true;
             this.btnMaximizar.IconZoom = 90D;
             this.btnMaximizar.IsTab = false;
-            this.btnMaximizar.Location = new System.Drawing.Point(1221, 2);
-            this.btnMaximizar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnMaximizar.Location = new System.Drawing.Point(1374, 2);
+            this.btnMaximizar.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnMaximizar.Name = "btnMaximizar";
             this.btnMaximizar.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(100)))), ((int)(((byte)(200)))));
             this.btnMaximizar.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(98)))), ((int)(((byte)(147)))));
             this.btnMaximizar.OnHoverTextColor = System.Drawing.Color.White;
             this.btnMaximizar.selected = false;
-            this.btnMaximizar.Size = new System.Drawing.Size(29, 31);
+            this.btnMaximizar.Size = new System.Drawing.Size(33, 39);
             this.btnMaximizar.TabIndex = 99;
             this.btnMaximizar.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnMaximizar.Textcolor = System.Drawing.Color.White;
@@ -626,9 +651,9 @@
             this.lblSistemaVenta.AutoSize = true;
             this.lblSistemaVenta.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSistemaVenta.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.lblSistemaVenta.Location = new System.Drawing.Point(3, 6);
+            this.lblSistemaVenta.Location = new System.Drawing.Point(3, 8);
             this.lblSistemaVenta.Name = "lblSistemaVenta";
-            this.lblSistemaVenta.Size = new System.Drawing.Size(111, 28);
+            this.lblSistemaVenta.Size = new System.Drawing.Size(136, 36);
             this.lblSistemaVenta.TabIndex = 3;
             this.lblSistemaVenta.Text = "EQUIPOS";
             this.lblSistemaVenta.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -656,14 +681,14 @@
             this.BtnCerrar.IconVisible = true;
             this.BtnCerrar.IconZoom = 90D;
             this.BtnCerrar.IsTab = false;
-            this.BtnCerrar.Location = new System.Drawing.Point(1264, 3);
-            this.BtnCerrar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.BtnCerrar.Location = new System.Drawing.Point(1422, 4);
+            this.BtnCerrar.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.BtnCerrar.Name = "BtnCerrar";
             this.BtnCerrar.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(100)))), ((int)(((byte)(200)))));
             this.BtnCerrar.OnHovercolor = System.Drawing.Color.Red;
             this.BtnCerrar.OnHoverTextColor = System.Drawing.Color.White;
             this.BtnCerrar.selected = false;
-            this.BtnCerrar.Size = new System.Drawing.Size(29, 31);
+            this.BtnCerrar.Size = new System.Drawing.Size(33, 39);
             this.BtnCerrar.TabIndex = 98;
             this.BtnCerrar.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.BtnCerrar.Textcolor = System.Drawing.Color.White;
@@ -693,14 +718,14 @@
             this.BtnRestaurar.IconVisible = true;
             this.BtnRestaurar.IconZoom = 90D;
             this.BtnRestaurar.IsTab = false;
-            this.BtnRestaurar.Location = new System.Drawing.Point(1219, 2);
-            this.BtnRestaurar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.BtnRestaurar.Location = new System.Drawing.Point(1371, 2);
+            this.BtnRestaurar.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.BtnRestaurar.Name = "BtnRestaurar";
             this.BtnRestaurar.Normalcolor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(100)))), ((int)(((byte)(200)))));
             this.BtnRestaurar.OnHovercolor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(98)))), ((int)(((byte)(147)))));
             this.BtnRestaurar.OnHoverTextColor = System.Drawing.Color.White;
             this.BtnRestaurar.selected = false;
-            this.BtnRestaurar.Size = new System.Drawing.Size(29, 31);
+            this.BtnRestaurar.Size = new System.Drawing.Size(33, 39);
             this.BtnRestaurar.TabIndex = 94;
             this.BtnRestaurar.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.BtnRestaurar.Textcolor = System.Drawing.Color.White;
@@ -709,13 +734,14 @@
             // 
             // FrmEquipo
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(232)))), ((int)(((byte)(232)))));
-            this.ClientSize = new System.Drawing.Size(1307, 862);
+            this.ClientSize = new System.Drawing.Size(1470, 1078);
             this.Controls.Add(this.panelHorizontal);
             this.Controls.Add(this.xuiFlatTab1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "FrmEquipo";
             this.Text = "FrmEquipo";
             this.Load += new System.EventHandler(this.FrmEquipo_Load);

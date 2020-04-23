@@ -105,7 +105,7 @@
             this.txtPrecio.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtPrecio.Font = new System.Drawing.Font("Century Gothic", 21.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPrecio.ForeColor = System.Drawing.Color.ForestGreen;
-            this.txtPrecio.Location = new System.Drawing.Point(170, 104);
+            this.txtPrecio.Location = new System.Drawing.Point(170, 106);
             this.txtPrecio.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.txtPrecio.Name = "txtPrecio";
             this.txtPrecio.ReadOnly = true;
@@ -118,7 +118,7 @@
             this.label2.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(58, 108);
+            this.label2.Location = new System.Drawing.Point(37, 108);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(96, 32);
@@ -130,7 +130,7 @@
             this.lblProducto.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.lblProducto.AutoSize = true;
             this.lblProducto.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblProducto.Location = new System.Drawing.Point(56, 55);
+            this.lblProducto.Location = new System.Drawing.Point(26, 55);
             this.lblProducto.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblProducto.Name = "lblProducto";
             this.lblProducto.Size = new System.Drawing.Size(132, 32);
@@ -296,7 +296,7 @@
             // 
             // panelHorizontal
             // 
-            this.panelHorizontal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(0)))), ((int)(((byte)(170)))));
+            this.panelHorizontal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(100)))), ((int)(((byte)(200)))));
             this.panelHorizontal.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panelHorizontal.Controls.Add(this.btnMaximizar);
             this.panelHorizontal.Controls.Add(this.btnRestaurar);

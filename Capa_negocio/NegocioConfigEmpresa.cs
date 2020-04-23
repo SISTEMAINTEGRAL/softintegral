@@ -42,7 +42,10 @@ namespace Capa_negocio
         public static string emtelefono;
         public static string emmail;
         public static int emcodempresa;
-
+        public static string urllogin = "https://wsaa.afip.gov.ar/ws/services/LoginCms?wsdl";
+        public static string urlservicio = "https://servicios1.afip.gov.ar/wsfev1/service.asmx?WSDL";
+        
+        
 
         public static bool usuariosa;
 

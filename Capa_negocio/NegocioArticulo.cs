@@ -27,7 +27,9 @@ namespace Capa_negocio
         private decimal precio;
         private decimal precioCompra;
         private int pesable;
-
+        private decimal preciopormayor;
+        private decimal cantidadpormayor;
+        private decimal iva;
         public int Pesable
         {
             get { return pesable; }
@@ -38,9 +40,9 @@ namespace Capa_negocio
         private int stockActual;
         private Boolean sindatos;
 
-        public static string insertar(string nombre, string codigo, string descripcion, int idCategoria, decimal precio,int cantInicial,int pesable, decimal preciocompra, decimal utilidad,decimal flete)
+        public static string insertar(string nombre, string codigo, string descripcion, int idCategoria, decimal precio,int cantInicial,int pesable, decimal preciocompra, decimal utilidad,decimal flete, decimal varcantidadpormayor,decimal varpreciopormayor, int idsubcategoria,decimal iva)
         {
-            DatosArticulo dArticulo= new DatosArticulo(nombre,codigo,descripcion,idCategoria,precio,cantInicial,pesable,preciocompra,utilidad,flete, DateTime.Now);
+            DatosArticulo dArticulo= new DatosArticulo(nombre,codigo,descripcion,idCategoria,precio,cantInicial,pesable,preciocompra,utilidad,flete, DateTime.Now,0,"",idsubcategoria,varcantidadpormayor,varpreciopormayor,iva);
             return dArticulo.agregar(dArticulo);
 
         }
@@ -51,9 +53,9 @@ namespace Capa_negocio
             dArticulo.IdArticulo = idArticulo;
             return dArticulo.eliminar(dArticulo);
         }
-        public static string editar(int idArticulo,string nombre, string codigo, string descripcion, int idCategoria,decimal precio,decimal cantInicial,int pesable,decimal preciocompra,decimal utilidad, decimal flete,  DateTime fecha  ,int edicionusuario = 0, string edicionlugar = "")
+        public static string editar(int idArticulo,string nombre, string codigo, string descripcion, int idCategoria,decimal precio,decimal cantInicial,int pesable,decimal preciocompra,decimal utilidad, decimal flete,  DateTime fecha  ,int edicionusuario = 0, string edicionlugar = "", decimal cantidadpormayor =0, decimal preciopormayor=0,int idsubcategoria = 0 , decimal iva = 0)
         {
-            DatosArticulo dArticulo = new DatosArticulo(nombre, codigo, descripcion,idCategoria,precio,cantInicial,pesable,preciocompra,utilidad,flete,fecha,edicionusuario,edicionlugar);
+            DatosArticulo dArticulo = new DatosArticulo(nombre, codigo, descripcion,idCategoria,precio,cantInicial,pesable,preciocompra,utilidad,flete,fecha,edicionusuario,edicionlugar,idsubcategoria,cantidadpormayor,preciopormayor, iva);
             dArticulo.IdArticulo= idArticulo;
             return dArticulo.editar(dArticulo);
         }
@@ -210,6 +212,9 @@ namespace Capa_negocio
             this.precio = ObjArticulo.Precio;
             this.sindatos = ObjArticulo.Sindatos;
             this.pesable = ObjArticulo.Pesable;
+            this.preciopormayor = ObjArticulo.Preciopormayor;
+            this.cantidadpormayor = ObjArticulo.Cantidadpormayor;
+            this.Iva= ObjArticulo.Iva;
 
         }
         public static NegocioArticulo extraerdatosPesable(long codArticulo, string tipo)
@@ -261,9 +266,19 @@ namespace Capa_negocio
             return  ObjArticulo.mostrarPesableXbusqueda(ObjArticulo,tipoBusqueda);
         }
 
-        
+        //productos mayoristas-----------------------------------------
 
+        public static DataTable mostrarpreciomayorista(decimal precio,decimal cantidad, string tipo, int idarticulo)
+        {
+            DatosArticulo objart = new Capa_Datos.DatosArticulo(idarticulo,precio,cantidad,tipo);
+            return objart.preciomayorista(objart);
+        }
 
+        public static string cargarpreciomayorista(List<DatosArticulo> listaArticulo)
+        {
+            DatosArticulo objart = new DatosArticulo();
+            return objart.cargarpreciomayorista(listaArticulo);
+        }
         public Boolean Sindatos
         {
             get { return sindatos; }
@@ -320,6 +335,43 @@ namespace Capa_negocio
             set { precioCompra = value; }
         }
 
-      
+        public decimal Preciopormayor
+        {
+            get
+            {
+                return preciopormayor;
+            }
+
+            set
+            {
+                preciopormayor = value;
+            }
+        }
+
+        public decimal Cantidadpormayor
+        {
+            get
+            {
+                return cantidadpormayor;
+            }
+
+            set
+            {
+                cantidadpormayor = value;
+            }
+        }
+
+        public decimal Iva
+        {
+            get
+            {
+                return iva;
+            }
+
+            set
+            {
+                iva = value;
+            }
+        }
     }
 }

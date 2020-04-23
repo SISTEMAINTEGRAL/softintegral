@@ -18,6 +18,7 @@ namespace SistemaVentas
         //sirve para saber si el boton de despliegue está activo
         Boolean isVentaDesplegado = false;
         Boolean isProductoDesplegado = false;
+        Boolean isStockDesplegado = false;
 
         int InicialusuariosY;
         int InicialproveedorY;
@@ -37,6 +38,9 @@ namespace SistemaVentas
         private FrmListadoVentas objformlistaventa = null;
         private FrmPreciosmasivos objformpreciomasivo = null;
         private FrmConsulta objformconsulta = null;
+        private FrmOrdenAdjudicacion objadj = null;
+        private FrmStockRetirodeMercaderia objmerc = null;
+        private FrmMovStock1 objstock = null;
 
         private FrmConsulta Forminstanciaconsulta
         {
@@ -177,6 +181,55 @@ namespace SistemaVentas
             objformproveedor = null;
         }
 
+        private FrmStockRetirodeMercaderia Forminstanciaretiro
+        {
+            get
+            {
+                if (objmerc == null)
+                {
+                    objmerc = new FrmStockRetirodeMercaderia();
+                    objmerc.Disposed += new EventHandler(form_Disposedmerc);
+                }
+                return objmerc;
+            }
+        }
+        void form_Disposedmerc(object sender, EventArgs e)
+        {
+            objmerc = null;
+        }
+        private FrmMovStock1 Forminstanciastock
+        {
+            get
+            {
+                if (objstock == null)
+                {
+                    objstock = new FrmMovStock1();
+                    objstock.Disposed += new EventHandler(form_Disposedstock);
+                }
+                return objstock;
+            }
+        }
+        void form_Disposedstock(object sender, EventArgs e)
+        {
+            objstock = null;
+        }
+
+        private FrmOrdenAdjudicacion ForminstanciaAdjudicacion
+        {
+            get
+            {
+                if (objadj== null)
+                {
+                    objadj = new FrmOrdenAdjudicacion();
+                    objadj.Disposed += new EventHandler(form_Disposedadjudicacion);
+                }
+                return objadj;
+            }
+        }
+        void form_Disposedadjudicacion(object sender, EventArgs e)
+        {
+            objadj = null;
+        }
         public FrmInicio()
         {
             //le paso al delegado threadStart el metodo abrirformulario
@@ -193,7 +246,7 @@ namespace SistemaVentas
         {
            
             NegocioUsuario objusuario = new NegocioUsuario();
-            panelHorizontal.BackColor = Color.FromArgb(ComponentesFormularios.ColorPanelSuperiorVioleta());
+           // panelHorizontal.BackColor = Color.FromArgb(ComponentesFormularios.ColorPanelSuperiorVioleta());
             
 
             //posicion inicial
@@ -389,7 +442,7 @@ namespace SistemaVentas
 
         private void btnCerrar_MouseLeave(object sender, EventArgs e)
         {
-            btnCerrar.BackColor=Color.FromArgb(ComponentesFormularios.ColorPanelSuperiorVioleta());
+            btnCerrar.BackColor = Color.FromArgb(0, 100, 200);
         }
 
         private void btnRestaurar_MouseMove(object sender, MouseEventArgs e)
@@ -399,7 +452,7 @@ namespace SistemaVentas
 
         private void btnRestaurar_MouseLeave(object sender, EventArgs e)
         {
-            btnRestaurar.BackColor = Color.FromArgb(ComponentesFormularios.ColorPanelSuperiorVioleta());
+            btnRestaurar.BackColor = Color.FromArgb(0, 100, 200);
         }
        
 
@@ -410,7 +463,7 @@ namespace SistemaVentas
 
         private void btnMaximizar_MouseLeave(object sender, EventArgs e)
         {
-            btnMaximizar.BackColor = Color.FromArgb(ComponentesFormularios.ColorPanelSuperiorVioleta());
+            btnMaximizar.BackColor = Color.FromArgb(0, 100, 200);
         }
 
         private void btnMinimizar_MouseMove(object sender, MouseEventArgs e)
@@ -420,7 +473,7 @@ namespace SistemaVentas
 
         private void btnMinimizar_MouseLeave(object sender, EventArgs e)
         {
-            btnMinimizar.BackColor = Color.FromArgb(ComponentesFormularios.ColorPanelSuperiorVioleta());
+            btnMinimizar.BackColor = Color.FromArgb(0, 100, 200);
         }
 
 
@@ -442,7 +495,7 @@ namespace SistemaVentas
             if (btnCategoria.Visible == false && btnListaProducto.Visible == false)
             {
                 
-                if(isVentaDesplegado==true){
+                if(isVentaDesplegado==true || isStockDesplegado == true) {
                 //si se encuentra desplegado se vuelve al Lugar Inicial
                     volverAPosicionInicial();
 
@@ -467,6 +520,8 @@ namespace SistemaVentas
                 pnConfig.Visible = true;
                 BtnPrecioMasivo.Visible = true;
                 Pnlpreciomasivo.Visible = true;
+               
+
 
                 //al hacer click en producto se desplaza los submenus
                 //sumo la posicion actual más un valor preciso para abarcar la posicion exacta
@@ -503,7 +558,7 @@ namespace SistemaVentas
             if (btnGenerarVenta.Visible == false && btnListaVenta.Visible == false)
             {
               
-                if (isProductoDesplegado == true)
+                if (isProductoDesplegado == true || isStockDesplegado == true)
                 {
                     //si se encuentra desplegado se vuelve al Lugar Inicial
                     volverAPosicionInicial();
@@ -571,7 +626,7 @@ namespace SistemaVentas
         private void btnCategoria_Click(object sender, EventArgs e)
         {
             FrmCategoria categoria = new FrmCategoria();
-            abrirMDIParent(categoria);
+            categoria.Show();
         }
 
         private void btnProveedor_Click(object sender, EventArgs e)
@@ -600,10 +655,47 @@ namespace SistemaVentas
         private void btnStock_Click(object sender, EventArgs e)
         {
 
+            //valor constante que se tienen que mover los botones
+            int movimiento = 150;
+
+            if (BtnAdjudicaciones.Visible == false && BtnListaStock.Visible == false && BtnListaStock.Visible == false)
+            {
+
+                if (isStockDesplegado == true || isProductoDesplegado  == true || isVentaDesplegado == true)
+                {
+                    //si se encuentra desplegado se vuelve al Lugar Inicial
+                    volverAPosicionInicial();
+
+                }
+                isStockDesplegado = true;
+               
+                configuracionY = btnConfiguracion.Location.Y;
+                PlAdj.Visible = true;
+                PlRetiro.Visible = true;
+                Plstock.Visible = true;
+
+                BtnListaStock.Visible = true;
+                BtnRetiroMerc.Visible = true;
+                BtnAdjudicaciones.Visible = true;
+               
+
+                
+                btnConfiguracion.Location = new System.Drawing.Point(0, (configuracionY + movimiento));
+                
+                pnConfig.Location = new System.Drawing.Point(0, (configuracionY + movimiento));
+            }
+            else
+            {
+
+                volverAPosicionInicial();
+
+            }
             //Frmstockmov stock = new Frmstockmov();
             //FrmStockmov stock = new FrmStockmov();
-          FrmMovStock1 stock = new FrmMovStock1();
-            stock.ShowDialog();
+
+            //FrmMovStock1 stock = new FrmMovStock1();
+            //stock.ShowDialog();
+
             //abrirMDIParent(stock);
         }
 
@@ -721,6 +813,7 @@ namespace SistemaVentas
         {
             isVentaDesplegado = false;
             isProductoDesplegado = false;
+            isStockDesplegado = false;
 
             btnCategoria.Visible = false;
             btnListaProducto.Visible = false;
@@ -734,6 +827,13 @@ namespace SistemaVentas
             pnGenerarVenta.Visible = false;
             BtnPrecioMasivo.Visible = false;
             Pnlpreciomasivo.Visible = false;
+            BtnRetiroMerc.Visible = false;
+            BtnListaStock.Visible = false;
+            BtnAdjudicaciones.Visible = false;
+            PlRetiro.Visible = false;
+            Plstock.Visible = false;
+            PlAdj.Visible = false;
+            
            
             //al hacer click en producto se contrae los submenus
             //botones
@@ -744,6 +844,7 @@ namespace SistemaVentas
             btnProveedor.Location = new System.Drawing.Point(0, InicialproveedorY);
             btnStock.Location = new System.Drawing.Point(0, (InicialstockY));
             btnConfiguracion.Location = new System.Drawing.Point(0, (InicialConfiguracionY));
+
             //paneles
             pnVentas.Location = new System.Drawing.Point(0, InicialVentasY);
             pnProveedor.Location = new System.Drawing.Point(0, InicialproveedorY);
@@ -781,11 +882,29 @@ namespace SistemaVentas
             
         }
 
-       
+        private void BtnListaStock_Click(object sender, EventArgs e)
+        {
+            
+            objstock = this.Forminstanciastock;
+            objstock.Show();
+            objstock.WindowState = FormWindowState.Maximized;
+            objstock.BringToFront();
+        }
 
-      
+        private void BtnAdjudicaciones_Click(object sender, EventArgs e)
+        {
+            objadj = this.ForminstanciaAdjudicacion;
+            objadj.Show();
+            objadj.WindowState = FormWindowState.Maximized;
+            objadj.BringToFront();
+        }
 
-      
-       
+        private void BtnRetiroMerc_Click(object sender, EventArgs e)
+        {
+            objmerc = this.Forminstanciaretiro;
+            objmerc.Show();
+            objmerc.WindowState = FormWindowState.Maximized;
+            objmerc.BringToFront();
+        }
     }
 }

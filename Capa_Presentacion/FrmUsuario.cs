@@ -155,7 +155,7 @@ namespace Capa_Presentacion
         private void button1_Click(object sender, EventArgs e)
         {
 
-            FrmOrdenPedido pedido = new FrmOrdenPedido();
+            FrmStockRetirodeMercaderia pedido = new FrmStockRetirodeMercaderia();
             pedido.Show();
             //NegocioFElectronica miclase = new Capa_negocio.NegocioFElectronica();
             // miclase.comprobante_electronico(11, 31472915);

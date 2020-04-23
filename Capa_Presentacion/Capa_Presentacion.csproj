@@ -158,6 +158,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DVentaproducto.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Formreportes\TicketProforma.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formreportes\TicketProforma.Designer.cs">
+      <DependentUpon>TicketProforma.cs</DependentUpon>
+    </Compile>
     <Compile Include="Formreportes\Ticketventa.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -181,6 +187,12 @@
     </Compile>
     <Compile Include="FrmArticulos.Designer.cs">
       <DependentUpon>FrmArticulos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Frmasentarpago.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Frmasentarpago.Designer.cs">
+      <DependentUpon>Frmasentarpago.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmAsignarPrecio.cs">
       <SubType>Form</SubType>
@@ -247,6 +259,12 @@
     </Compile>
     <Compile Include="FrmCerrarCaja.Designer.cs">
       <DependentUpon>FrmCerrarCaja.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmClienteCtaCte.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmClienteCtaCte.Designer.cs">
+      <DependentUpon>FrmClienteCtaCte.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmClientes.cs">
       <SubType>Form</SubType>
@@ -434,6 +452,12 @@
     <Compile Include="Frmstockmov.Designer.cs">
       <DependentUpon>Frmstockmov.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmStockRetirodeMercaderia.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmStockRetirodeMercaderia.Designer.cs">
+      <DependentUpon>FrmStockRetirodeMercaderia.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmUnidades.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -468,6 +492,12 @@
       <DependentUpon>Barra.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Reportes\ImpresionRemito.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reportes\ImpresionRemito.Designer.cs">
+      <DependentUpon>ImpresionRemito.cs</DependentUpon>
+    </Compile>
     <Compile Include="Reportes\NotaDeVenta.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -486,11 +516,23 @@
       <DependentUpon>ReporteEtiqueta.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Reportes\REPORTE_REMITO.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reportes\REPORTE_REMITO.Designer.cs">
+      <DependentUpon>REPORTE_REMITO.cs</DependentUpon>
+    </Compile>
     <Compile Include="Reportes\REPORT_TICKET.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Reportes\REPORT_TICKET.Designer.cs">
       <DependentUpon>REPORT_TICKET.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\REPORT_TICKET_PROFORMA.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reportes\REPORT_TICKET_PROFORMA.Designer.cs">
+      <DependentUpon>REPORT_TICKET_PROFORMA.cs</DependentUpon>
     </Compile>
     <Compile Include="Reportes\VentasReducida.cs">
       <AutoGen>True</AutoGen>
@@ -525,6 +567,9 @@
     <EmbeddedResource Include="AboutBox1.resx">
       <DependentUpon>AboutBox1.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Formreportes\TicketProforma.resx">
+      <DependentUpon>TicketProforma.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Formreportes\Ticketventa.resx">
       <DependentUpon>Ticketventa.cs</DependentUpon>
     </EmbeddedResource>
@@ -536,6 +581,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmArticulos.resx">
       <DependentUpon>FrmArticulos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Frmasentarpago.resx">
+      <DependentUpon>Frmasentarpago.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmAsignarPrecio.resx">
       <DependentUpon>FrmAsignarPrecio.cs</DependentUpon>
@@ -569,6 +617,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmCerrarCaja.resx">
       <DependentUpon>FrmCerrarCaja.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmClienteCtaCte.resx">
+      <DependentUpon>FrmClienteCtaCte.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmClientes.resx">
       <DependentUpon>FrmClientes.cs</DependentUpon>
@@ -663,6 +714,9 @@
     <EmbeddedResource Include="Frmstockmov.resx">
       <DependentUpon>Frmstockmov.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmStockRetirodeMercaderia.resx">
+      <DependentUpon>FrmStockRetirodeMercaderia.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmUnidades.resx">
       <DependentUpon>FrmUnidades.cs</DependentUpon>
     </EmbeddedResource>
@@ -683,6 +737,9 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>Barra.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\ImpresionRemito.resx">
+      <DependentUpon>ImpresionRemito.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Reportes\NotaDeVenta.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>NotaDeVenta.cs</LastGenOutput>
@@ -698,8 +755,14 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes\ReportEtiq.rdlc" />
     <EmbeddedResource Include="Reportes\Reporteventas.rdlc" />
+    <EmbeddedResource Include="Reportes\REPORTE_REMITO.resx">
+      <DependentUpon>REPORTE_REMITO.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Reportes\REPORT_TICKET.resx">
       <DependentUpon>REPORT_TICKET.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\REPORT_TICKET_PROFORMA.resx">
+      <DependentUpon>REPORT_TICKET_PROFORMA.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes\VentasReducida.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
@@ -926,6 +989,9 @@
     <None Include="Resources\AFIP2.jpeg" />
     <Content Include="Resources\limpiar4.png" />
     <None Include="Resources\User Male_50px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

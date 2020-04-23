@@ -22,31 +22,81 @@ namespace Capa_Datos
         private string responsableiva;
         private int idprovincia;
         private int idlocalidad;
-
-        public int Idlocalidad
+        private int idcliente;
+        //para ctacte
+        private int codventa;
+        private string estado;
+        private decimal saldo;
+        private decimal pagado;
+        private decimal total;
+        private string modoctacte;
+        private SqlConnection cn;
+        private SqlTransaction sqltra;
+        private string  fechaD;
+        private string fechaH;
+        public string BuscarCliente
         {
-            get { return idlocalidad; }
-            set { idlocalidad = value; }
+            get
+            {
+                return buscarCliente;
+            }
+
+            set
+            {
+                buscarCliente = value;
+            }
         }
 
-        public int Idprovincia
+        public int Codventa
         {
-            get { return idprovincia; }
-            set { idprovincia = value; }
+            get
+            {
+                return codventa;
+            }
+
+            set
+            {
+                codventa = value;
+            }
         }
 
-        public string Responsableiva
-        {
-            get { return responsableiva; }
-            set { responsableiva = value; }
-        }
-       
-      
+        //     @Codcliente as int = 0,
+        //   @Codventa as int = 0,
+        //   @Estado as nvarchar(50) = 'Pendiente',
+        //   @Saldo as money = 0,
+        //   @Pagado as money = 0,
+        //   @Total as money = 0,
+        //@modo as nvarchar(50) = ''
+
+        //Getters and setters
+
+
+
+
         //constructores
         public DatosCliente() { 
         
         }
-        public DatosCliente(string razonSocial,string direccion,int cuit,int tel,int numDocumento,string email, string responsableiva, int varidprovincia, int varidlocalidad)
+        public DatosCliente(int varcodcliente, string  varfechaD, string varfechaH)
+        {
+            this.idcliente = varcodcliente;
+            this.fechaD = varfechaD;
+            this.fechaH = varfechaH;
+        }
+        public DatosCliente(ref SqlConnection miconexion, ref SqlTransaction mitransaccion,int varcodcliente, int varcodventa, decimal varsaldo, decimal vartotal, decimal varpagado, string varestado, string varmodoctacte)
+
+        {
+            this.cn = miconexion;
+            this.sqltra = mitransaccion;
+            this.idcliente = varcodcliente;
+            this.Codventa = varcodventa;
+            this.saldo = varsaldo;
+            this.total = vartotal;
+            this.pagado = varpagado;
+            this.estado = varestado;
+            this.modoctacte = varmodoctacte;
+        }
+        public DatosCliente(string razonSocial,string direccion,long cuit,long tel,long numDocumento,string email, string responsableiva, int varidprovincia, int varidlocalidad)
         {
             
            this.razonSocial=razonSocial;
@@ -60,17 +110,32 @@ namespace Capa_Datos
             this.idlocalidad = varidlocalidad;
          }
 
-        public DatosCliente(int varidprovincia)
+        public DatosCliente(int varidcliente)
         {
-            idprovincia = varidprovincia;
+            idcliente = varidcliente;
         
         }
-        
+        public DatosCliente(int idprovincia =0, int idlocalidad = 0 )
+        {
+            this.idlocalidad = idlocalidad;
+            this.idprovincia = idprovincia;
+        }
+        public DatosCliente (int varcodcliente, int varcodventa, decimal varsaldo, decimal vartotal, decimal varpagado, string varestado, string varmodoctacte)
+        {
+            this.idcliente = varcodcliente;
+            this.Codventa = varcodventa;
+            this.saldo = varsaldo;
+            this.total = vartotal;
+            this.pagado = varpagado;
+            this.estado = varestado;
+            this.modoctacte = varmodoctacte;
+
+        }
         //crud
         public string agregar(DatosCliente cliente)
         {
             //modo 1 para DB
-            SqlConnection cn = new SqlConnection(Conexion.conexion);
+             cn = new SqlConnection(Conexion.conexion);
             string respuesta = "";
             try
             {
@@ -86,26 +151,26 @@ namespace Capa_Datos
                 //le paso al sqlcommand los parametros asignados
                 comando.Parameters.Add(parIdCliente);
 
-                SqlParameter parRazonSocial = ProcAlmacenado.asignarParametros("@razon_social", SqlDbType.VarChar, cliente.RazonSocial,150);
+                SqlParameter parRazonSocial = ProcAlmacenado.asignarParametros("@razon_social", SqlDbType.VarChar, cliente.razonSocial,150);
                 //le paso al sqlcommand los parametros asignados
                 comando.Parameters.Add(parRazonSocial);
 
-                SqlParameter parCuit= ProcAlmacenado.asignarParametros("@cuit", SqlDbType.BigInt, cliente.Cuit);
+                SqlParameter parCuit= ProcAlmacenado.asignarParametros("@cuit", SqlDbType.BigInt, cliente.cuit);
                 comando.Parameters.Add(parCuit);
 
-                SqlParameter parTel = ProcAlmacenado.asignarParametros("@telefono", SqlDbType.BigInt, cliente.Tel, 50);
+                SqlParameter parTel = ProcAlmacenado.asignarParametros("@telefono", SqlDbType.BigInt, cliente.tel, 50);
                 comando.Parameters.Add(parTel);
 
-                SqlParameter parNumDocumento = ProcAlmacenado.asignarParametros("@num_documento", SqlDbType.BigInt, cliente.NumDocumento);
+                SqlParameter parNumDocumento = ProcAlmacenado.asignarParametros("@num_documento", SqlDbType.BigInt, cliente.numDocumento);
                 comando.Parameters.Add(parNumDocumento);
 
-                SqlParameter parEmail = ProcAlmacenado.asignarParametros("@email", SqlDbType.VarChar, cliente.Email, 50);
+                SqlParameter parEmail = ProcAlmacenado.asignarParametros("@email", SqlDbType.VarChar, cliente.email, 50);
                 comando.Parameters.Add(parEmail);
                 
-                SqlParameter parDireccion = ProcAlmacenado.asignarParametros("@direccion", SqlDbType.VarChar, cliente.Direccion, 50);
+                SqlParameter parDireccion = ProcAlmacenado.asignarParametros("@direccion", SqlDbType.VarChar, cliente.direccion, 50);
                 comando.Parameters.Add(parDireccion);
 
-                SqlParameter parFechaNacimiento = ProcAlmacenado.asignarParametros("@fecha_nacimiento", SqlDbType.Date, cliente.FechaNacimiento);
+                SqlParameter parFechaNacimiento = ProcAlmacenado.asignarParametros("@fecha_nacimiento", SqlDbType.Date, cliente.fechaNacimiento);
                 comando.Parameters.Add(parFechaNacimiento);
 
                 SqlParameter parResponsableiva = ProcAlmacenado.asignarParametros("@responsableiva", SqlDbType.NVarChar, cliente.responsableiva);
@@ -139,7 +204,7 @@ namespace Capa_Datos
         public string editar(DatosCliente cliente)
         {
             //modo 2 para DB
-            SqlConnection cn = new SqlConnection(Conexion.conexion);
+             cn = new SqlConnection(Conexion.conexion);
             string respuesta = "";
             try
             {
@@ -153,27 +218,27 @@ namespace Capa_Datos
                 SqlParameter parModo = ProcAlmacenado.asignarParametros("@modo", SqlDbType.Int, 2);
                 comando.Parameters.Add(parModo);
 
-                SqlParameter parIdCliente = ProcAlmacenado.asignarParametros("@idcliente", SqlDbType.Int,cliente.IdCliente);
+                SqlParameter parIdCliente = ProcAlmacenado.asignarParametros("@idcliente", SqlDbType.Int,cliente.idcliente);
                 //le paso al sqlcommand los parametros asignados
                 comando.Parameters.Add(parIdCliente);
 
-                SqlParameter parRazonSocial = ProcAlmacenado.asignarParametros("@razon_social", SqlDbType.VarChar, cliente.RazonSocial, 150);
+                SqlParameter parRazonSocial = ProcAlmacenado.asignarParametros("@razon_social", SqlDbType.VarChar, cliente.razonSocial, 150);
                 //le paso al sqlcommand los parametros asignados
                 comando.Parameters.Add(parRazonSocial);
 
-                SqlParameter parCuit = ProcAlmacenado.asignarParametros("@cuit", SqlDbType.BigInt, cliente.Cuit);
+                SqlParameter parCuit = ProcAlmacenado.asignarParametros("@cuit", SqlDbType.BigInt, cliente.cuit);
                 comando.Parameters.Add(parCuit);
 
-                SqlParameter parTel = ProcAlmacenado.asignarParametros("@telefono", SqlDbType.BigInt, cliente.Tel, 50);
+                SqlParameter parTel = ProcAlmacenado.asignarParametros("@telefono", SqlDbType.BigInt, cliente.tel, 50);
                 comando.Parameters.Add(parTel);
 
-                SqlParameter parNumDocumento = ProcAlmacenado.asignarParametros("@num_documento", SqlDbType.BigInt, cliente.NumDocumento);
+                SqlParameter parNumDocumento = ProcAlmacenado.asignarParametros("@num_documento", SqlDbType.BigInt, cliente.numDocumento);
                 comando.Parameters.Add(parNumDocumento);
 
-                SqlParameter parEmail = ProcAlmacenado.asignarParametros("@email", SqlDbType.VarChar, cliente.Email, 50);
+                SqlParameter parEmail = ProcAlmacenado.asignarParametros("@email", SqlDbType.VarChar, cliente.email, 50);
                 comando.Parameters.Add(parEmail);
 
-                SqlParameter parDireccion = ProcAlmacenado.asignarParametros("@direccion", SqlDbType.VarChar, cliente.Direccion, 50);
+                SqlParameter parDireccion = ProcAlmacenado.asignarParametros("@direccion", SqlDbType.VarChar, cliente.direccion, 50);
                 comando.Parameters.Add(parDireccion);
                 SqlParameter parFechaNacimiento = ProcAlmacenado.asignarParametros("@fecha_nacimiento", SqlDbType.Date, cliente.fechaNacimiento, 50);
                 comando.Parameters.Add(parFechaNacimiento);
@@ -207,7 +272,7 @@ namespace Capa_Datos
         public string eliminar(DatosCliente cliente)
         {
             //modo 3 para DB
-            SqlConnection cn = new SqlConnection(Conexion.conexion);
+             cn = new SqlConnection(Conexion.conexion);
             string respuesta = "";
             try
             {
@@ -218,7 +283,7 @@ namespace Capa_Datos
                 SqlParameter parModo = ProcAlmacenado.asignarParametros("@modo", SqlDbType.Int, 3);
                 comando.Parameters.Add(parModo);
            
-                SqlParameter parIdProveedor = ProcAlmacenado.asignarParametros("@idproveedor", SqlDbType.Int, cliente.IdCliente);
+                SqlParameter parIdProveedor = ProcAlmacenado.asignarParametros("@idproveedor", SqlDbType.Int, cliente.idProveedor);
                 comando.Parameters.Add(parIdProveedor);
 
 
@@ -243,7 +308,7 @@ namespace Capa_Datos
         public DataTable buscarTexto(DatosCliente cliente)
         {
             //Modo 4 para DB
-            SqlConnection cn = new SqlConnection(Conexion.conexion);
+             cn = new SqlConnection(Conexion.conexion);
             //le asigno en el constructor el nombre de la tabla
             DataTable dtResult = new DataTable("cliente");
             try
@@ -260,7 +325,7 @@ namespace Capa_Datos
                 SqlParameter parModo = ProcAlmacenado.asignarParametros("@modo", SqlDbType.Int, 4);
                 comando.Parameters.Add(parModo);
 
-                SqlParameter parIdCliente = ProcAlmacenado.asignarParametros("@idcliente", SqlDbType.Int, cliente.IdCliente);
+                SqlParameter parIdCliente = ProcAlmacenado.asignarParametros("@idcliente", SqlDbType.Int, cliente.idcliente);
                 comando.Parameters.Add(parIdCliente);
                 //creo el objeto adapter del data provider le paso el sqlcommand
                 SqlDataAdapter datosResult = new SqlDataAdapter(comando);
@@ -281,7 +346,7 @@ namespace Capa_Datos
         public DataTable mostrar()
         {
             //Modo 5 para DB
-            SqlConnection cn = new SqlConnection(Conexion.conexion);
+             cn = new SqlConnection(Conexion.conexion);
             //le asigno en el constructor el nombre de la tabla
             DataTable dtResult = new DataTable("cliente");
             try
@@ -314,7 +379,7 @@ namespace Capa_Datos
         public DataTable buscarCodigoCliente(DatosCliente cliente, int modo = 6)
         {
             //Modo 6 para DB
-            SqlConnection cn = new SqlConnection(Conexion.conexion);
+             cn = new SqlConnection(Conexion.conexion);
             //le asigno en el constructor el nombre de la tabla
             DataTable dtResult = new DataTable("cliente");
             try
@@ -331,7 +396,7 @@ namespace Capa_Datos
                 SqlParameter parModo = ProcAlmacenado.asignarParametros("@modo", SqlDbType.Int, modo);
                 comando.Parameters.Add(parModo);
 
-                SqlParameter parIdCliente = ProcAlmacenado.asignarParametros("@idcliente", SqlDbType.Int, cliente.IdCliente);
+                SqlParameter parIdCliente = ProcAlmacenado.asignarParametros("@idcliente", SqlDbType.Int, cliente.idcliente);
                 comando.Parameters.Add(parIdCliente);
                 //creo el objeto adapter del data provider le paso el sqlcommand
                 SqlDataAdapter datosResult = new SqlDataAdapter(comando);
@@ -355,7 +420,7 @@ namespace Capa_Datos
         {
            
             //Modo 3 para DB
-            SqlConnection cn = new SqlConnection(Conexion.conexion);
+             cn = new SqlConnection(Conexion.conexion);
             //le asigno en el constructor el nombre de la tabla
             DataTable dtResult = new DataTable("cliente");
             cn.Open();
@@ -384,7 +449,7 @@ namespace Capa_Datos
         public DataTable localidad()
         {
             //Modo 3 para DB
-            SqlConnection cn = new SqlConnection(Conexion.conexion);
+             cn = new SqlConnection(Conexion.conexion);
             //le asigno en el constructor el nombre de la tabla
             DataTable dtResult = new DataTable("cliente");
             cn.Open();
@@ -414,7 +479,7 @@ namespace Capa_Datos
         public DataTable Responsabilidadiva()
         { 
             //Modo 6 para DB
-            SqlConnection cn = new SqlConnection(Conexion.conexion);
+             cn = new SqlConnection(Conexion.conexion);
             //le asigno en el constructor el nombre de la tabla
             DataTable dtResult = new DataTable("cliente");
             try
@@ -447,53 +512,162 @@ namespace Capa_Datos
             }
                 return dtResult ;
             }
-    
-        //Getters and setters
-        public int IdCliente
+        //cta cte de clientes ------------------------------------------------------
+        public string agregaromodificarctacte(DatosCliente cliente)
         {
-            get { return idProveedor; }
-            set { idProveedor = value; }
+            string transaccion = "";
+            //modo 1 para DB
+            if (cn.State == ConnectionState.Closed )
+            {
+                cn = new SqlConnection(Conexion.conexion);
+
+                cn.ConnectionString = Conexion.conexion;
+                cn.Open();
+
+                 sqltra = cn.BeginTransaction();
+                transaccion = "cerrartransaccion";
+
+            }
+            
+            string respuesta = "";
+            try
+            {
+
+                
+                //abro conexion
+                SqlCommand comando = ProcAlmacenado.CrearProc(cn, "SP_CLIENTE_CTACTE",sqltra);
+
+                SqlParameter parModo = ProcAlmacenado.asignarParametros("@modo", SqlDbType.NVarChar, modoctacte);
+                comando.Parameters.Add(parModo);
+
+                SqlParameter parIdCliente = ProcAlmacenado.asignarParametros("@codcliente", SqlDbType.Int,cliente.idcliente);
+                //le paso al sqlcommand los parametros asignados
+                comando.Parameters.Add(parIdCliente);
+
+                SqlParameter parcodventa = ProcAlmacenado.asignarParametros("@codventa", SqlDbType.Int, cliente.Codventa);
+                //le paso al sqlcommand los parametros asignados
+                comando.Parameters.Add(parcodventa);
+
+                SqlParameter parestado = ProcAlmacenado.asignarParametros("@estado", SqlDbType.NVarChar, cliente.estado);
+                comando.Parameters.Add(parestado);
+
+                SqlParameter parsaldo = ProcAlmacenado.asignarParametros("@saldo", SqlDbType.Money, cliente.saldo);
+                comando.Parameters.Add(parsaldo);
+
+                SqlParameter partotal = ProcAlmacenado.asignarParametros("@total", SqlDbType.Money, cliente.total);
+                comando.Parameters.Add(partotal);
+
+                SqlParameter parpagado = ProcAlmacenado.asignarParametros("@pagado", SqlDbType.Money, cliente.pagado);
+                comando.Parameters.Add(parpagado);
+                                               
+                
+
+                if (comando.ExecuteNonQuery() == 1)
+                {
+                    respuesta = "ok";
+
+                }
+                else
+                {
+
+                    respuesta = "error";
+                }
+
+                if (respuesta.Equals("ok") && transaccion == "cerrartransaccion")
+                {
+                    if (transaccion == "cerrartransaccion")
+                    {
+                        sqltra.Commit();
+                        cn.Close();
+                    }
+                    
+                }
+                else if (transaccion == "cerrartransaccion")
+                {
+                    sqltra.Rollback();
+                    cn.Close();
+                }
+                
+            }
+            catch (Exception ex)
+            {
+                respuesta = "error conexion: " + ex.Message;
+                cn.Close();
+            }
+            finally
+            {
+                // && transaccion == "cerrartransaccion"
+                if (cn.State == ConnectionState.Open && transaccion == "cerrartransaccion") cn.Close();
+            }
+            return respuesta;
         }
-        public string RazonSocial
+        public DataTable buscarporcodigoctacte (DatosCliente objcliente)
         {
-            get { return razonSocial; }
-            set { razonSocial = value; }
+            DataTable DtResultado = new DataTable("clientes_ctacte");
+            SqlConnection cn = new SqlConnection(Conexion.conexion);
+
+            try
+            {
+                cn.Open();
+
+                SqlCommand sqlcmd = ProcAlmacenado.CrearProc(cn, "SP_CLIENTE_CTACTE");
+                //Modo 4 Mostrar
+                SqlParameter parModo = ProcAlmacenado.asignarParametros("@modo", SqlDbType.NVarChar, "buscarporcodigo");
+                sqlcmd.Parameters.Add(parModo);
+                SqlParameter parcodcliente = ProcAlmacenado.asignarParametros("@codcliente", SqlDbType.Int, idcliente);
+                sqlcmd.Parameters.Add(parcodcliente);
+                SqlParameter parfechaD = ProcAlmacenado.asignarParametros("@fechaD", SqlDbType.NVarChar, fechaD);
+                sqlcmd.Parameters.Add(parfechaD);
+                SqlParameter parfechaH = ProcAlmacenado.asignarParametros("@FechaH", SqlDbType.NVarChar, fechaH);
+                sqlcmd.Parameters.Add(parfechaH);
+                SqlDataAdapter sqldat = new SqlDataAdapter(sqlcmd);
+                sqldat.Fill(DtResultado);
+            }
+            catch (Exception ex)
+            {
+                DtResultado = null;
+                throw ex;
+            }
+            return DtResultado;
+
         }
-        public string Direccion
+        public string actualizacionesctacte(DataTable midata)
         {
-            get { return direccion; }
-            set { direccion = value; }
+            string respuesta = "";
+            DatosCliente objcliente = new DatosCliente();
+            cn = new SqlConnection(Conexion.conexion);
+
+            cn.ConnectionString = Conexion.conexion;
+            cn.Open();
+
+            sqltra = cn.BeginTransaction();
+
+            try
+            {
+                foreach (DataRow row in midata.Rows)
+                {
+                    objcliente.saldo = Convert.ToDecimal(row["saldo"].ToString());
+                    objcliente.total = Convert.ToDecimal(row["total"].ToString());
+                    objcliente.pagado = Convert.ToDecimal(row["pagado"].ToString());
+                    objcliente.estado = row["saldo"].ToString();
+                    objcliente.codventa = Convert.ToInt32(row["codventa"].ToString()) ;
+                    agregaromodificarctacte(objcliente);
+                }
+                
+            }
+            catch (Exception ex)
+            {
+                respuesta = "error conexion: " + ex.Message;
+                cn.Close();
+            }
+            finally
+            {
+                if (cn.State == ConnectionState.Open) cn.Close();
+            }
+            return respuesta;
+
         }
-        public long Cuit
-        {
-            get { return cuit; }
-            set { cuit = value; }
-        }
-        public long Tel
-        {
-            get { return tel; }
-            set { tel = value; }
-        }
-        public long NumDocumento
-        {
-            get { return numDocumento; }
-            set { numDocumento = value; }
-        }
-        public string Email
-        {
-            get { return email; }
-            set { email = value; }
-        }
-        public string BuscarCliente
-        {
-            get { return buscarCliente; }
-            set { buscarCliente = value; }
-        }
-        public DateTime FechaNacimiento
-        {
-            get { return fechaNacimiento; }
-            set { fechaNacimiento = value; }
-        }
-       
+
+
     }
 }

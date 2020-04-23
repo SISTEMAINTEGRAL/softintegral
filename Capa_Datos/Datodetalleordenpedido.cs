@@ -109,8 +109,13 @@ namespace Capa_Datos
                 cantidadactual = value;
             }
         }
-
-        public string Insertar(Datodetalleordenpedido Detalle_Pedido, ref SqlConnection sqlcon, ref SqlTransaction sqltra)
+        public Datodetalleordenpedido(int varorden)
+        {
+            this.norden = varorden;
+        }
+        public Datodetalleordenpedido()
+        { }
+        public string insertaromodificar(Datodetalleordenpedido Detalle_Pedido, ref SqlConnection sqlcon, ref SqlTransaction sqltra, string agregaromodificar = "agregar")
         {
             string rpta = "";
 
@@ -134,10 +139,12 @@ namespace Capa_Datos
                 SqlParameter parcanparcial = ProcAlmacenado.asignarParametros("@cantidadparcial", SqlDbType.Money, Detalle_Pedido.cantidadparcial);
                 sqlcmd.Parameters.Add(parcanparcial);
                 //ver
-                SqlParameter parmodo = ProcAlmacenado.asignarParametros("@modo", SqlDbType.NVarChar, "agregardetalle");
+                SqlParameter parmodo = ProcAlmacenado.asignarParametros("@modo", SqlDbType.NVarChar, "agregaromodificardetalle");
                 sqlcmd.Parameters.Add(parmodo);
 
-                
+                SqlParameter paropcargaromodificar = ProcAlmacenado.asignarParametros("@opagregaromodificar", SqlDbType.NVarChar, agregaromodificar);
+                sqlcmd.Parameters.Add(paropcargaromodificar);
+
                 rpta = sqlcmd.ExecuteNonQuery() >= 1 ? "OK" : "NO se ingreso el registro";
 
             }
@@ -147,6 +154,70 @@ namespace Capa_Datos
             }
 
             return rpta;
+        }
+        public DataTable consultadetalla(Datodetalleordenpedido detalle)
+        {
+            SqlConnection cn = new SqlConnection(Conexion.conexion);
+            DataTable dtResult = new DataTable("ordendetalle");
+
+            try
+            {
+                SqlParameter[] dbParams = new SqlParameter[]
+                   {
+                        ProcAlmacenado2.MakeParam ("@modo",SqlDbType.NVarChar,50,"consulta"),
+                        ProcAlmacenado2.MakeParam ("@norden",SqlDbType.Int,0,detalle.norden)
+
+
+                   };
+                dtResult = ProcAlmacenado2.ExecuteDatatable("SP_ORDENPEDIDODETALLE", dbParams);
+            }
+            catch (Exception)
+            {
+
+                throw;
+
+            }
+
+            return dtResult;
+        }
+
+        public string eliminardetalle(Datodetalleordenpedido detalle)
+        {
+            //modo 3 para DB
+            SqlConnection cn = new SqlConnection(Conexion.conexion);
+            string respuesta = "";
+            try
+            {
+                cn.Open();
+                //abro conexion
+                SqlCommand comando = ProcAlmacenado.CrearProc(cn, "SP_ORDENPEDIDODETALLE");
+                //MODO 3 ELIMINAR
+                SqlParameter parModo = ProcAlmacenado.asignarParametros("@modo", SqlDbType.NVarChar, "eliminardetalle");
+                comando.Parameters.Add(parModo);
+
+                SqlParameter parnorden = ProcAlmacenado.asignarParametros("@norden", SqlDbType.Int, detalle.norden);
+                //le paso al sqlcommand los parametros asignados
+                comando.Parameters.Add(parnorden);
+
+
+                if (comando.ExecuteNonQuery() == 1)
+                {
+                    respuesta = "ok";
+                }
+                else
+                {
+                    respuesta = "error: no se ha podido eliminar";
+                }
+                cn.Close();
+            }
+            catch (Exception ex)
+            {
+                cn.Close();
+                respuesta = "error conexion: " + ex.Message;
+            }
+            return respuesta;
+            string lo = "";
+            return lo;
         }
     }
 }

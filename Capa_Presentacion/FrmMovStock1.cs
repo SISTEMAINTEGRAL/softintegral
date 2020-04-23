@@ -341,8 +341,8 @@ namespace Capa_Presentacion
         {
             if (e.KeyCode == Keys.Enter)
             {
-                dataListaMov.CurrentRow.Cells["cantidad1"].Value = TxtcambioDv.Text;
-                TxtcambioDv.Visible = false;
+                //dataListaMov.CurrentRow.Cells["cantidad1"].Value = TxtcambioDv.Text;
+                //TxtcambioDv.Visible = false;
 
             }
             if (e.KeyCode == Keys.Down)
@@ -459,7 +459,7 @@ namespace Capa_Presentacion
 
         private void btnMinimizar_MouseLeave(object sender, EventArgs e)
         {
-            btnMinimizar.BackColor = Color.FromArgb(100, 0, 180);
+            btnMinimizar.BackColor = Color.FromArgb(0,100,200);
         }
 
         private void btnMinimizar_MouseMove(object sender, MouseEventArgs e)
@@ -469,7 +469,7 @@ namespace Capa_Presentacion
 
         private void btnMaximizar_MouseLeave(object sender, EventArgs e)
         {
-            btnMaximizar.BackColor = Color.FromArgb(100, 0, 180);
+            btnMaximizar.BackColor = Color.FromArgb(0,100,200);
         }
 
         private void btnMaximizar_MouseMove(object sender, MouseEventArgs e)
@@ -479,7 +479,7 @@ namespace Capa_Presentacion
 
         private void btnRestaurar_MouseLeave(object sender, EventArgs e)
         {
-            btnRestaurar.BackColor = Color.FromArgb(100, 0, 180);
+            btnRestaurar.BackColor = Color.FromArgb(0,100,200);
         }
 
         private void btnRestaurar_MouseMove(object sender, MouseEventArgs e)
@@ -489,7 +489,7 @@ namespace Capa_Presentacion
 
         private void btnCerrar_MouseLeave(object sender, EventArgs e)
         {
-            btnCerrar.BackColor = Color.FromArgb(ComponentesFormularios.ColorPanelSuperiorVioleta());
+            btnCerrar.BackColor = Color.FromArgb(0,100,200);
         }
 
         private void btnCerrar_MouseMove(object sender, MouseEventArgs e)
@@ -591,10 +591,9 @@ namespace Capa_Presentacion
 
         }
 
-        
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
 
-
-
-
-  }
+        }
+    }
 }

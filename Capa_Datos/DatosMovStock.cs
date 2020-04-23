@@ -94,7 +94,7 @@ namespace Capa_Datos
 
                     respuesta = "ok";
                     movStock.IdmovStock = Convert.ToInt32(comando.Parameters["@idmov_stock"].Value);
-                    //agrego los de talle de movstock
+                    //agrego los detalle de movstock
                     foreach (DatosDetalleMovStock detalle in detalleMovStock)
                     {
                         detalle.IdMovStock = movStock.idmovStock;
@@ -109,7 +109,8 @@ namespace Capa_Datos
                     foreach (DatosArticulo articulos in listaArticulos)
                     {
                         //le paso el string de movimiento realizado para diferencia entre egreso y egreso
-                        respuesta2 = articulos.actualizarPrecioStock(articulos,ref cn,ref transaccion,movStock.Movimiento);
+                        //respuesta2 = articulos.actualizarPrecioStock(articulos,ref cn,ref transaccion,movStock.Movimiento);
+                        respuesta = Modificarstock(articulos.IdArticulo, articulos.StockActual, ref cn, ref transaccion, movStock.movimiento);
                         if (!respuesta.Equals("ok"))
                         {
                             break;
@@ -118,7 +119,7 @@ namespace Capa_Datos
                     }
                     //si ocurrio algun error hace un rollback
                     //o sino confirma la trasaccion con un commit
-                    if (respuesta.Equals("ok")&&respuesta2.Equals("ok"))
+                    if (respuesta.Equals("ok"))
                     {
 
                         transaccion.Commit();
@@ -149,6 +150,44 @@ namespace Capa_Datos
             return respuesta;
         }
 
+        public string Modificarstock(int idarticulo, decimal cantidad, ref SqlConnection sqlcon, ref SqlTransaction sqltrans,string movingresooegreso = "INGRESO")
+        {
+            string rpta = "";
+
+            try
+            {
+                //   sqlcon.ConnectionString = Conexion.conexion;
+                //  sqlcon.Open();
+
+                //Creo un procedimiento almacenado y se pasa al sqlCommand
+                if (movingresooegreso == "EGRESO")
+                {
+                    cantidad = System.Math.Abs (cantidad)  * (-1);
+                }
+                SqlCommand sqlcmd = ProcAlmacenado.CrearProc(sqlcon, "SP_DETALLEMOVSTOCK",sqltrans);
+
+                SqlParameter paridarticulo = ProcAlmacenado.asignarParametros("@idarticulo", SqlDbType.Int, idarticulo);
+                sqlcmd.Parameters.Add(paridarticulo);
+
+                SqlParameter paridDetalleMovStock = ProcAlmacenado.asignarParametros("@iddetalle_movStock", SqlDbType.Int);
+                sqlcmd.Parameters.Add(paridDetalleMovStock);
+
+                SqlParameter parcantidad = ProcAlmacenado.asignarParametros("@cantidad", SqlDbType.Decimal, cantidad);
+                sqlcmd.Parameters.Add(parcantidad);
+
+                SqlParameter parModo = ProcAlmacenado.asignarParametros("@modo", SqlDbType.Int, 3);
+                sqlcmd.Parameters.Add(parModo);
+
+                rpta = sqlcmd.ExecuteNonQuery() == 1 ? "ok" : "No se actualizo el stock";
+
+                
+            }
+            catch (Exception ex)
+            {
+                rpta = ex.Message;
+            }
+            return rpta;
+        }
         public string anular(DatosMovStock detalleMovStock)
         {
             //modo 3 para DB

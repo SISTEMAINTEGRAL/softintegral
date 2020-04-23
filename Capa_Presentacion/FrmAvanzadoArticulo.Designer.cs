@@ -120,7 +120,7 @@
             this.CHEQUEO.ReadOnly = true;
             this.CHEQUEO.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.CHEQUEO.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.CHEQUEO.Width = 45;
+            this.CHEQUEO.Width = 49;
             // 
             // txtDes
             // 
@@ -279,7 +279,7 @@
             // 
             // panelHorizontal
             // 
-            this.panelHorizontal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(0)))), ((int)(((byte)(170)))));
+            this.panelHorizontal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(100)))), ((int)(((byte)(200)))));
             this.panelHorizontal.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panelHorizontal.Controls.Add(this.btnMaximizar);
             this.panelHorizontal.Controls.Add(this.btnRestaurar);
@@ -304,6 +304,8 @@
             this.btnMaximizar.TabIndex = 5;
             this.btnMaximizar.TabStop = false;
             this.btnMaximizar.Click += new System.EventHandler(this.btnMaximizar_Click);
+            this.btnMaximizar.MouseLeave += new System.EventHandler(this.btnMaximizar_MouseLeave);
+            this.btnMaximizar.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btnMaximizar_MouseMove);
             // 
             // btnRestaurar
             // 
@@ -317,6 +319,8 @@
             this.btnRestaurar.TabStop = false;
             this.btnRestaurar.Visible = false;
             this.btnRestaurar.Click += new System.EventHandler(this.btnRestaurar_Click);
+            this.btnRestaurar.MouseLeave += new System.EventHandler(this.btnRestaurar_MouseLeave);
+            this.btnRestaurar.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btnRestaurar_MouseMove);
             // 
             // btnMinimizar
             // 
@@ -329,6 +333,8 @@
             this.btnMinimizar.TabIndex = 1;
             this.btnMinimizar.TabStop = false;
             this.btnMinimizar.Click += new System.EventHandler(this.btnMinimizar_Click);
+            this.btnMinimizar.MouseLeave += new System.EventHandler(this.btnMinimizar_MouseLeave);
+            this.btnMinimizar.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btnMinimizar_MouseMove);
             // 
             // btnCerrar
             // 
@@ -342,6 +348,8 @@
             this.btnCerrar.TabIndex = 0;
             this.btnCerrar.TabStop = false;
             this.btnCerrar.Click += new System.EventHandler(this.btnCerrar_Click);
+            this.btnCerrar.MouseLeave += new System.EventHandler(this.btnCerrar_MouseLeave);
+            this.btnCerrar.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btnCerrar_MouseMove);
             // 
             // lblSistemaVenta
             // 
@@ -360,6 +368,7 @@
             // 
             // contextMenuStrip1
             // 
+            this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.MenuDeleteall});
             this.contextMenuStrip1.Name = "contextMenuStrip1";

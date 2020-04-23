@@ -28,7 +28,12 @@ namespace Capa_Datos
         private DateTime fecha;
         private int editarusuario;
         private string editarlugar;
+        private string tipo;
+        private decimal iva;
 
+        private decimal preciopormayor;
+        private decimal cantidadpormayor;
+        private int idsubcategoria;
         public decimal Flete
         {
             get { return flete; }
@@ -142,6 +147,58 @@ namespace Capa_Datos
             }
         }
 
+        public decimal Preciopormayor
+        {
+            get
+            {
+                return preciopormayor;
+            }
+
+            set
+            {
+                preciopormayor = value;
+            }
+        }
+
+        public decimal Cantidadpormayor
+        {
+            get
+            {
+                return cantidadpormayor;
+            }
+
+            set
+            {
+                cantidadpormayor = value;
+            }
+        }
+
+        public int Idsubcategoria
+        {
+            get
+            {
+                return idsubcategoria;
+            }
+
+            set
+            {
+                idsubcategoria = value;
+            }
+        }
+
+        public decimal Iva
+        {
+            get
+            {
+                return iva;
+            }
+
+            set
+            {
+                iva = value;
+            }
+        }
+
 
 
 
@@ -149,7 +206,7 @@ namespace Capa_Datos
         public DatosArticulo() { 
         
         }
-        public DatosArticulo(string nombre,string codigo,string descripcion,int idCategoria,decimal precio,decimal cantInicial, int pesable,decimal varpreciocompra, decimal varutilidad, decimal varflete, DateTime varfecha, int varedicionusuario = 0, string varlugaredicion = "")
+        public DatosArticulo(string nombre,string codigo,string descripcion,int idCategoria,decimal precio,decimal cantInicial, int pesable,decimal varpreciocompra, decimal varutilidad, decimal varflete, DateTime varfecha, int varedicionusuario = 0, string varlugaredicion = "", int varidsubcategoria = 0, decimal varcantidadpormayor = 0, decimal varpreciopormayor = 0, decimal iva = 0)
         {
             this.idCategoria = idCategoria;
             this.nombre = nombre;
@@ -164,12 +221,19 @@ namespace Capa_Datos
             this.fecha = varfecha;
             this.editarlugar = varlugaredicion;
             this.editarusuario = varedicionusuario;
+            this.Idsubcategoria = varidsubcategoria;
+            this.Preciopormayor = varpreciopormayor;
+            this.Cantidadpormayor = varcantidadpormayor;
+            this.iva = iva;
+            
 
          }
-        public DatosArticulo(int idArticulo,decimal precio)
+        public DatosArticulo(int idArticulo,decimal precio, decimal cantidad = 0, string tipo = "")
         {
             this.idArticulo = idArticulo;
             this.precio = precio;
+            this.stockActual = cantidad;
+            this.tipo = tipo;
         }
         public DatosArticulo(int idArticulo, decimal precio,decimal precioCompra,decimal utilidad)
         {
@@ -194,7 +258,7 @@ namespace Capa_Datos
             this.idArticulo = idarticulo;
         
         }
-
+        
         public string agregar(DatosArticulo articulo)
         {
             //modo 1 para DB
@@ -244,6 +308,18 @@ namespace Capa_Datos
 
                 SqlParameter parFlete = ProcAlmacenado.asignarParametros("@flete", SqlDbType.Money, articulo.flete);
                 comando.Parameters.Add(parFlete);
+
+                SqlParameter paridsubcategoria = ProcAlmacenado.asignarParametros("@idsubcategoria", SqlDbType.Int, articulo.Idsubcategoria);
+                comando.Parameters.Add(paridsubcategoria);
+
+                SqlParameter parpreciopormayor = ProcAlmacenado.asignarParametros("@preciopormayor", SqlDbType.Money, articulo.Preciopormayor);
+                comando.Parameters.Add(parpreciopormayor);
+
+                SqlParameter parcantidadmayorista = ProcAlmacenado.asignarParametros("@cantidadpormayor", SqlDbType.Money, articulo.Cantidadpormayor );
+                comando.Parameters.Add(parcantidadmayorista);
+
+                SqlParameter pariva = ProcAlmacenado.asignarParametros("@iva", SqlDbType.Decimal , articulo.Iva);
+                comando.Parameters.Add(pariva);
 
                 if (comando.ExecuteNonQuery() == 1)
                 {
@@ -322,6 +398,18 @@ namespace Capa_Datos
 
                 SqlParameter paredicionlugar = ProcAlmacenado.asignarParametros("@edicionlugar", SqlDbType.NVarChar, articulo.editarlugar);
                 comando.Parameters.Add(paredicionlugar);
+
+                SqlParameter parpreciopormayor = ProcAlmacenado.asignarParametros("@preciopormayor", SqlDbType.Decimal, articulo.Preciopormayor);
+                comando.Parameters.Add(parpreciopormayor);
+
+                SqlParameter parcantidadpormayor = ProcAlmacenado.asignarParametros("@cantidadpormayor", SqlDbType.Decimal, articulo.Cantidadpormayor);
+                comando.Parameters.Add(parcantidadpormayor);
+
+                SqlParameter paridsubcategoria= ProcAlmacenado.asignarParametros("@idsubcategoria", SqlDbType.Int, articulo.Idsubcategoria);
+                comando.Parameters.Add(paridsubcategoria);
+
+                SqlParameter pariva = ProcAlmacenado.asignarParametros("@iva", SqlDbType.Decimal, articulo.iva);
+                comando.Parameters.Add(pariva);
 
                 if (comando.ExecuteNonQuery() == 1)
                 {
@@ -712,11 +800,11 @@ namespace Capa_Datos
 
             if (tipo == "poridarticulo")
             {
-                query = "SELECT idarticulo,codigo ,nombre ,descripcion ,idcategoria ,precio,stock_actual,pesable FROM articulo WHERE idarticulo = @id";
+                query = "SELECT idarticulo,codigo ,nombre ,descripcion ,idcategoria ,precio,stock_actual,pesable,cantidadpormayor, preciopormayor,iva FROM articulo WHERE idarticulo = @id";
             }
             if (tipo == "porbarra")
             {
-                query = "SELECT idarticulo,codigo ,nombre ,descripcion ,idcategoria ,precio,stock_actual,pesable FROM articulo WHERE codigo = @id";
+                query = "SELECT idarticulo,codigo ,nombre ,descripcion ,idcategoria ,precio,stock_actual,pesable,cantidadpormayor, preciopormayor,iva FROM articulo WHERE codigo = @id";
             }
 
            
@@ -746,6 +834,10 @@ namespace Capa_Datos
                 this.descripcion = Convert.ToString(reader["descripcion"]);
                 this.precio = Convert.ToDecimal(reader["precio"]);
                 this.pesable = Convert.ToBoolean(reader["pesable"]) == true ? 1:0;
+                this.Cantidadpormayor = Convert.ToDecimal(reader["cantidadpormayor"]);
+                this.Preciopormayor = Convert.ToDecimal(reader["preciopormayor"]);
+                this.iva = Convert.ToDecimal(reader["iva"]);
+
                 this.sindatos = true;
             }
 
@@ -769,11 +861,11 @@ namespace Capa_Datos
 
                 if (tipo == "poridarticulo")
                 {
-                    query = "SELECT idarticulo,codigo ,nombre ,descripcion ,idcategoria ,precio,stock_actual FROM articulo WHERE idarticulo = @id and pesable=1";
+                    query = "SELECT idarticulo,codigo ,nombre ,descripcion ,idcategoria ,precio,stock_actual,cantidadpormayor, preciopormayor FROM articulo WHERE idarticulo = @id and pesable=1";
                 }
                 if (tipo == "porbarra")
                 {
-                    query = "SELECT idarticulo,codigo ,nombre ,descripcion ,idcategoria ,precio,stock_actual FROM articulo WHERE codigo = @id  and pesable=1";
+                    query = "SELECT idarticulo,codigo ,nombre ,descripcion ,idcategoria ,precio,stock_actual,cantidadpormayor, preciopormayor FROM articulo WHERE codigo = @id  and pesable=1";
                 }
             }
            
@@ -793,6 +885,8 @@ namespace Capa_Datos
                 this.nombre = Convert.ToString(reader["nombre"]);
                 this.descripcion = Convert.ToString(reader["descripcion"]);
                 this.precio = Convert.ToDecimal(reader["precio"]);
+                this.Cantidadpormayor = Convert.ToDecimal(reader["cantidadpormayor"]);
+                this.Preciopormayor = Convert.ToDecimal(reader["preciopormayor"]);
                 this.sindatos = true;
             }
 
@@ -814,10 +908,10 @@ namespace Capa_Datos
 
             if (tipo == "pornombre" && pesable == false)
             {
-                query = "SELECT top 1 idarticulo,codigo ,nombre ,descripcion ,idcategoria ,precio,stock_actual FROM articulo WHERE nombre = @nombre and estado=1";
+                query = "SELECT top 1 idarticulo,codigo ,nombre ,descripcion ,idcategoria ,precio,stock_actual,cantidadpormayor, preciopormayor FROM articulo WHERE nombre = @nombre and estado=1";
             }
             else if (tipo == "pornombre"&&pesable==true) {
-                query = "SELECT top 1 idarticulo,codigo ,nombre ,descripcion ,idcategoria ,precio,stock_actual FROM articulo WHERE nombre = @nombre and estado=1 and pesable=1";
+                query = "SELECT top 1 idarticulo,codigo ,nombre ,descripcion ,idcategoria ,precio,stock_actual,cantidadpormayor, preciopormayor FROM articulo WHERE nombre = @nombre and estado=1 and pesable=1";
             
             }
 
@@ -837,6 +931,8 @@ namespace Capa_Datos
                 this.nombre = Convert.ToString(reader["nombre"]);
                 this.descripcion = Convert.ToString(reader["descripcion"]);
                 this.precio = Convert.ToDecimal(reader["precio"]);
+                this.Cantidadpormayor = Convert.ToDecimal(reader["cantidadpormayor"]);
+                this.Preciopormayor = Convert.ToDecimal(reader["preciopormayor"]);
                 this.sindatos = true;
             }
 
@@ -997,6 +1093,141 @@ namespace Capa_Datos
             }
             
             return respuesta;
+        }
+
+        //Productos mayoristas
+
+        public DataTable preciomayorista(DatosArticulo objart)
+        {
+            //Modo 5 para DB
+            SqlConnection cn = new SqlConnection(Conexion.conexion);
+            //le asigno en el constructor el nombre de la tabla
+            DataTable dtResult = new DataTable("articulo");
+            try
+            {
+                cn.Open();
+
+                SqlCommand comando = ProcAlmacenado.CrearProc(cn, "SP_ARTICULO");
+                //Modo 5 MOSTRAR
+                SqlParameter parModo = ProcAlmacenado.asignarParametros("@modovarchar", SqlDbType.Int, "preciopormayor");
+                comando.Parameters.Add(parModo);
+                //Asigno al parametro @idcategoria, aunque no lo use
+                SqlParameter parcodigo= ProcAlmacenado.asignarParametros("@idarticulo", SqlDbType.Int,objart.idArticulo);
+                comando.Parameters.Add(parcodigo);
+
+                SqlParameter parcantidad = ProcAlmacenado.asignarParametros("@stockactual", SqlDbType.Int, objart.stockActual);
+                comando.Parameters.Add(parcantidad);
+
+                SqlParameter partipo= ProcAlmacenado.asignarParametros("@tipo", SqlDbType.NVarChar, objart.tipo);
+                comando.Parameters.Add(partipo);
+                //creo el objeto adapter del data provider le paso el sqlcommand
+                SqlDataAdapter datosResult = new SqlDataAdapter(comando);
+                //los resultados los actualizo en el datatable dtResult
+                datosResult.Fill(dtResult);
+
+            }
+            catch (Exception ex)
+            {
+                dtResult = null;
+                throw ex;
+            }
+            return dtResult;
+        }
+
+        public string cargarpreciomayorista(List<DatosArticulo> listaArticulo)
+        {
+
+            //modo 9 para DB
+            SqlConnection cn = new SqlConnection(Conexion.conexion);
+
+            string respuesta = "";
+            try
+            {
+
+                cn.Open();
+                //abro conexion
+                SqlTransaction transaccion = cn.BeginTransaction();
+                
+                respuesta = "ok";
+
+                bool eliminar = true;
+                //actualizo los datos de los productos
+                foreach (DatosArticulo articulo in listaArticulo)
+                {
+                    SqlCommand comando = ProcAlmacenado.CrearProc(cn, "SP_ARTICULO", transaccion);
+
+                    SqlParameter parModo = ProcAlmacenado.asignarParametros("@modovarchar", SqlDbType.Int, "preciopormayor");
+                    comando.Parameters.Add(parModo);
+                    //Asigno al parametro @idcategoria, aunque no lo use
+                    SqlParameter parcodigo = ProcAlmacenado.asignarParametros("@idarticulo", SqlDbType.Int, Convert.ToInt32(articulo.idArticulo) );
+                    comando.Parameters.Add(parcodigo);
+
+                    SqlParameter parcantidad = ProcAlmacenado.asignarParametros("@stockactual", SqlDbType.Int, articulo.stockActual);
+                    comando.Parameters.Add(parcantidad);
+
+                    SqlParameter partipo = ProcAlmacenado.asignarParametros("@tipo", SqlDbType.NVarChar, articulo.tipo);
+                    comando.Parameters.Add(partipo);
+
+                    SqlParameter parprecio = ProcAlmacenado.asignarParametros("@precio", SqlDbType.Decimal, articulo.precio);
+                    comando.Parameters.Add(parprecio);
+
+
+                    SqlParameter pareliminar = ProcAlmacenado.asignarParametros("@eliminar", SqlDbType.Bit, eliminar);
+                    comando.Parameters.Add(pareliminar);
+
+                    if (eliminar == true)
+                    {
+                        eliminar = false;
+                    }
+
+                    if (comando.ExecuteNonQuery() == 1)
+                    {
+                        respuesta = "ok";
+                    }
+                    else
+                    {
+                        //si ocurre un error sale del foreach
+                        respuesta = "error en la edición";
+                        break;
+                    }
+
+
+
+                }
+                //si ocurrio algun error hace un rollback
+                //o sino confirma la trasaccion con un commit
+                if (respuesta.Equals("ok"))
+                {
+
+                    transaccion.Commit();
+                }
+                else
+                {
+                    transaccion.Rollback();
+                }
+
+
+
+
+            }
+            catch (Exception ex)
+            {
+                respuesta = "error conexion: " + ex.Message;
+
+            }
+            finally
+            {
+                if (cn.State == ConnectionState.Open)
+                {
+
+                    cn.Close();
+                }
+            }
+
+            return respuesta;
+            
+            
+
         }
 
       

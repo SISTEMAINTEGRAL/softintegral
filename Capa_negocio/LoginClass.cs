@@ -16,6 +16,7 @@ using System.Windows.Forms;
 using Capa_Datos;
 using System.Data;
 using System.Data.SqlClient;
+using Capa_negocio.AFIP.WSAA;
 namespace Capa_negocio
 {
     class LoginClass
@@ -174,7 +175,7 @@ namespace Capa_negocio
                 ExpirationTimeNode.InnerText = DateTime.Now.AddMinutes(+10).ToString("s");
                 uniqueIdNode.InnerText = Convert.ToString(_globalId);
                 ServiceNode.InnerText = serv;
-
+                
                 // Obtenemos el Cert
                 Certificado = new X509Certificate2();
                 if (clave.IsReadOnly())
@@ -202,10 +203,10 @@ namespace Capa_negocio
                
 
                
-                var servicio = new AFIP.WSAA.LoginCMSService();
-                string url = "https://wsaahomo.afip.gov.ar/ws/services/LoginCms";
+                var servicio = new LoginCMSService();
+                string url = NegocioConfigEmpresa.urllogin;
                 servicio.Url = url;
-
+                
                 if (miclaseticket.verificartiketfiscal() == false)
                 {
 
@@ -225,7 +226,7 @@ namespace Capa_negocio
                     miclaseticket.Sign = sing;
                     miclaseticket.Fecha = expirationtime;
                     miclaseticket.agregarticket(miclaseticket);
-
+                    
                 }
                 else
                 {

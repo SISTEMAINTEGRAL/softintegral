@@ -301,7 +301,7 @@ namespace Capa_Datos
                 comando.Parameters.Add(parFecha);
                            
 
-                if (comando.ExecuteNonQuery() > 1)
+                if (comando.ExecuteNonQuery() >= 1)
                 {
                     respuesta = "ok";
                 }

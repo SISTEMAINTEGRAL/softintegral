@@ -179,7 +179,8 @@ using Capa_Datos;
             get { return subtotal; }
             set { subtotal = value; }
         }
-
+        
+    
    
 
     public decimal Totalneto
@@ -273,6 +274,32 @@ using Capa_Datos;
         }
     }
 
+    public decimal Totalneto105
+    {
+        get
+        {
+            return totalneto105;
+        }
+
+        set
+        {
+            totalneto105 = value;
+        }
+    }
+
+    public decimal Precioiva105
+    {
+        get
+        {
+            return precioiva105;
+        }
+
+        set
+        {
+            precioiva105 = value;
+        }
+    }
+
     private int idequipo;
     private decimal totalneto;
     private decimal precioiva;
@@ -280,6 +307,8 @@ using Capa_Datos;
     private string caevencimiento;
     private string numerotipofactura;
     private string puntoventa;
+    private decimal totalneto105;
+    private decimal precioiva105;
         public Dventa()
         { }
         public Dventa(int trabajador, int idventa, int idcliente, DateTime fecha, string tipo_comprobante, string serie,string varnrocomprobante, decimal iva)
@@ -311,44 +340,13 @@ using Capa_Datos;
 
         //Metodo
 
-        public string DisminuirStock(int idarticulo, decimal cantidad)
-        {
-            string rpta = "";
-            SqlConnection sqlcon = new SqlConnection();
-            try
-            {
-                sqlcon.ConnectionString = Conexion.conexion;
-                sqlcon.Open();
-
-                //Creo un procedimiento almacenado y se pasa al sqlCommand
-                SqlCommand sqlcmd = ProcAlmacenado.CrearProc(sqlcon, "SP_DETALLEMOVSTOCK");
-
-                SqlParameter paridarticulo = ProcAlmacenado.asignarParametros("@idarticulo", SqlDbType.Int,idarticulo );
-                sqlcmd.Parameters.Add(paridarticulo );
-
-                SqlParameter paridDetalleMovStock = ProcAlmacenado.asignarParametros("@iddetalle_movStock", SqlDbType.Int);
-                sqlcmd.Parameters.Add(paridDetalleMovStock);
-
-                SqlParameter parcantidad = ProcAlmacenado.asignarParametros("@cantidad", SqlDbType.Decimal, cantidad );
-                sqlcmd.Parameters.Add(parcantidad);
-
-                SqlParameter parModo = ProcAlmacenado.asignarParametros("@modo", SqlDbType.Int, 3);
-                sqlcmd.Parameters.Add(parModo);
-
-                rpta = sqlcmd.ExecuteNonQuery() == 1 ? "OK" : "No se actualizo el stock";
-
-            }
-            catch (Exception ex)
-            {
-                rpta = ex.Message;
-            }
-            return rpta;
-        }
+       
 
         public string Insertar(Dventa Venta, List <DDetalle_Venta> Detalle, bool distock = false)
         {
             string rpta = "";
             SqlConnection sqlcon = new SqlConnection();
+            DatosMovStock objstock = new Capa_Datos.DatosMovStock();
 
             try
             {
@@ -438,12 +436,18 @@ using Capa_Datos;
             SqlParameter parpuntoventa = ProcAlmacenado.asignarParametros("@puntoventa", SqlDbType.NVarChar, Venta.puntoventa);
             sqlcmd.Parameters.Add(parpuntoventa);
 
+            SqlParameter parneto105 = ProcAlmacenado.asignarParametros("@totalneto105", SqlDbType.Decimal, Venta.Totalneto105);
+            sqlcmd.Parameters.Add(parneto105);
+
+            SqlParameter pariva105= ProcAlmacenado.asignarParametros("@precioiva105", SqlDbType.Decimal, Venta.Precioiva105);
+            sqlcmd.Parameters.Add(pariva105);
+
             rpta = sqlcmd.ExecuteNonQuery () >= 1 ? "OK" : "No se ingreso el registro";
 
                 if (rpta.Equals("OK"))
                 {
                     Venta.Idventa   = Convert.ToInt32(sqlcmd.Parameters["@idventa"].Value);
-                    
+                
                     
                     foreach (DDetalle_Venta det in Detalle)
                     {
@@ -456,7 +460,7 @@ using Capa_Datos;
                         else
                         {
                             //actualizamos el stock
-                            if (distock == true && det.Idarticulo != 0) { rpta = DisminuirStock(det.Idarticulo, det.Cantidad); }  
+                            if (distock == true && det.Idarticulo != 0) { rpta = objstock.Modificarstock(det.Idarticulo, det.Cantidad,ref sqlcon,ref sqltra,"egreso"); }  
                             if (!rpta.Equals("OK"))
                             {
                                 break;
@@ -465,7 +469,13 @@ using Capa_Datos;
                         }
 
                     }
+
+                if (Venta.codformapago == 3)
+                {
+                    DatosCliente objcliente = new DatosCliente(ref sqlcon, ref sqltra,Venta.idcliente,Venta.idventa ,Venta.total,Venta.total,0,"pendiente","ingresarctacte");
+                    objcliente.agregaromodificarctacte(objcliente);
                 }
+            }
 
                 if (rpta.Equals("OK"))
                 {

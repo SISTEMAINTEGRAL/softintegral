@@ -12,40 +12,19 @@ namespace Capa_negocio
     {
         public static string insertar(string razonSocial, string direccion, long cuit,DateTime fechaNacimiento, long tel, long numDocumento, string email, string responsableanteiva, int idprovincia, int idlocalidad)
         {
-            DatosCliente cliente = new DatosCliente();
-            cliente.RazonSocial= razonSocial;
-            cliente.Direccion = direccion;
-            cliente.Cuit= cuit;
-            cliente.Tel= tel;
-            cliente.NumDocumento = numDocumento;
-            cliente.Email = email;
-            cliente.FechaNacimiento = fechaNacimiento;
-            cliente.Responsableiva  = responsableanteiva;
-            cliente.Idprovincia = idprovincia;
-            cliente.Idlocalidad = idlocalidad;
+            DatosCliente cliente = new DatosCliente(razonSocial, direccion, cuit, tel, numDocumento, email, responsableanteiva, idprovincia, idlocalidad);
+            
             return cliente.agregar(cliente);
         }
         public static string eliminar(int idCliente)
         {
-            DatosCliente cliente = new DatosCliente();
-            cliente.IdCliente=idCliente;
+            DatosCliente cliente = new DatosCliente(idCliente);
+            
             return cliente.eliminar(cliente);
 }
         public static string editar(int idCliente, string razonSocial, string direccion, long cuit, DateTime fechaNacimiento, long tel, long numDocumento, string email, string responsableiva, int idprovincia, int idlocalidad)
         {
-            DatosCliente cliente = new DatosCliente();
-            cliente.RazonSocial=razonSocial;
-            cliente.Direccion = direccion;
-            cliente.Cuit = cuit;
-            cliente.Tel = tel;
-            cliente.NumDocumento = numDocumento;
-            cliente.Email = email;
-            cliente.IdCliente = idCliente;
-            cliente.FechaNacimiento = fechaNacimiento;
-            cliente.Responsableiva = responsableiva;
-            cliente.Idprovincia = idprovincia;
-            cliente.Idlocalidad = idlocalidad;
-
+            DatosCliente cliente = new DatosCliente(razonSocial,direccion,cuit,tel,numDocumento,email,responsableiva,idprovincia,idlocalidad);
             return cliente.editar(cliente);
         }
         public static DataTable buscar(string texto)
@@ -76,11 +55,36 @@ namespace Capa_negocio
             return new DatosCliente().provincia();
         }
 
-        public static DataTable localidad(int idlocalidad)
+        public static DataTable localidad(int idprovincia)
         {
-            return new DatosCliente(idlocalidad).localidad();
+            return new DatosCliente(idprovincia,0).localidad();
         
         }
+        //ctacte----------------------------------------------------------------------------------------
+        public static string agregarctacte (int codcliente, int codventa, string estado, decimal saldo, decimal pagado, decimal total)
+        {
+            DatosCliente objcliente = new DatosCliente(codcliente, codventa, saldo, total, pagado, estado, "ingresarctacte");
+            return objcliente.agregaromodificarctacte(objcliente);
         }
+        public static string modificarctacte(int codcliente, int codventa, string estado, decimal saldo, decimal pagado, decimal total)
+        {
+            DatosCliente objcliente = new DatosCliente(codcliente, codventa, saldo, total, pagado, estado, "modificarctacte");
+            return objcliente.agregaromodificarctacte(objcliente);
+        }
+
+        public static DataTable buscarporcodigoctacte (int codcliente, string fechaD, string fechaH)
+        {
+            DatosCliente objcliente = new DatosCliente(codcliente, fechaD,fechaH);
+            return objcliente.buscarporcodigoctacte(objcliente);
+
+        }
+        public static string modificarlistactacte(DataTable midata)
+        {
+            DatosCliente objcliente = new DatosCliente();
+            
+            return objcliente.actualizacionesctacte(midata);
+        }
+
+    }
  }
 

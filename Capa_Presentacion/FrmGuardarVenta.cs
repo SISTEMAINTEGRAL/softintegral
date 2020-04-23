@@ -38,6 +38,8 @@ namespace Capa_Presentacion
         private decimal importecuota = 0;
         private string nombretarjeta = "";
         private string razonsocial;
+        private decimal iva105;
+        private decimal neto105;
 
         public string Razonsocial
         {
@@ -151,7 +153,7 @@ namespace Capa_Presentacion
         }
 
         Negociocomprobantes objcomprobante = new Negociocomprobantes();
-        public FrmGuardarVenta(decimal totalAPagar,int idCliente, decimal ventaiva, decimal ventaneto, string formapago, string nombretarjeta, decimal importecuota, int cuota, int codtarjeta, string cuit, string razonsocial, string tipocomprobante, string responsableiva, string domicilio)
+        public FrmGuardarVenta(decimal totalAPagar,int idCliente, decimal ventaiva, decimal ventaneto, string formapago, string nombretarjeta, decimal importecuota, int cuota, int codtarjeta, string cuit, string razonsocial, string tipocomprobante, string responsableiva, string domicilio, decimal variva105 = 0, decimal varneto105 = 0)
         {
            
             InitializeComponent();
@@ -173,7 +175,8 @@ namespace Capa_Presentacion
             this.tipofactura = tipocomprobante;
             this.domicilio = domicilio;
             this.responsableiva = responsableiva;
-            
+            this.neto105 = varneto105;
+            this.iva105 = variva105;
             
         }
 
@@ -280,6 +283,10 @@ namespace Capa_Presentacion
                 importe = Convert.ToDecimal(lblImportecuota.Text);
                 codformapago = 2;
             }
+            if (formapago == "ctacte")
+            {
+                codformapago = 3;
+            }
 
             
             /*IMPORTANTE HACER NOTA DE VENTA PARA IMPRIMIR*/
@@ -307,11 +314,11 @@ namespace Capa_Presentacion
                 {
                     if (responsableiva != "EX")
                     {
-                        var = Decimal.Round(Convert.ToDecimal(fila.Cells["Precio"].Value) / Convert.ToDecimal(1.21), 2);
+                        var = Decimal.Round(Convert.ToDecimal(fila.Cells["CPrecio"].Value) / Convert.ToDecimal(1.21), 2);
                     }
                     else
                     {
-                        var = Decimal.Round(Convert.ToDecimal(fila.Cells["Precio"].Value),2);
+                        var = Decimal.Round(Convert.ToDecimal(fila.Cells["CPrecio"].Value),2);
                     }
                   
                   //Math.Round(decValue, 2, MidpointRounding.AwayFromZero)
@@ -322,7 +329,7 @@ namespace Capa_Presentacion
                  //cantidad = var.ToString("0.00", nfi);
                     //recorro la lista pasado por paramentro y asigno al datatable para generar la transaccion
                     //dt.Rows.Add(fila.Cells["Codigo"].Value, fila.Cells["Precio"].Value, fila.Cells["Cantidad"].Value, fila.Cells["Descuento"].Value, fila.Cells["Importe"].Value);
-                 dt.Rows.Add(fila.Cells["Codigo"].Value, fila.Cells["Precio"].Value, fila.Cells["Cantidad"].Value, fila.Cells["Descuento"].Value, fila.Cells["Importe"].Value, fila.Cells["Producto"].Value, precioneto, fila.Cells["Dpesable"].Value);
+                 dt.Rows.Add(fila.Cells["Codigo"].Value, fila.Cells["CPrecio"].Value, fila.Cells["Cantidad"].Value, fila.Cells["Descuento"].Value, fila.Cells["Importe"].Value, fila.Cells["Producto"].Value, precioneto, fila.Cells["Dpesable"].Value);
 
 
 
@@ -332,10 +339,17 @@ namespace Capa_Presentacion
               
               try
               {
-                  if (NegocioConfigEmpresa.confsistema("facturar").ToString() == "True" && tipo_comprobante == "NOTA DE VENTA") 
-                  { 
-                     msg = objcomprobante.factura(NegocioConfigEmpresa.marcafiscal, dt, Convert.ToDouble(txtTotalAPagar.Text), NegocioConfigEmpresa.modelofiscal, NegocioConfigEmpresa.puertofiscal, 
-                      1,razonsocial,razonsocial == "CONSUMIDOR FINAL" ? "99999999999": cuit,domicilio,tipofactura,responsableiva,tipofactura,tipofactura,Convert.ToDouble ( neto), Convert.ToDouble(iva));
+                  if (NegocioConfigEmpresa.confsistema("facturar").ToString() == "True" && tipo_comprobante == "NOTA DE VENTA" && tipofactura != "X") 
+                  {
+                        if (NegocioConfigEmpresa.marcafiscal != "")
+                        {
+                            msg = objcomprobante.factura(NegocioConfigEmpresa.marcafiscal, dt, Convert.ToDouble(txtTotalAPagar.Text), NegocioConfigEmpresa.modelofiscal, NegocioConfigEmpresa.puertofiscal,
+                                   1, razonsocial, razonsocial == "CONSUMIDOR FINAL" ? "99999999999" : cuit, domicilio, tipofactura, responsableiva, tipofactura, tipofactura, Convert.ToDouble(neto), Convert.ToDouble(iva), Convert.ToDouble(this.neto105), Convert.ToDouble(this.iva105));
+                        }
+                        else
+                        {
+                            UtilityFrm.mensajeError("La marca de la fiscal no se encuentra definido, la factura quedara pendiente");
+                        }
                   if (msg.Substring (0,2) != "ok")
                   {
                       UtilityFrm.mensajeError(msg);
@@ -349,10 +363,7 @@ namespace Capa_Presentacion
                             //corregir para que no genere errores
                             int nrocaracteres = Convert.ToInt32 ( msg.Length.ToString ());
                             nrocomprobante = msg.Substring(2, nrocaracteres - 2);
-                            if (NegocioConfigEmpresa.marcafiscal == "electronica")
-                            {
-
-                            }
+                           
 
                   }
                   }
@@ -373,7 +384,7 @@ namespace Capa_Presentacion
                   Convert.ToDecimal(txtTotalAPagar.Text), Convert.ToDecimal(lblsubtotal.Text), estadofactura,
                   NegocioConfigEmpresa.confsistema("stock").ToString() == this.Name ? true : false, nroterminal,
                   codtarjeta, cupon, lote, importe, cuota, codformapago, neto,iva,objcomprobante.Cae,objcomprobante.Fechavto,
-                  objcomprobante.Numerotipofactura.PadLeft (3,'0'),objcomprobante.Puntoventa.PadLeft (5,'0'));
+                  objcomprobante.Numerotipofactura.PadLeft (3,'0'),objcomprobante.Puntoventa.PadLeft (5,'0'),this.iva105,this.neto105);
                
                 int objnum = objventa.Idventa;
 
@@ -413,11 +424,16 @@ namespace Capa_Presentacion
 
                             else
                             {
-                                if (NegocioConfigEmpresa.marcafiscal == "elec")
+                                if (NegocioConfigEmpresa.marcafiscal == "elec" && tipofactura != "X")
                                 {
                                     Ticketventa miticket = new Formreportes.Ticketventa(objventa.Idventa);
                                     miticket.ShowDialog();
-                                    
+
+                                }
+                                else if (tipofactura == "X")
+                                {
+                                   TicketProforma   miticketproforma = new Formreportes.TicketProforma(objventa.Idventa);
+                                    miticketproforma.ShowDialog();
                                 }
                                 //miformticket.Tipoimp = Convert.ToString(NegocioConfigEmpresa.confsistema("modoimpventa"));
                                 //miformticket.Codventa = objventa.Idventa;
@@ -601,6 +617,99 @@ namespace Capa_Presentacion
             txtAbono.SelectAll();
         }
 
-        
+        private void btnMinimizar_Click(object sender, EventArgs e)
+        {
+            //minimiza
+            this.WindowState = FormWindowState.Minimized;
+        }
+
+        private void btnMaximizar_Click(object sender, EventArgs e)
+        {
+           
+            this.WindowState = FormWindowState.Maximized;
+        }
+
+        private void btnCerrar_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnRestaurar_Click(object sender, EventArgs e)
+        {
+            //restaurar
+            
+            this.WindowState = FormWindowState.Normal;
+        }
+
+        private void btnMinimizar_MouseLeave(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void btnMinimizar_MouseMove(object sender, MouseEventArgs e)
+        {
+            
+        }
+
+        private void btnCerrar_MouseMove(object sender, MouseEventArgs e)
+        {
+            btnCerrar.BackColor = Color.Red;
+        }
+
+        private void btnMaximizar_MouseLeave(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void btnMaximizar_MouseHover(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnMaximizar_MouseMove(object sender, MouseEventArgs e)
+        {
+            
+        }
+
+        private void btnCerrar_MouseLeave(object sender, EventArgs e)
+        {
+            btnCerrar.BackColor = Color.FromArgb(0, 100,200);
+        }
+
+        private void btnRestaurar_MouseLeave(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void btnRestaurar_MouseMove(object sender, MouseEventArgs e)
+        {
+            
+        }
+
+        private void panelHorizontal_DoubleClick(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void panelHorizontal_MouseMove(object sender, MouseEventArgs e)
+        {
+            int posY = 0;
+            int posX = 0;
+            //mientra no se apreta el boton izquierdo del mouse actualiza el valor posX Y posY 
+            if (e.Button != MouseButtons.Left)
+            {
+                posY = e.Y;
+                posX = e.X;
+
+            }
+            else
+            {
+                //Left tiene la distancia que hay entre el borde izq y el fondo de la pantalla
+                Left = Left + (e.X - posX);
+                //top tiene la distancia que hay entre el borde sup y el fondo de la pantalla
+                Top = Top + (e.Y - posY);
+
+            }
+        }
     }
 }

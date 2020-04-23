@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Data;
 using System.Data.SqlClient;
+
 namespace Capa_Datos
 {
     public class DDetalle_Venta

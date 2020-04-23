@@ -84,5 +84,41 @@ namespace Capa_Presentacion
             this.cbCajero.DisplayMember = "usuario";
 
         }
+
+        private void btnCerrar_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void panelHorizontal_MouseMove(object sender, MouseEventArgs e)
+        {
+            int posY = 0;
+            int posX = 0;
+            //mientra no se apreta el boton izquierdo del mouse actualiza el valor posX Y posY 
+            if (e.Button != MouseButtons.Left)
+            {
+                posY = e.Y;
+                posX = e.X;
+
+            }
+            else
+            {
+                //Left tiene la distancia que hay entre el borde izq y el fondo de la pantalla
+                Left = Left + (e.X - posX);
+                //top tiene la distancia que hay entre el borde sup y el fondo de la pantalla
+                Top = Top + (e.Y - posY);
+
+            }
+        }
+
+        private void btnCerrar_MouseLeave(object sender, EventArgs e)
+        {
+            btnCerrar.BackColor = Color.FromArgb(0, 100, 200);
+        }
+
+        private void btnCerrar_MouseMove(object sender, MouseEventArgs e)
+        {
+            btnCerrar.BackColor = Color.Red;
+        }
     }
 }

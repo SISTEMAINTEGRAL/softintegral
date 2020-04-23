@@ -49,17 +49,17 @@ namespace Capa_Presentacion
         {
 
             
-           llenarComboBoxCategoria(cbxCategoria);
-           llenarComboBoxCategoria(cbCategoria);
+           llenarComboBoxCategoria(cbxCategoria,"idcategoria","nombre", NegocioCategoria.mostrar());
+           llenarComboBoxCategoria(cbCategoria,"idcategoria","nombre", NegocioCategoria.mostrar());
            dataLista.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
            
            isEditar = false;
            isNuevo= false;
            this.mostrar();
            mensajesDeAyuda();
-     
 
 
+            CBIVA.ValueMember = "0";
           this.tabControl1.SelectedIndex = 0;
 
         this.txtNombre.Select();
@@ -136,7 +136,7 @@ namespace Capa_Presentacion
         }
         private void btnCerrar_MouseLeave(object sender, EventArgs e)
         {
-            btnCerrar.BackColor = Color.FromArgb(100, 0, 180);
+            btnCerrar.BackColor = Color.FromArgb(0, 100, 200);
         }
         private void btnRestaurar_MouseMove(object sender, MouseEventArgs e)
         {
@@ -152,7 +152,7 @@ namespace Capa_Presentacion
         }
         private void btnMaximizar_MouseLeave(object sender, EventArgs e)
         {
-            btnMaximizar.BackColor = Color.FromArgb(100, 0, 180);
+            btnMaximizar.BackColor = Color.FromArgb(0, 100, 200);
         }
         private void btnMinimizar_MouseMove(object sender, MouseEventArgs e)
         {
@@ -160,7 +160,7 @@ namespace Capa_Presentacion
         }
         private void btnMinimizar_MouseLeave(object sender, EventArgs e)
         {
-            btnMinimizar.BackColor = Color.FromArgb(100, 0, 180);
+            btnMinimizar.BackColor = Color.FromArgb(0, 100, 200);
 
         }
 
@@ -327,15 +327,17 @@ namespace Capa_Presentacion
 
         }
         //muestra en el combobox los resultados cargados en categoria
-        private void llenarComboBoxCategoria(ComboBox combo) {
-            combo.DataSource = NegocioCategoria.mostrar();
+        private void llenarComboBoxCategoria(ComboBox combo, string valuemember, string displaymember, DataTable midatatable) {
+            combo.DataSource = midatatable;
             //valor real de la DB
              
-            combo.ValueMember = "idcategoria";
+            combo.ValueMember = valuemember;
             //lo que se muestra
-            combo.DisplayMember = "nombre";
+            combo.DisplayMember = displaymember;
         
         }
+        
+
         //mensajes de ayuda
         private void mensajesDeAyuda()  
         {
@@ -388,7 +390,11 @@ namespace Capa_Presentacion
                 dataLista.DataSource = NegocioArticulo.buscarIdProducto(txtNombre.Text);
                 txtNombre.Focus();
                 txtNombre.SelectAll();
-                textBox1.Text = decimal.Round(Convert.ToDecimal(this.dataLista.CurrentRow.Cells["Precio"].Value), 2).ToString();
+                if (dataLista.RowCount != 0)
+                {
+                    textBox1.Text = decimal.Round(Convert.ToDecimal(this.dataLista.CurrentRow.Cells["Precio"].Value), 2).ToString();
+                }
+               
             }
 
             else
@@ -477,7 +483,7 @@ namespace Capa_Presentacion
                     {
                         //pesable es un bit que representa un producto si es pesable (KG) o no
                        
-                        respuesta = NegocioArticulo.insertar(txtNombreConfig.Text.Trim(), txtCodigoBarra.Text.Trim(), txtDescripcion.Text.Trim(), Convert.ToInt32(cbxCategoria.SelectedValue), Convert.ToDecimal(txtPrecio.Text.Trim()),Convert.ToInt32(txtCantInicial.Text.Trim()),pesable,Convert.ToDecimal(TxtPcompra.Text),Convert.ToDecimal(txtUtilidad.Text),Convert.ToDecimal (Txtflete.Text));
+                        respuesta = NegocioArticulo.insertar(txtNombreConfig.Text.Trim(), txtCodigoBarra.Text.Trim(), txtDescripcion.Text.Trim(), Convert.ToInt32(cbxCategoria.SelectedValue), Convert.ToDecimal(txtPrecio.Text.Trim()),Convert.ToInt32(txtCantInicial.Text.Trim()),pesable,Convert.ToDecimal(TxtPcompra.Text),Convert.ToDecimal(txtUtilidad.Text),Convert.ToDecimal (Txtflete.Text),Convert.ToDecimal(txtCantidadpormayor.Text),Convert.ToDecimal(txtPreciopormayor.Text),Convert.ToInt32(CBSubcategoria.SelectedValue),Convert.ToDecimal (CBIVA.Text));
 
                         if (respuesta.Equals("ok"))
                         {
@@ -496,7 +502,7 @@ namespace Capa_Presentacion
                     {
 
                         //respuesta = NegocioArticulo.editar(Convert.ToInt32(txtCodigo.Text.Trim()), Convert.ToString(txtNombreConfig.Text.Trim()), txtCodigoBarra.Text.Trim(), Convert.ToString(txtDescripcion.Text.Trim()), Convert.ToInt32(cbxCategoria.SelectedValue));
-                        respuesta = NegocioArticulo.editar(Convert.ToInt32(txtCodigo.Text.Trim()), Convert.ToString(txtNombreConfig.Text.Trim()), txtCodigoBarra.Text.Trim(), Convert.ToString(txtDescripcion.Text.Trim()), Convert.ToInt32(cbxCategoria.SelectedValue), Convert.ToDecimal(txtPrecio.Text.Trim()), Convert.ToDecimal(txtCantInicial.Text.Trim()), pesable,Convert.ToDecimal(TxtPcompra.Text),Convert.ToDecimal(txtUtilidad.Text),Convert.ToDecimal (Txtflete.Text == "" ? "0":Txtflete.Text),DateTime.Now,NegocioConfigEmpresa.idusuario,"formulario articulo");
+                        respuesta = NegocioArticulo.editar(Convert.ToInt32(txtCodigo.Text.Trim()), Convert.ToString(txtNombreConfig.Text.Trim()), txtCodigoBarra.Text.Trim(), Convert.ToString(txtDescripcion.Text.Trim()), Convert.ToInt32(cbxCategoria.SelectedValue), Convert.ToDecimal(txtPrecio.Text.Trim()), Convert.ToDecimal(txtCantInicial.Text.Trim()), pesable,Convert.ToDecimal(TxtPcompra.Text),Convert.ToDecimal(txtUtilidad.Text),Convert.ToDecimal (Txtflete.Text == "" ? "0":Txtflete.Text),DateTime.Now,NegocioConfigEmpresa.idusuario,"formulario articulo",Convert.ToDecimal(txtCantidadpormayor.Text),Convert.ToDecimal(txtPreciopormayor.Text),Convert.ToInt32(CBSubcategoria.SelectedValue), Convert.ToDecimal(CBIVA.Text));
 
                         if (respuesta.Equals("ok"))
                         {
@@ -544,6 +550,8 @@ namespace Capa_Presentacion
             txtUtilidad.Text = "0";
             Txtflete.Text = "0";
             txtPrecio.Text = "0";
+            txtPreciopormayor.Text = "0";
+            txtCantidadpormayor.Text = "0";
         }
         private void btnEditar_Click(object sender, EventArgs e)
         {
@@ -568,6 +576,9 @@ namespace Capa_Presentacion
             TxtPcompra.Enabled = var2;
             txtPrecio.Enabled = var2;
             cbxPesable.Enabled = var2;
+            txtPreciopormayor.Enabled = var2;
+            txtCantidadpormayor.Enabled = var2;
+            CBSubcategoria.Enabled = var2;
             isEditar = var2;
             this.btnNuevoCodBar.Enabled = var2;
             txtPrecio.Enabled =var2;
@@ -577,6 +588,7 @@ namespace Capa_Presentacion
             this.cbxCategoria.Enabled = var2;
             this.btnCancelar.Enabled = var2;
             this.btnGuardar.Enabled = var2;
+            this.CBIVA.Enabled = var2;
 
             this.txtCantInicial.Enabled = habcantinicial;
         }
@@ -721,17 +733,31 @@ namespace Capa_Presentacion
                 txtCodigo.Text = Convert.ToString(this.dataLista.CurrentRow.Cells["idarticulo"].Value);
                 txtCodigoBarra.Text = Convert.ToString(this.dataLista.CurrentRow.Cells["codigo"].Value);
                 cbxCategoria.SelectedValue = Convert.ToString(this.dataLista.CurrentRow.Cells["idcategoria"].Value);
+              //  CBSubcategoria.SelectedValue = Convert.ToString(this.dataLista.CurrentRow.Cells["idsubcategoria"].Value);
                 txtNombreConfig.Text = Convert.ToString(this.dataLista.CurrentRow.Cells["nombre"].Value);
                 txtDescripcion.Text = Convert.ToString(this.dataLista.CurrentRow.Cells["descripcion"].Value);
                 txtUtilidad.Text = Convert.ToString(decimal.Round(Convert.ToDecimal(this.dataLista.CurrentRow.Cells["utilidad"].Value), 2));
                 TxtPcompra.Text = Convert.ToString(decimal.Round(Convert.ToDecimal(this.dataLista.CurrentRow.Cells["precio_compra"].Value), 2));
                 decimal precio = 0;
                 precio = Convert.ToDecimal(this.dataLista.CurrentRow.Cells["precio"].Value);
-
+                string iva  =Convert.ToString( UtilityFrm.formateodecimal ( Convert.ToDecimal(this.dataLista.CurrentRow.Cells["iva"].Value), 2));
+                if (iva == "0")
+                {
+                    CBIVA.SelectedIndex = 0;
+                }
+                if (iva == "10,50")
+                {
+                    CBIVA.SelectedIndex = 1;
+                }
+                if (iva == "21,00")
+                {
+                    CBIVA.SelectedIndex = 2;
+                }
                 txtPrecio.Text = Convert.ToString(Decimal.Round(precio, 2));
                 txtCantInicial.Text = Convert.ToString(this.dataLista.CurrentRow.Cells["stock_actual"].Value);
-
-
+                txtPreciopormayor.Text =UtilityFrm.formateodecimal(Convert.ToDecimal(this.dataLista.CurrentRow.Cells["preciopormayor"].Value),2);
+                txtCantidadpormayor.Text = Convert.ToString( Convert.ToDecimal(this.dataLista.CurrentRow.Cells["cantidadpormayor"].Value));
+                CBSubcategoria.SelectedValue = Convert.ToString(this.dataLista.CurrentRow.Cells["idsubcategoria"].Value);
                 this.tabControl1.SelectedTab = tabConfiguracion;
             }
             else if (opcionvista == 2)
@@ -1285,6 +1311,32 @@ namespace Capa_Presentacion
             
             textBox1.Text = decimal.Round(Convert.ToDecimal(this.dataLista.CurrentRow.Cells["Precio"].Value), 2).ToString();
 
+        }
+
+        private void cbxCategoria_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void cbxCategoria_SelectedValueChanged(object sender, EventArgs e)
+        {
+            if (cbxCategoria.ValueMember != "")
+            {
+                CBSubcategoria.DataSource = null;
+                CBSubcategoria.Items.Clear();
+                
+                llenarComboBoxCategoria(CBSubcategoria, "idsubcategoria", "nombre", NegocioCategoria.buscar("", Convert.ToInt32(cbxCategoria.SelectedValue)));
+            }
+             }
+
+        private void txtPreciopormayor_Click(object sender, EventArgs e)
+        {
+            txtPreciopormayor.SelectAll();
+        }
+
+        private void txtCantidadpormayor_Click(object sender, EventArgs e)
+        {
+            txtCantidadpormayor.SelectAll();
         }
 
         private void Txtflete_KeyPress(object sender, KeyPressEventArgs e)

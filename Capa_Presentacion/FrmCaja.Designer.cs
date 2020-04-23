@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmCaja));
             this.ttMensajeAyuda = new System.Windows.Forms.ToolTip(this.components);
             this.lblNomProducto = new System.Windows.Forms.Label();
@@ -322,7 +323,7 @@
             this.lblTotalEgreso.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.lblTotalEgreso.AutoSize = true;
             this.lblTotalEgreso.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTotalEgreso.Location = new System.Drawing.Point(514, 495);
+            this.lblTotalEgreso.Location = new System.Drawing.Point(514, 483);
             this.lblTotalEgreso.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblTotalEgreso.Name = "lblTotalEgreso";
             this.lblTotalEgreso.Size = new System.Drawing.Size(164, 29);
@@ -334,7 +335,7 @@
             this.lblTotalIngreso.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.lblTotalIngreso.AutoSize = true;
             this.lblTotalIngreso.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTotalIngreso.Location = new System.Drawing.Point(293, 495);
+            this.lblTotalIngreso.Location = new System.Drawing.Point(293, 480);
             this.lblTotalIngreso.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblTotalIngreso.Name = "lblTotalIngreso";
             this.lblTotalIngreso.Size = new System.Drawing.Size(167, 29);
@@ -350,6 +351,14 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataLista.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataLista.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataLista.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataLista.Location = new System.Drawing.Point(20, 233);
             this.dataLista.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
@@ -478,7 +487,7 @@
             // 
             // panelHorizontal
             // 
-            this.panelHorizontal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(0)))), ((int)(((byte)(170)))));
+            this.panelHorizontal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(100)))), ((int)(((byte)(200)))));
             this.panelHorizontal.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panelHorizontal.Controls.Add(this.btnMaximizar);
             this.panelHorizontal.Controls.Add(this.btnRestaurar);

@@ -521,17 +521,23 @@ namespace Capa_Presentacion
         }
         public static void completarcombobox(ComboBox micombobox, string valordelcombo, string valoramostrar, DataTable midatatable, bool autocompletar = true)
         {
-            micombobox.DataSource = midatatable;
-            //valor real de la DB
-            micombobox.ValueMember = valordelcombo;
-            //lo que se muestra
-            micombobox.DisplayMember = valoramostrar;
             if (midatatable.Rows.Count != 0)
             {
-                micombobox.AutoCompleteCustomSource = UtilityFrm.LoadAutoComplete(midatatable, valoramostrar);
-                micombobox.AutoCompleteMode = AutoCompleteMode.Suggest;
-                micombobox.AutoCompleteSource = AutoCompleteSource.CustomSource;
+                micombobox.DataSource = midatatable;
+                //valor real de la DB
+                micombobox.ValueMember = valordelcombo;
+                //lo que se muestra
+                micombobox.DisplayMember = valoramostrar;
+                if (midatatable.Rows.Count != 0)
+                {
+                    micombobox.AutoCompleteCustomSource = UtilityFrm.LoadAutoComplete(midatatable, valoramostrar);
+                    micombobox.AutoCompleteMode = AutoCompleteMode.Suggest;
+                    micombobox.AutoCompleteSource = AutoCompleteSource.CustomSource;
+                }
+                 
+
             }
+            
             
 
         }

@@ -20,6 +20,12 @@ namespace Capa_Datos
         private string observacion;
         private bool cambiarstock;
 
+        private bool porcliente;
+        private bool porestado;
+        private bool portipo;
+        private bool porfecha;
+        private string fechaini;
+        private string fechafin;
         public int Norden
         {
             get
@@ -110,10 +116,91 @@ namespace Capa_Datos
                 observacion = value;
             }
         }
-        public DatosOrdenpedido(string varestado, int varnroorden)
+
+        public bool Porcliente
+        {
+            get
+            {
+                return porcliente;
+            }
+
+            set
+            {
+                porcliente = value;
+            }
+        }
+
+        public bool Porestado
+        {
+            get
+            {
+                return porestado;
+            }
+
+            set
+            {
+                porestado = value;
+            }
+        }
+
+        public bool Portipo
+        {
+            get
+            {
+                return portipo;
+            }
+
+            set
+            {
+                portipo = value;
+            }
+        }
+
+        public bool Porfecha
+        {
+            get
+            {
+                return porfecha;
+            }
+
+            set
+            {
+                porfecha = value;
+            }
+        }
+
+        public string Fechaini
+        {
+            get
+            {
+                return fechaini;
+            }
+
+            set
+            {
+                fechaini = value;
+            }
+        }
+
+        public string Fechafin
+        {
+            get
+            {
+                return fechafin;
+            }
+
+            set
+            {
+                fechafin = value;
+            }
+        }
+
+        public DatosOrdenpedido(string varestado, int varnroorden, int varcodcliente, string vartipo )
         {
             estado = varestado;
             norden = varnroorden;
+            codcliente = varcodcliente;
+            tipoorden = vartipo;
         }
         public DatosOrdenpedido( DateTime varfecha, int varcodcliente, int varidusuario, string vartipoorden, string varestado, string varobservacion)
         {
@@ -124,7 +211,21 @@ namespace Capa_Datos
             estado = varestado;
             observacion = varobservacion;
         }
-        public string Insertar(DatosOrdenpedido Ordenpedido, List<Datodetalleordenpedido> Detalle)
+        public DatosOrdenpedido(int varcodcliente, string varestado, string vartipoorden, string varfechaini, string varfechafin,
+                                bool varporcliente, bool varporestado, bool varportipo, bool varporfecha)
+        {
+            this.codcliente = varcodcliente;
+            this.estado = varestado;
+            this.tipoorden = vartipoorden;
+            this.fechaini = varfechaini;
+            this.fechafin = varfechafin;
+            this.porcliente = varporcliente;
+            this.porestado = varporestado;
+            this.portipo = varportipo;
+            this.porfecha = varporfecha; 
+
+        }
+        public string Insertarymodificar(DatosOrdenpedido Ordenpedido, List<Datodetalleordenpedido> Detalle, string agregaromodificar = "agregarorden", bool solomodificarestado = true)
         {
             string rpta = "";
             SqlConnection sqlcon = new SqlConnection();
@@ -143,11 +244,22 @@ namespace Capa_Datos
                 SqlParameter parcodsucursal = ProcAlmacenado.asignarParametros("@codsucursal", SqlDbType.Int,1);
                 sqlcmd.Parameters.Add(parcodsucursal);
 
-                SqlParameter parorden = ProcAlmacenado.asignarParametros("@nroorden", SqlDbType.Int);
-                sqlcmd.Parameters.Add(parorden);
+               
+                if (agregaromodificar == "agregarorden")
+                {
+                    SqlParameter parorden = ProcAlmacenado.asignarParametros("@nroorden", SqlDbType.Int);
+                    sqlcmd.Parameters.Add(parorden);
 
-                SqlParameter parfecha = ProcAlmacenado.asignarParametros("@fecha", SqlDbType.DateTime, Ordenpedido.fecha);
-                sqlcmd.Parameters.Add(parfecha);
+                    SqlParameter parfecha = ProcAlmacenado.asignarParametros("@fecha", SqlDbType.DateTime, Ordenpedido.fecha);
+                    sqlcmd.Parameters.Add(parfecha);
+                }
+                if (agregaromodificar == "modificarestado")
+                {
+                    SqlParameter parfecha = ProcAlmacenado.asignarParametros("@nroorden", SqlDbType.Int, Ordenpedido.norden);
+                    sqlcmd.Parameters.Add(parfecha);
+                } 
+     
+                
 
                 SqlParameter parcodcliente = ProcAlmacenado.asignarParametros("@codcliente", SqlDbType.Int, Ordenpedido.codcliente);
                 sqlcmd.Parameters.Add(parcodcliente);
@@ -164,35 +276,67 @@ namespace Capa_Datos
                 SqlParameter parobs = ProcAlmacenado.asignarParametros("@observacion", SqlDbType.NVarChar, Ordenpedido.observacion);
                 sqlcmd.Parameters.Add(parobs);
 
-                SqlParameter parModo = ProcAlmacenado.asignarParametros("@modo", SqlDbType.NVarChar, "agregarorden");
+                SqlParameter parModo = ProcAlmacenado.asignarParametros("@modo", SqlDbType.NVarChar, agregaromodificar);
                 sqlcmd.Parameters.Add(parModo);
 
                 
-                rpta = sqlcmd.ExecuteNonQuery() >= 1 ? "OK" : "No se ingreso el registro";
 
-                if (rpta.Equals("OK"))
+                rpta = sqlcmd.ExecuteNonQuery() >= 1 ? "OK" : "No se ingreso el registro";
+                string mododetalleorden = "";
+                if (agregaromodificar == "modificarestado")
+                {
+                    //elimina el detalle para volverlo a cargar
+                    mododetalleorden = "eliminar";
+
+                }
+
+
+                    if ((rpta.Equals("OK")) && (solomodificarestado == false || agregaromodificar == "agregarorden"))
                 {
                     Ordenpedido.norden = Convert.ToInt32(sqlcmd.Parameters["@nroorden"].Value);
 
-
+                    List<DatosDetalleRemito> Detalleremito = new List<DatosDetalleRemito>();
                     foreach (Datodetalleordenpedido det in Detalle)
                     {
+                        
                         det.Norden = Ordenpedido.norden;
-                        rpta = det.Insertar(det, ref sqlcon, ref sqltra);
+                        rpta = det.insertaromodificar(det, ref sqlcon, ref sqltra, mododetalleorden == "eliminar" ? "modificar" : "agregar");
+                        if (mododetalleorden == "eliminar")
+                        {
+                            mododetalleorden = "agregar";
+                        }
                         if (!rpta.Equals("OK"))
                         {
                             break;
                         }
-                        
+                        if (det.Cantidadactual > 0)
+                        {
+                            DatosDetalleRemito remitodet = new Capa_Datos.DatosDetalleRemito();
+                            remitodet.Idproducto = det.Idproducto;
+                            remitodet.Detalle = det.Detalle;
+                            remitodet.Cantidad = det.Cantidadactual;
+                            
+                            Detalleremito.Add(remitodet);
+                        }
 
                     }
+                    if (agregaromodificar == "modificarestado")
+                    {
+                        DatosRemito objremito = new DatosRemito(1, DateTime.Now, Ordenpedido.codcliente, Ordenpedido.norden, "", true, Ordenpedido.tipoorden, "0001");
+                        objremito.insertarremito(objremito, Detalleremito, ref sqlcon, ref sqltra, true);
+                    }
+                    
                 }
-
-                if (rpta.Equals("OK"))
+                    //ver
+                if (rpta.Equals("OK")  )
                 {
-                    sqltra.Commit();
+                    if (sqlcon.State == ConnectionState.Open)
+                    {
+                        sqltra.Commit();
+                    }
+                    
                 }
-                else
+                else 
                 {
                     sqltra.Rollback();
                 }
@@ -209,85 +353,40 @@ namespace Capa_Datos
             return rpta;
         }
 
-        public string Modificar(DatosOrdenpedido Ordenpedido, List<Datodetalleordenpedido> Detalle)
+       
+
+        public DataTable Busquedaconcatenada(DatosOrdenpedido Dorden)
         {
-            string rpta = "";
-            SqlConnection sqlcon = new SqlConnection();
-            Dventa objventa = new global::Dventa();
+            SqlConnection cn = new SqlConnection(Conexion.conexion);
+            DataTable dtResult = new DataTable("orden");
 
             try
             {
-                sqlcon.ConnectionString = Conexion.conexion;
-                sqlcon.Open();
+                SqlParameter[] dbParams = new SqlParameter[]
+                   {
+                        ProcAlmacenado2.MakeParam ("@modo",SqlDbType.NVarChar,50,"consultarordenconcatenado"),
+                        ProcAlmacenado2.MakeParam ("@codcliente",SqlDbType.Int,0,Dorden.codcliente),
+                        ProcAlmacenado2.MakeParam ("@estado",SqlDbType.NVarChar,50,Dorden.estado),
+                        ProcAlmacenado2.MakeParam ("@tipoorden",SqlDbType.NVarChar,50,Dorden.tipoorden),
+                        ProcAlmacenado2.MakeParam ("@fechaini",SqlDbType.DateTime,0,Dorden.fechaini),
+                        ProcAlmacenado2.MakeParam ("@fechafin",SqlDbType.DateTime,0,Dorden.fechafin),
+                        ProcAlmacenado2.MakeParam ("@porcliente",SqlDbType.Bit,0,Dorden.porcliente),
+                        ProcAlmacenado2.MakeParam ("@porestado",SqlDbType.Bit,0,Dorden.porestado),
+                        ProcAlmacenado2.MakeParam ("@portipo",SqlDbType.Bit,0,Dorden.portipo),
+                        ProcAlmacenado2.MakeParam ("@porfecha",SqlDbType.Bit,0,Dorden.porfecha)
+                        
 
-                SqlTransaction sqltra = sqlcon.BeginTransaction();
-
-
-                SqlCommand sqlcmd = ProcAlmacenado.CrearProc(sqlcon, "SP_ORDENPEDIDO", sqltra);
-
-                SqlParameter parcodsucursal = ProcAlmacenado.asignarParametros("@codsucursal", SqlDbType.Int, 1);
-                sqlcmd.Parameters.Add(parcodsucursal);
-
-                SqlParameter parorden = ProcAlmacenado.asignarParametros("@nroorden", SqlDbType.Int, Ordenpedido.norden);
-                sqlcmd.Parameters.Add(parorden);
-                      
-
-                SqlParameter parestado = ProcAlmacenado.asignarParametros("@estado", SqlDbType.NVarChar, Ordenpedido.estado);
-                sqlcmd.Parameters.Add(parestado);
-                               
-
-                SqlParameter parModo = ProcAlmacenado.asignarParametros("@modo", SqlDbType.NVarChar, "cambiarestado");
-                sqlcmd.Parameters.Add(parModo);
-
-
-                rpta = sqlcmd.ExecuteNonQuery() >= 1 ? "OK" : "No se ingreso el registro";
-
-                if (rpta.Equals("OK"))
-                {
-                    Ordenpedido.norden = Convert.ToInt32(sqlcmd.Parameters["@nroorden"].Value);
-
-
-                    foreach (Datodetalleordenpedido det in Detalle)
-                    {
-                        det.Norden = Ordenpedido.norden;
-                        rpta = det.Insertar(det, ref sqlcon, ref sqltra);
-                        if (!rpta.Equals("OK"))
-                        {
-                            break;
-                        }
-                        else
-                        {
-                            //actualizamos el stock
-                            if (det.Idproducto != 0) { rpta = objventa.DisminuirStock(det.Idproducto, det.Cantidadactual); }
-                            if (!rpta.Equals("OK"))
-                            {
-                                break;
-
-                            }
-                        }
-
-                    }
-                }
-
-                if (rpta.Equals("OK"))
-                {
-                    sqltra.Commit();
-                }
-                else
-                {
-                    sqltra.Rollback();
-                }
-
+                   };
+                dtResult = ProcAlmacenado2.ExecuteDatatable("SP_ORDENPEDIDO", dbParams);
             }
-            catch (Exception e)
+            catch (Exception)
             {
-                rpta = e.Message;
+
+                throw;
+
             }
-            finally
-            {
-                if (sqlcon.State == ConnectionState.Open) sqlcon.Close();
-            }
-            return rpta;
+
+            return dtResult;
         }
     }
 }

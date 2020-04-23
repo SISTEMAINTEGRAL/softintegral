@@ -13,7 +13,8 @@ namespace Capa_Datos
         private string nombre;
         private string descripcion;
         private string buscarCategoria;
-
+        private string opcategoriaosub;
+        private int idsubcategoria;
        public DatosCategoria() { }
 
        public DatosCategoria(string nombre,string descripcion) {
@@ -35,9 +36,9 @@ namespace Capa_Datos
                    //abro conexion
                    SqlCommand comando = ProcAlmacenado.CrearProc(cn, "SP_CATEGORIA");
 
-                   SqlParameter parModo = ProcAlmacenado.asignarParametros("@modo", SqlDbType.Int, 1);
+                   SqlParameter parModo = ProcAlmacenado.asignarParametros("@modo", SqlDbType.NVarChar, "insertarcategoriaosubcategoria");
                    comando.Parameters.Add(parModo);
-                   SqlParameter parIdProveedor= ProcAlmacenado.asignarParametros("@idcategoria", SqlDbType.Int);
+                   SqlParameter parIdProveedor= ProcAlmacenado.asignarParametros("@idcategoria", SqlDbType.Int,categoria.idCategoria);
                    //le paso al sqlcommand los parametros asignados
                    comando.Parameters.Add(parIdProveedor);
 
@@ -76,7 +77,7 @@ namespace Capa_Datos
                //abro conexion
                SqlCommand comando = ProcAlmacenado.CrearProc(cn, "SP_CATEGORIA");
 
-               SqlParameter parModo = ProcAlmacenado.asignarParametros("@modo", SqlDbType.Int, 2);
+               SqlParameter parModo = ProcAlmacenado.asignarParametros("@modo", SqlDbType.NVarChar, "editar");
                comando.Parameters.Add(parModo);
 
                SqlParameter parIdCategoria = ProcAlmacenado.asignarParametros("@idcategoria", SqlDbType.Int, categoria.IdCategoria);
@@ -89,7 +90,10 @@ namespace Capa_Datos
                SqlParameter parDescripcion = ProcAlmacenado.asignarParametros("@descripcion", SqlDbType.VarChar, categoria.Descripcion, 50);
                comando.Parameters.Add(parDescripcion);
 
-               if (comando.ExecuteNonQuery() == 1)
+                SqlParameter parsubidsubcategoria = ProcAlmacenado.asignarParametros("@idsubcategoria", SqlDbType.Int , categoria.idsubcategoria);
+                comando.Parameters.Add(parsubidsubcategoria);
+
+                if (comando.ExecuteNonQuery() == 1)
                {
                    respuesta = "ok";
                }
@@ -155,9 +159,9 @@ namespace Capa_Datos
                    //le paso al comando el parametro
                comando.Parameters.Add(parBuscarTexto);
                //modo buscar
-                SqlParameter parModo = ProcAlmacenado.asignarParametros("@modo", SqlDbType.Int, 4);
+                SqlParameter parModo = ProcAlmacenado.asignarParametros("@modo", SqlDbType.NVarChar, "buscar");
                 comando.Parameters.Add(parModo);
-                SqlParameter parIdCategoria = ProcAlmacenado.asignarParametros("@idcategoria", SqlDbType.Int);
+                SqlParameter parIdCategoria = ProcAlmacenado.asignarParametros("@idcategoria", SqlDbType.Int,categoria.idCategoria);
                 comando.Parameters.Add(parIdCategoria);
                 //creo el objeto adapter del data provider le paso el sqlcommand
                 SqlDataAdapter datosResult = new SqlDataAdapter(comando);
@@ -187,11 +191,10 @@ namespace Capa_Datos
 
                 SqlCommand comando = ProcAlmacenado.CrearProc(cn, "SP_CATEGORIA");
 
-                SqlParameter parModo = ProcAlmacenado.asignarParametros("@modo", SqlDbType.Int, 5);
+                SqlParameter parModo = ProcAlmacenado.asignarParametros("@modo", SqlDbType.NVarChar, "mostrar");
                 comando.Parameters.Add(parModo);
                 //Asigno al parametro @idcategoria, aunque no lo use
-                SqlParameter parIdCategoria = ProcAlmacenado.asignarParametros("@idcategoria", SqlDbType.Int);
-                comando.Parameters.Add(parIdCategoria);
+                
 
                 //creo el objeto adapter del data provider le paso el sqlcommand
                 SqlDataAdapter datosResult = new SqlDataAdapter(comando);
@@ -228,5 +231,31 @@ namespace Capa_Datos
            get { return idCategoria; }
            set { idCategoria = value; }
        }
+
+        public string Opcategoriaosub
+        {
+            get
+            {
+                return opcategoriaosub;
+            }
+
+            set
+            {
+                opcategoriaosub = value;
+            }
+        }
+
+        public int Idsubcategoria
+        {
+            get
+            {
+                return idsubcategoria;
+            }
+
+            set
+            {
+                idsubcategoria = value;
+            }
+        }
     }
 }

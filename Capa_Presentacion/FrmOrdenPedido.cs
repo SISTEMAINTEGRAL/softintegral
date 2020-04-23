@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 namespace Capa_Presentacion
 {
-    public partial class FrmOrdenPedido : Form
+    public partial class FrmOrdenAdjudicacion : Form
     {
         private string cuit;
         private string domicilio;
@@ -19,8 +19,10 @@ namespace Capa_Presentacion
         private string riva;
         int posY = 0;
         int posX = 0;
+        private int indice = -1;
+        private bool datagriddobleclic = false;
         public NegocioArticulo objnart = new NegocioArticulo();
-        public FrmOrdenPedido()
+        public FrmOrdenAdjudicacion()
         {
             InitializeComponent();
         }
@@ -39,27 +41,27 @@ namespace Capa_Presentacion
                         cuit = row["cuit"].ToString();
                         riva = row["responsabilidadiva"].ToString();
                         domicilio = row["direccion"].ToString();
-                        idcliente = Convert.ToInt32 (row["idcliente"].ToString())  ;
+                        idcliente = Convert.ToInt32(row["idcliente"].ToString());
 
                         // UtilityFrm.mensajeConfirm("Se encontro el Cliente " + cliente);
                         TxtRazonsocial.Text = cliente;
                         TxtCuit.Text = cuit;
-                       
+
 
                     }
                     else
                     {
                         UtilityFrm.mensajeError("Error No se ha encontrado el Cliente");
                         //clienteIncorrecto();
-                       // btnCliente.Focus();
+                        // btnCliente.Focus();
                     }
 
                 }
                 else
                 {
                     UtilityFrm.mensajeError("Error No se ha encontrado el Cliente");
-                   // clienteIncorrecto();
-                   // btnCliente.Focus();
+                    // clienteIncorrecto();
+                    // btnCliente.Focus();
 
                 }
             }
@@ -96,7 +98,7 @@ namespace Capa_Presentacion
 
 
                 else
-               
+
                 {
                     DGCliente.Visible = false;
                 }
@@ -120,7 +122,7 @@ namespace Capa_Presentacion
             DataTable midata = new DataTable();
             if (e.KeyCode == Keys.Enter)
             {
-                if (IsNumeric (txtIdCliente.Text) == true)
+                if (IsNumeric(txtIdCliente.Text) == true)
                 {
                     Buscar_Cliente(Convert.ToInt32(txtIdCliente.Text));
                 }
@@ -128,7 +130,7 @@ namespace Capa_Presentacion
                 {
                     UtilityFrm.mensajeError("Para buscar un cliente en la caja de texto debe ser solo numerico");
                 }
-               
+
 
 
 
@@ -155,7 +157,7 @@ namespace Capa_Presentacion
             {
                 if (cliente.IsCerro)
                 {
-                    
+
                     txtIdCliente.Focus();
 
                 }
@@ -167,10 +169,11 @@ namespace Capa_Presentacion
                     cuit = cliente.Cuit.ToString();
                     riva = cliente.Riva.ToString();
                     domicilio = cliente.Domicilio.ToString();
+                    idcliente = cliente.IdCliente;
+                    txtIdCliente.Text = "";
 
 
-                    
-                    
+
                 }
 
             }
@@ -178,11 +181,20 @@ namespace Capa_Presentacion
             {
 
                 UtilityFrm.mensajeError("Error al seleccionar un cliente. Causa:" + ex.Message + "cadena:" + ex.StackTrace);
-                UtilityFrm.limpiarTextbox(txtIdCliente, TxtRazonsocial,TxtCuit);
+                UtilityFrm.limpiarTextbox(txtIdCliente, TxtRazonsocial, TxtCuit);
                 BtnBuscarcliente.Focus();
             }
         }
+        private bool controlarguardado()
+        {
+            bool control = false;
+            if (TxtCuit.Text != "" && DGDetalleitems.Rows.Count != 0 && CbTipopedido.Text != "")
+            {
+                control = true;
+            }
 
+            return control;
+        }
         private void panelHorizontal_MouseMove(object sender, MouseEventArgs e)
         {
             //mientra no se apreta el boton izquierdo del mouse actualiza el valor posX Y posY 
@@ -298,8 +310,14 @@ namespace Capa_Presentacion
                 decimal importe = 0;
                 decimal total = 0;
                 decimal cantidadActual = 0;
+                int contador = -1;
 
+                indice = -1;
 
+                if (chkporcantidad.Checked == true)
+                {
+                    cantidad = 0;
+                }
                 objnart.extraerdatos(codproducto, tipo, codbarra);
 
                 if (objnart.Sindatos == true)
@@ -314,7 +332,7 @@ namespace Capa_Presentacion
 
 
                     //si el descuento esta vacio se asigna 0 o se asigna su mismo contenido
-                  //  TxtDesc.Text = (string.IsNullOrEmpty(TxtDesc.Text)) ? "0" : TxtDesc.Text;
+                    //  TxtDesc.Text = (string.IsNullOrEmpty(TxtDesc.Text)) ? "0" : TxtDesc.Text;
 
                     bool encontrado = false;
 
@@ -322,14 +340,14 @@ namespace Capa_Presentacion
                     //{
                     foreach (DataGridViewRow row in DGDetalleitems.Rows)
                     {
-
-                        if (Convert.ToString(row.Cells["CCodigo"].Value) == txtNombreProducto.Text)
+                        contador = contador + 1;
+                        if (Convert.ToString(row.Cells["CCodigo"].Value) == codproducto.ToString ())
                         {
 
-
+                            indice = contador;
                             encontrado = true;
 
-                           // row.Cells["Descuento"].Value = (string.IsNullOrEmpty(TxtDesc.Text)) ? "0" : TxtDesc.Text;
+                            // row.Cells["Descuento"].Value = (string.IsNullOrEmpty(TxtDesc.Text)) ? "0" : TxtDesc.Text;
                             //asigno el precio,descuento,cantidad
                             precio = Convert.ToDecimal(row.Cells["CPrecio"].Value);
                             //descuento = Convert.ToDecimal(row.Cells["Descuento"].Value);
@@ -340,7 +358,7 @@ namespace Capa_Presentacion
                             row.Cells["CCantidad"].Value = cantidadActual;
                             //calculo el precio con descuento incluido * la cantidad de articulos agregados
                             importe = precio * cantidadActual;
-                           // importe = importe - ((importe * descuento) / 100);
+                            // importe = importe - ((importe * descuento) / 100);
                             row.Cells["CImporte"].Value = importe;
 
 
@@ -353,13 +371,13 @@ namespace Capa_Presentacion
                     if (encontrado == false)
                     {
                         //si no se encuentra cantidad 
-
+                        indice = -1;
                         precio = Convert.ToDecimal(objnart.Precio);
                         //descuento = Convert.ToDecimal(TxtDesc.Text);
                         //le aplico el descuento correspondiente
                         //precio = precio - ((precio * descuento) / 100);
-                         importe = precio * cantidad;
-                         
+                        importe = precio * cantidad;
+
                         //no calculo el precio por la cantidad porque da el mismo numero
 
                         DGDetalleitems.Rows.Add(objnart.IdArticulo, objnart.Descripcion, precio, cantidad, importe);
@@ -390,8 +408,10 @@ namespace Capa_Presentacion
                     txtNombreProducto.SelectAll();
 
                 }
+               
 
-               // txtcant.SelectAll(); txtcant.Focus();
+
+                // txtcant.SelectAll(); txtcant.Focus();
             }
             catch (Exception)
             {
@@ -421,7 +441,7 @@ namespace Capa_Presentacion
                     precio = Decimal.Round(Convert.ToDecimal(row.Cells["CPrecio"].Value), 2);
                     cantidadActual = Decimal.Round((Convert.ToDecimal(row.Cells["CCantidad"].Value)), 2);
                     importe = Decimal.Round(precio * cantidadActual, 2);
-
+                    row.Cells["Cimporte"].Value = importe;
                     total = total + Convert.ToDecimal(row.Cells["Cimporte"].Value);
 
                     decimal.Round(total, 2);
@@ -434,7 +454,7 @@ namespace Capa_Presentacion
         {
             if (e.KeyCode == Keys.Enter)
             {
-                Buscar_Cliente(Convert.ToInt32 (  DGCliente.CurrentRow.Cells["idcliente"].Value));
+                Buscar_Cliente(Convert.ToInt32(DGCliente.CurrentRow.Cells["idcliente"].Value));
                 DGCliente.Visible = false;
             }
         }
@@ -448,8 +468,8 @@ namespace Capa_Presentacion
 
 
                 //if (chkporcantidad.Checked == false) { txtNombreProducto.Focus(); };
-             //   DGDetalleitems.Rows[DGProductos.Rows.Count - 1].Cells[2].Selected = true;
-                //cambiartextbox();
+                //   DGDetalleitems.Rows[DGProductos.Rows.Count - 1].Cells[2].Selected = true;
+                cambiartextbox();
             }
             else if (e.KeyCode == Keys.Up)
 
@@ -473,45 +493,46 @@ namespace Capa_Presentacion
                 {
 
 
-                    
-            try
-            {
-                if (txtNombreProducto.TextLength >= 2 && IsNumeric(txtNombreProducto.Text) != true)
-                {
+
+                    try
+                    {
+                        if (txtNombreProducto.TextLength >= 2 && IsNumeric(txtNombreProducto.Text) != true)
+                        {
 
 
-                    DGProductos.Visible = true;
+                            DGProductos.Visible = true;
                             DGProductos.DataSource = NegocioArticulo.buscarNombre(txtNombreProducto.Text);
 
                             DGProductos.Columns[0].Visible = false;
-                    DGProductos.Columns[1].Visible = false;
-                    DGProductos.Columns[2].Width = 350;
-                    DGProductos.Columns[3].Visible = false;
-                    DGProductos.Columns[4].Visible = false;
-                    DGProductos.Columns[5].Visible = false;
-                    DGProductos.Columns[6].Visible = false;
+                            DGProductos.Columns[1].Visible = false;
+                            DGProductos.Columns[2].Width = 350;
+                            DGProductos.Columns[3].Visible = false;
+                            DGProductos.Columns[4].Visible = false;
+                            DGProductos.Columns[5].Visible = false;
+                            DGProductos.Columns[6].Visible = false;
 
 
 
-                }
+                        }
 
 
-                else
-                    if ((IsNumeric(txtNombreProducto.Text) == true) && (txtNombreProducto.TextLength >= 13))
-                    {
-                        Buscar_producto(Convert.ToInt64(txtNombreProducto.Text), "porbarra", true, 1, txtNombreProducto.Text);
+                        else
+                            if ((IsNumeric(txtNombreProducto.Text) == true) && (txtNombreProducto.TextLength >= 13))
+                        {
+                            Buscar_producto(Convert.ToInt64(txtNombreProducto.Text), "porbarra", true, 1, txtNombreProducto.Text);
+                            cambiartextbox();
+                        }
+                        else
+                        {
+                            DGProductos.Visible = false;
+                        }
+
                     }
-                    else
+                    catch (Exception)
                     {
-                        DGProductos.Visible = false;
-                    }
-                
-            }
-            catch (Exception)
-            {
 
-                throw;
-            }
+                        throw;
+                    }
                     DGProductos.Visible = true;
                     DGProductos.DataSource = NegocioArticulo.buscarNombre(txtNombreProducto.Text);
 
@@ -524,7 +545,7 @@ namespace Capa_Presentacion
                     DGProductos.Columns[5].Visible = false;
                     DGProductos.Columns[6].Visible = false;
 
-
+                   
 
                 }
 
@@ -532,7 +553,8 @@ namespace Capa_Presentacion
                 else
                     if ((IsNumeric(txtNombreProducto.Text) == true) && (txtNombreProducto.TextLength >= 13))
                 {
-                    Buscar_producto(Convert.ToInt64(txtNombreProducto.Text), "porbarra",true , 1, txtNombreProducto.Text);
+                    Buscar_producto(Convert.ToInt64(txtNombreProducto.Text), "porbarra", true, 1, txtNombreProducto.Text);
+                    cambiartextbox();
                 }
                 else
                 {
@@ -569,7 +591,8 @@ namespace Capa_Presentacion
                     if (txtNombreProducto.TextLength >= 13 && IsNumeric(txtNombreProducto.Text) == true)
                     {
                         Buscar_producto(Convert.ToInt64(txtNombreProducto.Text), "porbarra", true, 1, txtNombreProducto.Text);
-                        txtNombreProducto.Focus();
+                        
+                       // txtNombreProducto.Focus();
 
                     }
 
@@ -580,17 +603,19 @@ namespace Capa_Presentacion
                     else if (IsNumeric(txtNombreProducto.Text) == true)
                     {
                         Buscar_producto(Convert.ToInt64(txtNombreProducto.Text), "poridarticulo", true);
+                        
 
                     }
                     else
                     {
                         DGProductos.Visible = false;
-                        
+
 
 
                     }
-                    DGDetalleitems.Rows[DGDetalleitems.Rows.Count - 1].Cells[2].Selected = true;
                     
+                    
+                    cambiartextbox();
                     //txtNombreProducto.Focus();
                 }
                 catch (Exception ex)
@@ -613,6 +638,7 @@ namespace Capa_Presentacion
                 if (objconsulta.IsCerro != false)
                 {
                     Buscar_producto(objconsulta.Idarticulo, "poridarticulo", true);
+                    cambiartextbox();
                 }
                 else
                 {
@@ -631,21 +657,120 @@ namespace Capa_Presentacion
 
         private void BtnGuardar_Click(object sender, EventArgs e)
         {
-            DataTable dt = new DataTable();
-            dt.Columns.Add("Codigo", typeof(string));
-          //  dt.Columns.Add("Precio", typeof(decimal));
-            dt.Columns.Add("Cantidadtotal", typeof(decimal));
-           // dt.Columns.Add("Importe", typeof(decimal));
-            dt.Columns.Add("Detalle", typeof(string));
-            dt.Columns.Add("Cantidadparcial", typeof(string));
-
-
-            foreach (DataGridViewRow fila in DGDetalleitems.Rows)
+            try
             {
-                dt.Rows.Add(fila.Cells["CCodigo"].Value, fila.Cells["CCantidad"].Value, fila.Cells["CDetalle"].Value,0);
+                if (controlarguardado() == true)
+                {
+                    DataTable dt = new DataTable();
+                    dt.Columns.Add("Codigo", typeof(string));
+                    dt.Columns.Add("Cantidadtotal", typeof(decimal));
+                    dt.Columns.Add("Detalle", typeof(string));
+                    dt.Columns.Add("Cantidadparcial", typeof(string));
+
+
+                    foreach (DataGridViewRow fila in DGDetalleitems.Rows)
+                    {
+                        dt.Rows.Add(fila.Cells["CCodigo"].Value, fila.Cells["CCantidad"].Value, fila.Cells["CDetalle"].Value, 0);
+                    }
+
+                    NegocioOrdenpedido.insertar(DateTime.Now, idcliente, NegocioConfigEmpresa.idusuario, CbTipopedido.Text, "Pendiente", "", dt);
+                    UtilityFrm.mensajeConfirm("Se guardo correctamente");
+
+                }
+                else
+                {
+                    UtilityFrm.mensajeError("Tiene algunos campos en blanco, no puede continuar");
+                }
+            }
+            catch (Exception err)
+            {
+                UtilityFrm.mensajeError(err.Message);
+                
             }
 
-            NegocioOrdenpedido.insertar(DateTime.Now, idcliente, NegocioConfigEmpresa.idusuario, CbTipopedido.Text, "Inicio", "", dt);
+
+        }
+
+        private void DGCliente_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+        private void limpiearformulario()
+        {
+
+        }
+
+        private void DGDetalleitems_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            Rectangle rec = DGDetalleitems.GetCellDisplayRectangle(DGDetalleitems.CurrentCell.ColumnIndex, DGDetalleitems.CurrentCell.RowIndex, false);
+
+            //e.ColumnIndex == 2 || parametrizacion
+            if (DGDetalleitems.Rows.Count > 0)
+            {
+                if (e.ColumnIndex == 3)
+                {
+                    datagriddobleclic = true;
+                    TxtcambioDv.Location = new Point(rec.Location.X + DGDetalleitems.Location.X, rec.Location.Y + DGDetalleitems.Location.Y);
+                    // preciocantidad = "Cprecio";
+                    TxtcambioDv.Visible = true;
+                    TxtcambioDv.Text = DGDetalleitems.CurrentCell.Value.ToString();
+                    TxtcambioDv.Focus();
+
+
+                }
+
+
+
+            }
+        }
+
+        private void TxtcambioDv_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                //  DGDetalleitems.Rows[DGDetalleitems.Rows.Count - 1].Selected = true;
+                if (datagriddobleclic == true)
+                {
+                    DGDetalleitems.CurrentRow.Cells["ccantidad"].Value = TxtcambioDv.Text;
+                    datagriddobleclic = false;
+                }
+                else
+                {
+                    DGDetalleitems.CurrentRow.Cells["ccantidad"].Value = Convert.ToInt32(TxtcambioDv.Text) + Convert.ToInt32(DGDetalleitems.CurrentRow.Cells["ccantidad"].Value);
+                }
+                
+                TxtcambioDv.Visible = false;
+                txtNombreProducto.Focus();
+                txtNombreProducto.SelectAll();
+                totales();
+            }
+        }
+        private void cambiartextbox()
+        {
+            if (chkporcantidad.Checked == true)
+            {
+                if (indice < 0)
+                {
+                    DGDetalleitems.Rows[DGDetalleitems.Rows.Count - 1].Cells[3].Selected = true;
+                }
+                else
+                {
+                    DGDetalleitems.Rows[indice].Cells[3].Selected = true;
+                }
+               
+                //  DGDetalleitems.Rows[DGDetalleitems.CurrentCell.RowIndex].Selected = true;
+                Rectangle rec = DGDetalleitems.GetCellDisplayRectangle(DGDetalleitems.CurrentCell.ColumnIndex, DGDetalleitems.CurrentCell.RowIndex, false);
+                DGDetalleitems.Focus();
+
+
+                TxtcambioDv.Location = new Point(rec.Location.X + DGDetalleitems.Location.X, rec.Location.Y + DGDetalleitems.Location.Y);
+
+                TxtcambioDv.Visible = true;
+                TxtcambioDv.Text = DGDetalleitems.CurrentCell.Value.ToString();
+                TxtcambioDv.Focus();
+            }
+
+
         }
     }
 }

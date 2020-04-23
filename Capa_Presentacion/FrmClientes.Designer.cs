@@ -45,6 +45,7 @@
             this.btnBuscar = new System.Windows.Forms.Button();
             this.tabAgregarOcambiar = new System.Windows.Forms.TabPage();
             this.grpboxCategoria = new System.Windows.Forms.GroupBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.CBlocalidad = new System.Windows.Forms.ComboBox();
@@ -266,6 +267,7 @@
             this.grpboxCategoria.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.grpboxCategoria.Controls.Add(this.button1);
             this.grpboxCategoria.Controls.Add(this.label4);
             this.grpboxCategoria.Controls.Add(this.label1);
             this.grpboxCategoria.Controls.Add(this.CBlocalidad);
@@ -298,6 +300,21 @@
             this.grpboxCategoria.TabIndex = 0;
             this.grpboxCategoria.TabStop = false;
             this.grpboxCategoria.Text = "Clientes";
+            // 
+            // button1
+            // 
+            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.button1.Enabled = false;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(801, 625);
+            this.button1.Margin = new System.Windows.Forms.Padding(4);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(140, 49);
+            this.button1.TabIndex = 32;
+            this.button1.Text = "CTA CTE";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // label4
             // 
@@ -570,7 +587,7 @@
             // 
             // panelHorizontal
             // 
-            this.panelHorizontal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(0)))), ((int)(((byte)(170)))));
+            this.panelHorizontal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(100)))), ((int)(((byte)(200)))));
             this.panelHorizontal.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panelHorizontal.Controls.Add(this.label2);
             this.panelHorizontal.Controls.Add(this.btnMaximizar);
@@ -632,6 +649,8 @@
             this.btnRestaurar.TabStop = false;
             this.btnRestaurar.Visible = false;
             this.btnRestaurar.Click += new System.EventHandler(this.btnRestaurar_Click);
+            this.btnRestaurar.MouseLeave += new System.EventHandler(this.btnRestaurar_MouseLeave);
+            this.btnRestaurar.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btnRestaurar_MouseMove);
             // 
             // btnMinimizar
             // 
@@ -751,7 +770,6 @@
         private System.Windows.Forms.ComboBox Cbprovincia;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label1;
-
-
+        private System.Windows.Forms.Button button1;
     }
 }

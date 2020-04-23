@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmGuardarVenta));
             this.btnGuardar = new System.Windows.Forms.Button();
             this.lblTotal = new System.Windows.Forms.Label();
             this.lblEfectivo = new System.Windows.Forms.Label();
@@ -47,26 +48,31 @@
             this.tabTarjeta = new System.Windows.Forms.TabControl();
             this.tbTarjeta = new System.Windows.Forms.TabPage();
             this.gbxTarjeta = new System.Windows.Forms.GroupBox();
+            this.txtLote = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.txtCupon = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.lblntarjeta = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.lblImportecuota = new System.Windows.Forms.Label();
+            this.lblCuota = new System.Windows.Forms.Label();
             this.lblTarjeta = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.lblsubtotal = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.lblDescuento = new System.Windows.Forms.Label();
-            this.lblCuota = new System.Windows.Forms.Label();
-            this.lblImportecuota = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.lblntarjeta = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.txtCupon = new System.Windows.Forms.TextBox();
-            this.label10 = new System.Windows.Forms.Label();
-            this.txtLote = new System.Windows.Forms.TextBox();
+            this.panelHorizontal = new System.Windows.Forms.Panel();
+            this.btnCerrar = new System.Windows.Forms.PictureBox();
+            this.lblSistemaVenta = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.tbEfectivo.SuspendLayout();
             this.gbxEfectivo.SuspendLayout();
             this.tabTarjeta.SuspendLayout();
             this.tbTarjeta.SuspendLayout();
             this.gbxTarjeta.SuspendLayout();
+            this.panelHorizontal.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnCerrar)).BeginInit();
             this.SuspendLayout();
             // 
             // btnGuardar
@@ -141,7 +147,7 @@
             this.panel1.Controls.Add(this.lblPrecioTotal);
             this.panel1.Controls.Add(this.lblTotal);
             this.panel1.Location = new System.Drawing.Point(556, 346);
-            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(335, 46);
             this.panel1.TabIndex = 50;
@@ -150,7 +156,7 @@
             // 
             this.lblTotalAPagar.AutoSize = true;
             this.lblTotalAPagar.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTotalAPagar.Location = new System.Drawing.Point(584, 37);
+            this.lblTotalAPagar.Location = new System.Drawing.Point(584, 48);
             this.lblTotalAPagar.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblTotalAPagar.Name = "lblTotalAPagar";
             this.lblTotalAPagar.Size = new System.Drawing.Size(285, 37);
@@ -162,8 +168,8 @@
             this.txtTotalAPagar.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtTotalAPagar.Enabled = false;
             this.txtTotalAPagar.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtTotalAPagar.Location = new System.Drawing.Point(591, 75);
-            this.txtTotalAPagar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtTotalAPagar.Location = new System.Drawing.Point(591, 86);
+            this.txtTotalAPagar.Margin = new System.Windows.Forms.Padding(4);
             this.txtTotalAPagar.Name = "txtTotalAPagar";
             this.txtTotalAPagar.ReadOnly = true;
             this.txtTotalAPagar.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
@@ -176,9 +182,9 @@
             this.tbEfectivo.BackColor = System.Drawing.Color.MintCream;
             this.tbEfectivo.Controls.Add(this.gbxEfectivo);
             this.tbEfectivo.Location = new System.Drawing.Point(4, 4);
-            this.tbEfectivo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tbEfectivo.Margin = new System.Windows.Forms.Padding(4);
             this.tbEfectivo.Name = "tbEfectivo";
-            this.tbEfectivo.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tbEfectivo.Padding = new System.Windows.Forms.Padding(4);
             this.tbEfectivo.Size = new System.Drawing.Size(443, 334);
             this.tbEfectivo.TabIndex = 0;
             this.tbEfectivo.Text = "EFECTIVO";
@@ -193,9 +199,9 @@
             this.gbxEfectivo.Controls.Add(this.lblAbono);
             this.gbxEfectivo.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbxEfectivo.Location = new System.Drawing.Point(33, 10);
-            this.gbxEfectivo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gbxEfectivo.Margin = new System.Windows.Forms.Padding(4);
             this.gbxEfectivo.Name = "gbxEfectivo";
-            this.gbxEfectivo.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gbxEfectivo.Padding = new System.Windows.Forms.Padding(4);
             this.gbxEfectivo.Size = new System.Drawing.Size(368, 311);
             this.gbxEfectivo.TabIndex = 0;
             this.gbxEfectivo.TabStop = false;
@@ -217,7 +223,7 @@
             this.txtBonificacion.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtBonificacion.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtBonificacion.Location = new System.Drawing.Point(159, 135);
-            this.txtBonificacion.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtBonificacion.Margin = new System.Windows.Forms.Padding(4);
             this.txtBonificacion.Name = "txtBonificacion";
             this.txtBonificacion.Size = new System.Drawing.Size(158, 44);
             this.txtBonificacion.TabIndex = 1;
@@ -233,7 +239,7 @@
             this.txtCambio.Enabled = false;
             this.txtCambio.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCambio.Location = new System.Drawing.Point(36, 250);
-            this.txtCambio.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtCambio.Margin = new System.Windows.Forms.Padding(4);
             this.txtCambio.Name = "txtCambio";
             this.txtCambio.ReadOnly = true;
             this.txtCambio.Size = new System.Drawing.Size(286, 44);
@@ -255,7 +261,7 @@
             this.txtAbono.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtAbono.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtAbono.Location = new System.Drawing.Point(36, 69);
-            this.txtAbono.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtAbono.Margin = new System.Windows.Forms.Padding(4);
             this.txtAbono.Name = "txtAbono";
             this.txtAbono.Size = new System.Drawing.Size(286, 44);
             this.txtAbono.TabIndex = 0;
@@ -282,8 +288,8 @@
             this.tabTarjeta.Controls.Add(this.tbEfectivo);
             this.tabTarjeta.Controls.Add(this.tbTarjeta);
             this.tabTarjeta.Font = new System.Drawing.Font("Century", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tabTarjeta.Location = new System.Drawing.Point(31, 37);
-            this.tabTarjeta.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabTarjeta.Location = new System.Drawing.Point(31, 46);
+            this.tabTarjeta.Margin = new System.Windows.Forms.Padding(4);
             this.tabTarjeta.Multiline = true;
             this.tabTarjeta.Name = "tabTarjeta";
             this.tabTarjeta.SelectedIndex = 0;
@@ -296,9 +302,9 @@
             this.tbTarjeta.BackColor = System.Drawing.Color.NavajoWhite;
             this.tbTarjeta.Controls.Add(this.gbxTarjeta);
             this.tbTarjeta.Location = new System.Drawing.Point(4, 4);
-            this.tbTarjeta.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tbTarjeta.Margin = new System.Windows.Forms.Padding(4);
             this.tbTarjeta.Name = "tbTarjeta";
-            this.tbTarjeta.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tbTarjeta.Padding = new System.Windows.Forms.Padding(4);
             this.tbTarjeta.Size = new System.Drawing.Size(443, 334);
             this.tbTarjeta.TabIndex = 1;
             this.tbTarjeta.Text = "TARJETA";
@@ -317,13 +323,91 @@
             this.gbxTarjeta.Controls.Add(this.label2);
             this.gbxTarjeta.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbxTarjeta.Location = new System.Drawing.Point(10, 10);
-            this.gbxTarjeta.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gbxTarjeta.Margin = new System.Windows.Forms.Padding(4);
             this.gbxTarjeta.Name = "gbxTarjeta";
-            this.gbxTarjeta.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gbxTarjeta.Padding = new System.Windows.Forms.Padding(4);
             this.gbxTarjeta.Size = new System.Drawing.Size(424, 315);
             this.gbxTarjeta.TabIndex = 1;
             this.gbxTarjeta.TabStop = false;
             this.gbxTarjeta.Text = "Tarjeta";
+            // 
+            // txtLote
+            // 
+            this.txtLote.Location = new System.Drawing.Point(142, 248);
+            this.txtLote.Name = "txtLote";
+            this.txtLote.Size = new System.Drawing.Size(100, 30);
+            this.txtLote.TabIndex = 64;
+            // 
+            // label10
+            // 
+            this.label10.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.Location = new System.Drawing.Point(3, 241);
+            this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(132, 37);
+            this.label10.TabIndex = 63;
+            this.label10.Text = "Lote :";
+            // 
+            // txtCupon
+            // 
+            this.txtCupon.Location = new System.Drawing.Point(142, 177);
+            this.txtCupon.Name = "txtCupon";
+            this.txtCupon.Size = new System.Drawing.Size(100, 30);
+            this.txtCupon.TabIndex = 62;
+            // 
+            // label9
+            // 
+            this.label9.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(3, 167);
+            this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(132, 37);
+            this.label9.TabIndex = 61;
+            this.label9.Text = "Cupon :";
+            // 
+            // lblntarjeta
+            // 
+            this.lblntarjeta.AutoSize = true;
+            this.lblntarjeta.Font = new System.Drawing.Font("Century Gothic", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblntarjeta.Location = new System.Drawing.Point(142, 96);
+            this.lblntarjeta.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblntarjeta.Name = "lblntarjeta";
+            this.lblntarjeta.Size = new System.Drawing.Size(33, 28);
+            this.lblntarjeta.TabIndex = 60;
+            this.lblntarjeta.Text = "...";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Century Gothic", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(251, 31);
+            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(63, 28);
+            this.label7.TabIndex = 59;
+            this.label7.Text = "-    $";
+            // 
+            // lblImportecuota
+            // 
+            this.lblImportecuota.AutoSize = true;
+            this.lblImportecuota.Font = new System.Drawing.Font("Century Gothic", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblImportecuota.Location = new System.Drawing.Point(336, 31);
+            this.lblImportecuota.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblImportecuota.Name = "lblImportecuota";
+            this.lblImportecuota.Size = new System.Drawing.Size(33, 28);
+            this.lblImportecuota.TabIndex = 58;
+            this.lblImportecuota.Text = "...";
+            // 
+            // lblCuota
+            // 
+            this.lblCuota.AutoSize = true;
+            this.lblCuota.Font = new System.Drawing.Font("Century Gothic", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCuota.Location = new System.Drawing.Point(187, 31);
+            this.lblCuota.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblCuota.Name = "lblCuota";
+            this.lblCuota.Size = new System.Drawing.Size(33, 28);
+            this.lblCuota.TabIndex = 57;
+            this.lblCuota.Text = "...";
             // 
             // lblTarjeta
             // 
@@ -403,83 +487,49 @@
             this.lblDescuento.TabIndex = 56;
             this.lblDescuento.Text = "0.0";
             // 
-            // lblCuota
+            // panelHorizontal
             // 
-            this.lblCuota.AutoSize = true;
-            this.lblCuota.Font = new System.Drawing.Font("Century Gothic", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCuota.Location = new System.Drawing.Point(187, 31);
-            this.lblCuota.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblCuota.Name = "lblCuota";
-            this.lblCuota.Size = new System.Drawing.Size(33, 28);
-            this.lblCuota.TabIndex = 57;
-            this.lblCuota.Text = "...";
+            this.panelHorizontal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(100)))), ((int)(((byte)(200)))));
+            this.panelHorizontal.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelHorizontal.Controls.Add(this.btnCerrar);
+            this.panelHorizontal.Controls.Add(this.lblSistemaVenta);
+            this.panelHorizontal.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelHorizontal.Location = new System.Drawing.Point(0, 0);
+            this.panelHorizontal.Name = "panelHorizontal";
+            this.panelHorizontal.Size = new System.Drawing.Size(960, 37);
+            this.panelHorizontal.TabIndex = 65;
+            this.panelHorizontal.DoubleClick += new System.EventHandler(this.panelHorizontal_DoubleClick);
+            this.panelHorizontal.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panelHorizontal_MouseMove);
             // 
-            // lblImportecuota
+            // btnCerrar
             // 
-            this.lblImportecuota.AutoSize = true;
-            this.lblImportecuota.Font = new System.Drawing.Font("Century Gothic", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblImportecuota.Location = new System.Drawing.Point(336, 31);
-            this.lblImportecuota.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblImportecuota.Name = "lblImportecuota";
-            this.lblImportecuota.Size = new System.Drawing.Size(33, 28);
-            this.lblImportecuota.TabIndex = 58;
-            this.lblImportecuota.Text = "...";
+            this.btnCerrar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnCerrar.BackgroundImage = global::Capa_Presentacion.Properties.Resources.Delete_20px;
+            this.btnCerrar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnCerrar.ErrorImage = ((System.Drawing.Image)(resources.GetObject("btnCerrar.ErrorImage")));
+            this.btnCerrar.Location = new System.Drawing.Point(933, 5);
+            this.btnCerrar.Name = "btnCerrar";
+            this.btnCerrar.Size = new System.Drawing.Size(22, 25);
+            this.btnCerrar.TabIndex = 0;
+            this.btnCerrar.TabStop = false;
+            this.btnCerrar.Click += new System.EventHandler(this.btnCerrar_Click);
+            this.btnCerrar.MouseLeave += new System.EventHandler(this.btnCerrar_MouseLeave);
+            this.btnCerrar.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btnCerrar_MouseMove);
             // 
-            // label7
+            // lblSistemaVenta
             // 
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Century Gothic", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(251, 31);
-            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(63, 28);
-            this.label7.TabIndex = 59;
-            this.label7.Text = "-    $";
-            // 
-            // lblntarjeta
-            // 
-            this.lblntarjeta.AutoSize = true;
-            this.lblntarjeta.Font = new System.Drawing.Font("Century Gothic", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblntarjeta.Location = new System.Drawing.Point(142, 96);
-            this.lblntarjeta.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblntarjeta.Name = "lblntarjeta";
-            this.lblntarjeta.Size = new System.Drawing.Size(33, 28);
-            this.lblntarjeta.TabIndex = 60;
-            this.lblntarjeta.Text = "...";
-            // 
-            // label9
-            // 
-            this.label9.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(3, 167);
-            this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(132, 37);
-            this.label9.TabIndex = 61;
-            this.label9.Text = "Cupon :";
-            // 
-            // txtCupon
-            // 
-            this.txtCupon.Location = new System.Drawing.Point(142, 177);
-            this.txtCupon.Name = "txtCupon";
-            this.txtCupon.Size = new System.Drawing.Size(100, 30);
-            this.txtCupon.TabIndex = 62;
-            // 
-            // label10
-            // 
-            this.label10.Font = new System.Drawing.Font("Century Gothic", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(3, 241);
-            this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(132, 37);
-            this.label10.TabIndex = 63;
-            this.label10.Text = "Lote :";
-            // 
-            // txtLote
-            // 
-            this.txtLote.Location = new System.Drawing.Point(142, 248);
-            this.txtLote.Name = "txtLote";
-            this.txtLote.Size = new System.Drawing.Size(100, 30);
-            this.txtLote.TabIndex = 64;
+            this.lblSistemaVenta.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblSistemaVenta.AutoSize = true;
+            this.lblSistemaVenta.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSistemaVenta.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.lblSistemaVenta.Location = new System.Drawing.Point(3, 6);
+            this.lblSistemaVenta.Name = "lblSistemaVenta";
+            this.lblSistemaVenta.Size = new System.Drawing.Size(210, 28);
+            this.lblSistemaVenta.TabIndex = 3;
+            this.lblSistemaVenta.Text = "GUARDAR VENTA";
+            this.lblSistemaVenta.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // FrmGuardarVenta
             // 
@@ -487,6 +537,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.ClientSize = new System.Drawing.Size(960, 475);
+            this.Controls.Add(this.panelHorizontal);
             this.Controls.Add(this.lblDescuento);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.lblsubtotal);
@@ -498,8 +549,9 @@
             this.Controls.Add(this.lblEfectivo);
             this.Controls.Add(this.tabTarjeta);
             this.Controls.Add(this.btnGuardar);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.KeyPreview = true;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FrmGuardarVenta";
@@ -517,6 +569,9 @@
             this.tbTarjeta.ResumeLayout(false);
             this.gbxTarjeta.ResumeLayout(false);
             this.gbxTarjeta.PerformLayout();
+            this.panelHorizontal.ResumeLayout(false);
+            this.panelHorizontal.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.btnCerrar)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -557,5 +612,8 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label lblntarjeta;
         private System.Windows.Forms.TextBox txtLote;
+        private System.Windows.Forms.Panel panelHorizontal;
+        private System.Windows.Forms.PictureBox btnCerrar;
+        private System.Windows.Forms.Label lblSistemaVenta;
     }
 }

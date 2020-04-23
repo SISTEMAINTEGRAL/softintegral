@@ -31,12 +31,12 @@ namespace Capa_negocio
             }
 
             DatosOrdenpedido miorden = new DatosOrdenpedido(fecha,codcliente,idusuario,tipoorden,estado,observacion);
-            miorden.Insertar(miorden, detalles);
+            miorden.Insertarymodificar(miorden, detalles);
             string msg = "";
            return msg;
         }
 
-        public static string modificarcantidad(int nroorden, string estado, DataTable midata)
+        public static string modificarcantidad(int nroorden, string estado, DataTable midata,int codcliente, string tipo)
         {
             List<Datodetalleordenpedido> detalles = new List<Datodetalleordenpedido>();
 
@@ -48,18 +48,40 @@ namespace Capa_negocio
                 detalle.Idproducto = Convert.ToInt32(row["codigo"].ToString());
                 detalle.Cantidadparcial = Convert.ToDecimal(row["cantidadparcial"].ToString());
                 detalle.Cantidadtotal = Convert.ToDecimal(row["cantidadtotal"].ToString());
-                detalle.Cantidadactual = Convert.ToDecimal(row["cantidadtotal"].ToString());
+                detalle.Cantidadactual = Convert.ToDecimal(row["cantidadactual"].ToString());
                 detalle.Detalle = row["detalle"].ToString();
-                detalle.Norden = Convert.ToInt32(row["nroorden"].ToString());
+                detalle.Norden = nroorden;
 
                 //agrego el item a la lista detalles
                 detalles.Add(detalle);
             }
 
-            DatosOrdenpedido miorden = new DatosOrdenpedido(estado,nroorden) ;
-            miorden.Modificar(miorden, detalles);
-            string msg = "";
-            return msg;
+            DatosOrdenpedido miorden = new DatosOrdenpedido(estado,nroorden,codcliente,tipo) ;
+            
+            
+            return miorden.Insertarymodificar(miorden, detalles, "modificarestado", false); ;
         }
+
+        public static DataTable buscarconcatenacion(int varcodcliente, string varestado,string  vartipoorden,string varfechaini,string varfechafin, bool varporcliente, bool varporestado, bool varportipo, bool varporfecha)
+        {
+            DatosOrdenpedido Dorden = new DatosOrdenpedido(varcodcliente, varestado, vartipoorden, varfechaini, varfechafin, varporcliente, varporestado, varportipo, varporfecha);
+            return Dorden.Busquedaconcatenada(Dorden);
+                 
+
+        }
+
+        public static DataTable buscarlistadodetalle(int norden)
+        {
+            Datodetalleordenpedido  objorden = new Datodetalleordenpedido(norden);
+            return objorden.consultadetalla(objorden);
+        }
+
+        public static string eliminardetalle(int norden)
+        {
+            Datodetalleordenpedido objorden = new Datodetalleordenpedido(norden);
+            return objorden.eliminardetalle(objorden);
+        }
+
+        
     }
 }

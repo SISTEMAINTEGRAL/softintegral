@@ -112,7 +112,7 @@ namespace Capa_negocio
            char estado,bool distock = false, int nroterminal = 0,
            int codtarjeta = 0, string cupon = "",string lote = "", decimal importe = 0, 
            int cuota = 0, int codformapago = 1, decimal totalneto = 0, decimal precioiva = 0,
-           string cae = "", string caefechavto = "",string numerotipofactura = "", string puntoventa = "")
+           string cae = "", string caefechavto = "",string numerotipofactura = "", string puntoventa = "", decimal iva105 = 0,decimal neto105 = 0)
        {
 
            string rpta = "";
@@ -143,9 +143,9 @@ namespace Capa_negocio
             objVenta.Caevencimiento = caefechavto;
             objVenta.Numerotipofactura = numerotipofactura;
             objVenta.Puntoventa = puntoventa;
-            
-
-           List<DDetalle_Venta> detalles = new List<DDetalle_Venta>();
+            objVenta.Precioiva105 = iva105;
+            objVenta.Totalneto105 = neto105;
+            List<DDetalle_Venta> detalles = new List<DDetalle_Venta>();
            
 
            foreach (DataRow row in dtDetalles.Rows)

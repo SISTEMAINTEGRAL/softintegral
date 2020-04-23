@@ -58,6 +58,7 @@ namespace Capa_Presentacion.Formreportes
                  
                 miticket.table1.DataSource = midatatable;
                 reportViewer1.Report = miticket;
+                
                 reportViewer1.RefreshReport();
               
                 

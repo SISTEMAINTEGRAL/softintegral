@@ -23,7 +23,27 @@ namespace Capa_negocio
         private static UInt32 _globalId;
         private  FEAuthRequest authRequest;
         private string serv;
-     public NegocioFElectronica ()
+
+        const int ID_TASA_IVA_NINGUNO = 3;
+        const int ID_TASA_IVA_EXENTO = 1;
+        const int ID_TASA_IVA_10_50 = 4;
+        const int ID_TASA_IVA_21_00 = 5;
+
+        const int TIPOCOMPROBANTE_FACTURA_A = 1;
+        const int TIPOCOMPROBANTE_NOTADECREDITO_A = 3;
+        const int TIPOCOMPROBANTE_FACTURA_B = 6;
+        const int TIPOCOMPROBANTE_NOTADECREDITO_B = 8;
+        const int TIPOCOMPROBANTE_FACTURA_C = 11;
+        const int TIPOCOMPROBANTE_NOTADECREDITO_C = 13;
+
+        const int CONCEPTO_PRODUCTOSERVICIO = 3;
+        const int CONCEPTO_SERVICIO = 2;
+        const int CONCEPTO_PRODUCTO = 1;
+
+
+
+
+        public NegocioFElectronica ()
         {
             //string serv, string url, string cert_path, string clave
             //this.serv = serv;
@@ -34,26 +54,26 @@ namespace Capa_negocio
             //    this.clave.AppendChar(character);
             //this.clave.MakeReadOnly();
         }
-        public string comprobante_electronico(int tipocomprobante, long nrodoc, double total, double neto, double civa, ref string cae, ref string fechavto, ref string tipofactura, ref string puntoventa)
+        public string comprobante_electronico(int tipocomprobante, long nrodoc, double total, double neto21, double civa21,double neto105,double civa105, ref string cae, ref string fechavto, ref string tipofactura, ref string puntoventa)
         {
 
             try
             {
-                LoginClass miloginclase = new LoginClass("wsfe", "https://wsaahomo.afip.gov.ar/ws/services/LoginCms", "C:\\Backup\\Sistema de ventas\\softintegral\\SistemaVentas\\bin\\Debug\\Certificado\\certificado.pfx", "Cristian3043");
+                LoginClass miloginclase = new LoginClass("wsfe", NegocioConfigEmpresa.urllogin, @"C:\Certificadoconexart\certificado.pfx", "");
                 miloginclase.hacerLogin(miloginclase);
                 int doctipoid = 96;
-                authRequest = new AFIP.WSFE.FEAuthRequest();
-                authRequest.Cuit = 20314729154;
+                authRequest = new FEAuthRequest();
+                authRequest.Cuit = NegocioConfigEmpresa.emcuit;
                 authRequest.Sign = miloginclase.Sing;
                 authRequest.Token = miloginclase.Token;
 
-                Service servicio = new AFIP.WSFE.Service();
+                Service servicio = new Service();
                 servicio = getServicio();
-                servicio.Url = "https://wswhomo.afip.gov.ar/wsfev1/service.asmx?WSDL";
+                servicio.Url = NegocioConfigEmpresa.urlservicio;
                 //servicio.ClientCertificates.Add(certificado);
 
                 //ver conceptoid
-                int conceptoid = 1;
+                int conceptoid = CONCEPTO_PRODUCTO;
                 if (nrodoc.ToString().Length == 11)
                 {
                     doctipoid = 80;
@@ -62,9 +82,9 @@ namespace Capa_negocio
 
                 //  Service service = getServicio();
                 servicio.ClientCertificates.Add(miloginclase.Certificado);
-                FECAERequest req = new AFIP.WSFE.FECAERequest();
-                FECAECabRequest cab = new AFIP.WSFE.FECAECabRequest();
-                FECAEDetRequest det = new AFIP.WSFE.FECAEDetRequest();
+                FECAERequest req = new FECAERequest();
+                FECAECabRequest cab = new FECAECabRequest();
+                FECAEDetRequest det = new FECAEDetRequest();
 
                 cab.CantReg = 1;
                 cab.PtoVta = Convert.ToInt32 (NegocioConfigEmpresa.puntoventa) ;
@@ -86,8 +106,10 @@ namespace Capa_negocio
                 det.CbteFch = DateTime.Now.ToString("yyyyMMdd");
                 if (tipocomprobante == 1 || tipocomprobante == 6)
                 {
-                    det.ImpNeto = neto;
-                    det.ImpIVA = civa;
+                    decimal totalneto = decimal.Round ( Convert.ToDecimal(neto21 + neto105),2);
+                    decimal totaliva = decimal.Round ( Convert.ToDecimal(civa21 + civa105),2);
+                    det.ImpNeto = Convert.ToDouble (totalneto);
+                    det.ImpIVA = Convert.ToDouble( totaliva);
                 }
                 else
                 {
@@ -103,25 +125,40 @@ namespace Capa_negocio
 
                 det.MonId = "PES";
                 det.MonCotiz = 1;
-                int tipoalicuota = 3;
-                if (tipocomprobante == 1 || tipocomprobante == 6)
-                {
-                    tipoalicuota = 5;
-                }
-
+                int tipoalicuota = ID_TASA_IVA_NINGUNO;
                 AlicIva alicuota = new AlicIva();
-                alicuota.Id = tipoalicuota;
-                if (tipocomprobante == 1 || tipocomprobante == 6)
+                if (tipocomprobante == TIPOCOMPROBANTE_FACTURA_A || tipocomprobante == TIPOCOMPROBANTE_FACTURA_B)
                 {
-                    alicuota.BaseImp = neto;
-                    alicuota.Importe = civa;
-                    det.Iva = new[] { alicuota };
+                   
+                    tipoalicuota = ID_TASA_IVA_21_00;
+                    alicuota.Id = tipoalicuota;
+                    alicuota.BaseImp = neto21;
+                    alicuota.Importe = civa21;
+                    if (neto105 > 0)
+                    {
+                        AlicIva alicuota2 = new AlicIva();
+                        tipoalicuota = ID_TASA_IVA_10_50;
+                        alicuota2.Id = tipoalicuota;
+                        alicuota2.BaseImp = neto105;
+                        alicuota2.Importe = civa105;
+                        det.Iva = new[] { alicuota, alicuota2 };
+                    }
+                    else
+                    {
+                        det.Iva = new[] { alicuota };
+                    }
+                    
                 }
                 else
                 {
+                    alicuota.Id = tipoalicuota;
                     alicuota.BaseImp = 0;
                     alicuota.Importe = 0;
+                    det.Iva = new[] { alicuota};
                 }
+
+               
+               
                 
 
                
@@ -183,7 +220,7 @@ namespace Capa_negocio
         private Service getServicio()
         {
             var s = new Service();
-            s.Url = "https://wswhomo.afip.gov.ar/wsfev1/service.asmx?WSDL";
+            s.Url = NegocioConfigEmpresa.urlservicio;
             return s;
         }
 

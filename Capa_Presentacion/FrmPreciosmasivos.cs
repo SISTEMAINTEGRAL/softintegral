@@ -205,7 +205,7 @@ namespace Capa_Presentacion
 
         private void btnCerrar_MouseLeave(object sender, EventArgs e)
         {
-            btnCerrar.BackColor = Color.FromArgb(100, 0, 180);
+            btnCerrar.BackColor = Color.FromArgb(0, 100, 200);
         }
 
         private void btnRestaurar_MouseMove(object sender, MouseEventArgs e)
@@ -215,7 +215,7 @@ namespace Capa_Presentacion
 
         private void btnRestaurar_MouseLeave(object sender, EventArgs e)
         {
-            btnRestaurar.BackColor = Color.FromArgb(100, 0, 180);
+            btnRestaurar.BackColor = Color.FromArgb(0, 100, 200);
         }
 
         private void btnMaximizar_MouseMove(object sender, MouseEventArgs e)
@@ -225,7 +225,7 @@ namespace Capa_Presentacion
 
         private void btnMaximizar_MouseLeave(object sender, EventArgs e)
         {
-            btnMaximizar.BackColor = Color.FromArgb(100, 0, 180);
+            btnMaximizar.BackColor = Color.FromArgb(0, 100, 200);
         }
 
         private void btnMinimizar_MouseMove(object sender, MouseEventArgs e)
@@ -235,7 +235,7 @@ namespace Capa_Presentacion
 
         private void btnMinimizar_MouseLeave(object sender, EventArgs e)
         {
-            btnMinimizar.BackColor = Color.FromArgb(100, 0, 180);
+            btnMinimizar.BackColor = Color.FromArgb(0,100,200);
         }
 
         private void btnLimpiarG_Click(object sender, EventArgs e)

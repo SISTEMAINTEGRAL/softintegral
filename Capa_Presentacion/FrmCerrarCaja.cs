@@ -339,8 +339,7 @@ namespace Capa_Presentacion
         private void btnMaximizar_Click(object sender, EventArgs e)
         {
             //maximizar
-            this.btnRestaurar.Visible = true;
-            this.btnMaximizar.Visible = false;
+            
             this.WindowState = FormWindowState.Maximized;
         }
 
@@ -415,7 +414,34 @@ namespace Capa_Presentacion
             calculototales();
         }
 
-       
+        private void btnMinimizar_MouseLeave(object sender, EventArgs e)
+        {
+            
+        }
 
+        private void btnMinimizar_MouseMove(object sender, MouseEventArgs e)
+        {
+            
+        }
+
+        private void btnMaximizar_MouseLeave(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void btnMaximizar_MouseMove(object sender, MouseEventArgs e)
+        {
+           
+        }
+
+        private void btnCerrar_MouseLeave(object sender, EventArgs e)
+        {
+            btnCerrar.BackColor = Color.FromArgb(0, 100, 200);
+        }
+
+        private void btnCerrar_MouseMove(object sender, MouseEventArgs e)
+        {
+            btnCerrar.BackColor = Color.Red;
+        }
     }
 }

@@ -23,20 +23,21 @@ namespace Capa_Presentacion
             InitializeComponent();
             //muestro las ayudas del formulario
             
-            mensajesDeAyuda();
-            btnEliminar.Enabled = false;
+            //mensajesDeAyuda();
+            //btnEliminar.Enabled = false;
             //al inicio limpia textbox
             limpiarTextbox();
         }
 
         private void FrmCategoria_Load(object sender, EventArgs e)
         {
+            //cargarcombobox();
             isNuevo = false;
             isEditar = false;
 
             //Cuando se abre la ventana se llama a mostrar las categorias
             this.mostrar();
-            this.txtNombre.Focus();
+            //this.txtNombre.Focus();
         }
       
         /* Gestion con Base de Datos */
@@ -45,6 +46,7 @@ namespace Capa_Presentacion
             try
             {
                 this.dataLista.DataSource = NegocioCategoria.mostrar();
+                DGSubcategoria.Rows.Clear();
             }
             catch (Exception ex)
             {
@@ -56,27 +58,12 @@ namespace Capa_Presentacion
             //oculto las dos primeras columnas
             this.ocultarColumnas();
             //muestro el total de las categorias
-            lblTotal.Text = "Total de Registros: " + Convert.ToString(dataLista.RowCount);
+            //lblTotal.Text = "Total de Registros: " + Convert.ToString(dataLista.RowCount);
 
         }
         private void BuscarNombre()
         {
-            try
-            {
-                this.dataLista.DataSource = NegocioCategoria.buscar(this.txtNombre.Text);
-            }
-
-            catch (Exception ex)
-            {
-                UtilityFrm.mensajeError("Error Con Base de Datos :" + ex.Message);
-                
-            }
-            //datasource el origen de los datos 
-           
-            //oculto las dos primeras columnas
-            this.ocultarColumnas();
-            //muestro el total de las categorias
-            lblTotal.Text = "Total de Registros: " + Convert.ToString(dataLista.RowCount);
+            
 
         }
 
@@ -88,7 +75,7 @@ namespace Capa_Presentacion
        //comparo el evento pasado como parametro y el enum keys.enter
             if (e.KeyCode==Keys.Enter)
             {
-                this.txtDescripcion.Focus();
+                //this.txtDescripcion.Focus();
                 //se pasa el control permitiendo eliminar el beep
                 e.SuppressKeyPress = true;
             }
@@ -99,7 +86,7 @@ namespace Capa_Presentacion
             //comparo el evento pasado como parametro y el enum keys.enter
             if (e.KeyCode == Keys.Enter)
             {
-                this.btnGuardar.Focus();
+                //this.btnGuardar.Focus();
                 //se pasa el control permitiendo eliminar el beep
                 e.SuppressKeyPress = true;
             }
@@ -112,15 +99,15 @@ namespace Capa_Presentacion
         }
         private void limpiarTextbox()
         {
-            this.txtDescripcion.Text = "";
-            this.txtNombre.Text = "";
-            this.txtCodigo.Text = "";
-            this.txtNombreConfig.Text = "";
+            //this.txtDescripcion.Text = "";
+            //this.txtNombre.Text = "";
+            this.txtCodigoCategoria.Text = "";
+            this.txtNombreCategoria.Text = "";
         }
         private void habilitarTextbox()
         {
-            this.txtDescripcion.Enabled = true;
-            this.txtNombreConfig.Enabled = true;
+            //this.txtDescripcion.Enabled = true;
+            this.txtNombreCategoria.Enabled = true;
 
         }
         private void ocultarColumnas()
@@ -139,32 +126,15 @@ namespace Capa_Presentacion
         //lista de datos
         private void dataLista_DoubleClick(object sender, EventArgs e)
         {
-            this.btnNuevo.Enabled = false;
-            this.btnEditar.Enabled = true;
-            this.btnCancelar.Enabled = true;
-            this.txtDescripcion.Enabled = true;
-            this.txtNombreConfig.Enabled = true;
-            //para editar categoria lleva a la caja de texto de configuracion
-            txtCodigo.Text = Convert.ToString(this.dataLista.CurrentRow.Cells["idcategoria"].Value);
-            txtNombreConfig.Text = Convert.ToString(this.dataLista.CurrentRow.Cells["nombre"].Value);
-            txtDescripcion.Text = Convert.ToString(this.dataLista.CurrentRow.Cells["descripcion"].Value);
-            this.tabControl1.SelectedTab = tabAgregarOcambiar;
+           
         }
         private void dataLista_Click(object sender, EventArgs e)
         {
-            btnEliminar.Enabled = true;
+           
         }
         private void chkEliminar_CheckedChanged(object sender, EventArgs e)
         {
-            if (chkEliminar.Checked == true)
-            {
-                this.dataLista.Columns[0].Visible = true;
-
-            }
-            else
-            {
-                this.dataLista.Columns[0].Visible = false;
-            }
+            
         }
         private void dataLista_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -205,224 +175,177 @@ namespace Capa_Presentacion
         //TabControl
         private void tabControl1_Selected(object sender, TabControlEventArgs e)
         {
-            //si selecciono el tabLista borro los textbox y button
-            if (tabControl1.SelectedIndex == 0)
-            {
-                txtCodigo.Text = string.Empty;
-                txtDescripcion.Text = string.Empty;
-                txtNombreConfig.Text = string.Empty;
-                btnEditar.Enabled = false;
-                btnNuevo.Enabled = true;
-                btnGuardar.Enabled = false;
-                btnCancelar.Enabled = false;
-                txtNombreConfig.Enabled = false;
-                txtDescripcion.Enabled = false;
-                errorIcono.Clear();
-            }
-            if (tabControl1.SelectedIndex == 1)
-            {
-                btnEliminar.Enabled = false;
-            }
+           
         }
 
        
         //mensajes de ayuda
-        private void mensajesDeAyuda()
-        {
-
-            //mensaje de ayuda en el textbox nombre
-            this.ttMensajeAyuda.SetToolTip(this.txtNombre, "Ingrese el nombre de la categoria");
-            //mensaje de ayuda del boton buscar
-            this.ttMensajeAyuda.SetToolTip(this.btnBuscar, "Buscar por nombre de Categoria");
-            //mensaje de ayuda del boton eliminar
-            this.ttMensajeAyuda.SetToolTip(this.btnEliminar, "Borrar Categoria");
-            //mensaje de ayuda del boton Imprimir
-            this.ttMensajeAyuda.SetToolTip(this.btnImprimir, "imprime todas las categorias");
-            //mensaje de ayuda del boton editar
-            this.ttMensajeAyuda.SetToolTip(this.btnEditar, "Para Editar Ingrese un Codigo de la categoria válida");
-
-        }
+       
  
 
         //botones
         private void btnNuevo_Click(object sender, EventArgs e)
         {
             limpiarTextbox();
-            this.btnGuardar.Enabled = true;
-            this.btnEditar.Enabled = false;
-            this.btnCancelar.Enabled = true;
-            this.btnNuevo.Enabled = false;
-            this.txtDescripcion.Enabled = true;
-            this.txtNombreConfig.Enabled = true;
-            this.txtCodigo.Text = string.Empty;
-            this.txtNombreConfig.Focus();
-            isEditar = false;
-            isNuevo = true;
+            //habilitarbotones(true, false,"nuevo");
+            
+
+            this.txtCodigoCategoria.Text = string.Empty;
         }
+       
         private void btnCancelar_Click(object sender, EventArgs e)
         {
-            this.btnGuardar.Enabled = false;
-            this.btnEditar.Enabled = false;
-            this.btnCancelar.Enabled = false;
-            this.btnNuevo.Enabled = true;
-            //habilito el codigo para poder editar
-            this.txtCodigo.Enabled = false;
-            this.txtNombreConfig.Enabled = false;
-            this.txtDescripcion.Enabled = false;
+            //habilitarbotones(false, true,"cancelar");
+            
             limpiarTextbox();
-            isEditar = false;
-            isNuevo = false;
+            
         }
+
         private void btnEditar_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("Seguro que desea Editar?", "Editar"
                  , MessageBoxButtons.YesNo, MessageBoxIcon.Hand) == DialogResult.Yes)
             {
-                this.btnNuevo.Enabled = false;
-                this.btnCancelar.Enabled = true;
-                this.btnGuardar.Enabled = true;
-                this.btnEditar.Enabled = false;
-                isEditar = true;
-                isNuevo = false;
+                //habilitarbotones(true, false,"editar");
+               
                 //habilitarTextbox();
 
                
             }
         }
+      
         private void btnEliminar_Click(object sender, EventArgs e)
         {
-            string respuesta = "";
-            try
-            {
-                
-                //si la respuesta es si elimina la fila actual
-                if (MessageBox.Show("Seguro que desea Eliminar?", "Eliminar"
-                   , MessageBoxButtons.YesNo, MessageBoxIcon.Hand) == DialogResult.Yes)
-                {
-                    /*eliminar varias categoria*/
-                            if (chkEliminar.Checked == true)
-                    {
-                        foreach (DataGridViewRow row in dataLista.Rows)
-                        {
-                            //Si la fila esta marcada lo elimina
-                            if (Convert.ToBoolean( row.Cells[0].Value)) {
-                               
-                                //le paso el idcategoria para poder eliminarlo
-                                respuesta = NegocioCategoria.eliminar(Convert.ToInt32(row.Cells[1].Value));
-                                if (respuesta.Equals("ok"))
-                                {
-                                    UtilityFrm.mensajeConfirm("Se Eliminó: " + row.Cells[2].Value.ToString() + " Correctamente");
-                                }
-                                else {
-
-                                    UtilityFrm.mensajeError("Error: "+respuesta);
-                                }
-                                
-                            }
-                        }
-                        
-
-                    }
-                    else
-                    {
-                        /*eliminar una sola categoria*/
-                        respuesta =NegocioCategoria.eliminar(Convert.ToInt32(this.dataLista.CurrentRow.Cells[1].Value));
-                        if (respuesta.Equals("ok"))
-                        {
-                            UtilityFrm.mensajeConfirm("Se Eliminó: " +dataLista.CurrentRow.Cells[2].Value.ToString()+ " Correctamente");
-                        }
-                        else
-                        {
-
-                            UtilityFrm.mensajeError("Error: " + respuesta);
-                        }
-
-                     
-                    }
-                      mostrar();
-                }
-                //desabilito el checkbox y el boton eliminar
-                chkEliminar.Checked = false;
-                btnEliminar.Enabled = false;
-            }
-            catch (Exception ex)
-            {
-                UtilityFrm.mensajeError("Error: "+respuesta +", "+ex.Message);
-            }
+           
 
 
         }
         private void btnGuardar_Click(object sender, EventArgs e)
         {
 
-            try
+            
+            
+        }
+
+        private void btnCerrar_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnCerrar_MouseLeave(object sender, EventArgs e)
+        {
+            btnCerrar.BackColor = Color.FromArgb(0, 100, 200);
+        }
+
+        private void btnCerrar_MouseMove(object sender, MouseEventArgs e)
+        {
+            btnCerrar.BackColor = Color.Red;
+        }
+
+        private void rCategoria_CheckedChanged(object sender, EventArgs e)
+        {
+             
+
+        }
+
+        private void rsubcategoria_CheckedChanged(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void rsubcategoria_CheckedChanged_1(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void rcategoria_CheckedChanged_1(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void CHKCategoria_CheckedChanged(object sender, EventArgs e)
+        {
+            //CBCategoriaBuscar.Enabled = CHKCategoria.Checked;
+        }
+
+        private void dataLista_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+           DGSubcategoria.DataSource = NegocioCategoria.buscar("" , Convert.ToInt32(dataLista.CurrentRow.Cells["idcategoria"].Value))   ;
+            txtCodigoCategoria.Text = dataLista.CurrentRow.Cells["idcategoria"].Value.ToString();
+            txtNombreCategoria.Text = dataLista.CurrentRow.Cells["Nombre"].Value.ToString();
+        }
+
+        private void DGSubcategoria_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            txtCodigoSubcategoria.Text = DGSubcategoria.CurrentRow.Cells["idsubcategoria"].Value.ToString();
+            txtNombreSubcategoria.Text = DGSubcategoria.CurrentRow.Cells["Nombre"].Value.ToString();
+        }
+
+        private void BtnAgregarcategoria_Click(object sender, EventArgs e)
+        {
+            if (txtNombreCategoria.Text != "")
             {
-                string respuesta = "";
+                NegocioCategoria.insertar(txtNombreCategoria.Text, "", 0);
+                this.mostrar();
+            }
+            else
+            {
+                UtilityFrm.mensajeError("ingrese un nombre para la nueva categoria");
+                txtNombreCategoria.Focus();
+            }
+             
+        }
 
-                //si el string es nulo o vacio 
-                if (String.IsNullOrEmpty(txtNombreConfig.Text))
-                {
-                    UtilityFrm.mensajeError("El Campo Nombre está incompleto");
-                    errorIcono.SetError(txtNombreConfig, "Ingrese un nombre");
+        private void BtnEditarCategoria_Click(object sender, EventArgs e)
+        {
+            if ((txtCodigoCategoria.Text != "") && (txtNombreCategoria.Text!= ""))
+            {
+                NegocioCategoria.editar(Convert.ToInt32(dataLista.CurrentRow.Cells["idcategoria"].Value), txtNombreCategoria.Text, "", 0);
+                dataLista.CurrentRow.Cells["nombre"].Value = txtNombreCategoria.Text;
+            }
+        }
 
-                }
-                else
-                {
+        private void BtnAgregarSubcategoria_Click(object sender, EventArgs e)
+        {
+            NegocioCategoria.insertar(txtNombreSubcategoria.Text, "", Convert.ToInt32(dataLista.CurrentRow.Cells["idcategoria"].Value));
+            DGSubcategoria.DataSource = NegocioCategoria.buscar("", Convert.ToInt32(dataLista.CurrentRow.Cells["idcategoria"].Value));
+        }
 
-                    //en el caso de no ser nulo, agrego si se está por editar o agregar
-                    //si se va a insertar
-                    if (isNuevo == true)
-                    {
-                        respuesta = NegocioCategoria.insertar(txtNombreConfig.Text.Trim(), txtDescripcion.Text.Trim());
+        private void BtnEditarSubcategoria_Click(object sender, EventArgs e)
+        {
+            NegocioCategoria.editar(Convert.ToInt32(dataLista.CurrentRow.Cells["idcategoria"].Value), txtNombreSubcategoria.Text, "", Convert.ToInt32(DGSubcategoria.CurrentRow.Cells["idsubcategoria"].Value));
+            DGSubcategoria.CurrentRow.Cells["nombre"].Value = txtNombreSubcategoria.Text;
+        }
 
-                        if (respuesta.Equals("ok"))
-                        {
-                            UtilityFrm.mensajeConfirm("Se Agregó Correctamente");
-                            this.mostrar();
-                        }
-                       
+        private void BtnAgregarcategoria_Click_1(object sender, EventArgs e)
+        {
 
-                    }
-                        //si se va a editar
-                    else if (isEditar == true)
-                    {
-                        respuesta = NegocioCategoria.editar(Convert.ToInt32(txtCodigo.Text.Trim()), Convert.ToString(txtNombreConfig.Text.Trim()), Convert.ToString(txtDescripcion.Text.Trim()));
+        }
 
-                        if (respuesta.Equals("ok"))
-                        {
-                           UtilityFrm.mensajeConfirm("Se Editó Correctamente");
-                            this.mostrar();
-                            
+        private void panelHorizontal_DoubleClick(object sender, EventArgs e)
+        {
+           
+        }
 
-                        }
-
-                    }
-                    else{ 
-                    UtilityFrm.mensajeError("No se ha podido guardar: " + respuesta);
-                    
-                    }
-                   
-                    //habilito el codigo para poder editar
-                    btnCancelar.Enabled = false;
-                    btnGuardar.Enabled = false;
-                    btnNuevo.Enabled = true;
-                    errorIcono.Clear();
-                    txtDescripcion.Enabled = false;
-                    txtNombreConfig.Enabled = false;
-                    limpiarTextbox();
-                    this.btnNuevo.Focus();
-
-                }
-
-
+        private void panelHorizontal_MouseMove(object sender, MouseEventArgs e)
+        {
+            int posY = 0;
+            int posX = 0;
+            //mientra no se apreta el boton izquierdo del mouse actualiza el valor posX Y posY 
+            if (e.Button != MouseButtons.Left)
+            {
+                posY = e.Y;
+                posX = e.X;
 
             }
-            catch (Exception ex)
+            else
             {
-               UtilityFrm.mensajeError("error: " + ex.Message + " ;" + ex.StackTrace);
+                //Left tiene la distancia que hay entre el borde izq y el fondo de la pantalla
+                Left = Left + (e.X - posX);
+                //top tiene la distancia que hay entre el borde sup y el fondo de la pantalla
+                Top = Top + (e.Y - posY);
+
             }
-            isEditar = false;
-            isNuevo = false;
         }
 
         private void btnBuscar_Click(object sender, EventArgs e)

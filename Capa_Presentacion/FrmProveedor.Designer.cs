@@ -36,6 +36,10 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabAgregarOcambiar = new System.Windows.Forms.TabPage();
             this.grpboxProveedor = new System.Windows.Forms.GroupBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.CBlocalidad = new System.Windows.Forms.ComboBox();
+            this.Cbprovincia = new System.Windows.Forms.ComboBox();
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.lblEmail = new System.Windows.Forms.Label();
             this.txtTelefono = new System.Windows.Forms.TextBox();
@@ -70,10 +74,6 @@
             this.btnMinimizar = new System.Windows.Forms.PictureBox();
             this.btnCerrar = new System.Windows.Forms.PictureBox();
             this.lblSistemaVenta = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.CBlocalidad = new System.Windows.Forms.ComboBox();
-            this.Cbprovincia = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.errorIcono)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.tabControl1.SuspendLayout();
@@ -169,6 +169,45 @@
             this.grpboxProveedor.TabIndex = 0;
             this.grpboxProveedor.TabStop = false;
             this.grpboxProveedor.Text = "Proveedores";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(46, 420);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(138, 30);
+            this.label4.TabIndex = 35;
+            this.label4.Text = "Provincia :";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(46, 491);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(146, 30);
+            this.label1.TabIndex = 34;
+            this.label1.Text = "Localidad :";
+            // 
+            // CBlocalidad
+            // 
+            this.CBlocalidad.Enabled = false;
+            this.CBlocalidad.FormattingEnabled = true;
+            this.CBlocalidad.Location = new System.Drawing.Point(351, 483);
+            this.CBlocalidad.Name = "CBlocalidad";
+            this.CBlocalidad.Size = new System.Drawing.Size(389, 38);
+            this.CBlocalidad.TabIndex = 33;
+            // 
+            // Cbprovincia
+            // 
+            this.Cbprovincia.Enabled = false;
+            this.Cbprovincia.FormattingEnabled = true;
+            this.Cbprovincia.Location = new System.Drawing.Point(351, 417);
+            this.Cbprovincia.Name = "Cbprovincia";
+            this.Cbprovincia.Size = new System.Drawing.Size(389, 38);
+            this.Cbprovincia.TabIndex = 32;
+            this.Cbprovincia.SelectedValueChanged += new System.EventHandler(this.Cbprovincia_SelectedValueChanged);
             // 
             // txtEmail
             // 
@@ -504,7 +543,7 @@
             // 
             // panelHorizontal
             // 
-            this.panelHorizontal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(0)))), ((int)(((byte)(170)))));
+            this.panelHorizontal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(100)))), ((int)(((byte)(200)))));
             this.panelHorizontal.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panelHorizontal.Controls.Add(this.label16);
             this.panelHorizontal.Controls.Add(this.btnMaximizar);
@@ -548,6 +587,8 @@
             this.btnMaximizar.TabStop = false;
             this.btnMaximizar.Visible = false;
             this.btnMaximizar.Click += new System.EventHandler(this.btnMaximizar_Click);
+            this.btnMaximizar.MouseLeave += new System.EventHandler(this.btnMaximizar_MouseLeave);
+            this.btnMaximizar.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btnMaximizar_MouseMove);
             // 
             // btnRestaurar
             // 
@@ -561,6 +602,8 @@
             this.btnRestaurar.TabIndex = 2;
             this.btnRestaurar.TabStop = false;
             this.btnRestaurar.Visible = false;
+            this.btnRestaurar.MouseLeave += new System.EventHandler(this.btnRestaurar_MouseLeave);
+            this.btnRestaurar.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btnRestaurar_MouseMove);
             // 
             // btnMinimizar
             // 
@@ -574,6 +617,8 @@
             this.btnMinimizar.TabIndex = 1;
             this.btnMinimizar.TabStop = false;
             this.btnMinimizar.Visible = false;
+            this.btnMinimizar.MouseLeave += new System.EventHandler(this.btnMinimizar_MouseLeave);
+            this.btnMinimizar.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btnMinimizar_MouseMove);
             // 
             // btnCerrar
             // 
@@ -588,6 +633,8 @@
             this.btnCerrar.TabIndex = 0;
             this.btnCerrar.TabStop = false;
             this.btnCerrar.Click += new System.EventHandler(this.btnCerrar_Click);
+            this.btnCerrar.MouseLeave += new System.EventHandler(this.btnCerrar_MouseLeave);
+            this.btnCerrar.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btnCerrar_MouseMove);
             // 
             // lblSistemaVenta
             // 
@@ -596,45 +643,6 @@
             this.lblSistemaVenta.Name = "lblSistemaVenta";
             this.lblSistemaVenta.Size = new System.Drawing.Size(133, 28);
             this.lblSistemaVenta.TabIndex = 6;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(46, 420);
-            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(138, 30);
-            this.label4.TabIndex = 35;
-            this.label4.Text = "Provincia :";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(46, 491);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(146, 30);
-            this.label1.TabIndex = 34;
-            this.label1.Text = "Localidad :";
-            // 
-            // CBlocalidad
-            // 
-            this.CBlocalidad.Enabled = false;
-            this.CBlocalidad.FormattingEnabled = true;
-            this.CBlocalidad.Location = new System.Drawing.Point(351, 483);
-            this.CBlocalidad.Name = "CBlocalidad";
-            this.CBlocalidad.Size = new System.Drawing.Size(389, 38);
-            this.CBlocalidad.TabIndex = 33;
-            // 
-            // Cbprovincia
-            // 
-            this.Cbprovincia.Enabled = false;
-            this.Cbprovincia.FormattingEnabled = true;
-            this.Cbprovincia.Location = new System.Drawing.Point(351, 417);
-            this.Cbprovincia.Name = "Cbprovincia";
-            this.Cbprovincia.Size = new System.Drawing.Size(389, 38);
-            this.Cbprovincia.TabIndex = 32;
-            this.Cbprovincia.SelectedValueChanged += new System.EventHandler(this.Cbprovincia_SelectedValueChanged);
             // 
             // FrmProveedor
             // 

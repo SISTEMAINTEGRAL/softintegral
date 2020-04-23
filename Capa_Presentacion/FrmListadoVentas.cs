@@ -37,7 +37,8 @@ namespace Capa_Presentacion
             this.dataLista.Columns["Total"].DefaultCellStyle.Format = String.Format("###,##0.00");
             this.dataLista.Columns["fecha"].DefaultCellStyle.Format = "dd/MM/yyyy hh:mm:ss";
 
-            groupBox1.Enabled = checkradiobuton();
+            Chkcaja.Enabled = checkradiobuton();
+            ChkFactura.Enabled = checkradiobuton();
             this.reportViewer1.RefreshReport();
         }
 
@@ -101,7 +102,7 @@ namespace Capa_Presentacion
 
                     //string tipo_comprobante = venta["tipo_comprobante"].ToString();
                     //tipo_comprobante = tipo_comprobante == "V" ? "VENTA" : "";
-                    dataLista.Rows.Add(venta["idventa"], venta["razon_social"], venta["fecha"], venta["tipo_comprobante"], venta["total"],estado);
+                    dataLista.Rows.Add(venta["idventa"], venta["razon_social"], venta["fecha"], venta["tipo_comprobante"], venta["total"],estado,venta["Factura"]);
                     //
                 } 
 
@@ -238,7 +239,7 @@ namespace Capa_Presentacion
                     {
                         estado = "PRESUPUESTADO";
                     }
-                    dataLista.Rows.Add(venta["idventa"], venta["razon_social"], venta["fecha"], venta["tipo_comprobante"], venta["total"], estado, venta ["caja"], venta ["idcliente"], venta ["cuit"], venta["Nrocomprobante"]);
+                    dataLista.Rows.Add(venta["idventa"], venta["razon_social"], venta["fecha"], venta["tipo_comprobante"], venta["total"], estado, venta ["caja"], venta ["idcliente"], venta ["cuit"], venta["Nrocomprobante"], venta["factura"]);
                 }
        
             }
@@ -354,7 +355,7 @@ namespace Capa_Presentacion
         }
         private void btnCerrar_MouseLeave(object sender, EventArgs e)
         {
-            btnCerrar.BackColor = Color.FromArgb(100, 0, 180);
+            btnCerrar.BackColor = Color.FromArgb(0, 100, 200);
         }
         private void btnRestaurar_MouseMove(object sender, MouseEventArgs e)
         {
@@ -362,7 +363,7 @@ namespace Capa_Presentacion
         }
         private void btnRestaurar_MouseLeave(object sender, EventArgs e)
         {
-            btnRestaurar.BackColor = Color.FromArgb(100, 0, 180);
+            btnRestaurar.BackColor = Color.FromArgb(0, 100, 200);
         }
         private void btnMaximizar_MouseMove(object sender, MouseEventArgs e)
         {
@@ -370,7 +371,7 @@ namespace Capa_Presentacion
         }
         private void btnMaximizar_MouseLeave(object sender, EventArgs e)
         {
-            btnMaximizar.BackColor = Color.FromArgb(100, 0, 180);
+            btnMaximizar.BackColor = Color.FromArgb(0, 100, 200);
         }
         private void btnMinimizar_MouseMove(object sender, MouseEventArgs e)
         {
@@ -378,7 +379,7 @@ namespace Capa_Presentacion
         }
         private void btnMinimizar_MouseLeave(object sender, EventArgs e)
         {
-            btnMinimizar.BackColor = Color.FromArgb(100, 0, 180);
+            btnMinimizar.BackColor = Color.FromArgb(0, 100, 200);
 
         }
 
@@ -675,12 +676,22 @@ namespace Capa_Presentacion
 
                 else
                 {
-                  //  Ticketventa miticket = new Ticketventa(Convert.ToInt32(row.Cells["codigo"].Value.ToString()));
+                    //  Ticketventa miticket = new Ticketventa(Convert.ToInt32(row.Cells["codigo"].Value.ToString()));
                     //miticket.ShowDialog();
-
-                    
                     Ticketventa miticket = new Formreportes.Ticketventa(Convert.ToInt32(row.Cells["codigo"].Value.ToString()));
-                    miticket.ShowDialog();
+                    if (NegocioConfigEmpresa.marcafiscal == "elec" && row.Cells["Letra"].Value.ToString() != "X")
+                    {
+                         miticket = new Formreportes.Ticketventa(Convert.ToInt32( row.Cells["codigo"].Value.ToString()));
+                        miticket.ShowDialog();
+
+                    }
+                    else if (row.Cells["Letra"].Value.ToString() == "X")
+                    {   
+                        TicketProforma miticketproforma = new Formreportes.TicketProforma(Convert.ToInt32(row.Cells["codigo"].Value.ToString()));
+                        miticketproforma.ShowDialog();
+                    }
+                    
+                  
 
                     // reportName is the Assembly Qualified Name of the report
 
@@ -698,12 +709,14 @@ namespace Capa_Presentacion
 
         private void rdBVenta_Click(object sender, EventArgs e)
         {
-            groupBox1.Enabled = checkradiobuton();
+            Chkcaja.Enabled = checkradiobuton();
+            ChkFactura.Enabled = checkradiobuton();
         }
 
         private void rdBPresupuesto_Click(object sender, EventArgs e)
         {
-            groupBox1.Enabled = checkradiobuton();
+            Chkcaja.Enabled = checkradiobuton();
+            ChkFactura.Enabled = checkradiobuton();
         }
 
         private void button1_Click(object sender, EventArgs e)

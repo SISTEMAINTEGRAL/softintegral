@@ -52,5 +52,25 @@ namespace Capa_negocio.Properties {
                 return ((string)(this["Capa_negocio_WSPSA4_PersonaServiceA4"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
+        [global::System.Configuration.DefaultSettingValueAttribute("https://wsaa.afip.gov.ar/ws/services/LoginCms")]
+        public string Capa_negocio_ar_gov_afip_wsaa_LoginCMSService {
+            get {
+                return ((string)(this["Capa_negocio_ar_gov_afip_wsaa_LoginCMSService"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
+        [global::System.Configuration.DefaultSettingValueAttribute("https://servicios1.afip.gov.ar/wsfev1/service.asmx")]
+        public string Capa_negocio_afip_prod_servicios_Service {
+            get {
+                return ((string)(this["Capa_negocio_afip_prod_servicios_Service"]));
+            }
+        }
     }
 }

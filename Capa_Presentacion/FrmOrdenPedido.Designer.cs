@@ -1,6 +1,6 @@
 ﻿namespace Capa_Presentacion
 {
-    partial class FrmOrdenPedido
+    partial class FrmOrdenAdjudicacion
     {
         /// <summary>
         /// Required designer variable.
@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle31 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle32 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle33 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panelHorizontal = new System.Windows.Forms.Panel();
             this.label16 = new System.Windows.Forms.Label();
             this.btnMaximizar = new System.Windows.Forms.PictureBox();
@@ -57,10 +57,13 @@
             this.bunifuCustomLabel3 = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.bunifuCustomLabel4 = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.TxtRazonsocial = new System.Windows.Forms.TextBox();
+            this.DGCliente = new System.Windows.Forms.DataGridView();
             this.BtnBuscarcliente = new XanderUI.XUISuperButton();
             this.BtnBuscarProducto = new XanderUI.XUISuperButton();
             this.BtnGuardar = new XanderUI.XUISuperButton();
-            this.DGCliente = new System.Windows.Forms.DataGridView();
+            this.xuiCustomGroupbox1 = new XanderUI.XUICustomGroupbox();
+            this.chkporcantidad = new System.Windows.Forms.CheckBox();
+            this.TxtcambioDv = new System.Windows.Forms.TextBox();
             this.panelHorizontal.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnMaximizar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnRestaurar)).BeginInit();
@@ -69,6 +72,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.DGProductos)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DGDetalleitems)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DGCliente)).BeginInit();
+            this.xuiCustomGroupbox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelHorizontal
@@ -83,9 +87,9 @@
             this.panelHorizontal.Controls.Add(this.lblSistemaVenta);
             this.panelHorizontal.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelHorizontal.Location = new System.Drawing.Point(0, 0);
-            this.panelHorizontal.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.panelHorizontal.Margin = new System.Windows.Forms.Padding(6);
             this.panelHorizontal.Name = "panelHorizontal";
-            this.panelHorizontal.Size = new System.Drawing.Size(1678, 37);
+            this.panelHorizontal.Size = new System.Drawing.Size(1248, 37);
             this.panelHorizontal.TabIndex = 69;
             this.panelHorizontal.TabStop = true;
             this.panelHorizontal.DoubleClick += new System.EventHandler(this.panelHorizontal_DoubleClick);
@@ -99,12 +103,12 @@
             this.label16.AutoSize = true;
             this.label16.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label16.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.label16.Location = new System.Drawing.Point(22, 9);
+            this.label16.Location = new System.Drawing.Point(6, 4);
             this.label16.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(222, 28);
+            this.label16.Size = new System.Drawing.Size(308, 28);
             this.label16.TabIndex = 7;
-            this.label16.Text = "ORDEN DE PEDIDO";
+            this.label16.Text = "ORDEN DE ADJUDICADOS";
             this.label16.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // btnMaximizar
@@ -112,8 +116,8 @@
             this.btnMaximizar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnMaximizar.BackgroundImage = global::Capa_Presentacion.Properties.Resources.maximize_Checkbox_16px;
             this.btnMaximizar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnMaximizar.Location = new System.Drawing.Point(1618, 5);
-            this.btnMaximizar.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.btnMaximizar.Location = new System.Drawing.Point(1184, 4);
+            this.btnMaximizar.Margin = new System.Windows.Forms.Padding(6);
             this.btnMaximizar.Name = "btnMaximizar";
             this.btnMaximizar.Size = new System.Drawing.Size(22, 25);
             this.btnMaximizar.TabIndex = 5;
@@ -127,8 +131,8 @@
             this.btnRestaurar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnRestaurar.BackgroundImage = global::Capa_Presentacion.Properties.Resources.Restore_Window_20px;
             this.btnRestaurar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnRestaurar.Location = new System.Drawing.Point(1618, 5);
-            this.btnRestaurar.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.btnRestaurar.Location = new System.Drawing.Point(1184, 2);
+            this.btnRestaurar.Margin = new System.Windows.Forms.Padding(6);
             this.btnRestaurar.Name = "btnRestaurar";
             this.btnRestaurar.Size = new System.Drawing.Size(22, 25);
             this.btnRestaurar.TabIndex = 2;
@@ -142,8 +146,8 @@
             this.btnMinimizar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnMinimizar.BackgroundImage = global::Capa_Presentacion.Properties.Resources.Minus_20px;
             this.btnMinimizar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnMinimizar.Location = new System.Drawing.Point(1585, 5);
-            this.btnMinimizar.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.btnMinimizar.Location = new System.Drawing.Point(1157, 4);
+            this.btnMinimizar.Margin = new System.Windows.Forms.Padding(6);
             this.btnMinimizar.Name = "btnMinimizar";
             this.btnMinimizar.Size = new System.Drawing.Size(22, 25);
             this.btnMinimizar.TabIndex = 1;
@@ -158,8 +162,8 @@
             this.btnCerrar.BackgroundImage = global::Capa_Presentacion.Properties.Resources.Delete_20px;
             this.btnCerrar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btnCerrar.ErrorImage = null;
-            this.btnCerrar.Location = new System.Drawing.Point(1651, 5);
-            this.btnCerrar.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.btnCerrar.Location = new System.Drawing.Point(1213, 4);
+            this.btnCerrar.Margin = new System.Windows.Forms.Padding(6);
             this.btnCerrar.Name = "btnCerrar";
             this.btnCerrar.Size = new System.Drawing.Size(22, 25);
             this.btnCerrar.TabIndex = 0;
@@ -179,10 +183,10 @@
             // txtIdCliente
             // 
             this.txtIdCliente.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtIdCliente.Location = new System.Drawing.Point(148, 117);
+            this.txtIdCliente.Location = new System.Drawing.Point(126, 17);
             this.txtIdCliente.Margin = new System.Windows.Forms.Padding(6, 11, 6, 11);
             this.txtIdCliente.Name = "txtIdCliente";
-            this.txtIdCliente.Size = new System.Drawing.Size(224, 30);
+            this.txtIdCliente.Size = new System.Drawing.Size(155, 30);
             this.txtIdCliente.TabIndex = 70;
             this.txtIdCliente.TextChanged += new System.EventHandler(this.txtIdCliente_TextChanged);
             this.txtIdCliente.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtIdCliente_KeyDown);
@@ -190,7 +194,7 @@
             // bunifuCustomLabel2
             // 
             this.bunifuCustomLabel2.AutoSize = true;
-            this.bunifuCustomLabel2.Location = new System.Drawing.Point(18, 120);
+            this.bunifuCustomLabel2.Location = new System.Drawing.Point(6, 18);
             this.bunifuCustomLabel2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.bunifuCustomLabel2.Name = "bunifuCustomLabel2";
             this.bunifuCustomLabel2.Size = new System.Drawing.Size(84, 25);
@@ -202,19 +206,19 @@
             this.CbTipopedido.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
             this.CbTipopedido.FormattingEnabled = true;
             this.CbTipopedido.Items.AddRange(new object[] {
-            "Licitacion",
-            "Licitacion publica",
-            "Concurso de precio"});
-            this.CbTipopedido.Location = new System.Drawing.Point(1329, 120);
+            "LICITACION",
+            "LICITACION PUBLICA",
+            "CONCURSO DE PRECIO"});
+            this.CbTipopedido.Location = new System.Drawing.Point(192, 63);
             this.CbTipopedido.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.CbTipopedido.Name = "CbTipopedido";
-            this.CbTipopedido.Size = new System.Drawing.Size(332, 33);
+            this.CbTipopedido.Size = new System.Drawing.Size(212, 33);
             this.CbTipopedido.TabIndex = 96;
             // 
             // bunifuCustomLabel1
             // 
             this.bunifuCustomLabel1.AutoSize = true;
-            this.bunifuCustomLabel1.Location = new System.Drawing.Point(1130, 128);
+            this.bunifuCustomLabel1.Location = new System.Drawing.Point(7, 63);
             this.bunifuCustomLabel1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.bunifuCustomLabel1.Name = "bunifuCustomLabel1";
             this.bunifuCustomLabel1.Size = new System.Drawing.Size(153, 25);
@@ -224,12 +228,12 @@
             // lblNomProducto
             // 
             this.lblNomProducto.AutoSize = true;
-            this.lblNomProducto.Location = new System.Drawing.Point(8, 186);
+            this.lblNomProducto.Location = new System.Drawing.Point(14, 111);
             this.lblNomProducto.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.lblNomProducto.Name = "lblNomProducto";
-            this.lblNomProducto.Size = new System.Drawing.Size(90, 25);
+            this.lblNomProducto.Size = new System.Drawing.Size(101, 25);
             this.lblNomProducto.TabIndex = 101;
-            this.lblNomProducto.Text = "Producto";
+            this.lblNomProducto.Text = "Producto :";
             // 
             // DGProductos
             // 
@@ -237,7 +241,7 @@
             this.DGProductos.AllowUserToDeleteRows = false;
             this.DGProductos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DGProductos.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.DGProductos.Location = new System.Drawing.Point(613, 152);
+            this.DGProductos.Location = new System.Drawing.Point(144, 153);
             this.DGProductos.Margin = new System.Windows.Forms.Padding(6, 11, 6, 11);
             this.DGProductos.MultiSelect = false;
             this.DGProductos.Name = "DGProductos";
@@ -252,7 +256,7 @@
             // txtNombreProducto
             // 
             this.txtNombreProducto.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtNombreProducto.Location = new System.Drawing.Point(148, 181);
+            this.txtNombreProducto.Location = new System.Drawing.Point(152, 110);
             this.txtNombreProducto.Margin = new System.Windows.Forms.Padding(6, 11, 6, 11);
             this.txtNombreProducto.Name = "txtNombreProducto";
             this.txtNombreProducto.Size = new System.Drawing.Size(408, 30);
@@ -263,9 +267,12 @@
             // DGDetalleitems
             // 
             this.DGDetalleitems.AllowUserToAddRows = false;
-            dataGridViewCellStyle31.BackColor = System.Drawing.Color.White;
-            this.DGDetalleitems.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle31;
-            this.DGDetalleitems.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.DGDetalleitems.AllowUserToDeleteRows = false;
+            this.DGDetalleitems.AllowUserToOrderColumns = true;
+            dataGridViewCellStyle10.BackColor = System.Drawing.Color.White;
+            this.DGDetalleitems.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle10;
+            this.DGDetalleitems.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.DGDetalleitems.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.DGDetalleitems.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
@@ -273,14 +280,14 @@
             this.DGDetalleitems.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.DGDetalleitems.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.DGDetalleitems.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
-            dataGridViewCellStyle32.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle32.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle32.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle32.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle32.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle32.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle32.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DGDetalleitems.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle32;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle11.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DGDetalleitems.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle11;
             this.DGDetalleitems.ColumnHeadersHeight = 38;
             this.DGDetalleitems.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.CCodigo,
@@ -288,23 +295,26 @@
             this.CPrecio,
             this.CCantidad,
             this.CImporte});
-            dataGridViewCellStyle33.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle33.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle33.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle33.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle33.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle33.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle33.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.DGDetalleitems.DefaultCellStyle = dataGridViewCellStyle33;
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle12.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle12.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.DGDetalleitems.DefaultCellStyle = dataGridViewCellStyle12;
             this.DGDetalleitems.EnableHeadersVisualStyles = false;
             this.DGDetalleitems.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            this.DGDetalleitems.Location = new System.Drawing.Point(6, 286);
+            this.DGDetalleitems.Location = new System.Drawing.Point(6, 214);
             this.DGDetalleitems.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.DGDetalleitems.MultiSelect = false;
             this.DGDetalleitems.Name = "DGDetalleitems";
+            this.DGDetalleitems.ReadOnly = true;
             this.DGDetalleitems.RowHeadersVisible = false;
             this.DGDetalleitems.RowTemplate.Height = 24;
             this.DGDetalleitems.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.DGDetalleitems.Size = new System.Drawing.Size(1660, 368);
+            this.DGDetalleitems.Size = new System.Drawing.Size(1222, 445);
+            this.DGDetalleitems.StandardTab = true;
             this.DGDetalleitems.TabIndex = 105;
             this.DGDetalleitems.Theme = Guna.UI.WinForms.GunaDataGridViewPresetThemes.Guna;
             this.DGDetalleitems.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
@@ -320,7 +330,7 @@
             this.DGDetalleitems.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.White;
             this.DGDetalleitems.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
             this.DGDetalleitems.ThemeStyle.HeaderStyle.Height = 38;
-            this.DGDetalleitems.ThemeStyle.ReadOnly = false;
+            this.DGDetalleitems.ThemeStyle.ReadOnly = true;
             this.DGDetalleitems.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.White;
             this.DGDetalleitems.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.DGDetalleitems.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -328,36 +338,42 @@
             this.DGDetalleitems.ThemeStyle.RowsStyle.Height = 24;
             this.DGDetalleitems.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.DGDetalleitems.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            this.DGDetalleitems.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DGDetalleitems_CellDoubleClick);
             // 
             // CCodigo
             // 
             this.CCodigo.FillWeight = 61.54822F;
             this.CCodigo.HeaderText = "Codigo";
             this.CCodigo.Name = "CCodigo";
+            this.CCodigo.ReadOnly = true;
             // 
             // CDetalle
             // 
             this.CDetalle.FillWeight = 253.8071F;
             this.CDetalle.HeaderText = "Detalle";
             this.CDetalle.Name = "CDetalle";
+            this.CDetalle.ReadOnly = true;
             // 
             // CPrecio
             // 
             this.CPrecio.FillWeight = 61.54822F;
             this.CPrecio.HeaderText = "Precio";
             this.CPrecio.Name = "CPrecio";
+            this.CPrecio.ReadOnly = true;
             // 
             // CCantidad
             // 
             this.CCantidad.FillWeight = 61.54822F;
             this.CCantidad.HeaderText = "Cantidad";
             this.CCantidad.Name = "CCantidad";
+            this.CCantidad.ReadOnly = true;
             // 
             // CImporte
             // 
             this.CImporte.FillWeight = 61.54822F;
             this.CImporte.HeaderText = "Importe";
             this.CImporte.Name = "CImporte";
+            this.CImporte.ReadOnly = true;
             // 
             // txtTotalPagar
             // 
@@ -365,7 +381,7 @@
             this.txtTotalPagar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(144)))), ((int)(((byte)(247)))));
             this.txtTotalPagar.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtTotalPagar.Font = new System.Drawing.Font("Century Gothic", 20F, System.Drawing.FontStyle.Bold);
-            this.txtTotalPagar.Location = new System.Drawing.Point(1402, 723);
+            this.txtTotalPagar.Location = new System.Drawing.Point(972, 723);
             this.txtTotalPagar.Margin = new System.Windows.Forms.Padding(6, 11, 6, 11);
             this.txtTotalPagar.Name = "txtTotalPagar";
             this.txtTotalPagar.ReadOnly = true;
@@ -379,7 +395,7 @@
             this.lblTotalPagar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.lblTotalPagar.AutoSize = true;
             this.lblTotalPagar.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTotalPagar.Location = new System.Drawing.Point(1235, 739);
+            this.lblTotalPagar.Location = new System.Drawing.Point(805, 739);
             this.lblTotalPagar.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.lblTotalPagar.Name = "lblTotalPagar";
             this.lblTotalPagar.Size = new System.Drawing.Size(96, 23);
@@ -389,16 +405,16 @@
             // TxtCuit
             // 
             this.TxtCuit.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.TxtCuit.Location = new System.Drawing.Point(540, 122);
+            this.TxtCuit.Location = new System.Drawing.Point(452, 20);
             this.TxtCuit.Margin = new System.Windows.Forms.Padding(6, 11, 6, 11);
             this.TxtCuit.Name = "TxtCuit";
-            this.TxtCuit.Size = new System.Drawing.Size(209, 30);
+            this.TxtCuit.Size = new System.Drawing.Size(168, 30);
             this.TxtCuit.TabIndex = 106;
             // 
             // bunifuCustomLabel3
             // 
             this.bunifuCustomLabel3.AutoSize = true;
-            this.bunifuCustomLabel3.Location = new System.Drawing.Point(470, 125);
+            this.bunifuCustomLabel3.Location = new System.Drawing.Point(366, 20);
             this.bunifuCustomLabel3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.bunifuCustomLabel3.Name = "bunifuCustomLabel3";
             this.bunifuCustomLabel3.Size = new System.Drawing.Size(58, 25);
@@ -408,7 +424,7 @@
             // bunifuCustomLabel4
             // 
             this.bunifuCustomLabel4.AutoSize = true;
-            this.bunifuCustomLabel4.Location = new System.Drawing.Point(760, 128);
+            this.bunifuCustomLabel4.Location = new System.Drawing.Point(647, 22);
             this.bunifuCustomLabel4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.bunifuCustomLabel4.Name = "bunifuCustomLabel4";
             this.bunifuCustomLabel4.Size = new System.Drawing.Size(134, 25);
@@ -418,11 +434,30 @@
             // TxtRazonsocial
             // 
             this.TxtRazonsocial.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.TxtRazonsocial.Location = new System.Drawing.Point(897, 127);
+            this.TxtRazonsocial.Location = new System.Drawing.Point(817, 20);
             this.TxtRazonsocial.Margin = new System.Windows.Forms.Padding(6, 11, 6, 11);
             this.TxtRazonsocial.Name = "TxtRazonsocial";
-            this.TxtRazonsocial.Size = new System.Drawing.Size(209, 30);
+            this.TxtRazonsocial.Size = new System.Drawing.Size(173, 30);
             this.TxtRazonsocial.TabIndex = 108;
+            // 
+            // DGCliente
+            // 
+            this.DGCliente.AllowUserToAddRows = false;
+            this.DGCliente.AllowUserToDeleteRows = false;
+            this.DGCliente.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DGCliente.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.DGCliente.Location = new System.Drawing.Point(138, 37);
+            this.DGCliente.Margin = new System.Windows.Forms.Padding(6, 11, 6, 11);
+            this.DGCliente.MultiSelect = false;
+            this.DGCliente.Name = "DGCliente";
+            this.DGCliente.ReadOnly = true;
+            this.DGCliente.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DGCliente.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.DGCliente.Size = new System.Drawing.Size(609, 124);
+            this.DGCliente.TabIndex = 112;
+            this.DGCliente.Visible = false;
+            this.DGCliente.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DGCliente_CellContentClick);
+            this.DGCliente.KeyDown += new System.Windows.Forms.KeyEventHandler(this.DGCliente_KeyDown);
             // 
             // BtnBuscarcliente
             // 
@@ -436,12 +471,12 @@
             this.BtnBuscarcliente.HoverBackgroundColor = System.Drawing.Color.IndianRed;
             this.BtnBuscarcliente.HoverTextColor = System.Drawing.Color.Yellow;
             this.BtnBuscarcliente.ImagePosition = XanderUI.XUISuperButton.imgPosition.Left;
-            this.BtnBuscarcliente.Location = new System.Drawing.Point(385, 113);
+            this.BtnBuscarcliente.Location = new System.Drawing.Point(301, 18);
             this.BtnBuscarcliente.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.BtnBuscarcliente.Name = "BtnBuscarcliente";
             this.BtnBuscarcliente.SelectedBackColor = System.Drawing.Color.LimeGreen;
             this.BtnBuscarcliente.SelectedTextColor = System.Drawing.Color.White;
-            this.BtnBuscarcliente.Size = new System.Drawing.Size(45, 34);
+            this.BtnBuscarcliente.Size = new System.Drawing.Size(42, 30);
             this.BtnBuscarcliente.SuperSelected = false;
             this.BtnBuscarcliente.TabIndex = 111;
             this.BtnBuscarcliente.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(245)))), ((int)(((byte)(255)))));
@@ -460,12 +495,12 @@
             this.BtnBuscarProducto.HoverBackgroundColor = System.Drawing.Color.IndianRed;
             this.BtnBuscarProducto.HoverTextColor = System.Drawing.Color.Yellow;
             this.BtnBuscarProducto.ImagePosition = XanderUI.XUISuperButton.imgPosition.Left;
-            this.BtnBuscarProducto.Location = new System.Drawing.Point(579, 176);
+            this.BtnBuscarProducto.Location = new System.Drawing.Point(580, 109);
             this.BtnBuscarProducto.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.BtnBuscarProducto.Name = "BtnBuscarProducto";
             this.BtnBuscarProducto.SelectedBackColor = System.Drawing.Color.LimeGreen;
             this.BtnBuscarProducto.SelectedTextColor = System.Drawing.Color.White;
-            this.BtnBuscarProducto.Size = new System.Drawing.Size(121, 37);
+            this.BtnBuscarProducto.Size = new System.Drawing.Size(109, 31);
             this.BtnBuscarProducto.SuperSelected = false;
             this.BtnBuscarProducto.TabIndex = 110;
             this.BtnBuscarProducto.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(245)))), ((int)(((byte)(255)))));
@@ -497,53 +532,77 @@
             this.BtnGuardar.Vertical_Alignment = System.Drawing.StringAlignment.Center;
             this.BtnGuardar.Click += new System.EventHandler(this.BtnGuardar_Click);
             // 
-            // DGCliente
+            // xuiCustomGroupbox1
             // 
-            this.DGCliente.AllowUserToAddRows = false;
-            this.DGCliente.AllowUserToDeleteRows = false;
-            this.DGCliente.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DGCliente.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.DGCliente.Location = new System.Drawing.Point(148, 142);
-            this.DGCliente.Margin = new System.Windows.Forms.Padding(6, 11, 6, 11);
-            this.DGCliente.MultiSelect = false;
-            this.DGCliente.Name = "DGCliente";
-            this.DGCliente.ReadOnly = true;
-            this.DGCliente.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.DGCliente.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.DGCliente.Size = new System.Drawing.Size(609, 141);
-            this.DGCliente.TabIndex = 112;
-            this.DGCliente.Visible = false;
-            this.DGCliente.KeyDown += new System.Windows.Forms.KeyEventHandler(this.DGCliente_KeyDown);
+            this.xuiCustomGroupbox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.xuiCustomGroupbox1.BorderColor = System.Drawing.Color.DodgerBlue;
+            this.xuiCustomGroupbox1.BorderWidth = 1;
+            this.xuiCustomGroupbox1.Controls.Add(this.DGCliente);
+            this.xuiCustomGroupbox1.Controls.Add(this.CbTipopedido);
+            this.xuiCustomGroupbox1.Controls.Add(this.bunifuCustomLabel1);
+            this.xuiCustomGroupbox1.Controls.Add(this.TxtRazonsocial);
+            this.xuiCustomGroupbox1.Controls.Add(this.BtnBuscarcliente);
+            this.xuiCustomGroupbox1.Controls.Add(this.bunifuCustomLabel4);
+            this.xuiCustomGroupbox1.Controls.Add(this.bunifuCustomLabel3);
+            this.xuiCustomGroupbox1.Controls.Add(this.BtnBuscarProducto);
+            this.xuiCustomGroupbox1.Controls.Add(this.lblNomProducto);
+            this.xuiCustomGroupbox1.Controls.Add(this.TxtCuit);
+            this.xuiCustomGroupbox1.Controls.Add(this.bunifuCustomLabel2);
+            this.xuiCustomGroupbox1.Controls.Add(this.txtNombreProducto);
+            this.xuiCustomGroupbox1.Controls.Add(this.txtIdCliente);
+            this.xuiCustomGroupbox1.Controls.Add(this.chkporcantidad);
+            this.xuiCustomGroupbox1.Location = new System.Drawing.Point(6, 41);
+            this.xuiCustomGroupbox1.Name = "xuiCustomGroupbox1";
+            this.xuiCustomGroupbox1.ShowText = true;
+            this.xuiCustomGroupbox1.Size = new System.Drawing.Size(1230, 165);
+            this.xuiCustomGroupbox1.TabIndex = 113;
+            this.xuiCustomGroupbox1.TabStop = false;
+            this.xuiCustomGroupbox1.TextColor = System.Drawing.Color.DodgerBlue;
             // 
-            // FrmOrdenPedido
+            // chkporcantidad
+            // 
+            this.chkporcantidad.AutoSize = true;
+            this.chkporcantidad.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.chkporcantidad.Location = new System.Drawing.Point(717, 107);
+            this.chkporcantidad.Margin = new System.Windows.Forms.Padding(2);
+            this.chkporcantidad.Name = "chkporcantidad";
+            this.chkporcantidad.Size = new System.Drawing.Size(64, 29);
+            this.chkporcantidad.TabIndex = 114;
+            this.chkporcantidad.Text = "F10";
+            this.chkporcantidad.UseVisualStyleBackColor = true;
+            // 
+            // TxtcambioDv
+            // 
+            this.TxtcambioDv.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.TxtcambioDv.Location = new System.Drawing.Point(889, 261);
+            this.TxtcambioDv.Margin = new System.Windows.Forms.Padding(4, 8, 4, 8);
+            this.TxtcambioDv.MaxLength = 10;
+            this.TxtcambioDv.Name = "TxtcambioDv";
+            this.TxtcambioDv.Size = new System.Drawing.Size(135, 30);
+            this.TxtcambioDv.TabIndex = 114;
+            this.TxtcambioDv.Text = "0";
+            this.TxtcambioDv.Visible = false;
+            this.TxtcambioDv.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TxtcambioDv_KeyDown);
+            // 
+            // FrmOrdenAdjudicacion
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1678, 790);
+            this.ClientSize = new System.Drawing.Size(1248, 790);
             this.ControlBox = false;
-            this.Controls.Add(this.DGCliente);
             this.Controls.Add(this.DGProductos);
-            this.Controls.Add(this.BtnBuscarcliente);
-            this.Controls.Add(this.BtnBuscarProducto);
-            this.Controls.Add(this.bunifuCustomLabel4);
-            this.Controls.Add(this.TxtRazonsocial);
-            this.Controls.Add(this.bunifuCustomLabel3);
-            this.Controls.Add(this.TxtCuit);
+            this.Controls.Add(this.TxtcambioDv);
+            this.Controls.Add(this.xuiCustomGroupbox1);
             this.Controls.Add(this.DGDetalleitems);
             this.Controls.Add(this.BtnGuardar);
             this.Controls.Add(this.txtTotalPagar);
             this.Controls.Add(this.lblTotalPagar);
-            this.Controls.Add(this.lblNomProducto);
-            this.Controls.Add(this.txtNombreProducto);
-            this.Controls.Add(this.bunifuCustomLabel1);
-            this.Controls.Add(this.CbTipopedido);
-            this.Controls.Add(this.bunifuCustomLabel2);
-            this.Controls.Add(this.txtIdCliente);
             this.Controls.Add(this.panelHorizontal);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.Name = "FrmOrdenPedido";
+            this.Name = "FrmOrdenAdjudicacion";
             this.Text = "FrmOrdenPedido";
             this.panelHorizontal.ResumeLayout(false);
             this.panelHorizontal.PerformLayout();
@@ -554,6 +613,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.DGProductos)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DGDetalleitems)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DGCliente)).EndInit();
+            this.xuiCustomGroupbox1.ResumeLayout(false);
+            this.xuiCustomGroupbox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -591,5 +652,8 @@
         private XanderUI.XUISuperButton BtnBuscarProducto;
         private XanderUI.XUISuperButton BtnBuscarcliente;
         private System.Windows.Forms.DataGridView DGCliente;
+        private XanderUI.XUICustomGroupbox xuiCustomGroupbox1;
+        private System.Windows.Forms.CheckBox chkporcantidad;
+        public System.Windows.Forms.TextBox TxtcambioDv;
     }
 }

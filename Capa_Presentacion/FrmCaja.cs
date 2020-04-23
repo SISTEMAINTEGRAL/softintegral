@@ -148,7 +148,7 @@ namespace Capa_Presentacion
         private void FrmCaja_Load(object sender, EventArgs e)
         {
             //fecha =  DateTime.Now;
-            panelHorizontal.BackColor = Color.FromArgb(ComponentesFormularios.ColorPanelSuperiorVioleta());
+           // panelHorizontal.BackColor = Color.FromArgb(ComponentesFormularios.ColorPanelSuperiorVioleta());
             checkradioingegr();
             
             llenarComboBoxTipoMovimiento();
@@ -591,7 +591,7 @@ namespace Capa_Presentacion
 
         private void btnRestaurar_MouseLeave(object sender, EventArgs e)
         {
-            btnRestaurar.BackColor = Color.FromArgb(ComponentesFormularios.ColorPanelSuperiorVioleta());
+            btnMinimizar.BackColor = Color.FromArgb(0, 100, 200);
         }
 
 
@@ -602,7 +602,7 @@ namespace Capa_Presentacion
 
         private void btnMaximizar_MouseLeave(object sender, EventArgs e)
         {
-            btnMaximizar.BackColor = Color.FromArgb(ComponentesFormularios.ColorPanelSuperiorVioleta());
+            btnMinimizar.BackColor = Color.FromArgb(0, 100, 200);
         }
 
         private void btnMinimizar_MouseMove(object sender, MouseEventArgs e)
@@ -612,7 +612,7 @@ namespace Capa_Presentacion
 
         private void btnMinimizar_MouseLeave(object sender, EventArgs e)
         {
-            btnMinimizar.BackColor = Color.FromArgb(ComponentesFormularios.ColorPanelSuperiorVioleta());
+            btnMinimizar.BackColor = Color.FromArgb(0, 100, 200);
         }
 
         private void button1_Click_1(object sender, EventArgs e)

@@ -75,11 +75,13 @@
     <Compile Include="DatosCliente.cs" />
     <Compile Include="DatosConfigEmpresa.cs" />
     <Compile Include="DatosDetalleMovStock.cs" />
+    <Compile Include="DatosDetalleRemito.cs" />
     <Compile Include="DatosFormaDePago.cs" />
     <Compile Include="Datosgenerales.cs" />
     <Compile Include="DatosMovStock.cs" />
     <Compile Include="DatosOrdenpedido.cs" />
     <Compile Include="DatosProveedor.cs" />
+    <Compile Include="DatosRemito.cs" />
     <Compile Include="DatosServicioTecnico.cs" />
     <Compile Include="DatosTarjeta.cs" />
     <Compile Include="DatosUnidades.cs" />

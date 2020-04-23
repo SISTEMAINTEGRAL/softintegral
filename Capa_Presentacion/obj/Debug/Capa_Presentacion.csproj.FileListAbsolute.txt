@@ -623,5 +623,12 @@ C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\bin\Debug\Telerik.Rep
 C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\obj\Debug\Capa_Presentacion.Formreportes.Ticketventa.resources
 C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\obj\Debug\Capa_Presentacion.Reportes.REPORT_TICKET.resources
 C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\obj\Debug\Capa_Presentacion.dll.licenses
-C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\obj\Debug\Capa_Presentacion.FrmOrdenPedido.resources
 C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\obj\Debug\Capa_Presentacion.FrmRetiroMercaderia.resources
+C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\obj\Debug\Capa_Presentacion.FrmStockRetirodeMercaderia.resources
+C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\obj\Debug\Capa_Presentacion.FrmOrdenAdjudicacion.resources
+C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\obj\Debug\Capa_Presentacion.FrmClienteCtaCte.resources
+C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\obj\Debug\Capa_Presentacion.Frmasentarpago.resources
+C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\obj\Debug\Capa_Presentacion.Reportes.REPORT_TICKET_PROFORMA.resources
+C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\obj\Debug\Capa_Presentacion.Formreportes.TicketProforma.resources
+C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\obj\Debug\Capa_Presentacion.Reportes.REPORTE_REMITO.resources
+C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\obj\Debug\Capa_Presentacion.Reportes.ImpresionRemito.resources
