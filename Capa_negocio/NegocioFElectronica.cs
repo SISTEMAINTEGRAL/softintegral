@@ -59,7 +59,7 @@ namespace Capa_negocio
 
             try
             {
-                LoginClass miloginclase = new LoginClass("wsfe", NegocioConfigEmpresa.urllogin, @"C:\Certificadoconexart\certificado.pfx", "");
+                LoginClass miloginclase = new LoginClass("wsfe", NegocioConfigEmpresa.urllogin, @"C:\CertificadodonVito\certificado.pfx", "");
                 miloginclase.hacerLogin(miloginclase);
                 int doctipoid = 96;
                 authRequest = new FEAuthRequest();

@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panelHorizontal = new System.Windows.Forms.Panel();
             this.label16 = new System.Windows.Forms.Label();
             this.btnMaximizar = new System.Windows.Forms.PictureBox();
@@ -62,6 +62,14 @@
             this.BtnBuscarProducto = new XanderUI.XUISuperButton();
             this.BtnGuardar = new XanderUI.XUISuperButton();
             this.xuiCustomGroupbox1 = new XanderUI.XUICustomGroupbox();
+            this.DGBeneficiaria = new System.Windows.Forms.DataGridView();
+            this.TxtRazonsocialBen = new System.Windows.Forms.TextBox();
+            this.xuiSuperButton1 = new XanderUI.XUISuperButton();
+            this.bunifuCustomLabel6 = new Bunifu.Framework.UI.BunifuCustomLabel();
+            this.bunifuCustomLabel7 = new Bunifu.Framework.UI.BunifuCustomLabel();
+            this.TxtCuitBeneficio = new System.Windows.Forms.TextBox();
+            this.TxtEmpresabeneficiaria = new System.Windows.Forms.TextBox();
+            this.bunifuCustomLabel5 = new Bunifu.Framework.UI.BunifuCustomLabel();
             this.chkporcantidad = new System.Windows.Forms.CheckBox();
             this.TxtcambioDv = new System.Windows.Forms.TextBox();
             this.panelHorizontal.SuspendLayout();
@@ -73,6 +81,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.DGDetalleitems)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DGCliente)).BeginInit();
             this.xuiCustomGroupbox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.DGBeneficiaria)).BeginInit();
             this.SuspendLayout();
             // 
             // panelHorizontal
@@ -183,7 +192,7 @@
             // txtIdCliente
             // 
             this.txtIdCliente.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtIdCliente.Location = new System.Drawing.Point(126, 17);
+            this.txtIdCliente.Location = new System.Drawing.Point(215, 17);
             this.txtIdCliente.Margin = new System.Windows.Forms.Padding(6, 11, 6, 11);
             this.txtIdCliente.Name = "txtIdCliente";
             this.txtIdCliente.Size = new System.Drawing.Size(155, 30);
@@ -197,9 +206,9 @@
             this.bunifuCustomLabel2.Location = new System.Drawing.Point(6, 18);
             this.bunifuCustomLabel2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.bunifuCustomLabel2.Name = "bunifuCustomLabel2";
-            this.bunifuCustomLabel2.Size = new System.Drawing.Size(84, 25);
+            this.bunifuCustomLabel2.Size = new System.Drawing.Size(199, 25);
             this.bunifuCustomLabel2.TabIndex = 95;
-            this.bunifuCustomLabel2.Text = "Cliente :";
+            this.bunifuCustomLabel2.Text = "Empresa de entrega :";
             // 
             // CbTipopedido
             // 
@@ -209,7 +218,7 @@
             "LICITACION",
             "LICITACION PUBLICA",
             "CONCURSO DE PRECIO"});
-            this.CbTipopedido.Location = new System.Drawing.Point(192, 63);
+            this.CbTipopedido.Location = new System.Drawing.Point(773, 105);
             this.CbTipopedido.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.CbTipopedido.Name = "CbTipopedido";
             this.CbTipopedido.Size = new System.Drawing.Size(212, 33);
@@ -218,12 +227,12 @@
             // bunifuCustomLabel1
             // 
             this.bunifuCustomLabel1.AutoSize = true;
-            this.bunifuCustomLabel1.Location = new System.Drawing.Point(7, 63);
+            this.bunifuCustomLabel1.Location = new System.Drawing.Point(621, 110);
             this.bunifuCustomLabel1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.bunifuCustomLabel1.Name = "bunifuCustomLabel1";
-            this.bunifuCustomLabel1.Size = new System.Drawing.Size(153, 25);
+            this.bunifuCustomLabel1.Size = new System.Drawing.Size(132, 25);
             this.bunifuCustomLabel1.TabIndex = 97;
-            this.bunifuCustomLabel1.Text = "Tipo de pedido :";
+            this.bunifuCustomLabel1.Text = "T. de pedido :";
             // 
             // lblNomProducto
             // 
@@ -241,7 +250,7 @@
             this.DGProductos.AllowUserToDeleteRows = false;
             this.DGProductos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DGProductos.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.DGProductos.Location = new System.Drawing.Point(144, 153);
+            this.DGProductos.Location = new System.Drawing.Point(139, 178);
             this.DGProductos.Margin = new System.Windows.Forms.Padding(6, 11, 6, 11);
             this.DGProductos.MultiSelect = false;
             this.DGProductos.Name = "DGProductos";
@@ -256,10 +265,10 @@
             // txtNombreProducto
             // 
             this.txtNombreProducto.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtNombreProducto.Location = new System.Drawing.Point(152, 110);
+            this.txtNombreProducto.Location = new System.Drawing.Point(133, 110);
             this.txtNombreProducto.Margin = new System.Windows.Forms.Padding(6, 11, 6, 11);
             this.txtNombreProducto.Name = "txtNombreProducto";
-            this.txtNombreProducto.Size = new System.Drawing.Size(408, 30);
+            this.txtNombreProducto.Size = new System.Drawing.Size(253, 30);
             this.txtNombreProducto.TabIndex = 98;
             this.txtNombreProducto.TextChanged += new System.EventHandler(this.txtNombreProducto_TextChanged);
             this.txtNombreProducto.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtNombreProducto_KeyDown);
@@ -269,8 +278,8 @@
             this.DGDetalleitems.AllowUserToAddRows = false;
             this.DGDetalleitems.AllowUserToDeleteRows = false;
             this.DGDetalleitems.AllowUserToOrderColumns = true;
-            dataGridViewCellStyle10.BackColor = System.Drawing.Color.White;
-            this.DGDetalleitems.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
+            this.DGDetalleitems.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.DGDetalleitems.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -280,14 +289,14 @@
             this.DGDetalleitems.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.DGDetalleitems.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.DGDetalleitems.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle11.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle11.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DGDetalleitems.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DGDetalleitems.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.DGDetalleitems.ColumnHeadersHeight = 38;
             this.DGDetalleitems.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.CCodigo,
@@ -295,21 +304,20 @@
             this.CPrecio,
             this.CCantidad,
             this.CImporte});
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle12.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle12.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.DGDetalleitems.DefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.DGDetalleitems.DefaultCellStyle = dataGridViewCellStyle3;
             this.DGDetalleitems.EnableHeadersVisualStyles = false;
             this.DGDetalleitems.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.DGDetalleitems.Location = new System.Drawing.Point(6, 214);
             this.DGDetalleitems.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.DGDetalleitems.MultiSelect = false;
             this.DGDetalleitems.Name = "DGDetalleitems";
-            this.DGDetalleitems.ReadOnly = true;
             this.DGDetalleitems.RowHeadersVisible = false;
             this.DGDetalleitems.RowTemplate.Height = 24;
             this.DGDetalleitems.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
@@ -330,7 +338,7 @@
             this.DGDetalleitems.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.White;
             this.DGDetalleitems.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
             this.DGDetalleitems.ThemeStyle.HeaderStyle.Height = 38;
-            this.DGDetalleitems.ThemeStyle.ReadOnly = true;
+            this.DGDetalleitems.ThemeStyle.ReadOnly = false;
             this.DGDetalleitems.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.White;
             this.DGDetalleitems.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.DGDetalleitems.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -345,35 +353,30 @@
             this.CCodigo.FillWeight = 61.54822F;
             this.CCodigo.HeaderText = "Codigo";
             this.CCodigo.Name = "CCodigo";
-            this.CCodigo.ReadOnly = true;
             // 
             // CDetalle
             // 
             this.CDetalle.FillWeight = 253.8071F;
             this.CDetalle.HeaderText = "Detalle";
             this.CDetalle.Name = "CDetalle";
-            this.CDetalle.ReadOnly = true;
             // 
             // CPrecio
             // 
             this.CPrecio.FillWeight = 61.54822F;
             this.CPrecio.HeaderText = "Precio";
             this.CPrecio.Name = "CPrecio";
-            this.CPrecio.ReadOnly = true;
             // 
             // CCantidad
             // 
             this.CCantidad.FillWeight = 61.54822F;
             this.CCantidad.HeaderText = "Cantidad";
             this.CCantidad.Name = "CCantidad";
-            this.CCantidad.ReadOnly = true;
             // 
             // CImporte
             // 
             this.CImporte.FillWeight = 61.54822F;
             this.CImporte.HeaderText = "Importe";
             this.CImporte.Name = "CImporte";
-            this.CImporte.ReadOnly = true;
             // 
             // txtTotalPagar
             // 
@@ -405,7 +408,7 @@
             // TxtCuit
             // 
             this.TxtCuit.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.TxtCuit.Location = new System.Drawing.Point(452, 20);
+            this.TxtCuit.Location = new System.Drawing.Point(541, 20);
             this.TxtCuit.Margin = new System.Windows.Forms.Padding(6, 11, 6, 11);
             this.TxtCuit.Name = "TxtCuit";
             this.TxtCuit.Size = new System.Drawing.Size(168, 30);
@@ -414,7 +417,7 @@
             // bunifuCustomLabel3
             // 
             this.bunifuCustomLabel3.AutoSize = true;
-            this.bunifuCustomLabel3.Location = new System.Drawing.Point(366, 20);
+            this.bunifuCustomLabel3.Location = new System.Drawing.Point(455, 20);
             this.bunifuCustomLabel3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.bunifuCustomLabel3.Name = "bunifuCustomLabel3";
             this.bunifuCustomLabel3.Size = new System.Drawing.Size(58, 25);
@@ -424,7 +427,7 @@
             // bunifuCustomLabel4
             // 
             this.bunifuCustomLabel4.AutoSize = true;
-            this.bunifuCustomLabel4.Location = new System.Drawing.Point(647, 22);
+            this.bunifuCustomLabel4.Location = new System.Drawing.Point(736, 22);
             this.bunifuCustomLabel4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.bunifuCustomLabel4.Name = "bunifuCustomLabel4";
             this.bunifuCustomLabel4.Size = new System.Drawing.Size(134, 25);
@@ -434,7 +437,7 @@
             // TxtRazonsocial
             // 
             this.TxtRazonsocial.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.TxtRazonsocial.Location = new System.Drawing.Point(817, 20);
+            this.TxtRazonsocial.Location = new System.Drawing.Point(906, 20);
             this.TxtRazonsocial.Margin = new System.Windows.Forms.Padding(6, 11, 6, 11);
             this.TxtRazonsocial.Name = "TxtRazonsocial";
             this.TxtRazonsocial.Size = new System.Drawing.Size(173, 30);
@@ -446,14 +449,14 @@
             this.DGCliente.AllowUserToDeleteRows = false;
             this.DGCliente.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DGCliente.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.DGCliente.Location = new System.Drawing.Point(138, 37);
+            this.DGCliente.Location = new System.Drawing.Point(245, 49);
             this.DGCliente.Margin = new System.Windows.Forms.Padding(6, 11, 6, 11);
             this.DGCliente.MultiSelect = false;
             this.DGCliente.Name = "DGCliente";
             this.DGCliente.ReadOnly = true;
             this.DGCliente.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.DGCliente.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.DGCliente.Size = new System.Drawing.Size(609, 124);
+            this.DGCliente.Size = new System.Drawing.Size(609, 108);
             this.DGCliente.TabIndex = 112;
             this.DGCliente.Visible = false;
             this.DGCliente.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DGCliente_CellContentClick);
@@ -471,7 +474,7 @@
             this.BtnBuscarcliente.HoverBackgroundColor = System.Drawing.Color.IndianRed;
             this.BtnBuscarcliente.HoverTextColor = System.Drawing.Color.Yellow;
             this.BtnBuscarcliente.ImagePosition = XanderUI.XUISuperButton.imgPosition.Left;
-            this.BtnBuscarcliente.Location = new System.Drawing.Point(301, 18);
+            this.BtnBuscarcliente.Location = new System.Drawing.Point(390, 18);
             this.BtnBuscarcliente.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.BtnBuscarcliente.Name = "BtnBuscarcliente";
             this.BtnBuscarcliente.SelectedBackColor = System.Drawing.Color.LimeGreen;
@@ -495,7 +498,7 @@
             this.BtnBuscarProducto.HoverBackgroundColor = System.Drawing.Color.IndianRed;
             this.BtnBuscarProducto.HoverTextColor = System.Drawing.Color.Yellow;
             this.BtnBuscarProducto.ImagePosition = XanderUI.XUISuperButton.imgPosition.Left;
-            this.BtnBuscarProducto.Location = new System.Drawing.Point(580, 109);
+            this.BtnBuscarProducto.Location = new System.Drawing.Point(409, 109);
             this.BtnBuscarProducto.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.BtnBuscarProducto.Name = "BtnBuscarProducto";
             this.BtnBuscarProducto.SelectedBackColor = System.Drawing.Color.LimeGreen;
@@ -539,6 +542,14 @@
             this.xuiCustomGroupbox1.BorderColor = System.Drawing.Color.DodgerBlue;
             this.xuiCustomGroupbox1.BorderWidth = 1;
             this.xuiCustomGroupbox1.Controls.Add(this.DGCliente);
+            this.xuiCustomGroupbox1.Controls.Add(this.DGBeneficiaria);
+            this.xuiCustomGroupbox1.Controls.Add(this.TxtRazonsocialBen);
+            this.xuiCustomGroupbox1.Controls.Add(this.xuiSuperButton1);
+            this.xuiCustomGroupbox1.Controls.Add(this.bunifuCustomLabel6);
+            this.xuiCustomGroupbox1.Controls.Add(this.bunifuCustomLabel7);
+            this.xuiCustomGroupbox1.Controls.Add(this.TxtCuitBeneficio);
+            this.xuiCustomGroupbox1.Controls.Add(this.TxtEmpresabeneficiaria);
+            this.xuiCustomGroupbox1.Controls.Add(this.bunifuCustomLabel5);
             this.xuiCustomGroupbox1.Controls.Add(this.CbTipopedido);
             this.xuiCustomGroupbox1.Controls.Add(this.bunifuCustomLabel1);
             this.xuiCustomGroupbox1.Controls.Add(this.TxtRazonsocial);
@@ -560,11 +571,112 @@
             this.xuiCustomGroupbox1.TabStop = false;
             this.xuiCustomGroupbox1.TextColor = System.Drawing.Color.DodgerBlue;
             // 
+            // DGBeneficiaria
+            // 
+            this.DGBeneficiaria.AllowUserToAddRows = false;
+            this.DGBeneficiaria.AllowUserToDeleteRows = false;
+            this.DGBeneficiaria.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.DGBeneficiaria.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.DGBeneficiaria.Location = new System.Drawing.Point(222, 83);
+            this.DGBeneficiaria.Margin = new System.Windows.Forms.Padding(6, 11, 6, 11);
+            this.DGBeneficiaria.MultiSelect = false;
+            this.DGBeneficiaria.Name = "DGBeneficiaria";
+            this.DGBeneficiaria.ReadOnly = true;
+            this.DGBeneficiaria.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DGBeneficiaria.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.DGBeneficiaria.Size = new System.Drawing.Size(609, 74);
+            this.DGBeneficiaria.TabIndex = 115;
+            this.DGBeneficiaria.Visible = false;
+            this.DGBeneficiaria.KeyDown += new System.Windows.Forms.KeyEventHandler(this.DGBeneficiaria_KeyDown);
+            // 
+            // TxtRazonsocialBen
+            // 
+            this.TxtRazonsocialBen.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.TxtRazonsocialBen.Location = new System.Drawing.Point(906, 65);
+            this.TxtRazonsocialBen.Margin = new System.Windows.Forms.Padding(6, 11, 6, 11);
+            this.TxtRazonsocialBen.Name = "TxtRazonsocialBen";
+            this.TxtRazonsocialBen.Size = new System.Drawing.Size(173, 30);
+            this.TxtRazonsocialBen.TabIndex = 120;
+            // 
+            // xuiSuperButton1
+            // 
+            this.xuiSuperButton1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(144)))), ((int)(((byte)(247)))));
+            this.xuiSuperButton1.ButtonImage = global::Capa_Presentacion.Properties.Resources.search_magnifier_interface_symbol;
+            this.xuiSuperButton1.ButtonSmoothing = System.Drawing.Drawing2D.SmoothingMode.HighSpeed;
+            this.xuiSuperButton1.ButtonStyle = XanderUI.XUISuperButton.Style.RoundedEdges;
+            this.xuiSuperButton1.ButtonText = "";
+            this.xuiSuperButton1.CornerRadius = 5;
+            this.xuiSuperButton1.Horizontal_Alignment = System.Drawing.StringAlignment.Center;
+            this.xuiSuperButton1.HoverBackgroundColor = System.Drawing.Color.IndianRed;
+            this.xuiSuperButton1.HoverTextColor = System.Drawing.Color.Yellow;
+            this.xuiSuperButton1.ImagePosition = XanderUI.XUISuperButton.imgPosition.Left;
+            this.xuiSuperButton1.Location = new System.Drawing.Point(390, 63);
+            this.xuiSuperButton1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.xuiSuperButton1.Name = "xuiSuperButton1";
+            this.xuiSuperButton1.SelectedBackColor = System.Drawing.Color.LimeGreen;
+            this.xuiSuperButton1.SelectedTextColor = System.Drawing.Color.White;
+            this.xuiSuperButton1.Size = new System.Drawing.Size(42, 30);
+            this.xuiSuperButton1.SuperSelected = false;
+            this.xuiSuperButton1.TabIndex = 122;
+            this.xuiSuperButton1.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(245)))), ((int)(((byte)(255)))));
+            this.xuiSuperButton1.Vertical_Alignment = System.Drawing.StringAlignment.Center;
+            this.xuiSuperButton1.Click += new System.EventHandler(this.xuiSuperButton1_Click);
+            // 
+            // bunifuCustomLabel6
+            // 
+            this.bunifuCustomLabel6.AutoSize = true;
+            this.bunifuCustomLabel6.Location = new System.Drawing.Point(736, 67);
+            this.bunifuCustomLabel6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.bunifuCustomLabel6.Name = "bunifuCustomLabel6";
+            this.bunifuCustomLabel6.Size = new System.Drawing.Size(134, 25);
+            this.bunifuCustomLabel6.TabIndex = 121;
+            this.bunifuCustomLabel6.Text = "Razon social :";
+            // 
+            // bunifuCustomLabel7
+            // 
+            this.bunifuCustomLabel7.AutoSize = true;
+            this.bunifuCustomLabel7.Location = new System.Drawing.Point(455, 65);
+            this.bunifuCustomLabel7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.bunifuCustomLabel7.Name = "bunifuCustomLabel7";
+            this.bunifuCustomLabel7.Size = new System.Drawing.Size(58, 25);
+            this.bunifuCustomLabel7.TabIndex = 119;
+            this.bunifuCustomLabel7.Text = "Cuit :";
+            // 
+            // TxtCuitBeneficio
+            // 
+            this.TxtCuitBeneficio.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.TxtCuitBeneficio.Location = new System.Drawing.Point(541, 65);
+            this.TxtCuitBeneficio.Margin = new System.Windows.Forms.Padding(6, 11, 6, 11);
+            this.TxtCuitBeneficio.Name = "TxtCuitBeneficio";
+            this.TxtCuitBeneficio.Size = new System.Drawing.Size(168, 30);
+            this.TxtCuitBeneficio.TabIndex = 118;
+            // 
+            // TxtEmpresabeneficiaria
+            // 
+            this.TxtEmpresabeneficiaria.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.TxtEmpresabeneficiaria.Location = new System.Drawing.Point(215, 62);
+            this.TxtEmpresabeneficiaria.Margin = new System.Windows.Forms.Padding(6, 11, 6, 11);
+            this.TxtEmpresabeneficiaria.Name = "TxtEmpresabeneficiaria";
+            this.TxtEmpresabeneficiaria.Size = new System.Drawing.Size(155, 30);
+            this.TxtEmpresabeneficiaria.TabIndex = 117;
+            this.TxtEmpresabeneficiaria.TextChanged += new System.EventHandler(this.TxtEmpresabeneficiaria_TextChanged);
+            this.TxtEmpresabeneficiaria.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TxtEmpresabeneficiaria_KeyDown);
+            // 
+            // bunifuCustomLabel5
+            // 
+            this.bunifuCustomLabel5.AutoSize = true;
+            this.bunifuCustomLabel5.Location = new System.Drawing.Point(7, 67);
+            this.bunifuCustomLabel5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.bunifuCustomLabel5.Name = "bunifuCustomLabel5";
+            this.bunifuCustomLabel5.Size = new System.Drawing.Size(205, 25);
+            this.bunifuCustomLabel5.TabIndex = 116;
+            this.bunifuCustomLabel5.Text = "Empresa beneficiaria :";
+            // 
             // chkporcantidad
             // 
             this.chkporcantidad.AutoSize = true;
             this.chkporcantidad.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.chkporcantidad.Location = new System.Drawing.Point(717, 107);
+            this.chkporcantidad.Location = new System.Drawing.Point(546, 107);
             this.chkporcantidad.Margin = new System.Windows.Forms.Padding(2);
             this.chkporcantidad.Name = "chkporcantidad";
             this.chkporcantidad.Size = new System.Drawing.Size(64, 29);
@@ -594,16 +706,17 @@
             this.Controls.Add(this.DGProductos);
             this.Controls.Add(this.TxtcambioDv);
             this.Controls.Add(this.xuiCustomGroupbox1);
-            this.Controls.Add(this.DGDetalleitems);
             this.Controls.Add(this.BtnGuardar);
             this.Controls.Add(this.txtTotalPagar);
             this.Controls.Add(this.lblTotalPagar);
             this.Controls.Add(this.panelHorizontal);
+            this.Controls.Add(this.DGDetalleitems);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "FrmOrdenAdjudicacion";
             this.Text = "FrmOrdenPedido";
+            this.Load += new System.EventHandler(this.FrmOrdenAdjudicacion_Load);
             this.panelHorizontal.ResumeLayout(false);
             this.panelHorizontal.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnMaximizar)).EndInit();
@@ -615,6 +728,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.DGCliente)).EndInit();
             this.xuiCustomGroupbox1.ResumeLayout(false);
             this.xuiCustomGroupbox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.DGBeneficiaria)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -655,5 +769,13 @@
         private XanderUI.XUICustomGroupbox xuiCustomGroupbox1;
         private System.Windows.Forms.CheckBox chkporcantidad;
         public System.Windows.Forms.TextBox TxtcambioDv;
+        private System.Windows.Forms.TextBox TxtRazonsocialBen;
+        private XanderUI.XUISuperButton xuiSuperButton1;
+        private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel6;
+        private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel7;
+        private System.Windows.Forms.TextBox TxtCuitBeneficio;
+        private System.Windows.Forms.TextBox TxtEmpresabeneficiaria;
+        private Bunifu.Framework.UI.BunifuCustomLabel bunifuCustomLabel5;
+        private System.Windows.Forms.DataGridView DGBeneficiaria;
     }
 }

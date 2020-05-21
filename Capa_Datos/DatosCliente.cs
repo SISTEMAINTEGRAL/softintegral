@@ -34,6 +34,7 @@ namespace Capa_Datos
         private SqlTransaction sqltra;
         private string  fechaD;
         private string fechaH;
+        private int codrecibo;
         public string BuscarCliente
         {
             get
@@ -513,7 +514,7 @@ namespace Capa_Datos
                 return dtResult ;
             }
         //cta cte de clientes ------------------------------------------------------
-        public string agregaromodificarctacte(DatosCliente cliente)
+        public string agregaromodificarctacte(DatosCliente cliente, string varmodo = "modificarctacte")
         {
             string transaccion = "";
             //modo 1 para DB
@@ -537,7 +538,7 @@ namespace Capa_Datos
                 //abro conexion
                 SqlCommand comando = ProcAlmacenado.CrearProc(cn, "SP_CLIENTE_CTACTE",sqltra);
 
-                SqlParameter parModo = ProcAlmacenado.asignarParametros("@modo", SqlDbType.NVarChar, modoctacte);
+                SqlParameter parModo = ProcAlmacenado.asignarParametros("@modo", SqlDbType.NVarChar, varmodo);
                 comando.Parameters.Add(parModo);
 
                 SqlParameter parIdCliente = ProcAlmacenado.asignarParametros("@codcliente", SqlDbType.Int,cliente.idcliente);
@@ -565,6 +566,7 @@ namespace Capa_Datos
                 if (comando.ExecuteNonQuery() == 1)
                 {
                     respuesta = "ok";
+
 
                 }
                 else
@@ -601,6 +603,82 @@ namespace Capa_Datos
             }
             return respuesta;
         }
+
+        public string guardardetallerecibo(DatosCliente cliente, int codrecibo = 0)
+        {
+            string transaccion = "";
+            string respuesta = "";
+            //modo 1 para DB
+            if (cn.State == ConnectionState.Closed)
+            {
+                cn = new SqlConnection(Conexion.conexion);
+
+                cn.ConnectionString = Conexion.conexion;
+                cn.Open();
+
+                sqltra = cn.BeginTransaction();
+                transaccion = "cerrartransaccion";
+
+            }
+            try
+            {
+
+     //           @codrecibo,
+		   //@Codcliente,
+		   //@codventa
+                //abro conexion
+                SqlCommand comando = ProcAlmacenado.CrearProc(cn, "SP_CLIENTE_CTACTE", sqltra);
+
+                SqlParameter parModo = ProcAlmacenado.asignarParametros("@modo", SqlDbType.NVarChar, "grabarrecibodetalle");
+                comando.Parameters.Add(parModo);
+
+                SqlParameter parIdCliente = ProcAlmacenado.asignarParametros("@codcliente", SqlDbType.Int,cliente.idcliente);
+                //le paso al sqlcommand los parametros asignados
+                comando.Parameters.Add(parIdCliente);
+
+                SqlParameter parcodventa = ProcAlmacenado.asignarParametros("@codventa", SqlDbType.Int, cliente.Codventa);
+                //le paso al sqlcommand los parametros asignados
+                comando.Parameters.Add(parcodventa);
+
+                SqlParameter parcodrecibo = ProcAlmacenado.asignarParametros("@codrecibo", SqlDbType.Int, codrecibo);
+                comando.Parameters.Add(parcodrecibo);
+
+                if (comando.ExecuteNonQuery() == 1)
+                {
+                    respuesta = "ok";
+
+
+                }
+                else
+                {
+
+                    respuesta = "error";
+                }
+
+                if (respuesta.Equals("ok") && transaccion == "cerrartransaccion")
+                {
+                    if (transaccion == "cerrartransaccion")
+                    {
+                        sqltra.Commit();
+                        cn.Close();
+                    }
+
+                }
+                else if (transaccion == "cerrartransaccion")
+                {
+                    sqltra.Rollback();
+                    cn.Close();
+                }
+
+               
+                return respuesta;
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+        }
+
         public DataTable buscarporcodigoctacte (DatosCliente objcliente)
         {
             DataTable DtResultado = new DataTable("clientes_ctacte");
@@ -631,43 +709,191 @@ namespace Capa_Datos
             return DtResultado;
 
         }
-        public string actualizacionesctacte(DataTable midata)
+        public string agregarrecibo( ref int varcodrecibo,DatosCliente objcliente,DataTable midata, decimal totalpagado = 0, bool concaja = false,int idusuario = 0  )
         {
             string respuesta = "";
-            DatosCliente objcliente = new DatosCliente();
+            
             cn = new SqlConnection(Conexion.conexion);
 
             cn.ConnectionString = Conexion.conexion;
             cn.Open();
 
             sqltra = cn.BeginTransaction();
+            
 
             try
             {
-                foreach (DataRow row in midata.Rows)
+                //abro conexion
+                SqlCommand comando = ProcAlmacenado.CrearProc(cn, "SP_CLIENTE_CTACTE", sqltra);
+
+                SqlParameter parModo = ProcAlmacenado.asignarParametros("@modo", SqlDbType.NVarChar, "grabarrecibocabecera");
+                comando.Parameters.Add(parModo);
+
+                SqlParameter parIdCliente = ProcAlmacenado.asignarParametros("@codcliente", SqlDbType.Int, objcliente.idcliente);
+                //le paso al sqlcommand los parametros asignados
+                comando.Parameters.Add(parIdCliente);
+
+                SqlParameter parpagado = ProcAlmacenado.asignarParametros("@pagado", SqlDbType.Int, totalpagado);
+                //le paso al sqlcommand los parametros asignados
+                comando.Parameters.Add(parpagado);
+
+                SqlParameter parconcaja = ProcAlmacenado.asignarParametros("@concaja", SqlDbType.NVarChar, concaja);
+                comando.Parameters.Add(parconcaja);
+
+                SqlParameter parcodrecibo= ProcAlmacenado.asignarParametros("@codreciboinsert", SqlDbType.Int);
+                comando.Parameters.Add(parcodrecibo);
+
+                SqlParameter paridusuario = ProcAlmacenado.asignarParametros("@idusuario", SqlDbType.Int,idusuario);
+                comando.Parameters.Add(paridusuario);
+
+                SqlParameter parfecha = ProcAlmacenado.asignarParametros("@fecha", SqlDbType.DateTime, DateTime.Now);
+                comando.Parameters.Add(parfecha);
+
+
+                if (comando.ExecuteNonQuery() == 1)
+
+
                 {
-                    objcliente.saldo = Convert.ToDecimal(row["saldo"].ToString());
-                    objcliente.total = Convert.ToDecimal(row["total"].ToString());
-                    objcliente.pagado = Convert.ToDecimal(row["pagado"].ToString());
-                    objcliente.estado = row["saldo"].ToString();
-                    objcliente.codventa = Convert.ToInt32(row["codventa"].ToString()) ;
-                    agregaromodificarctacte(objcliente);
+                    varcodrecibo = Convert.ToInt32(comando.Parameters["@codreciboinsert"].Value);
+                    foreach (DataRow row in midata.Rows)
+                    {
+                        if (row["grabar"].ToString() == "grabar")
+                        {
+                            objcliente.saldo = Convert.ToDecimal(row["saldo"].ToString());
+                            objcliente.total = Convert.ToDecimal(row["total"].ToString());
+                            objcliente.pagado = Convert.ToDecimal(row["pagado"].ToString());
+                            objcliente.estado = row["estado"].ToString();
+                            objcliente.codventa = Convert.ToInt32(row["idventa"].ToString());
+
+                            guardardetallerecibo(objcliente,varcodrecibo);
+                            agregaromodificarctacte(objcliente);
+                        }
+
+                    }
+                    respuesta = "ok";
+
+
+                    sqltra.Commit();
+
                 }
+                else
+                {
+
+                    respuesta = "error";
+                }
+                //guardarcabecerarecibo(midata);
+               
                 
             }
             catch (Exception ex)
             {
                 respuesta = "error conexion: " + ex.Message;
+                sqltra.Rollback();
                 cn.Close();
             }
             finally
             {
+
                 if (cn.State == ConnectionState.Open) cn.Close();
             }
             return respuesta;
 
         }
 
+        public DataTable reporterecibo(int codrecibo)
+        {
+            DataTable DtResultado = new DataTable("clientes_ctacte");
+            SqlConnection cn = new SqlConnection(Conexion.conexion);
+
+            try
+            {
+                cn.Open();
+
+                SqlCommand sqlcmd = ProcAlmacenado.CrearProc(cn, "REPORTE_RECIBO");
+                //Modo 4 Mostrar
+                SqlParameter parModo = ProcAlmacenado.asignarParametros("@codrecibo", SqlDbType.Int, codrecibo);
+                sqlcmd.Parameters.Add(parModo);
+                
+                SqlDataAdapter sqldat = new SqlDataAdapter(sqlcmd);
+                sqldat.Fill(DtResultado);
+            }
+            catch (Exception ex)
+            {
+                DtResultado = null;
+                throw ex;
+            }
+            return DtResultado;
+
+        }
+        public string modificarcajarecibo(int codrecibo = 0, string transaccion = "")
+        {
+            
+            string respuesta = "";
+            //modo 1 para DB
+            if (transaccion != "")
+            {
+                cn = new SqlConnection(Conexion.conexion);
+
+                cn.ConnectionString = Conexion.conexion;
+                cn.Open();
+
+                sqltra = cn.BeginTransaction();
+                transaccion = "cerrartransaccion";
+
+            }
+            try
+            {
+
+                //           @codrecibo,
+                //@Codcliente,
+                //@codventa
+                //abro conexion
+                SqlCommand comando = ProcAlmacenado.CrearProc(cn, "SP_CLIENTE_CTACTE", sqltra);
+
+                SqlParameter parModo = ProcAlmacenado.asignarParametros("@modo", SqlDbType.NVarChar, "actualizarcaja");
+                comando.Parameters.Add(parModo);
+
+                SqlParameter parcodrecibo = ProcAlmacenado.asignarParametros("@codrecibo", SqlDbType.Int, codrecibo);
+                //le paso al sqlcommand los parametros asignados
+                comando.Parameters.Add(parcodrecibo);
+
+               
+
+                if (comando.ExecuteNonQuery() == 1)
+                {
+                    respuesta = "ok";
+
+
+                }
+                else
+                {
+
+                    respuesta = "error";
+                }
+
+                if (respuesta.Equals("ok") && transaccion == "cerrartransaccion")
+                {
+                    if (transaccion == "cerrartransaccion")
+                    {
+                        sqltra.Commit();
+                        cn.Close();
+                    }
+
+                }
+                else if (transaccion == "cerrartransaccion")
+                {
+                    sqltra.Rollback();
+                    cn.Close();
+                }
+
+
+                return respuesta;
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+        }
 
     }
 }

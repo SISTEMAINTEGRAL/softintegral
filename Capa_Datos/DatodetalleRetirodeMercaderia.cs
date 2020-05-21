@@ -9,7 +9,7 @@ using Capa_Datos;
 
 namespace Capa_Datos
 {
-  public  class Datodetalleordenpedido
+  public  class DatodetalleRetirodeMercaderia
     {
         private int norden;
         private int idproducto;
@@ -109,20 +109,20 @@ namespace Capa_Datos
                 cantidadactual = value;
             }
         }
-        public Datodetalleordenpedido(int varorden)
+        public DatodetalleRetirodeMercaderia(int varorden)
         {
             this.norden = varorden;
         }
-        public Datodetalleordenpedido()
+        public DatodetalleRetirodeMercaderia()
         { }
-        public string insertaromodificar(Datodetalleordenpedido Detalle_Pedido, ref SqlConnection sqlcon, ref SqlTransaction sqltra, string agregaromodificar = "agregar")
+        public string insertaromodificar(DatodetalleRetirodeMercaderia Detalle_Pedido, ref SqlConnection sqlcon, ref SqlTransaction sqltra, string agregaromodificar = "agregar")
         {
             string rpta = "";
 
             try
             {
                 //asigno el procedimiento almacenado y la transaccion al sqlcmd
-                SqlCommand sqlcmd = ProcAlmacenado.CrearProc(sqlcon, "SP_ORDENPEDIDODETALLE", sqltra);
+                SqlCommand sqlcmd = ProcAlmacenado.CrearProc(sqlcon, "SP_RETIRODEMERCADERIADETALLE ", sqltra);
 
                 SqlParameter parnorden = ProcAlmacenado.asignarParametros("@norden", SqlDbType.Int, Detalle_Pedido.norden);
                 sqlcmd.Parameters.Add(parnorden);
@@ -155,7 +155,7 @@ namespace Capa_Datos
 
             return rpta;
         }
-        public DataTable consultadetalla(Datodetalleordenpedido detalle)
+        public DataTable consultadetalla(DatodetalleRetirodeMercaderia detalle)
         {
             SqlConnection cn = new SqlConnection(Conexion.conexion);
             DataTable dtResult = new DataTable("ordendetalle");
@@ -169,7 +169,7 @@ namespace Capa_Datos
 
 
                    };
-                dtResult = ProcAlmacenado2.ExecuteDatatable("SP_ORDENPEDIDODETALLE", dbParams);
+                dtResult = ProcAlmacenado2.ExecuteDatatable("SP_RETIRODEMERCADERIADETALLE ", dbParams);
             }
             catch (Exception)
             {
@@ -181,7 +181,7 @@ namespace Capa_Datos
             return dtResult;
         }
 
-        public string eliminardetalle(Datodetalleordenpedido detalle)
+        public string eliminardetalle(DatodetalleRetirodeMercaderia detalle)
         {
             //modo 3 para DB
             SqlConnection cn = new SqlConnection(Conexion.conexion);
@@ -190,7 +190,7 @@ namespace Capa_Datos
             {
                 cn.Open();
                 //abro conexion
-                SqlCommand comando = ProcAlmacenado.CrearProc(cn, "SP_ORDENPEDIDODETALLE");
+                SqlCommand comando = ProcAlmacenado.CrearProc(cn, "SP_RETIRODEMERCADERIADETALLE ");
                 //MODO 3 ELIMINAR
                 SqlParameter parModo = ProcAlmacenado.asignarParametros("@modo", SqlDbType.NVarChar, "eliminardetalle");
                 comando.Parameters.Add(parModo);

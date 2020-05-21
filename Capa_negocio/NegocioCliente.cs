@@ -78,11 +78,33 @@ namespace Capa_negocio
             return objcliente.buscarporcodigoctacte(objcliente);
 
         }
-        public static string modificarlistactacte(DataTable midata)
+        //public static string modificarlistactacte(DataTable midata, decimal totalapagar)
+        //{
+        //    //DatosCliente objcliente = new DatosCliente();
+            
+        //    //return objcliente(midata,"");
+        //}
+
+        public static string agregaromodificarrecibo(DataTable midata, decimal totalapagar, int codcliente, int idusuario, ref int codrecibo)
+        {
+            DatosCliente objcliente = new DatosCliente(codcliente);
+         
+           
+            return objcliente.agregarrecibo(ref codrecibo,objcliente,midata,totalapagar,false ,idusuario);
+        }
+
+        public static DataTable reporterecibo(int codrecibo)
         {
             DatosCliente objcliente = new DatosCliente();
-            
-            return objcliente.actualizacionesctacte(midata);
+            return objcliente.reporterecibo(codrecibo);
+        }
+
+        public static string modificarestadocajarecibo(int codrecibo)
+        {
+            DatosCliente objcliente = new DatosCliente();
+            return objcliente.modificarcajarecibo(codrecibo,"cerrartransaccion");
+
+
         }
 
     }

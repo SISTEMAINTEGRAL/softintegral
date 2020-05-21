@@ -86,7 +86,7 @@
     <Compile Include="NegocioCliente.cs" />
     <Compile Include="Negociogeneral.cs" />
     <Compile Include="NegocioMovStock.cs" />
-    <Compile Include="NegocioOrdenpedido.cs" />
+    <Compile Include="NegocioRetirodeMercaderia.cs" />
     <Compile Include="NegocioProveedor.cs" />
     <Compile Include="NegocioRemito.cs" />
     <Compile Include="Negocioserviciotecnico.cs" />

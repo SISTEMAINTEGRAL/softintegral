@@ -185,7 +185,7 @@
             this.tbEfectivo.Margin = new System.Windows.Forms.Padding(4);
             this.tbEfectivo.Name = "tbEfectivo";
             this.tbEfectivo.Padding = new System.Windows.Forms.Padding(4);
-            this.tbEfectivo.Size = new System.Drawing.Size(443, 334);
+            this.tbEfectivo.Size = new System.Drawing.Size(465, 334);
             this.tbEfectivo.TabIndex = 0;
             this.tbEfectivo.Text = "EFECTIVO";
             // 
@@ -288,12 +288,12 @@
             this.tabTarjeta.Controls.Add(this.tbEfectivo);
             this.tabTarjeta.Controls.Add(this.tbTarjeta);
             this.tabTarjeta.Font = new System.Drawing.Font("Century", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tabTarjeta.Location = new System.Drawing.Point(31, 46);
+            this.tabTarjeta.Location = new System.Drawing.Point(9, 46);
             this.tabTarjeta.Margin = new System.Windows.Forms.Padding(4);
             this.tabTarjeta.Multiline = true;
             this.tabTarjeta.Name = "tabTarjeta";
             this.tabTarjeta.SelectedIndex = 0;
-            this.tabTarjeta.Size = new System.Drawing.Size(481, 342);
+            this.tabTarjeta.Size = new System.Drawing.Size(503, 342);
             this.tabTarjeta.SizeMode = System.Windows.Forms.TabSizeMode.Fixed;
             this.tabTarjeta.TabIndex = 1;
             // 

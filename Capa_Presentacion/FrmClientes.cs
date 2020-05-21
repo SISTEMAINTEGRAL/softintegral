@@ -8,13 +8,15 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Capa_negocio;
+using Capa_Presentacion.Formreportes;
 namespace Capa_Presentacion
 {
     public partial class FrmClientes : Form
     {
         private bool modoshowdialog;
         private int idcliente;
-         bool isEditar = false;
+        private DataTable midata;
+        bool isEditar = false;
          bool isNuevo = false;
          int posY = 0;
          int posX = 0;
@@ -185,6 +187,8 @@ namespace Capa_Presentacion
             //limpio textbox
             UtilityFrm.limpiarTextbox(txtDireccion, txtRazonSocial, txtNombre, txtCodigo, txtCuit, txtDocumento);
             UtilityFrm.limpiarTextbox(txtTelefono, txtEmail);
+            limpiarformularioctacte();
+
             isEditar = false;
             isNuevo = false;
         }
@@ -271,6 +275,7 @@ namespace Capa_Presentacion
                     habilitarbotones(true, false,false,false);
                     UtilityFrm.limpiarTextbox(txtCodigo,
                     txtEmail,txtNombre,txtRazonSocial,txtTelefono);
+                    limpiarformularioctacte();
                     this.btnNuevo.Focus();
 
                 }
@@ -424,21 +429,27 @@ namespace Capa_Presentacion
             if (modoshowdialog == true)
             {
                 idcliente = Convert.ToInt32 ( this.dataLista.CurrentRow.Cells["idcliente"].Value);
+                buscarctacte(idcliente);
                 this.Close();
             }
             else
             {
                 string categoriaiva = "";
                 txtCodigo.Text = Convert.ToString(this.dataLista.CurrentRow.Cells["idcliente"].Value);
+                LblCodcliente.Text = Convert.ToString(this.dataLista.CurrentRow.Cells["idcliente"].Value);
                 txtRazonSocial.Text = Convert.ToString(this.dataLista.CurrentRow.Cells["razon_social"].Value);
+                LblRazonSocialCTACTE.Text = Convert.ToString(this.dataLista.CurrentRow.Cells["razon_social"].Value);
                 txtCuit.Text = Convert.ToString(this.dataLista.CurrentRow.Cells["cuit"].Value);
+                LblCuitCtaCte.Text= Convert.ToString(this.dataLista.CurrentRow.Cells["cuit"].Value);
                 txtDireccion.Text = Convert.ToString(this.dataLista.CurrentRow.Cells["direccion"].Value);
                 txtTelefono.Text = Convert.ToString(this.dataLista.CurrentRow.Cells["telefono"].Value);
                 txtEmail.Text = Convert.ToString(this.dataLista.CurrentRow.Cells["email"].Value);
                 txtDocumento.Text = Convert.ToString(this.dataLista.CurrentRow.Cells["num_documento"].Value);
                 categoriaiva = Convert.ToString(this.dataLista.CurrentRow.Cells["responsabilidadiva"].Value);
+                LblRespiva.Text = Convert.ToString(this.dataLista.CurrentRow.Cells["responsabilidadiva"].Value);
                 Cbprovincia.SelectedValue = Convert.ToInt32(this.dataLista.CurrentRow.Cells["idprovincia"].Value);
                 CBlocalidad.SelectedValue = Convert.ToInt32(this.dataLista.CurrentRow.Cells["idlocalidad"].Value);
+                idcliente = Convert.ToInt32(this.dataLista.CurrentRow.Cells["idcliente"].Value);
 
                 if (categoriaiva == "CF")
                 {
@@ -461,6 +472,9 @@ namespace Capa_Presentacion
 
                 habilitarbotones(true, false, false, false);
                 this.tabControl1.SelectedTab = tabAgregarOcambiar;
+                buscarctacte(Convert.ToInt32(this.dataLista.CurrentRow.Cells["idcliente"].Value));
+
+
             }
             
         }
@@ -594,6 +608,230 @@ namespace Capa_Presentacion
         {
             FrmClienteCtaCte objctacte = new FrmClienteCtaCte(Convert.ToInt32(txtCodigo.Text) );
             objctacte.ShowDialog();
+        }
+
+        private void txtNombre_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter )
+            {
+                this.BuscarNombre();
+                UtilityFrm.limpiarTextbox(txtDireccion, txtRazonSocial, txtCodigo, txtCuit, txtDocumento);
+                UtilityFrm.limpiarTextbox(txtTelefono, txtEmail);
+            }
+        }
+
+        private void btnImprimir_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dataLista_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                MenuDelete.Visible = true;
+            }
+            else
+            {
+                MenuDelete.Visible = false;
+            }
+            contextMenuStrip1.Show(dataLista, new Point(e.X, e.Y));
+        }
+        private void MenuDelete_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+
+        }
+        private void limpiarformularioctacte()
+        {
+            LblCodcliente.Text = "...";
+            LblCuitCtaCte.Text = "...";
+            LblRazonSocialCTACTE.Text = "...";
+            LblRespiva.Text = "...";
+            DGListado.Rows.Clear();
+        }
+        private void BtnAsentarpago_Click(object sender, EventArgs e)
+        {
+            string respuesta = "";
+            decimal saldo = 0;
+            int  codrecibo = 0;
+            string mensaje = "";
+            midata = new DataTable();
+            Negociocaja objcaja = new Negociocaja();
+
+            midata.Columns.Add("Idventa", typeof(int));
+            midata.Columns.Add("saldo", typeof(decimal));
+            midata.Columns.Add("pagado", typeof(decimal));
+            midata.Columns.Add("total", typeof(decimal));
+            midata.Columns.Add("estado", typeof(string));
+            midata.Columns.Add("grabar", typeof(string));
+
+            if ( traerpagototal(false) != 0)
+            {
+                Frmasentarpago objpago = new Frmasentarpago( traerpagototal(true));
+                objpago.Midatatable = midata;
+                objpago.ShowDialog();
+                if (objpago.Confirmarpago == true)
+                {
+                 cargardatatable(objpago.Importe);
+                    //objpago.importe en ves de pagototal
+                 respuesta =   NegocioCliente.agregaromodificarrecibo(midata,objpago.Importe, idcliente,NegocioConfigEmpresa.idusuario, ref codrecibo);
+                }
+
+
+                if (respuesta == "ok")
+                {
+                    if (objcaja.chequeocaja("FrmClientes", ref mensaje) == true)
+                    {
+                        respuesta = Negociocaja.insertarmovcaja(1310101, Convert.ToSingle(objpago.Importe), 0, Convert.ToString(DateTime.Now), NegocioConfigEmpresa.usuarioconectado, NegocioConfigEmpresa.idusuario, NegocioConfigEmpresa.turno, "Recibo nro : " + codrecibo.ToString(), codrecibo, true);
+                        if (respuesta == "ok")
+                        {
+                            NegocioCliente.modificarestadocajarecibo(codrecibo);
+                        }
+                    } 
+                    FrmReporteRecibo formrecibo = new Formreportes.FrmReporteRecibo(codrecibo);
+                    formrecibo.ShowDialog();
+                    UtilityFrm.mensajeConfirm("El pago se guardo con exito");
+                    buscarctacte(Convert.ToInt32(txtCodigo.Text == string.Empty ? "0" : txtCodigo.Text));
+                }
+
+
+
+            }
+            else
+            {
+                UtilityFrm.mensajeError("No hay saldo");
+            }
+        }
+
+        private decimal traerpagototal(bool cargardatatable)
+        {
+            decimal contpago = 0;
+
+            
+
+            foreach (DataGridViewRow row in DGListado.Rows)
+            {
+                
+                //tener en cuenta a la hora de checkear colocar el evento CurrentCellDirtyStateChanged para futuros datagridview
+                if (Convert.ToBoolean(row.Cells[0].Value) == true && row.Cells["estado"].Value.ToString() == "pendiente")
+                {
+                    contpago = decimal.Round(contpago + Convert.ToDecimal(row.Cells["saldo"].Value), 2);
+                    if (cargardatatable == true)
+                    {
+                        midata.Rows.Add(row.Cells["codventa"].Value, row.Cells["saldo"].Value, row.Cells["pagado"].Value, row.Cells["total"].Value, row.Cells["estado"].Value, "");
+                    }
+                    
+                }
+
+            }
+            return contpago;
+        }
+
+        private void cargardatatable(decimal pago)
+        {
+            decimal recuperar = 0;
+            foreach (DataRow row in midata.Rows)
+            {
+                pago = pago - Convert.ToDecimal(row["saldo"].ToString());
+                if (pago >= 0)
+                {
+                    row["saldo"] = 0;
+                    row["pagado"] = row["total"];
+                    row["estado"] = "pagado";
+                   
+
+                }
+
+                if (pago < 0)
+                {
+                    recuperar = pago + Convert.ToDecimal(row["saldo"].ToString());
+                    row["saldo"] = pago * (-1);
+                    
+                    row["pagado"] =Convert.ToDecimal( row["pagado"]) + recuperar;
+
+                }
+                row["grabar"] = "grabar";
+                if (pago <= 0)
+                {
+                    break;
+                }
+               
+            }
+
+        }
+
+        private void BtnBuscarCTACTE_Click(object sender, EventArgs e)
+        {
+            buscarctacte(Convert.ToInt32(txtCodigo.Text == string.Empty ? "0" : txtCodigo.Text)   );
+        }
+
+        private void buscarctacte(int varcodcliente)
+        {
+            if (varcodcliente != 0)
+            {
+                DGListado.DataSource = NegocioCliente.buscarporcodigoctacte(varcodcliente, dtpFechaIni.Value.ToString("dd/MM/yyyy"), dtpFechaFin.Value.ToString("dd/MM/yyyy"));
+            }
+
+            DGListado.Columns["saldo"].DefaultCellStyle.Format = String.Format("$###,##0.00");
+            DGListado.Columns["pagado"].DefaultCellStyle.Format = String.Format("$###,##0.00");
+            DGListado.Columns["total"].DefaultCellStyle.Format = String.Format("$###,##0.00");
+        }
+
+        private void DGListado_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            //bool isCellChecked = (bool)DGListado.Rows[e.RowIndex].Cells[0].Value;
+
+            //if (isCellChecked)
+            //{
+            //    System.Diagnostics.Debug.WriteLine("Fila " + e.RowIndex + " seleccionada");
+            //}
+        }
+
+        private void DGListado_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            
+        }
+
+        private void DGListado_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+           
+        }
+
+        private void DGListado_CellValidated(object sender, DataGridViewCellEventArgs e)
+        {
+            // if (DGListado.Columns[e.ColumnIndex].Name == "chek")
+            //{
+            //    DataGridViewRow row = DGListado.Rows[e.RowIndex];
+
+            //    //Se selecciona la celda del checkbox
+            //    //
+            //    DataGridViewCheckBoxCell cellSelecion = row.Cells["chek"] as DataGridViewCheckBoxCell;
+
+            //    //Se valida si esta checkeada
+            //    //
+            //    if (cellSelecion != null && !(bool)cellSelecion.Value)
+            //    {
+
+            //    }
+            //}
+        }
+
+        private void DGListado_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+           
+        }
+
+        private void DGListado_CurrentCellDirtyStateChanged(object sender, EventArgs e)
+        {
+            if (DGListado.IsCurrentCellDirty)
+            {
+                DGListado.CommitEdit(DataGridViewDataErrorContexts.Commit);
+            }
         }
     }
 }

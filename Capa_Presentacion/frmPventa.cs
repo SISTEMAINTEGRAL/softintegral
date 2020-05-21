@@ -32,6 +32,7 @@ namespace Capa_Presentacion
         private string formadepago;
         private decimal precio;
         private bool datagriddobleclic = false; // si se hace doble clic te modifica si no lo agrega  
+        private string buffer;
         NegocioUsuario objusuario = new NegocioUsuario();
         public string Riva
             
@@ -46,13 +47,33 @@ namespace Capa_Presentacion
         {
             try
             {
+                //if (NegocioConfigEmpresa.balanzapuerto != "")
+                //{
+                    
+                //    string mensaje = UtilityFrm.conectarbalanza(serialPort1);
+                //    if (mensaje != "ok")
+                //    {
+                //        UtilityFrm.mensajeError("Verificar la conexion de la balanza o el puerto com" + mensaje);
+                //    }
+                //    CHKHabilitarBalanza.Visible = true;
+
+                //}
                 lblcant.Enabled = chkporcantidad.Checked;
                 txtcant.Enabled = chkporcantidad.Checked;
                 cbTipoComprobante.Items.Add("PRESUPUESTO");
                 cbTipoComprobante.Items.Add("NOTA DE VENTA");
                 cbTipoComprobante.SelectedIndex = 1;
                 llenarcomboboxtarjeta();
-               
+
+                if (NegocioConfigEmpresa.confsistema ("pendientestock").ToString () == "True")
+                {
+                    CHKPendientestock.Visible = true;
+
+                }
+                else
+                {
+                    CHKPendientestock.Visible = false;
+                }
 
                 //if (NegocioConfigEmpresa.confsistema("facturar").ToString() == "True")
                 //{
@@ -236,6 +257,31 @@ namespace Capa_Presentacion
                 if (chkporcantidad.Checked == true)
                 {
                     cantidad = 0;
+                    if (NegocioConfigEmpresa.balanzapuerto != "")
+                    {
+                        if (objnart.Pesable == 1)
+                        {
+
+                            FrmAsignarPrecio objasignar = new FrmAsignarPrecio();
+                            objasignar.ShowDialog();
+                            if (!objasignar.IsCerro)
+                            {
+                                cantidad = objasignar.PrecioTotal;
+                                if (objasignar.Tara != 0)
+                                {
+                                    cantidad = objasignar.PrecioTotal - objasignar.Tara;
+                                }
+                            }
+
+                            //cantidad = UtilityFrm.Leerbalanza(buffer);
+                          
+                        }
+                    }
+
+                }
+                else
+                {
+                    
                 }
                   if (objnart.Sindatos == true)
                   {
@@ -271,7 +317,12 @@ namespace Capa_Presentacion
                                   cantidadActual = (Convert.ToDecimal(row.Cells["Cantidad"].Value));
 
                                   //incremento la cantidad del producto agregado
+
                                   cantidadActual += cantidad;
+                                if (NegocioConfigEmpresa.balanzapuerto != "" && chkporcantidad.Checked == true)
+                                {
+                                    cantidadActual = cantidad;       
+                                }
                                   row.Cells["Cantidad"].Value = cantidadActual;
                                   //calculo el precio con descuento incluido * la cantidad de articulos agregados
                                   importe = precio * cantidadActual;
@@ -653,6 +704,8 @@ namespace Capa_Presentacion
                   { chkporcantidad.Checked = true; }
               
               }
+
+           
               else if (e.KeyCode == Keys.Escape)
               {
 
@@ -687,7 +740,7 @@ namespace Capa_Presentacion
 
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-
+            bool pendientedestock = false;
             string nombretarjeta = "";
             decimal importecuota = 0;
             int cuota = 0;
@@ -729,8 +782,16 @@ namespace Capa_Presentacion
             else if (rctacte.Checked == true) 
             {
                 formadepago = "ctacte";
-            } 
-            FrmGuardarVenta venta = new FrmGuardarVenta(decimal.Round(Convert.ToDecimal(txtTotalPagar.Text), 2), Convert.ToInt32(txtIdCliente.Text), decimal.Round(Convert.ToDecimal(txtIVA.Text), 2), decimal.Round(Convert.ToDecimal(txtNeto.Text), 2), formadepago, nombretarjeta, importecuota, cuota, Convert.ToInt32(cbTarjeta.SelectedValue),cuit,txtRazonSocial.Text ,cbxCategoria.Text ,riva,domicilio,Convert.ToDecimal (txtIva105.Text),Convert.ToDecimal( txtNeto105.Text));
+            }
+
+            if (CHKPendientestock.Visible == true)
+            {
+                
+                    pendientedestock = CHKPendientestock.Checked;
+                
+            }
+
+            FrmGuardarVenta venta = new FrmGuardarVenta(decimal.Round(Convert.ToDecimal(txtTotalPagar.Text), 2), Convert.ToInt32(txtIdCliente.Text), decimal.Round(Convert.ToDecimal(txtIVA.Text), 2), decimal.Round(Convert.ToDecimal(txtNeto.Text), 2), formadepago, nombretarjeta, importecuota, cuota, Convert.ToInt32(cbTarjeta.SelectedValue),cuit,txtRazonSocial.Text ,cbxCategoria.Text ,riva,domicilio,Convert.ToDecimal (txtIva105.Text),Convert.ToDecimal( txtNeto105.Text),pendientedestock);
             venta.ListadoDeProducto = DGVenta;
             venta.Tipo_comprobante = cbTipoComprobante.SelectedItem.ToString();
             venta.Concaja = objcaja.chequeocaja (this.Name,ref mensaje);
@@ -749,6 +810,8 @@ namespace Capa_Presentacion
                     txtNeto.Text = "0,00";
                     txtIVA.Text = "0,00";
                     Txtcuota.Text = "0,00";
+                    txtIva105.Text = "0,00";
+                    txtNeto105.Text = "0,00";
                     //limpia la grilla de productos
                     DGVenta.Rows.Clear();
                     txtNombreProducto.Enabled = true;
@@ -1044,7 +1107,8 @@ namespace Capa_Presentacion
                     {
                         DGVenta.Rows[index].Cells[3].Selected = true;
                     }
-                    if (chkporcantidad.Checked == true)
+
+                    if (chkporcantidad.Checked == true && (NegocioConfigEmpresa.balanzapuerto == "" || objnart.Pesable == 0))
                     {
                         cambiartextbox();
                     }
@@ -1178,10 +1242,16 @@ namespace Capa_Presentacion
                     {
                         DGVenta.Rows[index].Cells[3].Selected = true;
                     }
-                    if (chkporcantidad.Checked == true)
+                    if (chkporcantidad.Checked == true && (NegocioConfigEmpresa.balanzapuerto == "" || objnart.Pesable == 0) )
                     {
                         cambiartextbox();
                     }
+                    else
+                    {
+                        txtNombreProducto.Focus();
+                        txtNombreProducto.SelectAll();
+                    }
+
                        
                     }
                     else if (e.KeyCode == Keys.Up)
@@ -1194,8 +1264,8 @@ namespace Capa_Presentacion
                     
                                 }
                          }
-
-                }
+             
+            }
                 catch (Exception ex)
                 {
 
@@ -1455,7 +1525,13 @@ namespace Capa_Presentacion
         private void btnCerrar_Click(object sender, EventArgs e)
         {
             //cierra
+            //if (NegocioConfigEmpresa.balanzapuerto != "")
+            //{
+            //    UtilityFrm.desconectarbalanza(serialPort1);
+            //}
+
             this.Close();
+
         }
         private void btnMinimizar_Click(object sender, EventArgs e)
         {
@@ -1714,12 +1790,12 @@ namespace Capa_Presentacion
                 {
                     if (datagriddobleclic == true)
                     {
-                        DGVenta.CurrentRow.Cells["cantidad"].Value = Convert.ToInt32(TxtcambioDv.Text) ;
+                        DGVenta.CurrentRow.Cells["cantidad"].Value = Convert.ToDecimal(TxtcambioDv.Text) ;
                         datagriddobleclic = false;
                     }
                     else
                     {
-                        DGVenta.CurrentRow.Cells["cantidad"].Value = Convert.ToInt32(TxtcambioDv.Text) + Convert.ToInt32(DGVenta.CurrentRow.Cells["cantidad"].Value);
+                        DGVenta.CurrentRow.Cells["cantidad"].Value = Convert.ToDecimal(TxtcambioDv.Text) + Convert.ToDecimal(DGVenta.CurrentRow.Cells["cantidad"].Value);
                     }
                     
                     DGVenta.CurrentRow.Cells["Calculo"].Value = "cantidad";
@@ -1995,9 +2071,17 @@ namespace Capa_Presentacion
            // e.Control.KeyPress += new KeyPressEventHandler(Validar_Keypress);
             
         }
-       
-      
-      
 
+        private void txtNombreProducto_LocationChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void serialPort1_DataReceived(object sender, System.IO.Ports.SerialDataReceivedEventArgs e)
+        {
+            
+            
+            
+        }
     }
 }

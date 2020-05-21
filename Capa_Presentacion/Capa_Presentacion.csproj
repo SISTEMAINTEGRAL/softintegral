@@ -158,6 +158,18 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DVentaproducto.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Formreportes\FrmReporteRecibo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formreportes\FrmReporteRecibo.Designer.cs">
+      <DependentUpon>FrmReporteRecibo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formreportes\FrmTicketRemito.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formreportes\FrmTicketRemito.Designer.cs">
+      <DependentUpon>FrmTicketRemito.cs</DependentUpon>
+    </Compile>
     <Compile Include="Formreportes\TicketProforma.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -504,6 +516,12 @@
       <DependentUpon>NotaDeVenta.rpt</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Reportes\Report1.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reportes\Report1.Designer.cs">
+      <DependentUpon>Report1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Reportes\ReporteArticulos.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -515,6 +533,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ReporteEtiqueta.rpt</DependentUpon>
       <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reportes\REPORTE_RECIBO.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reportes\REPORTE_RECIBO.Designer.cs">
+      <DependentUpon>REPORTE_RECIBO.cs</DependentUpon>
     </Compile>
     <Compile Include="Reportes\REPORTE_REMITO.cs">
       <SubType>Component</SubType>
@@ -528,11 +552,29 @@
     <Compile Include="Reportes\REPORT_TICKET.Designer.cs">
       <DependentUpon>REPORT_TICKET.cs</DependentUpon>
     </Compile>
+    <Compile Include="Reportes\REPORT_TICKETX58.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reportes\REPORT_TICKETX58.Designer.cs">
+      <DependentUpon>REPORT_TICKETX58.cs</DependentUpon>
+    </Compile>
     <Compile Include="Reportes\REPORT_TICKET_PROFORMA.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Reportes\REPORT_TICKET_PROFORMA.Designer.cs">
       <DependentUpon>REPORT_TICKET_PROFORMA.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\REPORT_TICKET_REMITO.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reportes\REPORT_TICKET_REMITO.Designer.cs">
+      <DependentUpon>REPORT_TICKET_REMITO.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\REPORT_VENTA_A4.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reportes\REPORT_VENTA_A4.Designer.cs">
+      <DependentUpon>REPORT_VENTA_A4.cs</DependentUpon>
     </Compile>
     <Compile Include="Reportes\VentasReducida.cs">
       <AutoGen>True</AutoGen>
@@ -566,6 +608,12 @@
   <ItemGroup>
     <EmbeddedResource Include="AboutBox1.resx">
       <DependentUpon>AboutBox1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formreportes\FrmReporteRecibo.resx">
+      <DependentUpon>FrmReporteRecibo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formreportes\FrmTicketRemito.resx">
+      <DependentUpon>FrmTicketRemito.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Formreportes\TicketProforma.resx">
       <DependentUpon>TicketProforma.cs</DependentUpon>
@@ -744,6 +792,9 @@
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>NotaDeVenta.cs</LastGenOutput>
     </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\Report1.resx">
+      <DependentUpon>Report1.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Reportes\ReporteArticulos.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>ReporteArticulos.cs</LastGenOutput>
@@ -755,14 +806,26 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes\ReportEtiq.rdlc" />
     <EmbeddedResource Include="Reportes\Reporteventas.rdlc" />
+    <EmbeddedResource Include="Reportes\REPORTE_RECIBO.resx">
+      <DependentUpon>REPORTE_RECIBO.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Reportes\REPORTE_REMITO.resx">
       <DependentUpon>REPORTE_REMITO.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes\REPORT_TICKET.resx">
       <DependentUpon>REPORT_TICKET.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\REPORT_TICKETX58.resx">
+      <DependentUpon>REPORT_TICKETX58.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Reportes\REPORT_TICKET_PROFORMA.resx">
       <DependentUpon>REPORT_TICKET_PROFORMA.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\REPORT_TICKET_REMITO.resx">
+      <DependentUpon>REPORT_TICKET_REMITO.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\REPORT_VENTA_A4.resx">
+      <DependentUpon>REPORT_VENTA_A4.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes\VentasReducida.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>

@@ -50,15 +50,36 @@ namespace Capa_Presentacion.Formreportes
 
             try
             {
+                switch (NegocioConfigEmpresa.formatoimpproforma)
+                {
+                    case "TICKET80":
+                        {
+                            midatatable = NegocioVenta.Reporteventa(idventa);
+                            miticket = new Reportes.REPORT_TICKET_PROFORMA();
+                            miticket.DataSource = midatatable;
 
-                midatatable = NegocioVenta.Reporteventa(idventa);
-                miticket = new Reportes.REPORT_TICKET_PROFORMA();
-                miticket.DataSource = midatatable;
+                            miticket.table1.DataSource = midatatable;
+                            reportViewer1.Report = miticket;
 
-                miticket.table1.DataSource = midatatable;
-                reportViewer1.Report = miticket;
+                            reportViewer1.RefreshReport();
+                            break;
+                        }
+                    case "A4":
+                        {
+                            break;
+                        }
+                    case "TICKET56":
+                        {
+                            break;
+                        }
+                           
+                    default:
+                        break;
+                }
 
-                reportViewer1.RefreshReport();
+               
+
+               
 
 
                 // reportViewer1.PrintReport();

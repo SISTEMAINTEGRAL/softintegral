@@ -175,13 +175,17 @@ namespace Capa_negocio
                 mensaje = "La caja se encuentra cerrada, realizar la apertura correspondiente antes de continuar";
                 concaja = false;
             }
-            if (NegocioConfigEmpresa.confsistema("puntodeventa").ToString() != formulario)
+            if ("FrmClientes" != formulario)
             {
+                if (NegocioConfigEmpresa.confsistema("puntodeventa").ToString() != formulario)
+                {
 
-                concaja = false;
+                    concaja = false;
 
 
+                }
             }
+          
 
            
 
@@ -232,6 +236,8 @@ namespace Capa_negocio
            
 
        }
+
+      
 
 
                 

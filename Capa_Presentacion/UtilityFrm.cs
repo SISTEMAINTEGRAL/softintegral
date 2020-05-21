@@ -14,11 +14,14 @@ using Capa_negocio;
 using Guna.UI.WinForms;
 using System.Drawing;
 using XanderUI.Designers;
+using System.IO.Ports;
+using System.Globalization;
 
 namespace Capa_Presentacion
 {
     public class UtilityFrm
     {
+       
         //sobreCargas para limpiar textbox
         public static void limpiarTextbox(TextBox txt1)
         {
@@ -189,7 +192,9 @@ namespace Capa_Presentacion
                 e.Handled = false;
 
 
-            } else if (e.KeyChar == ',' && !txt.Text.Contains(',')) {
+            }
+            else if (e.KeyChar == ',' && !txt.Text.Contains(','))
+            {
                 e.Handled = false;
                 //solo una coma decimal
 
@@ -459,7 +464,7 @@ namespace Capa_Presentacion
 
             foreach (DataRow row in dt.Rows)
             {
-                
+
                 stringCol.Add(Convert.ToString(row[campocoleccion]));
             }
 
@@ -534,20 +539,325 @@ namespace Capa_Presentacion
                     micombobox.AutoCompleteMode = AutoCompleteMode.Suggest;
                     micombobox.AutoCompleteSource = AutoCompleteSource.CustomSource;
                 }
-                 
+
 
             }
-            
-            
+
+
 
         }
         public static void completartextbox(TextBox cajatexto, DataTable midatatable, string valoramostrar)
         {
-            
+
             cajatexto.AutoCompleteCustomSource = UtilityFrm.LoadAutoComplete(midatatable, valoramostrar);
             cajatexto.AutoCompleteMode = AutoCompleteMode.Suggest;
             cajatexto.AutoCompleteSource = AutoCompleteSource.CustomSource;
         }
-        
+        public static string enletras(string num)
+        {
+            string res, dec = "";
+            Int64 entero;
+            int decimales;
+            double nro;
+
+            try
+            {
+                nro = Convert.ToDouble(num);
+            }
+            catch
+
+            {
+                return "";
+            }
+
+            entero = Convert.ToInt64(Math.Truncate(nro));
+            decimales = Convert.ToInt32(Math.Round((nro - entero) * 100, 2));
+            if (decimales > 0)
+            {
+                dec = " CON " + decimales.ToString() + "/100";
+            }
+
+            res = toText(Convert.ToDouble(entero)) + dec;
+            return res;
+        }
+
+        private static string toText(double value)
+        {
+            string Num2Text = "";
+            value = Math.Truncate(value);
+            if (value == 0) Num2Text = "CERO";
+            else if (value == 1) Num2Text = "UNO";
+            else if (value == 2) Num2Text = "DOS";
+            else if (value == 3) Num2Text = "TRES";
+            else if (value == 4) Num2Text = "CUATRO";
+            else if (value == 5) Num2Text = "CINCO";
+            else if (value == 6) Num2Text = "SEIS";
+            else if (value == 7) Num2Text = "SIETE";
+            else if (value == 8) Num2Text = "OCHO";
+            else if (value == 9) Num2Text = "NUEVE";
+            else if (value == 10) Num2Text = "DIEZ";
+            else if (value == 11) Num2Text = "ONCE";
+            else if (value == 12) Num2Text = "DOCE";
+            else if (value == 13) Num2Text = "TRECE";
+            else if (value == 14) Num2Text = "CATORCE";
+            else if (value == 15) Num2Text = "QUINCE";
+            else if (value < 20) Num2Text = "DIECI" + toText(value - 10);
+            else if (value == 20) Num2Text = "VEINTE";
+            else if (value < 30) Num2Text = "VEINTI" + toText(value - 20);
+            else if (value == 30) Num2Text = "TREINTA";
+            else if (value == 40) Num2Text = "CUARENTA";
+            else if (value == 50) Num2Text = "CINCUENTA";
+            else if (value == 60) Num2Text = "SESENTA";
+            else if (value == 70) Num2Text = "SETENTA";
+            else if (value == 80) Num2Text = "OCHENTA";
+            else if (value == 90) Num2Text = "NOVENTA";
+            else if (value < 100) Num2Text = toText(Math.Truncate(value / 10) * 10) + " Y " + toText(value % 10);
+            else if (value == 100) Num2Text = "CIEN";
+            else if (value < 200) Num2Text = "CIENTO " + toText(value - 100);
+            else if ((value == 200) || (value == 300) || (value == 400) || (value == 600) || (value == 800)) Num2Text = toText(Math.Truncate(value / 100)) + "CIENTOS";
+            else if (value == 500) Num2Text = "QUINIENTOS";
+            else if (value == 700) Num2Text = "SETECIENTOS";
+            else if (value == 900) Num2Text = "NOVECIENTOS";
+            else if (value < 1000) Num2Text = toText(Math.Truncate(value / 100) * 100) + " " + toText(value % 100);
+            else if (value == 1000) Num2Text = "MIL";
+            else if (value < 2000) Num2Text = "MIL " + toText(value % 1000);
+            else if (value < 1000000)
+            {
+                Num2Text = toText(Math.Truncate(value / 1000)) + " MIL";
+                if ((value % 1000) > 0) Num2Text = Num2Text + " " + toText(value % 1000);
+            }
+
+            else if (value == 1000000) Num2Text = "UN MILLON";
+            else if (value < 2000000) Num2Text = "UN MILLON " + toText(value % 1000000);
+            else if (value < 1000000000000)
+            {
+                Num2Text = toText(Math.Truncate(value / 1000000)) + " MILLONES ";
+                if ((value - Math.Truncate(value / 1000000) * 1000000) > 0) Num2Text = Num2Text + " " + toText(value - Math.Truncate(value / 1000000) * 1000000);
+            }
+
+            else if (value == 1000000000000) Num2Text = "UN BILLON";
+            else if (value < 2000000000000) Num2Text = "UN BILLON " + toText(value - Math.Truncate(value / 1000000000000) * 1000000000000);
+
+            else
+            {
+                Num2Text = toText(Math.Truncate(value / 1000000000000)) + " BILLONES";
+                if ((value - Math.Truncate(value / 1000000000000) * 1000000000000) > 0) Num2Text = Num2Text + " " + toText(value - Math.Truncate(value / 1000000000000) * 1000000000000);
+            }
+            return Num2Text;
+
+        }
+
+        public static string conectarbalanza(SerialPort puertoserie)
+        {
+            string mensaje = "ok";
+            try
+            {
+                // puertoserie = new SerialPort();
+                NumberFormatInfo nfi = new CultureInfo("en-US", false).NumberFormat;
+
+                if (!puertoserie.IsOpen)
+                {
+                    try
+                    {
+                        puertoserie.BaudRate = 9600;
+                        puertoserie.DataBits = 8;
+                        puertoserie.Parity = Parity.None;
+                        puertoserie.StopBits = StopBits.One;
+                        puertoserie.Handshake = Handshake.None;
+                        puertoserie.PortName = NegocioConfigEmpresa.balanzapuerto;
+                        puertoserie.DtrEnable = false;
+                        
+                        puertoserie.ReadBufferSize = 1024;
+                        puertoserie.WriteBufferSize = 1024;
+                        puertoserie.WriteTimeout = 500;
+
+                        puertoserie.Encoding = System.Text.Encoding.Default;
+                        puertoserie.Open();
+                    }
+                    catch (Exception msg)
+                    {
+
+                        mensaje = msg.ToString();
+                    }
+                    
+                }
+            }
+            catch ( Exception msg)
+            {
+
+                mensaje = msg.ToString();
+            }
+            return mensaje;
+
+        }
+        public static decimal Leerbalanza(string delimitador)
+        {
+            try
+            {
+
+                string valor = "";
+                string valor2 = "";
+                decimal valordecimal = 0;
+               // string delimitador = "";
+                
+                  //  delimitador = puertoserie.ReadExisting();
+
+                if (delimitador.Length > 2000)
+                {
+
+                }
+
+
+                valor = GetdigitFromString(delimitador);
+
+                if (valor != "" && valor.Length >= 6)
+                {
+                    valor2 = valor.Substring(2, 6);
+                    // textBox2.Text = valor2.ToString();
+                    valordecimal = Convert.ToDecimal(valor2);
+                }
+                else
+                {
+                    valordecimal = 0;
+                }
+               
+
+                //decimal valor = Convert.ToDecimal(textBox2.Text);
+                
+                return valordecimal;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+        public static void desconectarbalanza(SerialPort puertoserie)
+        {
+            if (puertoserie.IsOpen)
+            {
+                puertoserie.Close();
+            }
+            
+        }
+        // toma solo numeros y puntos
+      private  static string GetdigitFromString(string str)
+        {
+            try
+            {
+                
+                int contarpunto = 0;
+                char[] refArray = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '.' };
+                char[] inputArray = str.ToCharArray();
+                string ext = string.Empty;
+                foreach (char item in inputArray)
+                {
+                    
+
+                    if (refArray.Contains(item))
+                    {
+                        
+                            if (item.ToString() == ".")
+                            {
+                                ++contarpunto;
+                            }
+                            if (contarpunto >= 1)
+                            {
+                                ext += item.ToString() == "." ? "," : item.ToString();
+                            }
+                        
+                       
+                        //else if (contarpunto > 4)
+                        //{
+                        //    break;
+                        //}
+
+
+
+                    }
+                }
+                return ext;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
+        }
+        /**
+*
+* @param txtCuit CUIT del EMISOR del comprobante sin guiones
+* @param txtCodComp codigo de comprobantes dos digitos
+* @param txtPtoVta punto de venta del comprobante 4 digitos
+* @param txtCae cae
+* @param txtVtoCae vencimiento del cae en formato yyyyMMdd
+* @return devuelve el string completo para utilizar en el codigo de barras
+*/
+        public static String calculoDigitoVerificador(String txtCuit, String txtCodComp,
+        String txtPtoVta, String txtCae, String txtVtoCae)
+        {
+            int i;
+            String cod;
+            String txtDigito;
+            int impares;
+            int pares;
+            int total;
+            int digito;
+            String txtCodBarra;
+            cod = txtCuit + txtCodComp.Substring(1,2) + txtPtoVta.PadLeft(4, '0') + txtCae + txtVtoCae;
+           // cod = txtCuit  + txtCae + txtVtoCae;
+            txtCodBarra = cod;
+            char[] inputArray = txtCodBarra.ToCharArray();
+            //
+            // Ahora analizo la cadena de caracteres:
+            // Tengo que sumar todos los caracteres impares y los pares
+            pares = 0;
+            impares = 0;
+            int cont = 1;
+
+            foreach (char item in inputArray)
+            {
+                if (cont % 2 == 0)
+                {
+                    
+                    pares += Convert.ToInt32(item.ToString());
+                }
+                else
+                {
+                    impares += Convert.ToInt32(item.ToString());
+                }
+                cont++;
+            }
+
+            //for (i = 1; i < 40; i++)
+            //{
+            //    //
+            //    // If I Mod 2 = 0 Then
+            //    if (i % 2 == 0)
+            //    {
+            //        // es par
+            //        // Pares = Pares + CLng(Mid(Cod, I, 1))
+            //        pares += Integer.valueOf(StringUtils.mid(cod, i - 1, 1));
+            //    }
+            //    else
+            //    {
+            //        // es impar
+            //        // Impares = Impares + CLng(Mid(Cod, I, 1))
+            //        impares += Integer.valueOf(StringUtils.mid(cod, i - 1, 1));
+            //    }
+            //}
+            //
+            impares = 3 * impares;
+            total = pares + impares;
+            digito = 10 - (total % 10);
+            //
+            if (digito == 10)
+            {
+                digito = 0;
+            }
+            return cod + digito.ToString();
+        }
+
     }
 }

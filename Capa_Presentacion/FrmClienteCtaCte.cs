@@ -20,6 +20,7 @@ namespace Capa_Presentacion
         }
         public FrmClienteCtaCte(int varcodcliente)
         {
+            InitializeComponent();
             this.codcliente = varcodcliente;
 
         }
@@ -156,7 +157,7 @@ namespace Capa_Presentacion
                 objpago.Midatatable = midata;
                 objpago.ShowDialog();
                 cargardatatable(objpago.Importe);
-                NegocioCliente.modificarlistactacte(midata);
+                //NegocioCliente.modificarlistactacte(midata);
 
 
             }

@@ -461,7 +461,7 @@ using Capa_Datos;
                         {
                             //actualizamos el stock
                             if (distock == true && det.Idarticulo != 0) { rpta = objstock.Modificarstock(det.Idarticulo, det.Cantidad,ref sqlcon,ref sqltra,"egreso"); }  
-                            if (!rpta.Equals("OK"))
+                            if (!rpta.Equals("OK") && !rpta.Equals("ok"))
                             {
                                 break;
 
@@ -473,11 +473,11 @@ using Capa_Datos;
                 if (Venta.codformapago == 3)
                 {
                     DatosCliente objcliente = new DatosCliente(ref sqlcon, ref sqltra,Venta.idcliente,Venta.idventa ,Venta.total,Venta.total,0,"pendiente","ingresarctacte");
-                    objcliente.agregaromodificarctacte(objcliente);
+                    objcliente.agregaromodificarctacte(objcliente, "ingresarctacte");
                 }
             }
 
-                if (rpta.Equals("OK"))
+                if (rpta.Equals("OK") || rpta.Equals("ok"))
                 {
                     sqltra.Commit();
                 }

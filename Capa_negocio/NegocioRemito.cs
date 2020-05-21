@@ -36,6 +36,12 @@ namespace Capa_negocio
             return caracter;  
         }
 
+        public static DataTable Reporteremito(string varnroremito)
+        {
+            DatosRemito objremito = new DatosRemito(varnroremito);
+            return objremito.reporterecibo(objremito);
+        }
+
        
     }
 }

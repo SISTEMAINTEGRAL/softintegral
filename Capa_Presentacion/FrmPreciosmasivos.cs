@@ -132,6 +132,11 @@ namespace Capa_Presentacion
 
         private void BtnRefrescar_Click(object sender, EventArgs e)
         {
+            
+        }
+
+        private void refrescar()
+        {
             if (DGVenta.Rows.Count != 0)
             {
                 foreach (DataGridViewRow row in DGVenta.Rows)
@@ -362,6 +367,7 @@ namespace Capa_Presentacion
 
                 }
             }
+            refrescar();
         }
 
         private void DGVenta_SelectionChanged(object sender, EventArgs e)

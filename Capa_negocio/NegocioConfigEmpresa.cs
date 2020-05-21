@@ -28,6 +28,11 @@ namespace Capa_negocio
         public static string impticket;
         public static string impreporte;
         public static string puntoventa;
+        public static string balanzapuerto;
+        public static string formatoimpfactelectronica;
+        public static string formatoimpproforma;
+        public static string formatoimpremito;
+        
         public static string[] ReglasUsuario { get; set; }
         public static int idroles;
 
@@ -187,7 +192,10 @@ namespace Capa_negocio
                 NegocioConfigEmpresa.impreporte = objempresa.Impreporte;
                 NegocioConfigEmpresa.impticket = objempresa.Impticket;
                 NegocioConfigEmpresa.puntoventa = objempresa.Puntoventa;
-
+                NegocioConfigEmpresa.balanzapuerto = objempresa.BalanzaPuerto1;
+                NegocioConfigEmpresa.formatoimpfactelectronica = objempresa.FormatoImpFactElectronica1;
+                NegocioConfigEmpresa.formatoimpproforma = objempresa.Formatoimpproforma;
+                NegocioConfigEmpresa.formatoimpremito = objempresa.Formatoimpremito;
             }
             else
             {

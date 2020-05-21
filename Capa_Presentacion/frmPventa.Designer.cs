@@ -29,9 +29,27 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPventa));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmPventa));
             this.grpboxProveedor = new System.Windows.Forms.GroupBox();
+            this.TxtcambioDv = new System.Windows.Forms.TextBox();
+            this.DGVenta = new Guna.UI.WinForms.GunaDataGridView();
+            this.Codigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Producto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Cprecio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Subtotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Descuento = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Importe = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Dpesable = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Calculo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Preciopormayor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Cantidadpormayor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.preciounidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Civa = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Manual = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txtIva105 = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.txtNeto105 = new System.Windows.Forms.TextBox();
@@ -40,7 +58,6 @@
             this.label5 = new System.Windows.Forms.Label();
             this.txtNeto = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.TxtcambioDv = new System.Windows.Forms.TextBox();
             this.cbxCategoria = new System.Windows.Forms.ComboBox();
             this.label2 = new System.Windows.Forms.Label();
             this.lblTComprobante = new System.Windows.Forms.Label();
@@ -53,9 +70,9 @@
             this.lblIdProveedor = new System.Windows.Forms.Label();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnGuardar = new System.Windows.Forms.Button();
-            this.DGVenta = new System.Windows.Forms.DataGridView();
             this.lblTotalPagar = new System.Windows.Forms.Label();
             this.gbDetalleMovimento = new System.Windows.Forms.GroupBox();
+            this.CHKPendientestock = new System.Windows.Forms.CheckBox();
             this.txtcant = new System.Windows.Forms.TextBox();
             this.lblcant = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -88,20 +105,7 @@
             this.Menudeleteselect = new System.Windows.Forms.ToolStripMenuItem();
             this.btnConsultas = new System.Windows.Forms.Button();
             this.btnCalculadora = new System.Windows.Forms.Button();
-            this.Codigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Producto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CPrecio = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.subtotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Descuento = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Importe = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Dpesable = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Calculo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Preciopormayor = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Cantidadpormayor = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Preciounidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Civa = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Manual = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.serialPort1 = new System.IO.Ports.SerialPort(this.components);
             this.grpboxProveedor.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DGVenta)).BeginInit();
             this.gbDetalleMovimento.SuspendLayout();
@@ -121,6 +125,8 @@
             this.grpboxProveedor.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.grpboxProveedor.Controls.Add(this.TxtcambioDv);
+            this.grpboxProveedor.Controls.Add(this.DGVenta);
             this.grpboxProveedor.Controls.Add(this.txtIva105);
             this.grpboxProveedor.Controls.Add(this.label8);
             this.grpboxProveedor.Controls.Add(this.txtNeto105);
@@ -129,7 +135,6 @@
             this.grpboxProveedor.Controls.Add(this.label5);
             this.grpboxProveedor.Controls.Add(this.txtNeto);
             this.grpboxProveedor.Controls.Add(this.label4);
-            this.grpboxProveedor.Controls.Add(this.TxtcambioDv);
             this.grpboxProveedor.Controls.Add(this.cbxCategoria);
             this.grpboxProveedor.Controls.Add(this.label2);
             this.grpboxProveedor.Controls.Add(this.lblTComprobante);
@@ -142,7 +147,6 @@
             this.grpboxProveedor.Controls.Add(this.lblIdProveedor);
             this.grpboxProveedor.Controls.Add(this.btnCancelar);
             this.grpboxProveedor.Controls.Add(this.btnGuardar);
-            this.grpboxProveedor.Controls.Add(this.DGVenta);
             this.grpboxProveedor.Controls.Add(this.lblTotalPagar);
             this.grpboxProveedor.Controls.Add(this.gbDetalleMovimento);
             this.grpboxProveedor.Location = new System.Drawing.Point(7, 70);
@@ -153,6 +157,193 @@
             this.grpboxProveedor.TabIndex = 42;
             this.grpboxProveedor.TabStop = false;
             this.grpboxProveedor.Text = "Punto de venta";
+            // 
+            // TxtcambioDv
+            // 
+            this.TxtcambioDv.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.TxtcambioDv.Location = new System.Drawing.Point(601, 313);
+            this.TxtcambioDv.Margin = new System.Windows.Forms.Padding(4, 8, 4, 8);
+            this.TxtcambioDv.MaxLength = 10;
+            this.TxtcambioDv.Name = "TxtcambioDv";
+            this.TxtcambioDv.Size = new System.Drawing.Size(135, 30);
+            this.TxtcambioDv.TabIndex = 70;
+            this.TxtcambioDv.Text = "0";
+            this.TxtcambioDv.Visible = false;
+            this.TxtcambioDv.TextChanged += new System.EventHandler(this.TxtcambioDv_TextChanged);
+            this.TxtcambioDv.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TxtcambioDv_KeyDown);
+            this.TxtcambioDv.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtcambioDv_KeyPress);
+            this.TxtcambioDv.Leave += new System.EventHandler(this.TxtcambioDv_Leave);
+            // 
+            // DGVenta
+            // 
+            this.DGVenta.AllowUserToAddRows = false;
+            this.DGVenta.AllowUserToDeleteRows = false;
+            this.DGVenta.AllowUserToOrderColumns = true;
+            this.DGVenta.AllowUserToResizeRows = false;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
+            this.DGVenta.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.DGVenta.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.DGVenta.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.DGVenta.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.DGVenta.BackgroundColor = System.Drawing.Color.White;
+            this.DGVenta.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.DGVenta.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
+            this.DGVenta.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DGVenta.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.DGVenta.ColumnHeadersHeight = 38;
+            this.DGVenta.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Codigo,
+            this.Producto,
+            this.Cprecio,
+            this.Cantidad,
+            this.Subtotal,
+            this.Descuento,
+            this.Importe,
+            this.Dpesable,
+            this.Calculo,
+            this.Preciopormayor,
+            this.Cantidadpormayor,
+            this.preciounidad,
+            this.Civa,
+            this.Manual});
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.DGVenta.DefaultCellStyle = dataGridViewCellStyle3;
+            this.DGVenta.EnableHeadersVisualStyles = false;
+            this.DGVenta.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            this.DGVenta.Location = new System.Drawing.Point(7, 248);
+            this.DGVenta.MultiSelect = false;
+            this.DGVenta.Name = "DGVenta";
+            this.DGVenta.RowHeadersVisible = false;
+            this.DGVenta.RowTemplate.Height = 24;
+            this.DGVenta.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.DGVenta.Size = new System.Drawing.Size(1254, 375);
+            this.DGVenta.StandardTab = true;
+            this.DGVenta.TabIndex = 107;
+            this.DGVenta.Theme = Guna.UI.WinForms.GunaDataGridViewPresetThemes.Guna;
+            this.DGVenta.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
+            this.DGVenta.ThemeStyle.AlternatingRowsStyle.Font = null;
+            this.DGVenta.ThemeStyle.AlternatingRowsStyle.ForeColor = System.Drawing.Color.Empty;
+            this.DGVenta.ThemeStyle.AlternatingRowsStyle.SelectionBackColor = System.Drawing.Color.Empty;
+            this.DGVenta.ThemeStyle.AlternatingRowsStyle.SelectionForeColor = System.Drawing.Color.Empty;
+            this.DGVenta.ThemeStyle.BackColor = System.Drawing.Color.White;
+            this.DGVenta.ThemeStyle.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            this.DGVenta.ThemeStyle.HeaderStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
+            this.DGVenta.ThemeStyle.HeaderStyle.BorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
+            this.DGVenta.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DGVenta.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.White;
+            this.DGVenta.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
+            this.DGVenta.ThemeStyle.HeaderStyle.Height = 38;
+            this.DGVenta.ThemeStyle.ReadOnly = false;
+            this.DGVenta.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.White;
+            this.DGVenta.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
+            this.DGVenta.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DGVenta.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            this.DGVenta.ThemeStyle.RowsStyle.Height = 24;
+            this.DGVenta.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            this.DGVenta.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            this.DGVenta.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DGVenta_CellDoubleClick);
+            this.DGVenta.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.DGVenta_CellEndEdit);
+            this.DGVenta.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.DGVenta_RowsAdded);
+            this.DGVenta.RowsRemoved += new System.Windows.Forms.DataGridViewRowsRemovedEventHandler(this.DGVenta_RowsRemoved);
+            this.DGVenta.KeyDown += new System.Windows.Forms.KeyEventHandler(this.DGVenta_KeyDown);
+            this.DGVenta.MouseClick += new System.Windows.Forms.MouseEventHandler(this.DGVenta_MouseClick);
+            // 
+            // Codigo
+            // 
+            this.Codigo.FillWeight = 61.54822F;
+            this.Codigo.HeaderText = "Codigo";
+            this.Codigo.Name = "Codigo";
+            // 
+            // Producto
+            // 
+            this.Producto.FillWeight = 253.8071F;
+            this.Producto.HeaderText = "Producto";
+            this.Producto.Name = "Producto";
+            // 
+            // Cprecio
+            // 
+            this.Cprecio.FillWeight = 61.54822F;
+            this.Cprecio.HeaderText = "Precio";
+            this.Cprecio.Name = "Cprecio";
+            // 
+            // Cantidad
+            // 
+            this.Cantidad.FillWeight = 61.54822F;
+            this.Cantidad.HeaderText = "Cantidad";
+            this.Cantidad.Name = "Cantidad";
+            // 
+            // Subtotal
+            // 
+            this.Subtotal.FillWeight = 61.54822F;
+            this.Subtotal.HeaderText = "Subtotal";
+            this.Subtotal.Name = "Subtotal";
+            // 
+            // Descuento
+            // 
+            this.Descuento.HeaderText = "Descuento";
+            this.Descuento.Name = "Descuento";
+            // 
+            // Importe
+            // 
+            this.Importe.HeaderText = "Importe";
+            this.Importe.Name = "Importe";
+            // 
+            // Dpesable
+            // 
+            this.Dpesable.HeaderText = "Pesable";
+            this.Dpesable.Name = "Dpesable";
+            this.Dpesable.Visible = false;
+            // 
+            // Calculo
+            // 
+            this.Calculo.HeaderText = "Calculo";
+            this.Calculo.Name = "Calculo";
+            this.Calculo.Visible = false;
+            // 
+            // Preciopormayor
+            // 
+            this.Preciopormayor.HeaderText = "Preciopormayor";
+            this.Preciopormayor.Name = "Preciopormayor";
+            this.Preciopormayor.Visible = false;
+            // 
+            // Cantidadpormayor
+            // 
+            this.Cantidadpormayor.HeaderText = "Cantidadpormayor";
+            this.Cantidadpormayor.Name = "Cantidadpormayor";
+            this.Cantidadpormayor.Visible = false;
+            // 
+            // preciounidad
+            // 
+            this.preciounidad.HeaderText = "preciounidad";
+            this.preciounidad.Name = "preciounidad";
+            this.preciounidad.Visible = false;
+            // 
+            // Civa
+            // 
+            this.Civa.HeaderText = "iva";
+            this.Civa.Name = "Civa";
+            this.Civa.Visible = false;
+            // 
+            // Manual
+            // 
+            this.Manual.HeaderText = "Manual";
+            this.Manual.Name = "Manual";
+            this.Manual.Visible = false;
             // 
             // txtIva105
             // 
@@ -261,22 +452,6 @@
             this.label4.Size = new System.Drawing.Size(100, 23);
             this.label4.TabIndex = 71;
             this.label4.Text = "NETO 21 :";
-            // 
-            // TxtcambioDv
-            // 
-            this.TxtcambioDv.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.TxtcambioDv.Location = new System.Drawing.Point(557, 318);
-            this.TxtcambioDv.Margin = new System.Windows.Forms.Padding(4, 8, 4, 8);
-            this.TxtcambioDv.MaxLength = 10;
-            this.TxtcambioDv.Name = "TxtcambioDv";
-            this.TxtcambioDv.Size = new System.Drawing.Size(135, 30);
-            this.TxtcambioDv.TabIndex = 70;
-            this.TxtcambioDv.Text = "0";
-            this.TxtcambioDv.Visible = false;
-            this.TxtcambioDv.TextChanged += new System.EventHandler(this.TxtcambioDv_TextChanged);
-            this.TxtcambioDv.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TxtcambioDv_KeyDown);
-            this.TxtcambioDv.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtcambioDv_KeyPress);
-            this.TxtcambioDv.Leave += new System.EventHandler(this.TxtcambioDv_Leave);
             // 
             // cbxCategoria
             // 
@@ -426,63 +601,6 @@
             this.btnGuardar.UseVisualStyleBackColor = true;
             this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
-            // DGVenta
-            // 
-            this.DGVenta.AllowUserToAddRows = false;
-            this.DGVenta.AllowUserToDeleteRows = false;
-            this.DGVenta.AllowUserToOrderColumns = true;
-            this.DGVenta.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.DGVenta.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.DGVenta.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllHeaders;
-            this.DGVenta.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DGVenta.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.DGVenta.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.DGVenta.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Codigo,
-            this.Producto,
-            this.CPrecio,
-            this.Cantidad,
-            this.subtotal,
-            this.Descuento,
-            this.Importe,
-            this.Dpesable,
-            this.Calculo,
-            this.Preciopormayor,
-            this.Cantidadpormayor,
-            this.Preciounidad,
-            this.Civa,
-            this.Manual});
-            this.DGVenta.EnableHeadersVisualStyles = false;
-            this.DGVenta.Location = new System.Drawing.Point(8, 288);
-            this.DGVenta.Margin = new System.Windows.Forms.Padding(4, 8, 4, 8);
-            this.DGVenta.MultiSelect = false;
-            this.DGVenta.Name = "DGVenta";
-            this.DGVenta.ReadOnly = true;
-            this.DGVenta.RowHeadersWidth = 38;
-            this.DGVenta.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.DGVenta.Size = new System.Drawing.Size(1254, 357);
-            this.DGVenta.TabIndex = 6;
-            this.DGVenta.CellBeginEdit += new System.Windows.Forms.DataGridViewCellCancelEventHandler(this.DGVenta_CellBeginEdit);
-            this.DGVenta.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DGVenta_CellContentClick);
-            this.DGVenta.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DGVenta_CellContentDoubleClick);
-            this.DGVenta.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DGVenta_CellDoubleClick);
-            this.DGVenta.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.DGVenta_CellEndEdit);
-            this.DGVenta.EditingControlShowing += new System.Windows.Forms.DataGridViewEditingControlShowingEventHandler(this.DGVenta_EditingControlShowing);
-            this.DGVenta.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.DGVenta_RowsAdded);
-            this.DGVenta.RowsRemoved += new System.Windows.Forms.DataGridViewRowsRemovedEventHandler(this.DGVenta_RowsRemoved);
-            this.DGVenta.Click += new System.EventHandler(this.DGVenta_Click);
-            this.DGVenta.KeyDown += new System.Windows.Forms.KeyEventHandler(this.DGVenta_KeyDown);
-            this.DGVenta.MouseClick += new System.Windows.Forms.MouseEventHandler(this.DGVenta_MouseClick);
-            // 
             // lblTotalPagar
             // 
             this.lblTotalPagar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
@@ -499,6 +617,7 @@
             // 
             this.gbDetalleMovimento.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.gbDetalleMovimento.Controls.Add(this.CHKPendientestock);
             this.gbDetalleMovimento.Controls.Add(this.txtcant);
             this.gbDetalleMovimento.Controls.Add(this.lblcant);
             this.gbDetalleMovimento.Controls.Add(this.groupBox1);
@@ -516,9 +635,24 @@
             this.gbDetalleMovimento.TabStop = false;
             this.gbDetalleMovimento.Text = "Detalles ";
             // 
+            // CHKPendientestock
+            // 
+            this.CHKPendientestock.AutoSize = true;
+            this.CHKPendientestock.Checked = true;
+            this.CHKPendientestock.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.CHKPendientestock.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.CHKPendientestock.Location = new System.Drawing.Point(635, 25);
+            this.CHKPendientestock.Margin = new System.Windows.Forms.Padding(2);
+            this.CHKPendientestock.Name = "CHKPendientestock";
+            this.CHKPendientestock.Size = new System.Drawing.Size(196, 29);
+            this.CHKPendientestock.TabIndex = 81;
+            this.CHKPendientestock.Text = "Pendiente de stock";
+            this.CHKPendientestock.UseVisualStyleBackColor = true;
+            this.CHKPendientestock.Visible = false;
+            // 
             // txtcant
             // 
-            this.txtcant.Location = new System.Drawing.Point(638, 22);
+            this.txtcant.Location = new System.Drawing.Point(1161, 27);
             this.txtcant.Margin = new System.Windows.Forms.Padding(4, 8, 4, 8);
             this.txtcant.MaxLength = 10;
             this.txtcant.Name = "txtcant";
@@ -535,7 +669,7 @@
             // lblcant
             // 
             this.lblcant.AutoSize = true;
-            this.lblcant.Location = new System.Drawing.Point(528, 22);
+            this.lblcant.Location = new System.Drawing.Point(1051, 27);
             this.lblcant.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblcant.Name = "lblcant";
             this.lblcant.Size = new System.Drawing.Size(102, 25);
@@ -560,7 +694,7 @@
             this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBox1.Size = new System.Drawing.Size(1256, 150);
+            this.groupBox1.Size = new System.Drawing.Size(1256, 108);
             this.groupBox1.TabIndex = 80;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Forma de pago";
@@ -686,12 +820,12 @@
             // 
             this.chkporcantidad.AutoSize = true;
             this.chkporcantidad.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.chkporcantidad.Location = new System.Drawing.Point(458, 23);
+            this.chkporcantidad.Location = new System.Drawing.Point(450, 22);
             this.chkporcantidad.Margin = new System.Windows.Forms.Padding(2);
             this.chkporcantidad.Name = "chkporcantidad";
-            this.chkporcantidad.Size = new System.Drawing.Size(64, 29);
+            this.chkporcantidad.Size = new System.Drawing.Size(160, 29);
             this.chkporcantidad.TabIndex = 68;
-            this.chkporcantidad.Text = "F10";
+            this.chkporcantidad.Text = "F10 - Cantidad";
             this.chkporcantidad.UseVisualStyleBackColor = true;
             this.chkporcantidad.CheckedChanged += new System.EventHandler(this.chkporcantidad_CheckedChanged);
             this.chkporcantidad.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.chkporcantidad_KeyPress);
@@ -707,6 +841,7 @@
             this.btnAgregarPesable.Size = new System.Drawing.Size(28, 28);
             this.btnAgregarPesable.TabIndex = 65;
             this.btnAgregarPesable.UseVisualStyleBackColor = true;
+            this.btnAgregarPesable.Visible = false;
             this.btnAgregarPesable.Click += new System.EventHandler(this.btnAgregarPesable_Click);
             // 
             // lblNomProducto
@@ -742,6 +877,7 @@
             this.txtNombreProducto.Name = "txtNombreProducto";
             this.txtNombreProducto.Size = new System.Drawing.Size(273, 30);
             this.txtNombreProducto.TabIndex = 2;
+            this.txtNombreProducto.LocationChanged += new System.EventHandler(this.txtNombreProducto_LocationChanged);
             this.txtNombreProducto.TextChanged += new System.EventHandler(this.txtNombreProducto_TextChanged_1);
             this.txtNombreProducto.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtNombreProducto_KeyDown);
             // 
@@ -935,97 +1071,6 @@
             this.btnCalculadora.UseVisualStyleBackColor = true;
             this.btnCalculadora.Click += new System.EventHandler(this.btnCalculadora_Click);
             // 
-            // Codigo
-            // 
-            this.Codigo.HeaderText = "Codigo";
-            this.Codigo.Name = "Codigo";
-            this.Codigo.ReadOnly = true;
-            // 
-            // Producto
-            // 
-            this.Producto.HeaderText = "Producto";
-            this.Producto.Name = "Producto";
-            this.Producto.ReadOnly = true;
-            // 
-            // CPrecio
-            // 
-            this.CPrecio.HeaderText = "Precio";
-            this.CPrecio.Name = "CPrecio";
-            this.CPrecio.ReadOnly = true;
-            // 
-            // Cantidad
-            // 
-            this.Cantidad.HeaderText = "Cantidad";
-            this.Cantidad.Name = "Cantidad";
-            this.Cantidad.ReadOnly = true;
-            // 
-            // subtotal
-            // 
-            this.subtotal.HeaderText = "Subtotal";
-            this.subtotal.Name = "subtotal";
-            this.subtotal.ReadOnly = true;
-            // 
-            // Descuento
-            // 
-            this.Descuento.HeaderText = "Descuento";
-            this.Descuento.Name = "Descuento";
-            this.Descuento.ReadOnly = true;
-            // 
-            // Importe
-            // 
-            this.Importe.HeaderText = "Importe";
-            this.Importe.Name = "Importe";
-            this.Importe.ReadOnly = true;
-            // 
-            // Dpesable
-            // 
-            this.Dpesable.HeaderText = "Pesable";
-            this.Dpesable.Name = "Dpesable";
-            this.Dpesable.ReadOnly = true;
-            this.Dpesable.Visible = false;
-            // 
-            // Calculo
-            // 
-            this.Calculo.HeaderText = "Calculo";
-            this.Calculo.Name = "Calculo";
-            this.Calculo.ReadOnly = true;
-            this.Calculo.Visible = false;
-            // 
-            // Preciopormayor
-            // 
-            this.Preciopormayor.HeaderText = "Preciopormayor";
-            this.Preciopormayor.Name = "Preciopormayor";
-            this.Preciopormayor.ReadOnly = true;
-            this.Preciopormayor.Visible = false;
-            // 
-            // Cantidadpormayor
-            // 
-            this.Cantidadpormayor.HeaderText = "Cantidadpormayor";
-            this.Cantidadpormayor.Name = "Cantidadpormayor";
-            this.Cantidadpormayor.ReadOnly = true;
-            this.Cantidadpormayor.Visible = false;
-            // 
-            // Preciounidad
-            // 
-            this.Preciounidad.HeaderText = "preciounidad";
-            this.Preciounidad.Name = "Preciounidad";
-            this.Preciounidad.ReadOnly = true;
-            this.Preciounidad.Visible = false;
-            // 
-            // Civa
-            // 
-            this.Civa.HeaderText = "iva";
-            this.Civa.Name = "Civa";
-            this.Civa.ReadOnly = true;
-            this.Civa.Visible = false;
-            // 
-            // Manual
-            // 
-            this.Manual.HeaderText = "Manual";
-            this.Manual.Name = "Manual";
-            this.Manual.ReadOnly = true;
-            this.Manual.Visible = false;
-            // 
             // frmPventa
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
@@ -1080,7 +1125,6 @@
         private System.Windows.Forms.Label lblIdProveedor;
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Button btnGuardar;
-        private System.Windows.Forms.DataGridView DGVenta;
         private System.Windows.Forms.GroupBox gbDetalleMovimento;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button btnProducto;
@@ -1130,19 +1174,22 @@
         private System.Windows.Forms.Label label8;
         public System.Windows.Forms.TextBox txtNeto105;
         private System.Windows.Forms.Label label7;
+        private Guna.UI.WinForms.GunaDataGridView DGVenta;
         private System.Windows.Forms.DataGridViewTextBoxColumn Codigo;
         private System.Windows.Forms.DataGridViewTextBoxColumn Producto;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CPrecio;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Cprecio;
         private System.Windows.Forms.DataGridViewTextBoxColumn Cantidad;
-        private System.Windows.Forms.DataGridViewTextBoxColumn subtotal;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Subtotal;
         private System.Windows.Forms.DataGridViewTextBoxColumn Descuento;
         private System.Windows.Forms.DataGridViewTextBoxColumn Importe;
         private System.Windows.Forms.DataGridViewTextBoxColumn Dpesable;
         private System.Windows.Forms.DataGridViewTextBoxColumn Calculo;
         private System.Windows.Forms.DataGridViewTextBoxColumn Preciopormayor;
         private System.Windows.Forms.DataGridViewTextBoxColumn Cantidadpormayor;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Preciounidad;
+        private System.Windows.Forms.DataGridViewTextBoxColumn preciounidad;
         private System.Windows.Forms.DataGridViewTextBoxColumn Civa;
         private System.Windows.Forms.DataGridViewTextBoxColumn Manual;
+        private System.Windows.Forms.CheckBox CHKPendientestock;
+        private System.IO.Ports.SerialPort serialPort1;
     }
 }

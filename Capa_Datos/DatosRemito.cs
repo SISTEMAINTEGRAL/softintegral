@@ -21,13 +21,33 @@ namespace Capa_Datos
         private string estado;
         private string serie;
         private string tipo;
-        
+        private int codempresa;
+
+        public string Nremito
+        {
+            get
+            {
+                return nremito;
+            }
+
+            set
+            {
+                nremito = value;
+            }
+        }
+
         public DatosRemito()
         {
             
 
         }
-        public DatosRemito(int varcodsucursal, DateTime varfecha, int varcodcliente, int varnroregistro, string vartransportista, bool varentregado, string vartipo, string varserie )
+
+        public DatosRemito(string varnroremito)
+        {
+            Nremito = varnroremito;
+
+        }
+        public DatosRemito(int varcodsucursal, DateTime varfecha, int varcodcliente, int varnroregistro, string vartransportista, bool varentregado, string vartipo, string varserie, int varcodempresa )
         {
             this.codsucursal = varcodsucursal;
             this.fecha = varfecha;
@@ -37,6 +57,7 @@ namespace Capa_Datos
             this.entregado = varentregado;
             this.tipo = vartipo;
             this.serie = varserie;
+            this.codempresa = varcodempresa;
             
 
 
@@ -51,8 +72,12 @@ namespace Capa_Datos
 
             try
             {
-                sqlcon.ConnectionString = Conexion.conexion;
-                sqlcon.Open();
+                if (sqlcon.State != ConnectionState.Open)
+                {
+                    sqlcon.ConnectionString = Conexion.conexion;
+                    sqlcon.Open();
+                }
+               
 
                
 
@@ -90,33 +115,40 @@ namespace Capa_Datos
                 SqlParameter parserie = ProcAlmacenado.asignarParametros("@serie", SqlDbType.NVarChar, remito.serie);
                 sqlcmd.Parameters.Add(parserie);
 
+                SqlParameter parcodmpresa = ProcAlmacenado.asignarParametros("@codempresa", SqlDbType.Int, remito.codempresa);
+                sqlcmd.Parameters.Add(parcodmpresa);
+
                 rpta = sqlcmd.ExecuteNonQuery() >= 1 ? "OK" : "No se ingreso el registro";
+                
+               
 
                 if (rpta.Equals("OK"))
                 {
-                    remito.nremito = sqlcmd.Parameters["@nremito"].Value.ToString();
+                    Nremito = sqlcmd.Parameters["@nremito"].Value.ToString();
+                   
 
+                     
+                        foreach (DatosDetalleRemito det in Detalle)
+                        {
 
-                    foreach (DatosDetalleRemito  det in Detalle)
-                    {
-                        
-                        rpta = det.insertardetalleremito(det, ref sqlcon, ref sqltra,remito.nremito);
-                        if (!rpta.Equals("OK"))
-                        {
-                            break;
-                        }
-                        else
-                        {
-                            //actualizamos el stock
-                            if (distock == true && det.Idproducto != 0) { rpta = objstock.Modificarstock(det.Idproducto, det.Cantidad, ref  sqlcon, ref  sqltra,"EGRESO"); }
-                            if (!rpta.Equals("ok"))
+                            rpta = det.insertardetalleremito(det, ref sqlcon, ref sqltra, Nremito);
+                            if (!rpta.Equals("OK"))
                             {
                                 break;
-
                             }
-                        }
+                            else
+                            {
+                                //actualizamos el stock
+                                if (distock == true && det.Idproducto != 0) { rpta = objstock.Modificarstock(det.Idproducto, det.Cantidad, ref sqlcon, ref sqltra, "EGRESO"); }
+                                if (!rpta.Equals("ok"))
+                                {
+                                    break;
 
-                    }
+                                }
+                            }
+
+                        }
+                    
                 }
 
                 if (rpta.Equals("ok") )
@@ -131,6 +163,7 @@ namespace Capa_Datos
             }
             catch (Exception e)
             {
+                sqltra.Rollback();
                 rpta = e.Message;
             }
             finally
@@ -138,6 +171,32 @@ namespace Capa_Datos
                 if (sqlcon.State == ConnectionState.Open) sqlcon.Close();
             }
             return rpta;
+        }
+
+        public DataTable reporterecibo(DatosRemito objremito)
+        {
+            DataTable DtResultado = new DataTable("remito");
+            SqlConnection cn = new SqlConnection(Conexion.conexion);
+
+            try
+            {
+                cn.Open();
+
+                SqlCommand sqlcmd = ProcAlmacenado.CrearProc(cn, "REPORTE_REMITO");
+                //Modo 4 Mostrar
+                SqlParameter parNremito = ProcAlmacenado.asignarParametros("@nremito", SqlDbType.Int, objremito.Nremito);
+                sqlcmd.Parameters.Add(parNremito);
+
+                SqlDataAdapter sqldat = new SqlDataAdapter(sqlcmd);
+                sqldat.Fill(DtResultado);
+            }
+            catch (Exception ex)
+            {
+                DtResultado = null;
+                throw ex;
+            }
+            return DtResultado;
+
         }
     }
 }

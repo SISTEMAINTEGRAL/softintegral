@@ -632,3 +632,10 @@ C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\obj\Debug\Capa_Presen
 C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\obj\Debug\Capa_Presentacion.Formreportes.TicketProforma.resources
 C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\obj\Debug\Capa_Presentacion.Reportes.REPORTE_REMITO.resources
 C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\obj\Debug\Capa_Presentacion.Reportes.ImpresionRemito.resources
+C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\obj\Debug\Capa_Presentacion.Reportes.REPORTE_RECIBO.resources
+C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\obj\Debug\Capa_Presentacion.Formreportes.FrmReporteRecibo.resources
+C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\obj\Debug\Capa_Presentacion.Formreportes.FrmTicketRemito.resources
+C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\obj\Debug\Capa_Presentacion.Reportes.Report1.resources
+C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\obj\Debug\Capa_Presentacion.Reportes.REPORT_TICKET_REMITO.resources
+C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\obj\Debug\Capa_Presentacion.Reportes.REPORT_TICKETX58.resources
+C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\obj\Debug\Capa_Presentacion.Reportes.REPORT_VENTA_A4.resources

@@ -37,4 +37,3 @@ C:\Backup\Sistema de ventas\softintegral\ComboBoxMultiColumns\obj\Debug\ComboBox
 C:\Backup\Sistema de ventas\softintegral\ComboBoxMultiColumns\obj\Debug\ComboBoxMultiColumns.csproj.GenerateResource.Cache
 C:\Backup\Sistema de ventas\softintegral\ComboBoxMultiColumns\obj\Debug\ComboBoxMultiColumns.dll
 C:\Backup\Sistema de ventas\softintegral\ComboBoxMultiColumns\obj\Debug\ComboBoxMultiColumns.pdb
-C:\Backup\Sistema de ventas\softintegral\ComboBoxMultiColumns\obj\Debug\ComboBoxMultiColumns.csprojResolveAssemblyReference.cache

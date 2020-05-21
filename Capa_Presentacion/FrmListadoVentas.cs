@@ -40,6 +40,7 @@ namespace Capa_Presentacion
             Chkcaja.Enabled = checkradiobuton();
             ChkFactura.Enabled = checkradiobuton();
             this.reportViewer1.RefreshReport();
+            
         }
 
         private bool checkradiobuton()
@@ -164,6 +165,13 @@ namespace Capa_Presentacion
                         hoja_trabajo.Cells[i + 2, 6] = dataLista.Rows[i].Cells["estado"].Value.ToString();
                         hoja_trabajo.Cells[i + 2, 9] = dataLista.Rows[i].Cells["cuit"].Value.ToString();
                         hoja_trabajo.Cells[i + 2, 10] = dataLista.Rows[i].Cells["Nrocomprobante"].Value.ToString();
+                        hoja_trabajo.Cells[i + 2, 11] = dataLista.Rows[i].Cells["Letra"].Value.ToString();
+                        hoja_trabajo.Cells[i + 2, 12] = dataLista.Rows[i].Cells["Neto21"].Value.ToString();
+                        hoja_trabajo.Cells[i + 2, 13] = dataLista.Rows[i].Cells["Totaliva21"].Value.ToString();
+                        hoja_trabajo.Cells[i + 2, 14] = dataLista.Rows[i].Cells["Total_Neto105"].Value.ToString();
+                        hoja_trabajo.Cells[i + 2, 15] = dataLista.Rows[i].Cells["Totaliva105"].Value.ToString();
+                        hoja_trabajo.Cells[i + 2, 16] = dataLista.Rows[i].Cells["CAE"].Value.ToString();
+                        hoja_trabajo.Cells[i + 2, 17] = dataLista.Rows[i].Cells["CAE_Fechavencimiento"].Value.ToString();
 
                     }
                     //ajustar el tamaño de las celdas deacuerdo al tamaño de las columnas agregadas
@@ -239,7 +247,7 @@ namespace Capa_Presentacion
                     {
                         estado = "PRESUPUESTADO";
                     }
-                    dataLista.Rows.Add(venta["idventa"], venta["razon_social"], venta["fecha"], venta["tipo_comprobante"], venta["total"], estado, venta ["caja"], venta ["idcliente"], venta ["cuit"], venta["Nrocomprobante"], venta["factura"]);
+                    dataLista.Rows.Add(venta["idventa"], venta["razon_social"], venta["fecha"], venta["tipo_comprobante"], venta["total"], estado, venta ["caja"], venta ["idcliente"], venta ["cuit"], venta["Nrocomprobante"], venta["factura"], venta["Neto21"], venta["Totaliva21"], venta["Total_Neto105"], venta["Totaliva105"], venta["CAE"], venta["CAE_Fechavencimiento"]);
                 }
        
             }
@@ -388,7 +396,7 @@ namespace Capa_Presentacion
                if (dataLista.Rows.Count > 0)
                 {
                     DateTime date = Convert.ToDateTime(this.dataLista.CurrentRow.Cells["fecha"].Value);
-
+                    
                     FrmDetalleVentas venta = new FrmDetalleVentas(Convert.ToString(this.dataLista.CurrentRow.Cells["codigo"].Value),
                         Convert.ToString(this.dataLista.CurrentRow.Cells["Razon_social"].Value),
                         date.ToShortDateString(),
@@ -603,8 +611,9 @@ namespace Capa_Presentacion
                            {
                                constock = true;
                            }
-                           NegocioVenta.cambiarestadoventa(Convert.ToInt32(row.Cells["codigo"].Value.ToString()), true,constock);
+                          
                         }
+                        NegocioVenta.cambiarestadoventa(Convert.ToInt32(row.Cells["codigo"].Value.ToString()), true, constock);
                     }
                     else
                     {

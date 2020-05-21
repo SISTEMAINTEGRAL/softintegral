@@ -17,6 +17,12 @@ namespace Capa_Presentacion
         private string domicilio;
         private int idcliente;
         private string riva;
+
+        private string cuitBeneficiario;
+        private string domicilioBeneficiario;
+        private int idempresabeneficiaria;
+        private int idclientebeneficiaria;
+        private string rivabeneficiaria;
         int posY = 0;
         int posX = 0;
         private int indice = -1;
@@ -27,7 +33,7 @@ namespace Capa_Presentacion
             InitializeComponent();
         }
 
-        public void Buscar_Cliente(int codCliente)
+        public void Buscar_Cliente(int codCliente, string Datagridopcion = "DGCliente")
         {
             try
             {
@@ -37,15 +43,32 @@ namespace Capa_Presentacion
                     if (dt.Rows.Count != 0)
                     {
                         DataRow row = dt.Rows[0];
-                        string cliente = row["razon_social"].ToString();
-                        cuit = row["cuit"].ToString();
-                        riva = row["responsabilidadiva"].ToString();
-                        domicilio = row["direccion"].ToString();
-                        idcliente = Convert.ToInt32(row["idcliente"].ToString());
+                        if (Datagridopcion == "DGCliente")
+                        {
+                            string cliente = row["razon_social"].ToString();
+                            cuit = row["cuit"].ToString();
+                            riva = row["responsabilidadiva"].ToString();
+                            domicilio = row["direccion"].ToString();
+                            idcliente = Convert.ToInt32(row["idcliente"].ToString());
+                            TxtRazonsocial.Text = cliente;
+                            TxtCuit.Text = cuit;
+                            txtIdCliente.Text = "";
+                        }
+                        else
+                        {
+                            string cliente = row["razon_social"].ToString();
+                            cuitBeneficiario = row["cuit"].ToString();
+                            rivabeneficiaria = row["responsabilidadiva"].ToString();
+                            domicilioBeneficiario = row["direccion"].ToString();
+                            idclientebeneficiaria = Convert.ToInt32(row["idcliente"].ToString());
+                            TxtEmpresabeneficiaria.Text = "";
+
+                            TxtRazonsocialBen.Text = cliente;
+                            TxtCuitBeneficio.Text = cuitBeneficiario;
+                        }
 
                         // UtilityFrm.mensajeConfirm("Se encontro el Cliente " + cliente);
-                        TxtRazonsocial.Text = cliente;
-                        TxtCuit.Text = cuit;
+                        
 
 
                     }
@@ -188,7 +211,7 @@ namespace Capa_Presentacion
         private bool controlarguardado()
         {
             bool control = false;
-            if (TxtCuit.Text != "" && DGDetalleitems.Rows.Count != 0 && CbTipopedido.Text != "")
+            if (TxtCuit.Text != "" && DGDetalleitems.Rows.Count != 0 && CbTipopedido.Text != ""  && TxtCuitBeneficio.Text != "")
             {
                 control = true;
             }
@@ -394,7 +417,7 @@ namespace Capa_Presentacion
                     //}
                     //txtTotalPagar.Text = Convert.ToString(total);
                     //txtNombreProducto.Text = "";
-
+                    txtNombreProducto.SelectAll();
                 }
                 else
                 {
@@ -519,8 +542,8 @@ namespace Capa_Presentacion
                         else
                             if ((IsNumeric(txtNombreProducto.Text) == true) && (txtNombreProducto.TextLength >= 13))
                         {
-                            Buscar_producto(Convert.ToInt64(txtNombreProducto.Text), "porbarra", true, 1, txtNombreProducto.Text);
-                            cambiartextbox();
+                            //Buscar_producto(Convert.ToInt64(txtNombreProducto.Text), "porbarra", true, 1, txtNombreProducto.Text);
+                            //cambiartextbox();
                         }
                         else
                         {
@@ -553,8 +576,8 @@ namespace Capa_Presentacion
                 else
                     if ((IsNumeric(txtNombreProducto.Text) == true) && (txtNombreProducto.TextLength >= 13))
                 {
-                    Buscar_producto(Convert.ToInt64(txtNombreProducto.Text), "porbarra", true, 1, txtNombreProducto.Text);
-                    cambiartextbox();
+                    //Buscar_producto(Convert.ToInt64(txtNombreProducto.Text), "porbarra", true, 1, txtNombreProducto.Text);
+                    //cambiartextbox();
                 }
                 else
                 {
@@ -673,8 +696,9 @@ namespace Capa_Presentacion
                         dt.Rows.Add(fila.Cells["CCodigo"].Value, fila.Cells["CCantidad"].Value, fila.Cells["CDetalle"].Value, 0);
                     }
 
-                    NegocioOrdenpedido.insertar(DateTime.Now, idcliente, NegocioConfigEmpresa.idusuario, CbTipopedido.Text, "Pendiente", "", dt);
+                    NegocioRetirodeMercaderia.insertar(DateTime.Now, idcliente, NegocioConfigEmpresa.idusuario, CbTipopedido.Text, "PENDIENTE", "", dt, idclientebeneficiaria,Convert.ToInt32( CbTipopedido.SelectedValue));
                     UtilityFrm.mensajeConfirm("Se guardo correctamente");
+                    limpiarformulario();
 
                 }
                 else
@@ -695,9 +719,11 @@ namespace Capa_Presentacion
         {
 
         }
-        private void limpiearformulario()
+        private void limpiarformulario()
         {
-
+            UtilityFrm.limpiarTextbox(TxtCuit,TxtCuitBeneficio,TxtRazonsocial,TxtRazonsocialBen);
+            DGDetalleitems.Rows.Clear();
+            CbTipopedido.Text = "";
         }
 
         private void DGDetalleitems_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -769,8 +795,130 @@ namespace Capa_Presentacion
                 TxtcambioDv.Text = DGDetalleitems.CurrentCell.Value.ToString();
                 TxtcambioDv.Focus();
             }
+            else
+            {
+                txtNombreProducto.Focus();
+            }
 
 
+        }
+
+        private void TxtEmpresabeneficiaria_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                if (TxtEmpresabeneficiaria.TextLength >= 2 && IsNumeric(TxtEmpresabeneficiaria.Text) != true)
+                {
+
+
+                    DGBeneficiaria.Visible = true;
+                    DGBeneficiaria.DataSource = NegocioCliente.buscar(txtIdCliente.Text);
+
+                    DGBeneficiaria.Columns[0].Visible = false;
+                    DGBeneficiaria.Columns[1].Width = 550;
+                    DGBeneficiaria.Columns[2].Visible = false;
+                    DGBeneficiaria.Columns[3].Visible = false;
+                    DGBeneficiaria.Columns[4].Visible = false;
+                    DGBeneficiaria.Columns[5].Visible = false;
+                    DGBeneficiaria.Columns[6].Visible = false;
+
+
+
+                }
+
+
+                else
+
+                {
+                    DGBeneficiaria.Visible = false;
+                }
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        private void TxtEmpresabeneficiaria_KeyDown(object sender, KeyEventArgs e)
+        {
+            DataTable midata = new DataTable();
+            if (e.KeyCode == Keys.Enter)
+            {
+                if (IsNumeric(TxtEmpresabeneficiaria.Text) == true)
+                {
+                    Buscar_Cliente(Convert.ToInt32(TxtEmpresabeneficiaria.Text));
+                }
+                else
+                {
+                    UtilityFrm.mensajeError("Para buscar un cliente en la caja de texto debe ser solo numerico");
+                }
+
+
+
+
+            }
+            if (e.KeyCode == Keys.Down && DGBeneficiaria.Visible == true)
+            {
+                //si se preciona la tecla hacia abajo se pasa el foco a la grilla
+                DGBeneficiaria.Focus();
+
+            }
+        }
+
+        private void DGBeneficiaria_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                Buscar_Cliente(Convert.ToInt32(DGBeneficiaria.CurrentRow.Cells["idcliente"].Value),"DGBeneficiaria");
+                DGBeneficiaria.Visible = false;
+            }
+        }
+
+        private void xuiSuperButton1_Click(object sender, EventArgs e)
+        {
+            FrmBusquedaAvaCliente cliente = new FrmBusquedaAvaCliente();
+
+            cliente.ShowDialog();
+            //si el usuario cierra la ventana isCerro es true, sino si selecciono algun articulo isCerro
+            try
+            {
+                if (cliente.IsCerro)
+                {
+
+                    txtIdCliente.Focus();
+
+                }
+                else
+                {
+
+                    TxtCuitBeneficio.Text = cliente.Cuit.ToString();
+                    TxtRazonsocialBen.Text = cliente.RazonSocial.ToString();
+                    cuitBeneficiario = cliente.Cuit.ToString();
+                    rivabeneficiaria = cliente.Riva.ToString();
+                    domicilioBeneficiario = cliente.Domicilio.ToString();
+                    idclientebeneficiaria = cliente.IdCliente;
+                    TxtEmpresabeneficiaria.Text = "";
+
+
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+
+                UtilityFrm.mensajeError("Error al seleccionar un cliente. Causa:" + ex.Message + "cadena:" + ex.StackTrace);
+                UtilityFrm.limpiarTextbox(TxtEmpresabeneficiaria, TxtRazonsocialBen, TxtCuitBeneficio);
+                xuiSuperButton1.Focus();
+            }
+        }
+
+        private void FrmOrdenAdjudicacion_Load(object sender, EventArgs e)
+        {
+
+            UtilityFrm.completarcombobox(CbTipopedido, "NroTipo", "Nombre", NegocioRetirodeMercaderia.buscartiporetiro(), true);
         }
     }
 }

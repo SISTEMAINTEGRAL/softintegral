@@ -9,7 +9,7 @@ using Capa_Datos;
 
 namespace Capa_Datos
 {
-  public  class DatosOrdenpedido
+  public  class DatosRetirodeMercaderia
     {
         private int norden;
         private DateTime fecha;
@@ -19,13 +19,21 @@ namespace Capa_Datos
         private string estado;
         private string observacion;
         private bool cambiarstock;
+        private int codbeneficiado;
+        private int codempresa;
 
         private bool porcliente;
         private bool porestado;
         private bool portipo;
         private bool porfecha;
+        private bool pornorden;
+        private bool porventa;
         private string fechaini;
         private string fechafin;
+        private string nroremito;
+        private int codventa;
+        private int tiporetiro;
+
         public int Norden
         {
             get
@@ -195,14 +203,71 @@ namespace Capa_Datos
             }
         }
 
-        public DatosOrdenpedido(string varestado, int varnroorden, int varcodcliente, string vartipo )
+        public int Codbeneficiado
+        {
+            get
+            {
+                return codbeneficiado;
+            }
+
+            set
+            {
+                codbeneficiado = value;
+            }
+        }
+
+        public string Nroremito
+        {
+            get
+            {
+                return nroremito;
+            }
+
+            set
+            {
+                nroremito = value;
+            }
+        }
+
+        public int Codventa
+        {
+            get
+            {
+                return codventa;
+            }
+
+            set
+            {
+                codventa = value;
+            }
+        }
+
+        public int Tiporetiro
+        {
+            get
+            {
+                return tiporetiro;
+            }
+
+            set
+            {
+                tiporetiro = value;
+            }
+        }
+
+        public DatosRetirodeMercaderia()
+        {
+
+        }
+        public DatosRetirodeMercaderia(string varestado, int varnroorden, int varcodcliente, string vartipo, int varcodempresa )
         {
             estado = varestado;
             norden = varnroorden;
             codcliente = varcodcliente;
             tipoorden = vartipo;
+            codempresa = varcodempresa;
         }
-        public DatosOrdenpedido( DateTime varfecha, int varcodcliente, int varidusuario, string vartipoorden, string varestado, string varobservacion)
+        public DatosRetirodeMercaderia( DateTime varfecha, int varcodcliente, int varidusuario, string vartipoorden, string varestado, string varobservacion, int varcodbeneficiado, int vartiporetiro, int varcodventa)
         {
             fecha = varfecha;
             codcliente = varcodcliente;
@@ -210,9 +275,13 @@ namespace Capa_Datos
             tipoorden = vartipoorden;
             estado = varestado;
             observacion = varobservacion;
+            codbeneficiado = varcodbeneficiado;
+            codventa = varcodventa;
+            tiporetiro = vartiporetiro;
+
         }
-        public DatosOrdenpedido(int varcodcliente, string varestado, string vartipoorden, string varfechaini, string varfechafin,
-                                bool varporcliente, bool varporestado, bool varportipo, bool varporfecha)
+        public DatosRetirodeMercaderia(int varcodcliente, string varestado, string vartipoorden, string varfechaini, string varfechafin,
+                                bool varporcliente, bool varporestado, bool varportipo, bool varporfecha, int vartiporetiro, bool varpororden, int varnorden, bool varporventa, int varcodventa)
         {
             this.codcliente = varcodcliente;
             this.estado = varestado;
@@ -222,10 +291,15 @@ namespace Capa_Datos
             this.porcliente = varporcliente;
             this.porestado = varporestado;
             this.portipo = varportipo;
-            this.porfecha = varporfecha; 
+            this.porfecha = varporfecha;
+            this.tiporetiro = vartiporetiro;
+            this.norden = varnorden;
+            this.pornorden = varpororden;
+            this.porventa = varporventa;
+            this.codventa = varcodventa;
 
         }
-        public string Insertarymodificar(DatosOrdenpedido Ordenpedido, List<Datodetalleordenpedido> Detalle, string agregaromodificar = "agregarorden", bool solomodificarestado = true)
+        public string Insertarymodificar(DatosRetirodeMercaderia Ordenpedido, List<DatodetalleRetirodeMercaderia> Detalle, string agregaromodificar = "agregarorden", bool solomodificarestado = true)
         {
             string rpta = "";
             SqlConnection sqlcon = new SqlConnection();
@@ -239,7 +313,7 @@ namespace Capa_Datos
                 SqlTransaction sqltra = sqlcon.BeginTransaction();
 
 
-                SqlCommand sqlcmd = ProcAlmacenado.CrearProc(sqlcon, "SP_ORDENPEDIDO", sqltra);
+                SqlCommand sqlcmd = ProcAlmacenado.CrearProc(sqlcon, "SP_RETIRODEMERCADERIA", sqltra);
 
                 SqlParameter parcodsucursal = ProcAlmacenado.asignarParametros("@codsucursal", SqlDbType.Int,1);
                 sqlcmd.Parameters.Add(parcodsucursal);
@@ -264,6 +338,10 @@ namespace Capa_Datos
                 SqlParameter parcodcliente = ProcAlmacenado.asignarParametros("@codcliente", SqlDbType.Int, Ordenpedido.codcliente);
                 sqlcmd.Parameters.Add(parcodcliente);
 
+                SqlParameter parcodbeneficiario = ProcAlmacenado.asignarParametros("@codbeneficiario", SqlDbType.Int, Ordenpedido.codbeneficiado);
+                sqlcmd.Parameters.Add(parcodbeneficiario);
+                
+
                 SqlParameter paridusuario = ProcAlmacenado.asignarParametros("@idusuario", SqlDbType.Decimal, Ordenpedido.idusuario);
                 sqlcmd.Parameters.Add(paridusuario);
 
@@ -275,6 +353,12 @@ namespace Capa_Datos
 
                 SqlParameter parobs = ProcAlmacenado.asignarParametros("@observacion", SqlDbType.NVarChar, Ordenpedido.observacion);
                 sqlcmd.Parameters.Add(parobs);
+
+                SqlParameter parcodventa = ProcAlmacenado.asignarParametros("@codventa", SqlDbType.Int, Ordenpedido.codventa);
+                sqlcmd.Parameters.Add(parcodventa);
+
+                SqlParameter partiporetiro = ProcAlmacenado.asignarParametros("@TipoRetiro", SqlDbType.Int , Ordenpedido.tiporetiro);
+                sqlcmd.Parameters.Add(partiporetiro);
 
                 SqlParameter parModo = ProcAlmacenado.asignarParametros("@modo", SqlDbType.NVarChar, agregaromodificar);
                 sqlcmd.Parameters.Add(parModo);
@@ -296,7 +380,7 @@ namespace Capa_Datos
                     Ordenpedido.norden = Convert.ToInt32(sqlcmd.Parameters["@nroorden"].Value);
 
                     List<DatosDetalleRemito> Detalleremito = new List<DatosDetalleRemito>();
-                    foreach (Datodetalleordenpedido det in Detalle)
+                    foreach (DatodetalleRetirodeMercaderia det in Detalle)
                     {
                         
                         det.Norden = Ordenpedido.norden;
@@ -322,13 +406,14 @@ namespace Capa_Datos
                     }
                     if (agregaromodificar == "modificarestado")
                     {
-                        DatosRemito objremito = new DatosRemito(1, DateTime.Now, Ordenpedido.codcliente, Ordenpedido.norden, "", true, Ordenpedido.tipoorden, "0001");
-                        objremito.insertarremito(objremito, Detalleremito, ref sqlcon, ref sqltra, true);
+                        DatosRemito objremito = new DatosRemito(1, DateTime.Now, Ordenpedido.codcliente, Ordenpedido.norden, "", true, Ordenpedido.tipoorden, "0001",Ordenpedido.codempresa);
+                      rpta =  objremito.insertarremito(objremito, Detalleremito, ref sqlcon, ref sqltra, true);
+                        nroremito = objremito.Nremito;
                     }
                     
                 }
                     //ver
-                if (rpta.Equals("OK")  )
+                if (rpta.Equals("ok") || rpta.Equals("OK") )
                 {
                     if (sqlcon.State == ConnectionState.Open)
                     {
@@ -338,7 +423,10 @@ namespace Capa_Datos
                 }
                 else 
                 {
-                    sqltra.Rollback();
+                    if (sqlcon.State == ConnectionState.Open)
+                    {
+                        sqltra.Rollback();
+                    }
                 }
 
             }
@@ -355,7 +443,7 @@ namespace Capa_Datos
 
        
 
-        public DataTable Busquedaconcatenada(DatosOrdenpedido Dorden)
+        public DataTable Busquedaconcatenada(DatosRetirodeMercaderia Dorden)
         {
             SqlConnection cn = new SqlConnection(Conexion.conexion);
             DataTable dtResult = new DataTable("orden");
@@ -373,11 +461,43 @@ namespace Capa_Datos
                         ProcAlmacenado2.MakeParam ("@porcliente",SqlDbType.Bit,0,Dorden.porcliente),
                         ProcAlmacenado2.MakeParam ("@porestado",SqlDbType.Bit,0,Dorden.porestado),
                         ProcAlmacenado2.MakeParam ("@portipo",SqlDbType.Bit,0,Dorden.portipo),
-                        ProcAlmacenado2.MakeParam ("@porfecha",SqlDbType.Bit,0,Dorden.porfecha)
+                        ProcAlmacenado2.MakeParam ("@porfecha",SqlDbType.Bit,0,Dorden.porfecha),
+                        ProcAlmacenado2.MakeParam ("@TipoRetiro",SqlDbType.Int,0,Dorden.tiporetiro ),
+                        ProcAlmacenado2.MakeParam ("@pororden",SqlDbType.Bit,0,Dorden.pornorden ),
+                        ProcAlmacenado2.MakeParam ("@nroorden",SqlDbType.Int,0,Dorden.norden ),
+                        ProcAlmacenado2.MakeParam ("@codventa",SqlDbType.Int,0,Dorden.codventa),
+                        ProcAlmacenado2.MakeParam ("@porventa",SqlDbType.Bit,0,Dorden.porventa ),
+                        //@TipoRetiro
                         
 
                    };
-                dtResult = ProcAlmacenado2.ExecuteDatatable("SP_ORDENPEDIDO", dbParams);
+                dtResult = ProcAlmacenado2.ExecuteDatatable("SP_RETIRODEMERCADERIA", dbParams);
+            }
+            catch (Exception)
+            {
+
+                throw;
+
+            }
+
+            return dtResult;
+        }
+
+        public DataTable Busquedatipo()
+        {
+            SqlConnection cn = new SqlConnection(Conexion.conexion);
+            DataTable dtResult = new DataTable("orden");
+
+            try
+            {
+                SqlParameter[] dbParams = new SqlParameter[]
+                   {
+                        ProcAlmacenado2.MakeParam ("@modo",SqlDbType.NVarChar,50,"buscartiporetiro")
+                        
+
+
+                   };
+                dtResult = ProcAlmacenado2.ExecuteDatatable("SP_RETIRODEMERCADERIA", dbParams);
             }
             catch (Exception)
             {

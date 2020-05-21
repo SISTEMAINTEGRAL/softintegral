@@ -67,7 +67,7 @@
   <ItemGroup>
     <Compile Include="Class1.cs" />
     <Compile Include="Conexion.cs" />
-    <Compile Include="Datodetalleordenpedido.cs" />
+    <Compile Include="DatodetalleRetirodeMercaderia.cs" />
     <Compile Include="DatosArticulo.cs" />
     <Compile Include="DatosBackup.cs" />
     <Compile Include="DatosCaja.cs" />
@@ -79,7 +79,7 @@
     <Compile Include="DatosFormaDePago.cs" />
     <Compile Include="Datosgenerales.cs" />
     <Compile Include="DatosMovStock.cs" />
-    <Compile Include="DatosOrdenpedido.cs" />
+    <Compile Include="DatosRetirodeMercaderia.cs" />
     <Compile Include="DatosProveedor.cs" />
     <Compile Include="DatosRemito.cs" />
     <Compile Include="DatosServicioTecnico.cs" />

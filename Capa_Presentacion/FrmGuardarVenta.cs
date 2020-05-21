@@ -40,6 +40,8 @@ namespace Capa_Presentacion
         private string razonsocial;
         private decimal iva105;
         private decimal neto105;
+        //deja la mercaderia en el formulario de retiro de mercaderia
+        private bool pendientedestock;
 
         public string Razonsocial
         {
@@ -152,8 +154,21 @@ namespace Capa_Presentacion
             set { domicilio = value; }
         }
 
+        public bool Pendientedestock
+        {
+            get
+            {
+                return pendientedestock;
+            }
+
+            set
+            {
+                pendientedestock = value;
+            }
+        }
+
         Negociocomprobantes objcomprobante = new Negociocomprobantes();
-        public FrmGuardarVenta(decimal totalAPagar,int idCliente, decimal ventaiva, decimal ventaneto, string formapago, string nombretarjeta, decimal importecuota, int cuota, int codtarjeta, string cuit, string razonsocial, string tipocomprobante, string responsableiva, string domicilio, decimal variva105 = 0, decimal varneto105 = 0)
+        public FrmGuardarVenta(decimal totalAPagar,int idCliente, decimal ventaiva, decimal ventaneto, string formapago, string nombretarjeta, decimal importecuota, int cuota, int codtarjeta, string cuit, string razonsocial, string tipocomprobante, string responsableiva, string domicilio, decimal variva105 = 0, decimal varneto105 = 0, bool varpendientestock = false)
         {
            
             InitializeComponent();
@@ -177,6 +192,7 @@ namespace Capa_Presentacion
             this.responsableiva = responsableiva;
             this.neto105 = varneto105;
             this.iva105 = variva105;
+            this.pendientedestock = varpendientestock;
             
         }
 
@@ -272,6 +288,13 @@ namespace Capa_Presentacion
             dt.Columns.Add("Producto", typeof(string));
             dt.Columns.Add("Precioneto", typeof(string));
             dt.Columns.Add("Pesable", typeof(int));
+
+            DataTable DTOrdenpedido = new DataTable();
+            DTOrdenpedido.Columns.Add("Codigo", typeof(string));
+            DTOrdenpedido.Columns.Add("cantidadparcial", typeof(string));
+            DTOrdenpedido.Columns.Add("cantidadtotal", typeof(string));
+            DTOrdenpedido.Columns.Add("detalle", typeof(string));
+
             decimal IVA = 21;
 
             if (formapago == "tarjeta")
@@ -331,6 +354,7 @@ namespace Capa_Presentacion
                     //dt.Rows.Add(fila.Cells["Codigo"].Value, fila.Cells["Precio"].Value, fila.Cells["Cantidad"].Value, fila.Cells["Descuento"].Value, fila.Cells["Importe"].Value);
                  dt.Rows.Add(fila.Cells["Codigo"].Value, fila.Cells["CPrecio"].Value, fila.Cells["Cantidad"].Value, fila.Cells["Descuento"].Value, fila.Cells["Importe"].Value, fila.Cells["Producto"].Value, precioneto, fila.Cells["Dpesable"].Value);
 
+                  DTOrdenpedido.Rows.Add(fila.Cells["Codigo"].Value, "0", fila.Cells["Cantidad"].Value, fila.Cells["Producto"].Value);
 
 
                 }
@@ -382,14 +406,19 @@ namespace Capa_Presentacion
                   IVA, this.concaja, this.constock, NegocioConfigEmpresa.usuarioconectado, dt, 
                   Convert.ToDecimal(txtBonificacion.Text == "" ? txtBonificacion.Text = "0" : txtBonificacion.Text),
                   Convert.ToDecimal(txtTotalAPagar.Text), Convert.ToDecimal(lblsubtotal.Text), estadofactura,
-                  NegocioConfigEmpresa.confsistema("stock").ToString() == this.Name ? true : false, nroterminal,
+                  NegocioConfigEmpresa.confsistema("stock").ToString() == this.Name && pendientedestock == false ? true : false, nroterminal,
                   codtarjeta, cupon, lote, importe, cuota, codformapago, neto,iva,objcomprobante.Cae,objcomprobante.Fechavto,
                   objcomprobante.Numerotipofactura.PadLeft (3,'0'),objcomprobante.Puntoventa.PadLeft (5,'0'),this.iva105,this.neto105);
                
                 int objnum = objventa.Idventa;
 
-                if (Rta == "OK")
+                if (Rta == "OK" || Rta == "ok")
                 {
+                    if (pendientedestock == true)
+                    {
+                        NegocioRetirodeMercaderia.insertar(DateTime.Now, this.idCliente, NegocioConfigEmpresa.idusuario, "VENTA", "PENDIENTE", "", DTOrdenpedido, this.idCliente, 1, objnum);
+                    }
+                    
                     if (this.concaja == true)
                     {
 
@@ -563,17 +592,11 @@ namespace Capa_Presentacion
         private void FrmGuardarVenta_KeyDown(object sender, KeyEventArgs e)
         {
             if(e.KeyCode==Keys.F2){
-                imprimir = true;
-                btnGuardar.PerformClick();
+                guardarventa();
 
             }
 
-            else if (e.KeyCode == Keys.F2)
-            {
-                imprimir = false ;
-                btnGuardar.PerformClick();
-
-            }
+           
             else if (e.KeyCode == Keys.Escape) {
                 this.Close();
             }

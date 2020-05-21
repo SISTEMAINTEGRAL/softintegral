@@ -117,6 +117,31 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="pictureBox1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAz8AAABLCAYAAABeDjkJAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAX
+        EgAAFxIBZ5/SUgAAABl0RVh0U29mdHdhcmUATWljcm9zb2Z0IE9mZmljZX/tNXEAAAQtSURBVHhe7d0h
+        cOJaGIbhSGRlJRJZWYm8shKJrETiWNSVSGTlysrKSiSyEolEIrPnpClzUnJn3V6y//PMvLPb04D/JoFW
+        6/X6tyV3qVnqR+pdkiRJkm6gbeo5Ne7bMd/rPfwqeUy9pmpJkiRJuuF2qae+XfNV/+HnnR6jR5IkSdLQ
+        yiNo0rtzrg6qapz6SPW9kSRJkiTdeqfU9GrrdH74HD75wqs3mEwm9XK5rN/f35vO53MNAADwp+33+2aT
+        bDabejqdXm2XtnPqn87eKYZPftTt6o7Pw8ND88YAAAC3KI+hp6enzo5pyzd2Lo/AlePn6jM+s9nMHR4A
+        AGAQ8p2g75smdUiNLuMnmba/uJSHDwAAwJBst9vOrmlblOMnfyPC5Zf5UTd3fAAAgCGaz+fl8MkdU6NU
+        dd8eXNrtdu3LAAAAhuV4PNaj0aizcVL5abdqXhzUj4+P7UsAAACG6fn5uRw+uW2qeikO6tVq1V4OAAAw
+        TG9vb+Xwye1T1Xtx4GutAQCAwTudTuXwyeXP/TRf/XY5PBwO7eUAAADD1fO5n+74AQAA+BuMx+Ny+OSM
+        HwAA4O9j/AAAACEYPwAAQAjGDwAAEILxAwAAhGD8AAAAIRg/AABACMYPAAAQgvEDAACEYPwAAAAhGD8A
+        AEAIxg8AABCC8QMAAIRg/AAAACEYPwAAQAjGDwAAEILxAwAAhGD8AAAAIRg/AABACMYPAAAQgvEDAACE
+        YPwAAAAhGD8AAEAIxg8AABCC8QMAAIRg/AAAACEYPwAAQAjGDwAAEILxAwAAhGD8AAAAIRg/AABACMYP
+        AAAQgvEDAACEYPwAAAAhGD8AAEAIxg8AABCC8QMAAIRg/AAAACEYPwAAQAjGDwAAEILxAwAAhGD8AAAA
+        IRg/AABACMYPAAAQgvEDAACEYPwAAAAh/Hb8HI/H9lIAAIDhGo1G5fDJVbvyYLfbtZcCAAAM0/l8LkdP
+        7pSqfhYH9cvLS3s5AADAMO33+3L45PITb9WP4qCezWbt5QAAAMO0Wq3K4ZN7TVWPxUHzXJzP/QAAAEOV
+        H3m7v78vh09uXq3X6/Rv90sPFotF+zIAAIBh2Ww25ejJnVP3X+Nn0R5een19bV8KAAAwDB8fH/Xd3V1n
+        26Q2ze5px88odWx/0ZQffzOAAACAocjDp+dv+zR3fS7jpx1A0/YXnYuXy2V9Op3atwMAALg92+22745P
+        bnHZPF//aQfQvLjoUv6wUB5B+eviAAAAbsHhcGg+39Nzt+erbWfvlD80B1X1nLq6A1SWH4mbTqeSJEmS
+        9MebTCa9O+VbneHTbJ3vB83h5yNw+S+g9r2JJEmSJN1q+UbO5VG3zs7pO8wld6l/2xf3vakkSZIk3VIv
+        qXHfvsn1HpYleQTNUj9TnW+EkyRJkqT/sXyj5i2VP7rzn6Pns3X1C8L0FJzOkuWjAAAAAElFTkSuQmCC
+</value>
+  </data>
   <metadata name="dataGridViewTextBoxColumn1.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>

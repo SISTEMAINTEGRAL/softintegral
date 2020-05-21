@@ -13,12 +13,16 @@ namespace Capa_Datos
         private string sign;
         private string token;
 
+        private string BalanzaPuerto;
         private string puntoventa;
         private string condicionFrenteIVA;
         private string razonSocial;
         private long cuit;
         private Byte[] logo;
         private int cod_empresa=1;
+        private string FormatoImpFactElectronica;
+        private string formatoimpproforma;
+        private string formatoimpremito;
         private string[] ReglasUsuario { get; set; }
         //Equipo
 
@@ -195,7 +199,59 @@ namespace Capa_Datos
                 token = value;
             }
         }
-       
+
+        public string BalanzaPuerto1
+        {
+            get
+            {
+                return BalanzaPuerto;
+            }
+
+            set
+            {
+                BalanzaPuerto = value;
+            }
+        }
+
+        public string FormatoImpFactElectronica1
+        {
+            get
+            {
+                return FormatoImpFactElectronica;
+            }
+
+            set
+            {
+                FormatoImpFactElectronica = value;
+            }
+        }
+
+        public string Formatoimpproforma
+        {
+            get
+            {
+                return formatoimpproforma;
+            }
+
+            set
+            {
+                formatoimpproforma = value;
+            }
+        }
+
+        public string Formatoimpremito
+        {
+            get
+            {
+                return formatoimpremito;
+            }
+
+            set
+            {
+                formatoimpremito = value;
+            }
+        }
+
         public DataTable mostrar()
        {
 
@@ -456,7 +512,11 @@ namespace Capa_Datos
                        ProcAlmacenado2.MakeParam("@cod_empresa", SqlDbType.Int, 0, 1),
                  ProcAlmacenado2.MakeParam("@impticket", SqlDbType.NVarChar, 0, configequipo.impticket),
                  ProcAlmacenado2.MakeParam("@impreporte", SqlDbType.NVarChar, 0, configequipo.impreporte),
-                 ProcAlmacenado2.MakeParam("@Puntoventa", SqlDbType.NVarChar, 0, configequipo.puntoventa)
+                 ProcAlmacenado2.MakeParam("@Puntoventa", SqlDbType.NVarChar, 0, configequipo.puntoventa),
+                 ProcAlmacenado2.MakeParam("@FormatoImpFactElectronica", SqlDbType.NVarChar, 0, configequipo.FormatoImpFactElectronica),
+                 ProcAlmacenado2.MakeParam("@FormatoImpProforma", SqlDbType.NVarChar, 0, configequipo.formatoimpproforma),
+                 ProcAlmacenado2.MakeParam("@FormatoImpRemito", SqlDbType.NVarChar, 0, configequipo.formatoimpremito)
+
 
                  };
                 ProcAlmacenado2.ExecuteNonQuery("SP_CONFIG_EMPRESA", dbParams);
@@ -573,6 +633,10 @@ namespace Capa_Datos
                    this.impreporte = Convert.ToString(dr["ImpReporte"]);
                    this.impticket = Convert.ToString(dr["Impticket"]);
                     this.puntoventa = Convert.ToString(dr["Puntoventa"]);
+                    this.BalanzaPuerto = Convert.ToString(dr["BalanzaPuerto"]);
+                    this.FormatoImpFactElectronica = Convert.ToString(dr["FormatoImpFactElectronica"]);
+                    this.formatoimpproforma = Convert.ToString(dr["FormatoImpProforma"]);
+                    this.formatoimpremito = Convert.ToString(dr["FormatoImpRemito"]);
 
 
                     login = true;

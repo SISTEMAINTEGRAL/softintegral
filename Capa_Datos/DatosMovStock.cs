@@ -160,7 +160,7 @@ namespace Capa_Datos
                 //  sqlcon.Open();
 
                 //Creo un procedimiento almacenado y se pasa al sqlCommand
-                if (movingresooegreso == "EGRESO")
+                if (movingresooegreso == "EGRESO" || movingresooegreso == "egreso")
                 {
                     cantidad = System.Math.Abs (cantidad)  * (-1);
                 }
