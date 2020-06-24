@@ -362,7 +362,7 @@ namespace Capa_Datos
 
                 SqlParameter parModo = ProcAlmacenado.asignarParametros("@modo", SqlDbType.NVarChar, agregaromodificar);
                 sqlcmd.Parameters.Add(parModo);
-
+                
                 
 
                 rpta = sqlcmd.ExecuteNonQuery() >= 1 ? "OK" : "No se ingreso el registro";

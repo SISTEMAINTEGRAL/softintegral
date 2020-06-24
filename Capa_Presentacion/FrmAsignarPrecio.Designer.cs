@@ -57,9 +57,9 @@
             this.txtTara.Size = new System.Drawing.Size(54, 26);
             this.txtTara.TabIndex = 68;
             this.txtTara.Text = "0";
-            this.txtTara.Visible = false;
             this.txtTara.Click += new System.EventHandler(this.txtTara_Click);
             this.txtTara.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtTara_KeyDown);
+            this.txtTara.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTara_KeyPress);
             // 
             // lblcant
             // 
@@ -70,7 +70,6 @@
             this.lblcant.Size = new System.Drawing.Size(63, 20);
             this.lblcant.TabIndex = 69;
             this.lblcant.Text = "TARA :";
-            this.lblcant.Visible = false;
             // 
             // FrmAsignarPrecio
             // 

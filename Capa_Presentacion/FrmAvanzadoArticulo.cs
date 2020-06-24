@@ -403,29 +403,7 @@ namespace Capa_Presentacion
 
         private void dataLista_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            //se produce un evento cuando hago click en la columna 0 que es eliminar de la lista
-            //se comparan el indice de columna de la lista =0 y el indice de la columna del evento=0
-            if (e.ColumnIndex == dataLista.Columns[0].Index)
-            {
-                //creo una datagridviewrow para guarda los datos de la fila actual
-                DataGridViewRow fila = dataLista.Rows[e.RowIndex];
-                //creo un checkboxcell para obtener el checkbox seleccionado
-                DataGridViewCheckBoxCell tildado = (DataGridViewCheckBoxCell)fila.Cells[0];
 
-
-                if (Convert.ToBoolean(tildado.Value) == true)
-                {
-                    //si el valor de tildado es null es true y se desactiva 
-                    tildado.Value = CheckState.Unchecked;
-
-                }
-                else
-                {
-                    //caso contrario se activa
-                    tildado.Value = CheckState.Checked;
-                }
-
-            }
         }
 
         private void Btntraer_Click(object sender, EventArgs e)
@@ -445,7 +423,12 @@ namespace Capa_Presentacion
                                 preciocompravar = Convert.ToDecimal ( fila.Cells["precio_compra"].Value);
                                 if (opcionvista == "PRECIOMASIVO")
                                 {
-                                    listadodearticulo.Rows.Add(fila.Cells["idarticulo"].Value, fila.Cells["nombre"].Value, fila.Cells["descripcion"].Value, UtilityFrm.formateodecimal(Convert.ToDecimal(fila.Cells["precio_compra"].Value), 2), UtilityFrm.formateodecimal(Convert.ToDecimal(fila.Cells["utilidad"].Value), 2), UtilityFrm.formateodecimal(Convert.ToDecimal(fila.Cells["flete"].Value), 2), UtilityFrm.formateodecimal(Convert.ToDecimal(fila.Cells["precio"].Value), 2));
+                                    listadodearticulo.Rows.Add(fila.Cells["idarticulo"].Value, fila.Cells["nombre"].Value, fila.Cells["descripcion"].Value,
+                                    UtilityFrm.formateodecimal(Convert.ToDecimal(fila.Cells["precio_compra"].Value), 2), UtilityFrm.formateodecimal(Convert.ToDecimal(fila.Cells["utilidad"].Value), 2),
+                                    UtilityFrm.formateodecimal(Convert.ToDecimal(fila.Cells["flete"].Value), 2), UtilityFrm.formateodecimal(Convert.ToDecimal(fila.Cells["precio"].Value), 2),
+                                    UtilityFrm.formateodecimal(Convert.ToDecimal(fila.Cells["utilidadpormayor"].Value), 2), UtilityFrm.formateodecimal(Convert.ToDecimal(fila.Cells["preciopormayor"].Value), 2),
+                                    UtilityFrm.formateodecimal(Convert.ToDecimal(fila.Cells["utilidadpormayor2"].Value), 2), UtilityFrm.formateodecimal(Convert.ToDecimal(fila.Cells["preciopormayor2"].Value), 2),
+                                    UtilityFrm.formateodecimal(Convert.ToDecimal(fila.Cells["Utilidadoferta"].Value), 2), UtilityFrm.formateodecimal(Convert.ToDecimal(fila.Cells["precio_oferta"].Value), 2));
                                 }
                                 else if (opcionvista == "STOCK")
                                 {
@@ -663,7 +646,7 @@ namespace Capa_Presentacion
                 contextMenuStrip1.Show(dataLista, new Point(e.X, e.Y));
                 MenuDeleteall.Visible = true;
 
-            } 
+            }
         }
 
         private void btnMinimizar_MouseLeave(object sender, EventArgs e)
@@ -704,6 +687,11 @@ namespace Capa_Presentacion
         private void btnCerrar_MouseMove(object sender, MouseEventArgs e)
         {
             btnCerrar.BackColor = Color.Red;
+        }
+
+        private void dataLista_RowLeave(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

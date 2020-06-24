@@ -90,3 +90,4 @@ C:\Backup\Sistema de ventas\softintegral\Capa_Datos\obj\Debug\Interop.FiscalPrin
 C:\Backup\Sistema de ventas\softintegral\Capa_Datos\obj\Debug\Capa_Datos.csproj.ResolveComReference.cache
 C:\Backup\Sistema de ventas\softintegral\Capa_Datos\obj\Debug\Capa_Datos.dll
 C:\Backup\Sistema de ventas\softintegral\Capa_Datos\obj\Debug\Capa_Datos.pdb
+C:\Backup\Sistema de ventas\softintegral\Capa_Datos\obj\Debug\Capa_Datos.csprojResolveAssemblyReference.cache

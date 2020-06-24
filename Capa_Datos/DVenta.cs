@@ -311,6 +311,11 @@ using Capa_Datos;
     private decimal precioiva105;
         public Dventa()
         { }
+       public Dventa(int varidventa, char varestado)
+       {
+        this.idventa = varidventa;
+        this.estado = varestado;
+    }
         public Dventa(int trabajador, int idventa, int idcliente, DateTime fecha, string tipo_comprobante, string serie,string varnrocomprobante, decimal iva)
         {
             this.idventa = idventa;
@@ -338,9 +343,73 @@ using Capa_Datos;
         this.idequipo = idequipo;
     }
 
-        //Metodo
+    //Metodo
 
-       
+    public string anular(Dventa Venta,bool distock = false)
+    {
+        string mensaje = "";
+        SqlConnection sqlcon = new SqlConnection();
+        DataTable midatatable = new DataTable();
+        DatosMovStock objstock = new Capa_Datos.DatosMovStock();
+        SqlTransaction sqltra ;
+        try
+        {
+          mensaje =  CambiarEstadoVenta(Venta);
+            midatatable = MostrarDetalle(Venta.idventa.ToString());
+            if (mensaje.Equals("OK") || mensaje .Equals("ok"))
+            {
+                sqlcon.ConnectionString = Conexion.conexion;
+                sqlcon.Open();
+
+                sqltra = sqlcon.BeginTransaction();
+
+               // Venta.Idventa = Convert.ToInt32(sqlcmd.Parameters["@idventa"].Value);
+
+
+                foreach (DataRow midatarow in midatatable.Rows)
+                {
+                   
+                   
+
+                    
+                        //actualizamos el stock
+                        if (distock == true && Convert.ToInt32(midatarow["idarticulo"]) != 0) { mensaje = objstock.Modificarstock( Convert.ToInt32(midatarow["idarticulo"]) ,Convert.ToDecimal(midatarow["cantidad"]), ref sqlcon, ref sqltra, "ingreso"); }
+                        if ( !mensaje.Equals("ok"))
+                        {
+                            break;
+
+                        }
+                    
+
+                }
+
+                if (mensaje.Equals("OK") || mensaje.Equals("ok"))
+                {
+
+                     sqltra.Commit();
+                }
+                else
+                {
+                    sqltra.Rollback();
+                }
+            }
+
+           
+
+        }
+        catch (Exception e)
+        {
+
+            mensaje = e.Message;
+            
+        }
+
+        finally
+        {
+            if (sqlcon.State == ConnectionState.Open) sqlcon.Close();
+        }
+        return mensaje;
+    }
 
         public string Insertar(Dventa Venta, List <DDetalle_Venta> Detalle, bool distock = false)
         {
@@ -576,8 +645,40 @@ using Capa_Datos;
             }
             return DtResultado;
         }
+    public DataTable BuscarVenta(Dventa venta)
+    {
+        DataTable DtResultado = new DataTable("venta");
+        SqlConnection sqlcon = new SqlConnection(Conexion.conexion);
+        try
+        {
 
-        public DataTable  BuscarFechas(string TextoBuscar, string TextoBuscar2)
+
+            SqlCommand sqlcmd = ProcAlmacenado.CrearProc(sqlcon, "SP_VENTA");
+
+            //modo 2 para la busqueda
+            SqlParameter parModo = ProcAlmacenado.asignarParametros("modo", SqlDbType.Int, 11);
+            sqlcmd.Parameters.Add(parModo);
+
+
+            SqlParameter paridventa = ProcAlmacenado.asignarParametros("@idventa", SqlDbType.Int, this.idventa);
+            sqlcmd.Parameters.Add(paridventa);
+
+
+            SqlDataAdapter sqldat = new SqlDataAdapter(sqlcmd);
+            sqldat.Fill(DtResultado);
+
+        }
+        catch (Exception ex)
+        {
+            DtResultado = null;
+            sqlcon.Close();
+            //lanzo una excepcion en el caso de problemas con bd
+            throw ex;
+        }
+
+        return DtResultado;
+    }
+    public DataTable  BuscarFechas(string TextoBuscar, string TextoBuscar2)
         {
             DataTable DtResultado = new DataTable("venta");
             SqlConnection sqlcon = new SqlConnection(Conexion.conexion);
@@ -787,6 +888,46 @@ using Capa_Datos;
         }
 
     }
+    public string cambiarestadostock(int codventa, bool stock)
+    {
+        //devuelve la cantidad actual
+        string respuesta = "";
+        string query = "update venta set enstock= @stock where idventa=@codventa ";
+       
+        try
+        {
+            SqlConnection cn = new SqlConnection(Conexion.conexion);
+            cn.Open();
+            SqlCommand comando = new SqlCommand(query,cn);
+
+            //si movStock es ingreso asigno queryIngreso sino queryEgreso
+          
+
+            //comando.Parameters.AddWithValue("@precio", articulos.Precio);
+            comando.Parameters.AddWithValue("@stock", stock);
+            comando.Parameters.AddWithValue("@codventa", codventa);
+            if (comando.ExecuteNonQuery() == 1)
+            {
+                respuesta = "ok";
+            }
+            else
+            {
+                respuesta = "error";
+            }
+
+
+        }
+
+        catch (Exception ex)
+        {
+            respuesta = "error conexion: " + ex.Message;
+
+        }
+
+
+        return respuesta;
+    }
+
    
     }   
 

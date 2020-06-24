@@ -73,8 +73,8 @@
     <Reference Include="Guna.UI">
       <HintPath>..\..\SistemaVentas\bin\Debug\Guna.UI.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.ReportViewer.Common, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
-    <Reference Include="Microsoft.ReportViewer.WinForms, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.ReportViewer.Common, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="PlaceholderTextBox">
       <HintPath>..\packages\PlaceholderTextBox.1.3.1\lib\PlaceholderTextBox.dll</HintPath>
@@ -153,10 +153,27 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>venta.xsd</DependentUpon>
     </Compile>
+    <Compile Include="DataSet\DSGondola.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DSGondola.xsd</DependentUpon>
+    </Compile>
     <Compile Include="DVentaproducto.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>DVentaproducto.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Formreportes\FrmGondola.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formreportes\FrmGondola.Designer.cs">
+      <DependentUpon>FrmGondola.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formreportes\FrmReporteGondola.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formreportes\FrmReporteGondola.Designer.cs">
+      <DependentUpon>FrmReporteGondola.cs</DependentUpon>
     </Compile>
     <Compile Include="Formreportes\FrmReporteRecibo.cs">
       <SubType>Form</SubType>
@@ -199,6 +216,12 @@
     </Compile>
     <Compile Include="FrmArticulos.Designer.cs">
       <DependentUpon>FrmArticulos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmArticulos2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmArticulos2.Designer.cs">
+      <DependentUpon>FrmArticulos2.cs</DependentUpon>
     </Compile>
     <Compile Include="Frmasentarpago.cs">
       <SubType>Form</SubType>
@@ -428,6 +451,12 @@
     <Compile Include="frmPventa.Designer.cs">
       <DependentUpon>frmPventa.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmPventa2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPventa2.designer.cs">
+      <DependentUpon>frmPventa2.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmReporteCaja.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -498,6 +527,12 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
+    <Compile Include="Reportes\AgrGondolaPack.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AgrGondolaPack.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Reportes\Barra.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -521,6 +556,12 @@
     </Compile>
     <Compile Include="Reportes\Report1.Designer.cs">
       <DependentUpon>Report1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\Report11.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reportes\Report11.designer.cs">
+      <DependentUpon>Report11.cs</DependentUpon>
     </Compile>
     <Compile Include="Reportes\ReporteArticulos.cs">
       <AutoGen>True</AutoGen>
@@ -563,6 +604,12 @@
     </Compile>
     <Compile Include="Reportes\REPORT_TICKET_PROFORMA.Designer.cs">
       <DependentUpon>REPORT_TICKET_PROFORMA.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reportes\REPORT_TICKET_PROFORMAX58.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reportes\REPORT_TICKET_PROFORMAX58.Designer.cs">
+      <DependentUpon>REPORT_TICKET_PROFORMAX58.cs</DependentUpon>
     </Compile>
     <Compile Include="Reportes\REPORT_TICKET_REMITO.cs">
       <SubType>Component</SubType>
@@ -609,6 +656,12 @@
     <EmbeddedResource Include="AboutBox1.resx">
       <DependentUpon>AboutBox1.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Formreportes\FrmGondola.resx">
+      <DependentUpon>FrmGondola.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formreportes\FrmReporteGondola.resx">
+      <DependentUpon>FrmReporteGondola.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Formreportes\FrmReporteRecibo.resx">
       <DependentUpon>FrmReporteRecibo.cs</DependentUpon>
     </EmbeddedResource>
@@ -629,6 +682,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmArticulos.resx">
       <DependentUpon>FrmArticulos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmArticulos2.resx">
+      <DependentUpon>FrmArticulos2.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Frmasentarpago.resx">
       <DependentUpon>Frmasentarpago.cs</DependentUpon>
@@ -744,6 +800,9 @@
     <EmbeddedResource Include="frmPventa.resx">
       <DependentUpon>frmPventa.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmPventa2.resx">
+      <DependentUpon>frmPventa2.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmReporteCaja.resx">
       <DependentUpon>FrmReporteCaja.cs</DependentUpon>
     </EmbeddedResource>
@@ -781,6 +840,10 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="Reporteproductoventa.rdlc" />
+    <EmbeddedResource Include="Reportes\AgrGondolaPack.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>AgrGondolaPack.cs</LastGenOutput>
+    </EmbeddedResource>
     <EmbeddedResource Include="Reportes\Barra.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
       <LastGenOutput>Barra.cs</LastGenOutput>
@@ -794,6 +857,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes\Report1.resx">
       <DependentUpon>Report1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\Report11.resx">
+      <DependentUpon>Report11.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes\ReporteArticulos.rpt">
       <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
@@ -812,6 +878,7 @@
     <EmbeddedResource Include="Reportes\REPORTE_REMITO.resx">
       <DependentUpon>REPORTE_REMITO.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\REPORT_GONDOLA.rdlc" />
     <EmbeddedResource Include="Reportes\REPORT_TICKET.resx">
       <DependentUpon>REPORT_TICKET.cs</DependentUpon>
     </EmbeddedResource>
@@ -820,6 +887,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes\REPORT_TICKET_PROFORMA.resx">
       <DependentUpon>REPORT_TICKET_PROFORMA.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reportes\REPORT_TICKET_PROFORMAX58.resx">
+      <DependentUpon>REPORT_TICKET_PROFORMAX58.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes\REPORT_TICKET_REMITO.resx">
       <DependentUpon>REPORT_TICKET_REMITO.cs</DependentUpon>
@@ -902,6 +972,17 @@
     </None>
     <None Include="DataSet\venta.xss">
       <DependentUpon>venta.xsd</DependentUpon>
+    </None>
+    <None Include="DataSet\DSGondola.xsc">
+      <DependentUpon>DSGondola.xsd</DependentUpon>
+    </None>
+    <None Include="DataSet\DSGondola.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DSGondola.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DataSet\DSGondola.xss">
+      <DependentUpon>DSGondola.xsd</DependentUpon>
     </None>
     <None Include="DVentaproducto.xsc">
       <DependentUpon>DVentaproducto.xsd</DependentUpon>

@@ -34,6 +34,19 @@ namespace Capa_Datos
         private decimal preciopormayor;
         private decimal cantidadpormayor;
         private int idsubcategoria;
+
+        private decimal cantidadpormayor2;
+        private decimal preciopormayor2;
+        private decimal precio_oferta;
+        private DateTime fecha_oferta;
+        private bool habilitarfechaoferta;
+        private decimal bulto_cantidad;
+        private string bulto_codigobarra;
+        private decimal utilidadpreciopormayor;
+        private decimal utilidadpreciopormayor2;
+        private decimal utilidadoferta;
+
+        private int idequipo;
         public decimal Flete
         {
             get { return flete; }
@@ -199,6 +212,149 @@ namespace Capa_Datos
             }
         }
 
+        public decimal Cantidadpormayor2
+        {
+            get
+            {
+                return cantidadpormayor2;
+            }
+
+            set
+            {
+                cantidadpormayor2 = value;
+            }
+        }
+
+        public decimal Preciopormayor2
+        {
+            get
+            {
+                return preciopormayor2;
+            }
+
+            set
+            {
+                preciopormayor2 = value;
+            }
+        }
+
+        public decimal Precio_oferta
+        {
+            get
+            {
+                return precio_oferta;
+            }
+
+            set
+            {
+                precio_oferta = value;
+            }
+        }
+
+        public DateTime Fecha_oferta
+        {
+            get
+            {
+                return fecha_oferta;
+            }
+
+            set
+            {
+                fecha_oferta = value;
+            }
+        }
+
+        public bool Habilitarfechaoferta
+        {
+            get
+            {
+                return habilitarfechaoferta;
+            }
+
+            set
+            {
+                habilitarfechaoferta = value;
+            }
+        }
+
+        public decimal Bulto_cantidad
+        {
+            get
+            {
+                return bulto_cantidad;
+            }
+
+            set
+            {
+                bulto_cantidad = value;
+            }
+        }
+
+        public string Bulto_codigobarra
+        {
+            get
+            {
+                return bulto_codigobarra;
+            }
+
+            set
+            {
+                bulto_codigobarra = value;
+            }
+        }
+
+        public decimal Utilidadpreciopormayor
+        {
+            get
+            {
+                return utilidadpreciopormayor;
+            }
+
+            set
+            {
+                utilidadpreciopormayor = value;
+            }
+        }
+
+        public decimal Utilidadpreciopormayor2
+        {
+            get
+            {
+                return utilidadpreciopormayor2;
+            }
+
+            set
+            {
+                utilidadpreciopormayor2 = value;
+            }
+        }
+
+        public decimal Utilidadoferta
+        {
+            get
+            {
+                return utilidadoferta;
+            }
+
+            set
+            {
+                utilidadoferta = value;
+            }
+        }
+
+        public int Idequipo
+        {
+            get
+            {
+                return idequipo;
+            }
+
+            set
+            {
+                idequipo = value;
+            }
+        }
+
 
 
 
@@ -206,7 +362,12 @@ namespace Capa_Datos
         public DatosArticulo() { 
         
         }
-        public DatosArticulo(string nombre,string codigo,string descripcion,int idCategoria,decimal precio,decimal cantInicial, int pesable,decimal varpreciocompra, decimal varutilidad, decimal varflete, DateTime varfecha, int varedicionusuario = 0, string varlugaredicion = "", int varidsubcategoria = 0, decimal varcantidadpormayor = 0, decimal varpreciopormayor = 0, decimal iva = 0)
+        public DatosArticulo(string nombre,string codigo,string descripcion,int idCategoria,decimal precio,decimal cantInicial,
+            int pesable,decimal varpreciocompra, decimal varutilidad,decimal varflete, DateTime varfecha,DateTime varfechaoferta, int varedicionusuario = 0,
+            string varlugaredicion = "", int varidsubcategoria = 0,decimal varcantidadpormayor = 0, decimal varpreciopormayor = 0, 
+            decimal iva = 0, decimal varcantidadpormayor2 = 0, decimal varpreciopormayor2 = 0, decimal varprecio_oferta = 0,
+             bool varhabilitarfechaoferta = false, decimal varbulto_cantidad = 0, string varbulto_codigobarra = "",
+             decimal varutilidadpormayor = 0, decimal varutilidadpormayor2 = 0,decimal varutilidadoferta = 0)
         {
             this.idCategoria = idCategoria;
             this.nombre = nombre;
@@ -225,9 +386,22 @@ namespace Capa_Datos
             this.Preciopormayor = varpreciopormayor;
             this.Cantidadpormayor = varcantidadpormayor;
             this.iva = iva;
-            
+            this.cantidadpormayor2 = varcantidadpormayor2;
+            this.preciopormayor2 = varpreciopormayor2;
+            this.precio_oferta = varprecio_oferta;
+            this.habilitarfechaoferta = varhabilitarfechaoferta;
+            this.bulto_cantidad = varbulto_cantidad;
+            this.bulto_codigobarra = varbulto_codigobarra;
+            this.fecha_oferta = varfechaoferta;
+            this.utilidadpreciopormayor = varutilidadpormayor;
+            this.utilidadpreciopormayor2 = varutilidadpormayor2;
+            this.utilidadoferta = varutilidadoferta;
 
          }
+        public DatosArticulo(int varidequipo)
+        {
+            this.idequipo = varidequipo;
+        }
         public DatosArticulo(int idArticulo,decimal precio, decimal cantidad = 0, string tipo = "")
         {
             this.idArticulo = idArticulo;
@@ -321,6 +495,38 @@ namespace Capa_Datos
                 SqlParameter pariva = ProcAlmacenado.asignarParametros("@iva", SqlDbType.Decimal , articulo.Iva);
                 comando.Parameters.Add(pariva);
 
+                SqlParameter parcantidadpormayor2 = ProcAlmacenado.asignarParametros("@cantidadpormayor2", SqlDbType.Decimal, articulo.cantidadpormayor2);
+                comando.Parameters.Add(parcantidadpormayor2);
+
+                SqlParameter parpreciopormayor2 = ProcAlmacenado.asignarParametros("@preciopormayor2", SqlDbType.Decimal, articulo.preciopormayor2);
+                comando.Parameters.Add(parpreciopormayor2);
+
+                SqlParameter parprecio_oferta = ProcAlmacenado.asignarParametros("@precio_oferta", SqlDbType.Decimal, articulo.precio_oferta);
+                comando.Parameters.Add(parprecio_oferta);
+
+                SqlParameter parfechadeoferta = ProcAlmacenado.asignarParametros("@fechadeoferta", SqlDbType.DateTime, articulo.fecha_oferta);
+                comando.Parameters.Add(parfechadeoferta);
+
+                SqlParameter parhabilitarfechaoferta = ProcAlmacenado.asignarParametros("@habilitarfechaoferta", SqlDbType.Bit, articulo.habilitarfechaoferta);
+                comando.Parameters.Add(parhabilitarfechaoferta);
+
+                SqlParameter parbulto_cantidad = ProcAlmacenado.asignarParametros("@bulto_cantidad", SqlDbType.Decimal, articulo.bulto_cantidad);
+                comando.Parameters.Add(parbulto_cantidad);
+
+                SqlParameter parbulto_codigobarra= ProcAlmacenado.asignarParametros("@bulto_codigobarra", SqlDbType.VarChar, articulo.bulto_codigobarra);
+                comando.Parameters.Add(parbulto_codigobarra);
+
+                SqlParameter parutilidadpreciomayorista = ProcAlmacenado.asignarParametros("@utilidadpormayor", SqlDbType.Decimal, articulo.utilidadpreciopormayor);
+                comando.Parameters.Add(parutilidadpreciomayorista);
+
+                SqlParameter parutilidadpreciomayorista2 = ProcAlmacenado.asignarParametros("@utilidadpormayor2", SqlDbType.Decimal, articulo.utilidadpreciopormayor2);
+                comando.Parameters.Add(parutilidadpreciomayorista2);
+
+                SqlParameter parutilidadoferta = ProcAlmacenado.asignarParametros("@utilidadoferta", SqlDbType.Decimal, articulo.utilidadoferta);
+                comando.Parameters.Add(parutilidadoferta);
+
+
+
                 if (comando.ExecuteNonQuery() == 1)
                 {
                     respuesta = "ok";
@@ -410,6 +616,37 @@ namespace Capa_Datos
 
                 SqlParameter pariva = ProcAlmacenado.asignarParametros("@iva", SqlDbType.Decimal, articulo.iva);
                 comando.Parameters.Add(pariva);
+
+                SqlParameter parcantidadpormayor2 = ProcAlmacenado.asignarParametros("@cantidadpormayor2", SqlDbType.Decimal, articulo.cantidadpormayor2);
+                comando.Parameters.Add(parcantidadpormayor2);
+
+                SqlParameter parpreciopormayor2 = ProcAlmacenado.asignarParametros("@preciopormayor2", SqlDbType.Decimal, articulo.preciopormayor2);
+                comando.Parameters.Add(parpreciopormayor2);
+
+                SqlParameter parprecio_oferta = ProcAlmacenado.asignarParametros("@precio_oferta", SqlDbType.Decimal, articulo.precio_oferta);
+                comando.Parameters.Add(parprecio_oferta);
+
+                SqlParameter parfechadeoferta = ProcAlmacenado.asignarParametros("@fechadeoferta", SqlDbType.DateTime, articulo.fecha_oferta);
+                comando.Parameters.Add(parfechadeoferta);
+
+                SqlParameter parhabilitarfechaoferta = ProcAlmacenado.asignarParametros("@habilitarfechaoferta", SqlDbType.Bit, articulo.habilitarfechaoferta);
+                comando.Parameters.Add(parhabilitarfechaoferta);
+
+                SqlParameter parbulto_cantidad = ProcAlmacenado.asignarParametros("@bulto_cantidad", SqlDbType.Decimal, articulo.bulto_cantidad);
+                comando.Parameters.Add(parbulto_cantidad);
+
+                SqlParameter parbulto_codigobarra = ProcAlmacenado.asignarParametros("@bulto_codigobarra", SqlDbType.VarChar, articulo.bulto_codigobarra);
+                comando.Parameters.Add(parbulto_codigobarra);
+
+                SqlParameter parutilidadpreciomayorista = ProcAlmacenado.asignarParametros("@utilidadpormayor", SqlDbType.Decimal, articulo.utilidadpreciopormayor);
+                comando.Parameters.Add(parutilidadpreciomayorista);
+
+                SqlParameter parutilidadpreciomayorista2 = ProcAlmacenado.asignarParametros("@utilidadpormayor2", SqlDbType.Decimal, articulo.utilidadpreciopormayor2);
+                comando.Parameters.Add(parutilidadpreciomayorista2);
+
+                SqlParameter parutilidadoferta = ProcAlmacenado.asignarParametros("@utilidadoferta", SqlDbType.Decimal, articulo.utilidadoferta);
+                comando.Parameters.Add(parutilidadoferta);
+
 
                 if (comando.ExecuteNonQuery() == 1)
                 {
@@ -794,22 +1031,34 @@ namespace Capa_Datos
         {
             this.sindatos = false;
             string query;
+            //string query2 = "";
             query = "";
             SqlConnection cn = new SqlConnection(Conexion.conexion);
             cn.Open();
-
+            //      ,[cantidadpormayor2]
+            //,[preciopormayor2]
+            //,[precio_oferta]
+            //,[fechadeoferta]
+            //,[habilitarfechaoferta]
+            //,[bulto_cantidad]
+            //,[bulto_codigobarra]
+            query = "SELECT a.idarticulo,a.codigo ,a.nombre ,a.descripcion ,a.idcategoria ,a.precio,a.stock_actual,a.pesable,a.cantidadpormayor, a.preciopormayor,a.iva,a.cantidadpormayor2,a.preciopormayor2,a.precio_oferta,a.fechadeoferta,a.habilitarfechaoferta ,a.bulto_cantidad ,a.bulto_codigobarra,c.nombre as nombrecategoria FROM articulo A inner join categoria C on C.idcategoria = A.idcategoria  WHERE ";
             if (tipo == "poridarticulo")
             {
-                query = "SELECT idarticulo,codigo ,nombre ,descripcion ,idcategoria ,precio,stock_actual,pesable,cantidadpormayor, preciopormayor,iva FROM articulo WHERE idarticulo = @id";
+                query = query + " idarticulo = @id";
             }
             if (tipo == "porbarra")
             {
-                query = "SELECT idarticulo,codigo ,nombre ,descripcion ,idcategoria ,precio,stock_actual,pesable,cantidadpormayor, preciopormayor,iva FROM articulo WHERE codigo = @id";
+                query = query + " codigo = @id";
+            }
+            if (tipo == "porbulto")
+            {
+                query = query + " bulto_codigobarra = @id";
             }
 
            
             SqlCommand cmd = new SqlCommand(query, cn);
-            if (tipo == "porbarra")
+            if (tipo == "porbarra" || tipo == "porbulto")
             {
                 cmd.Parameters.AddWithValue("@id", codbarra);
             }
@@ -837,7 +1086,12 @@ namespace Capa_Datos
                 this.Cantidadpormayor = Convert.ToDecimal(reader["cantidadpormayor"]);
                 this.Preciopormayor = Convert.ToDecimal(reader["preciopormayor"]);
                 this.iva = Convert.ToDecimal(reader["iva"]);
-
+                this.cantidadpormayor2 = Convert.ToDecimal(reader["cantidadpormayor2"]);
+                this.preciopormayor2 = Convert.ToDecimal(reader["preciopormayor2"]);
+                this.precio_oferta = Convert.ToDecimal(reader["precio_oferta"]);
+                this.fecha_oferta = Convert.ToDateTime(reader["fechadeoferta"]);
+                this.habilitarfechaoferta = Convert.ToBoolean(reader["habilitarfechaoferta"]);
+                this.Nombrecategoria = Convert.ToString(reader["nombrecategoria"]);
                 this.sindatos = true;
             }
 
@@ -1045,10 +1299,27 @@ namespace Capa_Datos
                         SqlParameter parCosto = ProcAlmacenado.asignarParametros("@precio_compra", SqlDbType.Decimal, articulo.PrecioCompra);
                         comando.Parameters.Add(parCosto);
 
+                    SqlParameter parutilidadpormayor = ProcAlmacenado.asignarParametros("@utilidadpormayor", SqlDbType.Decimal, articulo.Utilidadpreciopormayor);
+                    comando.Parameters.Add(parutilidadpormayor);
 
-                       
+                    SqlParameter parutilidadpormayor2 = ProcAlmacenado.asignarParametros("@utilidadpormayor2", SqlDbType.Decimal, articulo.Utilidadpreciopormayor2);
+                    comando.Parameters.Add(parutilidadpormayor2);
 
-                        if (comando.ExecuteNonQuery() == 1)
+                    SqlParameter parutilidadoferta = ProcAlmacenado.asignarParametros("@utilidadoferta", SqlDbType.Decimal, articulo.Utilidadoferta);
+                    comando.Parameters.Add(parutilidadoferta);
+
+                    SqlParameter parpreciopormayor= ProcAlmacenado.asignarParametros("@preciopormayor", SqlDbType.Decimal, articulo.Preciopormayor);
+                    comando.Parameters.Add(parpreciopormayor);
+
+                    SqlParameter parpreciopormayor2 = ProcAlmacenado.asignarParametros("@preciopormayor2", SqlDbType.Decimal, articulo.Preciopormayor2);
+                    comando.Parameters.Add(parpreciopormayor2);
+
+                    SqlParameter parprecio_oferta = ProcAlmacenado.asignarParametros("@precio_oferta", SqlDbType.Decimal, articulo.Precio_oferta);
+                    comando.Parameters.Add(parprecio_oferta);
+
+
+
+                    if (comando.ExecuteNonQuery() == 1)
                         {
                             respuesta = "ok";
                         }
@@ -1229,7 +1500,153 @@ namespace Capa_Datos
             
 
         }
+        public string cargarproductogondola(List<DatosArticulo> listaArticulo)
+        {
 
-      
+            //modo 9 para DB
+            SqlConnection cn = new SqlConnection(Conexion.conexion);
+
+            string respuesta = "";
+            try
+            {
+
+                cn.Open();
+                //abro conexion
+                SqlTransaction transaccion = cn.BeginTransaction();
+
+                respuesta = "ok";
+
+                SqlCommand comando = ProcAlmacenado.CrearProc(cn, "REPORTE_GONDOLA", transaccion);
+
+                SqlParameter parModo = ProcAlmacenado.asignarParametros("@modo", SqlDbType.NVarChar, "eliminar");
+                comando.Parameters.Add(parModo);
+
+                SqlParameter paridequipo = ProcAlmacenado.asignarParametros("@idequipo", SqlDbType.Int, idequipo);
+                comando.Parameters.Add(paridequipo);
+                comando.ExecuteNonQuery();
+
+                if (respuesta.Equals("ok"))
+                {
+                    foreach (DatosArticulo articulo in listaArticulo)
+                    {
+                        comando = ProcAlmacenado.CrearProc(cn, "REPORTE_GONDOLA", transaccion);
+
+                        parModo = ProcAlmacenado.asignarParametros("@modo", SqlDbType.NVarChar, "agregar");
+                        comando.Parameters.Add(parModo);
+                        //Asigno al parametro @idcategoria, aunque no lo use
+                        SqlParameter parcodigo = ProcAlmacenado.asignarParametros("@idarticulo", SqlDbType.Int, Convert.ToInt32(articulo.idArticulo));
+                        comando.Parameters.Add(parcodigo);
+
+                        paridequipo = ProcAlmacenado.asignarParametros("@idequipo", SqlDbType.Int, idequipo);
+                        comando.Parameters.Add(paridequipo);
+
+                        SqlParameter parprecio_unidad = ProcAlmacenado.asignarParametros("@precio_unidad", SqlDbType.Decimal, articulo.precio);
+                        comando.Parameters.Add(parprecio_unidad);
+
+                        SqlParameter parpreciopormayor = ProcAlmacenado.asignarParametros("@preciopormayor", SqlDbType.Decimal, articulo.preciopormayor);
+                        comando.Parameters.Add(parpreciopormayor);
+
+                        SqlParameter parpreciopormayor2 = ProcAlmacenado.asignarParametros("@preciopormayor2", SqlDbType.Decimal, articulo.preciopormayor2);
+                        comando.Parameters.Add(parpreciopormayor2);
+
+
+                        SqlParameter parprecio_oferta = ProcAlmacenado.asignarParametros("@precio_oferta", SqlDbType.Decimal, articulo.precio_oferta);
+                        comando.Parameters.Add(parprecio_oferta);
+
+                        SqlParameter paridcategoria = ProcAlmacenado.asignarParametros("@idcategoria", SqlDbType.Int, articulo.idCategoria);
+                        comando.Parameters.Add(paridcategoria);
+
+                        SqlParameter parcodigobarra = ProcAlmacenado.asignarParametros("@codigobarraproducto", SqlDbType.NVarChar, articulo.codigo);
+                        comando.Parameters.Add(parcodigobarra);
+
+
+
+                        if (comando.ExecuteNonQuery() == 1)
+                        {
+                            respuesta = "ok";
+                        }
+                        else
+                        {
+                            //si ocurre un error sale del foreach
+                            respuesta = "error en la edición";
+                            break;
+                        }
+
+
+
+                    }
+
+                }
+                    //actualizo los datos de los productos
+               
+                //si ocurrio algun error hace un rollback
+                //o sino confirma la trasaccion con un commit
+                if (respuesta.Equals("ok"))
+                {
+
+                    transaccion.Commit();
+                }
+                else
+                {
+                    transaccion.Rollback();
+                }
+
+
+
+
+            }
+            catch (Exception ex)
+            {
+                respuesta = "error conexion: " + ex.Message;
+
+            }
+            finally
+            {
+                if (cn.State == ConnectionState.Open)
+                {
+
+                    cn.Close();
+                }
+            }
+
+            return respuesta;
+
+
+
+        }
+        public DataTable consultaproductogondola()
+        {
+
+            SqlConnection cn = new SqlConnection(Conexion.conexion);
+            //le asigno en el constructor el nombre de la tabla
+            DataTable dtResult = new DataTable("articulo");
+            try
+            {
+                cn.Open();
+
+                SqlCommand comando = ProcAlmacenado.CrearProc(cn, "REPORTE_GONDOLA");
+                //Modo 5 MOSTRAR
+                SqlParameter parModo = ProcAlmacenado.asignarParametros("@modo", SqlDbType.NVarChar, "consulta");
+                comando.Parameters.Add(parModo);
+                //Asigno al parametro @idcategoria, aunque no lo use
+                SqlParameter parcodigo = ProcAlmacenado.asignarParametros("@idequipo", SqlDbType.Int, idequipo);
+                comando.Parameters.Add(parcodigo);
+
+                
+                //creo el objeto adapter del data provider le paso el sqlcommand
+                SqlDataAdapter datosResult = new SqlDataAdapter(comando);
+                //los resultados los actualizo en el datatable dtResult
+                datosResult.Fill(dtResult);
+
+            }
+            catch (Exception ex)
+            {
+                dtResult = null;
+                throw ex;
+            }
+            return dtResult;
+
+        }
+
     }
 }

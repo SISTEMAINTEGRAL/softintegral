@@ -16,6 +16,7 @@ using System.Drawing;
 using XanderUI.Designers;
 using System.IO.Ports;
 using System.Globalization;
+using System.Diagnostics;
 
 namespace Capa_Presentacion
 {
@@ -468,6 +469,7 @@ namespace Capa_Presentacion
                 stringCol.Add(Convert.ToString(row[campocoleccion]));
             }
 
+
             return stringCol;
         }
 
@@ -795,17 +797,25 @@ namespace Capa_Presentacion
 * @return devuelve el string completo para utilizar en el codigo de barras
 */
         public static String calculoDigitoVerificador(String txtCuit, String txtCodComp,
-        String txtPtoVta, String txtCae, String txtVtoCae)
+        String txtPtoVta, String txtCae, String txtVtoCae, bool cae = true, string textoaprocesar = "0")
         {
             int i;
-            String cod;
+            String cod = "";
             String txtDigito;
             int impares;
             int pares;
             int total;
             int digito;
             String txtCodBarra;
-            cod = txtCuit + txtCodComp.Substring(1,2) + txtPtoVta.PadLeft(4, '0') + txtCae + txtVtoCae;
+            if (cae == true)
+            {
+                cod = txtCuit + txtCodComp.Substring(1, 2) + txtPtoVta.PadLeft(4, '0') + txtCae + txtVtoCae;
+            }
+            else
+            {
+                cod = textoaprocesar;
+            }
+            
            // cod = txtCuit  + txtCae + txtVtoCae;
             txtCodBarra = cod;
             char[] inputArray = txtCodBarra.ToCharArray();
@@ -830,26 +840,10 @@ namespace Capa_Presentacion
                 cont++;
             }
 
-            //for (i = 1; i < 40; i++)
-            //{
-            //    //
-            //    // If I Mod 2 = 0 Then
-            //    if (i % 2 == 0)
-            //    {
-            //        // es par
-            //        // Pares = Pares + CLng(Mid(Cod, I, 1))
-            //        pares += Integer.valueOf(StringUtils.mid(cod, i - 1, 1));
-            //    }
-            //    else
-            //    {
-            //        // es impar
-            //        // Impares = Impares + CLng(Mid(Cod, I, 1))
-            //        impares += Integer.valueOf(StringUtils.mid(cod, i - 1, 1));
-            //    }
-            //}
-            //
+          
             impares = 3 * impares;
             total = pares + impares;
+
             digito = 10 - (total % 10);
             //
             if (digito == 10)
@@ -858,6 +852,52 @@ namespace Capa_Presentacion
             }
             return cod + digito.ToString();
         }
+        public static bool controlartextbox(Control control)
+        {
+            bool enblanco = false;
+            ErrorProvider erroricono = new ErrorProvider();
+            foreach (var txt  in control.Controls)
+            {
+                if (txt is TextBox)
+                {
+                    
+                    if (((TextBox)txt).Text.Length == 0 )
+                    {
+                        erroricono.SetError(((TextBox)txt), "Ingrese un Nombre de Producto");
+                        enblanco = true;
+                        return enblanco;
+                        break;
+                    }
+                    
+                    
+                }
+               
+            }
+            return enblanco;
+        }
+        public static void habilitardesabilitarcontrol(Control control,bool flag)
+        {
+            foreach (var txt in control.Controls)
+            {
+                if (txt is TextBox)
+                {
+                    ((TextBox)txt).Enabled = flag;
+                }
+            }
 
-    }
+        }
+        public static void recorrerylimpiartextbox(Control control, string inicializarcon)
+        {
+            foreach (var txt  in control.Controls)
+            {
+                if (txt is TextBox)
+                {
+                        ((TextBox)txt).Text = inicializarcon;
+                    
+                    
+                }
+            }
+        }
+
+        }
 }

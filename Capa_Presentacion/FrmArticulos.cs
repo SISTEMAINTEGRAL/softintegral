@@ -463,16 +463,17 @@ namespace Capa_Presentacion
                 string respuesta = "";
                 //if (String.IsNullOrEmpty(txtPrecio.Text))
                 //{
-                    
+
                 //}
                 //si el string es nulo o vacio 
-                if (String.IsNullOrEmpty(txtNombreConfig.Text) || String.IsNullOrEmpty(txtPrecio.Text) || String.IsNullOrEmpty(txtCantInicial.Text) || String.IsNullOrEmpty(txtUtilidad.Text) || String.IsNullOrEmpty(TxtPcompra.Text) || String.IsNullOrEmpty(Txtflete.Text) )
+                
+                if (controlargroupbox () == true)
                 {
                     UtilityFrm.mensajeError("Hay Campos sin completar,rellene y vuelva a intentarlo");
                    
-                    if(txtNombreConfig.Text.Length==0){ errorIcono.SetError(txtNombreConfig, "Ingrese un Nombre de Producto");}
-                    if (txtPrecio.Text.Length == 0) { errorIcono.SetError(txtPrecio, "Ingrese un Precio"); }
-                    if (txtCantInicial.Text.Length == 0) { errorIcono.SetError(txtCantInicial, "Ingrese una Cantidad Inicial"); }    
+                    //if(txtNombreConfig.Text.Length==0){ errorIcono.SetError(txtNombreConfig, "Ingrese un Nombre de Producto");}
+                    //if (txtPrecio.Text.Length == 0) { errorIcono.SetError(txtPrecio, "Ingrese un Precio"); }
+                    //if (txtCantInicial.Text.Length == 0) { errorIcono.SetError(txtCantInicial, "Ingrese una Cantidad Inicial"); }    
                     
                 
                 }
@@ -483,7 +484,15 @@ namespace Capa_Presentacion
                     {
                         //pesable es un bit que representa un producto si es pesable (KG) o no
                        
-                        respuesta = NegocioArticulo.insertar(txtNombreConfig.Text.Trim(), txtCodigoBarra.Text.Trim(), txtDescripcion.Text.Trim(), Convert.ToInt32(cbxCategoria.SelectedValue), Convert.ToDecimal(txtPrecio.Text.Trim()),Convert.ToInt32(txtCantInicial.Text.Trim()),pesable,Convert.ToDecimal(TxtPcompra.Text),Convert.ToDecimal(txtUtilidad.Text),Convert.ToDecimal (Txtflete.Text),Convert.ToDecimal(txtCantidadpormayor.Text),Convert.ToDecimal(txtPreciopormayor.Text),Convert.ToInt32(CBSubcategoria.SelectedValue),Convert.ToDecimal (CBIVA.Text));
+                        respuesta = NegocioArticulo.insertar(txtNombreConfig.Text.Trim(), txtCodigoBarra.Text.Trim(), txtDescripcion.Text.Trim(), Convert.ToInt32(cbxCategoria.SelectedValue), 
+                                    Convert.ToDecimal(txtPrecio.Text.Trim()),Convert.ToInt32(txtCantInicial.Text.Trim()),pesable,
+                                    Convert.ToDecimal(TxtPcompra.Text),Convert.ToDecimal(txtUtilidad.Text),Convert.ToDecimal (Txtflete.Text),
+                                    Convert.ToDecimal(txtCantidadpormayor.Text),Convert.ToDecimal(txtPreciopormayor.Text),
+                                    Convert.ToInt32(CBSubcategoria.SelectedValue),Convert.ToDecimal (CBIVA.Text),
+                                    Convert.ToDecimal(TxtCantidad2.Text),Convert.ToDecimal(TxtPrecio2.Text),
+                                    Convert.ToDecimal(txtPrecioOferta.Text),Convert.ToDateTime(dtpFechaVen.Text)  ,CHKFechaVenOferta.Checked,
+                                    Convert.ToDecimal(TxtCantidadBulto.Text) , TxtCodigobarraBulto.Text, Convert.ToDecimal(txtUtilidadX6.Text),
+                                    Convert.ToDecimal(TxtUtilidadXCaja.Text), Convert.ToDecimal(TxtUtilidadOferta.Text));
 
                         if (respuesta.Equals("ok"))
                         {
@@ -502,7 +511,7 @@ namespace Capa_Presentacion
                     {
 
                         //respuesta = NegocioArticulo.editar(Convert.ToInt32(txtCodigo.Text.Trim()), Convert.ToString(txtNombreConfig.Text.Trim()), txtCodigoBarra.Text.Trim(), Convert.ToString(txtDescripcion.Text.Trim()), Convert.ToInt32(cbxCategoria.SelectedValue));
-                        respuesta = NegocioArticulo.editar(Convert.ToInt32(txtCodigo.Text.Trim()), Convert.ToString(txtNombreConfig.Text.Trim()), txtCodigoBarra.Text.Trim(), Convert.ToString(txtDescripcion.Text.Trim()), Convert.ToInt32(cbxCategoria.SelectedValue), Convert.ToDecimal(txtPrecio.Text.Trim()), Convert.ToDecimal(txtCantInicial.Text.Trim()), pesable,Convert.ToDecimal(TxtPcompra.Text),Convert.ToDecimal(txtUtilidad.Text),Convert.ToDecimal (Txtflete.Text == "" ? "0":Txtflete.Text),DateTime.Now,NegocioConfigEmpresa.idusuario,"formulario articulo",Convert.ToDecimal(txtCantidadpormayor.Text),Convert.ToDecimal(txtPreciopormayor.Text),Convert.ToInt32(CBSubcategoria.SelectedValue), Convert.ToDecimal(CBIVA.Text));
+                        respuesta = NegocioArticulo.editar(Convert.ToInt32(txtCodigo.Text.Trim()), Convert.ToString(txtNombreConfig.Text.Trim()), txtCodigoBarra.Text.Trim(), Convert.ToString(txtDescripcion.Text.Trim()), Convert.ToInt32(cbxCategoria.SelectedValue), Convert.ToDecimal(txtPrecio.Text.Trim()), Convert.ToDecimal(txtCantInicial.Text.Trim()), pesable,Convert.ToDecimal(TxtPcompra.Text),Convert.ToDecimal(txtUtilidad.Text),Convert.ToDecimal (Txtflete.Text == "" ? "0":Txtflete.Text),DateTime.Now,Convert.ToDateTime(dtpFechaVen.Text) ,NegocioConfigEmpresa.idusuario,"formulario articulo",Convert.ToDecimal(txtCantidadpormayor.Text),Convert.ToDecimal(txtPreciopormayor.Text),Convert.ToInt32(CBSubcategoria.SelectedValue), Convert.ToDecimal(CBIVA.Text),Convert.ToDecimal(TxtCantidad2.Text),Convert.ToDecimal(TxtPrecio2.Text),Convert.ToDecimal(txtPrecioOferta.Text),CHKFechaVenOferta.Checked,Convert.ToDecimal(TxtCantidadBulto.Text),TxtCodigobarraBulto.Text );
 
                         if (respuesta.Equals("ok"))
                         {
@@ -523,6 +532,9 @@ namespace Capa_Presentacion
 
                     //habilito el codigo para poder editar
                     habilitarcontroles(true,false);
+                    UtilityFrm.recorrerylimpiartextbox(xuiCustomGroupbox1, "0");
+                    UtilityFrm.recorrerylimpiartextbox(xuiCustomGroupbox2, "0");
+                    UtilityFrm.recorrerylimpiartextbox(xuiCustomGroupbox3, "0");
                     UtilityFrm.limpiarTextbox(txtDescripcion, txtNombreConfig, txtNombre, txtCodigo, txtCodigoBarra, txtCantInicial);
                     UtilityFrm.limpiarTextbox(txtPrecio,txtUtilidad,TxtPcompra,Txtflete);
                     inicializartextbox();
@@ -543,7 +555,45 @@ namespace Capa_Presentacion
             
 
         }
+        private bool controlargroupbox()
+        {
+            if (TxtCodigobarraBulto.Text == "")
+            {
+                TxtCodigobarraBulto.Text = "0";
+            }
+            if (UtilityFrm.controlartextbox(xuiCustomGroupbox1))
+            {
+                return true;
+            }
+            if (UtilityFrm.controlartextbox(xuiCustomGroupbox2))
+            {
+                return true;
+            }
+            if (UtilityFrm.controlartextbox(xuiCustomGroupbox3))
+            {
+                return true;
+            }
+            if (UtilityFrm.controlartextbox(grpboxCategoria))
+            {
+                return true;
+            }
 
+            if (UtilityFrm.controlartextbox (xuiCustomGroupbox4))
+            {
+                return true;
+            }
+
+            return false;
+        }
+        private void habilitarodesabilitartextbox(bool flag)
+        {
+            UtilityFrm.habilitardesabilitarcontrol(xuiCustomGroupbox1,flag);
+            UtilityFrm.habilitardesabilitarcontrol(xuiCustomGroupbox2, flag);
+            UtilityFrm.habilitardesabilitarcontrol(xuiCustomGroupbox3, flag);
+            UtilityFrm.habilitardesabilitarcontrol(grpboxCategoria, flag);
+            UtilityFrm.habilitardesabilitarcontrol(xuiCustomGroupbox4, flag);
+            
+        }
         private void inicializartextbox()
         {
             TxtPcompra.Text = "0";
@@ -591,6 +641,7 @@ namespace Capa_Presentacion
             this.CBIVA.Enabled = var2;
 
             this.txtCantInicial.Enabled = habcantinicial;
+            habilitarodesabilitartextbox(var2);
         }
         private void btnEliminar_Click(object sender, EventArgs e)
         {
@@ -738,6 +789,17 @@ namespace Capa_Presentacion
                 txtDescripcion.Text = Convert.ToString(this.dataLista.CurrentRow.Cells["descripcion"].Value);
                 txtUtilidad.Text = Convert.ToString(decimal.Round(Convert.ToDecimal(this.dataLista.CurrentRow.Cells["utilidad"].Value), 2));
                 TxtPcompra.Text = Convert.ToString(decimal.Round(Convert.ToDecimal(this.dataLista.CurrentRow.Cells["precio_compra"].Value), 2));
+                 
+                TxtCantidad2.Text = Convert.ToString(decimal.Round(Convert.ToDecimal(this.dataLista.CurrentRow.Cells["cantidadpormayor2"].Value), 2));
+                txtPrecio.Text = Convert.ToString(decimal.Round(Convert.ToDecimal(this.dataLista.CurrentRow.Cells["preciopormayor2"].Value), 2));
+                txtPrecioOferta.Text = Convert.ToString(decimal.Round(Convert.ToDecimal(this.dataLista.CurrentRow.Cells["precio_oferta"].Value), 2));
+                dtpFechaVen.Text = Convert.ToString(this.dataLista.CurrentRow.Cells["fechadeoferta"].Value);
+                CHKFechaVenOferta.Checked = Convert.ToBoolean(this.dataLista.CurrentRow.Cells["habilitarfechaoferta"].Value);
+                TxtCantidadBulto.Text  = Convert.ToString(decimal.Round(Convert.ToDecimal(this.dataLista.CurrentRow.Cells["bulto_cantidad"].Value), 2));
+                TxtCodigobarraBulto.Text = Convert.ToString(this.dataLista.CurrentRow.Cells["bulto_codigobarra"].Value);
+                txtUtilidadX6.Text = Convert.ToString(this.dataLista.CurrentRow.Cells["utilidadpormayor"].Value);
+                TxtUtilidadXCaja.Text = Convert.ToString(this.dataLista.CurrentRow.Cells["utilidadpormayor2"].Value);
+                TxtUtilidadOferta.Text = Convert.ToString(this.dataLista.CurrentRow.Cells["utilidadoferta"].Value);
                 decimal precio = 0;
                 precio = Convert.ToDecimal(this.dataLista.CurrentRow.Cells["precio"].Value);
                 string iva  =Convert.ToString( UtilityFrm.formateodecimal ( Convert.ToDecimal(this.dataLista.CurrentRow.Cells["iva"].Value), 2));
@@ -1241,6 +1303,10 @@ namespace Capa_Presentacion
         private void TxtPcompra_Leave(object sender, EventArgs e)
         {
             calcularventa(Convert.ToDecimal(string.IsNullOrEmpty( TxtPcompra.Text) ? TxtPcompra.Text = "0": TxtPcompra.Text), Convert.ToDecimal(string.IsNullOrEmpty( txtUtilidad.Text) ? txtUtilidad.Text = "0":txtUtilidad.Text ), Convert.ToDecimal(String.IsNullOrEmpty(Txtflete.Text) ? Txtflete.Text = "0" : Txtflete.Text), Convert.ToDecimal(String.IsNullOrEmpty(txtPrecio.Text) ? txtPrecio.Text = "0" : txtPrecio.Text));
+            calcularpreciomayorista1(Convert.ToDecimal(string.IsNullOrEmpty(TxtPcompra.Text) ? TxtPcompra.Text = "0" : TxtPcompra.Text), Convert.ToDecimal(string.IsNullOrEmpty(txtUtilidadX6.Text) ? txtUtilidadX6.Text = "0" : txtUtilidadX6.Text), Convert.ToDecimal(String.IsNullOrEmpty(txtPreciopormayor.Text) ? txtPreciopormayor.Text = "0" : txtPreciopormayor.Text));
+            calcularpreciomayorista2(Convert.ToDecimal(string.IsNullOrEmpty(TxtPcompra.Text) ? TxtPcompra.Text = "0" : TxtPcompra.Text), Convert.ToDecimal(string.IsNullOrEmpty(TxtUtilidadXCaja.Text) ? TxtUtilidadXCaja.Text = "0" : TxtUtilidadXCaja.Text), Convert.ToDecimal(String.IsNullOrEmpty(TxtPrecio2.Text) ? TxtPrecio2.Text = "0" : TxtPrecio2.Text));
+            calcularprecio_oferta(Convert.ToDecimal(string.IsNullOrEmpty(TxtPcompra.Text) ? TxtPcompra.Text = "0" : TxtPcompra.Text), Convert.ToDecimal(string.IsNullOrEmpty(TxtUtilidadOferta.Text) ? TxtUtilidadOferta.Text = "0" : TxtUtilidadOferta.Text), Convert.ToDecimal(String.IsNullOrEmpty(txtPrecioOferta.Text) ? txtPrecioOferta.Text = "0" : txtPrecioOferta.Text));
+
         }
 
         private void TxtPcompra_KeyDown(object sender, KeyEventArgs e)
@@ -1248,6 +1314,10 @@ namespace Capa_Presentacion
             if (e.KeyCode == Keys.Enter)
             {
                 calcularventa(Convert.ToDecimal(TxtPcompra.Text), Convert.ToDecimal(txtUtilidad.Text), Convert.ToDecimal(String.IsNullOrEmpty(Txtflete.Text) ? Txtflete.Text = "0":Txtflete.Text), Convert.ToDecimal(txtPrecio.Text));
+                calcularpreciomayorista1(Convert.ToDecimal(string.IsNullOrEmpty(TxtPcompra.Text) ? TxtPcompra.Text = "0" : TxtPcompra.Text), Convert.ToDecimal(string.IsNullOrEmpty(txtUtilidadX6.Text) ? txtUtilidadX6.Text = "0" : txtUtilidadX6.Text), Convert.ToDecimal(String.IsNullOrEmpty(txtPreciopormayor.Text) ? txtPreciopormayor.Text = "0" : txtPreciopormayor.Text));
+                calcularpreciomayorista2(Convert.ToDecimal(string.IsNullOrEmpty(TxtPcompra.Text) ? TxtPcompra.Text = "0" : TxtPcompra.Text), Convert.ToDecimal(string.IsNullOrEmpty(TxtUtilidadXCaja.Text) ? TxtUtilidadXCaja.Text = "0" : TxtUtilidadXCaja.Text), Convert.ToDecimal(String.IsNullOrEmpty(TxtPrecio2.Text) ? TxtPrecio2.Text = "0" : TxtPrecio2.Text));
+                calcularprecio_oferta(Convert.ToDecimal(string.IsNullOrEmpty(TxtPcompra.Text) ? TxtPcompra.Text = "0" : TxtPcompra.Text), Convert.ToDecimal(string.IsNullOrEmpty(TxtUtilidadOferta.Text) ? TxtUtilidadOferta.Text = "0" : TxtUtilidadOferta.Text), Convert.ToDecimal(String.IsNullOrEmpty(txtPrecioOferta.Text) ? txtPrecioOferta.Text = "0" : txtPrecioOferta.Text));
+
             }
         }
 
@@ -1264,7 +1334,25 @@ namespace Capa_Presentacion
            txtUtilidad.Text = utilidad.ToString("###,##00");
            Txtflete.Text = flete.ToString("###,##00");
         }
+        private void calcularpreciomayorista1(decimal compra, decimal utilidad, decimal precio)
+        {
+           txtPreciopormayor.Text = Convert.ToString(decimal.Round(UtilityFrm.calcularventa(compra, utilidad, 0, precio), 2));
+           txtUtilidadX6.Text = utilidad.ToString("###,##00");
+            
+        }
 
+        private void calcularpreciomayorista2(decimal compra, decimal utilidad, decimal precio)
+        {
+            TxtPrecio2.Text = Convert.ToString(decimal.Round(UtilityFrm.calcularventa(compra, utilidad, 0, precio), 2));
+            TxtUtilidadXCaja.Text = utilidad.ToString("###,##00");
+
+        }
+        private void calcularprecio_oferta(decimal compra, decimal utilidad, decimal precio)
+        {
+            txtPrecioOferta.Text = Convert.ToString(decimal.Round(UtilityFrm.calcularventa(compra, utilidad, 0, precio), 2));
+            TxtUtilidadOferta.Text = utilidad.ToString("###,##00");
+
+        }
         private void calcularcosto(decimal compra, decimal utilidad, decimal flete, decimal precio)
         { 
             
@@ -1332,11 +1420,166 @@ namespace Capa_Presentacion
         private void txtPreciopormayor_Click(object sender, EventArgs e)
         {
             txtPreciopormayor.SelectAll();
+
         }
 
         private void txtCantidadpormayor_Click(object sender, EventArgs e)
         {
             txtCantidadpormayor.SelectAll();
+        }
+
+        private void grpboxCategoria_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void CHKFecha_CheckedChanged(object sender, EventArgs e)
+        {
+            dtpFechaVen.Enabled = CHKFechaVenOferta.Checked;
+        }
+
+        private void TxtPrecio2_Click(object sender, EventArgs e)
+        {
+            TxtPrecio2.SelectAll();
+        }
+
+        private void TxtCantidad2_Click(object sender, EventArgs e)
+        {
+            TxtCantidad2.SelectAll();
+        }
+
+        private void TxtCantidadBulto_Click(object sender, EventArgs e)
+        {
+            TxtCantidadBulto.SelectAll();
+        }
+
+        private void TxtCodigobarraBulto_Click(object sender, EventArgs e)
+        {
+            TxtCodigobarraBulto.SelectAll();
+        }
+
+        private void txtUtilidadX6_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            UtilityFrm.NumDecTeclado(e, txtUtilidadX6);
+        }
+
+        private void txtPreciopormayor_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            UtilityFrm.NumDecTeclado(e, txtPreciopormayor);
+        }
+
+        private void txtCantidadpormayor_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            UtilityFrm.NumDecTeclado(e, txtCantidadpormayor);
+        }
+
+        private void TxtUtilidadXCaja_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            UtilityFrm.NumDecTeclado(e, TxtUtilidadXCaja);
+        }
+
+        private void TxtPrecio2_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            UtilityFrm.NumDecTeclado(e, TxtPrecio2);
+        }
+
+        private void TxtCantidad2_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            UtilityFrm.NumDecTeclado(e, TxtCantidad2);
+        }
+
+        private void TxtUtilidadOferta_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            UtilityFrm.NumDecTeclado(e, TxtUtilidadOferta);
+        }
+
+        private void txtPrecioOferta_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            UtilityFrm.NumDecTeclado(e, txtPrecioOferta);
+        }
+
+        private void txtUtilidadX6_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                calcularpreciomayorista1(Convert.ToDecimal(string.IsNullOrEmpty(TxtPcompra.Text) ? TxtPcompra.Text = "0" : TxtPcompra.Text), Convert.ToDecimal(string.IsNullOrEmpty(txtUtilidadX6.Text) ? txtUtilidadX6.Text = "0" : txtUtilidadX6.Text), Convert.ToDecimal(String.IsNullOrEmpty(txtPreciopormayor.Text) ? txtPreciopormayor.Text = "0" : txtPreciopormayor.Text));
+                
+            }
+        }
+
+        private void txtPreciopormayor_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                calcularpreciomayorista1(Convert.ToDecimal(string.IsNullOrEmpty(TxtPcompra.Text) ? TxtPcompra.Text = "0" : TxtPcompra.Text), Convert.ToDecimal(string.IsNullOrEmpty(txtUtilidadX6.Text) ? txtUtilidadX6.Text = "0" : txtUtilidadX6.Text), Convert.ToDecimal(String.IsNullOrEmpty(txtPreciopormayor.Text) ? txtPreciopormayor.Text = "0" : txtPreciopormayor.Text));
+                
+            }
+        }
+
+        private void txtUtilidadX6_Leave(object sender, EventArgs e)
+        {
+            calcularpreciomayorista1(Convert.ToDecimal(string.IsNullOrEmpty(TxtPcompra.Text) ? TxtPcompra.Text = "0" : TxtPcompra.Text), Convert.ToDecimal(string.IsNullOrEmpty(txtUtilidadX6.Text) ? txtUtilidadX6.Text = "0" : txtUtilidadX6.Text), Convert.ToDecimal(String.IsNullOrEmpty(txtPreciopormayor.Text) ? txtPreciopormayor.Text = "0" : txtPreciopormayor.Text));
+            
+        }
+
+        private void txtPreciopormayor_Leave(object sender, EventArgs e)
+        {
+            calcularpreciomayorista1(Convert.ToDecimal(string.IsNullOrEmpty(TxtPcompra.Text) ? TxtPcompra.Text = "0" : TxtPcompra.Text), Convert.ToDecimal(string.IsNullOrEmpty(txtUtilidadX6.Text) ? txtUtilidadX6.Text = "0" : txtUtilidadX6.Text), Convert.ToDecimal(String.IsNullOrEmpty(txtPreciopormayor.Text) ? txtPreciopormayor.Text = "0" : txtPreciopormayor.Text));
+            
+        }
+
+        private void TxtUtilidadXCaja_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                
+                calcularpreciomayorista2(Convert.ToDecimal(string.IsNullOrEmpty(TxtPcompra.Text) ? TxtPcompra.Text = "0" : TxtPcompra.Text), Convert.ToDecimal(string.IsNullOrEmpty(TxtUtilidadXCaja.Text) ? TxtUtilidadXCaja.Text = "0" : TxtUtilidadXCaja.Text), Convert.ToDecimal(String.IsNullOrEmpty(TxtPrecio2.Text) ? TxtPrecio2.Text = "0" : TxtPrecio2.Text));
+                
+            }
+        }
+
+        private void TxtUtilidadXCaja_Leave(object sender, EventArgs e)
+        {
+            
+            calcularpreciomayorista2(Convert.ToDecimal(string.IsNullOrEmpty(TxtPcompra.Text) ? TxtPcompra.Text = "0" : TxtPcompra.Text), Convert.ToDecimal(string.IsNullOrEmpty(TxtUtilidadXCaja.Text) ? TxtUtilidadXCaja.Text = "0" : TxtUtilidadXCaja.Text), Convert.ToDecimal(String.IsNullOrEmpty(TxtPrecio2.Text) ? TxtPrecio2.Text = "0" : TxtPrecio2.Text));
+            
+        }
+
+        private void TxtPrecio2_Leave(object sender, EventArgs e)
+        {
+            
+            calcularpreciomayorista2(Convert.ToDecimal(string.IsNullOrEmpty(TxtPcompra.Text) ? TxtPcompra.Text = "0" : TxtPcompra.Text), Convert.ToDecimal(string.IsNullOrEmpty(TxtUtilidadXCaja.Text) ? TxtUtilidadXCaja.Text = "0" : TxtUtilidadXCaja.Text), Convert.ToDecimal(String.IsNullOrEmpty(TxtPrecio2.Text) ? TxtPrecio2.Text = "0" : TxtPrecio2.Text));
+            
+        }
+
+        private void TxtPrecio2_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                
+                calcularpreciomayorista2(Convert.ToDecimal(string.IsNullOrEmpty(TxtPcompra.Text) ? TxtPcompra.Text = "0" : TxtPcompra.Text), Convert.ToDecimal(string.IsNullOrEmpty(TxtUtilidadXCaja.Text) ? TxtUtilidadXCaja.Text = "0" : TxtUtilidadXCaja.Text), Convert.ToDecimal(String.IsNullOrEmpty(TxtPrecio2.Text) ? TxtPrecio2.Text = "0" : TxtPrecio2.Text));
+                
+            }
+        }
+
+        private void TxtUtilidadOferta_Leave(object sender, EventArgs e)
+        {
+            calcularprecio_oferta(Convert.ToDecimal(string.IsNullOrEmpty(TxtPcompra.Text) ? TxtPcompra.Text = "0" : TxtPcompra.Text), Convert.ToDecimal(string.IsNullOrEmpty(TxtUtilidadOferta.Text) ? TxtUtilidadOferta.Text = "0" : TxtUtilidadOferta.Text), Convert.ToDecimal(String.IsNullOrEmpty(txtPrecioOferta.Text) ? txtPrecioOferta.Text = "0" : txtPrecioOferta.Text));
+        }
+
+        private void txtPrecioOferta_Leave(object sender, EventArgs e)
+        {
+            
+            
+            calcularprecio_oferta(Convert.ToDecimal(string.IsNullOrEmpty(TxtPcompra.Text) ? TxtPcompra.Text = "0" : TxtPcompra.Text), Convert.ToDecimal(string.IsNullOrEmpty(TxtUtilidadOferta.Text) ? TxtUtilidadOferta.Text = "0" : TxtUtilidadOferta.Text), Convert.ToDecimal(String.IsNullOrEmpty(txtPrecioOferta.Text) ? txtPrecioOferta.Text = "0" : txtPrecioOferta.Text));
+        }
+
+        private void txtPrecioOferta_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                calcularprecio_oferta(Convert.ToDecimal(string.IsNullOrEmpty(TxtPcompra.Text) ? TxtPcompra.Text = "0" : TxtPcompra.Text), Convert.ToDecimal(string.IsNullOrEmpty(TxtUtilidadOferta.Text) ? TxtUtilidadOferta.Text = "0" : TxtUtilidadOferta.Text), Convert.ToDecimal(String.IsNullOrEmpty(txtPrecioOferta.Text) ? txtPrecioOferta.Text = "0" : txtPrecioOferta.Text));
+            }
         }
 
         private void Txtflete_KeyPress(object sender, KeyPressEventArgs e)

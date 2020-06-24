@@ -175,7 +175,7 @@
             // lblCodigo
             // 
             this.lblCodigo.AutoSize = true;
-            this.lblCodigo.Location = new System.Drawing.Point(28, 39);
+            this.lblCodigo.Location = new System.Drawing.Point(12, 39);
             this.lblCodigo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblCodigo.Name = "lblCodigo";
             this.lblCodigo.Size = new System.Drawing.Size(75, 25);
@@ -185,7 +185,7 @@
             // lblFechaVenta
             // 
             this.lblFechaVenta.AutoSize = true;
-            this.lblFechaVenta.Location = new System.Drawing.Point(28, 78);
+            this.lblFechaVenta.Location = new System.Drawing.Point(12, 78);
             this.lblFechaVenta.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblFechaVenta.Name = "lblFechaVenta";
             this.lblFechaVenta.Size = new System.Drawing.Size(151, 25);
@@ -196,7 +196,7 @@
             // 
             this.txtFechaVenta.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtFechaVenta.Enabled = false;
-            this.txtFechaVenta.Location = new System.Drawing.Point(247, 75);
+            this.txtFechaVenta.Location = new System.Drawing.Point(214, 75);
             this.txtFechaVenta.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.txtFechaVenta.Name = "txtFechaVenta";
             this.txtFechaVenta.Size = new System.Drawing.Size(209, 30);
@@ -206,7 +206,7 @@
             // 
             this.txtEstado.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtEstado.Enabled = false;
-            this.txtEstado.Location = new System.Drawing.Point(247, 113);
+            this.txtEstado.Location = new System.Drawing.Point(214, 113);
             this.txtEstado.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.txtEstado.Name = "txtEstado";
             this.txtEstado.Size = new System.Drawing.Size(209, 30);
@@ -215,7 +215,7 @@
             // lblEstado
             // 
             this.lblEstado.AutoSize = true;
-            this.lblEstado.Location = new System.Drawing.Point(28, 116);
+            this.lblEstado.Location = new System.Drawing.Point(12, 116);
             this.lblEstado.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblEstado.Name = "lblEstado";
             this.lblEstado.Size = new System.Drawing.Size(73, 25);
@@ -226,7 +226,7 @@
             // 
             this.txtCodigo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtCodigo.Enabled = false;
-            this.txtCodigo.Location = new System.Drawing.Point(247, 36);
+            this.txtCodigo.Location = new System.Drawing.Point(214, 36);
             this.txtCodigo.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.txtCodigo.Name = "txtCodigo";
             this.txtCodigo.Size = new System.Drawing.Size(209, 30);
@@ -279,7 +279,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(485, 75);
+            this.label2.Location = new System.Drawing.Point(454, 75);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(58, 25);
@@ -304,7 +304,7 @@
             this.gbxHerramientas.Controls.Add(this.btnExportarExcel);
             this.gbxHerramientas.Controls.Add(this.btnCalculadora);
             this.gbxHerramientas.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gbxHerramientas.Location = new System.Drawing.Point(829, 17);
+            this.gbxHerramientas.Location = new System.Drawing.Point(866, 17);
             this.gbxHerramientas.Name = "gbxHerramientas";
             this.gbxHerramientas.Size = new System.Drawing.Size(127, 64);
             this.gbxHerramientas.TabIndex = 48;
@@ -338,7 +338,7 @@
             // lblRazonSocial
             // 
             this.lblRazonSocial.AutoSize = true;
-            this.lblRazonSocial.Location = new System.Drawing.Point(472, 116);
+            this.lblRazonSocial.Location = new System.Drawing.Point(447, 116);
             this.lblRazonSocial.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblRazonSocial.Name = "lblRazonSocial";
             this.lblRazonSocial.Size = new System.Drawing.Size(138, 25);
@@ -358,12 +358,12 @@
             // lblTipo_comprobante
             // 
             this.lblTipo_comprobante.AutoSize = true;
-            this.lblTipo_comprobante.Location = new System.Drawing.Point(472, 39);
+            this.lblTipo_comprobante.Location = new System.Drawing.Point(440, 39);
             this.lblTipo_comprobante.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblTipo_comprobante.Name = "lblTipo_comprobante";
-            this.lblTipo_comprobante.Size = new System.Drawing.Size(175, 25);
+            this.lblTipo_comprobante.Size = new System.Drawing.Size(186, 25);
             this.lblTipo_comprobante.TabIndex = 45;
-            this.lblTipo_comprobante.Text = "Tipo Comprobante";
+            this.lblTipo_comprobante.Text = "Tipo Comprobante :";
             // 
             // txtTipoComprobante
             // 
@@ -372,7 +372,7 @@
             this.txtTipoComprobante.Location = new System.Drawing.Point(631, 36);
             this.txtTipoComprobante.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.txtTipoComprobante.Name = "txtTipoComprobante";
-            this.txtTipoComprobante.Size = new System.Drawing.Size(154, 30);
+            this.txtTipoComprobante.Size = new System.Drawing.Size(156, 30);
             this.txtTipoComprobante.TabIndex = 44;
             // 
             // panelHorizontal

@@ -75,6 +75,7 @@
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.menuconfventa = new System.Windows.Forms.ToolStripMenuItem();
             this.menureimpresion = new System.Windows.Forms.ToolStripMenuItem();
+            this.MenuAnular = new System.Windows.Forms.ToolStripMenuItem();
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.REPORTE_VENTAPRODUCTOTableAdapter = new Capa_Presentacion.DVentaproductoTableAdapters.REPORTE_VENTAPRODUCTOTableAdapter();
             this.xuiCustomGroupbox1 = new XanderUI.XUICustomGroupbox();
@@ -99,6 +100,7 @@
             this.Totaliva105 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CAE = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CAE_Fechavencimiento = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Stock = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.REPORTE_VENTAPRODUCTOBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DVentaproducto)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorIcono)).BeginInit();
@@ -486,9 +488,10 @@
             this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.menuconfventa,
-            this.menureimpresion});
+            this.menureimpresion,
+            this.MenuAnular});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(185, 52);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(185, 76);
             // 
             // menuconfventa
             // 
@@ -504,6 +507,13 @@
             this.menureimpresion.Text = "Re-imprimir";
             this.menureimpresion.Click += new System.EventHandler(this.menureimpresion_Click);
             // 
+            // MenuAnular
+            // 
+            this.MenuAnular.Name = "MenuAnular";
+            this.MenuAnular.Size = new System.Drawing.Size(184, 24);
+            this.MenuAnular.Text = "Anular";
+            this.MenuAnular.Click += new System.EventHandler(this.MenuAnular_Click);
+            // 
             // reportViewer1
             // 
             this.reportViewer1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -513,7 +523,7 @@
             reportDataSource1.Value = this.REPORTE_VENTAPRODUCTOBindingSource;
             this.reportViewer1.LocalReport.DataSources.Add(reportDataSource1);
             this.reportViewer1.LocalReport.ReportEmbeddedResource = "Capa_Presentacion.Reporteproductoventa.rdlc";
-            this.reportViewer1.Location = new System.Drawing.Point(10, 215);
+            this.reportViewer1.Location = new System.Drawing.Point(10, 216);
             this.reportViewer1.Name = "reportViewer1";
             this.reportViewer1.Size = new System.Drawing.Size(1256, 380);
             this.reportViewer1.TabIndex = 67;
@@ -620,7 +630,8 @@
             this.Total_neto105,
             this.Totaliva105,
             this.CAE,
-            this.CAE_Fechavencimiento});
+            this.CAE_Fechavencimiento,
+            this.Stock});
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -830,6 +841,12 @@
             this.CAE_Fechavencimiento.Name = "CAE_Fechavencimiento";
             this.CAE_Fechavencimiento.Visible = false;
             // 
+            // Stock
+            // 
+            this.Stock.HeaderText = "enstock";
+            this.Stock.Name = "Stock";
+            this.Stock.Visible = false;
+            // 
             // FrmListadoVentas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
@@ -920,6 +937,7 @@
         private XanderUI.XUICustomGroupbox xuiCustomGroupbox2;
         private Guna.UI.WinForms.GunaDataGridView dataLista;
         private Guna.UI.WinForms.GunaDataGridView DTDetalleventa;
+        private System.Windows.Forms.ToolStripMenuItem MenuAnular;
         private System.Windows.Forms.DataGridViewTextBoxColumn Codigo;
         private System.Windows.Forms.DataGridViewTextBoxColumn razon_social;
         private System.Windows.Forms.DataGridViewTextBoxColumn Fecha;
@@ -937,5 +955,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Totaliva105;
         private System.Windows.Forms.DataGridViewTextBoxColumn CAE;
         private System.Windows.Forms.DataGridViewTextBoxColumn CAE_Fechavencimiento;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Stock;
     }
 }

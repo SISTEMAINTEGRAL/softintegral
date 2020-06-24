@@ -29,16 +29,14 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmAvanzadoArticulo));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.gbDetalleMovimento = new System.Windows.Forms.GroupBox();
-            this.dataLista = new System.Windows.Forms.DataGridView();
-            this.CHEQUEO = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.Btntraer = new XanderUI.XUISuperButton();
             this.txtDes = new System.Windows.Forms.TextBox();
             this.chkDescripcion = new System.Windows.Forms.CheckBox();
             this.chkcategoria = new System.Windows.Forms.CheckBox();
             this.cbCategoria = new System.Windows.Forms.ComboBox();
-            this.Btntraer = new System.Windows.Forms.Button();
             this.btnLimpiar = new System.Windows.Forms.Button();
             this.rbCodigo = new System.Windows.Forms.RadioButton();
             this.rbCategoria = new System.Windows.Forms.RadioButton();
@@ -55,14 +53,16 @@
             this.lblSistemaVenta = new System.Windows.Forms.Label();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.MenuDeleteall = new System.Windows.Forms.ToolStripMenuItem();
+            this.dataLista = new System.Windows.Forms.DataGridView();
+            this.CHEQUEO = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.gbDetalleMovimento.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataLista)).BeginInit();
             this.panelHorizontal.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnMaximizar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnRestaurar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnMinimizar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnCerrar)).BeginInit();
             this.contextMenuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataLista)).BeginInit();
             this.SuspendLayout();
             // 
             // gbDetalleMovimento
@@ -72,11 +72,11 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.gbDetalleMovimento.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.gbDetalleMovimento.Controls.Add(this.dataLista);
+            this.gbDetalleMovimento.Controls.Add(this.Btntraer);
             this.gbDetalleMovimento.Controls.Add(this.txtDes);
             this.gbDetalleMovimento.Controls.Add(this.chkDescripcion);
             this.gbDetalleMovimento.Controls.Add(this.chkcategoria);
             this.gbDetalleMovimento.Controls.Add(this.cbCategoria);
-            this.gbDetalleMovimento.Controls.Add(this.Btntraer);
             this.gbDetalleMovimento.Controls.Add(this.btnLimpiar);
             this.gbDetalleMovimento.Controls.Add(this.rbCodigo);
             this.gbDetalleMovimento.Controls.Add(this.rbCategoria);
@@ -90,46 +90,34 @@
             this.gbDetalleMovimento.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.gbDetalleMovimento.Name = "gbDetalleMovimento";
             this.gbDetalleMovimento.Padding = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.gbDetalleMovimento.Size = new System.Drawing.Size(1013, 693);
+            this.gbDetalleMovimento.Size = new System.Drawing.Size(1008, 693);
             this.gbDetalleMovimento.TabIndex = 54;
             this.gbDetalleMovimento.TabStop = false;
             this.gbDetalleMovimento.Text = "Detalles ";
             this.gbDetalleMovimento.Enter += new System.EventHandler(this.gbDetalleMovimento_Enter);
             // 
-            // dataLista
+            // Btntraer
             // 
-            this.dataLista.AllowUserToAddRows = false;
-            this.dataLista.AllowUserToDeleteRows = false;
-            this.dataLista.AllowUserToOrderColumns = true;
-            this.dataLista.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
-            this.dataLista.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataLista.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.dataLista.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataLista.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.CHEQUEO});
-            this.dataLista.Location = new System.Drawing.Point(17, 184);
-            this.dataLista.Name = "dataLista";
-            this.dataLista.ReadOnly = true;
-            this.dataLista.Size = new System.Drawing.Size(984, 431);
-            this.dataLista.TabIndex = 59;
-            this.dataLista.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataLista_CellContentClick_1);
-            this.dataLista.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dataLista_MouseClick);
-            // 
-            // CHEQUEO
-            // 
-            this.CHEQUEO.HeaderText = "*";
-            this.CHEQUEO.Name = "CHEQUEO";
-            this.CHEQUEO.ReadOnly = true;
-            this.CHEQUEO.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.CHEQUEO.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.CHEQUEO.Width = 49;
+            this.Btntraer.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(144)))), ((int)(((byte)(247)))));
+            this.Btntraer.ButtonImage = null;
+            this.Btntraer.ButtonSmoothing = System.Drawing.Drawing2D.SmoothingMode.HighSpeed;
+            this.Btntraer.ButtonStyle = XanderUI.XUISuperButton.Style.RoundedEdges;
+            this.Btntraer.ButtonText = "Trasladar";
+            this.Btntraer.CornerRadius = 5;
+            this.Btntraer.Horizontal_Alignment = System.Drawing.StringAlignment.Center;
+            this.Btntraer.HoverBackgroundColor = System.Drawing.Color.IndianRed;
+            this.Btntraer.HoverTextColor = System.Drawing.Color.Yellow;
+            this.Btntraer.ImagePosition = XanderUI.XUISuperButton.imgPosition.Left;
+            this.Btntraer.Location = new System.Drawing.Point(65, 637);
+            this.Btntraer.Name = "Btntraer";
+            this.Btntraer.SelectedBackColor = System.Drawing.Color.LimeGreen;
+            this.Btntraer.SelectedTextColor = System.Drawing.Color.White;
+            this.Btntraer.Size = new System.Drawing.Size(150, 47);
+            this.Btntraer.SuperSelected = false;
+            this.Btntraer.TabIndex = 113;
+            this.Btntraer.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(245)))), ((int)(((byte)(255)))));
+            this.Btntraer.Vertical_Alignment = System.Drawing.StringAlignment.Center;
+            this.Btntraer.Click += new System.EventHandler(this.Btntraer_Click);
             // 
             // txtDes
             // 
@@ -176,18 +164,6 @@
             this.cbCategoria.Name = "cbCategoria";
             this.cbCategoria.Size = new System.Drawing.Size(182, 33);
             this.cbCategoria.TabIndex = 55;
-            // 
-            // Btntraer
-            // 
-            this.Btntraer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.Btntraer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Btntraer.Location = new System.Drawing.Point(7, 637);
-            this.Btntraer.Name = "Btntraer";
-            this.Btntraer.Size = new System.Drawing.Size(139, 47);
-            this.Btntraer.TabIndex = 54;
-            this.Btntraer.Text = "Trasladar";
-            this.Btntraer.UseVisualStyleBackColor = true;
-            this.Btntraer.Click += new System.EventHandler(this.Btntraer_Click);
             // 
             // btnLimpiar
             // 
@@ -391,6 +367,45 @@
             this.MenuDeleteall.Visible = false;
             this.MenuDeleteall.Click += new System.EventHandler(this.MenuDeleteall_Click);
             // 
+            // dataLista
+            // 
+            this.dataLista.AllowUserToAddRows = false;
+            this.dataLista.AllowUserToDeleteRows = false;
+            this.dataLista.AllowUserToOrderColumns = true;
+            this.dataLista.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.dataLista.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataLista.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dataLista.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataLista.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.CHEQUEO});
+            this.dataLista.Location = new System.Drawing.Point(10, 152);
+            this.dataLista.Name = "dataLista";
+            this.dataLista.ReadOnly = true;
+            this.dataLista.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
+            this.dataLista.Size = new System.Drawing.Size(991, 431);
+            this.dataLista.TabIndex = 114;
+            this.dataLista.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataLista_CellContentClick_1);
+            this.dataLista.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataLista_CellDoubleClick);
+            this.dataLista.RowLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataLista_RowLeave);
+            this.dataLista.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dataLista_KeyDown);
+            this.dataLista.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dataLista_MouseClick);
+            // 
+            // CHEQUEO
+            // 
+            this.CHEQUEO.HeaderText = "*";
+            this.CHEQUEO.Name = "CHEQUEO";
+            this.CHEQUEO.ReadOnly = true;
+            this.CHEQUEO.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.CHEQUEO.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.CHEQUEO.Width = 49;
+            // 
             // FrmAvanzadoArticulo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
@@ -411,7 +426,6 @@
             this.Load += new System.EventHandler(this.FrmAvanzadoArticulo_Load);
             this.gbDetalleMovimento.ResumeLayout(false);
             this.gbDetalleMovimento.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataLista)).EndInit();
             this.panelHorizontal.ResumeLayout(false);
             this.panelHorizontal.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnMaximizar)).EndInit();
@@ -419,6 +433,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.btnMinimizar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnCerrar)).EndInit();
             this.contextMenuStrip1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataLista)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -434,7 +449,6 @@
         private System.Windows.Forms.Button btnProducto;
         private System.Windows.Forms.Label lblNomProducto;
         private System.Windows.Forms.TextBox txtProducto;
-        private System.Windows.Forms.Button Btntraer;
         private System.Windows.Forms.Panel panelHorizontal;
         private System.Windows.Forms.PictureBox btnMaximizar;
         private System.Windows.Forms.PictureBox btnRestaurar;
@@ -445,9 +459,10 @@
         private System.Windows.Forms.CheckBox chkDescripcion;
         private System.Windows.Forms.CheckBox chkcategoria;
         private System.Windows.Forms.ComboBox cbCategoria;
-        private System.Windows.Forms.DataGridView dataLista;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn CHEQUEO;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem MenuDeleteall;
+        private XanderUI.XUISuperButton Btntraer;
+        private System.Windows.Forms.DataGridView dataLista;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn CHEQUEO;
     }
 }

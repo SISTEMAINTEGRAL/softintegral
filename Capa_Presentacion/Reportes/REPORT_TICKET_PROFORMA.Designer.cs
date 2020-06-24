@@ -14,6 +14,7 @@ namespace Capa_Presentacion.Reportes
             Telerik.Reporting.TableGroup tableGroup3 = new Telerik.Reporting.TableGroup();
             Telerik.Reporting.TableGroup tableGroup4 = new Telerik.Reporting.TableGroup();
             Telerik.Reporting.TableGroup tableGroup5 = new Telerik.Reporting.TableGroup();
+            Telerik.Reporting.Barcodes.Code25InterleavedEncoder code25InterleavedEncoder1 = new Telerik.Reporting.Barcodes.Code25InterleavedEncoder();
             Telerik.Reporting.Drawing.StyleRule styleRule1 = new Telerik.Reporting.Drawing.StyleRule();
             this.textBox11 = new Telerik.Reporting.TextBox();
             this.textBox13 = new Telerik.Reporting.TextBox();
@@ -40,6 +41,7 @@ namespace Capa_Presentacion.Reportes
             this.textBox18 = new Telerik.Reporting.TextBox();
             this.textBox6 = new Telerik.Reporting.TextBox();
             this.textBox9 = new Telerik.Reporting.TextBox();
+            this.textBox34 = new Telerik.Reporting.TextBox();
             this.detail = new Telerik.Reporting.DetailSection();
             this.pageFooterSection1 = new Telerik.Reporting.PageFooterSection();
             this.textBox31 = new Telerik.Reporting.TextBox();
@@ -54,7 +56,7 @@ namespace Capa_Presentacion.Reportes
             this.textBox29 = new Telerik.Reporting.TextBox();
             this.textBox30 = new Telerik.Reporting.TextBox();
             this.service1 = new Capa_negocio.afip.prod.servicios.Service();
-            this.textBox34 = new Telerik.Reporting.TextBox();
+            this.barcode1 = new Telerik.Reporting.Barcode();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             // 
             // textBox11
@@ -282,6 +284,13 @@ namespace Capa_Presentacion.Reportes
             this.textBox9.Style.Font.Size = Telerik.Reporting.Drawing.Unit.Point(8D);
             this.textBox9.Value = "=Fields.Fecha";
             // 
+            // textBox34
+            // 
+            this.textBox34.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(0.7999998927116394D), Telerik.Reporting.Drawing.Unit.Cm(3.2999999523162842D));
+            this.textBox34.Name = "textBox34";
+            this.textBox34.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(4.7000002861022949D), Telerik.Reporting.Drawing.Unit.Cm(0.60000002384185791D));
+            this.textBox34.Value = "=Fields.Telefono";
+            // 
             // detail
             // 
             this.detail.Height = Telerik.Reporting.Drawing.Unit.Cm(0.10583343356847763D);
@@ -289,10 +298,12 @@ namespace Capa_Presentacion.Reportes
             // 
             // pageFooterSection1
             // 
-            this.pageFooterSection1.Height = Telerik.Reporting.Drawing.Unit.Cm(1.0809987783432007D);
+            this.pageFooterSection1.Height = Telerik.Reporting.Drawing.Unit.Cm(3.0809991359710693D);
             this.pageFooterSection1.Items.AddRange(new Telerik.Reporting.ReportItemBase[] {
-            this.textBox31});
+            this.textBox31,
+            this.barcode1});
             this.pageFooterSection1.Name = "pageFooterSection1";
+            this.pageFooterSection1.Style.Font.Size = Telerik.Reporting.Drawing.Unit.Point(8D);
             // 
             // textBox31
             // 
@@ -316,7 +327,7 @@ namespace Capa_Presentacion.Reportes
             // table1
             // 
             this.table1.Body.Columns.Add(new Telerik.Reporting.TableBodyColumn(Telerik.Reporting.Drawing.Unit.Cm(1.1218334436416626D)));
-            this.table1.Body.Columns.Add(new Telerik.Reporting.TableBodyColumn(Telerik.Reporting.Drawing.Unit.Cm(2.3071672916412354D)));
+            this.table1.Body.Columns.Add(new Telerik.Reporting.TableBodyColumn(Telerik.Reporting.Drawing.Unit.Cm(2.3071670532226562D)));
             this.table1.Body.Columns.Add(new Telerik.Reporting.TableBodyColumn(Telerik.Reporting.Drawing.Unit.Cm(1.9684983491897583D)));
             this.table1.Body.Columns.Add(new Telerik.Reporting.TableBodyColumn(Telerik.Reporting.Drawing.Unit.Cm(2.1904990673065186D)));
             this.table1.Body.Rows.Add(new Telerik.Reporting.TableBodyRow(Telerik.Reporting.Drawing.Unit.Cm(0.48683333396911621D)));
@@ -423,12 +434,13 @@ namespace Capa_Presentacion.Reportes
             this.service1.Url = "https://servicios1.afip.gov.ar/wsfev1/service.asmx";
             this.service1.UseDefaultCredentials = false;
             // 
-            // textBox34
+            // barcode1
             // 
-            this.textBox34.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(0.7999998927116394D), Telerik.Reporting.Drawing.Unit.Cm(3.2999999523162842D));
-            this.textBox34.Name = "textBox34";
-            this.textBox34.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(4.7000002861022949D), Telerik.Reporting.Drawing.Unit.Cm(0.60000002384185791D));
-            this.textBox34.Value = "=Fields.Telefono";
+            this.barcode1.BarAlign = Telerik.Reporting.Drawing.HorizontalAlign.Left;
+            this.barcode1.Encoder = code25InterleavedEncoder1;
+            this.barcode1.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(0.10000003129243851D), Telerik.Reporting.Drawing.Unit.Cm(1.0809998512268066D));
+            this.barcode1.Name = "barcode1";
+            this.barcode1.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(5.9025025367736816D), Telerik.Reporting.Drawing.Unit.Cm(1.399999737739563D));
             // 
             // REPORT_TICKET_PROFORMA
             // 
@@ -449,7 +461,7 @@ namespace Capa_Presentacion.Reportes
             styleRule1.Style.Padding.Right = Telerik.Reporting.Drawing.Unit.Point(2D);
             this.StyleSheet.AddRange(new Telerik.Reporting.Drawing.StyleRule[] {
             styleRule1});
-            this.Width = Telerik.Reporting.Drawing.Unit.Cm(8.5D);
+            this.Width = Telerik.Reporting.Drawing.Unit.Cm(8.3000001907348633D);
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
 
         }
@@ -457,7 +469,6 @@ namespace Capa_Presentacion.Reportes
 
         private Telerik.Reporting.PageHeaderSection pageHeaderSection1;
         private Telerik.Reporting.DetailSection detail;
-        private Telerik.Reporting.PageFooterSection pageFooterSection1;
         private Telerik.Reporting.ReportHeaderSection reportHeaderSection1;
         private Telerik.Reporting.TextBox textBox1;
         private Telerik.Reporting.TextBox textBox2;
@@ -495,5 +506,7 @@ namespace Capa_Presentacion.Reportes
         private Telerik.Reporting.TextBox textBox33;
         private Telerik.Reporting.TextBox textBox32;
         private Telerik.Reporting.TextBox textBox34;
+        public Telerik.Reporting.PageFooterSection pageFooterSection1;
+        public Telerik.Reporting.Barcode barcode1;
     }
 }

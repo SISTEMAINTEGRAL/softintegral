@@ -247,7 +247,7 @@ namespace Capa_Presentacion
                     {
                         estado = "PRESUPUESTADO";
                     }
-                    dataLista.Rows.Add(venta["idventa"], venta["razon_social"], venta["fecha"], venta["tipo_comprobante"], venta["total"], estado, venta ["caja"], venta ["idcliente"], venta ["cuit"], venta["Nrocomprobante"], venta["factura"], venta["Neto21"], venta["Totaliva21"], venta["Total_Neto105"], venta["Totaliva105"], venta["CAE"], venta["CAE_Fechavencimiento"]);
+                    dataLista.Rows.Add(venta["idventa"], venta["razon_social"], venta["fecha"], venta["tipo_comprobante"], venta["total"], estado, venta ["caja"], venta ["idcliente"], venta ["cuit"], venta["Nrocomprobante"], venta["factura"], venta["Neto21"], venta["Totaliva21"], venta["Total_Neto105"], venta["Totaliva105"], venta["CAE"], venta["CAE_Fechavencimiento"], venta["enstock"]);
                 }
        
             }
@@ -572,6 +572,19 @@ namespace Capa_Presentacion
                 
                 contextMenuStrip1.Show(dataLista, new Point(e.X, e.Y));
 
+                if (Convert.ToString(row.Cells["Estado"].Value) != "FACTURADO")
+                {
+                    if (Convert.ToString(row.Cells["Estado"].Value) != "PRESUPUESTO")
+                    {
+                        MenuAnular.Visible = true;
+                    }
+                    
+                }
+                else
+                {
+                    MenuAnular.Visible = false;
+                }
+
             }
 
             if (e.Button == MouseButtons.Left)
@@ -756,8 +769,29 @@ namespace Capa_Presentacion
             DTDetalleventa.DataSource = NegocioVenta.MostrarDetalle(dataLista.CurrentRow.Cells["Codigo"].Value.ToString());
         }
 
-       
-
-
+        private void MenuAnular_Click(object sender, EventArgs e)
+        {
+            string mensaje = "";
+            Negociocaja objcaja = new Negociocaja();
+            DataGridViewRow row = dataLista.CurrentRow;
+           
+          mensaje = NegocioVenta.anular(Convert.ToInt32(row.Cells["Codigo"].Value), Convert.ToBoolean(row.Cells["stock"].Value));
+          
+            if (!mensaje.Equals("ok") )
+            {
+                UtilityFrm.mensajeError(mensaje);
+            }
+            else
+            {
+                if (Convert.ToBoolean(row.Cells["caja"].Value))
+                {
+                    if (objcaja.chequeocaja("", ref mensaje))
+                    {
+                        Negociocaja.insertarmovcaja(5230000, 0, Convert.ToSingle(row.Cells["Total"].Value), DateTime.Today.ToString(), NegocioConfigEmpresa.usuarioconectado, NegocioConfigEmpresa.idusuario, NegocioConfigEmpresa.turno, "ANULACION", Convert.ToInt32(row.Cells["Codigo"].Value), true);
+                    }  
+                }
+            }
+            buscarPorFecha();
+        }
     }
 }

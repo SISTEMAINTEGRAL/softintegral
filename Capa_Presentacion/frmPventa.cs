@@ -34,6 +34,12 @@ namespace Capa_Presentacion
         private bool datagriddobleclic = false; // si se hace doble clic te modifica si no lo agrega  
         private string buffer;
         NegocioUsuario objusuario = new NegocioUsuario();
+
+        private const int datagridprecio = 4;
+        private const int datagridcantidad = 5;
+        private const int datagridsubtotal = 6;
+        private const int datagriddescuento = 7;
+        private const int datagridimporte = 8;
         public string Riva
             
         {
@@ -142,7 +148,10 @@ namespace Capa_Presentacion
             {
                 if (codCliente > 0)
                 {
-                    DataTable dt = NegocioCliente.buscarCodigoCliente(codCliente.ToString());
+                    DataTable dt;
+                    dt = NegocioCliente.buscarCodigoCliente(codCliente.ToString());
+                                        
+                     
                     if (dt.Rows.Count != 0)
                     {
                         DataRow row = dt.Rows[0];
@@ -218,7 +227,10 @@ namespace Capa_Presentacion
 
                   decimal totalPagar = Convert.ToDecimal(txtTotalPagar.Text);
                   totalPagar = (cantidadProducto * precioProducto) + (totalPagar);
-                  agregardatagridview(objnart.IdArticulo.ToString(), objnart.Nombre.ToString(), objnart.Precio.ToString(), cantidadProducto.ToString(), objnart.Precio.ToString(), "0", objnart.Precio.ToString(), "0", "Cantidad", objnart.Preciopormayor.ToString(), objnart.Cantidadpormayor.ToString(), objnart.Precio.ToString(),objnart.Iva.ToString("0,00"),"");
+                  agregardatagridview(objnart.IdArticulo.ToString(), objnart.Nombre.ToString(), objnart.Precio.ToString(),"1", objnart.Precio.ToString(),
+                  cantidadProducto.ToString(), objnart.Precio.ToString(), "0", objnart.Precio.ToString(), "0", "Cantidad", objnart.Preciopormayor.ToString(),
+                  objnart.Cantidadpormayor.ToString(), objnart.Precio.ToString(),objnart.Iva.ToString("0,00"),"",objnart.Preciopormayor2.ToString(),
+                  objnart.Cantidadpormayor2.ToString(),objnart.Precio_oferta.ToString(),objnart.Nombrecategoria.ToString());
                   //DGVenta.Rows.Add(objnart.IdArticulo, objnart.Nombre, objnart.Precio, "0", cantidadProducto.ToString(),objnart.Preciopormayor,objnart.Cantidadpormayor);
 
                   txtTotalPagar.Text = totalPagar.ToString();
@@ -233,150 +245,131 @@ namespace Capa_Presentacion
 
               
           }
-        public void agregardatagridview(string grididarticulo, string gridnombre,string gridprecio, string gridcantidad, string gridsubtotal, string griddescuento,
+        public void agregardatagridview(string grididarticulo, string gridnombre,string gridpreciobase,string gridlista, string gridprecio, string gridcantidad, string gridsubtotal, string griddescuento,
                                         string gridimporte, string gridpesable, string gridcalculo, string gridpreciomayorista, string gridcantidadmayorista, 
-                                        string preciounidad, string iva, string manual)
+                                        string preciounidad, string iva, string manual, string gridpreciomayorista2, string gridcantidadmayorista2, string gridpreciooferta, string gridcategoria)
         {
-            DGVenta.Rows.Add(grididarticulo, gridnombre,gridprecio, gridcantidad, gridsubtotal, griddescuento, gridimporte, gridpesable, gridcalculo, gridpreciomayorista, gridcantidadmayorista,preciounidad,iva,manual);
+            DGVenta.Rows.Add(grididarticulo, gridnombre +" "+ gridcategoria,gridpreciobase,gridlista,gridprecio, gridcantidad, gridsubtotal, griddescuento,
+                             gridimporte, gridpesable, gridcalculo, gridpreciomayorista, gridcantidadmayorista,preciounidad,iva,manual,
+                             gridpreciomayorista2,gridcantidadmayorista2,gridpreciooferta);
         }
           public int  Buscar_producto(long codproducto, string tipo, bool agregardatagrid, decimal cantidad = 1, string codbarra = "")
           {
-            decimal precio;
-            decimal descuento;
-            decimal importe;
+            decimal subtotal = 0;
+            decimal precio = 0;
+            decimal descuento = 0;
+            decimal importe = 0;
             decimal total = 0;
             decimal cantidadActual = 0;
+            decimal cantidadbulto = 0;
             int indice = -1;
             int cont = -1;
+            string  manual = "";
+            decimal preciobase = 0;
+            int lista = 0;
+            bool preciobalanza = false;
+            string calculo = "cantidad"; 
 
             try
               {
-                  
 
-                  objnart.extraerdatos(codproducto, tipo, codbarra);
-                if (chkporcantidad.Checked == true)
+
+                if (tipo == "porbarra" && codbarra.Length != 0)
                 {
-                    cantidad = 0;
-                    if (NegocioConfigEmpresa.balanzapuerto != "")
+                    if (codbarra.ToString().Substring(0, 2) == "20")
                     {
-                        if (objnart.Pesable == 1)
-                        {
+                        preciobalanza = true;
+                        manual = "manual";
+                        subtotal = Convert.ToDecimal(pluyprecio(codbarra, "precio"));
+                        codbarra = pluyprecio(codbarra, "plu");
+                       
+                    }
+                }
+                
 
-                            FrmAsignarPrecio objasignar = new FrmAsignarPrecio();
-                            objasignar.ShowDialog();
-                            if (!objasignar.IsCerro)
+
+                    objnart.extraerdatos(codproducto, tipo, codbarra);
+                
+
+                if (tipo == "porbarra")
+                {
+                    codproducto =  objnart.IdArticulo;
+                }
+                    if (objnart.Sindatos == false && tipo == "porbarra")
+                    {
+                        objnart.extraerdatos(codproducto,"porbulto", codbarra);
+                        cantidadbulto = objnart.Bulto_cantidad;
+                    }
+
+                            
+                
+                      if (objnart.Sindatos == true)
+                      {
+                            if (NegocioConfigEmpresa.balanzapuerto != "" && CHKHabilitarbalanza.Checked && preciobalanza == false)
                             {
-                                cantidad = objasignar.PrecioTotal;
-                                if (objasignar.Tara != 0)
+                                if (objnart.Pesable == 1)
                                 {
-                                    cantidad = objasignar.PrecioTotal - objasignar.Tara;
+
+                                    cantidad = comunicarytraerkilosbalanza();
+
+
                                 }
                             }
 
-                            //cantidad = UtilityFrm.Leerbalanza(buffer);
-                          
+                            if (preciobalanza == true)
+                                    {
+                        if (objnart.Precio != 0)
+                        {
+                            cantidad = Decimal.Round((subtotal / objnart.Precio), 2);
                         }
-                    }
+                                       
 
-                }
-                else
-                {
-                    
-                }
-                  if (objnart.Sindatos == true)
-                  {
+                                    }
+                                    pesable = objnart.Pesable;
+                                              bool encontrado = false;
 
-
-
-                      //TxtDetalle.Text = objnart.Nombre;
-                      //TxtPrecio.Text = Convert.ToString(decimal.Round(objnart.Precio, 2));
-                      //TxtCodigo.Text = Convert.ToString(objnart.IdArticulo);
-                      pesable = objnart.Pesable;
-
-
-                      //si el descuento esta vacio se asigna 0 o se asigna su mismo contenido
-                     // TxtDesc.Text = (string.IsNullOrEmpty(TxtDesc.Text)) ? "0" : TxtDesc.Text;
-
-                      bool encontrado = false;
-
-                      //if (agregardatagrid == true)
-                      //{
-                          foreach (DataGridViewRow row in DGVenta.Rows)
-                          {
-                                cont = cont + 1;
-                              if (Convert.ToInt32(row.Cells["Codigo"].Value) == objnart.IdArticulo)
-                              {
-
-
-                                  encontrado = true;
-
-                                 // row.Cells["Descuento"].Value = (string.IsNullOrEmpty(TxtDesc.Text)) ? "0" : TxtDesc.Text;
-                                  //asigno el precio,descuento,cantidad
-                                  precio = Convert.ToDecimal(row.Cells["CPrecio"].Value);
-                                  descuento = Convert.ToDecimal(row.Cells["Descuento"].Value);
-                                  cantidadActual = (Convert.ToDecimal(row.Cells["Cantidad"].Value));
-
-                                  //incremento la cantidad del producto agregado
-
-                                  cantidadActual += cantidad;
-                                if (NegocioConfigEmpresa.balanzapuerto != "" && chkporcantidad.Checked == true)
-                                {
-                                    cantidadActual = cantidad;       
-                                }
-                                  row.Cells["Cantidad"].Value = cantidadActual;
-                                  //calculo el precio con descuento incluido * la cantidad de articulos agregados
-                                  importe = precio * cantidadActual;
-                                  importe = importe - ((importe * descuento) / 100);
-                                  row.Cells["Importe"].Value = importe;
-                                  indice = cont;
-                               
-                              }
-
-                          }
-
-                      
-
-                      if (encontrado == false)
-                      {
+                   
+                            if (!recorrerDGventaencontraridarticulo(codproducto, ref cont, precio, descuento, cantidadActual, cantidadbulto, cantidad, importe,preciobalanza,subtotal) )
+                            {
                         //si no se encuentra cantidad 
-                          
-                          precio = decimal.Round(objnart.Precio, 2);
-                        //descuento = Convert.ToDecimal(TxtDesc.Text);
-                        //le aplico el descuento correspondiente
-                        // precio = precio - ((precio * descuento) / 100);
-                        // precio = precio * cantidad;
-                        //no calculo el precio por la cantidad porque da el mismo numero
-                        agregardatagridview(objnart.IdArticulo.ToString(), objnart.Nombre, objnart.Precio.ToString(), cantidad.ToString(), "0", "0", objnart.Precio.ToString(), pesable.ToString(), "cantidad", objnart.Preciopormayor.ToString(), objnart.Cantidadpormayor.ToString(), objnart.Precio.ToString(), objnart.Iva.ToString(),"");
-                           //DGVenta.Rows.Add(objnart.IdArticulo, objnart.Nombre, cantidad, precio, "0", "0",pesable,"cantidad",objnart.Preciopormayor,objnart.Cantidadpormayor); 
+                        preciobase = decimal.Round(objnart.Precio, 2);
+                        
+                        precio = decimal.Round(objnart.Precio, 2);
+                                        
+                        precio = cambiarpreciosegunlista(ref lista, ref manual, RBPrecioNormal.Checked,
+                        RBPreciomayorista1.Checked, RBPreciomayorista2.Checked, RBPrecioOferta.Checked,
+                        objnart.Fechadeoferta, objnart.Precio_oferta, objnart.Preciopormayor, objnart.Preciopormayor2);
+                        precio = precio == 0 ? preciobase : precio;
+                        if (preciobalanza == true)
+                        {
+                            calculo = "subtotal";
+                        }
+                                    
+                                   
+                                              
+                                    //no calculo el precio por la cantidad porque da el mismo numero
+                                    agregardatagridview(objnart.IdArticulo.ToString(), objnart.Nombre, preciobase.ToString(), lista.ToString(),
+                                        precio.ToString(), cantidad.ToString(),subtotal.ToString(), "0", objnart.Precio.ToString(), pesable.ToString(),
+                                        calculo, objnart.Preciopormayor.ToString(), objnart.Cantidadpormayor.ToString(),
+                                        objnart.Precio.ToString(), objnart.Iva.ToString(), manual, objnart.Cantidadpormayor2.ToString(),
+                                        objnart.Preciopormayor2.ToString(), objnart.Precio_oferta.ToString(),objnart.Nombrecategoria.ToString());
+                                    //DGVenta.Rows.Add(objnart.IdArticulo, objnart.Nombre, cantidad, precio, "0", "0",pesable,"cantidad",objnart.Preciopormayor,objnart.Cantidadpormayor); 
 
 
+                            }
+
+                                  totales();
+                         
 
                       }
-
-                      totales();
-                      //foreach (DataGridViewRow row in DGVenta.Rows)
-                      //{
-                      //    total = total + Convert.ToDecimal (row.Cells["importe"].Value);
-                      //    decimal.Round(total, 2);
-                      //}
-                      //txtTotalPagar.Text = Convert.ToString(total);
-                      //txtNombreProducto.Text = "";
-
-                  }
-                  else
-                  {
-                      // UtilityFrm.mensajeError( "No es una clave valida");
-
-                      FrmMensajeAutoCierre.Show("No es una clave valida", "Error", 1000);
-
-
-
-
-                      txtNombreProducto.SelectAll();
+                      else
+                      {
+                          FrmMensajeAutoCierre.Show("No es una clave valida", "Error", 1000);
+                          txtNombreProducto.SelectAll();
                     
-                  }
+                      }
 
-                   txtcant.SelectAll(); txtcant.Focus(); 
+                       txtcant.SelectAll(); txtcant.Focus(); 
               }
               catch (Exception)
               {
@@ -385,8 +378,178 @@ namespace Capa_Presentacion
               }
             return indice;
           }
+        private string pluyprecio(string codigoproducto, string traerpluoprecio)
+        {
+            string pluoprecio = "";
+            if (traerpluoprecio == "plu")
+            {
+                pluoprecio = codigoproducto.ToString().Substring(2, 5);
+            }
+            else if (traerpluoprecio == "precio")
+            {
+                int posicion = codigoproducto.Length;
+                string entero = "";
+                string flotante = "";
+                entero = codigoproducto.Substring(7,3);
+                flotante = codigoproducto.Substring(10,2);
+                pluoprecio = entero + "," + flotante;
+            }
 
 
+            return pluoprecio;
+        }
+       
+        private decimal comunicarytraerkilosbalanza()
+        {
+            decimal cantidad = 0;
+            FrmAsignarPrecio objasignar = new FrmAsignarPrecio();
+            objasignar.ShowDialog();
+            if (!objasignar.IsCerro)
+            {
+                cantidad = objasignar.PrecioTotal;
+                if (objasignar.Tara != 0)
+                {
+                    cantidad = objasignar.PrecioTotal - objasignar.Tara;
+                }
+            }
+            return cantidad;
+        }
+        private decimal cambiarpreciosegunlista(ref int lista,ref string manual, bool preciounitario, bool preciomayorista1
+            , bool preciomayorista2, bool preciooferta, DateTime fechadeoferta, decimal valorpreciooferta
+            , decimal valorpreciopormayor, decimal valorpreciopormayor2)
+        {
+            decimal precio = 0;
+
+            if (preciounitario == true)
+            {
+                if (objnart.Habilitarfechaoferta == true && objnart.Fechadeoferta >= DateTime.Now && objnart.Precio_oferta != 0)
+                {
+                    lista = 4;
+                    precio = decimal.Round(objnart.Precio_oferta, 2);
+                    manual = "Manual";
+                }
+            }
+
+            if (RBPreciomayorista1.Checked == true)
+            {
+                lista = 1;
+                precio = decimal.Round(objnart.Preciopormayor, 2);
+                manual = "Manual";
+            }
+            if (RBPreciomayorista2.Checked == true)
+            {
+                lista = 2;
+                manual = "Manual";
+                precio = decimal.Round(objnart.Preciopormayor2, 2);
+            }
+            if (RBPrecioOferta.Checked == true)
+            {
+                lista = 3;
+                manual = "Manual";
+                precio = decimal.Round(objnart.Precio_oferta, 2);
+            }
+
+
+            return precio;
+        }
+        private bool recorrerDGventaencontraridarticulo(long idarticulo,ref int index, decimal precio, decimal descuento, decimal cantidadActual, decimal cantidadbulto, decimal cantidad, decimal importe, bool preciobalanza = false, decimal subtotal = 0)
+        {
+            bool encontrado = false;
+            int cont = 0;
+            foreach (DataGridViewRow row in DGVenta.Rows)
+            {
+                cont++;
+                if (Convert.ToInt32(row.Cells["Codigo"].Value) == idarticulo)
+                {
+
+                    encontrado = true;
+                    precio = Convert.ToDecimal(row.Cells["CPrecio"].Value);
+                    descuento = Convert.ToDecimal(row.Cells["Descuento"].Value);
+                    cantidadActual = cantidadbulto > 0 ? cantidadbulto : (Convert.ToDecimal(row.Cells["Cantidad"].Value));
+
+                    //incremento la cantidad del producto agregado
+                   
+                    
+                    if ((NegocioConfigEmpresa.balanzapuerto != "" && CHKHabilitarbalanza.Checked == true) || preciobalanza == true)
+                    {
+                        cantidadActual = cantidad;
+                        
+                    }
+                    else if (chkporcantidad.Checked == false)
+                    {
+                        cantidadActual += cantidad;
+                    }
+                    if (preciobalanza == false)
+                    {
+                        row.Cells["Cantidad"].Value = cantidadActual;
+                        //calculo el precio con descuento incluido * la cantidad de articulos agregados
+                        importe = precio * cantidadActual;
+                        importe = importe - ((importe * descuento) / 100);
+                        row.Cells["Importe"].Value = importe;
+                    }
+                    else
+                    {
+                        row.Cells["Cantidad"].Value = cantidad;
+                        row.Cells["subtotal"].Value = subtotal;
+                        row.Cells["importe"].Value = subtotal;
+                    }
+                    
+                    index = cont;
+
+                }
+            }
+
+            return encontrado;
+        }
+        private string cambiarpreciosegunlista(int numerolista)
+        {
+            string valor = "";
+            DataGridViewRow fila = DGVenta.CurrentRow;
+            
+            //precio 2 = Preciopormayor
+            //precio 3 = Precio2
+            // precio 4 = Precio_Oferta
+            
+
+            switch (numerolista)
+            {
+                case 1:
+                    {
+                        valor = "0";
+                         DGVenta.CurrentRow.Cells["cprecio"].Value = fila.Cells["P_Unidad"].Value.ToString();
+                        DGVenta.CurrentRow.Cells["manual"].Value = "Manual";
+                        break;
+                    }
+                case 2:
+                    {
+                        valor = "1";
+                        DGVenta.CurrentRow.Cells["cprecio"].Value =  fila.Cells["Preciopormayor"].Value.ToString();
+                        DGVenta.CurrentRow.Cells["manual"].Value = "Manual";
+                        break;
+                    }
+                case 3:
+                    {
+                        valor = "2";
+                        DGVenta.CurrentRow.Cells["cprecio"].Value = fila.Cells["Precio2"].Value.ToString();
+                        DGVenta.CurrentRow.Cells["manual"].Value = "Manual";
+                        break;
+                    }
+                case 4:
+                    {
+                        valor = "3";
+                        DGVenta.CurrentRow.Cells["cprecio"].Value = fila.Cells["Precio_Oferta"].Value.ToString();
+                        DGVenta.CurrentRow.Cells["manual"].Value = "Manual";
+                        break;
+
+                    }
+                default:
+                    break;
+                    
+            }
+
+
+            return valor;
+        }
 
           private void totales()
           {
@@ -399,18 +562,20 @@ namespace Capa_Presentacion
                   decimal importe = 0;
                   decimal cantidad = 0;
                   decimal total = 0;
-                decimal total21 = 0;
-                decimal total105 = 0;
+                  decimal total21 = 0;
+                  decimal total105 = 0;
                   decimal neto21 = 0;
                   decimal iva21 = 0;
-                decimal neto105 = 0;
-                decimal iva105 = 0;
-                   decimal porcentaje = 0;
+                  decimal neto105 = 0;
+                  decimal iva105 = 0;
+                  decimal porcentaje = 0;
                   decimal cuota = 0;
                   decimal subtotal = 0;
                   decimal preciopormayor = 0;
                   decimal cantidadpormayor = 0;
-                decimal preciounidad = 0;
+                  decimal preciounidad = 0;
+                  decimal cantidadprecio2 = 0;
+                  decimal precio2 = 0;
                   
                   if (DGVenta.RowCount != 0)
                   {
@@ -425,12 +590,19 @@ namespace Capa_Presentacion
                             precio = Decimal.Round ( Convert.ToDecimal(row.Cells["CPrecio"].Value),2);
                             descuento = Convert.ToDecimal(row.Cells["Descuento"].Value);
                             cantidadActual = Decimal.Round((Convert.ToDecimal(row.Cells["Cantidad"].Value)), 2);
-                        preciounidad = Decimal.Round((Convert.ToDecimal(row.Cells["preciounidad"].Value)), 2);
-                        
+                            preciounidad = Decimal.Round((Convert.ToDecimal(row.Cells["preciounidad"].Value)), 2);
+                            cantidadprecio2= Decimal.Round((Convert.ToDecimal(row.Cells["preciocantidad2"].Value)), 2);
+                            precio2 = Decimal.Round((Convert.ToDecimal(row.Cells["precio2"].Value)), 2);
+
 
                         if (cantidadpormayor != 0 && row.Cells["Manual"].Value == "")
                         {
                             precio = cantidadActual >= cantidadpormayor ? preciopormayor : preciounidad;
+
+                            if (precio2 > 0 && cantidadprecio2 != 0)
+                            {
+                                precio = cantidadActual >= cantidadprecio2 ? precio2 : precio;
+                            }
 
                         }
                            
@@ -497,7 +669,7 @@ namespace Capa_Presentacion
                       neto105 = Decimal.Round(total105 / Convert.ToDecimal(1.105), 2);
                       iva105 = total105 - neto105;
 
-                    if (rTarjeta.Checked == true)
+                    if (rTarjeta.Checked == true && total != 0 && cbMCuota.Text != "")
                       {
                           cuota = total / Convert.ToDecimal(cbMCuota.Text);
                       }
@@ -524,10 +696,6 @@ namespace Capa_Presentacion
               
           
           }
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
           
 
         private void OnTimer(object state)
@@ -609,6 +777,10 @@ namespace Capa_Presentacion
 
 
             }
+            if (e.KeyCode == Keys.Down && DGCliente.Visible == true)
+            {
+                DGCliente.Focus();
+            }
           
         }
 
@@ -634,8 +806,13 @@ namespace Capa_Presentacion
                     Buscar_Cliente(1);
                     //consumidor final es 1
                     txtIdCliente.Text = "1";
+                    cbxCategoria.Text = "X";
+                    
                    
                 }
+                
+
+
 
                 catch (Exception ex)
                 {
@@ -645,94 +822,122 @@ namespace Capa_Presentacion
 
                 }
 
-            }else if (e.KeyCode == Keys.F2) {
-                  //guarda la venta
-                  btnGuardar.PerformClick();
+            }
+            if (Convert.ToInt32(e.KeyData) == Convert.ToInt32(Keys.Control) + Convert.ToInt32(Keys.F1))
+            {
+                Buscar_Cliente(1);
+                //consumidor final es 1
+                txtIdCliente.Text = "1";
+                cbxCategoria.Focus();
+            }
+            if (Convert.ToInt32(e.KeyData) == Convert.ToInt32(Keys.Shift) + Convert.ToInt32(Keys.F1))
+            {
+                btnCliente_Click(sender,e);
+            }
+
+            else if (e.KeyCode == Keys.F2)
+            {
+                //guarda la venta
+                btnGuardar.PerformClick();
 
             }
-              else if (e.KeyCode == Keys.F5)
-              {
-                  //Cambiar la cantidad manualmente
-                  if (DGVenta.Rows.Count > 0)
-                  {
-                      FrmAsignarValores asignarValor = new FrmAsignarValores("Cantidad");
-                      asignarValor.ShowDialog();
-                      //modifico la cantidad del row seleccionado
+            else if (e.KeyCode == Keys.F3)
+            {
+                rContado.Checked = true;
 
-                      if (asignarValor.Cantidad != 0)
-                      {
-                          DGVenta.CurrentRow.Cells["Cantidad"].Value = asignarValor.Cantidad;
-                          Decimal PrecioTotal = Convert.ToDecimal(DGVenta.CurrentRow.Cells["CPrecio"].Value);
-                          PrecioTotal = PrecioTotal * asignarValor.Cantidad;
-                          DGVenta.CurrentRow.Cells["Importe"].Value = PrecioTotal;
+            }
+            else if (e.KeyCode == Keys.F4)
+            {
+                rctacte.Checked = true;
+            }
 
-                          actualizarPrecioTotal();
-                      }
-                     
+            else if (e.KeyCode == Keys.F5)
+            {
+                rTarjeta.Checked = true;
+                cbTarjeta.Focus();
 
-                  }
-
-
-              }
-              else if (e.KeyCode == Keys.F6)
-              {
-                  btnAgregarPesable.PerformClick();
-              }
-              else if (e.KeyCode == Keys.F11)
-              {
-                  //CONSULTA DE PRECIO
-                  btnCalculadora.PerformClick();
-              }
-              else if (e.KeyCode == Keys.F12)
-              {
-                  //CONSULTA DE PRECIO
-                  btnConsultas.PerformClick();
-              }
-              else if (e.KeyCode == Keys.Delete)
-              {
-                  quitarProducto();
-
-
-
-              }
-
-              else if (e.KeyCode == Keys.F10)
-              {
-                  if (chkporcantidad.Checked == true)
-                  { chkporcantidad.Checked = false; }
-                  else
-                  { chkporcantidad.Checked = true; }
-              
-              }
-
-           
-              else if (e.KeyCode == Keys.Escape)
-              {
-
-                  if (MessageBox.Show("Está seguro de cerrar la ventana de ventas?", "Cerrar"
-                         , MessageBoxButtons.YesNo, MessageBoxIcon.Hand) == DialogResult.Yes)
-                  {
-
-                      this.Close();
-                  }
-
-
-              }
-              else if (e.KeyCode == Keys.Down && txtNombreProducto.Focused == true && dataGridView1.Visible == false)
-              {
-                  //si se presiona el boton down y se encuentre el foco en la caja de texto de nombre de producto
-                  //y la grilla de busqueda no está visible
-
-                  //el foco se pasa a la grilla
-                  if (DGVenta.Rows.Count > 0)
-                  {
-                      //y existen elementos en la grilla
-                      DGVenta.Focus();
-                  }
+            }
+            else if (e.KeyCode == Keys.F6)
+            {
+                RBPrecioNormal.Checked = true;
+                // btnAgregarPesable.PerformClick();
+            }
+            else if (e.KeyCode == Keys.F7)
+            {
+                RBPreciomayorista1.Checked = true;
+            }
+            else if (e.KeyCode == Keys.F8)
+            {
+                RBPreciomayorista2.Checked = true;
+            }
+            else if (e.KeyCode == Keys.F9)
+            {
+                RBPrecioOferta.Checked = true;
+            }
+            else if (e.KeyCode == Keys.F11)
+            {
+                if (CHKHabilitarbalanza.Checked == true)
+                { CHKHabilitarbalanza.Checked = false; }
+                else
+                { CHKHabilitarbalanza.Checked = true; }
+            }
+            else if (e.KeyCode == Keys.F12)
+            {
+                //CONSULTA DE PRECIO
+                btnConsultas.PerformClick();
+            }
+            else if (e.KeyCode == Keys.Delete)
+            {
+                quitarProducto();
 
 
 
-              }
+            }
+
+            else if (e.KeyCode == Keys.F10)
+            {
+                if (chkporcantidad.Checked == true)
+                { chkporcantidad.Checked = false; }
+                else
+                { chkporcantidad.Checked = true; }
+
+            }
+            else if (e.KeyCode == Convert.ToInt32(Keys.Control) + Keys.F10)
+            {
+                if (CHKHabilitarbalanza.Checked == true)
+                { CHKHabilitarbalanza.Checked = false; }
+                else
+                { CHKHabilitarbalanza.Checked = true; }
+
+            }
+
+            else if (e.KeyCode == Keys.Escape)
+            {
+
+                if (MessageBox.Show("Está seguro de cerrar la ventana de ventas?", "Cerrar"
+                       , MessageBoxButtons.YesNo, MessageBoxIcon.Hand) == DialogResult.Yes)
+                {
+
+                    this.Close();
+                }
+
+
+            }
+            else if (e.KeyCode == Keys.Down && txtNombreProducto.Focused == true && dataGridView1.Visible == false)
+            {
+                //si se presiona el boton down y se encuentre el foco en la caja de texto de nombre de producto
+                //y la grilla de busqueda no está visible
+
+                //el foco se pasa a la grilla
+                if (DGVenta.Rows.Count > 0)
+                {
+                    //y existen elementos en la grilla
+                    DGVenta.Focus();
+                }
+
+
+
+            }
              
         }
 
@@ -834,6 +1039,7 @@ namespace Capa_Presentacion
 
             try
             {
+                string plus = "";
                 int index = 0;
                 if (txtNombreProducto.TextLength >= 2 && IsNumeric(txtNombreProducto.Text) != true)
                 {
@@ -845,10 +1051,11 @@ namespace Capa_Presentacion
                     dataGridView1.Columns[0].Visible = false;
                     dataGridView1.Columns[1].Visible = false;
                     dataGridView1.Columns[2].Width = 350;
-                    dataGridView1.Columns[3].Visible = false;
-                    dataGridView1.Columns[4].Visible = false;
-                    dataGridView1.Columns[5].Visible = false;
-                    dataGridView1.Columns[6].Visible = false;
+                    for (int i = 3; i < 26; i++)
+                    {
+                        dataGridView1.Columns[i].Visible = false;
+                    }
+                    dataGridView1.Columns[26].Width = 350;
 
 
 
@@ -856,29 +1063,31 @@ namespace Capa_Presentacion
 
 
                 else
-                    if ((IsNumeric(txtNombreProducto.Text) == true) && (txtNombreProducto.TextLength >= 13))
-                    {
-                      index =  Buscar_producto(Convert.ToInt64(txtNombreProducto.Text), "porbarra", !chkporcantidad.Checked, 1, txtNombreProducto.Text);
-                    if (index < 0  && DGVenta.Rows.Count != 0)
-                    {
-                        DGVenta.Rows[DGVenta.Rows.Count - 1].Cells[3].Selected = true;
-                    }
-                    else
-                    {
-                        DGVenta.Rows[index].Cells[3].Selected = true;
-                    }
+                //    if ((IsNumeric(txtNombreProducto.Text) == true) && (txtNombreProducto.TextLength >= 13))
+                //{
 
-                    if (chkporcantidad.Checked == true)
-                    {
-                        cambiartextbox();
-                    }
+
+                //    index = Buscar_producto(0, "porbarra", !chkporcantidad.Checked, 1, txtNombreProducto.Text);
+                //    if (index < 0 && DGVenta.Rows.Count != 0)
+                //    {
+                //        DGVenta.Rows[DGVenta.Rows.Count - 1].Cells[3 + 2].Selected = true;
+                //    }
+                //    else
+                //    {
+                //        DGVenta.Rows[index].Cells[3 + 2].Selected = true;
+                //    }
+
+                //    if (chkporcantidad.Checked == true)
+                //    {
+                //        cambiartextbox();
+                //    }
+                //}
+                //else
+                {
+                    dataGridView1.Visible = false;
                 }
-                    else
-                    {
-                        dataGridView1.Visible = false;
-                    }
 
-              
+
 
             }
             catch (Exception)
@@ -886,7 +1095,8 @@ namespace Capa_Presentacion
 
                 throw;
             }
-            
+
+
         }
 
         private void btnAgregar_Click_1(object sender, EventArgs e)
@@ -1040,7 +1250,7 @@ namespace Capa_Presentacion
         private void txtNombreProducto_KeyDown(object sender, KeyEventArgs e)
         {
             int index = 0;
-
+            DataGridViewRow fila = DGVenta.CurrentRow;
             if (e.KeyCode == Keys.F3)
             {
                 DGVenta.Focus();
@@ -1052,13 +1262,44 @@ namespace Capa_Presentacion
                 dataGridView1.Focus();
 
             }
-
+            if (e.KeyCode == Keys.F6)
+            {
+                fila.Cells["Lista"].Value = cambiarpreciosegunlista(1);
+                RBPrecioNormal.Checked = true;
+                DGVenta.CurrentRow.Cells["manual"].Value = "Manual";
+                DGVenta.Refresh();
+                totales();
+            }
+            if (e.KeyCode == Keys.F7)
+            {
+                RBPreciomayorista1.Checked = true;
+                fila.Cells["Lista"].Value = cambiarpreciosegunlista(2);
+                DGVenta.CurrentRow.Cells["manual"].Value = "Manual";
+                DGVenta.Refresh();
+                totales();
+            }
+            if (e.KeyCode == Keys.F8)
+            {
+                fila.Cells["Lista"].Value = cambiarpreciosegunlista(3);
+                DGVenta.CurrentRow.Cells["manual"].Value = "Manual";
+                RBPreciomayorista2.Checked = true;
+                DGVenta.Refresh();
+                totales();
+            }
+            if (e.KeyCode == Keys.F9)
+            {
+                RBPrecioOferta.Checked = true;
+                fila.Cells["Lista"].Value = cambiarpreciosegunlista(4);
+                DGVenta.CurrentRow.Cells["manual"].Value = "Manual";
+                DGVenta.Refresh();
+                totales();
+            }
             if (e.KeyCode == Keys.Enter)
             {
+               
 
-                
-                    //se pasa el control permitiendo eliminar el beep
-                   e.SuppressKeyPress = true;
+                //se pasa el control permitiendo eliminar el beep
+                e.SuppressKeyPress = true;
                    
                
                 try
@@ -1066,11 +1307,19 @@ namespace Capa_Presentacion
                     txtNombreProducto.Text = txtNombreProducto.TextLength == 12 && IsNumeric(txtNombreProducto.Text) == true ? "0" + txtNombreProducto.Text : txtNombreProducto.Text;  
                     if (txtNombreProducto.TextLength >= 13 && IsNumeric(txtNombreProducto.Text) == true)
                     {
-                        index  = Buscar_producto(Convert.ToInt64(txtNombreProducto.Text), "porbarra",!chkporcantidad.Checked,1,txtNombreProducto.Text);
+                        index  = Buscar_producto(0, "porbarra",!chkporcantidad.Checked,1,txtNombreProducto.Text);
+
                         txtNombreProducto.Focus();
 
                     }
-
+                   else if (CHKHabilitarbalanza.Checked == true)
+                    {
+                        if (IsNumeric(txtNombreProducto.Text))
+                        {
+                            
+                            index = Buscar_producto(0, "porbarra", !chkporcantidad.Checked, 1, txtNombreProducto.Text.PadLeft (5,'0'));
+                        }
+                    }
                     //if (txtNombreProducto.TextLength == 12)
                     //{
                     //    NegocioArticulo.buscarCodigoBarra(txtNombreProducto.Text);
@@ -1101,14 +1350,20 @@ namespace Capa_Presentacion
                     }
                     if (index < 0)
                     {
-                        DGVenta.Rows[DGVenta.Rows.Count - 1].Cells[3].Selected = true;
+                        if (DGVenta.Rows.Count != 0)
+                        {
+                          //  habilitarcolumna("cantidad");
+                            DGVenta.Rows[DGVenta.Rows.Count - 1].Cells[3 + 2].Selected = true;
+                        }
+                        
                     }
                     else
                     {
-                        DGVenta.Rows[index].Cells[3].Selected = true;
+                        //habilitarcolumna("cantidad");
+                        DGVenta.Rows[index].Cells[3 + 2].Selected = true;
                     }
 
-                    if (chkporcantidad.Checked == true && (NegocioConfigEmpresa.balanzapuerto == "" || objnart.Pesable == 0))
+                    if (chkporcantidad.Checked == true  && objnart.Pesable == 0)
                     {
                         cambiartextbox();
                     }
@@ -1128,27 +1383,27 @@ namespace Capa_Presentacion
             Rectangle rec = DGVenta.GetCellDisplayRectangle(DGVenta.CurrentCell.ColumnIndex, DGVenta.CurrentCell.RowIndex, false);
             DGVenta.Focus();
 
-            if (DGVenta.CurrentCell.ColumnIndex == 2)
+            if (DGVenta.CurrentCell.ColumnIndex == datagridprecio)
             {
                 preciocantidad = "Cprecio";
             }
 
-            else if ( DGVenta.CurrentCell.ColumnIndex == 3 )
+            else if ( DGVenta.CurrentCell.ColumnIndex == datagridcantidad )
             {
                 preciocantidad = "cantidad";
             }
 
-            else if (DGVenta.CurrentCell.ColumnIndex == 4)
+            else if (DGVenta.CurrentCell.ColumnIndex == datagridsubtotal)
             {
                 preciocantidad = "subtotal";
             }
 
-            else if (DGVenta.CurrentCell.ColumnIndex == 5)
+            else if (DGVenta.CurrentCell.ColumnIndex == datagriddescuento)
             {
                 preciocantidad = "descuento";
             }
 
-            else if (DGVenta.CurrentCell.ColumnIndex == 6)
+            else if (DGVenta.CurrentCell.ColumnIndex == datagridimporte)
             {
                 preciocantidad = "importe";
             }
@@ -1236,11 +1491,11 @@ namespace Capa_Presentacion
                     if (chkporcantidad.Checked == false) { txtNombreProducto.Focus(); };
                     if (index < 0)
                     {
-                        DGVenta.Rows[DGVenta.Rows.Count - 1].Cells[3].Selected = true;
+                        DGVenta.Rows[DGVenta.Rows.Count - 1].Cells[3 + 2].Selected = true;
                     }
                     else
                     {
-                        DGVenta.Rows[index].Cells[3].Selected = true;
+                        DGVenta.Rows[index].Cells[3 + 2].Selected = true;
                     }
                     if (chkporcantidad.Checked == true && (NegocioConfigEmpresa.balanzapuerto == "" || objnart.Pesable == 0) )
                     {
@@ -1388,7 +1643,23 @@ namespace Capa_Presentacion
       
         private void txtIdCliente_TextChanged(object sender, EventArgs e)
         {
-           
+            if (txtIdCliente.TextLength > 3 && !IsNumeric(txtIdCliente.Text))
+            {
+
+                
+                DGCliente.Visible = true;
+
+
+                DGCliente.DataSource = NegocioCliente.buscar(txtIdCliente.Text);
+
+                DGCliente.Columns[0].Visible = false;
+                DGCliente.Columns[1].Width = 350;
+                DGCliente.Columns[2].Visible = false;
+                DGCliente.Columns[3].Visible = false;
+                DGCliente.Columns[4].Visible = false;
+                DGCliente.Columns[5].Visible = false;
+                DGCliente.Columns[6].Visible = false;
+            }
         }
 
         private void dataGridView1_KeyPress(object sender, KeyPressEventArgs e)
@@ -1403,12 +1674,41 @@ namespace Capa_Presentacion
         }
         private void DGVenta_KeyDown(object sender, KeyEventArgs e)
         {
+            DataGridViewRow fila = DGVenta.CurrentRow;
 
             if (e.KeyCode == Keys.Up && DGVenta.Rows.Count > 0 && DGVenta.Rows[0].Selected)
             {
                 //Si se presiona la tecla up, existe elementos en la grilla y se selecciona antes del primer elemento
                 txtNombreProducto.Focus();
 
+            }
+            if (e.KeyCode == Keys.F6)
+            {
+                fila.Cells["Lista"].Value = cambiarpreciosegunlista(1);
+                RBPrecioNormal.Checked = true;
+                DGVenta.Refresh();
+                totales();
+            }
+            if (e.KeyCode == Keys.F7)
+            {
+                RBPreciomayorista1.Checked = true;
+                fila.Cells["Lista"].Value = cambiarpreciosegunlista(2);
+                DGVenta.Refresh();
+                totales();
+            }
+            if (e.KeyCode == Keys.F8)
+            {
+                fila.Cells["Lista"].Value = cambiarpreciosegunlista(3);
+                RBPreciomayorista2.Checked = true;
+                DGVenta.Refresh();
+                totales();
+            }
+            if (e.KeyCode == Keys.F9)
+            {
+                RBPrecioOferta.Checked = true;
+                fila.Cells["Lista"].Value = cambiarpreciosegunlista(4);
+                DGVenta.Refresh();
+                totales();
             }
 
 
@@ -1629,12 +1929,6 @@ namespace Capa_Presentacion
             consultas.Show();
         }
 
-        private void DGVenta_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-            
-        }
-
         private void btnAgregarPesable_Click(object sender, EventArgs e)
         {
             FrmAsignarPrecio asignarPrecio = new FrmAsignarPrecio();
@@ -1722,11 +2016,6 @@ namespace Capa_Presentacion
             //TxtPrecio.Enabled = chkporcantidad.Checked; 
         }
 
-        private void DGVenta_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
         private void DGVenta_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             
@@ -1736,7 +2025,7 @@ namespace Capa_Presentacion
 
             if (DGVenta.Rows.Count > 0)
             {
-                if ((e.ColumnIndex == 2 && (NegocioConfigEmpresa.usuariosa == true || objusuario.TieneRegla("45") == true)) || e.ColumnIndex == 3 || e.ColumnIndex == 5 || (e.ColumnIndex == 4 && Convert .ToInt16 ( DGVenta.CurrentRow.Cells["Dpesable"].Value) == 1))
+                if ((e.ColumnIndex == datagridprecio && (NegocioConfigEmpresa.usuariosa == true || objusuario.TieneRegla("45") == true)) || e.ColumnIndex == datagridcantidad || e.ColumnIndex == datagriddescuento || (e.ColumnIndex == datagridsubtotal && Convert .ToInt16 ( DGVenta.CurrentRow.Cells["Dpesable"].Value) == 1))
                 {
                     
                     TxtcambioDv.Location = new Point(rec.Location.X + DGVenta.Location.X, rec.Location.Y + DGVenta.Location.Y);
@@ -1745,7 +2034,7 @@ namespace Capa_Presentacion
                     TxtcambioDv.Text  = DGVenta.CurrentCell.Value.ToString();
                     TxtcambioDv.Focus();
 
-                    if (e.ColumnIndex == 2)
+                    if (e.ColumnIndex == datagridprecio)
                     {
                         DGVenta.CurrentRow.Cells["Manual"].Value = "Manual"; 
                     }
@@ -1753,26 +2042,26 @@ namespace Capa_Presentacion
 
                 }
 
-                if (e.ColumnIndex == 3)
+                if (e.ColumnIndex == datagridcantidad)
                 {
                     preciocantidad = "cantidad";
 
                    
                 }
-                if (e.ColumnIndex == 2)
+                if (e.ColumnIndex == datagridprecio)
                 {
                     preciocantidad = "Cprecio";
 
 
                 }
 
-                if (e.ColumnIndex == 5)
+                if (e.ColumnIndex == datagriddescuento)
                 {
                     preciocantidad = "descuento";
                   
                 }
 
-                if (e.ColumnIndex == 4)
+                if (e.ColumnIndex == datagridsubtotal)
                 {
                     preciocantidad = "subtotal";
                 }
@@ -1795,7 +2084,7 @@ namespace Capa_Presentacion
                     }
                     else
                     {
-                        DGVenta.CurrentRow.Cells["cantidad"].Value = Convert.ToDecimal(TxtcambioDv.Text) + Convert.ToDecimal(DGVenta.CurrentRow.Cells["cantidad"].Value);
+                        DGVenta.CurrentRow.Cells["cantidad"].Value = Convert.ToDecimal(TxtcambioDv.Text);// + Convert.ToDecimal(DGVenta.CurrentRow.Cells["cantidad"].Value);
                     }
                     
                     DGVenta.CurrentRow.Cells["Calculo"].Value = "cantidad";
@@ -1813,35 +2102,36 @@ namespace Capa_Presentacion
                 TxtcambioDv.Visible = false;
                 totales();
 
-                if (DGVenta.CurrentCell.ColumnIndex == 2 )
+                if (DGVenta.CurrentCell.ColumnIndex == datagridprecio )
                 {
-                    
-                    DGVenta.Rows[DGVenta.CurrentCell.RowIndex].Cells[3].Selected = true;
+
+                    habilitarcolumna("cantidad");
                 }
 
-                else if (DGVenta.CurrentCell.ColumnIndex == 3  )
+                else if (DGVenta.CurrentCell.ColumnIndex == datagridcantidad  )
                 {
                     if ( pesable == 1)
                     {
-                        DGVenta.Rows[DGVenta.CurrentCell.RowIndex].Cells[4].Selected = true;
+                        habilitarcolumna("subtotal");
                     }
                     else
                     {
-                        DGVenta.Rows[DGVenta.CurrentCell.RowIndex].Cells[5].Selected = true;
+                        txtNombreProducto.Focus();
+                        //DGVenta.Rows[DGVenta.CurrentCell.RowIndex].Cells[5].Selected = true;
                     }
                 }
 
-                else if (DGVenta.CurrentCell.ColumnIndex == 4  )
+                else if (DGVenta.CurrentCell.ColumnIndex == datagridsubtotal  )
                 {
-
-                    DGVenta.Rows[DGVenta.CurrentCell.RowIndex].Cells[5].Selected = true;
+                    txtNombreProducto.Focus();
+                    //DGVenta.Rows[DGVenta.CurrentCell.RowIndex].Cells[5 + 2].Selected = true;
                 }
-                else if (DGVenta.CurrentCell.ColumnIndex == 5 )
+                else if (DGVenta.CurrentCell.ColumnIndex == datagriddescuento )
                 {
-
-                    DGVenta.Rows[DGVenta.CurrentCell.RowIndex].Cells[6].Selected = true;
+                    habilitarcolumna("importe");
+                    //DGVenta.Rows[DGVenta.CurrentCell.RowIndex].Cells[6 + 2].Selected = true;
                 }
-                if (DGVenta.CurrentCell.ColumnIndex != 6)
+                if (DGVenta.CurrentCell.ColumnIndex != datagridcantidad)
                 {
                     cambiartextbox();
                 }
@@ -1859,6 +2149,34 @@ namespace Capa_Presentacion
             }
         }
 
+        private void habilitarcolumna(string columnaparahabilitar)
+        {
+            switch (columnaparahabilitar)
+            {
+                case "descuento":
+                    {
+                        DGVenta.Rows[DGVenta.CurrentCell.RowIndex].Cells[6 + 1].Selected = true;
+                        break;
+                    }
+                case "importe":
+                    {
+                        DGVenta.Rows[DGVenta.CurrentCell.RowIndex].Cells[6 + 2].Selected = true;
+                        break;
+                    }
+                case "cantidad":
+                    {
+                        DGVenta.Rows[DGVenta.CurrentCell.RowIndex].Cells[3 + 2].Selected = true;
+                        break;
+                    }
+                case "subtotal":
+                    {
+                        DGVenta.Rows[DGVenta.CurrentCell.RowIndex].Cells[4 + 2].Selected = true;
+                        break;
+                    }
+                default:
+                    break;
+            }
+        }
         private void TxtcambioDv_TextChanged(object sender, EventArgs e)
         {
 
@@ -1902,7 +2220,7 @@ namespace Capa_Presentacion
             this.cbTarjeta.ValueMember = "Codigo";
             //lo que se muestra
             this.cbTarjeta.DisplayMember = "Descripcion";
-            cbTarjeta.SelectedIndex = 1;
+            cbTarjeta.SelectedIndex = 0;
            
         }
 
@@ -1950,6 +2268,7 @@ namespace Capa_Presentacion
         private void cbTarjeta_SelectedValueChanged(object sender, EventArgs e)
         {
             llenarcomboboxcuota();
+            
         }
 
         private void cbMCuota_SelectedIndexChanged(object sender, EventArgs e)
@@ -2082,6 +2401,52 @@ namespace Capa_Presentacion
             
             
             
+        }
+
+        private void cbxCategoria_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                txtNombreProducto.Focus();
+            }
+        }
+
+        private void cbTarjeta_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                cbMCuota.Focus();
+            }
+        }
+
+        private void cbMCuota_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                txtNombreProducto.Focus();
+            }
+        }
+
+        private void DGCliente_KeyDown(object sender, KeyEventArgs e)
+        {
+            Buscar_Cliente(Convert.ToInt32(DGCliente.CurrentRow.Cells["idcliente"].Value));
+            DGCliente.Visible = false;
+            txtNombreProducto.Focus();
+        }
+
+        private void DGCliente_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void DGCliente_DoubleClick(object sender, EventArgs e)
+        {
+
+        }
+
+        private void DGCliente_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
         }
     }
 }

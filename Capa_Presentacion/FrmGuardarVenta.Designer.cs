@@ -85,7 +85,7 @@
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(960, 73);
             this.btnGuardar.TabIndex = 2;
-            this.btnGuardar.Text = "Guardar(F2)";
+            this.btnGuardar.Text = "Guardar(F2) / Imprimir y guardar(i) ";
             this.btnGuardar.UseVisualStyleBackColor = true;
             this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
@@ -305,7 +305,7 @@
             this.tbTarjeta.Margin = new System.Windows.Forms.Padding(4);
             this.tbTarjeta.Name = "tbTarjeta";
             this.tbTarjeta.Padding = new System.Windows.Forms.Padding(4);
-            this.tbTarjeta.Size = new System.Drawing.Size(443, 334);
+            this.tbTarjeta.Size = new System.Drawing.Size(465, 334);
             this.tbTarjeta.TabIndex = 1;
             this.tbTarjeta.Text = "TARJETA";
             // 

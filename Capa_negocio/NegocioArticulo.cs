@@ -30,6 +30,15 @@ namespace Capa_negocio
         private decimal preciopormayor;
         private decimal cantidadpormayor;
         private decimal iva;
+
+        private decimal cantidadpormayor2;
+        private decimal preciopormayor2;
+        private decimal precio_oferta;
+        private DateTime fechadeoferta;
+        private bool habilitarfechaoferta;
+        private decimal bulto_cantidad;
+        private string bulto_codigobarra;
+        private string nombrecategoria;
         public int Pesable
         {
             get { return pesable; }
@@ -40,9 +49,9 @@ namespace Capa_negocio
         private int stockActual;
         private Boolean sindatos;
 
-        public static string insertar(string nombre, string codigo, string descripcion, int idCategoria, decimal precio,int cantInicial,int pesable, decimal preciocompra, decimal utilidad,decimal flete, decimal varcantidadpormayor,decimal varpreciopormayor, int idsubcategoria,decimal iva)
+        public static string insertar(string nombre, string codigo, string descripcion, int idCategoria, decimal precio,int cantInicial,int pesable, decimal preciocompra, decimal utilidad,decimal flete, decimal varcantidadpormayor,decimal varpreciopormayor, int idsubcategoria,decimal iva, decimal varcantidadpormayor2, decimal varpreciopormayor2,decimal varprecio_oferta, DateTime fechaoferta, bool habilitarfechaoferta, decimal bulto_cantidad, string bulto_codigobarra, decimal utilidadpormayor, decimal utilidadpormayor2, decimal utilidadoferta)
         {
-            DatosArticulo dArticulo= new DatosArticulo(nombre,codigo,descripcion,idCategoria,precio,cantInicial,pesable,preciocompra,utilidad,flete, DateTime.Now,0,"",idsubcategoria,varcantidadpormayor,varpreciopormayor,iva);
+            DatosArticulo dArticulo= new DatosArticulo(nombre,codigo,descripcion,idCategoria,precio,cantInicial,pesable,preciocompra,utilidad,flete, DateTime.Now,fechaoferta,0,"",idsubcategoria,varcantidadpormayor,varpreciopormayor,iva,varcantidadpormayor2,varpreciopormayor2,varprecio_oferta,habilitarfechaoferta,bulto_cantidad,bulto_codigobarra,utilidadpormayor,utilidadpormayor2,utilidadoferta);
             return dArticulo.agregar(dArticulo);
 
         }
@@ -53,9 +62,10 @@ namespace Capa_negocio
             dArticulo.IdArticulo = idArticulo;
             return dArticulo.eliminar(dArticulo);
         }
-        public static string editar(int idArticulo,string nombre, string codigo, string descripcion, int idCategoria,decimal precio,decimal cantInicial,int pesable,decimal preciocompra,decimal utilidad, decimal flete,  DateTime fecha  ,int edicionusuario = 0, string edicionlugar = "", decimal cantidadpormayor =0, decimal preciopormayor=0,int idsubcategoria = 0 , decimal iva = 0)
+        public static string editar(int idArticulo,string nombre, string codigo, string descripcion, int idCategoria,decimal precio,decimal cantInicial,int pesable,decimal preciocompra,decimal utilidad, decimal flete,  DateTime fecha  ,DateTime fechaoferta,int edicionusuario = 0, string edicionlugar = "", decimal cantidadpormayor =0, decimal preciopormayor=0,int idsubcategoria = 0 , decimal iva = 0,
+                                    decimal cantidadpormayor2 = 0, decimal preciopormayor2 = 0, decimal precio_oferta = 0, bool habilitarfechaoferta = false, decimal bulto_cantidad = 0, string bulto_codigobarra = "", decimal varutilidadpormayor = 0, decimal varutilidadpormayor2 = 0, decimal varutilidadoferta = 0)
         {
-            DatosArticulo dArticulo = new DatosArticulo(nombre, codigo, descripcion,idCategoria,precio,cantInicial,pesable,preciocompra,utilidad,flete,fecha,edicionusuario,edicionlugar,idsubcategoria,cantidadpormayor,preciopormayor, iva);
+            DatosArticulo dArticulo = new DatosArticulo(nombre, codigo, descripcion,idCategoria,precio,cantInicial,pesable,preciocompra,utilidad,flete,fecha,fechaoferta,edicionusuario,edicionlugar,idsubcategoria,cantidadpormayor,preciopormayor, iva,cantidadpormayor2,preciopormayor2,precio_oferta,habilitarfechaoferta,bulto_cantidad,bulto_codigobarra, varutilidadpormayor,varutilidadpormayor2,varutilidadoferta);
             dArticulo.IdArticulo= idArticulo;
             return dArticulo.editar(dArticulo);
         }
@@ -76,12 +86,18 @@ namespace Capa_negocio
              List<DatosArticulo> listaArticulo= new List<DatosArticulo>();
             foreach (DataRow fila in Grillaproductos.Rows)
 	        {
-		         DatosArticulo dArticulo = new DatosArticulo();
+		       DatosArticulo dArticulo = new DatosArticulo();
                dArticulo.IdArticulo = Convert.ToInt32(fila["Codigo"].ToString());
                dArticulo.Precio = Convert.ToDecimal(fila["PrecioVenta"].ToString());
                dArticulo.PrecioCompra = Convert.ToDecimal(fila["PrecioCompra"].ToString());
                dArticulo.Utilidad= Convert.ToDecimal(fila["Utilidad"].ToString());
                dArticulo.Flete = Convert.ToDecimal(fila["Flete"].ToString());
+               dArticulo.Utilidadpreciopormayor = Convert.ToDecimal(fila["Utilidadpormayor"].ToString());
+               dArticulo.Preciopormayor = Convert.ToDecimal(fila["Preciopormayor"].ToString());
+               dArticulo.Utilidadpreciopormayor2 = Convert.ToDecimal(fila["Utilidadpormayor2"].ToString());
+               dArticulo.Preciopormayor2 = Convert.ToDecimal(fila["Preciopormayor2"].ToString());
+               dArticulo.Utilidadoferta = Convert.ToDecimal(fila["Utilidadpreciooferta"]);
+               dArticulo.Precio_oferta = Convert.ToDecimal(fila["Precio_Oferta"]);
                listaArticulo.Add(dArticulo);
 	            }
             DatosArticulo datosArticulo = new DatosArticulo();
@@ -215,7 +231,14 @@ namespace Capa_negocio
             this.preciopormayor = ObjArticulo.Preciopormayor;
             this.cantidadpormayor = ObjArticulo.Cantidadpormayor;
             this.Iva= ObjArticulo.Iva;
-
+            this.cantidadpormayor2 = ObjArticulo.Cantidadpormayor2;
+            this.preciopormayor2 = ObjArticulo.Preciopormayor2;
+            this.precio_oferta = ObjArticulo.Precio_oferta;
+            this.fechadeoferta = ObjArticulo.Fecha_oferta;
+            this.habilitarfechaoferta = ObjArticulo.Habilitarfechaoferta;
+            this.bulto_cantidad = ObjArticulo.Bulto_cantidad;
+            this.bulto_codigobarra = ObjArticulo.Bulto_codigobarra;
+            this.nombrecategoria = ObjArticulo.Nombrecategoria;
         }
         public static NegocioArticulo extraerdatosPesable(long codArticulo, string tipo)
         {
@@ -279,6 +302,41 @@ namespace Capa_negocio
             DatosArticulo objart = new DatosArticulo();
             return objart.cargarpreciomayorista(listaArticulo);
         }
+
+        //gondola
+        public static string cargarproductogondola(List<int> codigoarticulo,  int idequipo)
+        {
+            DatosArticulo objart = new DatosArticulo(idequipo);
+            List<DatosArticulo> detalle = new List<DatosArticulo>();
+
+            for (int index = 0; index < codigoarticulo.Count; index++)
+            {
+                DatosArticulo objartlista = new DatosArticulo();
+                objart.ExtraerDatos(codigoarticulo[index], "poridarticulo","");
+
+                
+                objartlista.IdArticulo = objart.IdArticulo;
+                objartlista.Precio = objart.Precio;
+                objartlista.Preciopormayor = objart.Preciopormayor;
+                objartlista.Preciopormayor2 = objart.Preciopormayor2;
+                objartlista.Precio_oferta = objart.Precio_oferta;
+                objartlista.IdCategoria = objart.IdCategoria;
+                objartlista.Codigo = objart.Codigo;
+
+                detalle.Add(objartlista);
+            }
+
+
+            return objart.cargarproductogondola(detalle);
+        }
+
+        public static DataTable consultagondola(int varidequipo)
+        {
+            DatosArticulo objart = new DatosArticulo(varidequipo);
+            return objart.consultaproductogondola();
+            
+        }
+         
         public Boolean Sindatos
         {
             get { return sindatos; }
@@ -371,6 +429,110 @@ namespace Capa_negocio
             set
             {
                 iva = value;
+            }
+        }
+
+        public decimal Cantidadpormayor2
+        {
+            get
+            {
+                return cantidadpormayor2;
+            }
+
+            set
+            {
+                cantidadpormayor2 = value;
+            }
+        }
+
+        public decimal Preciopormayor2
+        {
+            get
+            {
+                return preciopormayor2;
+            }
+
+            set
+            {
+                preciopormayor2 = value;
+            }
+        }
+
+        public decimal Precio_oferta
+        {
+            get
+            {
+                return precio_oferta;
+            }
+
+            set
+            {
+                precio_oferta = value;
+            }
+        }
+
+        public DateTime Fechadeoferta
+        {
+            get
+            {
+                return fechadeoferta;
+            }
+
+            set
+            {
+                fechadeoferta = value;
+            }
+        }
+
+        public bool Habilitarfechaoferta
+        {
+            get
+            {
+                return habilitarfechaoferta;
+            }
+
+            set
+            {
+                habilitarfechaoferta = value;
+            }
+        }
+
+        public decimal Bulto_cantidad
+        {
+            get
+            {
+                return bulto_cantidad;
+            }
+
+            set
+            {
+                bulto_cantidad = value;
+            }
+        }
+
+        public string Bulto_codigobarra
+        {
+            get
+            {
+                return bulto_codigobarra;
+            }
+
+            set
+            {
+                bulto_codigobarra = value;
+            }
+        }
+
+        public string Nombrecategoria
+        {
+            get
+            {
+                return nombrecategoria;
+            }
+
+            set
+            {
+                nombrecategoria = value;
             }
         }
     }

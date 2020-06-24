@@ -16,6 +16,7 @@ namespace Capa_Presentacion
         public int posY = 0;
         public int posX = 0;
         private string cambiovalor;
+        
         public FrmPreciosmasivos()
         {
             InitializeComponent();
@@ -170,6 +171,14 @@ namespace Capa_Presentacion
                         DataTable tablaArticulos = GrillaADataTable(DGVenta);
                         string respuesta = NegocioArticulo.editarPrecioMasivo(tablaArticulos);
                         UtilityFrm.mensajeConfirm("La actualizacion se realizo con exito");
+                        if (UtilityFrm.mensajeopcionsiono("Desea imprimir las etiquetas de gondola"))
+                        {
+                            NegocioArticulo.cargarproductogondola(rellenarlistaidarticulo(),NegocioConfigEmpresa.idequipo);
+                             Formreportes.FrmGondola mifrmreportegondola = new Formreportes.FrmGondola(NegocioConfigEmpresa.idequipo);
+                           // Formreportes.FrmReporteGondola mifrmreportegondola = new Formreportes.FrmReporteGondola(NegocioConfigEmpresa.idequipo); 
+                            mifrmreportegondola.ShowDialog();
+
+                        }  
                         DGVenta.Rows.Clear();
                     }
 
@@ -193,16 +202,34 @@ namespace Capa_Presentacion
             table.Columns.Add("PrecioCompra");
             table.Columns.Add("PrecioVenta");
             table.Columns.Add("Flete");
+            table.Columns.Add("Utilidadpormayor");
+            table.Columns.Add("Preciopormayor");
+            table.Columns.Add("Utilidadpormayor2");
+            table.Columns.Add("Preciopormayor2");
+            table.Columns.Add("UtilidadprecioOferta");
+            table.Columns.Add("Precio_Oferta");
 
             foreach (DataGridViewRow row in grillaACopiar.Rows)
             {
-                table.Rows.Add(row.Cells[0].Value, row.Cells[1].Value, row.Cells[4].Value, row.Cells[3].Value, row.Cells[6].Value, row.Cells[5].Value);
+                table.Rows.Add(row.Cells[0].Value, row.Cells[1].Value, row.Cells[4].Value, row.Cells[3].Value,
+                row.Cells[6].Value,row.Cells[5].Value, row.Cells[7].Value, row.Cells[8].Value, row.Cells[9].Value, 
+                row.Cells[10].Value, row.Cells[11].Value, row.Cells[12].Value);
             }
 
 
             return table;
         }
 
+        public List<int>  rellenarlistaidarticulo()
+        {
+            List<int> codigoarticulo = new List<int>();
+
+            foreach  (DataGridViewRow row in DGVenta.Rows)
+            {
+                codigoarticulo.Add(Convert.ToInt32( row.Cells[0].Value));
+            }
+            return codigoarticulo;
+        }
         private void btnCerrar_MouseMove(object sender, MouseEventArgs e)
         {
             btnCerrar.BackColor = Color.Red;
@@ -255,50 +282,7 @@ namespace Capa_Presentacion
 
         private void DGVenta_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            //Rectangle rec = DGVenta.GetCellDisplayRectangle(DGVenta.CurrentCell.ColumnIndex, DGVenta.CurrentCell.RowIndex, false);
-
-
-            //if (DGVenta.Rows.Count > 0)
-            //{
-            //    if (e.ColumnIndex == 3)
-            //    {
-            //        TxtcambioDv.Location = new Point(rec.Location.X + DGVenta.Location.X, rec.Location.Y + DGVenta.Location.Y);
-            //        cambiovalor = "preciocompra";
-            //        TxtcambioDv.Visible = true;
-            //        TxtcambioDv.Text = DGVenta.CurrentCell.Value.ToString();
-            //        TxtcambioDv.Focus();
-
-
-            //    }
-
-            //    if (e.ColumnIndex == 4)
-            //    {
-            //        TxtcambioDv.Location = new Point(rec.Location.X + DGVenta.Location.X, rec.Location.Y + DGVenta.Location.Y);
-            //        cambiovalor = "utilidad";
-            //        TxtcambioDv.Visible = true;
-            //        TxtcambioDv.Text = DGVenta.CurrentCell.Value.ToString();
-            //        TxtcambioDv.Focus();
-            //    }
-
-            //    if (e.ColumnIndex == 5)
-            //    {
-            //        TxtcambioDv.Location = new Point(rec.Location.X + DGVenta.Location.X, rec.Location.Y + DGVenta.Location.Y);
-            //        cambiovalor = "flete";
-            //        TxtcambioDv.Visible = true;
-            //        TxtcambioDv.Text = DGVenta.CurrentCell.Value.ToString();
-            //        TxtcambioDv.Focus();
-            //    }
-
-            //    if (e.ColumnIndex == 6)
-            //    {
-            //        TxtcambioDv.Location = new Point(rec.Location.X + DGVenta.Location.X, rec.Location.Y + DGVenta.Location.Y);
-            //        cambiovalor = "precioventa";
-            //        TxtcambioDv.Visible = true;
-            //        TxtcambioDv.Text = DGVenta.CurrentCell.Value.ToString();
-            //        TxtcambioDv.Focus();
-            //    }
-
-            //}
+           
         }
 
         private void TxtcambioDv_KeyDown(object sender, KeyEventArgs e)
@@ -313,9 +297,15 @@ namespace Capa_Presentacion
 
         private void calcularutilidadgrid( )
         {
-
+            //minorista
             DGVenta.CurrentRow.Cells[6].Value = UtilityFrm.formateodecimal(UtilityFrm.calcularventa(Convert.ToDecimal(DGVenta.CurrentRow.Cells[3].Value), Convert.ToDecimal(DGVenta.CurrentRow.Cells[4].Value), Convert.ToDecimal(DGVenta.CurrentRow.Cells[5].Value), Convert.ToDecimal(DGVenta.CurrentRow.Cells[6].Value)), 2);
-            
+            //x6unidades
+            DGVenta.CurrentRow.Cells[8].Value = UtilityFrm.formateodecimal(UtilityFrm.calcularventa(Convert.ToDecimal(DGVenta.CurrentRow.Cells[3].Value), Convert.ToDecimal(DGVenta.CurrentRow.Cells[7].Value)), 2);
+            //xcaja
+            DGVenta.CurrentRow.Cells[10].Value = UtilityFrm.formateodecimal(UtilityFrm.calcularventa(Convert.ToDecimal(DGVenta.CurrentRow.Cells[3].Value), Convert.ToDecimal(DGVenta.CurrentRow.Cells[9].Value)), 2);
+            //oferta
+            DGVenta.CurrentRow.Cells[12].Value = UtilityFrm.formateodecimal(UtilityFrm.calcularventa(Convert.ToDecimal(DGVenta.CurrentRow.Cells[3].Value), Convert.ToDecimal(DGVenta.CurrentRow.Cells[11].Value)), 2);
+
 
 
         }
@@ -373,15 +363,7 @@ namespace Capa_Presentacion
         private void DGVenta_SelectionChanged(object sender, EventArgs e)
         {
 
-            //DGVenta.CurrentCell = DGVenta.CurrentRow.Cells[4];
-
-            //DGVenta.BeginEdit(true);
-            //DGVenta.CurrentCell = DGVenta.CurrentRow.Cells[3];
-            //DGVenta.BeginEdit(true);
-            //DGVenta.CurrentCell = DGVenta.CurrentRow.Cells[5];
-            //DGVenta.BeginEdit(true);
-            //DGVenta.CurrentCell = DGVenta.CurrentRow.Cells[6];
-            //DGVenta.BeginEdit(true);
+           
         }
 
         private void dataGridView1_SelectionChanged(object sender, EventArgs e)
@@ -407,6 +389,18 @@ namespace Capa_Presentacion
             DGVenta.CurrentRow.Cells[3].Value = UtilityFrm.formateodecimal(Convert.ToDecimal ( DGVenta.CurrentRow.Cells[3].Value), 2);
             DGVenta.CurrentRow.Cells[4].Value = UtilityFrm.formateodecimal(Convert.ToDecimal(DGVenta.CurrentRow.Cells[4].Value), 2);
             DGVenta.CurrentRow.Cells[5].Value = UtilityFrm.formateodecimal(Convert.ToDecimal(DGVenta.CurrentRow.Cells[5].Value), 2);
+        }
+
+        private void BtnImprimir_Click(object sender, EventArgs e)
+        {
+            if (DGVenta.Rows.Count != 0)
+            {
+                NegocioArticulo.cargarproductogondola(rellenarlistaidarticulo(), NegocioConfigEmpresa.idequipo);
+                Formreportes.FrmGondola mifrmreportegondola = new Formreportes.FrmGondola(NegocioConfigEmpresa.idequipo);
+                // Formreportes.FrmReporteGondola mifrmreportegondola = new Formreportes.FrmReporteGondola(NegocioConfigEmpresa.idequipo); 
+                mifrmreportegondola.ShowDialog();
+                DGVenta.Rows.Clear();
+            }
         }
     }
 }

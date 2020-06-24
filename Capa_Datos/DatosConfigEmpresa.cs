@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Capa_Datos
 {
-   public class DatosConfigEmpresa
+    public class DatosConfigEmpresa
     {
         private string sign;
         private string token;
@@ -19,10 +19,11 @@ namespace Capa_Datos
         private string razonSocial;
         private long cuit;
         private Byte[] logo;
-        private int cod_empresa=1;
+        private int cod_empresa = 1;
         private string FormatoImpFactElectronica;
         private string formatoimpproforma;
         private string formatoimpremito;
+        private string certificado;
         private string[] ReglasUsuario { get; set; }
         //Equipo
 
@@ -47,7 +48,7 @@ namespace Capa_Datos
             get { return usuario; }
             set { usuario = value; }
         }
-        private string  turno;
+        private string turno;
 
         public string Turno
         {
@@ -133,14 +134,14 @@ namespace Capa_Datos
             get { return impreporte; }
             set { impreporte = value; }
         }
-       
-       //getters and setters
+
+        //getters and setters
         public int Cod_empresa
         {
             get { return cod_empresa; }
             set { cod_empresa = value; }
         }
-       public string CondicionFrenteIVA
+        public string CondicionFrenteIVA
         {
             get { return condicionFrenteIVA; }
             set { condicionFrenteIVA = value; }
@@ -252,45 +253,58 @@ namespace Capa_Datos
             }
         }
 
+        public string Certificado
+        {
+            get
+            {
+                return certificado;
+            }
+
+            set
+            {
+                certificado = value;
+            }
+        }
+
         public DataTable mostrar()
-       {
+        {
 
-           //Modo 1 para DB
-           SqlConnection cn = new SqlConnection(Conexion.conexion);
-           //le asigno en el constructor el nombre de la tabla
-           DataTable dtResult = new DataTable("config_empresa");
-           try
-           {
-               cn.Open();
+            //Modo 1 para DB
+            SqlConnection cn = new SqlConnection(Conexion.conexion);
+            //le asigno en el constructor el nombre de la tabla
+            DataTable dtResult = new DataTable("config_empresa");
+            try
+            {
+                cn.Open();
 
-               SqlCommand comando = ProcAlmacenado.CrearProc(cn, "SP_CONFIG_EMPRESA");
-               //Modo 1 MOSTRAR
-               SqlParameter parModo = ProcAlmacenado.asignarParametros("@modo", SqlDbType.Int, 1);
-               comando.Parameters.Add(parModo);
-               SqlParameter parCodEmpresa = ProcAlmacenado.asignarParametros("@cod_empresa", SqlDbType.Int);
-               comando.Parameters.Add(parCodEmpresa);
+                SqlCommand comando = ProcAlmacenado.CrearProc(cn, "SP_CONFIG_EMPRESA");
+                //Modo 1 MOSTRAR
+                SqlParameter parModo = ProcAlmacenado.asignarParametros("@modo", SqlDbType.Int, 1);
+                comando.Parameters.Add(parModo);
+                SqlParameter parCodEmpresa = ProcAlmacenado.asignarParametros("@cod_empresa", SqlDbType.Int);
+                comando.Parameters.Add(parCodEmpresa);
 
-               //creo el objeto adapter del data provider le paso el sqlcommand
-               SqlDataAdapter datosResult = new SqlDataAdapter(comando);
-               //los resultados los actualizo en el datatable dtResult
-               datosResult.Fill(dtResult);
-               
+                //creo el objeto adapter del data provider le paso el sqlcommand
+                SqlDataAdapter datosResult = new SqlDataAdapter(comando);
+                //los resultados los actualizo en el datatable dtResult
+                datosResult.Fill(dtResult);
 
-           }
-           catch (Exception ex)
-           {
-               dtResult = null;
-               throw ex;
-           }
-           return dtResult;
-       }
+
+            }
+            catch (Exception ex)
+            {
+                dtResult = null;
+                throw ex;
+            }
+            return dtResult;
+        }
 
         public bool verificartiketfiscal()
         {
             bool chequear = true;
             //Modo 1 para DB
             SqlConnection cn = new SqlConnection(Conexion.conexion);
-            
+
             try
             {
                 cn.Open();
@@ -299,34 +313,34 @@ namespace Capa_Datos
                 //Modo 1 MOSTRAR
                 SqlParameter parModo = ProcAlmacenado.asignarParametros("@modo", SqlDbType.NVarChar, "VERIFICARTICKET");
                 comando.Parameters.Add(parModo);
-                
+
 
                 //creo el objeto adapter del data provider le paso el sqlcommand
-              //  SqlDataAdapter datosResult = new SqlDataAdapter(comando);
+                //  SqlDataAdapter datosResult = new SqlDataAdapter(comando);
                 //los resultados los actualizo en el datatable dtResult
                 SqlDataReader dr = comando.ExecuteReader();
 
                 if (dr.Read() == true)
                 {
 
-                    this.sign = Convert.ToString (dr["signn"]);
+                    this.sign = Convert.ToString(dr["signn"]);
                     this.token = Convert.ToString(dr["token"]);
                     this.fecha = Convert.ToDateTime(dr["expiration_time"]);
 
-                   
+
                 }
                 else
                 {
                     chequear = false;
                 }
 
-                    
+
 
 
             }
             catch (Exception ex)
             {
-                
+
                 throw ex;
             }
             return chequear;
@@ -347,7 +361,7 @@ namespace Capa_Datos
                 SqlParameter parModo = ProcAlmacenado.asignarParametros("@modo", SqlDbType.NVarChar, "INSERTARTICKET");
                 comando.Parameters.Add(parModo);
 
-                SqlParameter parSign = ProcAlmacenado.asignarParametros("@sign", SqlDbType.NVarChar,configEmpresa.Sign );
+                SqlParameter parSign = ProcAlmacenado.asignarParametros("@sign", SqlDbType.NVarChar, configEmpresa.Sign);
                 comando.Parameters.Add(parSign);
 
                 SqlParameter parToken = ProcAlmacenado.asignarParametros("@token", SqlDbType.NVarChar, configEmpresa.Token);
@@ -355,7 +369,7 @@ namespace Capa_Datos
 
                 SqlParameter parFecha = ProcAlmacenado.asignarParametros("@espirationtime", SqlDbType.DateTime, configEmpresa.fecha);
                 comando.Parameters.Add(parFecha);
-                           
+
 
                 if (comando.ExecuteNonQuery() >= 1)
                 {
@@ -377,123 +391,123 @@ namespace Capa_Datos
         }
 
         public string agregarEmpresa(DatosConfigEmpresa configEmpresa)
-       {
-           string respuesta = "";
-           //Modo 3 para DB
-           SqlConnection cn = new SqlConnection(Conexion.conexion);
-           //le asigno en el constructor el nombre de la tabla
-           DataTable dtResult = new DataTable("config_empresa");
-           try
-           {
-               cn.Open();
+        {
+            string respuesta = "";
+            //Modo 3 para DB
+            SqlConnection cn = new SqlConnection(Conexion.conexion);
+            //le asigno en el constructor el nombre de la tabla
+            DataTable dtResult = new DataTable("config_empresa");
+            try
+            {
+                cn.Open();
 
-               SqlCommand comando = ProcAlmacenado.CrearProc(cn, "SP_CONFIG_EMPRESA");
-               //Modo 3 agregar
-               SqlParameter parModo = ProcAlmacenado.asignarParametros("@modo", SqlDbType.Int, 3);
-               comando.Parameters.Add(parModo);
-              
-               SqlParameter parCodEmpresa = ProcAlmacenado.asignarParametros("@cod_empresa", SqlDbType.Int);
-               comando.Parameters.Add(parCodEmpresa);
+                SqlCommand comando = ProcAlmacenado.CrearProc(cn, "SP_CONFIG_EMPRESA");
+                //Modo 3 agregar
+                SqlParameter parModo = ProcAlmacenado.asignarParametros("@modo", SqlDbType.Int, 3);
+                comando.Parameters.Add(parModo);
 
-               SqlParameter parRazonSocial = ProcAlmacenado.asignarParametros("@razon_social", SqlDbType.VarChar,configEmpresa.RazonSocial);
-               comando.Parameters.Add(parRazonSocial);
+                SqlParameter parCodEmpresa = ProcAlmacenado.asignarParametros("@cod_empresa", SqlDbType.Int);
+                comando.Parameters.Add(parCodEmpresa);
 
-               SqlParameter parCuit = ProcAlmacenado.asignarParametros("@cuit", SqlDbType.BigInt, configEmpresa.Cuit);
-               comando.Parameters.Add(parCuit);
+                SqlParameter parRazonSocial = ProcAlmacenado.asignarParametros("@razon_social", SqlDbType.VarChar, configEmpresa.RazonSocial);
+                comando.Parameters.Add(parRazonSocial);
 
-               SqlParameter parCondicion = ProcAlmacenado.asignarParametros("@condicion_frente_iva", SqlDbType.VarChar, configEmpresa.CondicionFrenteIVA);
-               comando.Parameters.Add(parCondicion);
+                SqlParameter parCuit = ProcAlmacenado.asignarParametros("@cuit", SqlDbType.BigInt, configEmpresa.Cuit);
+                comando.Parameters.Add(parCuit);
 
-               SqlParameter parLogo = ProcAlmacenado.asignarParametros("@logo", SqlDbType.Image, configEmpresa.Logo);
-               comando.Parameters.Add(parLogo);
+                SqlParameter parCondicion = ProcAlmacenado.asignarParametros("@condicion_frente_iva", SqlDbType.VarChar, configEmpresa.CondicionFrenteIVA);
+                comando.Parameters.Add(parCondicion);
 
-            
-               if (comando.ExecuteNonQuery() == 1)
-               {
-                   respuesta = "ok";
-               }
-               else
-               {
-
-                   respuesta = "error";
-               }
-               cn.Close();
-           }
-           catch (Exception ex)
-           {
-               throw ex;
-
-           }
-           return respuesta;
-       }
+                SqlParameter parLogo = ProcAlmacenado.asignarParametros("@logo", SqlDbType.Image, configEmpresa.Logo);
+                comando.Parameters.Add(parLogo);
 
 
-       public string ModificarEmpresa(DatosConfigEmpresa configEmpresa)
-       {
-           string respuesta = "";
-           //Modo 1 para DB
-           SqlConnection cn = new SqlConnection(Conexion.conexion);
-           //le asigno en el constructor el nombre de la tabla
-           DataTable dtResult = new DataTable("config_empresa");
-           try
-           {
-               cn.Open();
+                if (comando.ExecuteNonQuery() == 1)
+                {
+                    respuesta = "ok";
+                }
+                else
+                {
 
-               SqlCommand comando = ProcAlmacenado.CrearProc(cn, "SP_CONFIG_EMPRESA");
-               //Modo 2 modificar
-               SqlParameter parModo = ProcAlmacenado.asignarParametros("@modo", SqlDbType.Int, 2);
-               comando.Parameters.Add(parModo);
+                    respuesta = "error";
+                }
+                cn.Close();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
 
-               SqlParameter parCodEmpresa = ProcAlmacenado.asignarParametros("@cod_empresa", SqlDbType.Int);
-               comando.Parameters.Add(parCodEmpresa);
-
-               SqlParameter parRazonSocial = ProcAlmacenado.asignarParametros("@razon_social", SqlDbType.VarChar, configEmpresa.RazonSocial);
-               comando.Parameters.Add(parRazonSocial);
-
-               SqlParameter parCuit = ProcAlmacenado.asignarParametros("@cuit", SqlDbType.Int, configEmpresa.Cuit);
-               comando.Parameters.Add(parCuit);
-
-               SqlParameter parCondicion = ProcAlmacenado.asignarParametros("@condicion_frente_iva", SqlDbType.VarChar, configEmpresa.CondicionFrenteIVA);
-               comando.Parameters.Add(parCondicion);
-
-               SqlParameter parLogo = ProcAlmacenado.asignarParametros("@logo", SqlDbType.Image, configEmpresa.Logo);
-               comando.Parameters.Add(parLogo);
-               //creo el objeto adapter del data provider le paso el sqlcommand
-               SqlDataAdapter datosResult = new SqlDataAdapter(comando);
-               //los resultados los actualizo en el datatable dtResult
-               datosResult.Fill(dtResult);
+            }
+            return respuesta;
+        }
 
 
-               if (comando.ExecuteNonQuery() == 1)
-               {
-                   respuesta = "ok";
-               }
-               else
-               {
+        public string ModificarEmpresa(DatosConfigEmpresa configEmpresa)
+        {
+            string respuesta = "";
+            //Modo 1 para DB
+            SqlConnection cn = new SqlConnection(Conexion.conexion);
+            //le asigno en el constructor el nombre de la tabla
+            DataTable dtResult = new DataTable("config_empresa");
+            try
+            {
+                cn.Open();
 
-                   respuesta = "error";
-               }
-               cn.Close();
+                SqlCommand comando = ProcAlmacenado.CrearProc(cn, "SP_CONFIG_EMPRESA");
+                //Modo 2 modificar
+                SqlParameter parModo = ProcAlmacenado.asignarParametros("@modo", SqlDbType.Int, 2);
+                comando.Parameters.Add(parModo);
 
-           }
-           catch (Exception ex)
-           {
-               dtResult = null;
-               throw ex;
-           }
-           return respuesta;
-       }
+                SqlParameter parCodEmpresa = ProcAlmacenado.asignarParametros("@cod_empresa", SqlDbType.Int);
+                comando.Parameters.Add(parCodEmpresa);
 
-       public string confequipo(DatosConfigEmpresa configequipo)
-       {   
-           string respuesta = "";
-           //Modo 3 para DB
-           SqlConnection cn = new SqlConnection(Conexion.conexion);
-           //le asigno en el constructor el nombre de la tabla
-           DataTable dtResult = new DataTable("Confequipo");
-           try
-           {
-               //probar mas adelante 
+                SqlParameter parRazonSocial = ProcAlmacenado.asignarParametros("@razon_social", SqlDbType.VarChar, configEmpresa.RazonSocial);
+                comando.Parameters.Add(parRazonSocial);
+
+                SqlParameter parCuit = ProcAlmacenado.asignarParametros("@cuit", SqlDbType.Int, configEmpresa.Cuit);
+                comando.Parameters.Add(parCuit);
+
+                SqlParameter parCondicion = ProcAlmacenado.asignarParametros("@condicion_frente_iva", SqlDbType.VarChar, configEmpresa.CondicionFrenteIVA);
+                comando.Parameters.Add(parCondicion);
+
+                SqlParameter parLogo = ProcAlmacenado.asignarParametros("@logo", SqlDbType.Image, configEmpresa.Logo);
+                comando.Parameters.Add(parLogo);
+                //creo el objeto adapter del data provider le paso el sqlcommand
+                SqlDataAdapter datosResult = new SqlDataAdapter(comando);
+                //los resultados los actualizo en el datatable dtResult
+                datosResult.Fill(dtResult);
+
+
+                if (comando.ExecuteNonQuery() == 1)
+                {
+                    respuesta = "ok";
+                }
+                else
+                {
+
+                    respuesta = "error";
+                }
+                cn.Close();
+
+            }
+            catch (Exception ex)
+            {
+                dtResult = null;
+                throw ex;
+            }
+            return respuesta;
+        }
+
+        public string confequipo(DatosConfigEmpresa configequipo)
+        {
+            string respuesta = "";
+            //Modo 3 para DB
+            SqlConnection cn = new SqlConnection(Conexion.conexion);
+            //le asigno en el constructor el nombre de la tabla
+            DataTable dtResult = new DataTable("Confequipo");
+            try
+            {
+                //probar mas adelante 
                 SqlParameter[] dbParams = new SqlParameter[]
                  {
                      ProcAlmacenado2.MakeParam("@modo", SqlDbType.Int, 0, 4),
@@ -515,241 +529,243 @@ namespace Capa_Datos
                  ProcAlmacenado2.MakeParam("@Puntoventa", SqlDbType.NVarChar, 0, configequipo.puntoventa),
                  ProcAlmacenado2.MakeParam("@FormatoImpFactElectronica", SqlDbType.NVarChar, 0, configequipo.FormatoImpFactElectronica),
                  ProcAlmacenado2.MakeParam("@FormatoImpProforma", SqlDbType.NVarChar, 0, configequipo.formatoimpproforma),
-                 ProcAlmacenado2.MakeParam("@FormatoImpRemito", SqlDbType.NVarChar, 0, configequipo.formatoimpremito)
+                 ProcAlmacenado2.MakeParam("@FormatoImpRemito", SqlDbType.NVarChar, 0, configequipo.formatoimpremito),
+                 ProcAlmacenado2.MakeParam("@certificado", SqlDbType.NVarChar, 0, configequipo.certificado)
 
 
                  };
                 ProcAlmacenado2.ExecuteNonQuery("SP_CONFIG_EMPRESA", dbParams);
-                
-               /*
-               cn.Open();
-               //en el sp si esta el equipo lo va actualizar pero si no esta el equipo lo agrega
-               SqlCommand comando = ProcAlmacenado.CrearProc(cn, "SP_CONFIG_EMPRESA");
-               //Modo 3 agregar
-               SqlParameter parModo = ProcAlmacenado.asignarParametros("@modo", SqlDbType.Int, 4);
-               comando.Parameters.Add(parModo);
 
-               SqlParameter parequipo = ProcAlmacenado.asignarParametros("@equipo", SqlDbType.NVarChar,configequipo.equipo);
-               comando.Parameters.Add(parequipo);
+                /*
+                cn.Open();
+                //en el sp si esta el equipo lo va actualizar pero si no esta el equipo lo agrega
+                SqlCommand comando = ProcAlmacenado.CrearProc(cn, "SP_CONFIG_EMPRESA");
+                //Modo 3 agregar
+                SqlParameter parModo = ProcAlmacenado.asignarParametros("@modo", SqlDbType.Int, 4);
+                comando.Parameters.Add(parModo);
 
-               SqlParameter parusuarioconectado = ProcAlmacenado.asignarParametros("@usuarioconectado", SqlDbType.NVarChar, configequipo.usuario);
-               comando.Parameters.Add(parusuarioconectado );
+                SqlParameter parequipo = ProcAlmacenado.asignarParametros("@equipo", SqlDbType.NVarChar,configequipo.equipo);
+                comando.Parameters.Add(parequipo);
 
-               SqlParameter parturno = ProcAlmacenado.asignarParametros("@turno", SqlDbType.NVarChar, configequipo.turno);
-               comando.Parameters.Add(parturno );
+                SqlParameter parusuarioconectado = ProcAlmacenado.asignarParametros("@usuarioconectado", SqlDbType.NVarChar, configequipo.usuario);
+                comando.Parameters.Add(parusuarioconectado );
 
-               SqlParameter paridusuario = ProcAlmacenado.asignarParametros("@idusuario", SqlDbType.Int, configequipo.idusuario);
-               comando.Parameters.Add(paridusuario );
+                SqlParameter parturno = ProcAlmacenado.asignarParametros("@turno", SqlDbType.NVarChar, configequipo.turno);
+                comando.Parameters.Add(parturno );
 
-               SqlParameter parcodsucursal = ProcAlmacenado.asignarParametros("@cod_sucursal", SqlDbType.Int , configequipo.codsucursal);
-               comando.Parameters.Add(parcodsucursal );
+                SqlParameter paridusuario = ProcAlmacenado.asignarParametros("@idusuario", SqlDbType.Int, configequipo.idusuario);
+                comando.Parameters.Add(paridusuario );
 
-               SqlParameter parfecha = ProcAlmacenado.asignarParametros("@fecha", SqlDbType.DateTime , configequipo.fecha);
-               comando.Parameters.Add(parfecha );
+                SqlParameter parcodsucursal = ProcAlmacenado.asignarParametros("@cod_sucursal", SqlDbType.Int , configequipo.codsucursal);
+                comando.Parameters.Add(parcodsucursal );
 
-               SqlParameter paruta = ProcAlmacenado.asignarParametros("@ruta", SqlDbType.NVarChar, configequipo.ruta);
-               comando.Parameters.Add(paruta);
+                SqlParameter parfecha = ProcAlmacenado.asignarParametros("@fecha", SqlDbType.DateTime , configequipo.fecha);
+                comando.Parameters.Add(parfecha );
 
-               SqlParameter parip = ProcAlmacenado.asignarParametros("@ip", SqlDbType.NVarChar, configequipo.ip);
-               comando.Parameters.Add(parip );
+                SqlParameter paruta = ProcAlmacenado.asignarParametros("@ruta", SqlDbType.NVarChar, configequipo.ruta);
+                comando.Parameters.Add(paruta);
 
-               SqlParameter parpuertofiscal = ProcAlmacenado.asignarParametros("@puertofiscal", SqlDbType.Int, configequipo.puertofiscal);
-               comando.Parameters.Add(parpuertofiscal );
+                SqlParameter parip = ProcAlmacenado.asignarParametros("@ip", SqlDbType.NVarChar, configequipo.ip);
+                comando.Parameters.Add(parip );
 
-               SqlParameter parmodelofiscal = ProcAlmacenado.asignarParametros("@modelofiscal", SqlDbType.Int, configequipo.modelofiscal);
-               comando.Parameters.Add(parmodelofiscal );
+                SqlParameter parpuertofiscal = ProcAlmacenado.asignarParametros("@puertofiscal", SqlDbType.Int, configequipo.puertofiscal);
+                comando.Parameters.Add(parpuertofiscal );
 
-               SqlParameter paridempresa = ProcAlmacenado.asignarParametros("@idempresa", SqlDbType.Int, configequipo.idempresa);
-               comando.Parameters.Add(paridempresa );
+                SqlParameter parmodelofiscal = ProcAlmacenado.asignarParametros("@modelofiscal", SqlDbType.Int, configequipo.modelofiscal);
+                comando.Parameters.Add(parmodelofiscal );
 
-               SqlParameter parmarcafiscal = ProcAlmacenado.asignarParametros("@marcafiscal", SqlDbType.NVarChar, configequipo.marcafiscal);
-               comando.Parameters.Add(parmarcafiscal);
+                SqlParameter paridempresa = ProcAlmacenado.asignarParametros("@idempresa", SqlDbType.Int, configequipo.idempresa);
+                comando.Parameters.Add(paridempresa );
 
-               SqlParameter parEmpresa = ProcAlmacenado.asignarParametros("@cod_empresa", SqlDbType.Int, 1);
-               comando.Parameters.Add(parEmpresa);
+                SqlParameter parmarcafiscal = ProcAlmacenado.asignarParametros("@marcafiscal", SqlDbType.NVarChar, configequipo.marcafiscal);
+                comando.Parameters.Add(parmarcafiscal);
 
-             
+                SqlParameter parEmpresa = ProcAlmacenado.asignarParametros("@cod_empresa", SqlDbType.Int, 1);
+                comando.Parameters.Add(parEmpresa);
 
-                 if (comando.ExecuteNonQuery() == 1)
-               {
-                  
-                   respuesta = "ok";
-               }
-               else
-               {
 
-                   respuesta = "error";
-               }
-               cn.Close();
-                */
-           }
-           catch (Exception ex)
-           {
-               throw ex;
 
-           }
-                
-           return respuesta;
-       }
+                  if (comando.ExecuteNonQuery() == 1)
+                {
 
-       public bool Mostrarequipo(string equipo)
-       {
-           bool login = true;
+                    respuesta = "ok";
+                }
+                else
+                {
 
-           try
-           {
-               SqlConnection cn = new SqlConnection(Conexion.conexion);
-               cn.Open();
-               SqlCommand comando = ProcAlmacenado.CrearProc(cn, "SP_CONFIG_EMPRESA");
+                    respuesta = "error";
+                }
+                cn.Close();
+                 */
+            }
+            catch (Exception ex)
+            {
+                throw ex;
 
-               SqlParameter parModo = ProcAlmacenado.asignarParametros("@MODO", SqlDbType.Int, 5);
-               comando.Parameters.Add(parModo);
+            }
 
-               SqlParameter parUsuario = ProcAlmacenado.asignarParametros("@equipo", SqlDbType.NVarChar, equipo);
-               comando.Parameters.Add(parUsuario);
+            return respuesta;
+        }
 
-               SqlParameter parEmpresa = ProcAlmacenado.asignarParametros("@cod_empresa", SqlDbType.Int , 1);
-               comando.Parameters.Add(parEmpresa );
+        public bool Mostrarequipo(string equipo)
+        {
+            bool login = true;
 
-               
-               SqlDataReader dr = comando.ExecuteReader();
+            try
+            {
+                SqlConnection cn = new SqlConnection(Conexion.conexion);
+                cn.Open();
+                SqlCommand comando = ProcAlmacenado.CrearProc(cn, "SP_CONFIG_EMPRESA");
 
-               if (dr.Read() == true)
-               {
+                SqlParameter parModo = ProcAlmacenado.asignarParametros("@MODO", SqlDbType.Int, 5);
+                comando.Parameters.Add(parModo);
 
-                   this.idequipo = Convert.ToInt32(dr["id_equipo"]);
-                   this.equipo = Convert.ToString (dr["equipo"]);
-                   this.usuario = Convert.ToString(dr["usuarioconectado"]);
-                   this.turno = Convert.ToString (dr["turno"]);
-                   this.idusuario = Convert.ToInt32(dr["id_usuario"]);
-                   this.codsucursal = Convert.ToInt32(dr["cod_sucursal"]);
-                   this.fecha = Convert.ToDateTime (dr["fecha"]);
-                   this.ruta = Convert.ToString (dr["ruta"]);
-                   this.ip = Convert.ToString (dr["ip"]);
-                   this.puertofiscal = Convert.ToInt32(dr["puerto_fiscal"]);
-                   this.modelofiscal = Convert.ToInt32(dr["modelofiscal"]);
-                   this.idempresa = Convert.ToInt32(dr["idempresa"]);
-                   this.marcafiscal = Convert.ToString(dr["marcafiscal"]);
-                   this.impreporte = Convert.ToString(dr["ImpReporte"]);
-                   this.impticket = Convert.ToString(dr["Impticket"]);
+                SqlParameter parUsuario = ProcAlmacenado.asignarParametros("@equipo", SqlDbType.NVarChar, equipo);
+                comando.Parameters.Add(parUsuario);
+
+                SqlParameter parEmpresa = ProcAlmacenado.asignarParametros("@cod_empresa", SqlDbType.Int, 1);
+                comando.Parameters.Add(parEmpresa);
+
+
+                SqlDataReader dr = comando.ExecuteReader();
+
+                if (dr.Read() == true)
+                {
+
+                    this.idequipo = Convert.ToInt32(dr["id_equipo"]);
+                    this.equipo = Convert.ToString(dr["equipo"]);
+                    this.usuario = Convert.ToString(dr["usuarioconectado"]);
+                    this.turno = Convert.ToString(dr["turno"]);
+                    this.idusuario = Convert.ToInt32(dr["id_usuario"]);
+                    this.codsucursal = Convert.ToInt32(dr["cod_sucursal"]);
+                    this.fecha = Convert.ToDateTime(dr["fecha"]);
+                    this.ruta = Convert.ToString(dr["ruta"]);
+                    this.ip = Convert.ToString(dr["ip"]);
+                    this.puertofiscal = Convert.ToInt32(dr["puerto_fiscal"]);
+                    this.modelofiscal = Convert.ToInt32(dr["modelofiscal"]);
+                    this.idempresa = Convert.ToInt32(dr["idempresa"]);
+                    this.marcafiscal = Convert.ToString(dr["marcafiscal"]);
+                    this.impreporte = Convert.ToString(dr["ImpReporte"]);
+                    this.impticket = Convert.ToString(dr["Impticket"]);
                     this.puntoventa = Convert.ToString(dr["Puntoventa"]);
                     this.BalanzaPuerto = Convert.ToString(dr["BalanzaPuerto"]);
                     this.FormatoImpFactElectronica = Convert.ToString(dr["FormatoImpFactElectronica"]);
                     this.formatoimpproforma = Convert.ToString(dr["FormatoImpProforma"]);
                     this.formatoimpremito = Convert.ToString(dr["FormatoImpRemito"]);
+                    this.certificado = Convert.ToString(dr["Certificado"]);
 
 
                     login = true;
-                   
-               }
-               else
-               {
-                   login = false;
-               }
-               cn.Close();
-           }
-           catch (Exception ex)
-           {
 
-               throw;
+                }
+                else
+                {
+                    login = false;
+                }
+                cn.Close();
+            }
+            catch (Exception ex)
+            {
 
-           }
+                throw;
 
-
-           
-           return login;
+            }
 
 
-       }
 
-       public string actualizarequipo(string usuario,string turno,int idusuario, DateTime fecha, int idequipo)
-       {
-           string msg = "";
-           try
-           {
-               SqlConnection cn = new SqlConnection(Conexion.conexion);
-               cn.Open();
-               SqlCommand comando = ProcAlmacenado.CrearProc(cn, "SP_CONFIG_EMPRESA");
-
-               SqlParameter parModo = ProcAlmacenado.asignarParametros("@MODO", SqlDbType.Int, 6);
-               comando.Parameters.Add(parModo);
-
-               SqlParameter parUsuario = ProcAlmacenado.asignarParametros("@usuarioconectado", SqlDbType.NVarChar, usuario);
-               comando.Parameters.Add(parUsuario);
-
-               SqlParameter parTurno = ProcAlmacenado.asignarParametros("@turno", SqlDbType.NVarChar, turno);
-               comando.Parameters.Add(parTurno);
-
-               
-               SqlParameter parIdusuario = ProcAlmacenado.asignarParametros("@idusuario", SqlDbType.Int, idusuario);
-               comando.Parameters.Add(parIdusuario);
-
-               SqlParameter paridequipo = ProcAlmacenado.asignarParametros("@idequipo", SqlDbType.Int, idequipo);
-               comando.Parameters.Add(paridequipo);
-
-               SqlParameter parfecha = ProcAlmacenado.asignarParametros("@fecha", SqlDbType.DateTime, fecha);
-               comando.Parameters.Add(parfecha);
-
-               SqlParameter parEmpresa = ProcAlmacenado.asignarParametros("@cod_empresa", SqlDbType.Int, 1);
-               comando.Parameters.Add(parEmpresa);
+            return login;
 
 
-               if (comando.ExecuteNonQuery() == 1 )
-               {
-                                     
-                   msg = "ok";
+        }
 
-               }
-               else
-               {
-                   msg = "error";
-               }
-               cn.Close();
-           }
-           catch (Exception ex)
-           {
+        public string actualizarequipo(string usuario, string turno, int idusuario, DateTime fecha, int idequipo)
+        {
+            string msg = "";
+            try
+            {
+                SqlConnection cn = new SqlConnection(Conexion.conexion);
+                cn.Open();
+                SqlCommand comando = ProcAlmacenado.CrearProc(cn, "SP_CONFIG_EMPRESA");
 
-               throw;
+                SqlParameter parModo = ProcAlmacenado.asignarParametros("@MODO", SqlDbType.Int, 6);
+                comando.Parameters.Add(parModo);
 
-           }
+                SqlParameter parUsuario = ProcAlmacenado.asignarParametros("@usuarioconectado", SqlDbType.NVarChar, usuario);
+                comando.Parameters.Add(parUsuario);
 
-           return msg;
-       }
-       public object configsistema(string nombre)
-       {
-           string msg = "ok";
-           string valor = "";
-           string tipovalor = "";
-           try
-           {
-               SqlParameter[] dbParams = new SqlParameter[]
-           {
+                SqlParameter parTurno = ProcAlmacenado.asignarParametros("@turno", SqlDbType.NVarChar, turno);
+                comando.Parameters.Add(parTurno);
+
+
+                SqlParameter parIdusuario = ProcAlmacenado.asignarParametros("@idusuario", SqlDbType.Int, idusuario);
+                comando.Parameters.Add(parIdusuario);
+
+                SqlParameter paridequipo = ProcAlmacenado.asignarParametros("@idequipo", SqlDbType.Int, idequipo);
+                comando.Parameters.Add(paridequipo);
+
+                SqlParameter parfecha = ProcAlmacenado.asignarParametros("@fecha", SqlDbType.DateTime, fecha);
+                comando.Parameters.Add(parfecha);
+
+                SqlParameter parEmpresa = ProcAlmacenado.asignarParametros("@cod_empresa", SqlDbType.Int, 1);
+                comando.Parameters.Add(parEmpresa);
+
+
+                if (comando.ExecuteNonQuery() == 1)
+                {
+
+                    msg = "ok";
+
+                }
+                else
+                {
+                    msg = "error";
+                }
+                cn.Close();
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+
+            }
+
+            return msg;
+        }
+        public object configsistema(string nombre)
+        {
+            string msg = "ok";
+            string valor = "";
+            string tipovalor = "";
+            try
+            {
+                SqlParameter[] dbParams = new SqlParameter[]
+            {
              ProcAlmacenado2.MakeParam("@nombreconf", SqlDbType.VarChar, 0, nombre),
              ProcAlmacenado2.MakeParam("@cod_empresa", SqlDbType.Int, 0, 1),
              ProcAlmacenado2.MakeParam("@Modo", SqlDbType.Int,0,7),
 
-             
-           };
-               SqlDataReader dr;
-             dr =  ProcAlmacenado2.ExecuteDataReader("SP_CONFIG_EMPRESA", dbParams);
-             if (dr.Read())
-             {
-                 valor = Convert.ToString(dr["valor"]);
-                 tipovalor = Convert.ToString(dr["tipovalor"]);
-             }
 
-               
-           }
-          
-           catch (Exception ex)
-           {
-               throw;
-            
-           }
+            };
+                SqlDataReader dr;
+                dr = ProcAlmacenado2.ExecuteDataReader("SP_CONFIG_EMPRESA", dbParams);
+                if (dr.Read())
+                {
+                    valor = Convert.ToString(dr["valor"]);
+                    tipovalor = Convert.ToString(dr["tipovalor"]);
+                }
 
-           return valor;
-       
-       }
+
+            }
+
+            catch (Exception ex)
+            {
+                throw;
+
+            }
+
+            return valor;
+
+        }
 
 
 

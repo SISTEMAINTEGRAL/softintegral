@@ -18,6 +18,7 @@ namespace Capa_Presentacion
         int posX = 0;
         private int idcliente = 0;
         private int idempresa = 0;
+        private int codventa = 0;
         public FrmStockRetirodeMercaderia()
         {
             InitializeComponent();
@@ -152,6 +153,7 @@ namespace Capa_Presentacion
                 LblEmpresa.Text = Convert.ToString(DGListado.CurrentRow.Cells["Tipo"].Value) == "VENTA" ? NegocioConfigEmpresa.emrazonsocial : Convert.ToString(DGListado.CurrentRow.Cells["razon_social"].Value);
                 idempresa = Convert.ToString(DGListado.CurrentRow.Cells["Tipo"].Value) == "VENTA" ? 1 : Convert.ToInt32(DGListado.CurrentRow.Cells["codcliente"].Value);
                 cargardetalleretiro(Convert.ToInt32(DGListado.CurrentRow.Cells["Orden"].Value));
+                codventa = Convert.ToInt32(DGListado.CurrentRow.Cells["codventa"].Value);
 
 
                 this.tabControl1.SelectedTab = tabPage1;
@@ -333,6 +335,7 @@ namespace Capa_Presentacion
             if (recorreritemsparacambioestado () == true)
             {
                 varestado = "FINALIZADO";
+
             }
             mensaje = validacionformulario();
             //primero agrego el remito y despues modifico 
@@ -347,6 +350,10 @@ namespace Capa_Presentacion
                 mensaje = NegocioRetirodeMercaderia.modificarcantidad(Convert.ToInt32(LblNorden.Text), varestado, dt, Convert.ToInt32(LblCodcliente.Text), LblTipo.Text, ref nroremito,idempresa);
                     if (mensaje == "ok")
                     {
+                    if (varestado == "FINALIZADO" && codventa != 0)
+                    {
+                        NegocioVenta.actualizarestadostock(codventa, true);
+                    }
                         FrmTicketRemito objremito = new Formreportes.FrmTicketRemito(nroremito);
                         objremito.ShowDialog();
                         UtilityFrm.mensajeConfirm("Se genero el remito con exito");
@@ -839,6 +846,11 @@ namespace Capa_Presentacion
 
 
             }
+        }
+
+        private void DGListado_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

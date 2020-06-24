@@ -40,16 +40,26 @@ namespace Capa_Presentacion
 
         private void FrmAsignarPrecio_Load(object sender, EventArgs e)
         {
-            string mensaje = ""; 
-
-            mensaje = UtilityFrm.conectarbalanza(serialPort1);
-            if (mensaje != "ok")
+            string mensaje = "";
+            try
             {
-                UtilityFrm.mensajeError(mensaje);
-                this.Close();
+                
+
+                mensaje = UtilityFrm.conectarbalanza(serialPort1);
+                if (mensaje != "ok")
+                {
+                    UtilityFrm.mensajeError(mensaje + "error conexion de balanza");
+                    this.Close();
+                }
+                txtTara.Focus();
+                txtTara.SelectAll();
             }
-            txtTara.Focus();
-            txtTara.SelectAll();
+            catch (Exception)
+            {
+
+                throw;
+            }
+           
             //buffer = serialPort1.ReadExisting().ToString();
             //txtNombreProducto.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
             //txtNombreProducto.AutoCompleteSource = AutoCompleteSource.CustomSource;
@@ -341,16 +351,26 @@ namespace Capa_Presentacion
            
           
         }
-        private void pasarpreciobalanza()
+        private string pasarpreciobalanza()
         {
-            buffer = serialPort1.ReadExisting();
-            FrmMensajeAutoCierre.Show("CARGANDO...", "CARGANDO PESO", 1000);
-            buffer = serialPort1.ReadExisting();
-            precioTotal = UtilityFrm.Leerbalanza(buffer);
-            UtilityFrm.desconectarbalanza(serialPort1);
-            Tara = Convert.ToDecimal(txtTara.Text) ;
+            string msg = "";
+            try
+            {
+                //txtTara.Text = string.Format("###,##0.00");
+                buffer = serialPort1.ReadExisting();
+                FrmMensajeAutoCierre.Show("CARGANDO...", "CARGANDO PESO", 500);
+                buffer = serialPort1.ReadExisting();
+                precioTotal = UtilityFrm.Leerbalanza(buffer);
+                Tara = Convert.ToDecimal(txtTara.Text);
+                UtilityFrm.desconectarbalanza(serialPort1);
+                this.Close();
+            }
+            catch (Exception EX)
+            {
 
-            this.Close();
+               msg = EX.Message + "problema balanza";
+            }
+            return msg;
         }
 
         private void txtTara_Click(object sender, EventArgs e)
@@ -364,6 +384,12 @@ namespace Capa_Presentacion
             {
                 pasarpreciobalanza();
             }
+        }
+
+        private void txtTara_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            
+            UtilityFrm.NumDecTeclado(e, txtTara);
         }
     }
 

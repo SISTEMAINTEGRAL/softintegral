@@ -42,6 +42,15 @@
             this.label3 = new System.Windows.Forms.Label();
             this.cbcampoamodificar = new System.Windows.Forms.ComboBox();
             this.DGVenta = new System.Windows.Forms.DataGridView();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.Menudelete = new System.Windows.Forms.ToolStripMenuItem();
+            this.TxtcambioDv = new System.Windows.Forms.TextBox();
+            this.xuiCustomGroupbox1 = new XanderUI.XUICustomGroupbox();
+            this.BtnImprimir = new XanderUI.XUISuperButton();
+            this.btnAplicar = new XanderUI.XUISuperButton();
+            this.BtnCambiar = new XanderUI.XUISuperButton();
+            this.btnLimpiarG = new XanderUI.XUISuperButton();
+            this.btnCliente = new XanderUI.XUISuperButton();
             this.menucodarticulo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.menunombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.menudescripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -49,14 +58,12 @@
             this.menutilidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.menuflete = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.menuprecioventa = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.Menudelete = new System.Windows.Forms.ToolStripMenuItem();
-            this.TxtcambioDv = new System.Windows.Forms.TextBox();
-            this.xuiCustomGroupbox1 = new XanderUI.XUICustomGroupbox();
-            this.btnCliente = new XanderUI.XUISuperButton();
-            this.btnLimpiarG = new XanderUI.XUISuperButton();
-            this.BtnCambiar = new XanderUI.XUISuperButton();
-            this.btnAplicar = new XanderUI.XUISuperButton();
+            this.utilidadpormayor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Preciopormayor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.utilidadpormayor2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.preciopormayor2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.utilidadoferta = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.precio_oferta = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panelHorizontal.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnMaximizar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnRestaurar)).BeginInit();
@@ -78,7 +85,7 @@
             this.panelHorizontal.Controls.Add(this.lblSistemaVenta);
             this.panelHorizontal.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelHorizontal.Location = new System.Drawing.Point(0, 0);
-            this.panelHorizontal.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.panelHorizontal.Margin = new System.Windows.Forms.Padding(6);
             this.panelHorizontal.Name = "panelHorizontal";
             this.panelHorizontal.Size = new System.Drawing.Size(1284, 37);
             this.panelHorizontal.TabIndex = 65;
@@ -90,7 +97,7 @@
             this.btnMaximizar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnMaximizar.BackgroundImage")));
             this.btnMaximizar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btnMaximizar.Location = new System.Drawing.Point(1222, 4);
-            this.btnMaximizar.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.btnMaximizar.Margin = new System.Windows.Forms.Padding(6);
             this.btnMaximizar.Name = "btnMaximizar";
             this.btnMaximizar.Size = new System.Drawing.Size(22, 25);
             this.btnMaximizar.TabIndex = 5;
@@ -105,7 +112,7 @@
             this.btnRestaurar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnRestaurar.BackgroundImage")));
             this.btnRestaurar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btnRestaurar.Location = new System.Drawing.Point(1222, 4);
-            this.btnRestaurar.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.btnRestaurar.Margin = new System.Windows.Forms.Padding(6);
             this.btnRestaurar.Name = "btnRestaurar";
             this.btnRestaurar.Size = new System.Drawing.Size(22, 25);
             this.btnRestaurar.TabIndex = 2;
@@ -121,7 +128,7 @@
             this.btnMinimizar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnMinimizar.BackgroundImage")));
             this.btnMinimizar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btnMinimizar.Location = new System.Drawing.Point(1192, 4);
-            this.btnMinimizar.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.btnMinimizar.Margin = new System.Windows.Forms.Padding(6);
             this.btnMinimizar.Name = "btnMinimizar";
             this.btnMinimizar.Size = new System.Drawing.Size(22, 25);
             this.btnMinimizar.TabIndex = 1;
@@ -137,7 +144,7 @@
             this.btnCerrar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btnCerrar.ErrorImage = ((System.Drawing.Image)(resources.GetObject("btnCerrar.ErrorImage")));
             this.btnCerrar.Location = new System.Drawing.Point(1252, 4);
-            this.btnCerrar.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.btnCerrar.Margin = new System.Windows.Forms.Padding(6);
             this.btnCerrar.Name = "btnCerrar";
             this.btnCerrar.Size = new System.Drawing.Size(22, 25);
             this.btnCerrar.TabIndex = 0;
@@ -166,7 +173,7 @@
             // 
             this.txtPorcentaje.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtPorcentaje.Location = new System.Drawing.Point(347, 106);
-            this.txtPorcentaje.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.txtPorcentaje.Margin = new System.Windows.Forms.Padding(6);
             this.txtPorcentaje.Name = "txtPorcentaje";
             this.txtPorcentaje.Size = new System.Drawing.Size(91, 30);
             this.txtPorcentaje.TabIndex = 62;
@@ -203,7 +210,7 @@
             "Precio_venta",
             "Flete"});
             this.cbcampoamodificar.Location = new System.Drawing.Point(344, 32);
-            this.cbcampoamodificar.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.cbcampoamodificar.Margin = new System.Windows.Forms.Padding(6);
             this.cbcampoamodificar.Name = "cbcampoamodificar";
             this.cbcampoamodificar.Size = new System.Drawing.Size(360, 33);
             this.cbcampoamodificar.TabIndex = 59;
@@ -235,7 +242,13 @@
             this.menupreciocompra,
             this.menutilidad,
             this.menuflete,
-            this.menuprecioventa});
+            this.menuprecioventa,
+            this.utilidadpormayor,
+            this.Preciopormayor,
+            this.utilidadpormayor2,
+            this.preciopormayor2,
+            this.utilidadoferta,
+            this.precio_oferta});
             this.DGVenta.EnableHeadersVisualStyles = false;
             this.DGVenta.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.DGVenta.Location = new System.Drawing.Point(0, 41);
@@ -251,41 +264,6 @@
             this.DGVenta.SelectionChanged += new System.EventHandler(this.DGVenta_SelectionChanged);
             this.DGVenta.Click += new System.EventHandler(this.DGVenta_Click);
             this.DGVenta.MouseClick += new System.Windows.Forms.MouseEventHandler(this.DGVenta_MouseClick);
-            // 
-            // menucodarticulo
-            // 
-            this.menucodarticulo.HeaderText = "Codigo";
-            this.menucodarticulo.Name = "menucodarticulo";
-            // 
-            // menunombre
-            // 
-            this.menunombre.HeaderText = "Nombre";
-            this.menunombre.Name = "menunombre";
-            // 
-            // menudescripcion
-            // 
-            this.menudescripcion.HeaderText = "Descripcion";
-            this.menudescripcion.Name = "menudescripcion";
-            // 
-            // menupreciocompra
-            // 
-            this.menupreciocompra.HeaderText = "Preciocompra";
-            this.menupreciocompra.Name = "menupreciocompra";
-            // 
-            // menutilidad
-            // 
-            this.menutilidad.HeaderText = "Utilidad";
-            this.menutilidad.Name = "menutilidad";
-            // 
-            // menuflete
-            // 
-            this.menuflete.HeaderText = "Flete";
-            this.menuflete.Name = "menuflete";
-            // 
-            // menuprecioventa
-            // 
-            this.menuprecioventa.HeaderText = "Precioventa";
-            this.menuprecioventa.Name = "menuprecioventa";
             // 
             // contextMenuStrip1
             // 
@@ -323,6 +301,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.xuiCustomGroupbox1.BorderColor = System.Drawing.Color.DodgerBlue;
             this.xuiCustomGroupbox1.BorderWidth = 1;
+            this.xuiCustomGroupbox1.Controls.Add(this.BtnImprimir);
             this.xuiCustomGroupbox1.Controls.Add(this.btnAplicar);
             this.xuiCustomGroupbox1.Controls.Add(this.BtnCambiar);
             this.xuiCustomGroupbox1.Controls.Add(this.btnLimpiarG);
@@ -340,53 +319,55 @@
             this.xuiCustomGroupbox1.Text = "Precios";
             this.xuiCustomGroupbox1.TextColor = System.Drawing.Color.DodgerBlue;
             // 
-            // btnCliente
+            // BtnImprimir
             // 
-            this.btnCliente.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(144)))), ((int)(((byte)(247)))));
-            this.btnCliente.ButtonImage = global::Capa_Presentacion.Properties.Resources.search_magnifier_interface_symbol;
-            this.btnCliente.ButtonSmoothing = System.Drawing.Drawing2D.SmoothingMode.HighSpeed;
-            this.btnCliente.ButtonStyle = XanderUI.XUISuperButton.Style.RoundedEdges;
-            this.btnCliente.ButtonText = "";
-            this.btnCliente.CornerRadius = 5;
-            this.btnCliente.Horizontal_Alignment = System.Drawing.StringAlignment.Center;
-            this.btnCliente.HoverBackgroundColor = System.Drawing.Color.IndianRed;
-            this.btnCliente.HoverTextColor = System.Drawing.Color.Yellow;
-            this.btnCliente.ImagePosition = XanderUI.XUISuperButton.imgPosition.Left;
-            this.btnCliente.Location = new System.Drawing.Point(15, 31);
-            this.btnCliente.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.btnCliente.Name = "btnCliente";
-            this.btnCliente.SelectedBackColor = System.Drawing.Color.LimeGreen;
-            this.btnCliente.SelectedTextColor = System.Drawing.Color.White;
-            this.btnCliente.Size = new System.Drawing.Size(103, 61);
-            this.btnCliente.SuperSelected = false;
-            this.btnCliente.TabIndex = 131;
-            this.btnCliente.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(245)))), ((int)(((byte)(255)))));
-            this.btnCliente.Vertical_Alignment = System.Drawing.StringAlignment.Center;
-            this.btnCliente.Click += new System.EventHandler(this.btnCliente_Click);
+            this.BtnImprimir.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.BtnImprimir.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(144)))), ((int)(((byte)(247)))));
+            this.BtnImprimir.ButtonImage = global::Capa_Presentacion.Properties.Resources.printer;
+            this.BtnImprimir.ButtonSmoothing = System.Drawing.Drawing2D.SmoothingMode.HighSpeed;
+            this.BtnImprimir.ButtonStyle = XanderUI.XUISuperButton.Style.RoundedEdges;
+            this.BtnImprimir.ButtonText = "Imprimir etiqueta ";
+            this.BtnImprimir.CornerRadius = 5;
+            this.BtnImprimir.Horizontal_Alignment = System.Drawing.StringAlignment.Center;
+            this.BtnImprimir.HoverBackgroundColor = System.Drawing.Color.IndianRed;
+            this.BtnImprimir.HoverTextColor = System.Drawing.Color.Yellow;
+            this.BtnImprimir.ImagePosition = XanderUI.XUISuperButton.imgPosition.Left;
+            this.BtnImprimir.Location = new System.Drawing.Point(989, 20);
+            this.BtnImprimir.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.BtnImprimir.Name = "BtnImprimir";
+            this.BtnImprimir.SelectedBackColor = System.Drawing.Color.LimeGreen;
+            this.BtnImprimir.SelectedTextColor = System.Drawing.Color.White;
+            this.BtnImprimir.Size = new System.Drawing.Size(264, 63);
+            this.BtnImprimir.SuperSelected = false;
+            this.BtnImprimir.TabIndex = 134;
+            this.BtnImprimir.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(245)))), ((int)(((byte)(255)))));
+            this.BtnImprimir.Vertical_Alignment = System.Drawing.StringAlignment.Center;
+            this.BtnImprimir.Click += new System.EventHandler(this.BtnImprimir_Click);
             // 
-            // btnLimpiarG
+            // btnAplicar
             // 
-            this.btnLimpiarG.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(144)))), ((int)(((byte)(247)))));
-            this.btnLimpiarG.ButtonImage = global::Capa_Presentacion.Properties.Resources.sweep;
-            this.btnLimpiarG.ButtonSmoothing = System.Drawing.Drawing2D.SmoothingMode.HighSpeed;
-            this.btnLimpiarG.ButtonStyle = XanderUI.XUISuperButton.Style.RoundedEdges;
-            this.btnLimpiarG.ButtonText = "";
-            this.btnLimpiarG.CornerRadius = 5;
-            this.btnLimpiarG.Horizontal_Alignment = System.Drawing.StringAlignment.Center;
-            this.btnLimpiarG.HoverBackgroundColor = System.Drawing.Color.IndianRed;
-            this.btnLimpiarG.HoverTextColor = System.Drawing.Color.Yellow;
-            this.btnLimpiarG.ImagePosition = XanderUI.XUISuperButton.imgPosition.Left;
-            this.btnLimpiarG.Location = new System.Drawing.Point(15, 97);
-            this.btnLimpiarG.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.btnLimpiarG.Name = "btnLimpiarG";
-            this.btnLimpiarG.SelectedBackColor = System.Drawing.Color.LimeGreen;
-            this.btnLimpiarG.SelectedTextColor = System.Drawing.Color.White;
-            this.btnLimpiarG.Size = new System.Drawing.Size(102, 62);
-            this.btnLimpiarG.SuperSelected = false;
-            this.btnLimpiarG.TabIndex = 132;
-            this.btnLimpiarG.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(245)))), ((int)(((byte)(255)))));
-            this.btnLimpiarG.Vertical_Alignment = System.Drawing.StringAlignment.Center;
-            this.btnLimpiarG.Click += new System.EventHandler(this.btnLimpiarG_Click);
+            this.btnAplicar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnAplicar.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(144)))), ((int)(((byte)(247)))));
+            this.btnAplicar.ButtonImage = global::Capa_Presentacion.Properties.Resources.Save_20px;
+            this.btnAplicar.ButtonSmoothing = System.Drawing.Drawing2D.SmoothingMode.HighSpeed;
+            this.btnAplicar.ButtonStyle = XanderUI.XUISuperButton.Style.RoundedEdges;
+            this.btnAplicar.ButtonText = "Aplicar cambios";
+            this.btnAplicar.CornerRadius = 5;
+            this.btnAplicar.Horizontal_Alignment = System.Drawing.StringAlignment.Center;
+            this.btnAplicar.HoverBackgroundColor = System.Drawing.Color.IndianRed;
+            this.btnAplicar.HoverTextColor = System.Drawing.Color.Yellow;
+            this.btnAplicar.ImagePosition = XanderUI.XUISuperButton.imgPosition.Left;
+            this.btnAplicar.Location = new System.Drawing.Point(989, 93);
+            this.btnAplicar.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnAplicar.Name = "btnAplicar";
+            this.btnAplicar.SelectedBackColor = System.Drawing.Color.LimeGreen;
+            this.btnAplicar.SelectedTextColor = System.Drawing.Color.White;
+            this.btnAplicar.Size = new System.Drawing.Size(264, 73);
+            this.btnAplicar.SuperSelected = false;
+            this.btnAplicar.TabIndex = 134;
+            this.btnAplicar.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(245)))), ((int)(((byte)(255)))));
+            this.btnAplicar.Vertical_Alignment = System.Drawing.StringAlignment.Center;
+            this.btnAplicar.Click += new System.EventHandler(this.btnAplicar_Click);
             // 
             // BtnCambiar
             // 
@@ -413,29 +394,131 @@
             this.BtnCambiar.Vertical_Alignment = System.Drawing.StringAlignment.Center;
             this.BtnCambiar.Click += new System.EventHandler(this.BtnCambiar_Click);
             // 
-            // btnAplicar
+            // btnLimpiarG
             // 
-            this.btnAplicar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAplicar.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(144)))), ((int)(((byte)(247)))));
-            this.btnAplicar.ButtonImage = global::Capa_Presentacion.Properties.Resources.Save_20px;
-            this.btnAplicar.ButtonSmoothing = System.Drawing.Drawing2D.SmoothingMode.HighSpeed;
-            this.btnAplicar.ButtonStyle = XanderUI.XUISuperButton.Style.RoundedEdges;
-            this.btnAplicar.ButtonText = "Aplicar cambios";
-            this.btnAplicar.CornerRadius = 5;
-            this.btnAplicar.Horizontal_Alignment = System.Drawing.StringAlignment.Center;
-            this.btnAplicar.HoverBackgroundColor = System.Drawing.Color.IndianRed;
-            this.btnAplicar.HoverTextColor = System.Drawing.Color.Yellow;
-            this.btnAplicar.ImagePosition = XanderUI.XUISuperButton.imgPosition.Left;
-            this.btnAplicar.Location = new System.Drawing.Point(994, 74);
-            this.btnAplicar.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.btnAplicar.Name = "btnAplicar";
-            this.btnAplicar.SelectedBackColor = System.Drawing.Color.LimeGreen;
-            this.btnAplicar.SelectedTextColor = System.Drawing.Color.White;
-            this.btnAplicar.Size = new System.Drawing.Size(255, 82);
-            this.btnAplicar.SuperSelected = false;
-            this.btnAplicar.TabIndex = 134;
-            this.btnAplicar.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(245)))), ((int)(((byte)(255)))));
-            this.btnAplicar.Vertical_Alignment = System.Drawing.StringAlignment.Center;
+            this.btnLimpiarG.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(144)))), ((int)(((byte)(247)))));
+            this.btnLimpiarG.ButtonImage = global::Capa_Presentacion.Properties.Resources.sweep;
+            this.btnLimpiarG.ButtonSmoothing = System.Drawing.Drawing2D.SmoothingMode.HighSpeed;
+            this.btnLimpiarG.ButtonStyle = XanderUI.XUISuperButton.Style.RoundedEdges;
+            this.btnLimpiarG.ButtonText = "";
+            this.btnLimpiarG.CornerRadius = 5;
+            this.btnLimpiarG.Horizontal_Alignment = System.Drawing.StringAlignment.Center;
+            this.btnLimpiarG.HoverBackgroundColor = System.Drawing.Color.IndianRed;
+            this.btnLimpiarG.HoverTextColor = System.Drawing.Color.Yellow;
+            this.btnLimpiarG.ImagePosition = XanderUI.XUISuperButton.imgPosition.Left;
+            this.btnLimpiarG.Location = new System.Drawing.Point(15, 97);
+            this.btnLimpiarG.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnLimpiarG.Name = "btnLimpiarG";
+            this.btnLimpiarG.SelectedBackColor = System.Drawing.Color.LimeGreen;
+            this.btnLimpiarG.SelectedTextColor = System.Drawing.Color.White;
+            this.btnLimpiarG.Size = new System.Drawing.Size(102, 62);
+            this.btnLimpiarG.SuperSelected = false;
+            this.btnLimpiarG.TabIndex = 132;
+            this.btnLimpiarG.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(245)))), ((int)(((byte)(255)))));
+            this.btnLimpiarG.Vertical_Alignment = System.Drawing.StringAlignment.Center;
+            this.btnLimpiarG.Click += new System.EventHandler(this.btnLimpiarG_Click);
+            // 
+            // btnCliente
+            // 
+            this.btnCliente.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(144)))), ((int)(((byte)(247)))));
+            this.btnCliente.ButtonImage = global::Capa_Presentacion.Properties.Resources.search_magnifier_interface_symbol;
+            this.btnCliente.ButtonSmoothing = System.Drawing.Drawing2D.SmoothingMode.HighSpeed;
+            this.btnCliente.ButtonStyle = XanderUI.XUISuperButton.Style.RoundedEdges;
+            this.btnCliente.ButtonText = "";
+            this.btnCliente.CornerRadius = 5;
+            this.btnCliente.Horizontal_Alignment = System.Drawing.StringAlignment.Center;
+            this.btnCliente.HoverBackgroundColor = System.Drawing.Color.IndianRed;
+            this.btnCliente.HoverTextColor = System.Drawing.Color.Yellow;
+            this.btnCliente.ImagePosition = XanderUI.XUISuperButton.imgPosition.Left;
+            this.btnCliente.Location = new System.Drawing.Point(15, 31);
+            this.btnCliente.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnCliente.Name = "btnCliente";
+            this.btnCliente.SelectedBackColor = System.Drawing.Color.LimeGreen;
+            this.btnCliente.SelectedTextColor = System.Drawing.Color.White;
+            this.btnCliente.Size = new System.Drawing.Size(103, 61);
+            this.btnCliente.SuperSelected = false;
+            this.btnCliente.TabIndex = 131;
+            this.btnCliente.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(245)))), ((int)(((byte)(255)))));
+            this.btnCliente.Vertical_Alignment = System.Drawing.StringAlignment.Center;
+            this.btnCliente.Click += new System.EventHandler(this.btnCliente_Click);
+            // 
+            // menucodarticulo
+            // 
+            this.menucodarticulo.FillWeight = 56.2305F;
+            this.menucodarticulo.HeaderText = "Codigo";
+            this.menucodarticulo.Name = "menucodarticulo";
+            // 
+            // menunombre
+            // 
+            this.menunombre.FillWeight = 345.1665F;
+            this.menunombre.HeaderText = "Nombre";
+            this.menunombre.Name = "menunombre";
+            // 
+            // menudescripcion
+            // 
+            this.menudescripcion.FillWeight = 29.04725F;
+            this.menudescripcion.HeaderText = "Descripcion";
+            this.menudescripcion.Name = "menudescripcion";
+            // 
+            // menupreciocompra
+            // 
+            this.menupreciocompra.FillWeight = 92.95119F;
+            this.menupreciocompra.HeaderText = "Preciocompra";
+            this.menupreciocompra.Name = "menupreciocompra";
+            // 
+            // menutilidad
+            // 
+            this.menutilidad.FillWeight = 92.95119F;
+            this.menutilidad.HeaderText = "Utilidad";
+            this.menutilidad.Name = "menutilidad";
+            // 
+            // menuflete
+            // 
+            this.menuflete.FillWeight = 32.99492F;
+            this.menuflete.HeaderText = "Flete";
+            this.menuflete.Name = "menuflete";
+            // 
+            // menuprecioventa
+            // 
+            this.menuprecioventa.FillWeight = 92.95119F;
+            this.menuprecioventa.HeaderText = "Minorista";
+            this.menuprecioventa.Name = "menuprecioventa";
+            // 
+            // utilidadpormayor
+            // 
+            this.utilidadpormayor.FillWeight = 92.95119F;
+            this.utilidadpormayor.HeaderText = "UtilidadX6";
+            this.utilidadpormayor.Name = "utilidadpormayor";
+            // 
+            // Preciopormayor
+            // 
+            this.Preciopormayor.FillWeight = 92.95119F;
+            this.Preciopormayor.HeaderText = "PrecioX6";
+            this.Preciopormayor.Name = "Preciopormayor";
+            // 
+            // utilidadpormayor2
+            // 
+            this.utilidadpormayor2.FillWeight = 92.95119F;
+            this.utilidadpormayor2.HeaderText = "UtilidadXCaja";
+            this.utilidadpormayor2.Name = "utilidadpormayor2";
+            // 
+            // preciopormayor2
+            // 
+            this.preciopormayor2.FillWeight = 92.95119F;
+            this.preciopormayor2.HeaderText = "PrecioXCaja";
+            this.preciopormayor2.Name = "preciopormayor2";
+            // 
+            // utilidadoferta
+            // 
+            this.utilidadoferta.FillWeight = 92.95119F;
+            this.utilidadoferta.HeaderText = "UtilidadOferta";
+            this.utilidadoferta.Name = "utilidadoferta";
+            // 
+            // precio_oferta
+            // 
+            this.precio_oferta.FillWeight = 92.95119F;
+            this.precio_oferta.HeaderText = "Precio_Oferta";
+            this.precio_oferta.Name = "precio_oferta";
             // 
             // FrmPreciosmasivos
             // 
@@ -449,7 +532,7 @@
             this.Controls.Add(this.panelHorizontal);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.Margin = new System.Windows.Forms.Padding(6);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FrmPreciosmasivos";
@@ -481,13 +564,6 @@
         private System.Windows.Forms.PictureBox btnCerrar;
         private System.Windows.Forms.Label lblSistemaVenta;
         private System.Windows.Forms.DataGridView DGVenta;
-        private System.Windows.Forms.DataGridViewTextBoxColumn menucodarticulo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn menunombre;
-        private System.Windows.Forms.DataGridViewTextBoxColumn menudescripcion;
-        private System.Windows.Forms.DataGridViewTextBoxColumn menupreciocompra;
-        private System.Windows.Forms.DataGridViewTextBoxColumn menutilidad;
-        private System.Windows.Forms.DataGridViewTextBoxColumn menuflete;
-        private System.Windows.Forms.DataGridViewTextBoxColumn menuprecioventa;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem Menudelete;
         private System.Windows.Forms.ComboBox cbcampoamodificar;
@@ -500,5 +576,19 @@
         private XanderUI.XUISuperButton btnCliente;
         private XanderUI.XUISuperButton btnAplicar;
         private XanderUI.XUISuperButton BtnCambiar;
+        private XanderUI.XUISuperButton BtnImprimir;
+        private System.Windows.Forms.DataGridViewTextBoxColumn menucodarticulo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn menunombre;
+        private System.Windows.Forms.DataGridViewTextBoxColumn menudescripcion;
+        private System.Windows.Forms.DataGridViewTextBoxColumn menupreciocompra;
+        private System.Windows.Forms.DataGridViewTextBoxColumn menutilidad;
+        private System.Windows.Forms.DataGridViewTextBoxColumn menuflete;
+        private System.Windows.Forms.DataGridViewTextBoxColumn menuprecioventa;
+        private System.Windows.Forms.DataGridViewTextBoxColumn utilidadpormayor;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Preciopormayor;
+        private System.Windows.Forms.DataGridViewTextBoxColumn utilidadpormayor2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn preciopormayor2;
+        private System.Windows.Forms.DataGridViewTextBoxColumn utilidadoferta;
+        private System.Windows.Forms.DataGridViewTextBoxColumn precio_oferta;
     }
 }

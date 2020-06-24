@@ -11,7 +11,7 @@ namespace Capa_negocio
     {
         //EQUIPO
 
-        public static string equipo ;
+        public static string equipo;
         public static int idequipo;
         public static string usuarioconectado;
         public static string turno;
@@ -32,7 +32,8 @@ namespace Capa_negocio
         public static string formatoimpfactelectronica;
         public static string formatoimpproforma;
         public static string formatoimpremito;
-        
+        public static string certificado;
+
         public static string[] ReglasUsuario { get; set; }
         public static int idroles;
 
@@ -49,43 +50,44 @@ namespace Capa_negocio
         public static int emcodempresa;
         public static string urllogin = "https://wsaa.afip.gov.ar/ws/services/LoginCms?wsdl";
         public static string urlservicio = "https://servicios1.afip.gov.ar/wsfev1/service.asmx?WSDL";
-        
-        
+
+
 
         public static bool usuariosa;
 
-        public static DataTable mostrar() {
+        public static DataTable mostrar()
+        {
 
             DataTable midatatable = new DataTable();
             midatatable = new DatosConfigEmpresa().mostrar();
-           
-            
-            
+
+
+
             foreach (DataRow fila in midatatable.Rows)
             {
-            
-            emrazonsocial = fila["razon_social"].ToString();
-            emcuit = Convert.ToInt64(fila["cuit"].ToString ());
-            emciva = fila["condicion_frente_iva"].ToString();
-            emdomicilio = fila["domicilio"].ToString();
-            emlocalidad = fila["localidad"].ToString();
-            emprovincia = fila["provincia"].ToString();
-            emtelefono = fila["telefono"].ToString();
-            emmail = fila["Mail"].ToString();
-            emcodempresa = Convert.ToInt32 ( fila["cod_empresa"].ToString());
-            
+
+                emrazonsocial = fila["razon_social"].ToString();
+                emcuit = Convert.ToInt64(fila["cuit"].ToString());
+                emciva = fila["condicion_frente_iva"].ToString();
+                emdomicilio = fila["domicilio"].ToString();
+                emlocalidad = fila["localidad"].ToString();
+                emprovincia = fila["provincia"].ToString();
+                emtelefono = fila["telefono"].ToString();
+                emmail = fila["Mail"].ToString();
+                emcodempresa = Convert.ToInt32(fila["cod_empresa"].ToString());
+
 
             }
-           
+
             return new DatosConfigEmpresa().mostrar();
 
 
         }
 
 
-        public static string agregar(string razonSocial,string condicionFrenteIVA,long cuit,Byte[] logo )
+        public static string agregar(string razonSocial, string condicionFrenteIVA, long cuit, Byte[] logo)
         {
-                
+
 
             DatosConfigEmpresa empresa = new DatosConfigEmpresa();
             empresa.Cuit = cuit;
@@ -116,7 +118,7 @@ namespace Capa_negocio
         public static void inivarglobal(string equipo, string usuario, string turno, int idusuario, int codsucursal, DateTime fecha, string ruta, string ip, int puertofiscal, int modelofiscal, int empresa, string marcafiscal)
         {
             NegocioConfigEmpresa.equipo = equipo;
-            NegocioConfigEmpresa.usuarioconectado = usuario ;
+            NegocioConfigEmpresa.usuarioconectado = usuario;
             NegocioConfigEmpresa.turno = turno;
             NegocioConfigEmpresa.idusuario = idusuario;
             NegocioConfigEmpresa.codsucursal = codsucursal;
@@ -124,42 +126,44 @@ namespace Capa_negocio
             NegocioConfigEmpresa.ruta = ruta;
             NegocioConfigEmpresa.ruta = ruta;
             NegocioConfigEmpresa.ip = ip;
-            NegocioConfigEmpresa.puertofiscal= puertofiscal;
-            NegocioConfigEmpresa.modelofiscal= modelofiscal;
-            NegocioConfigEmpresa.idempresa =empresa;
+            NegocioConfigEmpresa.puertofiscal = puertofiscal;
+            NegocioConfigEmpresa.modelofiscal = modelofiscal;
+            NegocioConfigEmpresa.idempresa = empresa;
             NegocioConfigEmpresa.marcafiscal = marcafiscal;
             NegocioConfigEmpresa.impreporte = impreporte;
             NegocioConfigEmpresa.impticket = impticket;
+            NegocioConfigEmpresa.certificado = certificado;
 
 
-        
+
         }
 
-        public static string confequipo(string equipo, string usuario,string turno,int idusuario, int codsucursal, DateTime fecha,string ruta,string ip, int puertofiscal,int modelofiscal,int empresa,string marcafiscal, string impticket = "", string impreporte = "")
+        public static string confequipo(string equipo, string usuario, string turno, int idusuario, int codsucursal, DateTime fecha, string ruta, string ip, int puertofiscal, int modelofiscal, int empresa, string marcafiscal, string impticket = "", string impreporte = "", string varcertificado = "")
         {
             string msg = "";
 
             try
-            { 
-            DatosConfigEmpresa objequipo = new DatosConfigEmpresa();
-            objequipo.Equipo = equipo ;
-            objequipo.Usuario = usuario;
-            objequipo.Turno = turno;
-            objequipo.Idusuario = idusuario;
-            objequipo.Codsucursal = codsucursal;
-            objequipo.Fecha = fecha;
-            objequipo.Ruta = ruta;
-            objequipo.Ip = ip;
-            objequipo.Puertofiscal = puertofiscal;
-            objequipo.Modelofiscal = modelofiscal;
-            objequipo.Idempresa = idempresa;
-            objequipo.Marcafiscal = marcafiscal;
-            objequipo.Impticket = impticket;
-            objequipo.Impreporte = impreporte;
+            {
+                DatosConfigEmpresa objequipo = new DatosConfigEmpresa();
+                objequipo.Equipo = equipo;
+                objequipo.Usuario = usuario;
+                objequipo.Turno = turno;
+                objequipo.Idusuario = idusuario;
+                objequipo.Codsucursal = codsucursal;
+                objequipo.Fecha = fecha;
+                objequipo.Ruta = ruta;
+                objequipo.Ip = ip;
+                objequipo.Puertofiscal = puertofiscal;
+                objequipo.Modelofiscal = modelofiscal;
+                objequipo.Idempresa = idempresa;
+                objequipo.Marcafiscal = marcafiscal;
+                objequipo.Impticket = impticket;
+                objequipo.Impreporte = impreporte;
+                objequipo.Certificado = varcertificado;
 
-             msg = objequipo.confequipo  (objequipo);
-            NegocioConfigEmpresa.inivarglobal( equipo,  usuario,  turno,  idusuario,  codsucursal,  fecha,  ruta,  ip,  puertofiscal,  modelofiscal,  empresa,  marcafiscal);
-            
+                msg = objequipo.confequipo(objequipo);
+                NegocioConfigEmpresa.inivarglobal(equipo, usuario, turno, idusuario, codsucursal, fecha, ruta, ip, puertofiscal, modelofiscal, empresa, marcafiscal);
+
 
             }
 
@@ -196,11 +200,12 @@ namespace Capa_negocio
                 NegocioConfigEmpresa.formatoimpfactelectronica = objempresa.FormatoImpFactElectronica1;
                 NegocioConfigEmpresa.formatoimpproforma = objempresa.Formatoimpproforma;
                 NegocioConfigEmpresa.formatoimpremito = objempresa.Formatoimpremito;
+                NegocioConfigEmpresa.certificado = objempresa.Certificado;
             }
             else
             {
                 msg = "Este equipo no se encuentra registrado, se procede a darlo de alta";
-            
+
             }
 
             return msg;
@@ -210,18 +215,18 @@ namespace Capa_negocio
         {
             string msg = "";
             DatosConfigEmpresa objemp = new DatosConfigEmpresa();
-            msg = objemp.actualizarequipo(usuario, turno, idusuario,fecha, idequipo);
+            msg = objemp.actualizarequipo(usuario, turno, idusuario, fecha, idequipo);
 
             return msg;
-        
+
         }
         //parametrisa segun lo requiera
-        public static object confsistema (string nombre)
-    {
+        public static object confsistema(string nombre)
+        {
 
             DatosConfigEmpresa objemp = new DatosConfigEmpresa();
-           return  objemp.configsistema(nombre);
-            
-    }
+            return objemp.configsistema(nombre);
+
+        }
     }
 }

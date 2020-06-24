@@ -137,15 +137,15 @@ namespace Capa_negocio
            objVenta.Importe = importe;
            objVenta.Cuotas = cuota;
            objVenta.Codformapago = codformapago;
-            objVenta.Totalneto = totalneto;
-            objVenta.Precioiva = precioiva;
-            objVenta.Cae = cae;
-            objVenta.Caevencimiento = caefechavto;
-            objVenta.Numerotipofactura = numerotipofactura;
-            objVenta.Puntoventa = puntoventa;
-            objVenta.Precioiva105 = iva105;
-            objVenta.Totalneto105 = neto105;
-            List<DDetalle_Venta> detalles = new List<DDetalle_Venta>();
+           objVenta.Totalneto = totalneto;
+           objVenta.Precioiva = precioiva;
+           objVenta.Cae = cae;
+           objVenta.Caevencimiento = caefechavto;
+           objVenta.Numerotipofactura = numerotipofactura;
+           objVenta.Puntoventa = puntoventa;
+           objVenta.Precioiva105 = iva105;
+           objVenta.Totalneto105 = neto105;
+           List<DDetalle_Venta> detalles = new List<DDetalle_Venta>();
            
 
            foreach (DataRow row in dtDetalles.Rows)
@@ -169,6 +169,27 @@ namespace Capa_negocio
            return rpta;
 
        }
+        public static string anular(int idventa, bool stock)
+        {
+            
+            string mensaje = "";
+            Dventa objventa = new Dventa(idventa,'A');
+           mensaje = objventa.anular(objventa, stock);
+
+
+
+
+            return mensaje;
+        }
+        public static string actualizarestadostock(int idventa, bool stock)
+        {
+            string mensaje = "";
+            Dventa objventa = new Dventa();
+            mensaje =  objventa.cambiarestadostock(idventa, stock);
+            
+
+            return mensaje;
+        }
         
 
        public static string Eliminar(int idventa)
@@ -202,11 +223,13 @@ namespace Capa_negocio
 
         }
 
-        public static string cambiarestadoventa(int idVenta,char estado, string varnrocomprobante = "0") {
+        public static string cambiarestadoventa(int idVenta,char estado, string varnrocomprobante = "0", string varcae = "", string varvtocae = "") {
             Dventa Obj = new Dventa();
             Obj.Idventa = idVenta;
             Obj.Estado = estado;
             Obj.Nrocomprobante = varnrocomprobante;
+            Obj.Cae = varcae;
+            Obj.Caevencimiento = varvtocae;
             return Obj.CambiarEstadoVenta(Obj);
         }
 
@@ -243,6 +266,11 @@ namespace Capa_negocio
         public static DataTable MostrarRanking5Productos(){
 
             return new Dventa().mostrarRanking5Productos();
+        }
+        public static DataTable buscarventa(int varidventa)
+        {
+            Dventa Obj = new Dventa(varidventa, 'a');
+            return Obj.BuscarVenta(Obj);
         }
         public static DataTable tarjeta(int modo = 9, int codigo = 0)
         {

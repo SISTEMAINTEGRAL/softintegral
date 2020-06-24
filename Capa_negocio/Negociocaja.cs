@@ -179,8 +179,11 @@ namespace Capa_negocio
             {
                 if (NegocioConfigEmpresa.confsistema("puntodeventa").ToString() != formulario)
                 {
-
-                    concaja = false;
+                    if (formulario != "")
+                    {
+                        concaja = false;
+                    }
+                    
 
 
                 }

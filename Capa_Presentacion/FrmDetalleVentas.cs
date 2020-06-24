@@ -51,28 +51,46 @@ namespace Capa_Presentacion
         public void impresioncomprobante(string tipocomprobante)
         {
             string msg = "ok";
+            decimal iva105;
+            decimal iva21;
+            decimal neto105;
+            decimal neto21;
             Negociocomprobantes objcomprobante = new Negociocomprobantes();
             char estadofactura = 'P';
             DataTable datacliente = new DataTable();
+            DataTable dataventa = new DataTable();
             datacliente = NegocioCliente.buscarCodigoCliente(idcliente);
+            dataventa = NegocioVenta.buscarventa(Convert.ToInt32(txtCodigo.Text));
             string nrocomprobante = "0";
             DataRow row = datacliente.Rows[0];
+            DataRow rowventa = dataventa.Rows[0];
+            neto21 = decimal.Round(Convert.ToDecimal(rowventa["Neto21"].ToString()), 2);
+            iva21 = decimal.Round(Convert.ToDecimal(rowventa["Totaliva21"].ToString()), 2);
+            neto105 = decimal.Round(Convert.ToDecimal(rowventa["Total_Neto105"].ToString()), 2);
+            iva105 = decimal.Round(Convert.ToDecimal(rowventa["TotalIva105"].ToString()), 2);
+
             DataTable dt = detalleventa(row["responsabilidadiva"].ToString());
-            
+
             if (NegocioConfigEmpresa.confsistema("facturar").ToString() == "True" && txtTipoComprobante.Text == "NOTA DE VENTA")
             {
                 //&& tipo_comprobante == "NOTA DE VENTA"
                 msg = objcomprobante.factura(NegocioConfigEmpresa.marcafiscal, dt, Convert.ToDouble(txtTotal.Text), NegocioConfigEmpresa.modelofiscal, NegocioConfigEmpresa.puertofiscal,
-                 1, row["razon_social"].ToString(), row["razon_social"].ToString() == "CONSUMIDOR FINAL" ? "99999999999" : row["cuit"].ToString(), row["direccion"].ToString(), "B", row["responsabilidadiva"].ToString(),tipocomprobante);
+                 1, row["razon_social"].ToString(), row["razon_social"].ToString() == "CONSUMIDOR FINAL" ? "99999999999" : row["cuit"].ToString(), row["direccion"].ToString(), "B",
+                 row["responsabilidadiva"].ToString(), tipocomprobante, rowventa["Factura"].ToString(), Convert.ToDouble(neto21), Convert.ToDouble(iva21),
+                 Convert.ToDouble(neto105), Convert.ToDouble(iva105));
+
                 if (msg.Substring(0, 2) != "ok")
                 {
                     UtilityFrm.mensajeError(msg);
                     UtilityFrm.mensajeConfirm("Se guardara la venta como pendiente de factura la puede encontrar en lista de ventas");
                     estadofactura = 'P';
+                    return;
                 }
                 else
                 {
-                    nrocomprobante = msg.Substring(2, 8);
+                    int nrocaracteres = Convert.ToInt32(msg.Length.ToString());
+                    nrocomprobante = msg.Substring(2, nrocaracteres - 2);
+
                     if (tipocomprobante == "FACTURA")
                     {
                         estadofactura = 'F';
@@ -80,9 +98,9 @@ namespace Capa_Presentacion
                     else
                     {
                         estadofactura = 'N';
-                    } 
+                    }
 
-                    
+
                 }
                 this.Close();
             }
@@ -90,7 +108,7 @@ namespace Capa_Presentacion
             {
                 estadofactura = 'P';
             }
-            string mensaje = NegocioVenta.cambiarestadoventa(Convert.ToInt32(txtCodigo.Text), estadofactura, nrocomprobante);
+            string mensaje = NegocioVenta.cambiarestadoventa(Convert.ToInt32(txtCodigo.Text), estadofactura, nrocomprobante.PadLeft(8, '0'), objcomprobante.Cae, objcomprobante.Fechavto);
 
             if (mensaje.Equals("ok"))
             {
@@ -100,8 +118,7 @@ namespace Capa_Presentacion
             {
                 UtilityFrm.mensajeError(mensaje);
             }
-         
-        
+
         }
         public DataTable detalleventa(string responsableiva)
         {

@@ -20,7 +20,8 @@ namespace Capa_Presentacion.Formreportes
     {
         private int idventa;
         private string valorcodigobarra;
-
+        private string valorventa;
+        private string opcionimpresion;
         public int Idventa
         {
             get
@@ -37,10 +38,11 @@ namespace Capa_Presentacion.Formreportes
         {
             InitializeComponent();
         }
-        public Ticketventa(int varidventa)
+        public Ticketventa(int varidventa, string varopcionimpresion = "visor")
         {
             InitializeComponent();
             this.idventa = varidventa;
+            opcionimpresion = varopcionimpresion;
         }
 
         public void imprimir()
@@ -57,6 +59,7 @@ namespace Capa_Presentacion.Formreportes
                 DataRow row = midatatable.Rows[0];
                 //valorcodigobarra = UtilityFrm.calculoDigitoVerificador("012","34","5","678","90");
                 valorcodigobarra = UtilityFrm.calculoDigitoVerificador(row["cuit"].ToString(), row["tipofactura"].ToString(), row["puntoventa"].ToString(), row["CAE"].ToString(), row["CAE_fechavencimiento"].ToString());
+                valorventa = UtilityFrm.calculoDigitoVerificador("", "","", "", "",false, row["idventa"].ToString());
             }
 
 
@@ -75,7 +78,8 @@ namespace Capa_Presentacion.Formreportes
                             miticket.table1.DataSource = midatatable;
                             reportViewer1.Report = miticket;
                             miticket.barcode1.Value = valorcodigobarra;
-                            reportViewer1.RefreshReport();
+                            miticket.barcode2.Value = valorventa;
+                            
                             break;  
                    }
                     case "TICKET56" :
@@ -85,7 +89,7 @@ namespace Capa_Presentacion.Formreportes
                             reportViewer1.Report = miticket1;
                             miticket1.table1.DataSource = midatatable;
                             miticket1.barcode1.Value = valorcodigobarra;
-                            reportViewer1.RefreshReport();
+                            
                             break;
                         }
                     case "A4":
@@ -95,11 +99,26 @@ namespace Capa_Presentacion.Formreportes
                             reportViewer1.Report = miticket2;
                             miticket2.table1.DataSource = midatatable;
                             miticket2.barcode1.Value = valorcodigobarra;
-                            reportViewer1.RefreshReport();
+                            
                             break;
                         }
                     default:
                         break;
+                }
+                if (opcionimpresion == "visor")
+                {
+                    reportViewer1.RefreshReport();
+                }
+                else if (opcionimpresion == "impresiondirecta")
+                {
+                    PrinterSettings miprinterseting = new PrinterSettings();
+                    ReportProcessor mireportprocesor = new ReportProcessor();
+                    if (miprinterseting.IsDefaultPrinter == true)
+                    {
+                        mireportprocesor.PrintReport(reportViewer1.ReportSource, miprinterseting);
+                    }
+                    Close();
+
                 }
 
 

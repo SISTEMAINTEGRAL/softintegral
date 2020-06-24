@@ -59,13 +59,14 @@ namespace Capa_negocio
 
             try
             {
-                LoginClass miloginclase = new LoginClass("wsfe", NegocioConfigEmpresa.urllogin, @"C:\CertificadodonVito\certificado.pfx", "");
+                LoginClass miloginclase = new LoginClass("wsfe", NegocioConfigEmpresa.urllogin, NegocioConfigEmpresa.certificado, "");
                 miloginclase.hacerLogin(miloginclase);
                 int doctipoid = 96;
                 authRequest = new FEAuthRequest();
                 authRequest.Cuit = NegocioConfigEmpresa.emcuit;
                 authRequest.Sign = miloginclase.Sing;
                 authRequest.Token = miloginclase.Token;
+                int cont = 0;
 
                 Service servicio = new Service();
                 servicio = getServicio();
@@ -97,7 +98,7 @@ namespace Capa_negocio
 
                 // ultimo comprobante autorizado 
 
-                FERecuperaLastCbteResponse lastres = servicio.FECompUltimoAutorizado(authRequest, 3, tipocomprobante);
+                FERecuperaLastCbteResponse lastres = servicio.FECompUltimoAutorizado(authRequest, Convert.ToInt32(NegocioConfigEmpresa.puntoventa), tipocomprobante);
                 int last = lastres.CbteNro;
                 det.CbteDesde = last + 1;
                 det.CbteHasta = last + 1;
@@ -129,19 +130,31 @@ namespace Capa_negocio
                 AlicIva alicuota = new AlicIva();
                 if (tipocomprobante == TIPOCOMPROBANTE_FACTURA_A || tipocomprobante == TIPOCOMPROBANTE_FACTURA_B)
                 {
+                    if (neto21 > 0)
+                    {
+                        tipoalicuota = ID_TASA_IVA_21_00;
+                        alicuota.Id = tipoalicuota;
+                        alicuota.BaseImp = neto21;
+                        alicuota.Importe = civa21;
+                    }
                    
-                    tipoalicuota = ID_TASA_IVA_21_00;
-                    alicuota.Id = tipoalicuota;
-                    alicuota.BaseImp = neto21;
-                    alicuota.Importe = civa21;
-                    if (neto105 > 0)
+                   
+                    if (neto105 > 0 && neto21 > 0)
                     {
                         AlicIva alicuota2 = new AlicIva();
                         tipoalicuota = ID_TASA_IVA_10_50;
                         alicuota2.Id = tipoalicuota;
                         alicuota2.BaseImp = neto105;
-                        alicuota2.Importe = civa105;
+                        alicuota2.Importe = neto105;
                         det.Iva = new[] { alicuota, alicuota2 };
+                    }
+                    else if (neto105 > 0)
+                    {
+                        tipoalicuota = ID_TASA_IVA_10_50;
+                        alicuota.Id = tipoalicuota;
+                        alicuota.BaseImp = neto105;
+                        alicuota.Importe = neto105;
+                        det.Iva = new[] { alicuota };
                     }
                     else
                     {
@@ -180,6 +193,7 @@ namespace Capa_negocio
                 {
                     if (r.FeDetResp[0].Observaciones is object)
                     {
+                        m = "";
                         foreach (var o in r.FeDetResp[0].Observaciones)
                             m += string.Format("Obs: {0} ({1})", o.Msg, o.Code) + Constants.vbCrLf;
                     }
@@ -187,6 +201,7 @@ namespace Capa_negocio
                 {
                     if (r.Errors is object)
                     {
+                        m = "";
                         foreach (var er in r.Errors)
                             m += string.Format("Er: {0}: {1}", er.Code, er.Msg) + Constants.vbCrLf;
                     }
@@ -194,6 +209,7 @@ namespace Capa_negocio
                 {
                     if (r.Events is object)
                     {
+                        m = "";
                         foreach (var ev in r.Events)
                             m += string.Format("Ev: {0}: {1}", ev.Code, ev.Msg) + Constants.vbCrLf;
                     }

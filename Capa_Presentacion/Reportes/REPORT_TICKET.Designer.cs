@@ -15,6 +15,7 @@ namespace Capa_Presentacion.Reportes
             Telerik.Reporting.TableGroup tableGroup3 = new Telerik.Reporting.TableGroup();
             Telerik.Reporting.TableGroup tableGroup4 = new Telerik.Reporting.TableGroup();
             Telerik.Reporting.TableGroup tableGroup5 = new Telerik.Reporting.TableGroup();
+            Telerik.Reporting.Barcodes.Code25InterleavedEncoder code25InterleavedEncoder2 = new Telerik.Reporting.Barcodes.Code25InterleavedEncoder();
             Telerik.Reporting.Drawing.StyleRule styleRule1 = new Telerik.Reporting.Drawing.StyleRule();
             this.textBox4 = new Telerik.Reporting.TextBox();
             this.textBox6 = new Telerik.Reporting.TextBox();
@@ -67,6 +68,12 @@ namespace Capa_Presentacion.Reportes
             this.textBox11 = new Telerik.Reporting.TextBox();
             this.textBox14 = new Telerik.Reporting.TextBox();
             this.textBox15 = new Telerik.Reporting.TextBox();
+            this.textBox45 = new Telerik.Reporting.TextBox();
+            this.textBox46 = new Telerik.Reporting.TextBox();
+            this.textBox47 = new Telerik.Reporting.TextBox();
+            this.textBox48 = new Telerik.Reporting.TextBox();
+            this.textBox49 = new Telerik.Reporting.TextBox();
+            this.barcode2 = new Telerik.Reporting.Barcode();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             // 
             // textBox4
@@ -375,7 +382,7 @@ namespace Capa_Presentacion.Reportes
             // 
             // pageFooterSection1
             // 
-            this.pageFooterSection1.Height = Telerik.Reporting.Drawing.Unit.Cm(5.562166690826416D);
+            this.pageFooterSection1.Height = Telerik.Reporting.Drawing.Unit.Cm(7.2873325347900391D);
             this.pageFooterSection1.Items.AddRange(new Telerik.Reporting.ReportItemBase[] {
             this.textBox29,
             this.textBox31,
@@ -383,7 +390,9 @@ namespace Capa_Presentacion.Reportes
             this.textBox34,
             this.pictureBox1,
             this.textBox28,
-            this.textBox30});
+            this.textBox30,
+            this.textBox49,
+            this.barcode2});
             this.pageFooterSection1.Name = "pageFooterSection1";
             // 
             // textBox29
@@ -407,7 +416,7 @@ namespace Capa_Presentacion.Reportes
             this.barcode1.Encoder = code25InterleavedEncoder1;
             this.barcode1.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(9.9961594969499856E-05D), Telerik.Reporting.Drawing.Unit.Cm(3.8621673583984375D));
             this.barcode1.Name = "barcode1";
-            this.barcode1.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(8.4999008178710938D), Telerik.Reporting.Drawing.Unit.Cm(1.2599999904632568D));
+            this.barcode1.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(8.6998996734619141D), Telerik.Reporting.Drawing.Unit.Cm(1.2599999904632568D));
             this.barcode1.Stretch = true;
             this.barcode1.Style.Font.Size = Telerik.Reporting.Drawing.Unit.Point(8D);
             this.barcode1.Value = "";
@@ -449,13 +458,17 @@ namespace Capa_Presentacion.Reportes
             // 
             // reportHeaderSection1
             // 
-            this.reportHeaderSection1.Height = Telerik.Reporting.Drawing.Unit.Cm(4.5319995880126953D);
+            this.reportHeaderSection1.Height = Telerik.Reporting.Drawing.Unit.Cm(5.599998950958252D);
             this.reportHeaderSection1.Items.AddRange(new Telerik.Reporting.ReportItemBase[] {
             this.table1,
             this.textBox10,
             this.textBox11,
             this.textBox14,
-            this.textBox15});
+            this.textBox15,
+            this.textBox45,
+            this.textBox46,
+            this.textBox47,
+            this.textBox48});
             this.reportHeaderSection1.Name = "reportHeaderSection1";
             // 
             // table1
@@ -532,7 +545,7 @@ namespace Capa_Presentacion.Reportes
             // 
             // textBox10
             // 
-            this.textBox10.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(0.60000020265579224D), Telerik.Reporting.Drawing.Unit.Cm(3.4138329029083252D));
+            this.textBox10.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(0.60000020265579224D), Telerik.Reporting.Drawing.Unit.Cm(4.8000001907348633D));
             this.textBox10.Name = "textBox10";
             this.textBox10.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(2.3333332538604736D), Telerik.Reporting.Drawing.Unit.Cm(0.39979955554008484D));
             this.textBox10.Style.Font.Bold = true;
@@ -542,15 +555,15 @@ namespace Capa_Presentacion.Reportes
             // 
             // textBox11
             // 
-            this.textBox11.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(3.690333366394043D), Telerik.Reporting.Drawing.Unit.Cm(3.4138329029083252D));
+            this.textBox11.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(3.6000001430511475D), Telerik.Reporting.Drawing.Unit.Cm(4.8000001907348633D));
             this.textBox11.Name = "textBox11";
-            this.textBox11.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(3.8842284679412842D), Telerik.Reporting.Drawing.Unit.Cm(0.39979955554008484D));
+            this.textBox11.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(3.6000001430511475D), Telerik.Reporting.Drawing.Unit.Cm(0.39979955554008484D));
             this.textBox11.Style.Font.Size = Telerik.Reporting.Drawing.Unit.Point(8D);
             this.textBox11.Value = "=Fields.total";
             // 
             // textBox14
             // 
-            this.textBox14.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(3.6056668758392334D), Telerik.Reporting.Drawing.Unit.Cm(2.799999475479126D));
+            this.textBox14.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(3.6056668758392334D), Telerik.Reporting.Drawing.Unit.Cm(3.0000002384185791D));
             this.textBox14.Name = "textBox14";
             this.textBox14.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(3.5526828765869141D), Telerik.Reporting.Drawing.Unit.Cm(0.39979955554008484D));
             this.textBox14.Style.Font.Size = Telerik.Reporting.Drawing.Unit.Point(8D);
@@ -558,13 +571,68 @@ namespace Capa_Presentacion.Reportes
             // 
             // textBox15
             // 
-            this.textBox15.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(0.60000020265579224D), Telerik.Reporting.Drawing.Unit.Cm(2.799999475479126D));
+            this.textBox15.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(0.60000020265579224D), Telerik.Reporting.Drawing.Unit.Cm(3.0000002384185791D));
             this.textBox15.Name = "textBox15";
             this.textBox15.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(2.3333332538604736D), Telerik.Reporting.Drawing.Unit.Cm(0.39979955554008484D));
             this.textBox15.Style.Font.Bold = true;
             this.textBox15.Style.Font.Size = Telerik.Reporting.Drawing.Unit.Point(8D);
             this.textBox15.Style.TextAlign = Telerik.Reporting.Drawing.HorizontalAlign.Right;
             this.textBox15.Value = "Subtotal";
+            // 
+            // textBox45
+            // 
+            this.textBox45.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(0.60000050067901611D), Telerik.Reporting.Drawing.Unit.Cm(4.2000012397766113D));
+            this.textBox45.Name = "textBox45";
+            this.textBox45.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(2.3333332538604736D), Telerik.Reporting.Drawing.Unit.Cm(0.39979955554008484D));
+            this.textBox45.Style.Font.Bold = true;
+            this.textBox45.Style.Font.Size = Telerik.Reporting.Drawing.Unit.Point(8D);
+            this.textBox45.Style.TextAlign = Telerik.Reporting.Drawing.HorizontalAlign.Right;
+            this.textBox45.Value = "IVA 21";
+            // 
+            // textBox46
+            // 
+            this.textBox46.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(0.60000002384185791D), Telerik.Reporting.Drawing.Unit.Cm(3.6000010967254639D));
+            this.textBox46.Name = "textBox46";
+            this.textBox46.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(2.3333332538604736D), Telerik.Reporting.Drawing.Unit.Cm(0.39979955554008484D));
+            this.textBox46.Style.Font.Bold = true;
+            this.textBox46.Style.Font.Size = Telerik.Reporting.Drawing.Unit.Point(8D);
+            this.textBox46.Style.TextAlign = Telerik.Reporting.Drawing.HorizontalAlign.Right;
+            this.textBox46.Value = "IVA 10.5";
+            // 
+            // textBox47
+            // 
+            this.textBox47.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(3.6056668758392334D), Telerik.Reporting.Drawing.Unit.Cm(3.6000003814697266D));
+            this.textBox47.Name = "textBox47";
+            this.textBox47.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(3.5526828765869141D), Telerik.Reporting.Drawing.Unit.Cm(0.39979955554008484D));
+            this.textBox47.Style.Font.Size = Telerik.Reporting.Drawing.Unit.Point(8D);
+            this.textBox47.Value = "=Fields.IVA105";
+            // 
+            // textBox48
+            // 
+            this.textBox48.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(3.6056668758392334D), Telerik.Reporting.Drawing.Unit.Cm(4.2000012397766113D));
+            this.textBox48.Name = "textBox48";
+            this.textBox48.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(3.5526828765869141D), Telerik.Reporting.Drawing.Unit.Cm(0.39979955554008484D));
+            this.textBox48.Style.Font.Size = Telerik.Reporting.Drawing.Unit.Point(8D);
+            this.textBox48.Value = "=Fields.IVA21";
+            // 
+            // textBox49
+            // 
+            this.textBox49.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(0D), Telerik.Reporting.Drawing.Unit.Cm(5.2941675186157227D));
+            this.textBox49.Name = "textBox49";
+            this.textBox49.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(3D), Telerik.Reporting.Drawing.Unit.Cm(0.40000009536743164D));
+            this.textBox49.Style.Font.Size = Telerik.Reporting.Drawing.Unit.Point(8D);
+            this.textBox49.Value = "Venta";
+            // 
+            // barcode2
+            // 
+            this.barcode2.BarAlign = Telerik.Reporting.Drawing.HorizontalAlign.Left;
+            this.barcode2.Encoder = code25InterleavedEncoder2;
+            this.barcode2.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(0D), Telerik.Reporting.Drawing.Unit.Cm(5.8133673667907715D));
+            this.barcode2.Name = "barcode2";
+            this.barcode2.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(3.0000002384185791D), Telerik.Reporting.Drawing.Unit.Cm(1.1998021602630615D));
+            this.barcode2.Stretch = true;
+            this.barcode2.Style.Font.Size = Telerik.Reporting.Drawing.Unit.Point(8D);
+            this.barcode2.Value = "";
             // 
             // REPORT_TICKET
             // 
@@ -642,5 +710,11 @@ namespace Capa_Presentacion.Reportes
         private Telerik.Reporting.TextBox textBox42;
         private Telerik.Reporting.TextBox textBox44;
         public Telerik.Reporting.Barcode barcode1;
+        internal Telerik.Reporting.TextBox textBox45;
+        internal Telerik.Reporting.TextBox textBox46;
+        internal Telerik.Reporting.TextBox textBox47;
+        internal Telerik.Reporting.TextBox textBox48;
+        private Telerik.Reporting.TextBox textBox49;
+        public Telerik.Reporting.Barcode barcode2;
     }
 }

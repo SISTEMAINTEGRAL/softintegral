@@ -40,6 +40,7 @@ namespace Capa_Presentacion
         private string razonsocial;
         private decimal iva105;
         private decimal neto105;
+        private string opcionimpresion; //impresiondirecta / visor / guardarsinimprimir
         //deja la mercaderia en el formulario de retiro de mercaderia
         private bool pendientedestock;
 
@@ -379,7 +380,8 @@ namespace Capa_Presentacion
                       UtilityFrm.mensajeError(msg);
                       UtilityFrm.mensajeConfirm ("Se guardara la venta como pendiente de factura la puede encontrar en lista de ventas");
                       estadofactura = 'P';
-                  }
+                     // tipofactura = "X";
+                        }
                   else
                   {
 
@@ -455,14 +457,22 @@ namespace Capa_Presentacion
                             {
                                 if (NegocioConfigEmpresa.marcafiscal == "elec" && tipofactura != "X")
                                 {
-                                    Ticketventa miticket = new Formreportes.Ticketventa(objventa.Idventa);
-                                    miticket.ShowDialog();
+                                    if (opcionimpresion != "")
+                                    {
+                                        Ticketventa miticket = new Formreportes.Ticketventa(objventa.Idventa,opcionimpresion);
+                                        miticket.ShowDialog();
 
+
+                                    }
                                 }
                                 else if (tipofactura == "X")
                                 {
-                                   TicketProforma   miticketproforma = new Formreportes.TicketProforma(objventa.Idventa);
-                                    miticketproforma.ShowDialog();
+                                    if (opcionimpresion != "")
+                                    {
+                                        TicketProforma miticketproforma = new Formreportes.TicketProforma(objventa.Idventa,opcionimpresion);
+                                        miticketproforma.ShowDialog();
+                                    }
+                                   
                                 }
                                 //miformticket.Tipoimp = Convert.ToString(NegocioConfigEmpresa.confsistema("modoimpventa"));
                                 //miformticket.Codventa = objventa.Idventa;
@@ -592,11 +602,21 @@ namespace Capa_Presentacion
         private void FrmGuardarVenta_KeyDown(object sender, KeyEventArgs e)
         {
             if(e.KeyCode==Keys.F2){
+                opcionimpresion = "";
                 guardarventa();
 
             }
-
-           
+            else if (e.KeyCode == Keys.I)
+            {
+                opcionimpresion = "impresiondirecta";
+                guardarventa();
+            }
+            else if (e.KeyCode == Keys.V)
+            {
+                opcionimpresion = "visor";
+                guardarventa();
+            }
+             
             else if (e.KeyCode == Keys.Escape) {
                 this.Close();
             }
