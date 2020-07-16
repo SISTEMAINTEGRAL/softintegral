@@ -61,7 +61,7 @@ namespace Capa_Presentacion
                 else {
                     //this.dgvProductosSeleccionados.Columns["precioCompra"].DefaultCellStyle.Format = String.Format("###,##0.00");
                     DataTable tablaArticulos = GrillaADataTable(dgvProductosSeleccionados);
-                   string respuesta =  NegocioArticulo.editarPrecioMasivo(tablaArticulos);
+                   string respuesta =  NegocioArticulo.editarPrecioMasivo(tablaArticulos,NegocioConfigEmpresa.confsistema("opcionsistema").ToString());
                 
 
                         if (respuesta.Equals("ok"))

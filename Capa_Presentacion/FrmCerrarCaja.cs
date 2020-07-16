@@ -53,7 +53,7 @@ namespace Capa_Presentacion
 
             string msg = "";
             Negociocaja objcaja = new Negociocaja();
-            objcaja.extrestadocaja(1, "",0);
+            objcaja.extrestadocaja(1, "",0,false,NegocioConfigEmpresa.nrocaja);
             float importe = 0 ;
             if (TxtConcepto.Text == "" || TxtConcepto.Text == "0")
             {
@@ -66,39 +66,39 @@ namespace Capa_Presentacion
 
                 if (importe < 0)
                 {
-                  msg =  Negociocaja.insertarmovcaja(9100003, 0, (importe * -1) , objcaja.Fecha, NegocioConfigEmpresa.usuarioconectado, NegocioConfigEmpresa.idusuario , NegocioConfigEmpresa.turno, "FALTANTE DE CAJA", 0, true );
+                  msg =  Negociocaja.insertarmovcaja(9100003, 0, (importe * -1) , objcaja.Fecha, NegocioConfigEmpresa.usuarioconectado, NegocioConfigEmpresa.idusuario , NegocioConfigEmpresa.turno, "FALTANTE DE CAJA", 0, true ,NegocioConfigEmpresa.nrocaja,1);
                 }
 
                 else if (importe > 0)  
                 {
-                    Negociocaja.insertarmovcaja(9100004, importe, 0, objcaja.Fecha, NegocioConfigEmpresa.usuarioconectado,NegocioConfigEmpresa.idusuario, NegocioConfigEmpresa.turno, "SOBRANTE DE CAJA", 0, true);
+                    Negociocaja.insertarmovcaja(9100004, importe, 0, objcaja.Fecha, NegocioConfigEmpresa.usuarioconectado,NegocioConfigEmpresa.idusuario, NegocioConfigEmpresa.turno, "SOBRANTE DE CAJA", 0, true,NegocioConfigEmpresa.nrocaja,1);
                 }
                
-                  msg =  Negociocaja.insertarmovcaja(9100002, 0, 0, objcaja.Fecha, NegocioConfigEmpresa.usuarioconectado, NegocioConfigEmpresa.idusuario, NegocioConfigEmpresa.turno, "CIERRE DE CAJA", 0, true);
+                  msg =  Negociocaja.insertarmovcaja(9100002, 0, 0, objcaja.Fecha, NegocioConfigEmpresa.usuarioconectado, NegocioConfigEmpresa.idusuario, NegocioConfigEmpresa.turno, "CIERRE DE CAJA", 0, true, NegocioConfigEmpresa.nrocaja,1);
 
                   if (msg == "ok")
                   {
                       idcierre = 0;
                       idturno = 0;
-                      objcaja.extraercierre("id_turno");
+                      objcaja.extraercierre("id_turno",NegocioConfigEmpresa.nrocaja);
                       idturno = objcaja.Idturno;
-                      objcaja.extraercierre("cod_cierre");
+                      objcaja.extraercierre("cod_cierre", NegocioConfigEmpresa.nrocaja);
                       idcierre = objcaja.Idcierre;
                       // objcaja.extrestadocaja(3, "", idturno);
                       
                       
-                      objcaja.extrestadocaja(2, objcaja.Fecha.Substring(0, 10), 0,true);
+                      objcaja.extrestadocaja(2, objcaja.Fecha.Substring(0, 10), 0,true,NegocioConfigEmpresa.nrocaja);
                       if (this.Text == "Cierre de turno")
                       {
                           
-                          Negociocaja.insertarcierrecaja(idcierre, objcaja.Fecha, NegocioConfigEmpresa.turno, objcaja.Ingreso, objcaja.Egreso, 1, Convert.ToDecimal (lblsaldoActual.Text), Convert.ToDecimal(TxtConcepto.Text), 1, NegocioConfigEmpresa.idusuario, "CIERRE");
+                          Negociocaja.insertarcierrecaja(idcierre, objcaja.Fecha, NegocioConfigEmpresa.turno, objcaja.Ingreso, objcaja.Egreso, 1, Convert.ToDecimal (lblsaldoActual.Text), Convert.ToDecimal(TxtConcepto.Text), 1, NegocioConfigEmpresa.idusuario, "CIERRE", NegocioConfigEmpresa.nrocaja);
                           
                       }
 
                       if (this.Text == "Cierre de caja")
                       {
 
-                          Negociocaja.insertarcierrecaja(idcierre, DateTime.Now.ToString(), NegocioConfigEmpresa.turno, objcaja.Ingreso, objcaja.Egreso, idturno, Convert.ToDecimal(lblsaldoActual.Text), Convert.ToDecimal(TxtConcepto.Text), 1, NegocioConfigEmpresa.idusuario, "CIERRE");
+                          Negociocaja.insertarcierrecaja(idcierre, DateTime.Now.ToString(), NegocioConfigEmpresa.turno, objcaja.Ingreso, objcaja.Egreso, idturno, Convert.ToDecimal(lblsaldoActual.Text), Convert.ToDecimal(TxtConcepto.Text), 1, NegocioConfigEmpresa.idusuario, "CIERRE", NegocioConfigEmpresa.nrocaja);
 
                       }
 
@@ -127,10 +127,13 @@ namespace Capa_Presentacion
             {
 
                 Negociocaja objcaja = new Negociocaja();
-                objcaja.extrestadocaja(1, "", 0);
-                objcaja.extrestadocaja(2, objcaja.Fecha.Substring (0,10), 0);
+                objcaja.extrestadocaja(1, "", 0,false,NegocioConfigEmpresa.nrocaja);
+                objcaja.extrestadocaja(2, objcaja.Fecha.Substring (0,10), 0,false,NegocioConfigEmpresa.nrocaja);
                 lblsaldoActual.Text = Convert.ToString(objcaja.Ingreso - objcaja.Egreso);
                 lblsaldoActual.Text = lblsaldoActual.Text == "Saldo" ? "0" : lblsaldoActual.Text;
+                objcaja.extrestadocaja(5, objcaja.Fecha.Substring(0, 10), 0, false, NegocioConfigEmpresa.nrocaja);
+                LblTarjeta.Text = objcaja.Ingreso.ToString();
+
                 if (this.Text == "Cierre de turno")
                 {
                     BtnApertura.Text = "cerrar turno";
@@ -442,6 +445,26 @@ namespace Capa_Presentacion
         private void btnCerrar_MouseMove(object sender, MouseEventArgs e)
         {
             btnCerrar.BackColor = Color.Red;
+        }
+        int posY = 0;
+        int posX = 0;
+        private void panelHorizontal_MouseMove(object sender, MouseEventArgs e)
+        {
+            //mientra no se apreta el boton izquierdo del mouse actualiza el valor posX Y posY 
+            if (e.Button != MouseButtons.Left)
+            {
+                posY = e.Y;
+                posX = e.X;
+
+            }
+            else
+            {
+                //Left tiene la distancia que hay entre el borde izq y el fondo de la pantalla
+                Left = Left + (e.X - posX);
+                //top tiene la distancia que hay entre el borde sup y el fondo de la pantalla
+                Top = Top + (e.Y - posY);
+
+            }
         }
     }
 }

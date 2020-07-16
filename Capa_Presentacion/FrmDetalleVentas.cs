@@ -16,11 +16,12 @@ namespace Capa_Presentacion
     public partial class FrmDetalleVentas : Form
     {
         private string idcliente;
+        private string letra;
         public FrmDetalleVentas()
         {
             InitializeComponent();
         }
-        public FrmDetalleVentas(string codigoVenta,string razon_social,string fecha,string tipo_comprobante,string estado,string total, string varidcliente, string cuit)
+        public FrmDetalleVentas(string codigoVenta,string razon_social,string fecha,string tipo_comprobante,string estado,string total, string varidcliente, string cuit, string varletra)
         {
             InitializeComponent();
             txtCodigo.Text = codigoVenta;
@@ -31,6 +32,8 @@ namespace Capa_Presentacion
             txtTotal.Text = total;
             txtcuit.Text = cuit;
             idcliente = varidcliente;
+            letra = varletra;
+
             mostrar();
         }
         private void FrmDetalleVentas_Load(object sender, EventArgs e)
@@ -42,6 +45,32 @@ namespace Capa_Presentacion
 
             btnPagarMovimiento.Enabled = txtEstado.Text == "PENDIENTE" ? true : false;
             btncredito.Enabled = txtEstado.Text == "FACTURADO" ? true : false;
+
+            if (NegocioConfigEmpresa.emciva == "MN")
+            {
+                
+                cbxCategoria.Items.Add("C");
+                cbxCategoria.Items.Add("X");
+                //cbxCategoria.Text = "C";
+            }
+            if (NegocioConfigEmpresa.emciva == "RI")
+            {
+                cbxCategoria.Items.Add("A");
+                cbxCategoria.Items.Add("B");
+                cbxCategoria.Items.Add("X");
+                //cbxCategoria.Text = "B";
+            }
+            cbxCategoria.Text = letra;
+
+            if (letra == "X")
+            {
+                cbxCategoria.Enabled = true;
+            }
+            else
+            {
+                cbxCategoria.Enabled = false;
+            }
+
         }
         private void btnPagarMovimiento_Click(object sender, EventArgs e)
         {
@@ -71,12 +100,13 @@ namespace Capa_Presentacion
 
             DataTable dt = detalleventa(row["responsabilidadiva"].ToString());
 
-            if (NegocioConfigEmpresa.confsistema("facturar").ToString() == "True" && txtTipoComprobante.Text == "NOTA DE VENTA")
+            if (NegocioConfigEmpresa.confsistema("facturar").ToString() == "True" && txtTipoComprobante.Text == "NOTA DE VENTA" && cbxCategoria.Text != "X")
             {
                 //&& tipo_comprobante == "NOTA DE VENTA"
+
                 msg = objcomprobante.factura(NegocioConfigEmpresa.marcafiscal, dt, Convert.ToDouble(txtTotal.Text), NegocioConfigEmpresa.modelofiscal, NegocioConfigEmpresa.puertofiscal,
-                 1, row["razon_social"].ToString(), row["razon_social"].ToString() == "CONSUMIDOR FINAL" ? "99999999999" : row["cuit"].ToString(), row["direccion"].ToString(), "B",
-                 row["responsabilidadiva"].ToString(), tipocomprobante, rowventa["Factura"].ToString(), Convert.ToDouble(neto21), Convert.ToDouble(iva21),
+                 1, row["razon_social"].ToString(), row["razon_social"].ToString() == "CONSUMIDOR FINAL" ? "99999999" : row["cuit"].ToString(), row["direccion"].ToString(), cbxCategoria.Text,
+                 row["responsabilidadiva"].ToString(), tipocomprobante, cbxCategoria.Text, Convert.ToDouble(neto21), Convert.ToDouble(iva21),
                  Convert.ToDouble(neto105), Convert.ToDouble(iva105));
 
                 if (msg.Substring(0, 2) != "ok")
@@ -306,6 +336,56 @@ namespace Capa_Presentacion
         private void btncredito_Click(object sender, EventArgs e)
         {
             impresioncomprobante("NOTA DE CREDITO");
+        }
+
+        private void btnMinimizar_MouseLeave(object sender, EventArgs e)
+        {
+            btnMinimizar.BackColor = Color.FromArgb(0, 100, 200);
+        }
+
+        private void btnMinimizar_MouseMove(object sender, MouseEventArgs e)
+        {
+            btnMinimizar.BackColor = Color.FromArgb(65, 39, 60);
+        }
+
+        private void btnMaximizar_MouseLeave(object sender, EventArgs e)
+        {
+            btnMaximizar.BackColor = Color.FromArgb(0, 100, 200);
+        }
+
+        private void btnMaximizar_MouseMove(object sender, MouseEventArgs e)
+        {
+            btnMaximizar.BackColor = Color.FromArgb(65, 39, 60);
+        }
+
+        private void btnCerrar_MouseLeave(object sender, EventArgs e)
+        {
+            btnCerrar.BackColor = Color.FromArgb(0, 100, 200);
+        }
+
+        private void btnCerrar_MouseMove(object sender, MouseEventArgs e)
+        {
+            btnCerrar.BackColor = Color.Red;
+        }
+        int posY = 0;
+        int posX = 0;
+        private void panelHorizontal_MouseMove(object sender, MouseEventArgs e)
+        {
+            //mientra no se apreta el boton izquierdo del mouse actualiza el valor posX Y posY 
+            if (e.Button != MouseButtons.Left)
+            {
+                posY = e.Y;
+                posX = e.X;
+
+            }
+            else
+            {
+                //Left tiene la distancia que hay entre el borde izq y el fondo de la pantalla
+                Left = Left + (e.X - posX);
+                //top tiene la distancia que hay entre el borde sup y el fondo de la pantalla
+                Top = Top + (e.Y - posY);
+
+            }
         }
     }
 }

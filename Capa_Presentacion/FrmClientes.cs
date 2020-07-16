@@ -230,7 +230,7 @@ namespace Capa_Presentacion
 
                         }
 
-                        respuesta = NegocioCliente.insertar(txtRazonSocial.Text.Trim(), txtDireccion.Text.Trim(), Convert.ToInt64(txtCuit.Text.Trim()), dtimeFechaNacimiento.Value, Convert.ToInt64(txtTelefono.Text.Trim()), Convert.ToInt64(txtDocumento.Text.Trim()), txtEmail.Text.Trim(), cbrespiva.SelectedValue.ToString(), Convert.ToInt32(Cbprovincia.SelectedValue), Convert.ToInt32(CBlocalidad.SelectedValue));
+                        respuesta = NegocioCliente.insertar(txtRazonSocial.Text.Trim(), txtDireccion.Text.Trim(), Convert.ToInt64(txtCuit.Text.Trim()), txtTelefono.Text.Trim() != "" ? Convert.ToInt64(txtTelefono.Text.Trim()) : 0, Convert.ToInt64(txtDocumento.Text.Trim()), txtEmail.Text.Trim(), cbrespiva.SelectedValue.ToString(), Convert.ToInt32(Cbprovincia.SelectedValue), Convert.ToInt32(CBlocalidad.SelectedValue));
 
                         if (respuesta.Equals("ok"))
                         {
@@ -249,7 +249,7 @@ namespace Capa_Presentacion
                     {
 
                         //respuesta = NegocioArticulo.editar(Convert.ToInt32(txtCodigo.Text.Trim()), Convert.ToString(txtNombreConfig.Text.Trim()), txtCodigoBarra.Text.Trim(), Convert.ToString(txtDescripcion.Text.Trim()), Convert.ToInt32(cbxCategoria.SelectedValue));
-                        respuesta = NegocioCliente.editar(Convert.ToInt32(txtCodigo.Text.Trim()), txtRazonSocial.Text.Trim(), txtDireccion.Text.Trim(), Convert.ToInt64(txtCuit.Text.Trim()), dtimeFechaNacimiento.Value, Convert.ToInt64(txtTelefono.Text.Trim()), Convert.ToInt64(txtDocumento.Text.Trim()), txtEmail.Text.Trim(), cbrespiva.SelectedValue.ToString(), Convert.ToInt32(Cbprovincia.SelectedValue), Convert.ToInt32(CBlocalidad.SelectedValue));
+                        respuesta = NegocioCliente.editar(Convert.ToInt32(txtCodigo.Text.Trim()), txtRazonSocial.Text.Trim(), txtDireccion.Text.Trim(), Convert.ToInt64(txtCuit.Text.Trim()), txtTelefono.Text.Trim() != "" ? Convert.ToInt64(txtTelefono.Text.Trim()) : 0, Convert.ToInt64(txtDocumento.Text.Trim()), txtEmail.Text.Trim(), cbrespiva.SelectedValue.ToString(), Convert.ToInt32(Cbprovincia.SelectedValue), Convert.ToInt32(CBlocalidad.SelectedValue));
 
                         if (respuesta.Equals("ok"))
                         {
@@ -274,7 +274,8 @@ namespace Capa_Presentacion
                     //habilito el codigo para poder editar
                     habilitarbotones(true, false,false,false);
                     UtilityFrm.limpiarTextbox(txtCodigo,
-                    txtEmail,txtNombre,txtRazonSocial,txtTelefono);
+                    txtEmail,txtNombre,txtRazonSocial,txtTelefono,txtCuit);
+                    UtilityFrm.limpiarTextbox(txtDireccion);
                     limpiarformularioctacte();
                     this.btnNuevo.Focus();
 
@@ -652,7 +653,7 @@ namespace Capa_Presentacion
             LblCuitCtaCte.Text = "...";
             LblRazonSocialCTACTE.Text = "...";
             LblRespiva.Text = "...";
-            DGListado.Rows.Clear();
+            //DGListado.Rows.Clear();
         }
         private void BtnAsentarpago_Click(object sender, EventArgs e)
         {
@@ -685,9 +686,9 @@ namespace Capa_Presentacion
 
                 if (respuesta == "ok")
                 {
-                    if (objcaja.chequeocaja("FrmClientes", ref mensaje) == true)
+                    if (objcaja.chequeocaja("FrmClientes", ref mensaje,NegocioConfigEmpresa.nrocaja) == true)
                     {
-                        respuesta = Negociocaja.insertarmovcaja(1310101, Convert.ToSingle(objpago.Importe), 0, Convert.ToString(DateTime.Now), NegocioConfigEmpresa.usuarioconectado, NegocioConfigEmpresa.idusuario, NegocioConfigEmpresa.turno, "Recibo nro : " + codrecibo.ToString(), codrecibo, true);
+                        respuesta = Negociocaja.insertarmovcaja(1310101, Convert.ToSingle(objpago.Importe), 0, Convert.ToString(DateTime.Now), NegocioConfigEmpresa.usuarioconectado, NegocioConfigEmpresa.idusuario, NegocioConfigEmpresa.turno, "Recibo nro : " + codrecibo.ToString(), codrecibo, true,NegocioConfigEmpresa.nrocaja,1);
                         if (respuesta == "ok")
                         {
                             NegocioCliente.modificarestadocajarecibo(codrecibo);
@@ -832,6 +833,11 @@ namespace Capa_Presentacion
             {
                 DGListado.CommitEdit(DataGridViewDataErrorContexts.Commit);
             }
+        }
+
+        private void txtTelefono_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            UtilityFrm.NumDecTeclado(e, txtTelefono);
         }
     }
 }

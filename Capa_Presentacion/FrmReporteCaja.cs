@@ -19,6 +19,21 @@ namespace Capa_Presentacion
             get { return idcierre; }
             set { idcierre = value; }
         }
+
+        public int Idcaja
+        {
+            get
+            {
+                return idcaja;
+            }
+
+            set
+            {
+                idcaja = value;
+            }
+        }
+
+        private int idcaja;
         public FrmReporteCaja()
         {
             InitializeComponent();
@@ -28,7 +43,7 @@ namespace Capa_Presentacion
         {
             // TODO: esta línea de código carga datos en la tabla 'dSCaja.REPORTE_CAJA' Puede moverla o quitarla según sea necesario.
           //  this.rEPORTE_CAJATableAdapter.Fill(this.dSCaja.REPORTE_CAJA,idcierre);
-            this.rEPORTE_CAJA1TableAdapter.Fill(this.dSCaja.REPORTE_CAJA1,idcierre);
+            this.rEPORTE_CAJA1TableAdapter.Fill(this.dSCaja.REPORTE_CAJA1,idcierre,idcaja);
             this.reportViewer1.RefreshReport();
         }
     }

@@ -114,6 +114,11 @@
     <Compile Include="Class1.cs" />
     <Compile Include="CodigoDeBarra.cs" />
     <Compile Include="ComponentesFormularios.cs" />
+    <Compile Include="DataSet1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataSet1.xsd</DependentUpon>
+    </Compile>
     <Compile Include="DataSet\DataSet2.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -169,6 +174,12 @@
     <Compile Include="Formreportes\FrmGondola.Designer.cs">
       <DependentUpon>FrmGondola.cs</DependentUpon>
     </Compile>
+    <Compile Include="Formreportes\FrmGondola2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formreportes\FrmGondola2.Designer.cs">
+      <DependentUpon>FrmGondola2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Formreportes\FrmReporteGondola.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -210,6 +221,18 @@
     </Compile>
     <Compile Include="FrmAperturacaja.designer.cs">
       <DependentUpon>FrmAperturacaja.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmGuardarVenta2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmGuardarVenta2.Designer.cs">
+      <DependentUpon>FrmGuardarVenta2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmTarjeta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmTarjeta.Designer.cs">
+      <DependentUpon>FrmTarjeta.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmArticulos.cs">
       <SubType>Form</SubType>
@@ -439,6 +462,12 @@
     <Compile Include="FrmPreciosmasivos.Designer.cs">
       <DependentUpon>FrmPreciosmasivos.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmPreciosmasivos2.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPreciosmasivos2.designer.cs">
+      <DependentUpon>FrmPreciosmasivos2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Frmprivilegio.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -659,6 +688,9 @@
     <EmbeddedResource Include="Formreportes\FrmGondola.resx">
       <DependentUpon>FrmGondola.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Formreportes\FrmGondola2.resx">
+      <DependentUpon>FrmGondola2.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Formreportes\FrmReporteGondola.resx">
       <DependentUpon>FrmReporteGondola.cs</DependentUpon>
     </EmbeddedResource>
@@ -679,6 +711,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmAperturacaja.resx">
       <DependentUpon>FrmAperturacaja.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmGuardarVenta2.resx">
+      <DependentUpon>FrmGuardarVenta2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmTarjeta.resx">
+      <DependentUpon>FrmTarjeta.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmArticulos.resx">
       <DependentUpon>FrmArticulos.cs</DependentUpon>
@@ -794,6 +832,9 @@
     <EmbeddedResource Include="FrmPreciosmasivos.resx">
       <DependentUpon>FrmPreciosmasivos.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmPreciosmasivos2.resx">
+      <DependentUpon>FrmPreciosmasivos2.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Frmprivilegio.resx">
       <DependentUpon>Frmprivilegio.cs</DependentUpon>
     </EmbeddedResource>
@@ -879,6 +920,7 @@
       <DependentUpon>REPORTE_REMITO.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes\REPORT_GONDOLA.rdlc" />
+    <EmbeddedResource Include="Reportes\REPORT_GONDOLA2.rdlc" />
     <EmbeddedResource Include="Reportes\REPORT_TICKET.resx">
       <DependentUpon>REPORT_TICKET.cs</DependentUpon>
     </EmbeddedResource>
@@ -907,6 +949,17 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+    <None Include="DataSet1.xsc">
+      <DependentUpon>DataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="DataSet1.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSet1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DataSet1.xss">
+      <DependentUpon>DataSet1.xsd</DependentUpon>
+    </None>
     <None Include="DataSet\DataSet2.xsc">
       <DependentUpon>DataSet2.xsd</DependentUpon>
     </None>

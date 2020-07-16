@@ -36,20 +36,6 @@
             this.grpboxProveedor = new System.Windows.Forms.GroupBox();
             this.TxtcambioDv = new System.Windows.Forms.TextBox();
             this.DGVenta = new Guna.UI.WinForms.GunaDataGridView();
-            this.Codigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Producto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Cprecio = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Subtotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Descuento = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Importe = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Dpesable = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Calculo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Preciopormayor = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Cantidadpormayor = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.preciounidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Civa = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Manual = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txtIva105 = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.txtNeto105 = new System.Windows.Forms.TextBox();
@@ -106,6 +92,23 @@
             this.btnConsultas = new System.Windows.Forms.Button();
             this.btnCalculadora = new System.Windows.Forms.Button();
             this.serialPort1 = new System.IO.Ports.SerialPort(this.components);
+            this.Codigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Producto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Cprecio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Subtotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Descuento = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Importe = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Dpesable = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Calculo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Preciopormayor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Cantidadpormayor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.preciounidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Civa = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Manual = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Preciopromo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CantidadPromo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.DescPromo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.grpboxProveedor.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DGVenta)).BeginInit();
             this.gbDetalleMovimento.SuspendLayout();
@@ -214,7 +217,10 @@
             this.Cantidadpormayor,
             this.preciounidad,
             this.Civa,
-            this.Manual});
+            this.Manual,
+            this.Preciopromo,
+            this.CantidadPromo,
+            this.DescPromo});
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -262,88 +268,6 @@
             this.DGVenta.RowsRemoved += new System.Windows.Forms.DataGridViewRowsRemovedEventHandler(this.DGVenta_RowsRemoved);
             this.DGVenta.KeyDown += new System.Windows.Forms.KeyEventHandler(this.DGVenta_KeyDown);
             this.DGVenta.MouseClick += new System.Windows.Forms.MouseEventHandler(this.DGVenta_MouseClick);
-            // 
-            // Codigo
-            // 
-            this.Codigo.FillWeight = 61.54822F;
-            this.Codigo.HeaderText = "Codigo";
-            this.Codigo.Name = "Codigo";
-            // 
-            // Producto
-            // 
-            this.Producto.FillWeight = 253.8071F;
-            this.Producto.HeaderText = "Producto";
-            this.Producto.Name = "Producto";
-            // 
-            // Cprecio
-            // 
-            this.Cprecio.FillWeight = 61.54822F;
-            this.Cprecio.HeaderText = "Precio";
-            this.Cprecio.Name = "Cprecio";
-            // 
-            // Cantidad
-            // 
-            this.Cantidad.FillWeight = 61.54822F;
-            this.Cantidad.HeaderText = "Cantidad";
-            this.Cantidad.Name = "Cantidad";
-            // 
-            // Subtotal
-            // 
-            this.Subtotal.FillWeight = 61.54822F;
-            this.Subtotal.HeaderText = "Subtotal";
-            this.Subtotal.Name = "Subtotal";
-            // 
-            // Descuento
-            // 
-            this.Descuento.HeaderText = "Descuento";
-            this.Descuento.Name = "Descuento";
-            // 
-            // Importe
-            // 
-            this.Importe.HeaderText = "Importe";
-            this.Importe.Name = "Importe";
-            // 
-            // Dpesable
-            // 
-            this.Dpesable.HeaderText = "Pesable";
-            this.Dpesable.Name = "Dpesable";
-            this.Dpesable.Visible = false;
-            // 
-            // Calculo
-            // 
-            this.Calculo.HeaderText = "Calculo";
-            this.Calculo.Name = "Calculo";
-            this.Calculo.Visible = false;
-            // 
-            // Preciopormayor
-            // 
-            this.Preciopormayor.HeaderText = "Preciopormayor";
-            this.Preciopormayor.Name = "Preciopormayor";
-            this.Preciopormayor.Visible = false;
-            // 
-            // Cantidadpormayor
-            // 
-            this.Cantidadpormayor.HeaderText = "Cantidadpormayor";
-            this.Cantidadpormayor.Name = "Cantidadpormayor";
-            this.Cantidadpormayor.Visible = false;
-            // 
-            // preciounidad
-            // 
-            this.preciounidad.HeaderText = "preciounidad";
-            this.preciounidad.Name = "preciounidad";
-            this.preciounidad.Visible = false;
-            // 
-            // Civa
-            // 
-            this.Civa.HeaderText = "iva";
-            this.Civa.Name = "Civa";
-            this.Civa.Visible = false;
-            // 
-            // Manual
-            // 
-            this.Manual.HeaderText = "Manual";
-            this.Manual.Name = "Manual";
-            this.Manual.Visible = false;
             // 
             // txtIva105
             // 
@@ -1071,7 +995,121 @@
             this.btnCalculadora.UseVisualStyleBackColor = true;
             this.btnCalculadora.Click += new System.EventHandler(this.btnCalculadora_Click);
             // 
-            // frmPventa
+            // Codigo
+            // 
+            this.Codigo.FillWeight = 61.54822F;
+            this.Codigo.HeaderText = "Codigo";
+            this.Codigo.Name = "Codigo";
+            this.Codigo.ReadOnly = true;
+            // 
+            // Producto
+            // 
+            this.Producto.FillWeight = 253.8071F;
+            this.Producto.HeaderText = "Producto";
+            this.Producto.Name = "Producto";
+            this.Producto.ReadOnly = true;
+            // 
+            // Cprecio
+            // 
+            this.Cprecio.FillWeight = 61.54822F;
+            this.Cprecio.HeaderText = "Precio";
+            this.Cprecio.Name = "Cprecio";
+            this.Cprecio.ReadOnly = true;
+            // 
+            // Cantidad
+            // 
+            this.Cantidad.FillWeight = 61.54822F;
+            this.Cantidad.HeaderText = "Cantidad";
+            this.Cantidad.Name = "Cantidad";
+            this.Cantidad.ReadOnly = true;
+            // 
+            // Subtotal
+            // 
+            this.Subtotal.FillWeight = 61.54822F;
+            this.Subtotal.HeaderText = "Subtotal";
+            this.Subtotal.Name = "Subtotal";
+            this.Subtotal.ReadOnly = true;
+            // 
+            // Descuento
+            // 
+            this.Descuento.HeaderText = "Descuento";
+            this.Descuento.Name = "Descuento";
+            this.Descuento.ReadOnly = true;
+            // 
+            // Importe
+            // 
+            this.Importe.HeaderText = "Importe";
+            this.Importe.Name = "Importe";
+            this.Importe.ReadOnly = true;
+            // 
+            // Dpesable
+            // 
+            this.Dpesable.HeaderText = "Pesable";
+            this.Dpesable.Name = "Dpesable";
+            this.Dpesable.ReadOnly = true;
+            this.Dpesable.Visible = false;
+            // 
+            // Calculo
+            // 
+            this.Calculo.HeaderText = "Calculo";
+            this.Calculo.Name = "Calculo";
+            this.Calculo.ReadOnly = true;
+            this.Calculo.Visible = false;
+            // 
+            // Preciopormayor
+            // 
+            this.Preciopormayor.HeaderText = "Preciopormayor";
+            this.Preciopormayor.Name = "Preciopormayor";
+            this.Preciopormayor.ReadOnly = true;
+            this.Preciopormayor.Visible = false;
+            // 
+            // Cantidadpormayor
+            // 
+            this.Cantidadpormayor.HeaderText = "Cantidadpormayor";
+            this.Cantidadpormayor.Name = "Cantidadpormayor";
+            this.Cantidadpormayor.ReadOnly = true;
+            this.Cantidadpormayor.Visible = false;
+            // 
+            // preciounidad
+            // 
+            this.preciounidad.HeaderText = "preciounidad";
+            this.preciounidad.Name = "preciounidad";
+            this.preciounidad.ReadOnly = true;
+            this.preciounidad.Visible = false;
+            // 
+            // Civa
+            // 
+            this.Civa.HeaderText = "iva";
+            this.Civa.Name = "Civa";
+            this.Civa.ReadOnly = true;
+            this.Civa.Visible = false;
+            // 
+            // Manual
+            // 
+            this.Manual.HeaderText = "Manual";
+            this.Manual.Name = "Manual";
+            this.Manual.ReadOnly = true;
+            this.Manual.Visible = false;
+            // 
+            // Preciopromo
+            // 
+            this.Preciopromo.HeaderText = "Preciopromo";
+            this.Preciopromo.Name = "Preciopromo";
+            this.Preciopromo.Visible = false;
+            // 
+            // CantidadPromo
+            // 
+            this.CantidadPromo.HeaderText = "CantidadPromo";
+            this.CantidadPromo.Name = "CantidadPromo";
+            this.CantidadPromo.Visible = false;
+            // 
+            // DescPromo
+            // 
+            this.DescPromo.HeaderText = "DescPromo";
+            this.DescPromo.Name = "DescPromo";
+            this.DescPromo.Visible = false;
+            // 
+            // frmPventa2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -1088,7 +1126,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.KeyPreview = true;
             this.Margin = new System.Windows.Forms.Padding(4, 8, 4, 8);
-            this.Name = "frmPventa";
+            this.Name = "frmPventa2";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Venta";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
@@ -1175,6 +1213,8 @@
         public System.Windows.Forms.TextBox txtNeto105;
         private System.Windows.Forms.Label label7;
         private Guna.UI.WinForms.GunaDataGridView DGVenta;
+        private System.Windows.Forms.CheckBox CHKPendientestock;
+        private System.IO.Ports.SerialPort serialPort1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Codigo;
         private System.Windows.Forms.DataGridViewTextBoxColumn Producto;
         private System.Windows.Forms.DataGridViewTextBoxColumn Cprecio;
@@ -1189,7 +1229,8 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn preciounidad;
         private System.Windows.Forms.DataGridViewTextBoxColumn Civa;
         private System.Windows.Forms.DataGridViewTextBoxColumn Manual;
-        private System.Windows.Forms.CheckBox CHKPendientestock;
-        private System.IO.Ports.SerialPort serialPort1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Preciopromo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CantidadPromo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn DescPromo;
     }
 }

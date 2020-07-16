@@ -63,21 +63,7 @@ namespace Capa_Presentacion
         {
             
             
-            Negociocaja objcaja = new Negociocaja();
-            FrmAperturacaja objformapcaja = new FrmAperturacaja();
-            objcaja.extrestadocaja(1, "",0);
-            if (objcaja.Fecha.Substring(0, 10) == dtpFechaCaja.Value.ToString("dd/MM/yyyy"))
-            {
-                MessageBox.Show("La caja del dia de la fecha se encuentra cerrada");
-
-            }
-            else
-            {
-                objformapcaja.ShowDialog();
-                refrescarcaja(Convert.ToString(DateTime.Today));
-                objcaja.extrestadocaja(1, "",0);
-                estadoabicerrada(objcaja.Codcuenta);
-            }
+           
            
             
 
@@ -121,7 +107,7 @@ namespace Capa_Presentacion
             {
                 try
                 {
-                    this.dataLista.DataSource = Negociocaja.buscarmovimiento ( Convert.ToString  ( this.dtpFechaCaja.Text.Substring (0,10) + "00:00:00"),Convert.ToString (this.dtpFechaCaja.Text.Substring(0,10) + "23:59:59"));
+                    this.dataLista.DataSource = Negociocaja.buscarmovimiento ( Convert.ToString  ( this.dtpFechaCaja.Text.Substring (0,10) + "00:00:00"),Convert.ToString (this.dtpFechaCaja.Text.Substring(0,10) + "23:59:59"),NegocioConfigEmpresa.nrocaja);
                 }
 
                 catch (Exception ex)
@@ -154,43 +140,48 @@ namespace Capa_Presentacion
             llenarComboBoxTipoMovimiento();
             
             Negociocaja objcaja = new Negociocaja();
-            objcaja.extrestadocaja(1,"",0);
+            objcaja.extrestadocaja(1,"",0,false,NegocioConfigEmpresa.nrocaja);
 
-            if (objcaja.Fecha.Substring (0,10) != dtpFechaCaja.Value.ToString ("dd/MM/yyyy"))
+            if (objcaja.Codcuenta != 0)
             {
-                if (objcaja.Codcuenta == 9100001)
+                if (objcaja.Fecha.Substring(0, 10) != dtpFechaCaja.Value.ToString("dd/MM/yyyy"))
                 {
-                    DialogResult dialogResult = MessageBox.Show("La caja se encuentra abierta de una fecha anterior, desea cerrarla?", "Caja abierta", MessageBoxButtons.YesNo);
-                    if (dialogResult == DialogResult.Yes)
+                    if (objcaja.Codcuenta == 9100001)
                     {
-                        FrmCerrarCaja  objcerrar = new FrmCerrarCaja ();
-                        objcerrar.ShowDialog();
-                        
+                        DialogResult dialogResult = MessageBox.Show("La caja se encuentra abierta de una fecha anterior, desea cerrarla?", "Caja abierta", MessageBoxButtons.YesNo);
+                        if (dialogResult == DialogResult.Yes)
+                        {
+                            FrmCerrarCaja objcerrar = new FrmCerrarCaja();
+                            objcerrar.ShowDialog();
+
+                        }
+                        else if (dialogResult == DialogResult.No)
+                        {
+                            //do something else
+                        }
+
                     }
-                    else if (dialogResult == DialogResult.No)
+
+                }
+
+                if (objcaja.Codcuenta == 9100002)
+                {
+                    if (objcaja.Fecha.Substring(0, 10) == dtpFechaCaja.Value.ToString("dd/MM/yyyy"))
                     {
-                        //do something else
+                        MessageBox.Show("La caja del dia de hoy esta cerrada");
                     }
+                    else
+                    {
+                        DialogResult dialogResult = MessageBox.Show("La caja se encuentra cerrada, desea darle apertura?", "Caja cerrada", MessageBoxButtons.YesNo);
+                        if (dialogResult == DialogResult.Yes)
+                        {
+                            FrmAperturacaja objapertura = new FrmAperturacaja();
+                            objapertura.ShowDialog();
+                        }
+                    }
+                }
                 
-                }
-            
-            }
 
-            if (objcaja.Codcuenta == 9100002)
-            {
-                if (objcaja.Fecha.Substring(0, 10) == dtpFechaCaja.Value.ToString("dd/MM/yyyy"))
-                {
-                    MessageBox.Show("La caja del dia de hoy esta cerrada");
-                }
-                else
-                {
-                    DialogResult dialogResult = MessageBox.Show("La caja se encuentra cerrada, desea abrirla?", "Caja cerrada", MessageBoxButtons.YesNo);
-                    if (dialogResult == DialogResult.Yes)
-                    {
-                        FrmAperturacaja objapertura = new FrmAperturacaja();
-                        objapertura.ShowDialog();
-                    }
-                }
                 //  else if (dialogResult == DialogResult.No)
                // {
                     //do something else
@@ -198,7 +189,15 @@ namespace Capa_Presentacion
                 
                 
             }
-            objcaja.extrestadocaja(1, "", 0);
+            else
+            {
+                if (UtilityFrm.mensajeopcionsiono("Se detecto una nueva caja en el sistema, desea darle apertura?"))
+                {
+                    FrmAperturacaja objapertura = new FrmAperturacaja();
+                    objapertura.ShowDialog();
+                }
+            }
+            objcaja.extrestadocaja(1, "", 0,false,NegocioConfigEmpresa.nrocaja);
             estadoabicerrada(objcaja.Codcuenta);
             refrescarcaja(Convert.ToString(DateTime.Today));
             totales();
@@ -247,7 +246,7 @@ namespace Capa_Presentacion
             Negociocaja objcaja = new Negociocaja();
             FrmCerrarCaja objcerrar = new FrmCerrarCaja();
             objcerrar.ShowDialog();
-            objcaja.extrestadocaja(1, "", 0);
+            objcaja.extrestadocaja(1, "", 0,false,NegocioConfigEmpresa.nrocaja);
             estadoabicerrada(objcaja.Codcuenta);
             refrescarcaja(Convert.ToString(DateTime.Today));
             totales();
@@ -261,7 +260,7 @@ namespace Capa_Presentacion
 
 
            // DateTimePicker fecha = new DateTimePicker();
-            DataTable midatatable = Negociocaja.buscarmovimiento(fecha.Substring(0, 10) + " 00:00:00", fecha.Substring(0, 10) + " 23:59:59");
+            DataTable midatatable = Negociocaja.buscarmovimiento(fecha.Substring(0, 10) + " 00:00:00", fecha.Substring(0, 10) + " 23:59:59",NegocioConfigEmpresa.nrocaja);
             dataLista.DataSource = midatatable;
             
             
@@ -393,7 +392,7 @@ namespace Capa_Presentacion
             {
                 if (9100002 == Convert.ToInt32(row.Cells["Cod_cuenta"].Value.ToString()))
                 {
-                    objcaja.extrestadocaja(1, "",0);
+                    objcaja.extrestadocaja(1, "",0,false,NegocioConfigEmpresa.nrocaja);
                     if (Convert.ToInt32(row.Cells["Cod_mov"].Value.ToString()) != objcaja.Codmov)
                     {
                         MessageBox.Show("No se puede eliminar este cierre");
@@ -419,7 +418,7 @@ namespace Capa_Presentacion
 
             }
             refrescarcaja(dtpFechaCaja.Value.ToString("dd/MM/yyyy"));
-            objcaja.extrestadocaja(1, "",0);
+            objcaja.extrestadocaja(1, "",0,false,NegocioConfigEmpresa.nrocaja);
             estadoabicerrada(objcaja.Codcuenta);
         }
 
@@ -433,8 +432,8 @@ namespace Capa_Presentacion
                 bool control = true;
                 string msg = "";
 
-                objcaja.extrestadocaja(1, "", 0);
-                objcaja.extrestadocaja(2, objcaja.Fecha.Substring(0,10), 0);
+                objcaja.extrestadocaja(1, "", 0,false,NegocioConfigEmpresa.nrocaja);
+                objcaja.extrestadocaja(2, objcaja.Fecha.Substring(0,10), 0,false,NegocioConfigEmpresa.nrocaja);
                 //codigo de cuenta para cierre de caja
                 //si está cerrado no permite generar la venta hasta no abrir la caja
                 if (objcaja.Fecha.Substring(0, 10) != Convert.ToString(DateTime.Today).Substring(0, 10))
@@ -480,7 +479,7 @@ namespace Capa_Presentacion
 
                         string rpta = Negociocaja.insertarmovcaja(Convert.ToInt32(cbxPlanCuenta.SelectedValue), (rbIngreso.Checked == true) ? Convert.ToSingle(textBox2.Text) : 0,
                                              (rbEgreso.Checked == true) ? Convert.ToSingle(textBox2.Text) : 0, Convert.ToString(DateTime.Today), NegocioConfigEmpresa.usuarioconectado, 1, NegocioConfigEmpresa.turno,
-                                             TxtConcepto.Text, 0, true);
+                                             TxtConcepto.Text, 0, true,NegocioConfigEmpresa.nrocaja,1);
                         refrescarcaja(Convert.ToString(DateTime.Today));
                         totales();
                         checkradioingegr();
@@ -624,6 +623,7 @@ namespace Capa_Presentacion
         {
             FrmReporteCaja mireportecaja = new FrmReporteCaja();
             mireportecaja.Idcierre = Convert.ToInt32 ( idcierre);
+            mireportecaja.Idcaja = NegocioConfigEmpresa.nrocaja;
             mireportecaja.ShowDialog();
         }
 
@@ -632,5 +632,23 @@ namespace Capa_Presentacion
 
         }
 
+        private void BtnApertura_Click(object sender, EventArgs e)
+        {
+            Negociocaja objcaja = new Negociocaja();
+            FrmAperturacaja objformapcaja = new FrmAperturacaja();
+            objcaja.extrestadocaja(1, "", 0, false, NegocioConfigEmpresa.nrocaja);
+            if (objcaja.Fecha.Substring(0, 10) == dtpFechaCaja.Value.ToString("dd/MM/yyyy"))
+            {
+                MessageBox.Show("La caja del dia de la fecha se encuentra cerrada");
+
+            }
+            else
+            {
+                objformapcaja.ShowDialog();
+                refrescarcaja(Convert.ToString(DateTime.Today));
+                objcaja.extrestadocaja(1, "", 0, false, NegocioConfigEmpresa.nrocaja);
+                estadoabicerrada(objcaja.Codcuenta);
+            }
+        }
     }
 }

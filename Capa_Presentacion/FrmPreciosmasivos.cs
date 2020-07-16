@@ -169,11 +169,11 @@ namespace Capa_Presentacion
                     if (UtilityFrm.mensajeopcionsiono("Desea aplicar los cambios?") == true)
                     {
                         DataTable tablaArticulos = GrillaADataTable(DGVenta);
-                        string respuesta = NegocioArticulo.editarPrecioMasivo(tablaArticulos);
+                        string respuesta = NegocioArticulo.editarPrecioMasivo(tablaArticulos,NegocioConfigEmpresa.confsistema("opcionsistema").ToString());
                         UtilityFrm.mensajeConfirm("La actualizacion se realizo con exito");
                         if (UtilityFrm.mensajeopcionsiono("Desea imprimir las etiquetas de gondola"))
                         {
-                            NegocioArticulo.cargarproductogondola(rellenarlistaidarticulo(),NegocioConfigEmpresa.idequipo);
+                            NegocioArticulo.cargarproductogondola(rellenarlistaidarticulo(),NegocioConfigEmpresa.idequipo,NegocioConfigEmpresa.confsistema("opcionsistema").ToString());
                              Formreportes.FrmGondola mifrmreportegondola = new Formreportes.FrmGondola(NegocioConfigEmpresa.idequipo);
                            // Formreportes.FrmReporteGondola mifrmreportegondola = new Formreportes.FrmReporteGondola(NegocioConfigEmpresa.idequipo); 
                             mifrmreportegondola.ShowDialog();
@@ -395,7 +395,7 @@ namespace Capa_Presentacion
         {
             if (DGVenta.Rows.Count != 0)
             {
-                NegocioArticulo.cargarproductogondola(rellenarlistaidarticulo(), NegocioConfigEmpresa.idequipo);
+                NegocioArticulo.cargarproductogondola(rellenarlistaidarticulo(), NegocioConfigEmpresa.idequipo,NegocioConfigEmpresa.confsistema("opcionsistema").ToString());
                 Formreportes.FrmGondola mifrmreportegondola = new Formreportes.FrmGondola(NegocioConfigEmpresa.idequipo);
                 // Formreportes.FrmReporteGondola mifrmreportegondola = new Formreportes.FrmReporteGondola(NegocioConfigEmpresa.idequipo); 
                 mifrmreportegondola.ShowDialog();

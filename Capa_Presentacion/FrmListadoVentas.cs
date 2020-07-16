@@ -29,14 +29,16 @@ namespace Capa_Presentacion
         private void FrmListadoVentas_Load(object sender, EventArgs e)
         {
             // TODO: esta línea de código carga datos en la tabla 'DVentaproducto.REPORTE_VENTAPRODUCTO' Puede moverla o quitarla según sea necesario.
-            
+
             //this.mostrar();
+            cbFormapago.SelectedIndex = 2;
             this.buscarPorFecha();
             this.actualizarTotal();
             this.mensajesDeAyuda();
             this.dataLista.Columns["Total"].DefaultCellStyle.Format = String.Format("###,##0.00");
             this.dataLista.Columns["fecha"].DefaultCellStyle.Format = "dd/MM/yyyy hh:mm:ss";
 
+            
             Chkcaja.Enabled = checkradiobuton();
             ChkFactura.Enabled = checkradiobuton();
             this.reportViewer1.RefreshReport();
@@ -221,10 +223,35 @@ namespace Capa_Presentacion
         /*Metodos propios*/
         public void buscarPorFecha()
         {
+            int codformapago = 0;
+            switch (cbFormapago.Text)
+            {
+                case "EFECTIVO":
+                    {
+                        codformapago = 1;
+                        break;
+                    }
+                case "TARJETA":
+                    {
+                        codformapago = 2;
+                        break;
+                    }
+                case "CTACTE":
+                    {
+                        codformapago = 3;
+                        break;
+                    }
+
+                default:
+                    break;
+            }
             dataLista.Rows.Clear();
             try
             {
-                DataTable dt = NegocioVenta.BuscarFechas(dtpFechaIni.Value.ToString("dd/MM/yyyy") + " 00:00:00", dtpFechaFin.Value.ToString("dd/MM/yyyy") + " 23:59:59", ChkFactura.Checked == true ? 'P' : 'F',Chkcaja.Checked == true ? false : true, rdBPresupuesto.Checked == true ? "PRESUPUESTO" : "NOTA DE VENTA" );
+                DataTable dt = NegocioVenta.BuscarFechas(dtpFechaIni.Value.ToString("dd/MM/yyyy") + " 00:00:00", dtpFechaFin.Value.ToString("dd/MM/yyyy") + " 23:59:59",
+                    ChkFactura.Checked == true ? 'P' : 'F',Chkcaja.Checked == true ? false : true, rdBPresupuesto.Checked == true ? "PRESUPUESTO" : "NOTA DE VENTA" ,
+                    txtIdVenta.Text != "" ? Convert.ToInt32(txtIdVenta.Text) : 0,  txtPuntoventa.Text.PadLeft(5, '0'), codformapago,
+                    txtIdVenta.Text != "" ? true : false,cbFormapago.Text != "TODO" ? true : false, txtPuntoventa.Text != "" ? true : false );
                 foreach (DataRow venta in dt.Rows)
                 {
 
@@ -247,7 +274,9 @@ namespace Capa_Presentacion
                     {
                         estado = "PRESUPUESTADO";
                     }
-                    dataLista.Rows.Add(venta["idventa"], venta["razon_social"], venta["fecha"], venta["tipo_comprobante"], venta["total"], estado, venta ["caja"], venta ["idcliente"], venta ["cuit"], venta["Nrocomprobante"], venta["factura"], venta["Neto21"], venta["Totaliva21"], venta["Total_Neto105"], venta["Totaliva105"], venta["CAE"], venta["CAE_Fechavencimiento"], venta["enstock"]);
+                    dataLista.Rows.Add(venta["idventa"], venta["razon_social"], venta["fecha"], venta["tipo_comprobante"], venta["total"], estado, venta ["caja"], venta ["idcliente"],
+                        venta ["cuit"], venta["Nrocomprobante"], venta["factura"], venta["Neto21"], venta["Totaliva21"], venta["Total_Neto105"], venta["Totaliva105"], venta["CAE"],
+                        venta["CAE_Fechavencimiento"], venta["enstock"], venta ["formadepago"], venta ["PAGO"]);
                 }
        
             }
@@ -403,7 +432,9 @@ namespace Capa_Presentacion
                          Convert.ToString(this.dataLista.CurrentRow.Cells["tipo_comprobante"].Value),
                         Convert.ToString(this.dataLista.CurrentRow.Cells["estado"].Value),
                         Convert.ToString(Decimal.Round(Convert.ToDecimal(this.dataLista.CurrentRow.Cells["total"].Value), 2))
-                        , Convert.ToString(this.dataLista.CurrentRow.Cells["idcliente"].Value), Convert.ToString(this.dataLista.CurrentRow.Cells["cuit"].Value));
+                        , Convert.ToString(this.dataLista.CurrentRow.Cells["idcliente"].Value), 
+                        Convert.ToString(this.dataLista.CurrentRow.Cells["cuit"].Value),
+                        Convert.ToString(this.dataLista.CurrentRow.Cells["letra"].Value));
                     venta.ShowDialog();
                   
                 }
@@ -431,7 +462,7 @@ namespace Capa_Presentacion
                          Convert.ToString(this.dataLista.CurrentRow.Cells["tipo_comprobante"].Value),
                         Convert.ToString(this.dataLista.CurrentRow.Cells["estado"].Value),
                         Convert.ToString(Decimal.Round(Convert.ToDecimal(this.dataLista.CurrentRow.Cells["total"].Value), 2))
-                        , Convert.ToString(this.dataLista.CurrentRow.Cells["idcliente"].Value), Convert.ToString(this.dataLista.CurrentRow.Cells["cuit"].Value));
+                        , Convert.ToString(this.dataLista.CurrentRow.Cells["idcliente"].Value), Convert.ToString(this.dataLista.CurrentRow.Cells["cuit"].Value), Convert.ToString(this.dataLista.CurrentRow.Cells["letra"].Value));
                     venta.ShowDialog();
                    
                 }
@@ -604,9 +635,9 @@ namespace Capa_Presentacion
                 DataGridViewRow row = dataLista.CurrentRow;
                 if (Convert.ToBoolean(row.Cells["caja"].Value) == false)
                 {
-                    if (objcaja.chequeocaja(this.Name, ref mensaje) == true)
+                    if (objcaja.chequeocaja("", ref mensaje,NegocioConfigEmpresa.nrocaja) == true)
                     {
-                        Negociocaja.insertarmovcaja(4110107, Convert.ToSingle(row.Cells["Total"].Value.ToString()), 0, Convert.ToString(DateTime.Now), NegocioConfigEmpresa.usuarioconectado, NegocioConfigEmpresa.idusuario, NegocioConfigEmpresa.turno, "Venta nro : " + row.Cells["codigo"].Value.ToString(), Convert.ToInt64(row.Cells["codigo"].Value.ToString()), true);
+                        Negociocaja.insertarmovcaja(4110107, Convert.ToSingle(row.Cells["Total"].Value.ToString()), 0, Convert.ToString(DateTime.Now), NegocioConfigEmpresa.usuarioconectado, NegocioConfigEmpresa.idusuario, NegocioConfigEmpresa.turno, "Venta nro : " + row.Cells["codigo"].Value.ToString(), Convert.ToInt64(row.Cells["codigo"].Value.ToString()), true,NegocioConfigEmpresa.nrocaja, Convert.ToInt32(row.Cells["Formadepago"].Value.ToString()));
                         
                         
                         if (NegocioConfigEmpresa.confsistema("stock").ToString() == this.Name)
@@ -785,13 +816,42 @@ namespace Capa_Presentacion
             {
                 if (Convert.ToBoolean(row.Cells["caja"].Value))
                 {
-                    if (objcaja.chequeocaja("", ref mensaje))
+                    if (objcaja.chequeocaja("", ref mensaje,NegocioConfigEmpresa.nrocaja))
                     {
-                        Negociocaja.insertarmovcaja(5230000, 0, Convert.ToSingle(row.Cells["Total"].Value), DateTime.Today.ToString(), NegocioConfigEmpresa.usuarioconectado, NegocioConfigEmpresa.idusuario, NegocioConfigEmpresa.turno, "ANULACION", Convert.ToInt32(row.Cells["Codigo"].Value), true);
+                        Negociocaja.insertarmovcaja(5230000, 0, Convert.ToSingle(row.Cells["Total"].Value), DateTime.Today.ToString(), NegocioConfigEmpresa.usuarioconectado, NegocioConfigEmpresa.idusuario, NegocioConfigEmpresa.turno, "ANULACION", Convert.ToInt32(row.Cells["Codigo"].Value), true,NegocioConfigEmpresa.nrocaja, Convert.ToInt32(row.Cells["Formadepago"].Value));
                     }  
                 }
             }
             buscarPorFecha();
+        }
+
+        private void reportViewer1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtIdVenta_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                buscarPorFecha();
+            }
+        }
+
+        private void txtPuntoventa_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                buscarPorFecha();
+            }
+        }
+
+        private void FrmListadoVentas_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                buscarPorFecha();
+            }
         }
     }
 }

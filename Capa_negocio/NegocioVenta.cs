@@ -216,10 +216,23 @@ namespace Capa_negocio
 
         }
 
-        public static DataTable BuscarFechas(string textobuscar, string textobuscar2, char estado, bool concaja, string tipocomprobante)
+        public static DataTable BuscarFechas(string textobuscar, string textobuscar2, char estado, bool concaja, 
+            string tipocomprobante, int idventa, string puntoventa, int codformapago, bool porventa, bool porformadepago, bool porpuntodeventa )
         {
             Dventa Obj = new Dventa(estado,concaja, tipocomprobante);
-            return Obj.BuscarFechas(textobuscar, textobuscar2);
+            Obj.Estado = estado;
+            Obj.Concaja = concaja;
+            Obj.Idventa = idventa;
+            Obj.Puntoventa = puntoventa;
+            Obj.Porformadepago = porformadepago;
+            Obj.Porpuntodeventa = porpuntodeventa;
+            Obj.Porventa = porventa;
+            Obj.Codformapago = codformapago;
+            
+            Obj.Tipo_comprobante = tipocomprobante;
+
+
+            return Obj.BuscarFechas(textobuscar, textobuscar2,Obj);
 
         }
 

@@ -11,6 +11,7 @@ using System.IO;
 using Capa_negocio;
 using Capa_Presentacion.DataSet;
 using System.Diagnostics;
+using Capa_Datos;
 
 namespace Capa_Presentacion
 {
@@ -190,18 +191,19 @@ namespace Capa_Presentacion
         {
             try
             {
-                this.dataLista.DataSource = NegocioArticulo.mostrar();
-                this.dataLista.Columns["precio_compra"].DefaultCellStyle.Format = String.Format("$###,##0.00");
-                this.dataLista.Columns["precio"].DefaultCellStyle.Format = String.Format("$###,##0.00");
-                this.dataLista.Columns["stock_actual"].DefaultCellStyle.Format = String.Format("###,##0.00");
-               // this.dataLista.Columns["flete"].DefaultCellStyle.Format = String.Format("%00.00");
-               // this.dataLista.Columns["utilidad"].DefaultCellStyle.Format = String.Format("%00.00");
+                
+                //this.dataLista.DataSource = NegocioArticulo.mostrar();
+                //this.dataLista.Columns["precio_compra"].DefaultCellStyle.Format = String.Format("$###,##0.00");
+                //this.dataLista.Columns["precio"].DefaultCellStyle.Format = String.Format("$###,##0.00");
+                //this.dataLista.Columns["stock_actual"].DefaultCellStyle.Format = String.Format("###,##0.00");
+                // this.dataLista.Columns["flete"].DefaultCellStyle.Format = String.Format("%00.00");
+                // this.dataLista.Columns["utilidad"].DefaultCellStyle.Format = String.Format("%00.00");
 
-               // this.dataLista.Columns["idarticulo"].Visible = false;
-                this.dataLista.Columns["idcategoria"].Visible = false;
+                // this.dataLista.Columns["idarticulo"].Visible = false;
+                //this.dataLista.Columns["idcategoria"].Visible = false;
 
 
-                pintarProductoSinStock();
+                //pintarProductoSinStock();
             }
             catch (Exception ex)
             {
@@ -383,7 +385,11 @@ namespace Capa_Presentacion
                         
                         txtNombre.Focus();
                         txtNombre.SelectAll();
-                        textBox1.Text = decimal.Round(Convert.ToDecimal(this.dataLista.CurrentRow.Cells["Precio"].Value), 2).ToString();
+                if (dataLista.RowCount != 0)
+                {
+                    textBox1.Text = decimal.Round(Convert.ToDecimal(this.dataLista.CurrentRow.Cells["Precio"].Value), 2).ToString();
+                }
+                        
             }
             else if (IsNumeric(txtNombre.Text) == true)
             {
@@ -483,16 +489,45 @@ namespace Capa_Presentacion
                     if (isNuevo == true)
                     {
                         //pesable es un bit que representa un producto si es pesable (KG) o no
-                       
-                        respuesta = NegocioArticulo.insertar(txtNombreConfig.Text.Trim(), txtCodigoBarra.Text.Trim(), txtDescripcion.Text.Trim(), Convert.ToInt32(cbxCategoria.SelectedValue), 
-                                    Convert.ToDecimal(txtPrecio.Text.Trim()),Convert.ToInt32(txtCantInicial.Text.Trim()),pesable,
-                                    Convert.ToDecimal(TxtPcompra.Text),Convert.ToDecimal(txtUtilidad.Text),Convert.ToDecimal (Txtflete.Text),
-                                    Convert.ToDecimal(txtCantidadpormayor.Text),Convert.ToDecimal(txtPreciopormayor.Text),
-                                    Convert.ToInt32(CBSubcategoria.SelectedValue),Convert.ToDecimal (CBIVA.Text),
-                                    Convert.ToDecimal(TxtCantidad2.Text),Convert.ToDecimal(TxtPrecio2.Text),
-                                    Convert.ToDecimal(txtPrecioOferta.Text),Convert.ToDateTime(dtpFechaVen.Text)  ,CHKFechaVenOferta.Checked,
-                                    Convert.ToDecimal(TxtCantidadBulto.Text) , TxtCodigobarraBulto.Text, Convert.ToDecimal(txtUtilidadX6.Text),
-                                    Convert.ToDecimal(TxtUtilidadXCaja.Text), Convert.ToDecimal(TxtUtilidadOferta.Text));
+                        DatosArticulo objarticulo = new DatosArticulo();
+                        objarticulo.Nombre = txtNombreConfig.Text.Trim();
+                        objarticulo.Codigo = txtCodigoBarra.Text.Trim();
+                        objarticulo.Descripcion = txtDescripcion.Text.Trim();
+                        objarticulo.IdCategoria = Convert.ToInt32(cbxCategoria.SelectedValue);
+                        objarticulo.Precio = Convert.ToDecimal(txtPrecio.Text.Trim());
+                        objarticulo.StockActual = Convert.ToInt32(txtCantInicial.Text.Trim());
+                        objarticulo.Pesable = pesable;
+                        objarticulo.PrecioCompra = Convert.ToDecimal(TxtPcompra.Text);
+                        objarticulo.Utilidad = Convert.ToDecimal(txtUtilidad.Text);
+                        objarticulo.Flete = Convert.ToDecimal(Txtflete.Text);
+                        objarticulo.Cantidadpormayor = Convert.ToDecimal(txtCantidadpormayor.Text);
+                        objarticulo.Preciopormayor = Convert.ToDecimal(txtPreciopormayor.Text);
+                        objarticulo.Idsubcategoria = Convert.ToInt32(CBSubcategoria.SelectedValue);
+                        objarticulo.Iva = Convert.ToDecimal(CBIVA.Text == "" ? "21" : CBIVA.Text);
+
+                        objarticulo.Fecha = DateTime.Now;
+                        objarticulo.Cantidadpormayor2 = Convert.ToDecimal(TxtCantidad2.Text);
+                        objarticulo.Preciopormayor2 = Convert.ToDecimal(TxtPrecio2.Text);
+                        objarticulo.Precio_oferta = Convert.ToDecimal(txtPrecioOferta.Text);
+                        objarticulo.Fecha_oferta = Convert.ToDateTime(dtpFechaVen.Text);
+                        objarticulo.Habilitarfechaoferta = CHKFechaVenOferta.Checked;
+                        objarticulo.Bulto_cantidad = Convert.ToDecimal(TxtCantidadBulto.Text);
+                        objarticulo.Bulto_codigobarra = TxtCodigobarraBulto.Text;
+                        objarticulo.Utilidadpreciopormayor = Convert.ToDecimal(txtUtilidadX6.Text);
+                        objarticulo.Utilidadpreciopormayor2 = Convert.ToDecimal(TxtUtilidadXCaja.Text);
+                        objarticulo.Utilidadoferta = Convert.ToDecimal(TxtUtilidadOferta.Text);
+                        objarticulo.Modo = 1;
+                        respuesta = objarticulo.agregar(objarticulo, NegocioConfigEmpresa.confsistema("opcionsistema").ToString());
+
+                        //respuesta = NegocioArticulo.insertar(txtNombreConfig.Text.Trim(), txtCodigoBarra.Text.Trim(), txtDescripcion.Text.Trim(), Convert.ToInt32(cbxCategoria.SelectedValue), 
+                        //            Convert.ToDecimal(txtPrecio.Text.Trim()),Convert.ToInt32(txtCantInicial.Text.Trim()),pesable,
+                        //            Convert.ToDecimal(TxtPcompra.Text),Convert.ToDecimal(txtUtilidad.Text),Convert.ToDecimal (Txtflete.Text),
+                        //            Convert.ToDecimal(txtCantidadpormayor.Text),Convert.ToDecimal(txtPreciopormayor.Text),
+                        //            Convert.ToInt32(CBSubcategoria.SelectedValue),Convert.ToDecimal (CBIVA.Text),
+                        //            Convert.ToDecimal(TxtCantidad2.Text),Convert.ToDecimal(TxtPrecio2.Text),
+                        //            Convert.ToDecimal(txtPrecioOferta.Text),Convert.ToDateTime(dtpFechaVen.Text)  ,CHKFechaVenOferta.Checked,
+                        //            Convert.ToDecimal(TxtCantidadBulto.Text) , TxtCodigobarraBulto.Text, Convert.ToDecimal(txtUtilidadX6.Text),
+                        //            Convert.ToDecimal(TxtUtilidadXCaja.Text), Convert.ToDecimal(TxtUtilidadOferta.Text));
 
                         if (respuesta.Equals("ok"))
                         {
@@ -502,26 +537,64 @@ namespace Capa_Presentacion
                             isNuevo = false;
                             UtilityFrm.limpiarErrorProvider(txtCantInicial,txtNombreConfig,txtPrecio,errorIcono);
                         }
-                       
+                        else
+                        {
+                            UtilityFrm.mensajeError(respuesta);
+                        }
 
 
                     }
                     //si se va a editar
                     else if (isEditar == true)
                     {
+                        DatosArticulo  objarticulo = new DatosArticulo();
+                        objarticulo.Nombre = txtNombreConfig.Text.Trim();
+                        objarticulo.IdArticulo = Convert.ToInt32(txtCodigo.Text.Trim());
+                        objarticulo.Codigo = txtCodigoBarra.Text.Trim();
+                        objarticulo.Descripcion = txtDescripcion.Text.Trim();
+                        objarticulo.IdCategoria = Convert.ToInt32(cbxCategoria.SelectedValue);
+                        objarticulo.Precio = Convert.ToDecimal(txtPrecio.Text.Trim());
+                        objarticulo.StockActual = Convert.ToDecimal(txtCantInicial.Text.Trim());
+                        objarticulo.Pesable = pesable;
+                        objarticulo.PrecioCompra = Convert.ToDecimal(TxtPcompra.Text);
+                        objarticulo.Utilidad = Convert.ToDecimal(txtUtilidad.Text);
+                        objarticulo.Flete = Convert.ToDecimal(Txtflete.Text == "" ? "0" : Txtflete.Text);
+                        objarticulo.Fecha = DateTime.Now;
+                        objarticulo.Editarusuario = NegocioConfigEmpresa.idusuario;
+                        objarticulo.Editarlugar = "formulario articulo";
+                        objarticulo.Cantidadpormayor = Convert.ToDecimal(txtCantidadpormayor.Text);
+                        objarticulo.Preciopormayor = Convert.ToDecimal(txtPreciopormayor.Text);
+                        objarticulo.Idsubcategoria = Convert.ToInt32(CBSubcategoria.SelectedValue);
+                        objarticulo.Iva = Convert.ToDecimal(CBIVA.Text == "" ? "21" : CBIVA.Text);
+                        objarticulo.Fecha_oferta = Convert.ToDateTime(dtpFechaVen.Text);
+                        objarticulo.Cantidadpormayor2 = Convert.ToDecimal(TxtCantidad2.Text);
+                        objarticulo.Preciopormayor2 = Convert.ToDecimal(TxtPrecio2.Text);
+                        objarticulo.Precio_oferta = Convert.ToDecimal(txtPrecioOferta.Text);
+                        objarticulo.Habilitarfechaoferta = CHKFechaVenOferta.Checked;
+                        objarticulo.Bulto_cantidad = Convert.ToDecimal(TxtCantidadBulto.Text);
+                        objarticulo.Bulto_codigobarra = TxtCodigobarraBulto.Text;
+                        objarticulo.Utilidadpreciopormayor = Convert.ToDecimal(txtUtilidadX6.Text);
+                        objarticulo.Utilidadpreciopormayor2 = Convert.ToDecimal(TxtUtilidadXCaja.Text);
+                        objarticulo.Utilidadoferta = Convert.ToDecimal(TxtUtilidadOferta.Text);
+                        objarticulo.Modo = 2;
 
-                        //respuesta = NegocioArticulo.editar(Convert.ToInt32(txtCodigo.Text.Trim()), Convert.ToString(txtNombreConfig.Text.Trim()), txtCodigoBarra.Text.Trim(), Convert.ToString(txtDescripcion.Text.Trim()), Convert.ToInt32(cbxCategoria.SelectedValue));
-                        respuesta = NegocioArticulo.editar(Convert.ToInt32(txtCodigo.Text.Trim()), Convert.ToString(txtNombreConfig.Text.Trim()), txtCodigoBarra.Text.Trim(), Convert.ToString(txtDescripcion.Text.Trim()), Convert.ToInt32(cbxCategoria.SelectedValue), Convert.ToDecimal(txtPrecio.Text.Trim()), Convert.ToDecimal(txtCantInicial.Text.Trim()), pesable,Convert.ToDecimal(TxtPcompra.Text),Convert.ToDecimal(txtUtilidad.Text),Convert.ToDecimal (Txtflete.Text == "" ? "0":Txtflete.Text),DateTime.Now,Convert.ToDateTime(dtpFechaVen.Text) ,NegocioConfigEmpresa.idusuario,"formulario articulo",Convert.ToDecimal(txtCantidadpormayor.Text),Convert.ToDecimal(txtPreciopormayor.Text),Convert.ToInt32(CBSubcategoria.SelectedValue), Convert.ToDecimal(CBIVA.Text),Convert.ToDecimal(TxtCantidad2.Text),Convert.ToDecimal(TxtPrecio2.Text),Convert.ToDecimal(txtPrecioOferta.Text),CHKFechaVenOferta.Checked,Convert.ToDecimal(TxtCantidadBulto.Text),TxtCodigobarraBulto.Text );
+                        respuesta = objarticulo.editar(objarticulo,NegocioConfigEmpresa.confsistema("opcionsistema").ToString());
+
+
 
                         if (respuesta.Equals("ok"))
                         {
-                            UtilityFrm.mensajeConfirm("Se Editó Correctamente");
-                            this.mostrar();
+                            FrmMensajeAutoCierre.Show("SE EDITO CORRECTAMENTE", "ARTICULO", 1000);
+
+                            buscar();
                             isEditar = false;
                             isNuevo = false;
 
                         }
-                       
+                        else
+                        {
+                            UtilityFrm.mensajeError(respuesta);
+                        }
 
                     }
                     else
@@ -535,7 +608,7 @@ namespace Capa_Presentacion
                     UtilityFrm.recorrerylimpiartextbox(xuiCustomGroupbox1, "0");
                     UtilityFrm.recorrerylimpiartextbox(xuiCustomGroupbox2, "0");
                     UtilityFrm.recorrerylimpiartextbox(xuiCustomGroupbox3, "0");
-                    UtilityFrm.limpiarTextbox(txtDescripcion, txtNombreConfig, txtNombre, txtCodigo, txtCodigoBarra, txtCantInicial);
+                    UtilityFrm.limpiarTextbox(txtDescripcion, txtNombreConfig, txtCodigo, txtCodigoBarra, txtCantInicial);
                     UtilityFrm.limpiarTextbox(txtPrecio,txtUtilidad,TxtPcompra,Txtflete);
                     inicializartextbox();
                     UtilityFrm.limpiarErrorProvider(txtCantInicial, txtPrecio, txtNombreConfig,errorIcono);
@@ -800,6 +873,8 @@ namespace Capa_Presentacion
                 txtUtilidadX6.Text = Convert.ToString(this.dataLista.CurrentRow.Cells["utilidadpormayor"].Value);
                 TxtUtilidadXCaja.Text = Convert.ToString(this.dataLista.CurrentRow.Cells["utilidadpormayor2"].Value);
                 TxtUtilidadOferta.Text = Convert.ToString(this.dataLista.CurrentRow.Cells["utilidadoferta"].Value);
+                TxtPrecio2.Text = Convert.ToString(this.dataLista.CurrentRow.Cells["preciopormayor2"].Value);
+                cbxPesable.Checked = Convert.ToBoolean( this.dataLista.CurrentRow.Cells["pesable"].Value);
                 decimal precio = 0;
                 precio = Convert.ToDecimal(this.dataLista.CurrentRow.Cells["precio"].Value);
                 string iva  =Convert.ToString( UtilityFrm.formateodecimal ( Convert.ToDecimal(this.dataLista.CurrentRow.Cells["iva"].Value), 2));
@@ -1330,27 +1405,27 @@ namespace Capa_Presentacion
         private void calcularventa(decimal compra, decimal utilidad, decimal flete, decimal precio)
         {
             txtPrecio.Text = Convert.ToString(decimal.Round(UtilityFrm.calcularventa(compra, utilidad, flete, precio), 2));
-            TxtPcompra.Text = compra.ToString("###,##00" );
-           txtUtilidad.Text = utilidad.ToString("###,##00");
-           Txtflete.Text = flete.ToString("###,##00");
+            TxtPcompra.Text = decimal.Round(compra,2).ToString();
+            txtUtilidad.Text = decimal.Round(utilidad,2).ToString();
+            Txtflete.Text = decimal.Round(utilidad,2).ToString();
         }
         private void calcularpreciomayorista1(decimal compra, decimal utilidad, decimal precio)
         {
            txtPreciopormayor.Text = Convert.ToString(decimal.Round(UtilityFrm.calcularventa(compra, utilidad, 0, precio), 2));
-           txtUtilidadX6.Text = utilidad.ToString("###,##00");
+            txtUtilidadX6.Text = decimal.Round(utilidad,2).ToString();
             
         }
 
         private void calcularpreciomayorista2(decimal compra, decimal utilidad, decimal precio)
         {
             TxtPrecio2.Text = Convert.ToString(decimal.Round(UtilityFrm.calcularventa(compra, utilidad, 0, precio), 2));
-            TxtUtilidadXCaja.Text = utilidad.ToString("###,##00");
+            TxtUtilidadXCaja.Text = decimal.Round(utilidad,2).ToString();
 
         }
         private void calcularprecio_oferta(decimal compra, decimal utilidad, decimal precio)
         {
             txtPrecioOferta.Text = Convert.ToString(decimal.Round(UtilityFrm.calcularventa(compra, utilidad, 0, precio), 2));
-            TxtUtilidadOferta.Text = utilidad.ToString("###,##00");
+            TxtUtilidadOferta.Text = decimal.Round(utilidad, 2).ToString();
 
         }
         private void calcularcosto(decimal compra, decimal utilidad, decimal flete, decimal precio)

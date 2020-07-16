@@ -61,6 +61,175 @@ namespace Capa_Datos
             }
         }
 
+        public int IdProveedor
+        {
+            get
+            {
+                return idProveedor;
+            }
+
+            set
+            {
+                idProveedor = value;
+            }
+        }
+
+        public string RazonSocial
+        {
+            get
+            {
+                return razonSocial;
+            }
+
+            set
+            {
+                razonSocial = value;
+            }
+        }
+
+        public string Direccion
+        {
+            get
+            {
+                return direccion;
+            }
+
+            set
+            {
+                direccion = value;
+            }
+        }
+
+        public long Cuit
+        {
+            get
+            {
+                return cuit;
+            }
+
+            set
+            {
+                cuit = value;
+            }
+        }
+
+        public long Tel
+        {
+            get
+            {
+                return tel;
+            }
+
+            set
+            {
+                tel = value;
+            }
+        }
+
+        public long NumDocumento
+        {
+            get
+            {
+                return numDocumento;
+            }
+
+            set
+            {
+                numDocumento = value;
+            }
+        }
+
+        public string Email
+        {
+            get
+            {
+                return Email1;
+            }
+
+            set
+            {
+                Email1 = value;
+            }
+        }
+
+        public string Email1
+        {
+            get
+            {
+                return email;
+            }
+
+            set
+            {
+                email = value;
+            }
+        }
+
+        public DateTime FechaNacimiento
+        {
+            get
+            {
+                return fechaNacimiento;
+            }
+
+            set
+            {
+                fechaNacimiento = value;
+            }
+        }
+
+        public string Responsableiva
+        {
+            get
+            {
+                return responsableiva;
+            }
+
+            set
+            {
+                responsableiva = value;
+            }
+        }
+
+        public int Idprovincia
+        {
+            get
+            {
+                return idprovincia;
+            }
+
+            set
+            {
+                idprovincia = value;
+            }
+        }
+
+        public int Idlocalidad
+        {
+            get
+            {
+                return idlocalidad;
+            }
+
+            set
+            {
+                idlocalidad = value;
+            }
+        }
+
+        public int Idcliente
+        {
+            get
+            {
+                return idcliente;
+            }
+
+            set
+            {
+                idcliente = value;
+            }
+        }
+
         //     @Codcliente as int = 0,
         //   @Codventa as int = 0,
         //   @Estado as nvarchar(50) = 'Pendiente',
@@ -80,7 +249,7 @@ namespace Capa_Datos
         }
         public DatosCliente(int varcodcliente, string  varfechaD, string varfechaH)
         {
-            this.idcliente = varcodcliente;
+            this.Idcliente = varcodcliente;
             this.fechaD = varfechaD;
             this.fechaH = varfechaH;
         }
@@ -89,7 +258,7 @@ namespace Capa_Datos
         {
             this.cn = miconexion;
             this.sqltra = mitransaccion;
-            this.idcliente = varcodcliente;
+            this.Idcliente = varcodcliente;
             this.Codventa = varcodventa;
             this.saldo = varsaldo;
             this.total = vartotal;
@@ -100,30 +269,30 @@ namespace Capa_Datos
         public DatosCliente(string razonSocial,string direccion,long cuit,long tel,long numDocumento,string email, string responsableiva, int varidprovincia, int varidlocalidad)
         {
             
-           this.razonSocial=razonSocial;
-            this.direccion=direccion;
-            this.cuit=cuit;
-            this.tel=tel;
-            this.numDocumento = numDocumento;
-            this.email=email;
-            this.responsableiva = responsableiva;
-            this.idprovincia = varidprovincia;
-            this.idlocalidad = varidlocalidad;
+           this.RazonSocial=razonSocial;
+            this.Direccion=direccion;
+            this.Cuit=cuit;
+            this.Tel=tel;
+            this.NumDocumento = numDocumento;
+            this.Email=email;
+            this.Responsableiva = responsableiva;
+            this.Idprovincia = varidprovincia;
+            this.Idlocalidad = varidlocalidad;
          }
 
         public DatosCliente(int varidcliente)
         {
-            idcliente = varidcliente;
+            Idcliente = varidcliente;
         
         }
         public DatosCliente(int idprovincia =0, int idlocalidad = 0 )
         {
-            this.idlocalidad = idlocalidad;
-            this.idprovincia = idprovincia;
+            this.Idlocalidad = idlocalidad;
+            this.Idprovincia = idprovincia;
         }
         public DatosCliente (int varcodcliente, int varcodventa, decimal varsaldo, decimal vartotal, decimal varpagado, string varestado, string varmodoctacte)
         {
-            this.idcliente = varcodcliente;
+            this.Idcliente = varcodcliente;
             this.Codventa = varcodventa;
             this.saldo = varsaldo;
             this.total = vartotal;
@@ -152,35 +321,32 @@ namespace Capa_Datos
                 //le paso al sqlcommand los parametros asignados
                 comando.Parameters.Add(parIdCliente);
 
-                SqlParameter parRazonSocial = ProcAlmacenado.asignarParametros("@razon_social", SqlDbType.VarChar, cliente.razonSocial,150);
+                SqlParameter parRazonSocial = ProcAlmacenado.asignarParametros("@razon_social", SqlDbType.VarChar, cliente.RazonSocial,150);
                 //le paso al sqlcommand los parametros asignados
                 comando.Parameters.Add(parRazonSocial);
 
-                SqlParameter parCuit= ProcAlmacenado.asignarParametros("@cuit", SqlDbType.BigInt, cliente.cuit);
+                SqlParameter parCuit= ProcAlmacenado.asignarParametros("@cuit", SqlDbType.BigInt, cliente.Cuit);
                 comando.Parameters.Add(parCuit);
 
-                SqlParameter parTel = ProcAlmacenado.asignarParametros("@telefono", SqlDbType.BigInt, cliente.tel, 50);
+                SqlParameter parTel = ProcAlmacenado.asignarParametros("@telefono", SqlDbType.BigInt, cliente.Tel, 50);
                 comando.Parameters.Add(parTel);
 
-                SqlParameter parNumDocumento = ProcAlmacenado.asignarParametros("@num_documento", SqlDbType.BigInt, cliente.numDocumento);
+                SqlParameter parNumDocumento = ProcAlmacenado.asignarParametros("@num_documento", SqlDbType.BigInt, cliente.NumDocumento);
                 comando.Parameters.Add(parNumDocumento);
 
-                SqlParameter parEmail = ProcAlmacenado.asignarParametros("@email", SqlDbType.VarChar, cliente.email, 50);
+                SqlParameter parEmail = ProcAlmacenado.asignarParametros("@email", SqlDbType.VarChar, cliente.Email, 50);
                 comando.Parameters.Add(parEmail);
                 
-                SqlParameter parDireccion = ProcAlmacenado.asignarParametros("@direccion", SqlDbType.VarChar, cliente.direccion, 50);
+                SqlParameter parDireccion = ProcAlmacenado.asignarParametros("@direccion", SqlDbType.VarChar, cliente.Direccion, 50);
                 comando.Parameters.Add(parDireccion);
-
-                SqlParameter parFechaNacimiento = ProcAlmacenado.asignarParametros("@fecha_nacimiento", SqlDbType.Date, cliente.fechaNacimiento);
-                comando.Parameters.Add(parFechaNacimiento);
-
-                SqlParameter parResponsableiva = ProcAlmacenado.asignarParametros("@responsableiva", SqlDbType.NVarChar, cliente.responsableiva);
+                                
+                SqlParameter parResponsableiva = ProcAlmacenado.asignarParametros("@responsableiva", SqlDbType.NVarChar, cliente.Responsableiva);
                 comando.Parameters.Add(parResponsableiva);
 
-                SqlParameter parIdprovincia = ProcAlmacenado.asignarParametros("@idprovincia", SqlDbType.Int, cliente.idprovincia);
+                SqlParameter parIdprovincia = ProcAlmacenado.asignarParametros("@idprovincia", SqlDbType.Int, cliente.Idprovincia);
                 comando.Parameters.Add(parIdprovincia);
 
-                SqlParameter parIdlocalidad = ProcAlmacenado.asignarParametros("@idlocalidad", SqlDbType.Int, cliente.idlocalidad);
+                SqlParameter parIdlocalidad = ProcAlmacenado.asignarParametros("@idlocalidad", SqlDbType.Int, cliente.Idlocalidad);
                 comando.Parameters.Add(parIdlocalidad);
 
                 if (comando.ExecuteNonQuery() == 1)
@@ -219,38 +385,36 @@ namespace Capa_Datos
                 SqlParameter parModo = ProcAlmacenado.asignarParametros("@modo", SqlDbType.Int, 2);
                 comando.Parameters.Add(parModo);
 
-                SqlParameter parIdCliente = ProcAlmacenado.asignarParametros("@idcliente", SqlDbType.Int,cliente.idcliente);
+                SqlParameter parIdCliente = ProcAlmacenado.asignarParametros("@idcliente", SqlDbType.Int,cliente.Idcliente);
                 //le paso al sqlcommand los parametros asignados
                 comando.Parameters.Add(parIdCliente);
 
-                SqlParameter parRazonSocial = ProcAlmacenado.asignarParametros("@razon_social", SqlDbType.VarChar, cliente.razonSocial, 150);
+                SqlParameter parRazonSocial = ProcAlmacenado.asignarParametros("@razon_social", SqlDbType.VarChar, cliente.RazonSocial, 150);
                 //le paso al sqlcommand los parametros asignados
                 comando.Parameters.Add(parRazonSocial);
 
-                SqlParameter parCuit = ProcAlmacenado.asignarParametros("@cuit", SqlDbType.BigInt, cliente.cuit);
+                SqlParameter parCuit = ProcAlmacenado.asignarParametros("@cuit", SqlDbType.BigInt, cliente.Cuit);
                 comando.Parameters.Add(parCuit);
 
-                SqlParameter parTel = ProcAlmacenado.asignarParametros("@telefono", SqlDbType.BigInt, cliente.tel, 50);
+                SqlParameter parTel = ProcAlmacenado.asignarParametros("@telefono", SqlDbType.BigInt, cliente.Tel, 50);
                 comando.Parameters.Add(parTel);
 
-                SqlParameter parNumDocumento = ProcAlmacenado.asignarParametros("@num_documento", SqlDbType.BigInt, cliente.numDocumento);
+                SqlParameter parNumDocumento = ProcAlmacenado.asignarParametros("@num_documento", SqlDbType.BigInt, cliente.NumDocumento);
                 comando.Parameters.Add(parNumDocumento);
 
-                SqlParameter parEmail = ProcAlmacenado.asignarParametros("@email", SqlDbType.VarChar, cliente.email, 50);
+                SqlParameter parEmail = ProcAlmacenado.asignarParametros("@email", SqlDbType.VarChar, cliente.Email, 50);
                 comando.Parameters.Add(parEmail);
 
-                SqlParameter parDireccion = ProcAlmacenado.asignarParametros("@direccion", SqlDbType.VarChar, cliente.direccion, 50);
+                SqlParameter parDireccion = ProcAlmacenado.asignarParametros("@direccion", SqlDbType.VarChar, cliente.Direccion, 50);
                 comando.Parameters.Add(parDireccion);
-                SqlParameter parFechaNacimiento = ProcAlmacenado.asignarParametros("@fecha_nacimiento", SqlDbType.Date, cliente.fechaNacimiento, 50);
-                comando.Parameters.Add(parFechaNacimiento);
-
-                SqlParameter parResponsableiva = ProcAlmacenado.asignarParametros("@responsableiva", SqlDbType.NVarChar, cliente.responsableiva );
+                
+                SqlParameter parResponsableiva = ProcAlmacenado.asignarParametros("@responsableiva", SqlDbType.NVarChar, cliente.Responsableiva );
                 comando.Parameters.Add(parResponsableiva);
 
-                SqlParameter parIdprovincia = ProcAlmacenado.asignarParametros("@idprovincia", SqlDbType.Int, cliente.idprovincia);
+                SqlParameter parIdprovincia = ProcAlmacenado.asignarParametros("@idprovincia", SqlDbType.Int, cliente.Idprovincia);
                 comando.Parameters.Add(parIdprovincia);
                 
-                SqlParameter parIdlocalidad = ProcAlmacenado.asignarParametros("@idlocalidad", SqlDbType.Int, cliente.idlocalidad);
+                SqlParameter parIdlocalidad = ProcAlmacenado.asignarParametros("@idlocalidad", SqlDbType.Int, cliente.Idlocalidad);
                 comando.Parameters.Add(parIdlocalidad);
                 if (comando.ExecuteNonQuery() == 1)
                 {
@@ -284,7 +448,7 @@ namespace Capa_Datos
                 SqlParameter parModo = ProcAlmacenado.asignarParametros("@modo", SqlDbType.Int, 3);
                 comando.Parameters.Add(parModo);
            
-                SqlParameter parIdProveedor = ProcAlmacenado.asignarParametros("@idproveedor", SqlDbType.Int, cliente.idProveedor);
+                SqlParameter parIdProveedor = ProcAlmacenado.asignarParametros("@idproveedor", SqlDbType.Int, cliente.IdProveedor);
                 comando.Parameters.Add(parIdProveedor);
 
 
@@ -326,7 +490,7 @@ namespace Capa_Datos
                 SqlParameter parModo = ProcAlmacenado.asignarParametros("@modo", SqlDbType.Int, 4);
                 comando.Parameters.Add(parModo);
 
-                SqlParameter parIdCliente = ProcAlmacenado.asignarParametros("@idcliente", SqlDbType.Int, cliente.idcliente);
+                SqlParameter parIdCliente = ProcAlmacenado.asignarParametros("@idcliente", SqlDbType.Int, cliente.Idcliente);
                 comando.Parameters.Add(parIdCliente);
                 //creo el objeto adapter del data provider le paso el sqlcommand
                 SqlDataAdapter datosResult = new SqlDataAdapter(comando);
@@ -397,7 +561,7 @@ namespace Capa_Datos
                 SqlParameter parModo = ProcAlmacenado.asignarParametros("@modo", SqlDbType.Int, modo);
                 comando.Parameters.Add(parModo);
 
-                SqlParameter parIdCliente = ProcAlmacenado.asignarParametros("@idcliente", SqlDbType.Int, cliente.idcliente);
+                SqlParameter parIdCliente = ProcAlmacenado.asignarParametros("@idcliente", SqlDbType.Int, cliente.Idcliente);
                 comando.Parameters.Add(parIdCliente);
                 //creo el objeto adapter del data provider le paso el sqlcommand
                 SqlDataAdapter datosResult = new SqlDataAdapter(comando);
@@ -461,7 +625,7 @@ namespace Capa_Datos
                  {
                      ProcAlmacenado2.MakeParam("@modo", SqlDbType.Int, 0, 10),
                      ProcAlmacenado2.MakeParam("@idcliente", SqlDbType.Int, 0, 0),
-                     ProcAlmacenado2.MakeParam("@idprovincia", SqlDbType.Int, 0,idprovincia)
+                     ProcAlmacenado2.MakeParam("@idprovincia", SqlDbType.Int, 0,Idprovincia)
                     //SqlParameter parCliente = ProcAlmacenado.asignarParametros("@idcliente", SqlDbType.Int, 0);
                // comando.Parameters.Add(parCliente);
                  
@@ -541,7 +705,7 @@ namespace Capa_Datos
                 SqlParameter parModo = ProcAlmacenado.asignarParametros("@modo", SqlDbType.NVarChar, varmodo);
                 comando.Parameters.Add(parModo);
 
-                SqlParameter parIdCliente = ProcAlmacenado.asignarParametros("@codcliente", SqlDbType.Int,cliente.idcliente);
+                SqlParameter parIdCliente = ProcAlmacenado.asignarParametros("@codcliente", SqlDbType.Int,cliente.Idcliente);
                 //le paso al sqlcommand los parametros asignados
                 comando.Parameters.Add(parIdCliente);
 
@@ -632,7 +796,7 @@ namespace Capa_Datos
                 SqlParameter parModo = ProcAlmacenado.asignarParametros("@modo", SqlDbType.NVarChar, "grabarrecibodetalle");
                 comando.Parameters.Add(parModo);
 
-                SqlParameter parIdCliente = ProcAlmacenado.asignarParametros("@codcliente", SqlDbType.Int,cliente.idcliente);
+                SqlParameter parIdCliente = ProcAlmacenado.asignarParametros("@codcliente", SqlDbType.Int,cliente.Idcliente);
                 //le paso al sqlcommand los parametros asignados
                 comando.Parameters.Add(parIdCliente);
 
@@ -692,7 +856,7 @@ namespace Capa_Datos
                 //Modo 4 Mostrar
                 SqlParameter parModo = ProcAlmacenado.asignarParametros("@modo", SqlDbType.NVarChar, "buscarporcodigo");
                 sqlcmd.Parameters.Add(parModo);
-                SqlParameter parcodcliente = ProcAlmacenado.asignarParametros("@codcliente", SqlDbType.Int, idcliente);
+                SqlParameter parcodcliente = ProcAlmacenado.asignarParametros("@codcliente", SqlDbType.Int, Idcliente);
                 sqlcmd.Parameters.Add(parcodcliente);
                 SqlParameter parfechaD = ProcAlmacenado.asignarParametros("@fechaD", SqlDbType.NVarChar, fechaD);
                 sqlcmd.Parameters.Add(parfechaD);
@@ -729,7 +893,7 @@ namespace Capa_Datos
                 SqlParameter parModo = ProcAlmacenado.asignarParametros("@modo", SqlDbType.NVarChar, "grabarrecibocabecera");
                 comando.Parameters.Add(parModo);
 
-                SqlParameter parIdCliente = ProcAlmacenado.asignarParametros("@codcliente", SqlDbType.Int, objcliente.idcliente);
+                SqlParameter parIdCliente = ProcAlmacenado.asignarParametros("@codcliente", SqlDbType.Int, objcliente.Idcliente);
                 //le paso al sqlcommand los parametros asignados
                 comando.Parameters.Add(parIdCliente);
 

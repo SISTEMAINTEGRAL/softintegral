@@ -284,6 +284,7 @@ namespace Capa_Presentacion.Reportes
             this.table1,
             this.textBox11,
             this.textBox19});
+            this.reportHeaderSection1.KeepTogether = false;
             this.reportHeaderSection1.Name = "reportHeaderSection1";
             // 
             // table1

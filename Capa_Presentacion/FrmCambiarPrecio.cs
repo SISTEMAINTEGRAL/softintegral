@@ -271,7 +271,7 @@ namespace Capa_Presentacion
 
                     this.precioVenta = precioVenta;
                     this.utilidad = Convert.ToInt32(txtUtilidad.Text);
-                    NegocioArticulo.editarPrecio(this.idArticulo, precioVenta,precioCompra, this.utilidad);
+                    NegocioArticulo.editarPrecio(this.idArticulo, precioVenta,precioCompra, this.utilidad,NegocioConfigEmpresa.confsistema("opcionsistema").ToString());
                     this.Close();
                     UtilityFrm.mensajeConfirm("La edición se realizó Correctamente");
                 }

@@ -56,7 +56,7 @@ namespace Capa_negocio
         }
         public string comprobante_electronico(int tipocomprobante, long nrodoc, double total, double neto21, double civa21,double neto105,double civa105, ref string cae, ref string fechavto, ref string tipofactura, ref string puntoventa)
         {
-
+            string m = "ok";
             try
             {
                 LoginClass miloginclase = new LoginClass("wsfe", NegocioConfigEmpresa.urllogin, NegocioConfigEmpresa.certificado, "");
@@ -145,7 +145,7 @@ namespace Capa_negocio
                         tipoalicuota = ID_TASA_IVA_10_50;
                         alicuota2.Id = tipoalicuota;
                         alicuota2.BaseImp = neto105;
-                        alicuota2.Importe = neto105;
+                        alicuota2.Importe = civa105;
                         det.Iva = new[] { alicuota, alicuota2 };
                     }
                     else if (neto105 > 0)
@@ -153,7 +153,7 @@ namespace Capa_negocio
                         tipoalicuota = ID_TASA_IVA_10_50;
                         alicuota.Id = tipoalicuota;
                         alicuota.BaseImp = neto105;
-                        alicuota.Importe = neto105;
+                        alicuota.Importe = civa105;
                         det.Iva = new[] { alicuota };
                     }
                     else
@@ -188,7 +188,7 @@ namespace Capa_negocio
                 tipofactura = tipocomprobante.ToString ("00");
                 
                 
-                string m = "ok";
+                
 
                 {
                     if (r.FeDetResp[0].Observaciones is object)
@@ -218,16 +218,16 @@ namespace Capa_negocio
                 {
                     m = m + nrocomprobante.ToString();
                 }
-                return m;
+                
 
             }
-            catch (Exception)
+            catch (Exception e)
             {
-
-                throw;
+                m = e.Message;
+               
             }
-          
 
+            return m;
             // string error = r.error;
             //  string desde = r.FeDetResp[0].CbteDesde;
             //  string hasta = r.FeDetResp[0].CbteHasta;

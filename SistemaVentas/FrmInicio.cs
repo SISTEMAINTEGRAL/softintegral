@@ -29,6 +29,7 @@ namespace SistemaVentas
         int InicialVentasY;
         int InicialConfiguracionY;
         private FrmArticulos objformarticulo = null;
+        private FrmArticulos2 objformarticulo2 = null;
         private frmPventa objformventa = null;
         private FrmProveedor objformproveedor = null;
         private FrmClientes objformcliente = null;
@@ -37,10 +38,12 @@ namespace SistemaVentas
         private FrmConfig objformconfig = null;
         private FrmListadoVentas objformlistaventa = null;
         private FrmPreciosmasivos objformpreciomasivo = null;
+        private FrmPreciosmasivos2 objformpreciomasivo2 = null;
         private FrmConsulta objformconsulta = null;
         private FrmOrdenAdjudicacion objadj = null;
         private FrmStockRetirodeMercaderia objmerc = null;
         private FrmMovStock1 objstock = null;
+        private frmPventa2 objformventa2 = null;
 
         private FrmConsulta Forminstanciaconsulta
         {
@@ -71,10 +74,29 @@ namespace SistemaVentas
                 return objformpreciomasivo;
             }
         }
+
+
         void form_Disposedpreciomasivo(object sender, EventArgs e)
         {
             objformpreciomasivo = null;
         }
+        private FrmPreciosmasivos2 Forminstanciapreciomasivo2
+        {
+            get
+            {
+                if (objformpreciomasivo2 == null)
+                {
+                    objformpreciomasivo2 = new FrmPreciosmasivos2();
+                    objformpreciomasivo2.Disposed += new EventHandler(form_Disposedpreciomasivo2);
+                }
+                return objformpreciomasivo2;
+            }
+        }
+        void form_Disposedpreciomasivo2(object sender, EventArgs e)
+        {
+            objformpreciomasivo2 = null;
+        }
+
         private FrmListadoVentas Forminstancialistadoventa
         {
             get
@@ -139,11 +161,26 @@ namespace SistemaVentas
                 return objformventa;
             }
         }
+        private frmPventa2 Forminstanciaventa2
+        {
+            get
+            {
+                if (objformventa2 == null)
+                {
+                    objformventa2 = new frmPventa2();
+                    objformventa2.Disposed += new EventHandler(form_DisposedVenta2);
+                }
+                return objformventa2;
+            }
+        }
         void form_DisposedVenta(object sender, EventArgs e)
         {
             objformventa = null;
         }
-
+        void form_DisposedVenta2(object sender, EventArgs e)
+        {
+            objformventa2 = null;
+        }
 
         private FrmArticulos  FormInstanciaProd
         {
@@ -158,11 +195,28 @@ namespace SistemaVentas
             }
         
         }
+
+        private FrmArticulos2 FormInstanciaProd2
+        {
+            get
+            {
+                if (objformarticulo2 == null)
+                {
+                    objformarticulo2 = new FrmArticulos2();
+                    objformarticulo2.Disposed += new EventHandler(form_DisposedArticulo2);
+                }
+                return objformarticulo2;
+            }
+
+        }
         void form_DisposedArticulo(object sender, EventArgs e)
         {
             objformarticulo = null;
         }
-
+        void form_DisposedArticulo2(object sender, EventArgs e)
+        {
+            objformarticulo2 = null;
+        }
         private FrmProveedor  FormInstanciaProv
         {
             get
@@ -613,14 +667,22 @@ namespace SistemaVentas
         }
         private void btnListaProducto_Click(object sender, EventArgs e)
         {
-            FrmArticulos articulos = this.FormInstanciaProd;
+            if (NegocioConfigEmpresa.confsistema("opcionsistema").ToString() == "negocio")
+            {
+                FrmArticulos2 articulos = this.FormInstanciaProd2;
+                articulos.Show();
+                articulos.WindowState = FormWindowState.Maximized;
+                articulos.BringToFront();
 
-            //FrmProducto articulos = new FrmProducto();
-            //abrirMDIParent(articulos);
-            articulos.Show();
-            articulos.WindowState = FormWindowState.Maximized;
-            articulos.BringToFront();
-            
+            }
+            else if (NegocioConfigEmpresa.confsistema("opcionsistema").ToString() == "mayorista")
+            {
+                FrmArticulos articulos = this.FormInstanciaProd;
+                articulos.Show();
+                articulos.WindowState = FormWindowState.Maximized;
+                articulos.BringToFront();
+            }
+
         }
 
         private void btnCategoria_Click(object sender, EventArgs e)
@@ -857,10 +919,22 @@ namespace SistemaVentas
 
         private void btnGenerarVenta_Click(object sender, EventArgs e)
         {
-            frmPventa objventa = this.Forminstanciaventa;
-            objventa.Show();
-            objventa.WindowState = FormWindowState.Maximized;
-            objventa.BringToFront();
+            if (NegocioConfigEmpresa.confsistema("opcionsistema").ToString() == "negocio")
+            {
+                frmPventa2 objventa = this.Forminstanciaventa2;
+                objventa.Show();
+                objventa.WindowState = FormWindowState.Maximized;
+                objventa.BringToFront();
+            }
+            else if (NegocioConfigEmpresa.confsistema("opcionsistema").ToString() == "mayorista")
+            {
+                frmPventa objventa = this.Forminstanciaventa;
+                objventa.Show();
+                objventa.WindowState = FormWindowState.Maximized;
+                objventa.BringToFront();
+            }
+                
+           
         }
 
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
@@ -875,10 +949,21 @@ namespace SistemaVentas
 
         private void BtnPrecioMasivo_Click(object sender, EventArgs e)
         {
-            FrmPreciosmasivos objpreciomasivo = this.Forminstanciapreciomasivo;
-            objpreciomasivo.Show();
-            objpreciomasivo.WindowState = FormWindowState.Maximized;
-            objpreciomasivo.BringToFront();
+             if (NegocioConfigEmpresa.confsistema("opcionsistema").ToString() == "mayorista")
+            {
+                FrmPreciosmasivos objpreciomasivo = this.Forminstanciapreciomasivo;
+                objpreciomasivo.Show();
+                objpreciomasivo.WindowState = FormWindowState.Maximized;
+                objpreciomasivo.BringToFront();
+            }
+            else if (NegocioConfigEmpresa.confsistema("opcionsistema").ToString() == "negocio")
+            {
+                FrmPreciosmasivos2 objpreciomasivo = this.Forminstanciapreciomasivo2;
+                objpreciomasivo.Show();
+                objpreciomasivo.WindowState = FormWindowState.Maximized;
+                objpreciomasivo.BringToFront();
+            }
+           
             
         }
 
@@ -905,6 +990,12 @@ namespace SistemaVentas
             objmerc.Show();
             objmerc.WindowState = FormWindowState.Maximized;
             objmerc.BringToFront();
+        }
+
+        private void BtnTarjeta_Click(object sender, EventArgs e)
+        {
+            FrmTarjeta objtarjeta = new FrmTarjeta();
+            objtarjeta.Show();
         }
     }
 }

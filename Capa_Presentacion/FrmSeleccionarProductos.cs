@@ -79,7 +79,7 @@ namespace Capa_Presentacion
         {
             try
             {
-                this.dataLista.DataSource = NegocioArticulo.mostrar();
+               // this.dataLista.DataSource = NegocioArticulo.mostrar();
             }
             catch (Exception ex)
             {

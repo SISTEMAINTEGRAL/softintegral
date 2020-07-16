@@ -12,7 +12,7 @@ namespace Capa_Datos
     {
        static public long  cuentaaperturacaja = 9100001;
        static public long cuentacierrecaja = 9100002;
-
+        private int codformapago;
        private string FechaD;
 
        public string FechaD1
@@ -156,9 +156,20 @@ namespace Capa_Datos
             set { fecha = value; }
         }
 
-       
+        public int Codformapago
+        {
+            get
+            {
+                return codformapago;
+            }
 
-        public DataTable metbuscarfecha( string fechah, string fechad)
+            set
+            {
+                codformapago = value;
+            }
+        }
+
+        public DataTable metbuscarfecha( string fechah, string fechad, int nrocaja)
         {
             string rpta = "";
             SqlConnection cn = new SqlConnection(Conexion.conexion);
@@ -179,7 +190,10 @@ namespace Capa_Datos
                 SqlParameter parfecha1 = ProcAlmacenado.asignarParametros("@FechaH", SqlDbType.DateTime, fechad);
                 comando.Parameters.Add(parfecha1);
 
-              //creo el objeto adapter del data provider le paso el sqlcommand
+                SqlParameter parnrocaja = ProcAlmacenado.asignarParametros("@id_caja", SqlDbType.Int, nrocaja);
+                comando.Parameters.Add(parnrocaja);
+
+                //creo el objeto adapter del data provider le paso el sqlcommand
                 SqlDataAdapter datosResult = new SqlDataAdapter(comando);
                 //los resultados los actualizo en el datatable dtResult
                 datosResult.Fill(dtResult);
@@ -318,6 +332,12 @@ namespace Capa_Datos
                 SqlParameter parestado = ProcAlmacenado.asignarParametros("@estado", SqlDbType.Int, caja.estado );
                 comando.Parameters.Add(parestado);
 
+                SqlParameter parcaja = ProcAlmacenado.asignarParametros("@id_caja", SqlDbType.Int, caja.idcaja);
+                comando.Parameters.Add(parcaja);
+
+                SqlParameter parcodformapago = ProcAlmacenado.asignarParametros("@formapago", SqlDbType.Int, caja.codformapago);
+                comando.Parameters.Add(parcodformapago);
+
                 if (comando.ExecuteNonQuery() == 1)
                 {
                     respuesta = "ok";
@@ -341,7 +361,7 @@ namespace Capa_Datos
         }
        
 
-        public void Extestadocaja(int modo,string fecha, long turno, bool ingreso = false)
+        public void Extestadocaja(int modo,string fecha, long turno, bool ingreso = false, int nrocaja = 1)
         {
             try
             {
@@ -352,34 +372,38 @@ namespace Capa_Datos
 
                 if (modo == 1)
                 {
-                    query = " SELECT TOP 1 cod_mov,Cod_cuenta ,Ingreso ,Egreso ,Fecha,Usuario ,Idusuario ,Turno ,Concepto ,Comprobante ,Estado FROM fondo_mov_caja where cod_cuenta = 9100001 or cod_cuenta = 9100002  order by cod_mov desc";
+                    query = " SELECT TOP 1 cod_mov,Cod_cuenta ,Ingreso ,Egreso ,Fecha,Usuario ,Idusuario ,Turno ,Concepto ,Comprobante ,Estado FROM fondo_mov_caja where (cod_cuenta = 9100001 or cod_cuenta = 9100002) and nrocaja = " + nrocaja + " order by cod_mov desc";
                 }
                 if (modo == 2)
                 {
                     if (ingreso == false)
                     {
-                        query = " select ISNULL ( sum (Ingreso),0) as ingreso, ISNULL ( sum (Egreso),0) as egreso from fondo_mov_caja where Fecha between @fecha +' 00:00:00' and @fecha + ' 23:59:59' ";
+                        query = " select ISNULL ( sum (Ingreso),0) as ingreso, ISNULL ( sum (Egreso),0) as egreso from fondo_mov_caja where Fecha between @fecha +' 00:00:00' and @fecha + ' 23:59:59' and nrocaja = " + nrocaja + "and Codformapago = 1";
                     }
                     else
                     {
-                        query = " select ISNULL ( sum (Ingreso),0) as ingreso, ISNULL ( sum (Egreso),0) as egreso from fondo_mov_caja where Fecha between @fecha +' 00:00:00' and @fecha + ' 23:59:59' and not Cod_cuenta = '9100001' ";
+                        query = " select ISNULL ( sum (Ingreso),0) as ingreso, ISNULL ( sum (Egreso),0) as egreso from fondo_mov_caja where Fecha between @fecha +' 00:00:00' and @fecha + ' 23:59:59' and not Cod_cuenta = '9100001' and nrocaja = " + nrocaja;
                     }
                     //not Codcuenta = '9100001' 
                 }
 
                 if (modo == 3)
                 {
-                    query = " select sum (Ingreso) as ingreso, sum (Egreso) as egreso from fondo_mov_caja where idturno = @id_turno";
+                    query = " select sum (Ingreso) as ingreso, sum (Egreso) as egreso from fondo_mov_caja where idturno = @id_turno and nrocaja = " + nrocaja;
 
                 }
                 //idcierre segun la apertura de fecha 
                 if (modo == 4)
                 {
-                    query = " SELECT TOP 1 cod_mov,Cod_cuenta ,Ingreso ,Egreso ,Fecha,Usuario ,Idusuario ,Turno ,Concepto ,Comprobante ,Estado FROM fondo_mov_caja where cod_cuenta = 9100001 or cod_cuenta = 9100002  order by cod_mov desc";
+                    query = " SELECT TOP 1 cod_mov,Cod_cuenta ,Ingreso ,Egreso ,Fecha,Usuario ,Idusuario ,Turno ,Concepto ,Comprobante ,Estado FROM fondo_mov_caja where cod_cuenta = 9100001 or cod_cuenta = 9100002 and nrocaja = " + nrocaja + " order by cod_mov desc";
                 }
-
+                if (modo == 5)
+                {
+                    query = " select ISNULL ( sum (Ingreso),0) as ingreso, ISNULL ( sum (Egreso),0) as egreso from fondo_mov_caja where Fecha between @fecha +' 00:00:00' and @fecha + ' 23:59:59' and nrocaja = " + nrocaja + "and Codformapago = 2";
+                }
+                
                 SqlCommand cmd = new SqlCommand(query, cn);
-                if (modo == 2)
+                if (modo == 2 || modo == 5)
                 {
                     cmd.Parameters.AddWithValue("@Fecha", Convert.ToString(fecha));
                 }
@@ -403,7 +427,7 @@ namespace Capa_Datos
 
                 }
 
-                if ((modo == 2) != (modo == 3))
+                if ((modo == 2) != (modo == 3) )
                 {
                     if (reader.Read())
                     {
@@ -413,6 +437,17 @@ namespace Capa_Datos
 
                     }
 
+                }
+                if (modo == 5)
+                {
+                    if (reader.Read())
+                    {
+                        this.ingreso = Convert.ToSingle(reader["Ingreso"]);
+                    }
+                    else
+                    {
+                        this.ingreso = 0;
+                    }
                 }
 
                 cn.Close();
@@ -435,7 +470,7 @@ namespace Capa_Datos
             
         }
 
-        public void Extcierrecaja(string opcion)
+        public void Extcierrecaja(string opcion, int nrocaja)
         {
 
             string query;
@@ -443,7 +478,7 @@ namespace Capa_Datos
             SqlConnection cn = new SqlConnection(Conexion.conexion);
             cn.Open();
 
-             query = "SELECT TOP 1 " + opcion + " FROM fondo_cierre order by Cod_cierre desc";
+             query = "SELECT TOP 1 " + opcion + " FROM fondo_cierre where id_caja = " + nrocaja + " order by Cod_cierre desc";
 
             //cmd.Parameters.AddWithValue("@id", Convert.ToString  (codArticulo));
 
@@ -560,9 +595,10 @@ namespace Capa_Datos
                 SqlParameter paridturno = ProcAlmacenado.asignarParametros("@id_turno", SqlDbType.Int , caja.idturno );
                 comando.Parameters.Add(paridturno);
 
-                
+                SqlParameter paridcaja = ProcAlmacenado.asignarParametros("@id_caja", SqlDbType.Int, caja.idcaja);
+                comando.Parameters.Add(paridcaja);
 
-               
+
 
                 if (aperturacierre == "APERTURA")
                 {
@@ -570,8 +606,7 @@ namespace Capa_Datos
                     SqlParameter parturno = ProcAlmacenado.asignarParametros("@turno", SqlDbType.VarChar, caja.turno);
                     comando.Parameters.Add(parturno);
 
-                    SqlParameter paridcaja = ProcAlmacenado.asignarParametros("@id_caja", SqlDbType.Decimal, caja.idcaja);
-                    comando.Parameters.Add(paridcaja);
+                    
 
                 }
                 else

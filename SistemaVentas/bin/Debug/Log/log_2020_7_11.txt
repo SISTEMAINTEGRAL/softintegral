@@ -1,0 +1,2 @@
+11/07/2020 10:33:46 - Error message: Referencia a objeto no establecida como instancia de un objeto. Stack trace:    en Capa_Presentacion.frmPventa.cambiartextbox() en C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\frmPventa.cs:línea 1632
+   en Capa_Presentacion.frmPventa.txtNombreProducto_KeyDown(Object sender, KeyEventArgs e) en C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\frmPventa.cs:línea 1549

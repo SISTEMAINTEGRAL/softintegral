@@ -59,16 +59,19 @@
             this.lblNomArticulo = new System.Windows.Forms.Label();
             this.lblCodigo = new System.Windows.Forms.Label();
             this.grpboxCategoria = new System.Windows.Forms.GroupBox();
+            this.xuiCustomGroupbox4 = new XanderUI.XUICustomGroupbox();
+            this.label18 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.CHKFechaVenOferta = new System.Windows.Forms.CheckBox();
+            this.TxtUtilidadOferta = new System.Windows.Forms.TextBox();
+            this.txtPrecioOferta = new System.Windows.Forms.TextBox();
+            this.dtpFechaVen = new System.Windows.Forms.DateTimePicker();
             this.xuiCustomGroupbox3 = new XanderUI.XUICustomGroupbox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.CHKFechaVenOferta = new System.Windows.Forms.CheckBox();
             this.TxtPcompra = new System.Windows.Forms.TextBox();
-            this.dtpFechaVen = new System.Windows.Forms.DateTimePicker();
             this.txtUtilidad = new System.Windows.Forms.TextBox();
             this.Txtflete = new System.Windows.Forms.TextBox();
-            this.label13 = new System.Windows.Forms.Label();
-            this.txtPrecioOferta = new System.Windows.Forms.TextBox();
             this.lblPrecio = new System.Windows.Forms.Label();
             this.txtPrecio = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -81,10 +84,14 @@
             this.TxtCodigobarraBulto = new System.Windows.Forms.TextBox();
             this.TxtCantidadBulto = new System.Windows.Forms.TextBox();
             this.xuiCustomGroupbox1 = new XanderUI.XUICustomGroupbox();
+            this.label17 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
+            this.TxtUtilidadXCaja = new System.Windows.Forms.TextBox();
             this.TxtPrecio2 = new System.Windows.Forms.TextBox();
             this.TxtCantidad2 = new System.Windows.Forms.TextBox();
+            this.txtUtilidadX6 = new System.Windows.Forms.TextBox();
             this.txtPreciopormayor = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
@@ -115,16 +122,10 @@
             this.btnCerrar = new System.Windows.Forms.PictureBox();
             this.lblSistemaVenta = new System.Windows.Forms.Label();
             this.btnGenerarCodigo = new System.Windows.Forms.Button();
-            this.txtUtilidadX6 = new System.Windows.Forms.TextBox();
-            this.label16 = new System.Windows.Forms.Label();
-            this.TxtUtilidadXCaja = new System.Windows.Forms.TextBox();
-            this.label17 = new System.Windows.Forms.Label();
-            this.xuiCustomGroupbox4 = new XanderUI.XUICustomGroupbox();
-            this.TxtUtilidadOferta = new System.Windows.Forms.TextBox();
-            this.label18 = new System.Windows.Forms.Label();
             this.tabLista.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataLista)).BeginInit();
             this.grpboxCategoria.SuspendLayout();
+            this.xuiCustomGroupbox4.SuspendLayout();
             this.xuiCustomGroupbox3.SuspendLayout();
             this.xuiCustomGroupbox2.SuspendLayout();
             this.xuiCustomGroupbox1.SuspendLayout();
@@ -136,7 +137,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.btnRestaurar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnMinimizar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnCerrar)).BeginInit();
-            this.xuiCustomGroupbox4.SuspendLayout();
             this.SuspendLayout();
             // 
             // ttMensajeAyuda
@@ -545,6 +545,97 @@
             this.grpboxCategoria.Text = "Articulos";
             this.grpboxCategoria.Enter += new System.EventHandler(this.grpboxCategoria_Enter);
             // 
+            // xuiCustomGroupbox4
+            // 
+            this.xuiCustomGroupbox4.BorderColor = System.Drawing.Color.DodgerBlue;
+            this.xuiCustomGroupbox4.BorderWidth = 1;
+            this.xuiCustomGroupbox4.Controls.Add(this.label18);
+            this.xuiCustomGroupbox4.Controls.Add(this.label13);
+            this.xuiCustomGroupbox4.Controls.Add(this.CHKFechaVenOferta);
+            this.xuiCustomGroupbox4.Controls.Add(this.TxtUtilidadOferta);
+            this.xuiCustomGroupbox4.Controls.Add(this.txtPrecioOferta);
+            this.xuiCustomGroupbox4.Controls.Add(this.dtpFechaVen);
+            this.xuiCustomGroupbox4.Location = new System.Drawing.Point(602, 507);
+            this.xuiCustomGroupbox4.Name = "xuiCustomGroupbox4";
+            this.xuiCustomGroupbox4.ShowText = true;
+            this.xuiCustomGroupbox4.Size = new System.Drawing.Size(808, 176);
+            this.xuiCustomGroupbox4.TabIndex = 128;
+            this.xuiCustomGroupbox4.TabStop = false;
+            this.xuiCustomGroupbox4.Text = "Precio Oferta";
+            this.xuiCustomGroupbox4.TextColor = System.Drawing.Color.DodgerBlue;
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(41, 41);
+            this.label18.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(181, 30);
+            this.label18.TabIndex = 33;
+            this.label18.Text = "Utilidad oferta";
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(41, 86);
+            this.label13.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(166, 30);
+            this.label13.TabIndex = 33;
+            this.label13.Text = "Precio oferta";
+            // 
+            // CHKFechaVenOferta
+            // 
+            this.CHKFechaVenOferta.AutoSize = true;
+            this.CHKFechaVenOferta.Location = new System.Drawing.Point(24, 126);
+            this.CHKFechaVenOferta.Name = "CHKFechaVenOferta";
+            this.CHKFechaVenOferta.Size = new System.Drawing.Size(259, 34);
+            this.CHKFechaVenOferta.TabIndex = 36;
+            this.CHKFechaVenOferta.Text = "Venc. de la oferta ";
+            this.CHKFechaVenOferta.UseVisualStyleBackColor = true;
+            this.CHKFechaVenOferta.CheckedChanged += new System.EventHandler(this.CHKFecha_CheckedChanged);
+            // 
+            // TxtUtilidadOferta
+            // 
+            this.TxtUtilidadOferta.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.TxtUtilidadOferta.Enabled = false;
+            this.TxtUtilidadOferta.Location = new System.Drawing.Point(340, 37);
+            this.TxtUtilidadOferta.Margin = new System.Windows.Forms.Padding(4);
+            this.TxtUtilidadOferta.MaxLength = 60;
+            this.TxtUtilidadOferta.Name = "TxtUtilidadOferta";
+            this.TxtUtilidadOferta.Size = new System.Drawing.Size(119, 37);
+            this.TxtUtilidadOferta.TabIndex = 34;
+            this.TxtUtilidadOferta.Text = "0";
+            this.TxtUtilidadOferta.Click += new System.EventHandler(this.txtPreciopormayor_Click);
+            this.TxtUtilidadOferta.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtUtilidadOferta_KeyPress);
+            this.TxtUtilidadOferta.Leave += new System.EventHandler(this.TxtUtilidadOferta_Leave);
+            // 
+            // txtPrecioOferta
+            // 
+            this.txtPrecioOferta.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtPrecioOferta.Enabled = false;
+            this.txtPrecioOferta.Location = new System.Drawing.Point(340, 82);
+            this.txtPrecioOferta.Margin = new System.Windows.Forms.Padding(4);
+            this.txtPrecioOferta.MaxLength = 60;
+            this.txtPrecioOferta.Name = "txtPrecioOferta";
+            this.txtPrecioOferta.Size = new System.Drawing.Size(119, 37);
+            this.txtPrecioOferta.TabIndex = 35;
+            this.txtPrecioOferta.Text = "0";
+            this.txtPrecioOferta.Click += new System.EventHandler(this.txtPreciopormayor_Click);
+            this.txtPrecioOferta.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtPrecioOferta_KeyDown);
+            this.txtPrecioOferta.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPrecioOferta_KeyPress);
+            this.txtPrecioOferta.Leave += new System.EventHandler(this.txtPrecioOferta_Leave);
+            // 
+            // dtpFechaVen
+            // 
+            this.dtpFechaVen.Enabled = false;
+            this.dtpFechaVen.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpFechaVen.Location = new System.Drawing.Point(341, 127);
+            this.dtpFechaVen.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.dtpFechaVen.Name = "dtpFechaVen";
+            this.dtpFechaVen.Size = new System.Drawing.Size(176, 37);
+            this.dtpFechaVen.TabIndex = 37;
+            // 
             // xuiCustomGroupbox3
             // 
             this.xuiCustomGroupbox3.BorderColor = System.Drawing.Color.DodgerBlue;
@@ -589,17 +680,6 @@
             this.label1.TabIndex = 27;
             this.label1.Text = "Precio de c.";
             // 
-            // CHKFechaVenOferta
-            // 
-            this.CHKFechaVenOferta.AutoSize = true;
-            this.CHKFechaVenOferta.Location = new System.Drawing.Point(24, 126);
-            this.CHKFechaVenOferta.Name = "CHKFechaVenOferta";
-            this.CHKFechaVenOferta.Size = new System.Drawing.Size(259, 34);
-            this.CHKFechaVenOferta.TabIndex = 36;
-            this.CHKFechaVenOferta.Text = "Venc. de la oferta ";
-            this.CHKFechaVenOferta.UseVisualStyleBackColor = true;
-            this.CHKFechaVenOferta.CheckedChanged += new System.EventHandler(this.CHKFecha_CheckedChanged);
-            // 
             // TxtPcompra
             // 
             this.TxtPcompra.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -617,16 +697,6 @@
             this.TxtPcompra.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TxtPcompra_KeyDown);
             this.TxtPcompra.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtPcompra_KeyPress);
             this.TxtPcompra.Leave += new System.EventHandler(this.TxtPcompra_Leave);
-            // 
-            // dtpFechaVen
-            // 
-            this.dtpFechaVen.Enabled = false;
-            this.dtpFechaVen.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpFechaVen.Location = new System.Drawing.Point(341, 127);
-            this.dtpFechaVen.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.dtpFechaVen.Name = "dtpFechaVen";
-            this.dtpFechaVen.Size = new System.Drawing.Size(176, 37);
-            this.dtpFechaVen.TabIndex = 37;
             // 
             // txtUtilidad
             // 
@@ -658,32 +728,6 @@
             this.Txtflete.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Txtflete_KeyDown);
             this.Txtflete.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Txtflete_KeyPress);
             this.Txtflete.Leave += new System.EventHandler(this.Txtflete_Leave);
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(41, 86);
-            this.label13.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(166, 30);
-            this.label13.TabIndex = 33;
-            this.label13.Text = "Precio oferta";
-            // 
-            // txtPrecioOferta
-            // 
-            this.txtPrecioOferta.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtPrecioOferta.Enabled = false;
-            this.txtPrecioOferta.Location = new System.Drawing.Point(340, 82);
-            this.txtPrecioOferta.Margin = new System.Windows.Forms.Padding(4);
-            this.txtPrecioOferta.MaxLength = 60;
-            this.txtPrecioOferta.Name = "txtPrecioOferta";
-            this.txtPrecioOferta.Size = new System.Drawing.Size(119, 37);
-            this.txtPrecioOferta.TabIndex = 35;
-            this.txtPrecioOferta.Text = "0";
-            this.txtPrecioOferta.Click += new System.EventHandler(this.txtPreciopormayor_Click);
-            this.txtPrecioOferta.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtPrecioOferta_KeyDown);
-            this.txtPrecioOferta.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPrecioOferta_KeyPress);
-            this.txtPrecioOferta.Leave += new System.EventHandler(this.txtPrecioOferta_Leave);
             // 
             // lblPrecio
             // 
@@ -769,7 +813,7 @@
             this.xuiCustomGroupbox2.Location = new System.Drawing.Point(25, 442);
             this.xuiCustomGroupbox2.Name = "xuiCustomGroupbox2";
             this.xuiCustomGroupbox2.ShowText = true;
-            this.xuiCustomGroupbox2.Size = new System.Drawing.Size(540, 269);
+            this.xuiCustomGroupbox2.Size = new System.Drawing.Size(540, 241);
             this.xuiCustomGroupbox2.TabIndex = 126;
             this.xuiCustomGroupbox2.TabStop = false;
             this.xuiCustomGroupbox2.Text = "Por caja/bulto";
@@ -846,6 +890,16 @@
             this.xuiCustomGroupbox1.Text = "Precio Mayorista";
             this.xuiCustomGroupbox1.TextColor = System.Drawing.Color.DodgerBlue;
             // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(395, 47);
+            this.label17.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(185, 30);
+            this.label17.TabIndex = 33;
+            this.label17.Text = "Utilidad X caja";
+            // 
             // label11
             // 
             this.label11.AutoSize = true;
@@ -856,6 +910,16 @@
             this.label11.TabIndex = 33;
             this.label11.Text = "Precio X caja";
             // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(16, 40);
+            this.label16.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(145, 30);
+            this.label16.TabIndex = 33;
+            this.label16.Text = "Utilidad X 6";
+            // 
             // label6
             // 
             this.label6.AutoSize = true;
@@ -865,6 +929,22 @@
             this.label6.Size = new System.Drawing.Size(130, 30);
             this.label6.TabIndex = 33;
             this.label6.Text = "Precio X 6";
+            // 
+            // TxtUtilidadXCaja
+            // 
+            this.TxtUtilidadXCaja.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.TxtUtilidadXCaja.Enabled = false;
+            this.TxtUtilidadXCaja.Location = new System.Drawing.Point(656, 45);
+            this.TxtUtilidadXCaja.Margin = new System.Windows.Forms.Padding(4);
+            this.TxtUtilidadXCaja.MaxLength = 60;
+            this.TxtUtilidadXCaja.Name = "TxtUtilidadXCaja";
+            this.TxtUtilidadXCaja.Size = new System.Drawing.Size(119, 37);
+            this.TxtUtilidadXCaja.TabIndex = 31;
+            this.TxtUtilidadXCaja.Text = "0";
+            this.TxtUtilidadXCaja.Click += new System.EventHandler(this.TxtPrecio2_Click);
+            this.TxtUtilidadXCaja.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TxtUtilidadXCaja_KeyDown);
+            this.TxtUtilidadXCaja.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtUtilidadXCaja_KeyPress);
+            this.TxtUtilidadXCaja.Leave += new System.EventHandler(this.TxtUtilidadXCaja_Leave);
             // 
             // TxtPrecio2
             // 
@@ -895,6 +975,22 @@
             this.TxtCantidad2.Text = "0";
             this.TxtCantidad2.Click += new System.EventHandler(this.TxtCantidad2_Click);
             this.TxtCantidad2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtCantidad2_KeyPress);
+            // 
+            // txtUtilidadX6
+            // 
+            this.txtUtilidadX6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtUtilidadX6.Enabled = false;
+            this.txtUtilidadX6.Location = new System.Drawing.Point(214, 44);
+            this.txtUtilidadX6.Margin = new System.Windows.Forms.Padding(4);
+            this.txtUtilidadX6.MaxLength = 60;
+            this.txtUtilidadX6.Name = "txtUtilidadX6";
+            this.txtUtilidadX6.Size = new System.Drawing.Size(119, 37);
+            this.txtUtilidadX6.TabIndex = 28;
+            this.txtUtilidadX6.Text = "0";
+            this.txtUtilidadX6.Click += new System.EventHandler(this.txtPreciopormayor_Click);
+            this.txtUtilidadX6.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtUtilidadX6_KeyDown);
+            this.txtUtilidadX6.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtUtilidadX6_KeyPress);
+            this.txtUtilidadX6.Leave += new System.EventHandler(this.txtUtilidadX6_Leave);
             // 
             // txtPreciopormayor
             // 
@@ -1195,7 +1291,7 @@
             this.tabControl1.Controls.Add(this.tabConfiguracion);
             this.tabControl1.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tabControl1.ItemSize = new System.Drawing.Size(45, 25);
-            this.tabControl1.Location = new System.Drawing.Point(16, 111);
+            this.tabControl1.Location = new System.Drawing.Point(16, 91);
             this.tabControl1.Margin = new System.Windows.Forms.Padding(4);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -1339,102 +1435,6 @@
             this.btnGenerarCodigo.UseVisualStyleBackColor = false;
             this.btnGenerarCodigo.Click += new System.EventHandler(this.btnGenerarCodigo_Click);
             // 
-            // txtUtilidadX6
-            // 
-            this.txtUtilidadX6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtUtilidadX6.Enabled = false;
-            this.txtUtilidadX6.Location = new System.Drawing.Point(214, 44);
-            this.txtUtilidadX6.Margin = new System.Windows.Forms.Padding(4);
-            this.txtUtilidadX6.MaxLength = 60;
-            this.txtUtilidadX6.Name = "txtUtilidadX6";
-            this.txtUtilidadX6.Size = new System.Drawing.Size(119, 37);
-            this.txtUtilidadX6.TabIndex = 28;
-            this.txtUtilidadX6.Text = "0";
-            this.txtUtilidadX6.Click += new System.EventHandler(this.txtPreciopormayor_Click);
-            this.txtUtilidadX6.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtUtilidadX6_KeyDown);
-            this.txtUtilidadX6.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtUtilidadX6_KeyPress);
-            this.txtUtilidadX6.Leave += new System.EventHandler(this.txtUtilidadX6_Leave);
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(16, 40);
-            this.label16.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(145, 30);
-            this.label16.TabIndex = 33;
-            this.label16.Text = "Utilidad X 6";
-            // 
-            // TxtUtilidadXCaja
-            // 
-            this.TxtUtilidadXCaja.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.TxtUtilidadXCaja.Enabled = false;
-            this.TxtUtilidadXCaja.Location = new System.Drawing.Point(656, 45);
-            this.TxtUtilidadXCaja.Margin = new System.Windows.Forms.Padding(4);
-            this.TxtUtilidadXCaja.MaxLength = 60;
-            this.TxtUtilidadXCaja.Name = "TxtUtilidadXCaja";
-            this.TxtUtilidadXCaja.Size = new System.Drawing.Size(119, 37);
-            this.TxtUtilidadXCaja.TabIndex = 31;
-            this.TxtUtilidadXCaja.Text = "0";
-            this.TxtUtilidadXCaja.Click += new System.EventHandler(this.TxtPrecio2_Click);
-            this.TxtUtilidadXCaja.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TxtUtilidadXCaja_KeyDown);
-            this.TxtUtilidadXCaja.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtUtilidadXCaja_KeyPress);
-            this.TxtUtilidadXCaja.Leave += new System.EventHandler(this.TxtUtilidadXCaja_Leave);
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(395, 47);
-            this.label17.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(185, 30);
-            this.label17.TabIndex = 33;
-            this.label17.Text = "Utilidad X caja";
-            // 
-            // xuiCustomGroupbox4
-            // 
-            this.xuiCustomGroupbox4.BorderColor = System.Drawing.Color.DodgerBlue;
-            this.xuiCustomGroupbox4.BorderWidth = 1;
-            this.xuiCustomGroupbox4.Controls.Add(this.label18);
-            this.xuiCustomGroupbox4.Controls.Add(this.label13);
-            this.xuiCustomGroupbox4.Controls.Add(this.CHKFechaVenOferta);
-            this.xuiCustomGroupbox4.Controls.Add(this.TxtUtilidadOferta);
-            this.xuiCustomGroupbox4.Controls.Add(this.txtPrecioOferta);
-            this.xuiCustomGroupbox4.Controls.Add(this.dtpFechaVen);
-            this.xuiCustomGroupbox4.Location = new System.Drawing.Point(602, 507);
-            this.xuiCustomGroupbox4.Name = "xuiCustomGroupbox4";
-            this.xuiCustomGroupbox4.ShowText = true;
-            this.xuiCustomGroupbox4.Size = new System.Drawing.Size(808, 200);
-            this.xuiCustomGroupbox4.TabIndex = 128;
-            this.xuiCustomGroupbox4.TabStop = false;
-            this.xuiCustomGroupbox4.Text = "Precio Oferta";
-            this.xuiCustomGroupbox4.TextColor = System.Drawing.Color.DodgerBlue;
-            // 
-            // TxtUtilidadOferta
-            // 
-            this.TxtUtilidadOferta.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.TxtUtilidadOferta.Enabled = false;
-            this.TxtUtilidadOferta.Location = new System.Drawing.Point(340, 37);
-            this.TxtUtilidadOferta.Margin = new System.Windows.Forms.Padding(4);
-            this.TxtUtilidadOferta.MaxLength = 60;
-            this.TxtUtilidadOferta.Name = "TxtUtilidadOferta";
-            this.TxtUtilidadOferta.Size = new System.Drawing.Size(119, 37);
-            this.TxtUtilidadOferta.TabIndex = 34;
-            this.TxtUtilidadOferta.Text = "0";
-            this.TxtUtilidadOferta.Click += new System.EventHandler(this.txtPreciopormayor_Click);
-            this.TxtUtilidadOferta.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.TxtUtilidadOferta_KeyPress);
-            this.TxtUtilidadOferta.Leave += new System.EventHandler(this.TxtUtilidadOferta_Leave);
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(41, 41);
-            this.label18.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(181, 30);
-            this.label18.TabIndex = 33;
-            this.label18.Text = "Utilidad oferta";
-            // 
             // FrmArticulos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -1461,6 +1461,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataLista)).EndInit();
             this.grpboxCategoria.ResumeLayout(false);
             this.grpboxCategoria.PerformLayout();
+            this.xuiCustomGroupbox4.ResumeLayout(false);
+            this.xuiCustomGroupbox4.PerformLayout();
             this.xuiCustomGroupbox3.ResumeLayout(false);
             this.xuiCustomGroupbox3.PerformLayout();
             this.xuiCustomGroupbox2.ResumeLayout(false);
@@ -1476,8 +1478,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.btnRestaurar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnMinimizar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnCerrar)).EndInit();
-            this.xuiCustomGroupbox4.ResumeLayout(false);
-            this.xuiCustomGroupbox4.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 

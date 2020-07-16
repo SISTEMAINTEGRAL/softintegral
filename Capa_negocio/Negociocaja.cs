@@ -94,7 +94,7 @@ namespace Capa_negocio
             return new DatosCaja().mostrartipomov(modo, tipomodo,ingegr );
         }
 
-        public static DataTable buscarmovimiento(string   fechadesde, string fechahasta)
+        public static DataTable buscarmovimiento(string   fechadesde, string fechahasta, int nrocaja)
         {
             DatosCaja  caja = new DatosCaja ();
            
@@ -103,11 +103,11 @@ namespace Capa_negocio
            
            
             //seguir de aca
-            return caja.metbuscarfecha(caja.FechaD1, caja.FechaH1);
+            return caja.metbuscarfecha(caja.FechaD1, caja.FechaH1,nrocaja);
           
         }
 
-        public static string insertarmovcaja(long codcuenta , float ingreso, float egreso, string Fecha , string usuario, int  idusuario , string turno , string concepto, long comprobante , bool estado)
+        public static string insertarmovcaja(long codcuenta , float ingreso, float egreso, string Fecha , string usuario, int  idusuario , string turno , string concepto, long comprobante , bool estado, int nrocaja, int codformapago)
         {
             DatosCaja objcaja = new DatosCaja();
             
@@ -121,12 +121,13 @@ namespace Capa_negocio
             objcaja.Concepto = concepto;
             objcaja.Comprobante = comprobante;
             objcaja.Estado = estado;
-            
+            objcaja.Idcaja = nrocaja;
+            objcaja.Codformapago = codformapago;
             
             return objcaja.agregar(objcaja);
         }
 
-        public static string insertarcierrecaja(long codcierre, string fecha, string turno, float totalingreso, float  totalegreso, long idturno, decimal impsistema, decimal impreal, long idcaja, int usuario, string aperturacierre)
+        public static string insertarcierrecaja(long codcierre, string fecha, string turno, float totalingreso, float  totalegreso, long idturno, decimal impsistema, decimal impreal, long idcaja, int usuario, string aperturacierre, int nrocaja)
         {
             DatosCaja objcaja = new DatosCaja();
 
@@ -140,20 +141,20 @@ namespace Capa_negocio
             objcaja.Impreal = impreal;
             objcaja.Idcaja = idcaja;
             objcaja.Idusuario = usuario;
-            objcaja.Aperturacierre = aperturacierre; 
-
+            objcaja.Aperturacierre = aperturacierre;
+            objcaja.Idcaja = nrocaja;
             return objcaja.agregarcierre(objcaja);
         
         }
 
-        public bool chequeocaja(string formulario,ref string mensaje)
+        public bool chequeocaja(string formulario,ref string mensaje, int nrocaja)
         {
             
             bool concaja = true;
             mensaje = "";
             
 
-            this.extrestadocaja(1, "", 0);
+            this.extrestadocaja(1, "", 0,false,nrocaja);
             //codigo de cuenta para cierre de caja
             //si está cerrado no permite generar la venta hasta no abrir la caja
             if (this.Fecha.Substring(0, 10) != Convert.ToString(DateTime.Today).Substring(0, 10))
@@ -194,12 +195,12 @@ namespace Capa_negocio
 
             return concaja;
         }
-        public  void extrestadocaja(int modo, string fecha, long idturno, bool ingreso = false)
+        public  void extrestadocaja(int modo, string fecha, long idturno, bool ingreso = false, int nrocaja = 1)
         {
             //modo 1 = movimiento de caja, modo 2 : suma de ingresos y egresos segun fecha diaria, modo 3 : suma de ingresos y egresos segun turno
             DatosCaja  ObjCaja= new DatosCaja ();
 
-            ObjCaja.Extestadocaja(modo,fecha,idturno, ingreso  );
+            ObjCaja.Extestadocaja(modo,fecha,idturno, ingreso, nrocaja  );
 
             if (modo == 1)
             {
@@ -217,6 +218,10 @@ namespace Capa_negocio
                 this.egreso = ObjCaja.Egreso;
               
             }
+            if (modo == 5)
+            {
+                this.ingreso = ObjCaja.Ingreso;
+            }
             
 
         }
@@ -229,10 +234,10 @@ namespace Capa_negocio
             return objcaja.eliminarcaja (objcaja);
         }
 
-       public void extraercierre(string campo)
+       public void extraercierre(string campo, int nrocaja)
        {
            DatosCaja objcaja = new DatosCaja();
-           objcaja.Extcierrecaja(campo);
+           objcaja.Extcierrecaja(campo,nrocaja);
           
               this.idturno = objcaja.Idturno;
               this.idcierre = objcaja.Idcierre;           

@@ -63,7 +63,7 @@ namespace Capa_Presentacion
         {
             try
             {
-                this.dataLista.DataSource = NegocioArticulo.mostrar();
+                //this.dataLista.DataSource = NegocioArticulo.mostrar();
                 //this.dataLista.Columns["precio"].DefaultCellStyle.Format = "c3";
                 //this.dataLista.Columns["precio"].ValueType = Type.GetType("System.Decimal");
                 //this.dataLista.Columns["precio"].DefaultCellStyle.Format = String.Format("###,##0.00");

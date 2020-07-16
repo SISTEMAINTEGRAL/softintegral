@@ -116,17 +116,14 @@ namespace Capa_Presentacion
             try
             {
                 llenarComboBoxCategoria(cbCategoria);
-                dataLista.DataSource = NegocioArticulo.mostrar();
+               // dataLista.DataSource = NegocioArticulo.mostrar();
                 
-                dataLista.Columns["precio"].DefaultCellStyle.Format = String.Format("$###,##0.00");
-                dataLista.Columns["precio_compra"].DefaultCellStyle.Format = String.Format("$###,##0.00");
-                dataLista.Columns["utilidad"].DefaultCellStyle.Format = String.Format("###,##0.00");
-                dataLista.Columns["flete"].DefaultCellStyle.Format = String.Format("###,##0.00");
-                this.dataLista.Columns["idarticulo"].Visible = false;
-                this.dataLista.Columns["idcategoria"].Visible = false;
+               
 
                 dataLista.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
                 txtProducto.Focus();
+                dtbFechaHasta.Enabled = chkFecha.Checked;
+                dtpFechaDesde.Enabled = chkFecha.Checked;
                 
             }
             catch (Exception s)
@@ -136,7 +133,20 @@ namespace Capa_Presentacion
             
         }
 
-       
+         private void estilogrilla ()
+        {
+            if (dataLista.ColumnCount != 0)
+            {
+                dataLista.Columns["precio"].DefaultCellStyle.Format = String.Format("$###,##0.00");
+                dataLista.Columns["precio_compra"].DefaultCellStyle.Format = String.Format("$###,##0.00");
+                dataLista.Columns["utilidad"].DefaultCellStyle.Format = String.Format("###,##0.00");
+                dataLista.Columns["flete"].DefaultCellStyle.Format = String.Format("###,##0.00");
+                this.dataLista.Columns["idarticulo"].Visible = false;
+                this.dataLista.Columns["idcategoria"].Visible = false;
+            }
+            
+
+        }
         private void txtProducto_TextChanged(object sender, EventArgs e)
         {
            
@@ -411,6 +421,9 @@ namespace Capa_Presentacion
             try
             {
                 decimal preciocompravar = 0;
+                string opcionsistema;
+
+                opcionsistema = NegocioConfigEmpresa.confsistema("opcionsistema").ToString();
                 if (dataLista.RowCount != 0)
                 {
                     foreach (DataGridViewRow fila in dataLista.Rows)
@@ -423,12 +436,23 @@ namespace Capa_Presentacion
                                 preciocompravar = Convert.ToDecimal ( fila.Cells["precio_compra"].Value);
                                 if (opcionvista == "PRECIOMASIVO")
                                 {
-                                    listadodearticulo.Rows.Add(fila.Cells["idarticulo"].Value, fila.Cells["nombre"].Value, fila.Cells["descripcion"].Value,
-                                    UtilityFrm.formateodecimal(Convert.ToDecimal(fila.Cells["precio_compra"].Value), 2), UtilityFrm.formateodecimal(Convert.ToDecimal(fila.Cells["utilidad"].Value), 2),
-                                    UtilityFrm.formateodecimal(Convert.ToDecimal(fila.Cells["flete"].Value), 2), UtilityFrm.formateodecimal(Convert.ToDecimal(fila.Cells["precio"].Value), 2),
-                                    UtilityFrm.formateodecimal(Convert.ToDecimal(fila.Cells["utilidadpormayor"].Value), 2), UtilityFrm.formateodecimal(Convert.ToDecimal(fila.Cells["preciopormayor"].Value), 2),
-                                    UtilityFrm.formateodecimal(Convert.ToDecimal(fila.Cells["utilidadpormayor2"].Value), 2), UtilityFrm.formateodecimal(Convert.ToDecimal(fila.Cells["preciopormayor2"].Value), 2),
-                                    UtilityFrm.formateodecimal(Convert.ToDecimal(fila.Cells["Utilidadoferta"].Value), 2), UtilityFrm.formateodecimal(Convert.ToDecimal(fila.Cells["precio_oferta"].Value), 2));
+                                    if (opcionsistema == "mayorista")
+                                    {
+                                        listadodearticulo.Rows.Add(fila.Cells["idarticulo"].Value, fila.Cells["nombre"].Value, fila.Cells["descripcion"].Value,
+                                        UtilityFrm.formateodecimal(Convert.ToDecimal(fila.Cells["precio_compra"].Value), 2), UtilityFrm.formateodecimal(Convert.ToDecimal(fila.Cells["utilidad"].Value), 2),
+                                        UtilityFrm.formateodecimal(Convert.ToDecimal(fila.Cells["flete"].Value), 2), UtilityFrm.formateodecimal(Convert.ToDecimal(fila.Cells["precio"].Value), 2),
+                                        UtilityFrm.formateodecimal(Convert.ToDecimal(fila.Cells["utilidadpormayor"].Value), 2), UtilityFrm.formateodecimal(Convert.ToDecimal(fila.Cells["preciopormayor"].Value), 2),
+                                        UtilityFrm.formateodecimal(Convert.ToDecimal(fila.Cells["utilidadpormayor2"].Value), 2), UtilityFrm.formateodecimal(Convert.ToDecimal(fila.Cells["preciopormayor2"].Value), 2),
+                                        UtilityFrm.formateodecimal(Convert.ToDecimal(fila.Cells["Utilidadoferta"].Value), 2), UtilityFrm.formateodecimal(Convert.ToDecimal(fila.Cells["precio_oferta"].Value), 2));
+                                    }
+                                    else if (opcionsistema == "negocio")
+                                    {
+                                        listadodearticulo.Rows.Add(fila.Cells["idarticulo"].Value, fila.Cells["nombre"].Value,
+                                        fila.Cells["descripcion"].Value, UtilityFrm.formateodecimal(Convert.ToDecimal(fila.Cells["precio_compra"].Value),
+                                        2), UtilityFrm.formateodecimal(Convert.ToDecimal(fila.Cells["utilidad"].Value), 2), UtilityFrm.formateodecimal(Convert.ToDecimal(fila.Cells["flete"].Value), 2),
+                                        UtilityFrm.formateodecimal(Convert.ToDecimal(fila.Cells["precio"].Value), 2));
+                                    }
+                                    
                                 }
                                 else if (opcionvista == "STOCK")
                                 {
@@ -544,35 +568,41 @@ namespace Capa_Presentacion
         {
             //segun el radiobutton que seleccione buscara
             //dataLista.Rows.Clear();
-            if (rdbNombre.Checked == true)
+            if (chkFecha.Checked == true)
             {
-                this.BuscarNombre();
-                
-            }
-            else if ((txtProducto.Text.Length >= 13))
-            {
-
-                string prod = txtProducto.Text;
-                prod = prod.Remove(0, 13);
-                txtProducto.Text = "";
-
-                txtProducto.Text = prod.ToString();
-                //se mueve hasta la ultima posicion
-                txtProducto.Select(txtProducto.Text.Length, 0);
-                // txtProducto.SelectAll();
-                this.BuscarCodigoBarra();
-               
-
-
-
-
+                dataLista.DataSource = NegocioArticulo.consultafecha(Convert.ToDateTime( dtpFechaDesde.Text),Convert.ToDateTime( dtbFechaHasta.Text));
             }
             else
             {
-                this.BuscarCategoria();
-                
+                txtProducto.Text = txtProducto.TextLength == 12 && IsNumeric(txtProducto.Text) ? "0" + txtProducto.Text : txtProducto.Text;
+                if (txtProducto.TextLength >= 13 && IsNumeric(txtProducto.Text) == true)
+                {
+                    dataLista.DataSource = NegocioArticulo.buscarCodigoBarra(txtProducto.Text);
+
+                    txtProducto.Focus();
+                    txtProducto.SelectAll();
+
+
+                }
+                else if (IsNumeric(txtProducto.Text) == true)
+                {
+                    dataLista.DataSource = NegocioArticulo.buscarIdProducto(txtProducto.Text);
+                    txtProducto.Focus();
+                    txtProducto.SelectAll();
+
+
+                }
+
+
+                else
+                {
+                    this.BuscarNombre();
+                }
+
+
             }
 
+            estilogrilla();
         }
 
         private void gbDetalleMovimento_Enter(object sender, EventArgs e)
@@ -623,7 +653,12 @@ namespace Capa_Presentacion
 
             }
         }
+        public bool IsNumeric(string input)
+        {
+            long test;
 
+            return long.TryParse(input, out test);
+        }
         private void MenuDeleteall_Click(object sender, EventArgs e)
         {
 
@@ -692,6 +727,12 @@ namespace Capa_Presentacion
         private void dataLista_RowLeave(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        private void chkFecha_CheckedChanged(object sender, EventArgs e)
+        {
+            dtbFechaHasta.Enabled = chkFecha.Checked;
+            dtpFechaDesde.Enabled = chkFecha.Checked;
         }
     }
 }

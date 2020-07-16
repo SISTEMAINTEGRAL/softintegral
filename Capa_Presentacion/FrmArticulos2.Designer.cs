@@ -29,13 +29,15 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmArticulos2));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmArticulos2));
             this.ttMensajeAyuda = new System.Windows.Forms.ToolTip(this.components);
             this.btnNuevo = new System.Windows.Forms.Button();
             this.tabLista = new System.Windows.Forms.TabPage();
+            this.dataLista = new Guna.UI.WinForms.GunaDataGridView();
+            this.DEliminar = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -98,9 +100,12 @@
             this.btnCerrar = new System.Windows.Forms.PictureBox();
             this.lblSistemaVenta = new System.Windows.Forms.Label();
             this.btnGenerarCodigo = new System.Windows.Forms.Button();
-            this.dataLista = new Guna.UI.WinForms.GunaDataGridView();
-            this.DEliminar = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.TxtPrecioPromo = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.TxtCanPromo = new System.Windows.Forms.TextBox();
+            this.label12 = new System.Windows.Forms.Label();
             this.tabLista.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataLista)).BeginInit();
             this.grpboxCategoria.SuspendLayout();
             this.tabConfiguracion.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -110,7 +115,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.btnRestaurar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnMinimizar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnCerrar)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataLista)).BeginInit();
             this.SuspendLayout();
             // 
             // ttMensajeAyuda
@@ -122,7 +126,7 @@
             this.btnNuevo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnNuevo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnNuevo.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnNuevo.Location = new System.Drawing.Point(29, 613);
+            this.btnNuevo.Location = new System.Drawing.Point(29, 615);
             this.btnNuevo.Margin = new System.Windows.Forms.Padding(4);
             this.btnNuevo.Name = "btnNuevo";
             this.btnNuevo.Size = new System.Drawing.Size(140, 49);
@@ -157,6 +161,85 @@
             this.tabLista.TabIndex = 0;
             this.tabLista.Text = "Lista";
             this.tabLista.Click += new System.EventHandler(this.tabLista_Click);
+            // 
+            // dataLista
+            // 
+            this.dataLista.AllowUserToAddRows = false;
+            this.dataLista.AllowUserToDeleteRows = false;
+            this.dataLista.AllowUserToOrderColumns = true;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
+            this.dataLista.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.dataLista.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dataLista.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.dataLista.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.dataLista.BackgroundColor = System.Drawing.Color.White;
+            this.dataLista.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dataLista.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
+            this.dataLista.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataLista.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.dataLista.ColumnHeadersHeight = 38;
+            this.dataLista.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.DEliminar});
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataLista.DefaultCellStyle = dataGridViewCellStyle3;
+            this.dataLista.EnableHeadersVisualStyles = false;
+            this.dataLista.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            this.dataLista.Location = new System.Drawing.Point(16, 193);
+            this.dataLista.MultiSelect = false;
+            this.dataLista.Name = "dataLista";
+            this.dataLista.RowHeadersVisible = false;
+            this.dataLista.RowTemplate.Height = 24;
+            this.dataLista.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataLista.Size = new System.Drawing.Size(1233, 412);
+            this.dataLista.StandardTab = true;
+            this.dataLista.TabIndex = 108;
+            this.dataLista.Theme = Guna.UI.WinForms.GunaDataGridViewPresetThemes.Guna;
+            this.dataLista.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
+            this.dataLista.ThemeStyle.AlternatingRowsStyle.Font = null;
+            this.dataLista.ThemeStyle.AlternatingRowsStyle.ForeColor = System.Drawing.Color.Empty;
+            this.dataLista.ThemeStyle.AlternatingRowsStyle.SelectionBackColor = System.Drawing.Color.Empty;
+            this.dataLista.ThemeStyle.AlternatingRowsStyle.SelectionForeColor = System.Drawing.Color.Empty;
+            this.dataLista.ThemeStyle.BackColor = System.Drawing.Color.White;
+            this.dataLista.ThemeStyle.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            this.dataLista.ThemeStyle.HeaderStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
+            this.dataLista.ThemeStyle.HeaderStyle.BorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
+            this.dataLista.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataLista.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.White;
+            this.dataLista.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
+            this.dataLista.ThemeStyle.HeaderStyle.Height = 38;
+            this.dataLista.ThemeStyle.ReadOnly = false;
+            this.dataLista.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.White;
+            this.dataLista.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
+            this.dataLista.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataLista.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            this.dataLista.ThemeStyle.RowsStyle.Height = 24;
+            this.dataLista.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            this.dataLista.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            this.dataLista.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataLista_CellClick);
+            this.dataLista.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataLista_CellContentClick);
+            this.dataLista.Click += new System.EventHandler(this.dataLista_Click_1);
+            this.dataLista.DoubleClick += new System.EventHandler(this.dataLista_DoubleClick);
+            // 
+            // DEliminar
+            // 
+            this.DEliminar.HeaderText = "Eliminar";
+            this.DEliminar.Name = "DEliminar";
+            this.DEliminar.Width = 112;
             // 
             // textBox1
             // 
@@ -420,7 +503,7 @@
             this.btnCancelar.Enabled = false;
             this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancelar.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancelar.Location = new System.Drawing.Point(677, 613);
+            this.btnCancelar.Location = new System.Drawing.Point(677, 615);
             this.btnCancelar.Margin = new System.Windows.Forms.Padding(4);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(140, 49);
@@ -435,7 +518,7 @@
             this.btnGuardar.Enabled = false;
             this.btnGuardar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnGuardar.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnGuardar.Location = new System.Drawing.Point(461, 613);
+            this.btnGuardar.Location = new System.Drawing.Point(461, 615);
             this.btnGuardar.Margin = new System.Windows.Forms.Padding(4);
             this.btnGuardar.Name = "btnGuardar";
             this.btnGuardar.Size = new System.Drawing.Size(140, 49);
@@ -450,7 +533,7 @@
             this.btnEditar.Enabled = false;
             this.btnEditar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEditar.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEditar.Location = new System.Drawing.Point(245, 613);
+            this.btnEditar.Location = new System.Drawing.Point(245, 615);
             this.btnEditar.Margin = new System.Windows.Forms.Padding(4);
             this.btnEditar.Name = "btnEditar";
             this.btnEditar.Size = new System.Drawing.Size(140, 49);
@@ -469,9 +552,13 @@
             this.grpboxCategoria.Controls.Add(this.label9);
             this.grpboxCategoria.Controls.Add(this.label8);
             this.grpboxCategoria.Controls.Add(this.CBSubcategoria);
+            this.grpboxCategoria.Controls.Add(this.TxtCanPromo);
             this.grpboxCategoria.Controls.Add(this.txtCantidadpormayor);
             this.grpboxCategoria.Controls.Add(this.label7);
+            this.grpboxCategoria.Controls.Add(this.TxtPrecioPromo);
             this.grpboxCategoria.Controls.Add(this.txtPreciopormayor);
+            this.grpboxCategoria.Controls.Add(this.label12);
+            this.grpboxCategoria.Controls.Add(this.label11);
             this.grpboxCategoria.Controls.Add(this.label6);
             this.grpboxCategoria.Controls.Add(this.label4);
             this.grpboxCategoria.Controls.Add(this.Txtflete);
@@ -504,7 +591,7 @@
             this.grpboxCategoria.Margin = new System.Windows.Forms.Padding(4);
             this.grpboxCategoria.Name = "grpboxCategoria";
             this.grpboxCategoria.Padding = new System.Windows.Forms.Padding(4);
-            this.grpboxCategoria.Size = new System.Drawing.Size(1256, 681);
+            this.grpboxCategoria.Size = new System.Drawing.Size(1256, 683);
             this.grpboxCategoria.TabIndex = 0;
             this.grpboxCategoria.TabStop = false;
             this.grpboxCategoria.Text = "Articulos";
@@ -573,7 +660,7 @@
             // 
             this.txtCantidadpormayor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtCantidadpormayor.Enabled = false;
-            this.txtCantidadpormayor.Location = new System.Drawing.Point(894, 397);
+            this.txtCantidadpormayor.Location = new System.Drawing.Point(893, 261);
             this.txtCantidadpormayor.Margin = new System.Windows.Forms.Padding(4);
             this.txtCantidadpormayor.MaxLength = 60;
             this.txtCantidadpormayor.Name = "txtCantidadpormayor";
@@ -585,7 +672,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(622, 397);
+            this.label7.Location = new System.Drawing.Point(617, 268);
             this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(241, 30);
@@ -596,7 +683,7 @@
             // 
             this.txtPreciopormayor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtPreciopormayor.Enabled = false;
-            this.txtPreciopormayor.Location = new System.Drawing.Point(893, 325);
+            this.txtPreciopormayor.Location = new System.Drawing.Point(893, 216);
             this.txtPreciopormayor.Margin = new System.Windows.Forms.Padding(4);
             this.txtPreciopormayor.MaxLength = 60;
             this.txtPreciopormayor.Name = "txtPreciopormayor";
@@ -608,7 +695,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(632, 324);
+            this.label6.Location = new System.Drawing.Point(617, 223);
             this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(211, 30);
@@ -618,7 +705,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(643, 176);
+            this.label4.Location = new System.Drawing.Point(617, 130);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(71, 30);
@@ -628,7 +715,7 @@
             // Txtflete
             // 
             this.Txtflete.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.Txtflete.Location = new System.Drawing.Point(893, 176);
+            this.Txtflete.Location = new System.Drawing.Point(893, 123);
             this.Txtflete.Margin = new System.Windows.Forms.Padding(4);
             this.Txtflete.MaxLength = 60;
             this.Txtflete.Name = "Txtflete";
@@ -644,7 +731,7 @@
             // 
             this.txtUtilidad.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtUtilidad.Enabled = false;
-            this.txtUtilidad.Location = new System.Drawing.Point(893, 105);
+            this.txtUtilidad.Location = new System.Drawing.Point(893, 78);
             this.txtUtilidad.Margin = new System.Windows.Forms.Padding(4);
             this.txtUtilidad.MaxLength = 60;
             this.txtUtilidad.Name = "txtUtilidad";
@@ -659,7 +746,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(641, 107);
+            this.label2.Location = new System.Drawing.Point(617, 85);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(129, 30);
@@ -687,7 +774,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(633, 37);
+            this.label1.Location = new System.Drawing.Point(617, 38);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(157, 30);
@@ -751,7 +838,7 @@
             // 
             this.txtPrecio.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtPrecio.Enabled = false;
-            this.txtPrecio.Location = new System.Drawing.Point(893, 249);
+            this.txtPrecio.Location = new System.Drawing.Point(893, 171);
             this.txtPrecio.Margin = new System.Windows.Forms.Padding(4);
             this.txtPrecio.MaxLength = 60;
             this.txtPrecio.Name = "txtPrecio";
@@ -766,7 +853,7 @@
             // lblPrecio
             // 
             this.lblPrecio.AutoSize = true;
-            this.lblPrecio.Location = new System.Drawing.Point(643, 251);
+            this.lblPrecio.Location = new System.Drawing.Point(617, 178);
             this.lblPrecio.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblPrecio.Name = "lblPrecio";
             this.lblPrecio.Size = new System.Drawing.Size(88, 30);
@@ -990,86 +1077,53 @@
             this.btnGenerarCodigo.UseVisualStyleBackColor = false;
             this.btnGenerarCodigo.Click += new System.EventHandler(this.btnGenerarCodigo_Click);
             // 
-            // dataLista
+            // TxtPrecioPromo
             // 
-            this.dataLista.AllowUserToAddRows = false;
-            this.dataLista.AllowUserToDeleteRows = false;
-            this.dataLista.AllowUserToOrderColumns = true;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
-            this.dataLista.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.dataLista.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.dataLista.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
-            this.dataLista.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
-            this.dataLista.BackgroundColor = System.Drawing.Color.White;
-            this.dataLista.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dataLista.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
-            this.dataLista.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataLista.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            this.dataLista.ColumnHeadersHeight = 38;
-            this.dataLista.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.DEliminar});
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataLista.DefaultCellStyle = dataGridViewCellStyle3;
-            this.dataLista.EnableHeadersVisualStyles = false;
-            this.dataLista.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            this.dataLista.Location = new System.Drawing.Point(16, 193);
-            this.dataLista.MultiSelect = false;
-            this.dataLista.Name = "dataLista";
-            this.dataLista.RowHeadersVisible = false;
-            this.dataLista.RowTemplate.Height = 24;
-            this.dataLista.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataLista.Size = new System.Drawing.Size(1233, 412);
-            this.dataLista.StandardTab = true;
-            this.dataLista.TabIndex = 108;
-            this.dataLista.Theme = Guna.UI.WinForms.GunaDataGridViewPresetThemes.Guna;
-            this.dataLista.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
-            this.dataLista.ThemeStyle.AlternatingRowsStyle.Font = null;
-            this.dataLista.ThemeStyle.AlternatingRowsStyle.ForeColor = System.Drawing.Color.Empty;
-            this.dataLista.ThemeStyle.AlternatingRowsStyle.SelectionBackColor = System.Drawing.Color.Empty;
-            this.dataLista.ThemeStyle.AlternatingRowsStyle.SelectionForeColor = System.Drawing.Color.Empty;
-            this.dataLista.ThemeStyle.BackColor = System.Drawing.Color.White;
-            this.dataLista.ThemeStyle.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            this.dataLista.ThemeStyle.HeaderStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
-            this.dataLista.ThemeStyle.HeaderStyle.BorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
-            this.dataLista.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dataLista.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.White;
-            this.dataLista.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
-            this.dataLista.ThemeStyle.HeaderStyle.Height = 38;
-            this.dataLista.ThemeStyle.ReadOnly = false;
-            this.dataLista.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.White;
-            this.dataLista.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
-            this.dataLista.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dataLista.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            this.dataLista.ThemeStyle.RowsStyle.Height = 24;
-            this.dataLista.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            this.dataLista.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            this.dataLista.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataLista_CellClick);
-            this.dataLista.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataLista_CellContentClick);
-            this.dataLista.Click += new System.EventHandler(this.dataLista_Click_1);
-            this.dataLista.DoubleClick += new System.EventHandler(this.dataLista_DoubleClick);
+            this.TxtPrecioPromo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.TxtPrecioPromo.Enabled = false;
+            this.TxtPrecioPromo.Location = new System.Drawing.Point(892, 306);
+            this.TxtPrecioPromo.Margin = new System.Windows.Forms.Padding(4);
+            this.TxtPrecioPromo.MaxLength = 60;
+            this.TxtPrecioPromo.Name = "TxtPrecioPromo";
+            this.TxtPrecioPromo.Size = new System.Drawing.Size(119, 37);
+            this.TxtPrecioPromo.TabIndex = 34;
+            this.TxtPrecioPromo.Text = "0";
+            this.TxtPrecioPromo.Click += new System.EventHandler(this.txtPreciopormayor_Click);
             // 
-            // DEliminar
+            // label11
             // 
-            this.DEliminar.HeaderText = "Eliminar";
-            this.DEliminar.Name = "DEliminar";
-            this.DEliminar.Width = 112;
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(617, 313);
+            this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(227, 30);
+            this.label11.TabIndex = 33;
+            this.label11.Text = "Precio promocion";
             // 
-            // FrmArticulos
+            // TxtCanPromo
+            // 
+            this.TxtCanPromo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.TxtCanPromo.Enabled = false;
+            this.TxtCanPromo.Location = new System.Drawing.Point(892, 351);
+            this.TxtCanPromo.Margin = new System.Windows.Forms.Padding(4);
+            this.TxtCanPromo.MaxLength = 60;
+            this.TxtCanPromo.Name = "TxtCanPromo";
+            this.TxtCanPromo.Size = new System.Drawing.Size(120, 37);
+            this.TxtCanPromo.TabIndex = 36;
+            this.TxtCanPromo.Text = "0";
+            this.TxtCanPromo.Click += new System.EventHandler(this.txtCantidadpormayor_Click);
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(617, 358);
+            this.label12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(249, 30);
+            this.label12.TabIndex = 33;
+            this.label12.Text = "Can. de promocion";
+            // 
+            // FrmArticulos2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -1084,7 +1138,7 @@
             this.KeyPreview = true;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.MinimizeBox = false;
-            this.Name = "FrmArticulos";
+            this.Name = "FrmArticulos2";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrmArticulos";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
@@ -1092,6 +1146,7 @@
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FrmArticulos_KeyDown);
             this.tabLista.ResumeLayout(false);
             this.tabLista.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataLista)).EndInit();
             this.grpboxCategoria.ResumeLayout(false);
             this.grpboxCategoria.PerformLayout();
             this.tabConfiguracion.ResumeLayout(false);
@@ -1103,7 +1158,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.btnRestaurar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnMinimizar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnCerrar)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataLista)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1178,5 +1232,9 @@
         private System.Windows.Forms.Label label9;
         private Guna.UI.WinForms.GunaDataGridView dataLista;
         private System.Windows.Forms.DataGridViewCheckBoxColumn DEliminar;
+        private System.Windows.Forms.TextBox TxtCanPromo;
+        private System.Windows.Forms.TextBox TxtPrecioPromo;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Label label11;
     }
 }

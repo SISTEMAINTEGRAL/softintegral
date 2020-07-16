@@ -78,7 +78,8 @@ namespace Capa_Presentacion.Formreportes
                             miticket.table1.DataSource = midatatable;
                             reportViewer1.Report = miticket;
                             miticket.barcode1.Value = valorcodigobarra;
-                            miticket.barcode2.Value = valorventa;
+                           // miticket.barcode2.Value = valorventa;
+                            // miticket.barcode2.Value = valorventa;
                             
                             break;  
                    }

@@ -44,6 +44,8 @@ namespace Capa_Presentacion
         //deja la mercaderia en el formulario de retiro de mercaderia
         private bool pendientedestock;
 
+        private const int INDEX_PRECIO = 4;
+        private const int INDEX_PRECIONEGOCIO = 2;
         public string Razonsocial
         {
             get { return razonsocial; }
@@ -233,6 +235,7 @@ namespace Capa_Presentacion
                     }
 
                     totalPagar = Convert.ToDecimal(txtTotalAPagar.Text);
+                    txtAbono.Text = txtAbono.Text == "" ? "0" : txtAbono.Text;
                     abono = Convert.ToDecimal(txtAbono.Text);
                     cambio = abono - (totalPagar);
                     //si el cambio es positivo lo agrego o sino muestro un msj
@@ -252,8 +255,10 @@ namespace Capa_Presentacion
                 }
                 catch (Exception ex)
                 {
-                    UtilityFrm.mensajeError("El valor ingresado es Incorrecto ," + ex.Message);
-                    UtilityFrm.limpiarTextbox(txtCambio, txtAbono);
+                    UtilityFrm.mensajeError("El valor ingresado es Incorrecto ," + ex.Message + ex.StackTrace);
+                    UtilityFrm.Log oLog = new UtilityFrm.Log();
+                    oLog.Add(ex.Message + ex.StackTrace);
+                UtilityFrm.limpiarTextbox(txtCambio, txtAbono);
                 }
 
 
@@ -297,11 +302,12 @@ namespace Capa_Presentacion
             DTOrdenpedido.Columns.Add("detalle", typeof(string));
 
             decimal IVA = 21;
-
+            
             if (formapago == "tarjeta")
             {
                 codtarjeta = this.codtarjeta;
                 cupon = txtCupon.Text == "" ? "0":txtCupon.Text;
+
                 lote = txtLote.Text == "" ? "0" : txtLote.Text;
                 cuota = Convert.ToInt32(lblCuota.Text);
                 importe = Convert.ToDecimal(lblImportecuota.Text);
@@ -313,17 +319,7 @@ namespace Capa_Presentacion
             }
 
             
-            /*IMPORTANTE HACER NOTA DE VENTA PARA IMPRIMIR*/
-            //if (MessageBox.Show("Desea Imprimir Venta?", "Imprimir"
-            //   , MessageBoxButtons.YesNo, MessageBoxIcon.Hand) == DialogResult.Yes)
-            //{
-            //    FrmImpVenta venta = new FrmImpVenta(totalAPagar);
-            //    venta.Show();
-            //}
-            //else {
-            //    this.Close();
-            //}
-
+            
             try
             {
 
@@ -338,11 +334,11 @@ namespace Capa_Presentacion
                 {
                     if (responsableiva != "EX")
                     {
-                        var = Decimal.Round(Convert.ToDecimal(fila.Cells["CPrecio"].Value) / Convert.ToDecimal(1.21), 2);
+                        var = Decimal.Round(Convert.ToDecimal(fila.Cells[INDEX_PRECIO].Value) / Convert.ToDecimal(1.21), 2);
                     }
                     else
                     {
-                        var = Decimal.Round(Convert.ToDecimal(fila.Cells["CPrecio"].Value),2);
+                        var = Decimal.Round(Convert.ToDecimal(fila.Cells[INDEX_PRECIO].Value),2);
                     }
                   
                   //Math.Round(decValue, 2, MidpointRounding.AwayFromZero)
@@ -353,7 +349,7 @@ namespace Capa_Presentacion
                  //cantidad = var.ToString("0.00", nfi);
                     //recorro la lista pasado por paramentro y asigno al datatable para generar la transaccion
                     //dt.Rows.Add(fila.Cells["Codigo"].Value, fila.Cells["Precio"].Value, fila.Cells["Cantidad"].Value, fila.Cells["Descuento"].Value, fila.Cells["Importe"].Value);
-                 dt.Rows.Add(fila.Cells["Codigo"].Value, fila.Cells["CPrecio"].Value, fila.Cells["Cantidad"].Value, fila.Cells["Descuento"].Value, fila.Cells["Importe"].Value, fila.Cells["Producto"].Value, precioneto, fila.Cells["Dpesable"].Value);
+                 dt.Rows.Add(fila.Cells["Codigo"].Value, fila.Cells[INDEX_PRECIO].Value, fila.Cells["Cantidad"].Value, fila.Cells["Descuento"].Value, fila.Cells["Importe"].Value, fila.Cells["Producto"].Value, precioneto, fila.Cells["Dpesable"].Value);
 
                   DTOrdenpedido.Rows.Add(fila.Cells["Codigo"].Value, "0", fila.Cells["Cantidad"].Value, fila.Cells["Producto"].Value);
 
@@ -369,7 +365,7 @@ namespace Capa_Presentacion
                         if (NegocioConfigEmpresa.marcafiscal != "")
                         {
                             msg = objcomprobante.factura(NegocioConfigEmpresa.marcafiscal, dt, Convert.ToDouble(txtTotalAPagar.Text), NegocioConfigEmpresa.modelofiscal, NegocioConfigEmpresa.puertofiscal,
-                                   1, razonsocial, razonsocial == "CONSUMIDOR FINAL" ? "99999999999" : cuit, domicilio, tipofactura, responsableiva, tipofactura, tipofactura, Convert.ToDouble(neto), Convert.ToDouble(iva), Convert.ToDouble(this.neto105), Convert.ToDouble(this.iva105));
+                                   1, razonsocial, razonsocial == "CONSUMIDOR FINAL" ? "99999999" : cuit, domicilio, tipofactura, responsableiva, tipofactura, tipofactura, Convert.ToDouble(neto), Convert.ToDouble(iva), Convert.ToDouble(this.neto105), Convert.ToDouble(this.iva105));
                         }
                         else
                         {
@@ -379,8 +375,9 @@ namespace Capa_Presentacion
                   {
                       UtilityFrm.mensajeError(msg);
                       UtilityFrm.mensajeConfirm ("Se guardara la venta como pendiente de factura la puede encontrar en lista de ventas");
+                       
                       estadofactura = 'P';
-                     // tipofactura = "X";
+                      tipofactura = "ERROR";
                         }
                   else
                   {
@@ -401,7 +398,9 @@ namespace Capa_Presentacion
               }
               catch (Exception e)
               {
-                  UtilityFrm.mensajeError(e.Message);
+                    UtilityFrm.Log oLog = new UtilityFrm.Log();
+                    oLog.Add(e.Message + e.StackTrace);
+                    UtilityFrm.mensajeError(e.Message);
               }
               string Rta = objventa.Insertar(this.idCliente, DateTime.Now, Tipo_comprobante, 
                   objcomprobante.Puntoventa.PadLeft(5,'0'), msg.Substring(0, 2) == "ok" ? nrocomprobante.PadLeft(8, '0') : "0", 
@@ -424,7 +423,7 @@ namespace Capa_Presentacion
                     if (this.concaja == true)
                     {
 
-                        Rta = Negociocaja.insertarmovcaja(4110107, Convert.ToSingle(txtTotalAPagar.Text), 0, Convert.ToString(DateTime.Now), NegocioConfigEmpresa.usuarioconectado , NegocioConfigEmpresa.idusuario , NegocioConfigEmpresa.turno, "Venta nro : " + objventa.Idventa.ToString(), objventa.Idventa, true);
+                        Rta = Negociocaja.insertarmovcaja(4110107, Convert.ToSingle(txtTotalAPagar.Text), 0, Convert.ToString(DateTime.Now), NegocioConfigEmpresa.usuarioconectado , NegocioConfigEmpresa.idusuario , NegocioConfigEmpresa.turno, "Venta nro : " + objventa.Idventa.ToString(), objventa.Idventa, true,NegocioConfigEmpresa.nrocaja, codformapago);
                     }
                     else
                     {
@@ -455,7 +454,7 @@ namespace Capa_Presentacion
 
                             else
                             {
-                                if (NegocioConfigEmpresa.marcafiscal == "elec" && tipofactura != "X")
+                                if (NegocioConfigEmpresa.marcafiscal == "elec" && tipofactura != "X" && tipofactura != "ERROR")
                                 {
                                     if (opcionimpresion != "")
                                     {
@@ -510,7 +509,20 @@ namespace Capa_Presentacion
             catch (Exception ex)
             {
 
-                UtilityFrm.mensajeError(ex.Message);
+                // Qué ha sucedido
+                var mensaje = "Error message: " + ex.Message;
+
+                // Información sobre la excepción interna
+                if (ex.InnerException != null)
+                {
+                    mensaje = mensaje + " Inner exception: " + ex.InnerException.Message;
+                }
+
+                // Dónde ha sucedido
+                mensaje = mensaje + " Stack trace: " + ex.StackTrace;
+                UtilityFrm.Log oLog = new UtilityFrm.Log();
+                oLog.Add(mensaje);
+                UtilityFrm.mensajeError(mensaje);
             }
 
            
@@ -518,7 +530,7 @@ namespace Capa_Presentacion
         private void btnGuardar_Click(object sender, EventArgs e)
         {
             
-            
+           
             guardarventa();
 
 
@@ -561,25 +573,48 @@ namespace Capa_Presentacion
 
         private void FrmGuardarVenta_Load(object sender, EventArgs e)
         {
-           //el foco se posa en abono
-           
-            llenarComboBoxTarjeta();
-            if (formapago == "contado")
+            //el foco se posa en abono
+            try
             {
-                this.tabTarjeta.SelectedTab = tbEfectivo;
+                llenarComboBoxTarjeta();
+                if (formapago == "contado")
+                {
+                    this.tabTarjeta.SelectedTab = tbEfectivo;
+                }
+                if (formapago == "tarjeta")
+                {
+                    this.tabTarjeta.SelectedTab = tbTarjeta;
+                    lblCuota.Text = cuota.ToString();
+                    lblImportecuota.Text = importecuota.ToString();
+
+                    lblntarjeta.Text = nombretarjeta;
+                }
+
+                txtAbono.Focus();
+                txtAbono.SelectAll();
+                // this.reportViewer1.RefreshReport();
             }
-            if (formapago == "tarjeta")
-	       {
-		      this.tabTarjeta.SelectedTab = tbTarjeta;
-              lblCuota.Text =  cuota.ToString();
-              lblImportecuota.Text = importecuota.ToString();
-            
-              lblntarjeta.Text = nombretarjeta;
-	       }
+            catch (Exception ex)
+            {
+
+                // Qué ha sucedido
+                var mensaje = "Error message: " + ex.Message;
+
+                // Información sobre la excepción interna
+                if (ex.InnerException != null)
+                {
+                    mensaje = mensaje + " Inner exception: " + ex.InnerException.Message;
+                }
+
+                // Dónde ha sucedido
+                mensaje = mensaje + " Stack trace: " + ex.StackTrace;
+                UtilityFrm.Log oLog = new UtilityFrm.Log();
+                oLog.Add(mensaje);
+                UtilityFrm.mensajeError(mensaje);
+            }
+
+
            
-            txtAbono.Focus();
-            txtAbono.SelectAll();
-           // this.reportViewer1.RefreshReport();
         }
         public void llenarComboBoxTarjeta() {
 

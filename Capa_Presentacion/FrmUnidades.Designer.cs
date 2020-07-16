@@ -53,7 +53,6 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.errorIcono = new System.Windows.Forms.ErrorProvider(this.components);
             this.lblUnidades = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
             this.tabLista.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataLista)).BeginInit();
             this.grpboxCategoria.SuspendLayout();
@@ -87,7 +86,6 @@
             this.tabLista.Controls.Add(this.lblNombre);
             this.tabLista.Controls.Add(this.btnImprimir);
             this.tabLista.Controls.Add(this.btnEliminar);
-            this.tabLista.Controls.Add(this.button1);
             this.tabLista.Controls.Add(this.btnBuscar);
             this.tabLista.Location = new System.Drawing.Point(4, 29);
             this.tabLista.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
@@ -342,18 +340,6 @@
             this.lblUnidades.TabIndex = 2;
             this.lblUnidades.Text = "Unidades";
             // 
-            // button1
-            // 
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(447, 2);
-            this.button1.Margin = new System.Windows.Forms.Padding(4);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(100, 28);
-            this.button1.TabIndex = 4;
-            this.button1.Text = "LISTA";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.btnBuscar_Click);
-            // 
             // FrmUnidades
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -405,6 +391,5 @@
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.ErrorProvider errorIcono;
         private System.Windows.Forms.Label lblUnidades;
-        private System.Windows.Forms.Button button1;
     }
 }

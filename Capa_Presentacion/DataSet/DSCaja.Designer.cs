@@ -1084,23 +1084,30 @@ namespace Capa_Presentacion.DataSet.DSCajaTableAdapters {
             this._commandCollection = new global::System.Data.Odbc.OdbcCommand[1];
             this._commandCollection[0] = new global::System.Data.Odbc.OdbcCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "{? = CALL \"dbo\".\"REPORTE_CAJA\"(?)}";
+            this._commandCollection[0].CommandText = "{? = CALL dbo.REPORTE_CAJA(?, ?)}";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.StoredProcedure;
             this._commandCollection[0].Parameters.Add(new global::System.Data.Odbc.OdbcParameter("@RETURN_VALUE", global::System.Data.Odbc.OdbcType.Int, 2147483647, global::System.Data.ParameterDirection.ReturnValue, ((byte)(255)), ((byte)(0)), null, global::System.Data.DataRowVersion.Current, false, null));
             this._commandCollection[0].Parameters.Add(new global::System.Data.Odbc.OdbcParameter("@IDCIERRE", global::System.Data.Odbc.OdbcType.Int, 2147483647, global::System.Data.ParameterDirection.Input, ((byte)(255)), ((byte)(0)), null, global::System.Data.DataRowVersion.Current, false, null));
+            this._commandCollection[0].Parameters.Add(new global::System.Data.Odbc.OdbcParameter("@Idcaja", global::System.Data.Odbc.OdbcType.Int, 2147483647, global::System.Data.ParameterDirection.Input, ((byte)(255)), ((byte)(0)), null, global::System.Data.DataRowVersion.Current, false, null));
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Fill, true)]
-        public virtual int Fill(DSCaja.REPORTE_CAJA1DataTable dataTable, global::System.Nullable<int> @IDCIERRE) {
+        public virtual int Fill(DSCaja.REPORTE_CAJA1DataTable dataTable, global::System.Nullable<int> @IDCIERRE, global::System.Nullable<int> @Idcaja) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((@IDCIERRE.HasValue == true)) {
                 this.Adapter.SelectCommand.Parameters[1].Value = ((int)(@IDCIERRE.Value));
             }
             else {
                 this.Adapter.SelectCommand.Parameters[1].Value = global::System.DBNull.Value;
+            }
+            if ((@Idcaja.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[2].Value = ((int)(@Idcaja.Value));
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[2].Value = global::System.DBNull.Value;
             }
             if ((this.ClearBeforeFill == true)) {
                 dataTable.Clear();
@@ -1113,13 +1120,19 @@ namespace Capa_Presentacion.DataSet.DSCajaTableAdapters {
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Select, true)]
-        public virtual DSCaja.REPORTE_CAJA1DataTable GetData(global::System.Nullable<int> @IDCIERRE) {
+        public virtual DSCaja.REPORTE_CAJA1DataTable GetData(global::System.Nullable<int> @IDCIERRE, global::System.Nullable<int> @Idcaja) {
             this.Adapter.SelectCommand = this.CommandCollection[0];
             if ((@IDCIERRE.HasValue == true)) {
                 this.Adapter.SelectCommand.Parameters[1].Value = ((int)(@IDCIERRE.Value));
             }
             else {
                 this.Adapter.SelectCommand.Parameters[1].Value = global::System.DBNull.Value;
+            }
+            if ((@Idcaja.HasValue == true)) {
+                this.Adapter.SelectCommand.Parameters[2].Value = ((int)(@Idcaja.Value));
+            }
+            else {
+                this.Adapter.SelectCommand.Parameters[2].Value = global::System.DBNull.Value;
             }
             DSCaja.REPORTE_CAJA1DataTable dataTable = new DSCaja.REPORTE_CAJA1DataTable();
             this.Adapter.Fill(dataTable);

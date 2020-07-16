@@ -17,6 +17,7 @@ using XanderUI.Designers;
 using System.IO.Ports;
 using System.Globalization;
 using System.Diagnostics;
+using System.IO;
 
 namespace Capa_Presentacion
 {
@@ -289,10 +290,28 @@ namespace Capa_Presentacion
             decimal resultado = 0;
             if (costo != 0)
             {
-                resultado = Math.Ceiling(costo * (1 + (utilidad / 100)));
+                if (NegocioConfigEmpresa.confsistema("redondear") == "True")
+                {
+                    resultado = Math.Ceiling(costo * (1 + (utilidad / 100)));
+                }
+                else
+                {
+                    resultado = costo * (1 + (utilidad / 100));
+                }
+                
+                
+                resultado = costo * (1 + (utilidad / 100));
                 if (flete != 0)
                 {
-                    resultado = Math.Ceiling(resultado * (1 + (flete / 100)));
+                    if ( NegocioConfigEmpresa.confsistema("redondear") == "True")
+                    {
+                        resultado = Math.Ceiling(resultado * (1 + (flete / 100)));
+                    }
+                    else
+                    {
+                        resultado = resultado * (1 + (flete / 100));
+                    }
+                    
 
                 }
             }
@@ -899,5 +918,63 @@ namespace Capa_Presentacion
             }
         }
 
+        //generar un log en el instalador 
+
+        public class Log
+        {
+            private string Path = "";
+
+
+            public Log(string Path)
+            {
+                this.Path = Path;
+            }
+
+            public Log()
+            {
+                this.Path = System.AppDomain.CurrentDomain.BaseDirectory + @"Log\";
+            }
+            public void Add(string sLog)
+            {
+                CreateDirectory();
+                string nombre = GetNameFile();
+                string cadena = "";
+
+                cadena += DateTime.Now + " - " + sLog + Environment.NewLine;
+
+                StreamWriter sw = new StreamWriter(Path + "/" + nombre, true);
+                sw.Write(cadena);
+                sw.Close();
+
+            }
+
+            #region HELPER
+            private string GetNameFile()
+            {
+                string nombre = "";
+
+                nombre = "log_" + DateTime.Now.Year + "_" + DateTime.Now.Month + "_" + DateTime.Now.Day + ".txt";
+
+                return nombre;
+            }
+
+            private void CreateDirectory()
+            {
+                try
+                {
+                    if (!Directory.Exists(Path))
+                        Directory.CreateDirectory(Path);
+
+
+                }
+                catch (DirectoryNotFoundException ex)
+                {
+                    throw new Exception(ex.Message);
+
+                }
+            }
+            #endregion
         }
+
+    }
 }

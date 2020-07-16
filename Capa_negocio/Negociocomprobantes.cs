@@ -150,7 +150,9 @@ namespace Capa_negocio
         NegocioFHasar objhasar = new NegocioFHasar();
         NegocioFElectronica objelectronica;
         
-        public string factura(string marca, DataTable dt, double total,int modelofiscal, int puerto,int tiporesponsabilidad,string razonsocial = "CONSUMIDOR FINAL",string cuit = "9999999999", string domicilio = "", string tipoticket = "", string responsableiva = "CF", string tipocomprobante = "FACTURA",string tipofactura = "B",double neto21 = 0.00,double civa21 = 0.00,double neto105 = 0.00,double civa105 = 0.00)
+        public string factura(string marca, DataTable dt, double total,int modelofiscal, int puerto,int tiporesponsabilidad,string razonsocial = "CONSUMIDOR FINAL",
+                              string cuit = "9999999999", string domicilio = "", string tipoticket = "", string responsableiva = "CF", string tipocomprobante = "FACTURA",
+                              string tipofactura = "B",double neto21 = 0.00,double civa21 = 0.00,double neto105 = 0.00,double civa105 = 0.00)
         {
             string msg = "";
             try

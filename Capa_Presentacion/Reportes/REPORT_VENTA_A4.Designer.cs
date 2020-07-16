@@ -478,7 +478,7 @@ namespace Capa_Presentacion.Reportes
             this.textBox26.Name = "textBox26";
             this.textBox26.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(3.5526828765869141D), Telerik.Reporting.Drawing.Unit.Cm(0.39979955554008484D));
             this.textBox26.Style.Font.Size = Telerik.Reporting.Drawing.Unit.Point(9D);
-            this.textBox26.Value = "=Fields.condicioniva";
+            this.textBox26.Value = "=Fields.categoria";
             // 
             // textBox25
             // 
@@ -486,7 +486,7 @@ namespace Capa_Presentacion.Reportes
             this.textBox25.Name = "textBox25";
             this.textBox25.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(3.8666670322418213D), Telerik.Reporting.Drawing.Unit.Cm(0.39979955554008484D));
             this.textBox25.Style.Font.Size = Telerik.Reporting.Drawing.Unit.Point(9D);
-            this.textBox25.Value = "=Fields.cuit";
+            this.textBox25.Value = "=Fields.cuitcliente";
             // 
             // textBox24
             // 
@@ -693,7 +693,7 @@ namespace Capa_Presentacion.Reportes
             // 
             // textBox9
             // 
-            this.textBox9.Format = "{0:N0}";
+            this.textBox9.Format = "{0:N2}";
             this.textBox9.Name = "textBox9";
             this.textBox9.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(2.5197370052337646D), Telerik.Reporting.Drawing.Unit.Cm(0.89633381366729736D));
             this.textBox9.Style.Font.Size = Telerik.Reporting.Drawing.Unit.Point(9D);

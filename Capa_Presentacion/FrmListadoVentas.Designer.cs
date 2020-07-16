@@ -79,6 +79,12 @@
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
             this.REPORTE_VENTAPRODUCTOTableAdapter = new Capa_Presentacion.DVentaproductoTableAdapters.REPORTE_VENTAPRODUCTOTableAdapter();
             this.xuiCustomGroupbox1 = new XanderUI.XUICustomGroupbox();
+            this.txtPuntoventa = new System.Windows.Forms.TextBox();
+            this.txtIdVenta = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.cbFormapago = new System.Windows.Forms.ComboBox();
             this.xuiCustomGroupbox2 = new XanderUI.XUICustomGroupbox();
             this.xuiCustomGroupbox3 = new XanderUI.XUICustomGroupbox();
             this.dataLista = new Guna.UI.WinForms.GunaDataGridView();
@@ -101,6 +107,8 @@
             this.CAE = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.CAE_Fechavencimiento = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Stock = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.formadepago = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Pago = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.REPORTE_VENTAPRODUCTOBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.DVentaproducto)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorIcono)).BeginInit();
@@ -233,7 +241,7 @@
             this.rdBVenta.AutoSize = true;
             this.rdBVenta.Checked = true;
             this.rdBVenta.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.rdBVenta.Location = new System.Drawing.Point(474, 41);
+            this.rdBVenta.Location = new System.Drawing.Point(474, 55);
             this.rdBVenta.Name = "rdBVenta";
             this.rdBVenta.Size = new System.Drawing.Size(95, 29);
             this.rdBVenta.TabIndex = 35;
@@ -246,11 +254,11 @@
             // 
             this.rdBPresupuesto.AutoSize = true;
             this.rdBPresupuesto.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.rdBPresupuesto.Location = new System.Drawing.Point(757, 41);
+            this.rdBPresupuesto.Location = new System.Drawing.Point(474, 20);
             this.rdBPresupuesto.Name = "rdBPresupuesto";
-            this.rdBPresupuesto.Size = new System.Drawing.Size(207, 29);
+            this.rdBPresupuesto.Size = new System.Drawing.Size(152, 29);
             this.rdBPresupuesto.TabIndex = 34;
-            this.rdBPresupuesto.Text = "             Presupuesto";
+            this.rdBPresupuesto.Text = "  Presupuesto";
             this.rdBPresupuesto.UseVisualStyleBackColor = true;
             this.rdBPresupuesto.Click += new System.EventHandler(this.rdBPresupuesto_Click);
             // 
@@ -260,7 +268,7 @@
             this.ChkFactura.Checked = true;
             this.ChkFactura.CheckState = System.Windows.Forms.CheckState.Checked;
             this.ChkFactura.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ChkFactura.Location = new System.Drawing.Point(592, 60);
+            this.ChkFactura.Location = new System.Drawing.Point(730, 55);
             this.ChkFactura.Name = "ChkFactura";
             this.ChkFactura.Size = new System.Drawing.Size(139, 29);
             this.ChkFactura.TabIndex = 32;
@@ -273,7 +281,7 @@
             this.Chkcaja.Checked = true;
             this.Chkcaja.CheckState = System.Windows.Forms.CheckState.Checked;
             this.Chkcaja.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Chkcaja.Location = new System.Drawing.Point(592, 15);
+            this.Chkcaja.Location = new System.Drawing.Point(581, 55);
             this.Chkcaja.Name = "Chkcaja";
             this.Chkcaja.Size = new System.Drawing.Size(116, 29);
             this.Chkcaja.TabIndex = 31;
@@ -471,13 +479,13 @@
             this.chartRankingVentas.ChartAreas.Add(chartArea1);
             legend1.Name = "Legend1";
             this.chartRankingVentas.Legends.Add(legend1);
-            this.chartRankingVentas.Location = new System.Drawing.Point(12, 227);
+            this.chartRankingVentas.Location = new System.Drawing.Point(12, 216);
             this.chartRankingVentas.Name = "chartRankingVentas";
             series1.ChartArea = "ChartArea1";
             series1.Legend = "Legend1";
             series1.Name = "Ventas";
             this.chartRankingVentas.Series.Add(series1);
-            this.chartRankingVentas.Size = new System.Drawing.Size(1249, 363);
+            this.chartRankingVentas.Size = new System.Drawing.Size(1260, 365);
             this.chartRankingVentas.TabIndex = 65;
             title1.Name = "Ventas";
             this.chartRankingVentas.Titles.Add(title1);
@@ -523,11 +531,12 @@
             reportDataSource1.Value = this.REPORTE_VENTAPRODUCTOBindingSource;
             this.reportViewer1.LocalReport.DataSources.Add(reportDataSource1);
             this.reportViewer1.LocalReport.ReportEmbeddedResource = "Capa_Presentacion.Reporteproductoventa.rdlc";
-            this.reportViewer1.Location = new System.Drawing.Point(10, 216);
+            this.reportViewer1.Location = new System.Drawing.Point(10, 218);
             this.reportViewer1.Name = "reportViewer1";
             this.reportViewer1.Size = new System.Drawing.Size(1256, 380);
             this.reportViewer1.TabIndex = 67;
             this.reportViewer1.Visible = false;
+            this.reportViewer1.Load += new System.EventHandler(this.reportViewer1_Load);
             // 
             // REPORTE_VENTAPRODUCTOTableAdapter
             // 
@@ -535,8 +544,16 @@
             // 
             // xuiCustomGroupbox1
             // 
+            this.xuiCustomGroupbox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.xuiCustomGroupbox1.BorderColor = System.Drawing.Color.DodgerBlue;
             this.xuiCustomGroupbox1.BorderWidth = 1;
+            this.xuiCustomGroupbox1.Controls.Add(this.txtPuntoventa);
+            this.xuiCustomGroupbox1.Controls.Add(this.txtIdVenta);
+            this.xuiCustomGroupbox1.Controls.Add(this.label4);
+            this.xuiCustomGroupbox1.Controls.Add(this.label2);
+            this.xuiCustomGroupbox1.Controls.Add(this.label3);
+            this.xuiCustomGroupbox1.Controls.Add(this.cbFormapago);
             this.xuiCustomGroupbox1.Controls.Add(this.rdBVenta);
             this.xuiCustomGroupbox1.Controls.Add(this.Chkcaja);
             this.xuiCustomGroupbox1.Controls.Add(this.ChkFactura);
@@ -547,17 +564,85 @@
             this.xuiCustomGroupbox1.Controls.Add(this.dtpFechaIni);
             this.xuiCustomGroupbox1.Controls.Add(this.btnTodos);
             this.xuiCustomGroupbox1.Controls.Add(this.dtpFechaFin);
-            this.xuiCustomGroupbox1.Location = new System.Drawing.Point(10, 107);
+            this.xuiCustomGroupbox1.Location = new System.Drawing.Point(9, 43);
             this.xuiCustomGroupbox1.Name = "xuiCustomGroupbox1";
             this.xuiCustomGroupbox1.ShowText = true;
-            this.xuiCustomGroupbox1.Size = new System.Drawing.Size(1002, 100);
+            this.xuiCustomGroupbox1.Size = new System.Drawing.Size(1113, 169);
             this.xuiCustomGroupbox1.TabIndex = 68;
             this.xuiCustomGroupbox1.TabStop = false;
             this.xuiCustomGroupbox1.Text = "Busqueda avanzada :";
             this.xuiCustomGroupbox1.TextColor = System.Drawing.Color.DodgerBlue;
             // 
+            // txtPuntoventa
+            // 
+            this.txtPuntoventa.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtPuntoventa.Location = new System.Drawing.Point(424, 119);
+            this.txtPuntoventa.Margin = new System.Windows.Forms.Padding(4, 8, 4, 8);
+            this.txtPuntoventa.Name = "txtPuntoventa";
+            this.txtPuntoventa.Size = new System.Drawing.Size(88, 30);
+            this.txtPuntoventa.TabIndex = 39;
+            this.txtPuntoventa.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtPuntoventa_KeyDown);
+            // 
+            // txtIdVenta
+            // 
+            this.txtIdVenta.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtIdVenta.Location = new System.Drawing.Point(108, 118);
+            this.txtIdVenta.Margin = new System.Windows.Forms.Padding(4, 8, 4, 8);
+            this.txtIdVenta.Name = "txtIdVenta";
+            this.txtIdVenta.Size = new System.Drawing.Size(120, 30);
+            this.txtIdVenta.TabIndex = 39;
+            this.txtIdVenta.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtIdVenta_KeyDown);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(15, 122);
+            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(90, 25);
+            this.label4.TabIndex = 38;
+            this.label4.Text = "Nº Venta";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(236, 124);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(169, 25);
+            this.label2.TabIndex = 38;
+            this.label2.Text = "Nº Punto de venta";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(542, 120);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(155, 25);
+            this.label3.TabIndex = 38;
+            this.label3.Text = "Forma de pago :";
+            // 
+            // cbFormapago
+            // 
+            this.cbFormapago.AutoCompleteCustomSource.AddRange(new string[] {
+            "EFECTIVO",
+            "TARJETA",
+            "TODO"});
+            this.cbFormapago.FormattingEnabled = true;
+            this.cbFormapago.Items.AddRange(new object[] {
+            "EFECTIVO",
+            "TARJETA",
+            "TODO",
+            "CTACTE"});
+            this.cbFormapago.Location = new System.Drawing.Point(714, 119);
+            this.cbFormapago.Name = "cbFormapago";
+            this.cbFormapago.Size = new System.Drawing.Size(197, 33);
+            this.cbFormapago.TabIndex = 37;
+            // 
             // xuiCustomGroupbox2
             // 
+            this.xuiCustomGroupbox2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.xuiCustomGroupbox2.BorderColor = System.Drawing.Color.DodgerBlue;
             this.xuiCustomGroupbox2.BorderWidth = 1;
             this.xuiCustomGroupbox2.Controls.Add(this.button1);
@@ -565,10 +650,10 @@
             this.xuiCustomGroupbox2.Controls.Add(this.btnVisualizarGrafico);
             this.xuiCustomGroupbox2.Controls.Add(this.btnVisualizadorTorta);
             this.xuiCustomGroupbox2.Controls.Add(this.btnVisualizarLista);
-            this.xuiCustomGroupbox2.Location = new System.Drawing.Point(1019, 106);
+            this.xuiCustomGroupbox2.Location = new System.Drawing.Point(1128, 111);
             this.xuiCustomGroupbox2.Name = "xuiCustomGroupbox2";
             this.xuiCustomGroupbox2.ShowText = true;
-            this.xuiCustomGroupbox2.Size = new System.Drawing.Size(250, 100);
+            this.xuiCustomGroupbox2.Size = new System.Drawing.Size(144, 100);
             this.xuiCustomGroupbox2.TabIndex = 69;
             this.xuiCustomGroupbox2.TabStop = false;
             this.xuiCustomGroupbox2.Text = "Visualizador :";
@@ -576,14 +661,15 @@
             // 
             // xuiCustomGroupbox3
             // 
+            this.xuiCustomGroupbox3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.xuiCustomGroupbox3.BorderColor = System.Drawing.Color.DodgerBlue;
             this.xuiCustomGroupbox3.BorderWidth = 1;
             this.xuiCustomGroupbox3.Controls.Add(this.btnExportarExcel);
             this.xuiCustomGroupbox3.Controls.Add(this.btnCalculadora);
-            this.xuiCustomGroupbox3.Location = new System.Drawing.Point(9, 43);
+            this.xuiCustomGroupbox3.Location = new System.Drawing.Point(1128, 44);
             this.xuiCustomGroupbox3.Name = "xuiCustomGroupbox3";
             this.xuiCustomGroupbox3.ShowText = true;
-            this.xuiCustomGroupbox3.Size = new System.Drawing.Size(164, 61);
+            this.xuiCustomGroupbox3.Size = new System.Drawing.Size(145, 61);
             this.xuiCustomGroupbox3.TabIndex = 70;
             this.xuiCustomGroupbox3.TabStop = false;
             this.xuiCustomGroupbox3.Text = "Herramientas :";
@@ -631,7 +717,9 @@
             this.Totaliva105,
             this.CAE,
             this.CAE_Fechavencimiento,
-            this.Stock});
+            this.Stock,
+            this.formadepago,
+            this.Pago});
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -649,7 +737,7 @@
             this.dataLista.RowHeadersVisible = false;
             this.dataLista.RowTemplate.Height = 24;
             this.dataLista.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataLista.Size = new System.Drawing.Size(1258, 361);
+            this.dataLista.Size = new System.Drawing.Size(1263, 361);
             this.dataLista.StandardTab = true;
             this.dataLista.TabIndex = 106;
             this.dataLista.Theme = Guna.UI.WinForms.GunaDataGridViewPresetThemes.Guna;
@@ -847,6 +935,17 @@
             this.Stock.Name = "Stock";
             this.Stock.Visible = false;
             // 
+            // formadepago
+            // 
+            this.formadepago.HeaderText = "Forma de pago";
+            this.formadepago.Name = "formadepago";
+            this.formadepago.Visible = false;
+            // 
+            // Pago
+            // 
+            this.Pago.HeaderText = "Pago";
+            this.Pago.Name = "Pago";
+            // 
             // FrmListadoVentas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
@@ -870,6 +969,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Listado de Ventas";
             this.Load += new System.EventHandler(this.FrmListadoVentas_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FrmListadoVentas_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.REPORTE_VENTAPRODUCTOBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.DVentaproducto)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.errorIcono)).EndInit();
@@ -938,6 +1038,12 @@
         private Guna.UI.WinForms.GunaDataGridView dataLista;
         private Guna.UI.WinForms.GunaDataGridView DTDetalleventa;
         private System.Windows.Forms.ToolStripMenuItem MenuAnular;
+        private System.Windows.Forms.ComboBox cbFormapago;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox txtPuntoventa;
+        private System.Windows.Forms.TextBox txtIdVenta;
+        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.DataGridViewTextBoxColumn Codigo;
         private System.Windows.Forms.DataGridViewTextBoxColumn razon_social;
         private System.Windows.Forms.DataGridViewTextBoxColumn Fecha;
@@ -956,5 +1062,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn CAE;
         private System.Windows.Forms.DataGridViewTextBoxColumn CAE_Fechavencimiento;
         private System.Windows.Forms.DataGridViewTextBoxColumn Stock;
+        private System.Windows.Forms.DataGridViewTextBoxColumn formadepago;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Pago;
     }
 }

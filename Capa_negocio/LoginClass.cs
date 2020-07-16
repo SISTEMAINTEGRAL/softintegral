@@ -242,7 +242,7 @@ namespace Capa_negocio
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                throw;
             }
         }
         public class XMLLOADER

@@ -29,12 +29,12 @@ namespace Capa_Presentacion
             long idturno = 0;
 
             
-                objcaja.extraercierre("id_turno");
+                objcaja.extraercierre("id_turno",NegocioConfigEmpresa.nrocaja);
                 idturno =  objcaja.Idturno == 1 ? 1 : objcaja.Idturno  + 1 ;
-                objcaja.extraercierre("cod_cierre");
+                objcaja.extraercierre("cod_cierre",NegocioConfigEmpresa.nrocaja);
                 idcierre = objcaja.Idcierre == 1 ? 1 : objcaja.Idcierre + 1;
                 
-                string msg = Negociocaja.insertarcierrecaja(idcierre, DateTime.Now.ToString() , NegocioConfigEmpresa.turno , objcaja.Ingreso, objcaja.Egreso, idturno, 0, 0,0 ,NegocioConfigEmpresa.idusuario, "APERTURA");
+                string msg = Negociocaja.insertarcierrecaja(idcierre, DateTime.Now.ToString() , NegocioConfigEmpresa.turno , objcaja.Ingreso, objcaja.Egreso, idturno, 0, 0,0 ,NegocioConfigEmpresa.idusuario, "APERTURA",NegocioConfigEmpresa.nrocaja);
 
                 if (msg == "ok")
                 {
@@ -42,7 +42,7 @@ namespace Capa_Presentacion
                     {
                         Negociocaja.insertarmovcaja(9100001, Convert.ToSingle(txtImporte.Text),
                          0, fecha.Value.ToString("dd/MM/yyyy"), NegocioConfigEmpresa.usuarioconectado, NegocioConfigEmpresa.idusuario, NegocioConfigEmpresa.turno,
-                        "APERTURA DE CAJA", 0, true);
+                        "APERTURA DE CAJA", 0, true, NegocioConfigEmpresa.nrocaja,1);
                     }
                     catch (Exception s)
                     {

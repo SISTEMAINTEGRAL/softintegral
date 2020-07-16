@@ -33,6 +33,7 @@ namespace Capa_negocio
         public static string formatoimpproforma;
         public static string formatoimpremito;
         public static string certificado;
+        public static int nrocaja;
 
         public static string[] ReglasUsuario { get; set; }
         public static int idroles;
@@ -138,7 +139,7 @@ namespace Capa_negocio
 
         }
 
-        public static string confequipo(string equipo, string usuario, string turno, int idusuario, int codsucursal, DateTime fecha, string ruta, string ip, int puertofiscal, int modelofiscal, int empresa, string marcafiscal, string impticket = "", string impreporte = "", string varcertificado = "")
+        public static string confequipo(string equipo, string usuario, string turno, int idusuario, int codsucursal, DateTime fecha, string ruta, string ip, int puertofiscal, int modelofiscal, int empresa, string marcafiscal, string impticket = "", string impreporte = "", string varcertificado = "", int varnrocaja = 1)
         {
             string msg = "";
 
@@ -160,6 +161,8 @@ namespace Capa_negocio
                 objequipo.Impticket = impticket;
                 objequipo.Impreporte = impreporte;
                 objequipo.Certificado = varcertificado;
+                objequipo.Nrocaja = varnrocaja;
+
 
                 msg = objequipo.confequipo(objequipo);
                 NegocioConfigEmpresa.inivarglobal(equipo, usuario, turno, idusuario, codsucursal, fecha, ruta, ip, puertofiscal, modelofiscal, empresa, marcafiscal);
@@ -201,6 +204,7 @@ namespace Capa_negocio
                 NegocioConfigEmpresa.formatoimpproforma = objempresa.Formatoimpproforma;
                 NegocioConfigEmpresa.formatoimpremito = objempresa.Formatoimpremito;
                 NegocioConfigEmpresa.certificado = objempresa.Certificado;
+                NegocioConfigEmpresa.nrocaja = objempresa.Nrocaja;
             }
             else
             {

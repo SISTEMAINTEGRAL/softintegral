@@ -648,3 +648,8 @@ C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\bin\Debug\zh-Hant\Mic
 C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\obj\Debug\Capa_Presentacion.Formreportes.FrmGondola.resources
 C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\obj\Debug\RdlCompile.cache
 C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\obj\Debug\RdlCompile.compiled
+C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\obj\Debug\Capa_Presentacion.FrmArticulos2.resources
+C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\obj\Debug\Capa_Presentacion.FrmPreciosmasivos2.resources
+C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\obj\Debug\Capa_Presentacion.Formreportes.FrmGondola2.resources
+C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\obj\Debug\Capa_Presentacion.FrmTarjeta.resources
+C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\obj\Debug\Capa_Presentacion.FrmGuardarVenta2.resources

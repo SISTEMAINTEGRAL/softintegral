@@ -98,7 +98,7 @@ namespace Capa_Presentacion.Formreportes
                             if (midatatable.Rows.Count != 0)
                             {
                                 DataRow row = midatatable.Rows[0];
-                                miticket1.barcode1.Value = UtilityFrm.calculoDigitoVerificador("", "", "", "", "", false, row["idventa"].ToString());
+                              //  miticket1.barcode1.Value = UtilityFrm.calculoDigitoVerificador("", "", "", "", "", false, row["idventa"].ToString());
                             }
 
                             miticket1.table1.DataSource = midatatable;
