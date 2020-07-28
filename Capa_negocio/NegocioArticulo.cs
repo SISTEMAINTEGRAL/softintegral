@@ -39,6 +39,7 @@ namespace Capa_negocio
         private decimal bulto_cantidad;
         private string bulto_codigobarra;
         private string nombrecategoria;
+        private decimal stock_minimo;
         public int Pesable
         {
             get { return pesable; }
@@ -46,13 +47,22 @@ namespace Capa_negocio
         }
 
        
-        private int stockActual;
+        private decimal stockActual;
         private Boolean sindatos;
 
-        public static string insertar(string nombre, string codigo, string descripcion, int idCategoria, decimal precio,int cantInicial,int pesable, decimal preciocompra, decimal utilidad,decimal flete, decimal varcantidadpormayor,decimal varpreciopormayor, int idsubcategoria,decimal iva, decimal varcantidadpormayor2, decimal varpreciopormayor2,decimal varprecio_oferta, DateTime fechaoferta, bool habilitarfechaoferta, decimal bulto_cantidad, string bulto_codigobarra, decimal utilidadpormayor, decimal utilidadpormayor2, decimal utilidadoferta)
+        //sistema mayorista
+        public static string insertar(string nombre, string codigo, string descripcion, int idCategoria, decimal precio, int cantInicial, int pesable, decimal preciocompra, decimal utilidad, decimal flete, decimal varcantidadpormayor, decimal varpreciopormayor, int idsubcategoria, decimal iva, decimal varcantidadpormayor2, decimal varpreciopormayor2, decimal varprecio_oferta, DateTime fechaoferta, bool habilitarfechaoferta, decimal bulto_cantidad, string bulto_codigobarra, decimal utilidadpormayor, decimal utilidadpormayor2, decimal utilidadoferta)
         {
-            DatosArticulo dArticulo= new DatosArticulo(nombre,codigo,descripcion,idCategoria,precio,cantInicial,pesable,preciocompra,utilidad,flete, DateTime.Now,fechaoferta,0,"",idsubcategoria,varcantidadpormayor,varpreciopormayor,iva,varcantidadpormayor2,varpreciopormayor2,varprecio_oferta,habilitarfechaoferta,bulto_cantidad,bulto_codigobarra,utilidadpormayor,utilidadpormayor2,utilidadoferta);
-            return dArticulo.agregar(dArticulo);
+            DatosArticulo dArticulo = new DatosArticulo(nombre, codigo, descripcion, idCategoria, precio, cantInicial, pesable, preciocompra, utilidad, flete, DateTime.Now, fechaoferta, 0, "", idsubcategoria, varcantidadpormayor, varpreciopormayor, iva, varcantidadpormayor2, varpreciopormayor2, varprecio_oferta, habilitarfechaoferta, bulto_cantidad, bulto_codigobarra, utilidadpormayor, utilidadpormayor2, utilidadoferta, NegocioConfigEmpresa.confsistema("opcionsistema").ToString());
+            return dArticulo.agregar(dArticulo,"");
+
+        }
+
+       // sistema negocio
+        public static string insertar(string nombre, string codigo, string descripcion, int idCategoria, decimal precio, int cantInicial, int pesable, decimal preciocompra, decimal utilidad, decimal flete, decimal varcantidadpormayor, decimal varpreciopormayor, int idsubcategoria, decimal iva)
+        {
+            DatosArticulo dArticulo = new DatosArticulo(nombre, codigo, descripcion, idCategoria, precio, cantInicial, pesable, preciocompra, utilidad, flete, DateTime.Now, 0, "", idsubcategoria, varcantidadpormayor, varpreciopormayor, iva, NegocioConfigEmpresa.confsistema("opcionsistema").ToString());
+            return dArticulo.agregar(dArticulo,"");
 
         }
         public static string eliminar(int idArticulo)
@@ -62,26 +72,34 @@ namespace Capa_negocio
             dArticulo.IdArticulo = idArticulo;
             return dArticulo.eliminar(dArticulo);
         }
+        //sistema mayorista
         public static string editar(int idArticulo,string nombre, string codigo, string descripcion, int idCategoria,decimal precio,decimal cantInicial,int pesable,decimal preciocompra,decimal utilidad, decimal flete,  DateTime fecha  ,DateTime fechaoferta,int edicionusuario = 0, string edicionlugar = "", decimal cantidadpormayor =0, decimal preciopormayor=0,int idsubcategoria = 0 , decimal iva = 0,
                                     decimal cantidadpormayor2 = 0, decimal preciopormayor2 = 0, decimal precio_oferta = 0, bool habilitarfechaoferta = false, decimal bulto_cantidad = 0, string bulto_codigobarra = "", decimal varutilidadpormayor = 0, decimal varutilidadpormayor2 = 0, decimal varutilidadoferta = 0)
         {
-            DatosArticulo dArticulo = new DatosArticulo(nombre, codigo, descripcion,idCategoria,precio,cantInicial,pesable,preciocompra,utilidad,flete,fecha,fechaoferta,edicionusuario,edicionlugar,idsubcategoria,cantidadpormayor,preciopormayor, iva,cantidadpormayor2,preciopormayor2,precio_oferta,habilitarfechaoferta,bulto_cantidad,bulto_codigobarra, varutilidadpormayor,varutilidadpormayor2,varutilidadoferta);
+            DatosArticulo dArticulo = new DatosArticulo(nombre, codigo, descripcion,idCategoria,precio,cantInicial,pesable,preciocompra,utilidad,flete,fecha,fechaoferta,edicionusuario,edicionlugar,idsubcategoria,cantidadpormayor,preciopormayor, iva,cantidadpormayor2,preciopormayor2,precio_oferta,habilitarfechaoferta,bulto_cantidad,bulto_codigobarra, varutilidadpormayor,varutilidadpormayor2,varutilidadoferta, NegocioConfigEmpresa.confsistema("opcionsistema").ToString());
             dArticulo.IdArticulo= idArticulo;
+            return dArticulo.editar(dArticulo);
+        }
+        //sistema negocio
+        public static string editar(int idArticulo, string nombre, string codigo, string descripcion, int idCategoria, decimal precio, decimal cantInicial, int pesable, decimal preciocompra, decimal utilidad, decimal flete, DateTime fecha, int edicionusuario = 0, string edicionlugar = "", decimal cantidadpormayor = 0, decimal preciopormayor = 0, int idsubcategoria = 0, decimal iva = 0)
+        {
+            DatosArticulo dArticulo = new DatosArticulo(nombre, codigo, descripcion, idCategoria, precio, cantInicial, pesable, preciocompra, utilidad, flete, fecha, edicionusuario, edicionlugar, idsubcategoria, cantidadpormayor, preciopormayor, iva, NegocioConfigEmpresa.confsistema("opcionsistema").ToString());
+            dArticulo.IdArticulo = idArticulo;
             return dArticulo.editar(dArticulo);
         }
         public static string editarcodigobarra(int idarticulo, string codigo)
         {
             DatosArticulo dArticulo = new DatosArticulo( codigo,idarticulo);
             dArticulo.IdArticulo = idarticulo;
-            return dArticulo.editar(dArticulo, 14);
+            return dArticulo.editar(dArticulo, "");//14);
         
         }
-        public static string editarPrecio(int idArticulo, decimal precio)
+        public static string editarPrecio(int idArticulo, decimal precio,string opcionsistema)
         {
             DatosArticulo dArticulo = new DatosArticulo(idArticulo, precio);
-            return dArticulo.editarPrecio(dArticulo);
+            return dArticulo.editarPrecio(dArticulo,opcionsistema);
         }
-        public static string editarPrecioMasivo(DataTable Grillaproductos)
+        public static string editarPrecioMasivo(DataTable Grillaproductos, string opcionsistema)
         {
              List<DatosArticulo> listaArticulo= new List<DatosArticulo>();
             foreach (DataRow fila in Grillaproductos.Rows)
@@ -92,22 +110,26 @@ namespace Capa_negocio
                dArticulo.PrecioCompra = Convert.ToDecimal(fila["PrecioCompra"].ToString());
                dArticulo.Utilidad= Convert.ToDecimal(fila["Utilidad"].ToString());
                dArticulo.Flete = Convert.ToDecimal(fila["Flete"].ToString());
-               dArticulo.Utilidadpreciopormayor = Convert.ToDecimal(fila["Utilidadpormayor"].ToString());
-               dArticulo.Preciopormayor = Convert.ToDecimal(fila["Preciopormayor"].ToString());
-               dArticulo.Utilidadpreciopormayor2 = Convert.ToDecimal(fila["Utilidadpormayor2"].ToString());
-               dArticulo.Preciopormayor2 = Convert.ToDecimal(fila["Preciopormayor2"].ToString());
-               dArticulo.Utilidadoferta = Convert.ToDecimal(fila["Utilidadpreciooferta"]);
-               dArticulo.Precio_oferta = Convert.ToDecimal(fila["Precio_Oferta"]);
+                if (opcionsistema == "mayorista")
+                {
+                    dArticulo.Utilidadpreciopormayor = Convert.ToDecimal(fila["Utilidadpormayor"].ToString());
+                    dArticulo.Preciopormayor = Convert.ToDecimal(fila["Preciopormayor"].ToString());
+                    dArticulo.Utilidadpreciopormayor2 = Convert.ToDecimal(fila["Utilidadpormayor2"].ToString());
+                    dArticulo.Preciopormayor2 = Convert.ToDecimal(fila["Preciopormayor2"].ToString());
+                    dArticulo.Utilidadoferta = Convert.ToDecimal(fila["Utilidadpreciooferta"]);
+                    dArticulo.Precio_oferta = Convert.ToDecimal(fila["Precio_Oferta"]);
+                }
+               
                listaArticulo.Add(dArticulo);
 	            }
             DatosArticulo datosArticulo = new DatosArticulo();
-            return datosArticulo.editarPrecioMasivo(listaArticulo);
+            return datosArticulo.editarPrecioMasivo(listaArticulo,opcionsistema);
         }
-        public static string editarPrecio(int idArticulo, decimal precio,decimal precioCompra,decimal utilidad)
+        public static string editarPrecio(int idArticulo, decimal precio,decimal precioCompra,decimal utilidad, string opcionsistema)
         {
            
             DatosArticulo dArticulo = new DatosArticulo(idArticulo, precio,precioCompra,utilidad);
-            return dArticulo.editarPrecio(dArticulo);
+            return dArticulo.editarPrecio(dArticulo,opcionsistema);
         }
         public static DataTable buscarNombre(string texto,string descripcion = "",string nombrecategoria="" )
         {
@@ -239,6 +261,8 @@ namespace Capa_negocio
             this.bulto_cantidad = ObjArticulo.Bulto_cantidad;
             this.bulto_codigobarra = ObjArticulo.Bulto_codigobarra;
             this.nombrecategoria = ObjArticulo.Nombrecategoria;
+            this.stock_minimo = ObjArticulo.Stock_minimo;
+            this.stockActual = ObjArticulo.StockActual;
         }
         public static NegocioArticulo extraerdatosPesable(long codArticulo, string tipo)
         {
@@ -304,7 +328,7 @@ namespace Capa_negocio
         }
 
         //gondola
-        public static string cargarproductogondola(List<int> codigoarticulo,  int idequipo)
+        public static string cargarproductogondola(List<int> codigoarticulo,  int idequipo, string opcionsistema)
         {
             DatosArticulo objart = new DatosArticulo(idequipo);
             List<DatosArticulo> detalle = new List<DatosArticulo>();
@@ -327,7 +351,7 @@ namespace Capa_negocio
             }
 
 
-            return objart.cargarproductogondola(detalle);
+            return objart.cargarproductogondola(detalle,opcionsistema);
         }
 
         public static DataTable consultagondola(int varidequipo)
@@ -335,6 +359,13 @@ namespace Capa_negocio
             DatosArticulo objart = new DatosArticulo(varidequipo);
             return objart.consultaproductogondola();
             
+        }
+        public static DataTable consultafecha(DateTime fechadesde, DateTime fechahasta)
+        {
+            DatosArticulo objart = new DatosArticulo();
+            objart.Fechaediciondesde = fechadesde;
+            objart.Fechaedicionhasta = fechahasta;
+            return objart.buscarTexto(objart, 4);
         }
          
         public Boolean Sindatos
@@ -365,7 +396,7 @@ namespace Capa_negocio
             get { return descripcion; }
             set { descripcion = value; }
         }
-        public int StockActual
+        public decimal StockActual
         {
             get { return stockActual; }
             set { stockActual = value; }
@@ -533,6 +564,19 @@ namespace Capa_negocio
             set
             {
                 nombrecategoria = value;
+            }
+        }
+
+        public decimal Stock_minimo
+        {
+            get
+            {
+                return stock_minimo;
+            }
+
+            set
+            {
+                stock_minimo = value;
             }
         }
     }

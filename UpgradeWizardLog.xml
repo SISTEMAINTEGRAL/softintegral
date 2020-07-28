@@ -1,0 +1,182 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="_UpgradeWizard_Files\UpgradeWizardLog.xslt"?>
+<log>
+  <event>Get project references.</event>
+  <event action="Analyze" type="Success" name="Assembly References" path="C:\Backup\Sistema de ventas\softintegral\Capa_Datos\Capa_Datos.csproj" />
+  <event action="Analyze" type="Success" name="Assembly References" path="C:\Backup\Sistema de ventas\softintegral\Capa_Datos\packages.config" />
+  <event action="Analyze" type="Success" name="Http Handlers" path="C:\Backup\Sistema de ventas\softintegral\Capa_Datos\packages.config" />
+  <event action="Analyze" type="Success" name="Handlers (IIS7+)" path="C:\Backup\Sistema de ventas\softintegral\Capa_Datos\packages.config" />
+  <event action="Analyze" type="Success" name="Config Sections" path="C:\Backup\Sistema de ventas\softintegral\Capa_Datos\packages.config" />
+  <event action="Analyze" type="Success" name="Render Extensions" path="C:\Backup\Sistema de ventas\softintegral\Capa_Datos\packages.config" />
+  <event action="Analyze" type="Success" name="Session State Providers" path="C:\Backup\Sistema de ventas\softintegral\Capa_Datos\packages.config" />
+  <event action="Analyze" type="Success" name="packages.config" path="C:\Backup\Sistema de ventas\softintegral\Capa_Datos\packages.config" />
+  <event action="Analyze" type="Success" name="Capa_Datos" path="C:\Backup\Sistema de ventas\softintegral\Capa_Datos\Capa_Datos.csproj" />
+  <event>Get project references.</event>
+  <event action="Analyze" type="Success" name="Assembly References" path="C:\Backup\Sistema de ventas\softintegral\Capa_negocio\Capa_negocio.csproj" />
+  <event action="Analyze" type="Success" name="Assembly References" path="C:\Backup\Sistema de ventas\softintegral\Capa_negocio\app.config" />
+  <event action="Analyze" type="Success" name="Http Handlers" path="C:\Backup\Sistema de ventas\softintegral\Capa_negocio\app.config" />
+  <event action="Analyze" type="Success" name="Handlers (IIS7+)" path="C:\Backup\Sistema de ventas\softintegral\Capa_negocio\app.config" />
+  <event action="Analyze" type="Success" name="Config Sections" path="C:\Backup\Sistema de ventas\softintegral\Capa_negocio\app.config" />
+  <event action="Analyze" type="Success" name="Render Extensions" path="C:\Backup\Sistema de ventas\softintegral\Capa_negocio\app.config" />
+  <event action="Analyze" type="Success" name="Session State Providers" path="C:\Backup\Sistema de ventas\softintegral\Capa_negocio\app.config" />
+  <event action="Analyze" type="Success" name="app.config" path="C:\Backup\Sistema de ventas\softintegral\Capa_negocio\app.config" />
+  <event action="Analyze" type="Success" name="Assembly References" path="C:\Backup\Sistema de ventas\softintegral\Capa_negocio\packages.config" />
+  <event action="Analyze" type="Success" name="Http Handlers" path="C:\Backup\Sistema de ventas\softintegral\Capa_negocio\packages.config" />
+  <event action="Analyze" type="Success" name="Handlers (IIS7+)" path="C:\Backup\Sistema de ventas\softintegral\Capa_negocio\packages.config" />
+  <event action="Analyze" type="Success" name="Config Sections" path="C:\Backup\Sistema de ventas\softintegral\Capa_negocio\packages.config" />
+  <event action="Analyze" type="Success" name="Render Extensions" path="C:\Backup\Sistema de ventas\softintegral\Capa_negocio\packages.config" />
+  <event action="Analyze" type="Success" name="Session State Providers" path="C:\Backup\Sistema de ventas\softintegral\Capa_negocio\packages.config" />
+  <event action="Analyze" type="Success" name="packages.config" path="C:\Backup\Sistema de ventas\softintegral\Capa_negocio\packages.config" />
+  <event action="Analyze" type="Success" name="Capa_negocio" path="C:\Backup\Sistema de ventas\softintegral\Capa_negocio\Capa_negocio.csproj" />
+  <event>Get project references.</event>
+  <event action="Analyze" type="Success" name="Assembly References" path="C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\Capa_Presentacion.csproj" />
+  <event action="Analyze" type="Success" name="AboutBox1.resx" path="C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\AboutBox1.resx" />
+  <event action="Analyze" type="Success" name="Assembly References" path="C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\app.config" />
+  <event action="Analyze" type="Success" name="Http Handlers" path="C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\app.config" />
+  <event action="Analyze" type="Success" name="Handlers (IIS7+)" path="C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\app.config" />
+  <event action="Analyze" type="Success" name="Config Sections" path="C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\app.config" />
+  <event action="Analyze" type="Success" name="Render Extensions" path="C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\app.config" />
+  <event action="Analyze" type="Success" name="Session State Providers" path="C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\app.config" />
+  <event action="Analyze" type="Success" name="app.config" path="C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\app.config" />
+  <event action="Analyze" type="Success" name="FrmGondola.resx" path="C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\Formreportes\FrmGondola.resx" />
+  <event action="Analyze" type="Success" name="FrmGondola2.resx" path="C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\Formreportes\FrmGondola2.resx" />
+  <event action="Analyze" type="Success" name="FrmReporteGondola.resx" path="C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\Formreportes\FrmReporteGondola.resx" />
+  <event action="Analyze" type="Success" name="FrmReporteRecibo.resx" path="C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\Formreportes\FrmReporteRecibo.resx" />
+  <event action="Analyze" type="Success" name="FrmTicketRemito.resx" path="C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\Formreportes\FrmTicketRemito.resx" />
+  <event action="Analyze" type="Success" name="TicketProforma.resx" path="C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\Formreportes\TicketProforma.resx" />
+  <event action="Analyze" type="Success" name="Ticketventa.resx" path="C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\Formreportes\Ticketventa.resx" />
+  <event action="Analyze" type="Success" name="FrmAltasvarios.resx" path="C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\FrmAltasvarios.resx" />
+  <event action="Analyze" type="Success" name="FrmAperturacaja.resx" path="C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\FrmAperturacaja.resx" />
+  <event action="Analyze" type="Success" name="FrmArticulos.resx" path="C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\FrmArticulos.resx" />
+  <event action="Analyze" type="Success" name="FrmArticulos2.resx" path="C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\FrmArticulos2.resx" />
+  <event action="Analyze" type="Success" name="Frmasentarpago.resx" path="C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\Frmasentarpago.resx" />
+  <event action="Analyze" type="Success" name="FrmAsignarPrecio.resx" path="C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\FrmAsignarPrecio.resx" />
+  <event action="Analyze" type="Success" name="FrmAsignarValores.resx" path="C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\FrmAsignarValores.resx" />
+  <event action="Analyze" type="Success" name="FrmAvanzadoArticulo.resx" path="C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\FrmAvanzadoArticulo.resx" />
+  <event action="Analyze" type="Success" name="FrmBusquedaAvaArticulo.resx" path="C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\FrmBusquedaAvaArticulo.resx" />
+  <event action="Analyze" type="Success" name="FrmBusquedaAvaCliente.resx" path="C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\FrmBusquedaAvaCliente.resx" />
+  <event action="Analyze" type="Success" name="FrmBusquedaAvaProveedor.resx" path="C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\FrmBusquedaAvaProveedor.resx" />
+  <event action="Analyze" type="Success" name="FrmCaja.resx" path="C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\FrmCaja.resx" />
+  <event action="Analyze" type="Success" name="FrmCambiarPrecio.resx" path="C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\FrmCambiarPrecio.resx" />
+  <event action="Analyze" type="Success" name="FrmCambiarPrecioSel.resx" path="C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\FrmCambiarPrecioSel.resx" />
+  <event action="Analyze" type="Success" name="FrmCategoria.resx" path="C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\FrmCategoria.resx" />
+  <event action="Analyze" type="Success" name="FrmCerrarCaja.resx" path="C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\FrmCerrarCaja.resx" />
+  <event action="Analyze" type="Success" name="FrmClienteCtaCte.resx" path="C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\FrmClienteCtaCte.resx" />
+  <event action="Analyze" type="Success" name="FrmClientes.resx" path="C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\FrmClientes.resx" />
+  <event action="Analyze" type="Success" name="FrmCodigoBarraExistente.resx" path="C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\FrmCodigoBarraExistente.resx" />
+  <event action="Analyze" type="Success" name="FrmConfig.resx" path="C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\FrmConfig.resx" />
+  <event action="Analyze" type="Success" name="FrmConsulta.resx" path="C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\FrmConsulta.resx" />
+  <event action="Analyze" type="Success" name="FrmDetallesDeStock.resx" path="C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\FrmDetallesDeStock.resx" />
+  <event action="Analyze" type="Success" name="FrmDetalleVentas.resx" path="C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\FrmDetalleVentas.resx" />
+  <event action="Analyze" type="Success" name="FrmEquipo.resx" path="C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\FrmEquipo.resx" />
+  <event action="Analyze" type="Success" name="Frmetiquetareport.resx" path="C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\Frmetiquetareport.resx" />
+  <event action="Analyze" type="Success" name="FrmEtiquetas.resx" path="C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\FrmEtiquetas.resx" />
+  <event action="Analyze" type="Success" name="FrmFactura.resx" path="C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\FrmFactura.resx" />
+  <event action="Analyze" type="Success" name="FrmGuardarVenta.resx" path="C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\FrmGuardarVenta.resx" />
+  <event action="Analyze" type="Success" name="FrmGuardarVenta2.resx" path="C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\FrmGuardarVenta2.resx" />
+  <event action="Analyze" type="Success" name="FrmImpArticulo.resx" path="C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\FrmImpArticulo.resx" />
+  <event action="Analyze" type="Success" name="FrmImpEtiquetas.resx" path="C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\FrmImpEtiquetas.resx" />
+  <event action="Analyze" type="Success" name="Frmimpnotaventa.resx" path="C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\Frmimpnotaventa.resx" />
+  <event action="Analyze" type="Success" name="FrmImportarExel.resx" path="C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\FrmImportarExel.resx" />
+  <event action="Analyze" type="Success" name="FrmImpresora.resx" path="C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\FrmImpresora.resx" />
+  <event action="Analyze" type="Success" name="FrmImpVenta.resx" path="C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\FrmImpVenta.resx" />
+  <event action="Analyze" type="Success" name="Frmimpventicket.resx" path="C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\Frmimpventicket.resx" />
+  <event action="Analyze" type="Success" name="FrmListadoVentas.resx" path="C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\FrmListadoVentas.resx" />
+  <event action="Analyze" type="Success" name="FrmMensajeAutoCierre.resx" path="C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\FrmMensajeAutoCierre.resx" />
+  <event action="Analyze" type="Success" name="FrmMovStock1.resx" path="C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\FrmMovStock1.resx" />
+  <event action="Analyze" type="Success" name="FrmOrdenPedido.resx" path="C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\FrmOrdenPedido.resx" />
+  <event action="Analyze" type="Success" name="FrmPreciosmasivos.resx" path="C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\FrmPreciosmasivos.resx" />
+  <event action="Analyze" type="Success" name="FrmPreciosmasivos2.resx" path="C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\FrmPreciosmasivos2.resx" />
+  <event action="Analyze" type="Success" name="Frmprivilegio.resx" path="C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\Frmprivilegio.resx" />
+  <event action="Analyze" type="Success" name="FrmProveedor.resx" path="C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\FrmProveedor.resx" />
+  <event action="Analyze" type="Success" name="FrmProveedorCorregido.resx" path="C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\FrmProveedorCorregido.resx" />
+  <event action="Analyze" type="Success" name="frmPventa.resx" path="C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\frmPventa.resx" />
+  <event action="Analyze" type="Success" name="frmPventa2.resx" path="C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\frmPventa2.resx" />
+  <event action="Analyze" type="Success" name="FrmReporteCaja.resx" path="C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\FrmReporteCaja.resx" />
+  <event action="Analyze" type="Success" name="FrmRetiroMercaderia.resx" path="C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\FrmRetiroMercaderia.resx" />
+  <event action="Analyze" type="Success" name="FrmSeleccionarProductos.resx" path="C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\FrmSeleccionarProductos.resx" />
+  <event action="Analyze" type="Success" name="Frmserviciotecnico.resx" path="C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\Frmserviciotecnico.resx" />
+  <event action="Analyze" type="Success" name="Frmstockmov.resx" path="C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\Frmstockmov.resx" />
+  <event action="Analyze" type="Success" name="FrmStockRetirodeMercaderia.resx" path="C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\FrmStockRetirodeMercaderia.resx" />
+  <event action="Analyze" type="Success" name="FrmTarjeta.resx" path="C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\FrmTarjeta.resx" />
+  <event action="Analyze" type="Success" name="FrmUnidades.resx" path="C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\FrmUnidades.resx" />
+  <event action="Analyze" type="Success" name="FrmUsuario.resx" path="C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\FrmUsuario.resx" />
+  <event action="Analyze" type="Success" name="FrmUsuariolista.resx" path="C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\FrmUsuariolista.resx" />
+  <event action="Analyze" type="Success" name="Assembly References" path="C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\packages.config" />
+  <event action="Analyze" type="Success" name="Http Handlers" path="C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\packages.config" />
+  <event action="Analyze" type="Success" name="Handlers (IIS7+)" path="C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\packages.config" />
+  <event action="Analyze" type="Success" name="Config Sections" path="C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\packages.config" />
+  <event action="Analyze" type="Success" name="Render Extensions" path="C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\packages.config" />
+  <event action="Analyze" type="Success" name="Session State Providers" path="C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\packages.config" />
+  <event action="Analyze" type="Success" name="packages.config" path="C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\packages.config" />
+  <event action="Analyze" type="Success" name="Resources.resx" path="C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\Properties\Resources.resx" />
+  <event action="Analyze" type="Success" name="ImpresionRemito.resx" path="C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\Reportes\ImpresionRemito.resx" />
+  <event action="Analyze" type="Success" name="REPORT_TICKET.resx" path="C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\Reportes\REPORT_TICKET.resx" />
+  <event action="Analyze" type="Success" name="REPORT_TICKET_PROFORMA.resx" path="C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\Reportes\REPORT_TICKET_PROFORMA.resx" />
+  <event action="Analyze" type="Success" name="REPORT_TICKET_PROFORMAX58.resx" path="C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\Reportes\REPORT_TICKET_PROFORMAX58.resx" />
+  <event action="Analyze" type="Success" name="REPORT_TICKET_REMITO.resx" path="C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\Reportes\REPORT_TICKET_REMITO.resx" />
+  <event action="Analyze" type="Success" name="REPORT_TICKETX58.resx" path="C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\Reportes\REPORT_TICKETX58.resx" />
+  <event action="Analyze" type="Success" name="REPORT_VENTA_A4.resx" path="C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\Reportes\REPORT_VENTA_A4.resx" />
+  <event action="Analyze" type="Success" name="Report1.resx" path="C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\Reportes\Report1.resx" />
+  <event action="Analyze" type="Success" name="Report11.resx" path="C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\Reportes\Report11.resx" />
+  <event action="Analyze" type="Success" name="REPORTE_RECIBO.resx" path="C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\Reportes\REPORTE_RECIBO.resx" />
+  <event action="Analyze" type="Success" name="REPORTE_REMITO.resx" path="C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\Reportes\REPORTE_REMITO.resx" />
+  <event action="Analyze" type="Success" name="Reporteventa.resx" path="C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\Reporteventa.resx" />
+  <event action="Analyze" type="Success" name="Capa_Presentacion" path="C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\Capa_Presentacion.csproj" />
+  <event>Get project references.</event>
+  <event action="Analyze" type="Success" name="Assembly References" path="C:\Backup\Sistema de ventas\softintegral\SistemaVentas\SistemaVentas.csproj" />
+  <event action="Analyze" type="Success" name="Assembly References" path="C:\Backup\Sistema de ventas\softintegral\SistemaVentas\app.config" />
+  <event action="Analyze" type="Success" name="Http Handlers" path="C:\Backup\Sistema de ventas\softintegral\SistemaVentas\app.config" />
+  <event action="Analyze" type="Success" name="Handlers (IIS7+)" path="C:\Backup\Sistema de ventas\softintegral\SistemaVentas\app.config" />
+  <event action="Analyze" type="Success" name="Config Sections" path="C:\Backup\Sistema de ventas\softintegral\SistemaVentas\app.config" />
+  <event action="Analyze" type="Success" name="Render Extensions" path="C:\Backup\Sistema de ventas\softintegral\SistemaVentas\app.config" />
+  <event action="Analyze" type="Success" name="Session State Providers" path="C:\Backup\Sistema de ventas\softintegral\SistemaVentas\app.config" />
+  <event action="Analyze" type="Success" name="app.config" path="C:\Backup\Sistema de ventas\softintegral\SistemaVentas\app.config" />
+  <event action="Analyze" type="Success" name="Form1.resx" path="C:\Backup\Sistema de ventas\softintegral\SistemaVentas\Form1.resx" />
+  <event action="Analyze" type="Success" name="FrmInicio.resx" path="C:\Backup\Sistema de ventas\softintegral\SistemaVentas\FrmInicio.resx" />
+  <event action="Analyze" type="Success" name="FrmLogin.resx" path="C:\Backup\Sistema de ventas\softintegral\SistemaVentas\FrmLogin.resx" />
+  <event action="Analyze" type="Success" name="Assembly References" path="C:\Backup\Sistema de ventas\softintegral\SistemaVentas\packages.config" />
+  <event action="Analyze" type="Success" name="Http Handlers" path="C:\Backup\Sistema de ventas\softintegral\SistemaVentas\packages.config" />
+  <event action="Analyze" type="Success" name="Handlers (IIS7+)" path="C:\Backup\Sistema de ventas\softintegral\SistemaVentas\packages.config" />
+  <event action="Analyze" type="Success" name="Config Sections" path="C:\Backup\Sistema de ventas\softintegral\SistemaVentas\packages.config" />
+  <event action="Analyze" type="Success" name="Render Extensions" path="C:\Backup\Sistema de ventas\softintegral\SistemaVentas\packages.config" />
+  <event action="Analyze" type="Success" name="Session State Providers" path="C:\Backup\Sistema de ventas\softintegral\SistemaVentas\packages.config" />
+  <event action="Analyze" type="Success" name="packages.config" path="C:\Backup\Sistema de ventas\softintegral\SistemaVentas\packages.config" />
+  <event action="Analyze" type="Success" name="Resources.resx" path="C:\Backup\Sistema de ventas\softintegral\SistemaVentas\Properties\Resources.resx" />
+  <event action="Analyze" type="Success" name="SplashScreen.resx" path="C:\Backup\Sistema de ventas\softintegral\SistemaVentas\SplashScreen.resx" />
+  <event action="Analyze" type="Success" name="SistemaVentas" path="C:\Backup\Sistema de ventas\softintegral\SistemaVentas\SistemaVentas.csproj" />
+  <event>Get project references.</event>
+  <event action="Analyze" type="Success" name="Assembly References" path="C:\Backup\Sistema de ventas\softintegral\ComboBoxMultiColumns\ComboBoxMultiColumns.csproj" />
+  <event action="Analyze" type="Success" name="Assembly References" path="C:\Backup\Sistema de ventas\softintegral\ComboBoxMultiColumns\app.config" />
+  <event action="Analyze" type="Success" name="Http Handlers" path="C:\Backup\Sistema de ventas\softintegral\ComboBoxMultiColumns\app.config" />
+  <event action="Analyze" type="Success" name="Handlers (IIS7+)" path="C:\Backup\Sistema de ventas\softintegral\ComboBoxMultiColumns\app.config" />
+  <event action="Analyze" type="Success" name="Config Sections" path="C:\Backup\Sistema de ventas\softintegral\ComboBoxMultiColumns\app.config" />
+  <event action="Analyze" type="Success" name="Render Extensions" path="C:\Backup\Sistema de ventas\softintegral\ComboBoxMultiColumns\app.config" />
+  <event action="Analyze" type="Success" name="Session State Providers" path="C:\Backup\Sistema de ventas\softintegral\ComboBoxMultiColumns\app.config" />
+  <event action="Analyze" type="Success" name="app.config" path="C:\Backup\Sistema de ventas\softintegral\ComboBoxMultiColumns\app.config" />
+  <event action="Analyze" type="Success" name="ComboBoxColumnEditor.resx" path="C:\Backup\Sistema de ventas\softintegral\ComboBoxMultiColumns\ComboBoxColumnEditor.resx" />
+  <event action="Analyze" type="Success" name="Assembly References" path="C:\Backup\Sistema de ventas\softintegral\ComboBoxMultiColumns\packages.config" />
+  <event action="Analyze" type="Success" name="Http Handlers" path="C:\Backup\Sistema de ventas\softintegral\ComboBoxMultiColumns\packages.config" />
+  <event action="Analyze" type="Success" name="Handlers (IIS7+)" path="C:\Backup\Sistema de ventas\softintegral\ComboBoxMultiColumns\packages.config" />
+  <event action="Analyze" type="Success" name="Config Sections" path="C:\Backup\Sistema de ventas\softintegral\ComboBoxMultiColumns\packages.config" />
+  <event action="Analyze" type="Success" name="Render Extensions" path="C:\Backup\Sistema de ventas\softintegral\ComboBoxMultiColumns\packages.config" />
+  <event action="Analyze" type="Success" name="Session State Providers" path="C:\Backup\Sistema de ventas\softintegral\ComboBoxMultiColumns\packages.config" />
+  <event action="Analyze" type="Success" name="packages.config" path="C:\Backup\Sistema de ventas\softintegral\ComboBoxMultiColumns\packages.config" />
+  <event action="Analyze" type="Success" name="Resources.resx" path="C:\Backup\Sistema de ventas\softintegral\ComboBoxMultiColumns\Properties\Resources.resx" />
+  <event action="Analyze" type="Success" name="ComboBoxMultiColumns" path="C:\Backup\Sistema de ventas\softintegral\ComboBoxMultiColumns\ComboBoxMultiColumns.csproj" />
+  <event action="Analyze" type="Success" name="Sistema de ventas" path="C:\Backup\Sistema de ventas\softintegral\Sistema de ventas.sln" />
+  <event action="Backup" type="Success" name="Capa_Presentacion" path="C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\Capa_Presentacion.csproj" />
+  <event action="Upgrade" type="Success" name="Assembly References" path="C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\Capa_Presentacion.csproj" />
+  <event action="Upgrade" type="Success" name="REPORT_TICKET.resx" path="C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\Reportes\REPORT_TICKET.resx" />
+  <event action="Upgrade" type="Success" name="REPORT_TICKET_PROFORMA.resx" path="C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\Reportes\REPORT_TICKET_PROFORMA.resx" />
+  <event action="Upgrade" type="Success" name="REPORT_TICKET_PROFORMAX58.resx" path="C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\Reportes\REPORT_TICKET_PROFORMAX58.resx" />
+  <event action="Upgrade" type="Success" name="REPORT_TICKET_REMITO.resx" path="C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\Reportes\REPORT_TICKET_REMITO.resx" />
+  <event action="Upgrade" type="Success" name="REPORT_TICKETX58.resx" path="C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\Reportes\REPORT_TICKETX58.resx" />
+  <event action="Upgrade" type="Success" name="REPORT_VENTA_A4.resx" path="C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\Reportes\REPORT_VENTA_A4.resx" />
+  <event action="Upgrade" type="Success" name="Report1.resx" path="C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\Reportes\Report1.resx" />
+  <event action="Upgrade" type="Success" name="Report11.resx" path="C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\Reportes\Report11.resx" />
+  <event action="Upgrade" type="Success" name="REPORTE_RECIBO.resx" path="C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\Reportes\REPORTE_RECIBO.resx" />
+  <event action="Upgrade" type="Success" name="REPORTE_REMITO.resx" path="C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\Reportes\REPORTE_REMITO.resx" />
+  <event action="Upgrade" type="Success" name="Capa_Presentacion" path="C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\Capa_Presentacion.csproj" />
+  <event action="Upgrade" type="Success" name="Sistema de ventas" path="C:\Backup\Sistema de ventas\softintegral\Sistema de ventas.sln" />
+</log>

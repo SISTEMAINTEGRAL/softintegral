@@ -11,15 +11,15 @@ namespace Capa_Datos
     public class DatosArticulo
     {
         //campos
-        private int idArticulo;
-        private string nombre;
-        private string codigo;
-        private string descripcion;
-        private int idCategoria;
-        private string buscarArticulo;
-        private decimal precio;
+        private int idArticulo = 0;
+        private string nombre = "";
+        private string codigo = "0";
+        private string descripcion = "";
+        private int idCategoria = 0;
+        private string buscarArticulo ;
+        private decimal precio ;
         private decimal stockActual;
-        private Boolean sindatos;
+        private Boolean sindatos ;
         private decimal utilidad;
         private decimal precioCompra;
         private int pesable;
@@ -30,6 +30,7 @@ namespace Capa_Datos
         private string editarlugar;
         private string tipo;
         private decimal iva;
+        private int modo;
 
         private decimal preciopormayor;
         private decimal cantidadpormayor;
@@ -45,6 +46,13 @@ namespace Capa_Datos
         private decimal utilidadpreciopormayor;
         private decimal utilidadpreciopormayor2;
         private decimal utilidadoferta;
+        private decimal stock_minimo;
+
+        private string opcionsistema;
+
+        private DateTime fechaediciondesde;
+        private DateTime fechaedicionhasta;
+        SqlCommand comando;
 
         private int idequipo;
         public decimal Flete
@@ -355,6 +363,71 @@ namespace Capa_Datos
             }
         }
 
+        public string Opcionsistema
+        {
+            get
+            {
+                return opcionsistema;
+            }
+
+            set
+            {
+                opcionsistema = value;
+            }
+        }
+
+        public int Modo
+        {
+            get
+            {
+                return modo;
+            }
+
+            set
+            {
+                modo = value;
+            }
+        }
+
+        public DateTime Fechaediciondesde
+        {
+            get
+            {
+                return fechaediciondesde;
+            }
+
+            set
+            {
+                fechaediciondesde = value;
+            }
+        }
+
+        public DateTime Fechaedicionhasta
+        {
+            get
+            {
+                return fechaedicionhasta;
+            }
+
+            set
+            {
+                fechaedicionhasta = value;
+            }
+        }
+
+        public decimal Stock_minimo
+        {
+            get
+            {
+                return stock_minimo;
+            }
+
+            set
+            {
+                stock_minimo = value;
+            }
+        }
+
 
 
 
@@ -362,12 +435,14 @@ namespace Capa_Datos
         public DatosArticulo() { 
         
         }
+
+        
         public DatosArticulo(string nombre,string codigo,string descripcion,int idCategoria,decimal precio,decimal cantInicial,
             int pesable,decimal varpreciocompra, decimal varutilidad,decimal varflete, DateTime varfecha,DateTime varfechaoferta, int varedicionusuario = 0,
             string varlugaredicion = "", int varidsubcategoria = 0,decimal varcantidadpormayor = 0, decimal varpreciopormayor = 0, 
             decimal iva = 0, decimal varcantidadpormayor2 = 0, decimal varpreciopormayor2 = 0, decimal varprecio_oferta = 0,
              bool varhabilitarfechaoferta = false, decimal varbulto_cantidad = 0, string varbulto_codigobarra = "",
-             decimal varutilidadpormayor = 0, decimal varutilidadpormayor2 = 0,decimal varutilidadoferta = 0)
+             decimal varutilidadpormayor = 0, decimal varutilidadpormayor2 = 0,decimal varutilidadoferta = 0, string varopcionsistema = "mayorista")
         {
             this.idCategoria = idCategoria;
             this.nombre = nombre;
@@ -396,8 +471,31 @@ namespace Capa_Datos
             this.utilidadpreciopormayor = varutilidadpormayor;
             this.utilidadpreciopormayor2 = varutilidadpormayor2;
             this.utilidadoferta = varutilidadoferta;
+            this.opcionsistema = varopcionsistema;
 
          }
+        public DatosArticulo(string nombre, string codigo, string descripcion, int idCategoria, decimal precio, decimal cantInicial, int pesable, decimal varpreciocompra, decimal varutilidad, decimal varflete, DateTime varfecha, int varedicionusuario = 0, string varlugaredicion = "", int varidsubcategoria = 0, decimal varcantidadpormayor = 0, decimal varpreciopormayor = 0, decimal iva = 0, string varopcionsistema ="")
+        {
+            this.idCategoria = idCategoria;
+            this.nombre = nombre;
+            this.codigo = codigo;
+            this.descripcion = descripcion;
+            this.precio = precio;
+            this.StockActual = cantInicial;
+            this.pesable = pesable;
+            this.utilidad = varutilidad;
+            this.precioCompra = varpreciocompra;
+            this.flete = varflete;
+            this.fecha = varfecha;
+            this.editarlugar = varlugaredicion;
+            this.editarusuario = varedicionusuario;
+            this.Idsubcategoria = varidsubcategoria;
+            this.Preciopormayor = varpreciopormayor;
+            this.Cantidadpormayor = varcantidadpormayor;
+            this.iva = iva;
+            this.opcionsistema = varopcionsistema;
+
+        }
         public DatosArticulo(int varidequipo)
         {
             this.idequipo = varidequipo;
@@ -432,8 +530,46 @@ namespace Capa_Datos
             this.idArticulo = idarticulo;
         
         }
-        
-        public string agregar(DatosArticulo articulo)
+
+        public void agregarparametros(DatosArticulo varobjarticulo, string opcionsistema)
+        {
+
+            comando.Parameters.AddWithValue("@idarticulo", varobjarticulo.idArticulo);
+            comando.Parameters.AddWithValue("@nombre", varobjarticulo.nombre);
+            comando.Parameters.AddWithValue("@descripcion", varobjarticulo.descripcion);
+            comando.Parameters.AddWithValue("@codigo", varobjarticulo.codigo);
+            comando.Parameters.AddWithValue("@idcategoria", varobjarticulo.idCategoria);
+            comando.Parameters.AddWithValue("@precio", varobjarticulo.precio);
+            comando.Parameters.AddWithValue("@stockactual", varobjarticulo.stockActual);
+            comando.Parameters.AddWithValue("@pesable", varobjarticulo.pesable);
+            comando.Parameters.AddWithValue("@precio_compra", varobjarticulo.precioCompra);
+            comando.Parameters.AddWithValue("@utilidad", varobjarticulo.utilidad);
+            comando.Parameters.AddWithValue("@flete", varobjarticulo.flete);
+            comando.Parameters.AddWithValue("@idsubcategoria", varobjarticulo.idsubcategoria);
+            comando.Parameters.AddWithValue("@preciopormayor", varobjarticulo.preciopormayor);
+            comando.Parameters.AddWithValue("@cantidadpormayor", varobjarticulo.cantidadpormayor);
+            comando.Parameters.AddWithValue("@iva", varobjarticulo.iva );
+            comando.Parameters.AddWithValue("@cantidadpormayor2", varobjarticulo.cantidadpormayor2);
+            comando.Parameters.AddWithValue("@preciopormayor2", varobjarticulo.preciopormayor2);
+            comando.Parameters.AddWithValue("@stock_minimo", varobjarticulo.stock_minimo);
+
+            if (opcionsistema == "mayorista")
+            {
+               
+                comando.Parameters.AddWithValue("@precio_oferta", varobjarticulo.precio_oferta);
+                
+                comando.Parameters.AddWithValue("@habilitarfechaoferta", varobjarticulo.habilitarfechaoferta);
+                comando.Parameters.AddWithValue("@bulto_cantidad", varobjarticulo.bulto_cantidad);
+                comando.Parameters.AddWithValue("@bulto_codigobarra", varobjarticulo.bulto_codigobarra);
+                comando.Parameters.AddWithValue("@utilidadpormayor", varobjarticulo.utilidadpreciopormayor);
+                comando.Parameters.AddWithValue("@utilidadpormayor2", varobjarticulo.utilidadpreciopormayor2);
+                comando.Parameters.AddWithValue("@utilidadoferta", varobjarticulo.utilidadoferta);
+            }
+
+
+        }
+
+        public string agregar(DatosArticulo articulo, string opcionsistema)
         {
             //modo 1 para DB
             SqlConnection cn = new SqlConnection(Conexion.conexion);
@@ -443,89 +579,12 @@ namespace Capa_Datos
 
                 cn.Open();
                 //abro conexion
-                SqlCommand comando = ProcAlmacenado.CrearProc(cn, "SP_ARTICULO");
+                comando = ProcAlmacenado.CrearProc(cn, "SP_ARTICULO");
 
-                SqlParameter parModo = ProcAlmacenado.asignarParametros("@modo", SqlDbType.Int, 1);
-                comando.Parameters.Add(parModo);
-
-                SqlParameter parIdArticulo= ProcAlmacenado.asignarParametros("@idarticulo", SqlDbType.Int,articulo.idArticulo);
-                //le paso al sqlcommand los parametros asignados
-                comando.Parameters.Add(parIdArticulo);
-
-                SqlParameter parNombre = ProcAlmacenado.asignarParametros("@nombre", SqlDbType.VarChar, articulo.Nombre, 50);
-                //le paso al sqlcommand los parametros asignados
-                comando.Parameters.Add(parNombre);
-
-                SqlParameter parDescripcion = ProcAlmacenado.asignarParametros("@descripcion", SqlDbType.VarChar, articulo.Descripcion, 50);
-                comando.Parameters.Add(parDescripcion);
-
-                SqlParameter parCodigo = ProcAlmacenado.asignarParametros("@codigo", SqlDbType.VarChar, articulo.codigo,50);
-                comando.Parameters.Add(parCodigo);
-
-                SqlParameter parIdCategoria = ProcAlmacenado.asignarParametros("@idcategoria", SqlDbType.Int, articulo.idCategoria);
-                comando.Parameters.Add(parIdCategoria);
-
-                SqlParameter parPrecio = ProcAlmacenado.asignarParametros("@precio", SqlDbType.Money, articulo.Precio);
-                comando.Parameters.Add(parPrecio);
-
-                SqlParameter parStockActual = ProcAlmacenado.asignarParametros("@stockActual", SqlDbType.Int, articulo.StockActual);
-                comando.Parameters.Add(parStockActual);
-
-                SqlParameter parPesable = ProcAlmacenado.asignarParametros("@pesable", SqlDbType.Bit, articulo.Pesable);
-                comando.Parameters.Add(parPesable);
-
-                SqlParameter parPreciocompra = ProcAlmacenado.asignarParametros("@precio_compra", SqlDbType.Money, articulo.precioCompra);
-                comando.Parameters.Add(parPreciocompra);
-
-                SqlParameter parUtilidad = ProcAlmacenado.asignarParametros("@utilidad", SqlDbType.Money, articulo.utilidad);
-                comando.Parameters.Add(parUtilidad);
-
-                SqlParameter parFlete = ProcAlmacenado.asignarParametros("@flete", SqlDbType.Money, articulo.flete);
-                comando.Parameters.Add(parFlete);
-
-                SqlParameter paridsubcategoria = ProcAlmacenado.asignarParametros("@idsubcategoria", SqlDbType.Int, articulo.Idsubcategoria);
-                comando.Parameters.Add(paridsubcategoria);
-
-                SqlParameter parpreciopormayor = ProcAlmacenado.asignarParametros("@preciopormayor", SqlDbType.Money, articulo.Preciopormayor);
-                comando.Parameters.Add(parpreciopormayor);
-
-                SqlParameter parcantidadmayorista = ProcAlmacenado.asignarParametros("@cantidadpormayor", SqlDbType.Money, articulo.Cantidadpormayor );
-                comando.Parameters.Add(parcantidadmayorista);
-
-                SqlParameter pariva = ProcAlmacenado.asignarParametros("@iva", SqlDbType.Decimal , articulo.Iva);
-                comando.Parameters.Add(pariva);
-
-                SqlParameter parcantidadpormayor2 = ProcAlmacenado.asignarParametros("@cantidadpormayor2", SqlDbType.Decimal, articulo.cantidadpormayor2);
-                comando.Parameters.Add(parcantidadpormayor2);
-
-                SqlParameter parpreciopormayor2 = ProcAlmacenado.asignarParametros("@preciopormayor2", SqlDbType.Decimal, articulo.preciopormayor2);
-                comando.Parameters.Add(parpreciopormayor2);
-
-                SqlParameter parprecio_oferta = ProcAlmacenado.asignarParametros("@precio_oferta", SqlDbType.Decimal, articulo.precio_oferta);
-                comando.Parameters.Add(parprecio_oferta);
-
-                SqlParameter parfechadeoferta = ProcAlmacenado.asignarParametros("@fechadeoferta", SqlDbType.DateTime, articulo.fecha_oferta);
-                comando.Parameters.Add(parfechadeoferta);
-
-                SqlParameter parhabilitarfechaoferta = ProcAlmacenado.asignarParametros("@habilitarfechaoferta", SqlDbType.Bit, articulo.habilitarfechaoferta);
-                comando.Parameters.Add(parhabilitarfechaoferta);
-
-                SqlParameter parbulto_cantidad = ProcAlmacenado.asignarParametros("@bulto_cantidad", SqlDbType.Decimal, articulo.bulto_cantidad);
-                comando.Parameters.Add(parbulto_cantidad);
-
-                SqlParameter parbulto_codigobarra= ProcAlmacenado.asignarParametros("@bulto_codigobarra", SqlDbType.VarChar, articulo.bulto_codigobarra);
-                comando.Parameters.Add(parbulto_codigobarra);
-
-                SqlParameter parutilidadpreciomayorista = ProcAlmacenado.asignarParametros("@utilidadpormayor", SqlDbType.Decimal, articulo.utilidadpreciopormayor);
-                comando.Parameters.Add(parutilidadpreciomayorista);
-
-                SqlParameter parutilidadpreciomayorista2 = ProcAlmacenado.asignarParametros("@utilidadpormayor2", SqlDbType.Decimal, articulo.utilidadpreciopormayor2);
-                comando.Parameters.Add(parutilidadpreciomayorista2);
-
-                SqlParameter parutilidadoferta = ProcAlmacenado.asignarParametros("@utilidadoferta", SqlDbType.Decimal, articulo.utilidadoferta);
-                comando.Parameters.Add(parutilidadoferta);
-
-
+                comando.Parameters.AddWithValue("@modo", 1);
+                comando.Parameters.AddWithValue("@fechadeoferta", articulo.fecha_oferta);
+                comando.Parameters.AddWithValue("@edicionfecha", articulo.fecha);
+                agregarparametros(articulo, opcionsistema);
 
                 if (comando.ExecuteNonQuery() == 1)
                 {
@@ -546,7 +605,7 @@ namespace Capa_Datos
             }
             return respuesta;
         }
-        public string editar(DatosArticulo articulo, int modo = 2)
+        public string editar(DatosArticulo articulo, string opcionsistema = "negocio")
         {
             //modo 2 para DB
             SqlConnection cn = new SqlConnection(Conexion.conexion);
@@ -556,97 +615,19 @@ namespace Capa_Datos
 
                 cn.Open();
                 //abro conexion
-                SqlCommand comando = ProcAlmacenado.CrearProc(cn, "SP_ARTICULO");
+                 comando = ProcAlmacenado.CrearProc(cn, "SP_ARTICULO");
 
-                SqlParameter parModo = ProcAlmacenado.asignarParametros("@modo", SqlDbType.Int, modo);
-                comando.Parameters.Add(parModo);
-
-                SqlParameter parIdArticulo = ProcAlmacenado.asignarParametros("@idarticulo", SqlDbType.Int, articulo.IdArticulo);
-                //le paso al sqlcommand los parametros asignados
-                comando.Parameters.Add(parIdArticulo);
-
-                SqlParameter parNombre = ProcAlmacenado.asignarParametros("@nombre", SqlDbType.VarChar, articulo.Nombre, 50);
-                //le paso al sqlcommand los parametros asignados
-                comando.Parameters.Add(parNombre);
-
-                SqlParameter parDescripcion = ProcAlmacenado.asignarParametros("@descripcion", SqlDbType.VarChar, articulo.Descripcion, 50);
-                comando.Parameters.Add(parDescripcion);
-
-                SqlParameter parCodigo = ProcAlmacenado.asignarParametros("@codigo", SqlDbType.VarChar, articulo.codigo,50);
-                comando.Parameters.Add(parCodigo);
-
-                SqlParameter parPrecio = ProcAlmacenado.asignarParametros("@precio", SqlDbType.Money, articulo.Precio);
-                comando.Parameters.Add(parPrecio);
+                comando.Parameters.AddWithValue("@modo", 2);
+                comando.Parameters.AddWithValue("@edicionfecha", articulo.fecha);
+                if (opcionsistema == "mayorista")
+                {
+                    comando.Parameters.AddWithValue("@fechadeoferta", articulo.fecha_oferta);
+                }
                 
-                SqlParameter parStockActual = ProcAlmacenado.asignarParametros("@stockActual", SqlDbType.Int, articulo.StockActual);
-                comando.Parameters.Add(parStockActual);
+                //SqlParameter parModo = ProcAlmacenado.asignarParametros("@modo", SqlDbType.Int, 2);
+                //comando.Parameters.Add(parModo);
 
-                SqlParameter parIdCategoria = ProcAlmacenado.asignarParametros("@idcategoria", SqlDbType.Int, articulo.idCategoria);
-                comando.Parameters.Add(parIdCategoria);
-
-                SqlParameter parPesable = ProcAlmacenado.asignarParametros("@pesable", SqlDbType.Bit, articulo.Pesable);
-                comando.Parameters.Add(parPesable);
-
-                SqlParameter parPcompra = ProcAlmacenado.asignarParametros("@precio_compra", SqlDbType.Decimal, articulo.precioCompra);
-                comando.Parameters.Add(parPcompra);
-
-                SqlParameter parUtilidad = ProcAlmacenado.asignarParametros("@utilidad", SqlDbType.Decimal, articulo.utilidad);
-                comando.Parameters.Add(parUtilidad);
-
-                SqlParameter parFlete = ProcAlmacenado.asignarParametros("@flete", SqlDbType.Decimal, articulo.flete);
-                comando.Parameters.Add(parFlete);
-
-                SqlParameter paredicionusuario = ProcAlmacenado.asignarParametros("@edicionusuario", SqlDbType.Int, articulo.editarusuario);
-                comando.Parameters.Add(paredicionusuario);
-
-                SqlParameter paredicionfecha = ProcAlmacenado.asignarParametros("@edicionfecha", SqlDbType.DateTime, articulo.fecha);
-                comando.Parameters.Add(paredicionfecha);
-
-                SqlParameter paredicionlugar = ProcAlmacenado.asignarParametros("@edicionlugar", SqlDbType.NVarChar, articulo.editarlugar);
-                comando.Parameters.Add(paredicionlugar);
-
-                SqlParameter parpreciopormayor = ProcAlmacenado.asignarParametros("@preciopormayor", SqlDbType.Decimal, articulo.Preciopormayor);
-                comando.Parameters.Add(parpreciopormayor);
-
-                SqlParameter parcantidadpormayor = ProcAlmacenado.asignarParametros("@cantidadpormayor", SqlDbType.Decimal, articulo.Cantidadpormayor);
-                comando.Parameters.Add(parcantidadpormayor);
-
-                SqlParameter paridsubcategoria= ProcAlmacenado.asignarParametros("@idsubcategoria", SqlDbType.Int, articulo.Idsubcategoria);
-                comando.Parameters.Add(paridsubcategoria);
-
-                SqlParameter pariva = ProcAlmacenado.asignarParametros("@iva", SqlDbType.Decimal, articulo.iva);
-                comando.Parameters.Add(pariva);
-
-                SqlParameter parcantidadpormayor2 = ProcAlmacenado.asignarParametros("@cantidadpormayor2", SqlDbType.Decimal, articulo.cantidadpormayor2);
-                comando.Parameters.Add(parcantidadpormayor2);
-
-                SqlParameter parpreciopormayor2 = ProcAlmacenado.asignarParametros("@preciopormayor2", SqlDbType.Decimal, articulo.preciopormayor2);
-                comando.Parameters.Add(parpreciopormayor2);
-
-                SqlParameter parprecio_oferta = ProcAlmacenado.asignarParametros("@precio_oferta", SqlDbType.Decimal, articulo.precio_oferta);
-                comando.Parameters.Add(parprecio_oferta);
-
-                SqlParameter parfechadeoferta = ProcAlmacenado.asignarParametros("@fechadeoferta", SqlDbType.DateTime, articulo.fecha_oferta);
-                comando.Parameters.Add(parfechadeoferta);
-
-                SqlParameter parhabilitarfechaoferta = ProcAlmacenado.asignarParametros("@habilitarfechaoferta", SqlDbType.Bit, articulo.habilitarfechaoferta);
-                comando.Parameters.Add(parhabilitarfechaoferta);
-
-                SqlParameter parbulto_cantidad = ProcAlmacenado.asignarParametros("@bulto_cantidad", SqlDbType.Decimal, articulo.bulto_cantidad);
-                comando.Parameters.Add(parbulto_cantidad);
-
-                SqlParameter parbulto_codigobarra = ProcAlmacenado.asignarParametros("@bulto_codigobarra", SqlDbType.VarChar, articulo.bulto_codigobarra);
-                comando.Parameters.Add(parbulto_codigobarra);
-
-                SqlParameter parutilidadpreciomayorista = ProcAlmacenado.asignarParametros("@utilidadpormayor", SqlDbType.Decimal, articulo.utilidadpreciopormayor);
-                comando.Parameters.Add(parutilidadpreciomayorista);
-
-                SqlParameter parutilidadpreciomayorista2 = ProcAlmacenado.asignarParametros("@utilidadpormayor2", SqlDbType.Decimal, articulo.utilidadpreciopormayor2);
-                comando.Parameters.Add(parutilidadpreciomayorista2);
-
-                SqlParameter parutilidadoferta = ProcAlmacenado.asignarParametros("@utilidadoferta", SqlDbType.Decimal, articulo.utilidadoferta);
-                comando.Parameters.Add(parutilidadoferta);
-
+                agregarparametros(articulo, opcionsistema);
 
                 if (comando.ExecuteNonQuery() == 1)
                 {
@@ -668,7 +649,7 @@ namespace Capa_Datos
 
         }
 
-        public void edicionmasiva(List <DatosArticulo> Articulos)
+        public void edicionmasiva(List <DatosArticulo> Articulos, string opcionsistema)
         {
             SqlConnection sqlcon = new SqlConnection();
             string rpta = "";
@@ -681,7 +662,7 @@ namespace Capa_Datos
 
                 foreach (DatosArticulo art in Articulos)
                 {
-                   rpta = art.editar(art);
+                   rpta = art.editar(art,opcionsistema);
                    if (!rpta.Equals("OK"))
                    {
                        break;
@@ -714,16 +695,11 @@ namespace Capa_Datos
             {
                 cn.Open();
                 //abro conexion
-                SqlCommand comando = ProcAlmacenado.CrearProc(cn, "SP_ARTICULO");
+                comando = ProcAlmacenado.CrearProc(cn, "SP_ARTICULO");
                 //MODO 3 ELIMINAR
-                SqlParameter parModo = ProcAlmacenado.asignarParametros("@modo", SqlDbType.Int, 3);
-                comando.Parameters.Add(parModo);
-
-                SqlParameter parIdArticulo = ProcAlmacenado.asignarParametros("@idarticulo", SqlDbType.Int,articulo.idArticulo);
-                //le paso al sqlcommand los parametros asignados
-                comando.Parameters.Add(parIdArticulo);
-
-               
+                comando.Parameters.AddWithValue("@modo", 3);
+                comando.Parameters.AddWithValue("@idarticulo", articulo.idArticulo);
+                       
                 if (comando.ExecuteNonQuery() == 1)
                 {
                     respuesta = "ok";
@@ -752,7 +728,7 @@ namespace Capa_Datos
             {
                 
 
-                SqlCommand comando = ProcAlmacenado.CrearProc(cn, "SP_ARTICULO");
+                 comando = ProcAlmacenado.CrearProc(cn, "SP_ARTICULO");
                 //MODO 4 buscartexto
 
                 //buscartexto=0 busca por nombre
@@ -761,42 +737,40 @@ namespace Capa_Datos
                 if (buscarTexto == 0)
                 {
                     //busca por nombre de producto
-                    SqlParameter parModo = ProcAlmacenado.asignarParametros("@modo", SqlDbType.Int, 4);
-                    comando.Parameters.Add(parModo);
-                    SqlParameter parCategoria = ProcAlmacenado.asignarParametros("@nombrecategoria", SqlDbType.NVarChar,articulo.nombrecategoria);
-                    comando.Parameters.Add(parCategoria);
-                    SqlParameter parDescripcion = ProcAlmacenado.asignarParametros("@descripcion", SqlDbType.NVarChar,articulo.descripcion);
-                    comando.Parameters.Add(parDescripcion);
+                    comando.Parameters.AddWithValue("@modo", 4);
+                    comando.Parameters.AddWithValue("@nombrecategoria", articulo.nombrecategoria);
+                    comando.Parameters.AddWithValue("@descripcion", articulo.descripcion);
+                    
                 }
                 else if(buscarTexto==1) {
                     //busca por codigo de barra del producto
-                    SqlParameter parModo = ProcAlmacenado.asignarParametros("@modo", SqlDbType.Int, 6);
-                    comando.Parameters.Add(parModo);
+                    comando.Parameters.AddWithValue("@modo", 6);
+                    
                 }
                 else if (buscarTexto == 2)
                 {
                     //busca por categoria de producto
-                    SqlParameter parModo = ProcAlmacenado.asignarParametros("@modo", SqlDbType.Int, 7);
-                    comando.Parameters.Add(parModo);
+                    comando.Parameters.AddWithValue("@modo", 7);
+                    
                 
                 }
                 else if (buscarTexto == 3)
                 {
                     //busca por idarticulo
-                    SqlParameter parModo = ProcAlmacenado.asignarParametros("@modo", SqlDbType.Int, 8);
-                    comando.Parameters.Add(parModo);
+                    comando.Parameters.AddWithValue("@modo", 8);
+                    
 
                 }
-                SqlParameter parIdArticulo = ProcAlmacenado.asignarParametros("@idarticulo", SqlDbType.Int);
-                comando.Parameters.Add(parIdArticulo);
-                //le paso al sqlcommand los parametros asignados
-                SqlParameter parBuscarTexto = ProcAlmacenado.asignarParametros("@buscarTexto", SqlDbType.VarChar, articulo.buscarArticulo, 50);
-                //le paso al comando el parametro
-                comando.Parameters.Add(parBuscarTexto);
-                //modo buscar
-              
-                SqlParameter parIdCategoria = ProcAlmacenado.asignarParametros("@idcategoria", SqlDbType.Int,articulo.idCategoria);
-                comando.Parameters.Add(parIdCategoria);
+                else if (buscarTexto == 4)
+                {
+                    comando.Parameters.AddWithValue("@modo", 15);
+                    comando.Parameters.AddWithValue("@fechadesde", articulo.fechaediciondesde);
+                    comando.Parameters.AddWithValue("@fechahasta", articulo.fechaedicionhasta);
+                }
+                comando.Parameters.AddWithValue("@idarticulo",0);
+                comando.Parameters.AddWithValue("@buscarTexto", articulo.buscarArticulo);
+                comando.Parameters.AddWithValue("@idcategoria", articulo.IdCategoria);
+                         
 
                 //creo el objeto adapter del data provider le paso el sqlcommand
                 SqlDataAdapter datosResult = new SqlDataAdapter(comando);
@@ -816,7 +790,7 @@ namespace Capa_Datos
         }
         public DataTable mostrar()
         {
-        
+
             //Modo 5 para DB
             SqlConnection cn = new SqlConnection(Conexion.conexion);
             //le asigno en el constructor el nombre de la tabla
@@ -847,6 +821,7 @@ namespace Capa_Datos
             return dtResult;
         }
 
+
         public DataTable mostrarPesable()
         {
             //Modo 5 para DB
@@ -857,13 +832,11 @@ namespace Capa_Datos
             {
                 cn.Open();
 
-                SqlCommand comando = ProcAlmacenado.CrearProc(cn, "SP_ARTICULO");
+                comando = ProcAlmacenado.CrearProc(cn, "SP_ARTICULO");
                 //Modo 12 MOSTRAR pesables
-                SqlParameter parModo = ProcAlmacenado.asignarParametros("@modo", SqlDbType.Int, 12);
-                comando.Parameters.Add(parModo);
-                //Asigno al parametro @idcategoria, aunque no lo use
-                SqlParameter parIdArticulo = ProcAlmacenado.asignarParametros("@idarticulo", SqlDbType.Int);
-                comando.Parameters.Add(parIdArticulo);
+                comando.Parameters.AddWithValue("@modo", 12);
+                comando.Parameters.AddWithValue("@idarticulo", 0);
+
 
                 //creo el objeto adapter del data provider le paso el sqlcommand
                 SqlDataAdapter datosResult = new SqlDataAdapter(comando);
@@ -888,24 +861,14 @@ namespace Capa_Datos
             {
                 cn.Open();
 
-                SqlCommand comando = ProcAlmacenado.CrearProc(cn, "SP_ARTICULO");
+                comando = ProcAlmacenado.CrearProc(cn, "SP_ARTICULO");
                 //Modo 13 MOSTRAR pesables
-                SqlParameter parModo = ProcAlmacenado.asignarParametros("@modo", SqlDbType.Int, 13);
-                comando.Parameters.Add(parModo);
-                //tipo de busqueda si es por idarticulo,codigodebarra,categoria,nombre
-                SqlParameter parBuscarTexto = ProcAlmacenado.asignarParametros("@buscarTexto", SqlDbType.VarChar, tipoDeBusqueda);
-                comando.Parameters.Add(parBuscarTexto);
-
-                //Asigno al parametro @idcategoria, aunque no lo use
-                SqlParameter parIdArticulo = ProcAlmacenado.asignarParametros("@idarticulo", SqlDbType.Int,articulo.IdArticulo);
-                comando.Parameters.Add(parIdArticulo);
-
-                SqlParameter parCodigo = ProcAlmacenado.asignarParametros("@codigo", SqlDbType.VarChar, articulo.Codigo);
-                comando.Parameters.Add(parCodigo);
-
-                SqlParameter parNombre = ProcAlmacenado.asignarParametros("@nombre", SqlDbType.VarChar,articulo.Nombre);
-                comando.Parameters.Add(parNombre);
-
+                comando.Parameters.AddWithValue("@modo", 13);
+                comando.Parameters.AddWithValue("@buscarTexto", tipoDeBusqueda);
+                comando.Parameters.AddWithValue("@idarticulo", articulo.IdArticulo);
+                comando.Parameters.AddWithValue("@codigo", articulo.codigo);
+                comando.Parameters.AddWithValue("@nombre", articulo.nombre);
+                               
                 //creo el objeto adapter del data provider le paso el sqlcommand
                 SqlDataAdapter datosResult = new SqlDataAdapter(comando);
                 //los resultados los actualizo en el datatable dtResult
@@ -931,7 +894,7 @@ namespace Capa_Datos
             try
             {
 
-                SqlCommand comando = ProcAlmacenado.CrearTransaccion(con, transaccion);
+                comando = ProcAlmacenado.CrearTransaccion(con, transaccion);
                 //si movStock es ingreso asigno queryIngreso sino queryEgreso
                 comando.CommandText= (movStock=="INGRESO") ?  queryIngreso :  queryEgreso;
 
@@ -971,8 +934,9 @@ namespace Capa_Datos
             {
                 cn.Open();
 
-                SqlCommand comando = ProcAlmacenado.CrearProc(cn, "SP_ARTICULO");
+                comando = ProcAlmacenado.CrearProc(cn, "SP_ARTICULO");
                 //Modo 10 ObtenerProductoXId
+
                 SqlParameter parModo = ProcAlmacenado.asignarParametros("@modo", SqlDbType.Int, 10);
                 comando.Parameters.Add(parModo);
 
@@ -1035,14 +999,8 @@ namespace Capa_Datos
             query = "";
             SqlConnection cn = new SqlConnection(Conexion.conexion);
             cn.Open();
-            //      ,[cantidadpormayor2]
-            //,[preciopormayor2]
-            //,[precio_oferta]
-            //,[fechadeoferta]
-            //,[habilitarfechaoferta]
-            //,[bulto_cantidad]
-            //,[bulto_codigobarra]
-            query = "SELECT a.idarticulo,a.codigo ,a.nombre ,a.descripcion ,a.idcategoria ,a.precio,a.stock_actual,a.pesable,a.cantidadpormayor, a.preciopormayor,a.iva,a.cantidadpormayor2,a.preciopormayor2,a.precio_oferta,a.fechadeoferta,a.habilitarfechaoferta ,a.bulto_cantidad ,a.bulto_codigobarra,c.nombre as nombrecategoria FROM articulo A inner join categoria C on C.idcategoria = A.idcategoria  WHERE ";
+           
+            query = "SELECT a.idarticulo,a.codigo ,a.nombre ,a.descripcion ,a.idcategoria ,a.precio,a.stock_actual,a.pesable,a.cantidadpormayor, a.preciopormayor,a.iva,a.cantidadpormayor2,a.preciopormayor2,a.precio_oferta,a.fechadeoferta,a.habilitarfechaoferta ,a.bulto_cantidad ,a.bulto_codigobarra,c.nombre as nombrecategoria, a.stock_minimo FROM articulo A inner join categoria C on C.idcategoria = A.idcategoria  WHERE ";
             if (tipo == "poridarticulo")
             {
                 query = query + " idarticulo = @id";
@@ -1064,7 +1022,7 @@ namespace Capa_Datos
             }
             else
             {
-                cmd.Parameters.AddWithValue("@id", codArticulo.ToString());
+                cmd.Parameters.AddWithValue("@id", codArticulo);
             }
             
              //Convert.ToInt64(codArticulo));
@@ -1092,6 +1050,7 @@ namespace Capa_Datos
                 this.fecha_oferta = Convert.ToDateTime(reader["fechadeoferta"]);
                 this.habilitarfechaoferta = Convert.ToBoolean(reader["habilitarfechaoferta"]);
                 this.Nombrecategoria = Convert.ToString(reader["nombrecategoria"]);
+                this.stock_minimo = Convert.ToDecimal(reader["stock_minimo"]);
                 this.sindatos = true;
             }
 
@@ -1195,7 +1154,7 @@ namespace Capa_Datos
 
 
         }
-        public string editarPrecio(DatosArticulo articulo)
+        public string editarPrecio(DatosArticulo articulo, string opcionsistema)
         {
             //modo 9 para DB
             SqlConnection cn = new SqlConnection(Conexion.conexion);
@@ -1206,31 +1165,10 @@ namespace Capa_Datos
                 cn.Open();
                 //abro conexion
                 SqlCommand comando = ProcAlmacenado.CrearProc(cn, "SP_ARTICULO");
+                comando.Parameters.AddWithValue("@modo", 9);
+                agregarparametros(articulo,opcionsistema);
 
-                SqlParameter parModo = ProcAlmacenado.asignarParametros("@modo", SqlDbType.Int, 9);
-                comando.Parameters.Add(parModo);
-
-                SqlParameter parIdArticulo = ProcAlmacenado.asignarParametros("@idarticulo", SqlDbType.Int, articulo.IdArticulo);
-                //le paso al sqlcommand los parametros asignados
-                comando.Parameters.Add(parIdArticulo);
-
-                SqlParameter parPrecio = ProcAlmacenado.asignarParametros("@precio", SqlDbType.Money, articulo.Precio);
-                comando.Parameters.Add(parPrecio);
-
-                SqlParameter parPrecioCompra = ProcAlmacenado.asignarParametros("@precio_compra", SqlDbType.Money, articulo.PrecioCompra);
-                comando.Parameters.Add(parPrecioCompra);
-
-                SqlParameter parUtilidad = ProcAlmacenado.asignarParametros("@utilidad", SqlDbType.Int, articulo.Utilidad, 50);
-                comando.Parameters.Add(parUtilidad);
-
-                //SqlParameter par = ProcAlmacenado.asignarParametros("@utilidad", SqlDbType.Int, articulo.Utilidad, 50);
-                //comando.Parameters.Add(parUtilidad);
-
-                //SqlParameter parUtilidad = ProcAlmacenado.asignarParametros("@utilidad", SqlDbType.Int, articulo.Utilidad, 50);
-                //comando.Parameters.Add(parUtilidad);
-
-                //SqlParameter parUtilidad = ProcAlmacenado.asignarParametros("@utilidad", SqlDbType.Int, articulo.Utilidad, 50);
-                //comando.Parameters.Add(parUtilidad);
+                
 
                 if (comando.ExecuteNonQuery() == 1)
                 {
@@ -1253,7 +1191,7 @@ namespace Capa_Datos
 
 
 
-        public string editarPrecioMasivo(List<DatosArticulo> listaArticulo)
+        public string editarPrecioMasivo(List<DatosArticulo> listaArticulo,string opcionsistema)
         {
 
 
@@ -1277,45 +1215,44 @@ namespace Capa_Datos
                     //actualizo los datos de los productos
                     foreach (DatosArticulo articulo in listaArticulo)
                     {
-                        SqlCommand comando = ProcAlmacenado.CrearProc(cn, "SP_ARTICULO", transaccion);
+                        comando = ProcAlmacenado.CrearProc(cn, "SP_ARTICULO", transaccion);
+                        comando.Parameters.AddWithValue("@modo", 9);
+                        agregarparametros(articulo, opcionsistema);
 
-                        SqlParameter parModo = ProcAlmacenado.asignarParametros("@modo", SqlDbType.Int, 9);
-                        comando.Parameters.Add(parModo);
+                    //    SqlParameter parIdArticulo = ProcAlmacenado.asignarParametros("@idarticulo", SqlDbType.Int, articulo.IdArticulo);
+                    //    //le paso al sqlcommand los parametros asignados
+                    //    comando.Parameters.Add(parIdArticulo);
 
-                        SqlParameter parIdArticulo = ProcAlmacenado.asignarParametros("@idarticulo", SqlDbType.Int, articulo.IdArticulo);
-                        //le paso al sqlcommand los parametros asignados
-                        comando.Parameters.Add(parIdArticulo);
-
-                        SqlParameter parPrecio = ProcAlmacenado.asignarParametros("@precio", SqlDbType.Money, articulo.Precio);
-                        comando.Parameters.Add(parPrecio);
+                    //    SqlParameter parPrecio = ProcAlmacenado.asignarParametros("@precio", SqlDbType.Money, articulo.Precio);
+                    //    comando.Parameters.Add(parPrecio);
 
 
-                        SqlParameter parUtilidad = ProcAlmacenado.asignarParametros("@utilidad", SqlDbType.Decimal, articulo.Utilidad);
-                        comando.Parameters.Add(parUtilidad);
+                    //    SqlParameter parUtilidad = ProcAlmacenado.asignarParametros("@utilidad", SqlDbType.Decimal, articulo.Utilidad);
+                    //    comando.Parameters.Add(parUtilidad);
 
-                        SqlParameter parFlete = ProcAlmacenado.asignarParametros("@flete", SqlDbType.Decimal, articulo.Flete);
-                        comando.Parameters.Add(parFlete);
+                    //    SqlParameter parFlete = ProcAlmacenado.asignarParametros("@flete", SqlDbType.Decimal, articulo.Flete);
+                    //    comando.Parameters.Add(parFlete);
                        
-                        SqlParameter parCosto = ProcAlmacenado.asignarParametros("@precio_compra", SqlDbType.Decimal, articulo.PrecioCompra);
-                        comando.Parameters.Add(parCosto);
+                    //    SqlParameter parCosto = ProcAlmacenado.asignarParametros("@precio_compra", SqlDbType.Decimal, articulo.PrecioCompra);
+                    //    comando.Parameters.Add(parCosto);
 
-                    SqlParameter parutilidadpormayor = ProcAlmacenado.asignarParametros("@utilidadpormayor", SqlDbType.Decimal, articulo.Utilidadpreciopormayor);
-                    comando.Parameters.Add(parutilidadpormayor);
+                    //SqlParameter parutilidadpormayor = ProcAlmacenado.asignarParametros("@utilidadpormayor", SqlDbType.Decimal, articulo.Utilidadpreciopormayor);
+                    //comando.Parameters.Add(parutilidadpormayor);
 
-                    SqlParameter parutilidadpormayor2 = ProcAlmacenado.asignarParametros("@utilidadpormayor2", SqlDbType.Decimal, articulo.Utilidadpreciopormayor2);
-                    comando.Parameters.Add(parutilidadpormayor2);
+                    //SqlParameter parutilidadpormayor2 = ProcAlmacenado.asignarParametros("@utilidadpormayor2", SqlDbType.Decimal, articulo.Utilidadpreciopormayor2);
+                    //comando.Parameters.Add(parutilidadpormayor2);
 
-                    SqlParameter parutilidadoferta = ProcAlmacenado.asignarParametros("@utilidadoferta", SqlDbType.Decimal, articulo.Utilidadoferta);
-                    comando.Parameters.Add(parutilidadoferta);
+                    //SqlParameter parutilidadoferta = ProcAlmacenado.asignarParametros("@utilidadoferta", SqlDbType.Decimal, articulo.Utilidadoferta);
+                    //comando.Parameters.Add(parutilidadoferta);
 
-                    SqlParameter parpreciopormayor= ProcAlmacenado.asignarParametros("@preciopormayor", SqlDbType.Decimal, articulo.Preciopormayor);
-                    comando.Parameters.Add(parpreciopormayor);
+                    //SqlParameter parpreciopormayor= ProcAlmacenado.asignarParametros("@preciopormayor", SqlDbType.Decimal, articulo.Preciopormayor);
+                    //comando.Parameters.Add(parpreciopormayor);
 
-                    SqlParameter parpreciopormayor2 = ProcAlmacenado.asignarParametros("@preciopormayor2", SqlDbType.Decimal, articulo.Preciopormayor2);
-                    comando.Parameters.Add(parpreciopormayor2);
+                    //SqlParameter parpreciopormayor2 = ProcAlmacenado.asignarParametros("@preciopormayor2", SqlDbType.Decimal, articulo.Preciopormayor2);
+                    //comando.Parameters.Add(parpreciopormayor2);
 
-                    SqlParameter parprecio_oferta = ProcAlmacenado.asignarParametros("@precio_oferta", SqlDbType.Decimal, articulo.Precio_oferta);
-                    comando.Parameters.Add(parprecio_oferta);
+                    //SqlParameter parprecio_oferta = ProcAlmacenado.asignarParametros("@precio_oferta", SqlDbType.Decimal, articulo.Precio_oferta);
+                    //comando.Parameters.Add(parprecio_oferta);
 
 
 
@@ -1425,7 +1362,7 @@ namespace Capa_Datos
                 //actualizo los datos de los productos
                 foreach (DatosArticulo articulo in listaArticulo)
                 {
-                    SqlCommand comando = ProcAlmacenado.CrearProc(cn, "SP_ARTICULO", transaccion);
+                     comando = ProcAlmacenado.CrearProc(cn, "SP_ARTICULO", transaccion);
 
                     SqlParameter parModo = ProcAlmacenado.asignarParametros("@modovarchar", SqlDbType.Int, "preciopormayor");
                     comando.Parameters.Add(parModo);
@@ -1500,7 +1437,7 @@ namespace Capa_Datos
             
 
         }
-        public string cargarproductogondola(List<DatosArticulo> listaArticulo)
+        public string cargarproductogondola(List<DatosArticulo> listaArticulo,string opcionsistema)
         {
 
             //modo 9 para DB
@@ -1516,13 +1453,10 @@ namespace Capa_Datos
 
                 respuesta = "ok";
 
-                SqlCommand comando = ProcAlmacenado.CrearProc(cn, "REPORTE_GONDOLA", transaccion);
-
-                SqlParameter parModo = ProcAlmacenado.asignarParametros("@modo", SqlDbType.NVarChar, "eliminar");
-                comando.Parameters.Add(parModo);
-
-                SqlParameter paridequipo = ProcAlmacenado.asignarParametros("@idequipo", SqlDbType.Int, idequipo);
-                comando.Parameters.Add(paridequipo);
+                 comando = ProcAlmacenado.CrearProc(cn, "REPORTE_GONDOLA", transaccion);
+                 comando.Parameters.AddWithValue("@modo", "eliminar");
+                 comando.Parameters.AddWithValue("@idequipo", idequipo);
+                        
                 comando.ExecuteNonQuery();
 
                 if (respuesta.Equals("ok"))
@@ -1530,37 +1464,17 @@ namespace Capa_Datos
                     foreach (DatosArticulo articulo in listaArticulo)
                     {
                         comando = ProcAlmacenado.CrearProc(cn, "REPORTE_GONDOLA", transaccion);
+                        comando.Parameters.AddWithValue("@modo", "agregar");
+                        comando.Parameters.AddWithValue("@idarticulo", Convert.ToInt32(articulo.idArticulo));
+                        comando.Parameters.AddWithValue("@idequipo", Convert.ToInt32(idequipo));
+                        comando.Parameters.AddWithValue("@precio_unidad", Convert.ToDecimal(articulo.precio));
+                        comando.Parameters.AddWithValue("@preciopormayor", Convert.ToDecimal(articulo.preciopormayor));
+                        comando.Parameters.AddWithValue("@preciopormayor2", Convert.ToDecimal(articulo.preciopormayor2));
+                        comando.Parameters.AddWithValue("@precio_oferta", Convert.ToDecimal(articulo.precio_oferta));
+                        comando.Parameters.AddWithValue("@idcategoria", Convert.ToDecimal(articulo.IdCategoria));
+                        comando.Parameters.AddWithValue("@codigobarraproducto", Convert.ToDecimal(articulo.codigo));
 
-                        parModo = ProcAlmacenado.asignarParametros("@modo", SqlDbType.NVarChar, "agregar");
-                        comando.Parameters.Add(parModo);
-                        //Asigno al parametro @idcategoria, aunque no lo use
-                        SqlParameter parcodigo = ProcAlmacenado.asignarParametros("@idarticulo", SqlDbType.Int, Convert.ToInt32(articulo.idArticulo));
-                        comando.Parameters.Add(parcodigo);
-
-                        paridequipo = ProcAlmacenado.asignarParametros("@idequipo", SqlDbType.Int, idequipo);
-                        comando.Parameters.Add(paridequipo);
-
-                        SqlParameter parprecio_unidad = ProcAlmacenado.asignarParametros("@precio_unidad", SqlDbType.Decimal, articulo.precio);
-                        comando.Parameters.Add(parprecio_unidad);
-
-                        SqlParameter parpreciopormayor = ProcAlmacenado.asignarParametros("@preciopormayor", SqlDbType.Decimal, articulo.preciopormayor);
-                        comando.Parameters.Add(parpreciopormayor);
-
-                        SqlParameter parpreciopormayor2 = ProcAlmacenado.asignarParametros("@preciopormayor2", SqlDbType.Decimal, articulo.preciopormayor2);
-                        comando.Parameters.Add(parpreciopormayor2);
-
-
-                        SqlParameter parprecio_oferta = ProcAlmacenado.asignarParametros("@precio_oferta", SqlDbType.Decimal, articulo.precio_oferta);
-                        comando.Parameters.Add(parprecio_oferta);
-
-                        SqlParameter paridcategoria = ProcAlmacenado.asignarParametros("@idcategoria", SqlDbType.Int, articulo.idCategoria);
-                        comando.Parameters.Add(paridcategoria);
-
-                        SqlParameter parcodigobarra = ProcAlmacenado.asignarParametros("@codigobarraproducto", SqlDbType.NVarChar, articulo.codigo);
-                        comando.Parameters.Add(parcodigobarra);
-
-
-
+                        
                         if (comando.ExecuteNonQuery() == 1)
                         {
                             respuesta = "ok";
@@ -1626,11 +1540,10 @@ namespace Capa_Datos
 
                 SqlCommand comando = ProcAlmacenado.CrearProc(cn, "REPORTE_GONDOLA");
                 //Modo 5 MOSTRAR
-                SqlParameter parModo = ProcAlmacenado.asignarParametros("@modo", SqlDbType.NVarChar, "consulta");
-                comando.Parameters.Add(parModo);
+                comando.Parameters.AddWithValue("@modo", "consulta");
+                comando.Parameters.AddWithValue("@idequipo", idequipo);
                 //Asigno al parametro @idcategoria, aunque no lo use
-                SqlParameter parcodigo = ProcAlmacenado.asignarParametros("@idequipo", SqlDbType.Int, idequipo);
-                comando.Parameters.Add(parcodigo);
+                
 
                 
                 //creo el objeto adapter del data provider le paso el sqlcommand

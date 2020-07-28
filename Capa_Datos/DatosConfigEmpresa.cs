@@ -24,6 +24,8 @@ namespace Capa_Datos
         private string formatoimpproforma;
         private string formatoimpremito;
         private string certificado;
+        private int nrocaja;
+
         private string[] ReglasUsuario { get; set; }
         //Equipo
 
@@ -263,6 +265,19 @@ namespace Capa_Datos
             set
             {
                 certificado = value;
+            }
+        }
+
+        public int Nrocaja
+        {
+            get
+            {
+                return nrocaja;
+            }
+
+            set
+            {
+                nrocaja = value;
             }
         }
 
@@ -515,88 +530,29 @@ namespace Capa_Datos
                      ProcAlmacenado2.MakeParam("@usuarioconectado", SqlDbType.NVarChar,0, configequipo.usuario),
                      ProcAlmacenado2.MakeParam("@turno", SqlDbType.NVarChar, 0, configequipo.turno),
                      ProcAlmacenado2.MakeParam("@idusuario", SqlDbType.Int, 0, configequipo.idusuario),
-                      ProcAlmacenado2.MakeParam("@cod_sucursal", SqlDbType.Int, 0, configequipo.codsucursal),
-                       ProcAlmacenado2.MakeParam("@fecha", SqlDbType.DateTime, 0, configequipo.fecha),
-                       ProcAlmacenado2.MakeParam("@ruta", SqlDbType.NVarChar, 0, configequipo.ruta),
-                       ProcAlmacenado2.MakeParam("@ip", SqlDbType.NVarChar, 0, configequipo.ip),
-                       ProcAlmacenado2.MakeParam("@puertofiscal", SqlDbType.Int, 0, configequipo.puertofiscal),
-                       ProcAlmacenado2.MakeParam("@modelofiscal", SqlDbType.Int, 0, configequipo.modelofiscal),
-                       ProcAlmacenado2.MakeParam("@idempresa", SqlDbType.Int, 0, configequipo.idempresa),
-                       ProcAlmacenado2.MakeParam("@marcafiscal", SqlDbType.NVarChar, 0, configequipo.marcafiscal),
-                       ProcAlmacenado2.MakeParam("@cod_empresa", SqlDbType.Int, 0, 1),
-                 ProcAlmacenado2.MakeParam("@impticket", SqlDbType.NVarChar, 0, configequipo.impticket),
-                 ProcAlmacenado2.MakeParam("@impreporte", SqlDbType.NVarChar, 0, configequipo.impreporte),
-                 ProcAlmacenado2.MakeParam("@Puntoventa", SqlDbType.NVarChar, 0, configequipo.puntoventa),
-                 ProcAlmacenado2.MakeParam("@FormatoImpFactElectronica", SqlDbType.NVarChar, 0, configequipo.FormatoImpFactElectronica),
-                 ProcAlmacenado2.MakeParam("@FormatoImpProforma", SqlDbType.NVarChar, 0, configequipo.formatoimpproforma),
-                 ProcAlmacenado2.MakeParam("@FormatoImpRemito", SqlDbType.NVarChar, 0, configequipo.formatoimpremito),
-                 ProcAlmacenado2.MakeParam("@certificado", SqlDbType.NVarChar, 0, configequipo.certificado)
+                     ProcAlmacenado2.MakeParam("@cod_sucursal", SqlDbType.Int, 0, configequipo.codsucursal),
+                     ProcAlmacenado2.MakeParam("@fecha", SqlDbType.DateTime, 0, configequipo.fecha),
+                     ProcAlmacenado2.MakeParam("@ruta", SqlDbType.NVarChar, 0, configequipo.ruta),
+                     ProcAlmacenado2.MakeParam("@ip", SqlDbType.NVarChar, 0, configequipo.ip),
+                     ProcAlmacenado2.MakeParam("@puertofiscal", SqlDbType.Int, 0, configequipo.puertofiscal),
+                     ProcAlmacenado2.MakeParam("@modelofiscal", SqlDbType.Int, 0, configequipo.modelofiscal),
+                     ProcAlmacenado2.MakeParam("@idempresa", SqlDbType.Int, 0, configequipo.idempresa),
+                     ProcAlmacenado2.MakeParam("@marcafiscal", SqlDbType.NVarChar, 0, configequipo.marcafiscal),
+                     ProcAlmacenado2.MakeParam("@cod_empresa", SqlDbType.Int, 0, 1),
+                     ProcAlmacenado2.MakeParam("@impticket", SqlDbType.NVarChar, 0, configequipo.impticket),
+                     ProcAlmacenado2.MakeParam("@impreporte", SqlDbType.NVarChar, 0, configequipo.impreporte),
+                     ProcAlmacenado2.MakeParam("@Puntoventa", SqlDbType.NVarChar, 0, configequipo.puntoventa),
+                     ProcAlmacenado2.MakeParam("@FormatoImpFactElectronica", SqlDbType.NVarChar, 0, configequipo.FormatoImpFactElectronica),
+                     ProcAlmacenado2.MakeParam("@FormatoImpProforma", SqlDbType.NVarChar, 0, configequipo.formatoimpproforma),
+                     ProcAlmacenado2.MakeParam("@FormatoImpRemito", SqlDbType.NVarChar, 0, configequipo.formatoimpremito),
+                     ProcAlmacenado2.MakeParam("@certificado", SqlDbType.NVarChar, 0, configequipo.certificado),
+                     ProcAlmacenado2.MakeParam("@nrocaja", SqlDbType.NVarChar, 0, configequipo.Nrocaja)
 
 
                  };
                 ProcAlmacenado2.ExecuteNonQuery("SP_CONFIG_EMPRESA", dbParams);
 
-                /*
-                cn.Open();
-                //en el sp si esta el equipo lo va actualizar pero si no esta el equipo lo agrega
-                SqlCommand comando = ProcAlmacenado.CrearProc(cn, "SP_CONFIG_EMPRESA");
-                //Modo 3 agregar
-                SqlParameter parModo = ProcAlmacenado.asignarParametros("@modo", SqlDbType.Int, 4);
-                comando.Parameters.Add(parModo);
-
-                SqlParameter parequipo = ProcAlmacenado.asignarParametros("@equipo", SqlDbType.NVarChar,configequipo.equipo);
-                comando.Parameters.Add(parequipo);
-
-                SqlParameter parusuarioconectado = ProcAlmacenado.asignarParametros("@usuarioconectado", SqlDbType.NVarChar, configequipo.usuario);
-                comando.Parameters.Add(parusuarioconectado );
-
-                SqlParameter parturno = ProcAlmacenado.asignarParametros("@turno", SqlDbType.NVarChar, configequipo.turno);
-                comando.Parameters.Add(parturno );
-
-                SqlParameter paridusuario = ProcAlmacenado.asignarParametros("@idusuario", SqlDbType.Int, configequipo.idusuario);
-                comando.Parameters.Add(paridusuario );
-
-                SqlParameter parcodsucursal = ProcAlmacenado.asignarParametros("@cod_sucursal", SqlDbType.Int , configequipo.codsucursal);
-                comando.Parameters.Add(parcodsucursal );
-
-                SqlParameter parfecha = ProcAlmacenado.asignarParametros("@fecha", SqlDbType.DateTime , configequipo.fecha);
-                comando.Parameters.Add(parfecha );
-
-                SqlParameter paruta = ProcAlmacenado.asignarParametros("@ruta", SqlDbType.NVarChar, configequipo.ruta);
-                comando.Parameters.Add(paruta);
-
-                SqlParameter parip = ProcAlmacenado.asignarParametros("@ip", SqlDbType.NVarChar, configequipo.ip);
-                comando.Parameters.Add(parip );
-
-                SqlParameter parpuertofiscal = ProcAlmacenado.asignarParametros("@puertofiscal", SqlDbType.Int, configequipo.puertofiscal);
-                comando.Parameters.Add(parpuertofiscal );
-
-                SqlParameter parmodelofiscal = ProcAlmacenado.asignarParametros("@modelofiscal", SqlDbType.Int, configequipo.modelofiscal);
-                comando.Parameters.Add(parmodelofiscal );
-
-                SqlParameter paridempresa = ProcAlmacenado.asignarParametros("@idempresa", SqlDbType.Int, configequipo.idempresa);
-                comando.Parameters.Add(paridempresa );
-
-                SqlParameter parmarcafiscal = ProcAlmacenado.asignarParametros("@marcafiscal", SqlDbType.NVarChar, configequipo.marcafiscal);
-                comando.Parameters.Add(parmarcafiscal);
-
-                SqlParameter parEmpresa = ProcAlmacenado.asignarParametros("@cod_empresa", SqlDbType.Int, 1);
-                comando.Parameters.Add(parEmpresa);
-
-
-
-                  if (comando.ExecuteNonQuery() == 1)
-                {
-
-                    respuesta = "ok";
-                }
-                else
-                {
-
-                    respuesta = "error";
-                }
-                cn.Close();
-                 */
+                
             }
             catch (Exception ex)
             {
@@ -653,6 +609,7 @@ namespace Capa_Datos
                     this.formatoimpproforma = Convert.ToString(dr["FormatoImpProforma"]);
                     this.formatoimpremito = Convert.ToString(dr["FormatoImpRemito"]);
                     this.certificado = Convert.ToString(dr["Certificado"]);
+                    this.nrocaja = Convert.ToInt32(dr["nrocaja"]);
 
 
                     login = true;

@@ -216,20 +216,37 @@ namespace Capa_negocio
 
         }
 
-        public static DataTable BuscarFechas(string textobuscar, string textobuscar2, char estado, bool concaja, string tipocomprobante)
+        public static DataTable BuscarFechas(string textobuscar, string textobuscar2, char estado, bool concaja, 
+            string tipocomprobante, int idventa, string puntoventa, int codformapago, bool porventa, bool porformadepago, bool porpuntodeventa )
         {
             Dventa Obj = new Dventa(estado,concaja, tipocomprobante);
-            return Obj.BuscarFechas(textobuscar, textobuscar2);
+            Obj.Estado = estado;
+            Obj.Concaja = concaja;
+            Obj.Idventa = idventa;
+            Obj.Puntoventa = puntoventa;
+            Obj.Porformadepago = porformadepago;
+            Obj.Porpuntodeventa = porpuntodeventa;
+            Obj.Porventa = porventa;
+            Obj.Codformapago = codformapago;
+            
+            Obj.Tipo_comprobante = tipocomprobante;
+
+
+            return Obj.BuscarFechas(textobuscar, textobuscar2,Obj);
 
         }
 
-        public static string cambiarestadoventa(int idVenta,char estado, string varnrocomprobante = "0", string varcae = "", string varvtocae = "") {
+        public static string cambiarestadoventa(int idVenta,char estado, string varnrocomprobante = "0", string varcae = "", string varvtocae = "", string varpuntoventa = "0001",string vartipofactura = "") {
             Dventa Obj = new Dventa();
             Obj.Idventa = idVenta;
             Obj.Estado = estado;
             Obj.Nrocomprobante = varnrocomprobante;
             Obj.Cae = varcae;
             Obj.Caevencimiento = varvtocae;
+            Obj.Puntoventa = varpuntoventa;
+            Obj.Numerotipofactura = vartipofactura;
+            Obj.Fecha = DateTime.Now;
+
             return Obj.CambiarEstadoVenta(Obj);
         }
 

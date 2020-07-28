@@ -193,14 +193,14 @@
                             <PaddingBottom>2pt</PaddingBottom>
                           </Style>
                         </Textbox>
-                        <Textbox Name="Textbox6">
+                        <Textbox Name="texto1">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>POR UNIDAD</Value>
+                                  <Value>=Fields!texto1.Value</Value>
                                   <Style>
                                     <FontSize>7pt</FontSize>
                                   </Style>
@@ -211,7 +211,7 @@
                               </Style>
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>Textbox6</rd:DefaultName>
+                          <rd:DefaultName>texto1</rd:DefaultName>
                           <Top>0.68056in</Top>
                           <Left>0.19897cm</Left>
                           <Height>0.26667in</Height>
@@ -227,14 +227,14 @@
                             <PaddingBottom>2pt</PaddingBottom>
                           </Style>
                         </Textbox>
-                        <Textbox Name="Textbox7">
+                        <Textbox Name="texto2">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>POR CANTIDAD</Value>
+                                  <Value>=Fields!texto2.Value</Value>
                                   <Style>
                                     <FontSize>7pt</FontSize>
                                   </Style>
@@ -245,7 +245,7 @@
                               </Style>
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>Textbox7</rd:DefaultName>
+                          <rd:DefaultName>texto2</rd:DefaultName>
                           <Top>0.98611in</Top>
                           <Left>0.19897cm</Left>
                           <Height>0.25in</Height>
@@ -561,10 +561,18 @@
           <DataField>nombrearticulo</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
+        <Field Name="texto1">
+          <DataField>texto1</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="texto2">
+          <DataField>texto2</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
       </Fields>
       <rd:DataSetInfo>
-        <rd:DataSetName>DataSet1</rd:DataSetName>
-        <rd:SchemaPath>C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\DGondola.xsd</rd:SchemaPath>
+        <rd:DataSetName>DSGondola</rd:DataSetName>
+        <rd:SchemaPath>C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\DataSet\DSGondola.xsd</rd:SchemaPath>
         <rd:TableName>REPORTE_GONDOLA</rd:TableName>
         <rd:TableAdapterFillMethod>Fill</rd:TableAdapterFillMethod>
         <rd:TableAdapterGetDataMethod>GetData</rd:TableAdapterGetDataMethod>

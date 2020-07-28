@@ -44,7 +44,6 @@
             this.Dtproducto = new System.Windows.Forms.DataGridView();
             this.Dtproveedor = new System.Windows.Forms.DataGridView();
             this.txtNombreProducto = new System.Windows.Forms.TextBox();
-            this.LblDetalle = new System.Windows.Forms.Label();
             this.btnBuscarProd = new System.Windows.Forms.Button();
             this.btnAgregar = new System.Windows.Forms.Button();
             this.txtcantidad = new System.Windows.Forms.TextBox();
@@ -68,25 +67,31 @@
             this.lblSistemaVenta = new System.Windows.Forms.Label();
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.tabControl2 = new System.Windows.Forms.TabControl();
-            this.Lista = new System.Windows.Forms.TabPage();
             this.Agregar = new System.Windows.Forms.TabPage();
-            this.rdbEgreso = new System.Windows.Forms.RadioButton();
-            this.rdbIngreso = new System.Windows.Forms.RadioButton();
-            this.xuiCustomGroupbox1 = new XanderUI.XUICustomGroupbox();
-            this.txtProveedor = new System.Windows.Forms.TextBox();
-            this.ChRegistrar = new System.Windows.Forms.CheckBox();
-            this.btnBuscarProv = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
-            this.lblTComprobante = new System.Windows.Forms.Label();
-            this.LblDesprov = new System.Windows.Forms.Label();
-            this.txtSerie = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.lblSerie = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
-            this.txtCorrelativa = new System.Windows.Forms.TextBox();
-            this.cbTipoComprobante = new System.Windows.Forms.ComboBox();
-            this.lblCorrelativa = new System.Windows.Forms.Label();
             this.xuiCustomGroupbox2 = new XanderUI.XUICustomGroupbox();
+            this.rdbIngreso = new System.Windows.Forms.RadioButton();
+            this.rdbEgreso = new System.Windows.Forms.RadioButton();
+            this.xuiCustomGroupbox1 = new XanderUI.XUICustomGroupbox();
+            this.LblDesprov = new System.Windows.Forms.Label();
+            this.lblTComprobante = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.btnBuscarProv = new System.Windows.Forms.Button();
+            this.ChRegistrar = new System.Windows.Forms.CheckBox();
+            this.txtProveedor = new System.Windows.Forms.TextBox();
+            this.cbTipoComprobante = new System.Windows.Forms.ComboBox();
+            this.lblSerie = new System.Windows.Forms.Label();
+            this.txtSerie = new System.Windows.Forms.TextBox();
+            this.lblCorrelativa = new System.Windows.Forms.Label();
+            this.txtCorrelativa = new System.Windows.Forms.TextBox();
+            this.Lista = new System.Windows.Forms.TabPage();
+            this.TxtcambioDv = new System.Windows.Forms.TextBox();
+            this.chkporcantidad = new System.Windows.Forms.CheckBox();
+            this.button2 = new XanderUI.XUISuperButton();
+            this.button1 = new XanderUI.XUISuperButton();
+            this.TxtItems = new System.Windows.Forms.TextBox();
+            this.TxtCan = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataLista)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -101,10 +106,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.btnCerrar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).BeginInit();
             this.tabControl2.SuspendLayout();
-            this.Lista.SuspendLayout();
             this.Agregar.SuspendLayout();
-            this.xuiCustomGroupbox1.SuspendLayout();
             this.xuiCustomGroupbox2.SuspendLayout();
+            this.xuiCustomGroupbox1.SuspendLayout();
+            this.Lista.SuspendLayout();
             this.SuspendLayout();
             // 
             // errorProvider1
@@ -115,10 +120,10 @@
             // 
             this.btnAnular.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAnular.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAnular.Location = new System.Drawing.Point(1167, 35);
-            this.btnAnular.Margin = new System.Windows.Forms.Padding(4);
+            this.btnAnular.Location = new System.Drawing.Point(2042, 64);
+            this.btnAnular.Margin = new System.Windows.Forms.Padding(6, 7, 6, 7);
             this.btnAnular.Name = "btnAnular";
-            this.btnAnular.Size = new System.Drawing.Size(140, 49);
+            this.btnAnular.Size = new System.Drawing.Size(246, 88);
             this.btnAnular.TabIndex = 4;
             this.btnAnular.Text = "Anular";
             this.btnAnular.UseVisualStyleBackColor = true;
@@ -134,13 +139,13 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataLista.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
             this.dataLista.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataLista.Location = new System.Drawing.Point(7, 104);
-            this.dataLista.Margin = new System.Windows.Forms.Padding(4);
+            this.dataLista.Location = new System.Drawing.Point(12, 189);
+            this.dataLista.Margin = new System.Windows.Forms.Padding(6, 7, 6, 7);
             this.dataLista.MultiSelect = false;
             this.dataLista.Name = "dataLista";
             this.dataLista.ReadOnly = true;
             this.dataLista.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataLista.Size = new System.Drawing.Size(1380, 380);
+            this.dataLista.Size = new System.Drawing.Size(1218, 153);
             this.dataLista.TabIndex = 6;
             this.dataLista.RowLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataLista_RowLeave);
             this.dataLista.SelectionChanged += new System.EventHandler(this.dataLista_SelectionChanged);
@@ -155,13 +160,13 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(7, 505);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4);
+            this.dataGridView1.Location = new System.Drawing.Point(12, 379);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(6, 7, 6, 7);
             this.dataGridView1.MultiSelect = false;
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(1380, 145);
+            this.dataGridView1.Size = new System.Drawing.Size(1218, 262);
             this.dataGridView1.TabIndex = 31;
             this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
@@ -171,10 +176,10 @@
             this.btnExportarExcel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnExportarExcel.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnExportarExcel.Image = global::Capa_Presentacion.Properties.Resources.Microsoft_Excel_20px;
-            this.btnExportarExcel.Location = new System.Drawing.Point(1352, 18);
-            this.btnExportarExcel.Margin = new System.Windows.Forms.Padding(4);
+            this.btnExportarExcel.Location = new System.Drawing.Point(1170, 32);
+            this.btnExportarExcel.Margin = new System.Windows.Forms.Padding(6, 7, 6, 7);
             this.btnExportarExcel.Name = "btnExportarExcel";
-            this.btnExportarExcel.Size = new System.Drawing.Size(35, 34);
+            this.btnExportarExcel.Size = new System.Drawing.Size(61, 61);
             this.btnExportarExcel.TabIndex = 30;
             this.btnExportarExcel.UseVisualStyleBackColor = true;
             // 
@@ -182,10 +187,10 @@
             // 
             this.btnTodos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnTodos.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnTodos.Location = new System.Drawing.Point(1004, 35);
-            this.btnTodos.Margin = new System.Windows.Forms.Padding(4);
+            this.btnTodos.Location = new System.Drawing.Point(1758, 64);
+            this.btnTodos.Margin = new System.Windows.Forms.Padding(6, 7, 6, 7);
             this.btnTodos.Name = "btnTodos";
-            this.btnTodos.Size = new System.Drawing.Size(140, 49);
+            this.btnTodos.Size = new System.Drawing.Size(246, 88);
             this.btnTodos.TabIndex = 15;
             this.btnTodos.Text = "Todos";
             this.btnTodos.UseVisualStyleBackColor = true;
@@ -195,39 +200,39 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(268, 16);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Location = new System.Drawing.Point(470, 29);
+            this.label1.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(128, 30);
+            this.label1.Size = new System.Drawing.Size(152, 36);
             this.label1.TabIndex = 14;
             this.label1.Text = "Fecha Fin";
             // 
             // dtpFechaFin
             // 
             this.dtpFechaFin.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpFechaFin.Location = new System.Drawing.Point(273, 54);
-            this.dtpFechaFin.Margin = new System.Windows.Forms.Padding(4);
+            this.dtpFechaFin.Location = new System.Drawing.Point(478, 99);
+            this.dtpFechaFin.Margin = new System.Windows.Forms.Padding(6, 7, 6, 7);
             this.dtpFechaFin.Name = "dtpFechaFin";
-            this.dtpFechaFin.Size = new System.Drawing.Size(208, 30);
+            this.dtpFechaFin.Size = new System.Drawing.Size(362, 35);
             this.dtpFechaFin.TabIndex = 2;
             // 
             // dtpFechaIni
             // 
             this.dtpFechaIni.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpFechaIni.Location = new System.Drawing.Point(18, 54);
-            this.dtpFechaIni.Margin = new System.Windows.Forms.Padding(4);
+            this.dtpFechaIni.Location = new System.Drawing.Point(31, 99);
+            this.dtpFechaIni.Margin = new System.Windows.Forms.Padding(6, 7, 6, 7);
             this.dtpFechaIni.Name = "dtpFechaIni";
-            this.dtpFechaIni.Size = new System.Drawing.Size(208, 30);
+            this.dtpFechaIni.Size = new System.Drawing.Size(362, 35);
             this.dtpFechaIni.TabIndex = 1;
             // 
             // lblFechaIni
             // 
             this.lblFechaIni.AutoSize = true;
             this.lblFechaIni.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblFechaIni.Location = new System.Drawing.Point(21, 16);
-            this.lblFechaIni.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblFechaIni.Location = new System.Drawing.Point(37, 29);
+            this.lblFechaIni.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.lblFechaIni.Name = "lblFechaIni";
-            this.lblFechaIni.Size = new System.Drawing.Size(160, 30);
+            this.lblFechaIni.Size = new System.Drawing.Size(191, 36);
             this.lblFechaIni.TabIndex = 7;
             this.lblFechaIni.Text = "Fecha Inicio";
             // 
@@ -235,10 +240,10 @@
             // 
             this.btnBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnBuscar.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBuscar.Location = new System.Drawing.Point(841, 35);
-            this.btnBuscar.Margin = new System.Windows.Forms.Padding(4);
+            this.btnBuscar.Location = new System.Drawing.Point(1472, 64);
+            this.btnBuscar.Margin = new System.Windows.Forms.Padding(6, 7, 6, 7);
             this.btnBuscar.Name = "btnBuscar";
-            this.btnBuscar.Size = new System.Drawing.Size(140, 49);
+            this.btnBuscar.Size = new System.Drawing.Size(246, 88);
             this.btnBuscar.TabIndex = 3;
             this.btnBuscar.Text = "Buscar";
             this.btnBuscar.UseVisualStyleBackColor = true;
@@ -250,14 +255,14 @@
             this.Dtproducto.AllowUserToDeleteRows = false;
             this.Dtproducto.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.Dtproducto.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.Dtproducto.Location = new System.Drawing.Point(116, 209);
-            this.Dtproducto.Margin = new System.Windows.Forms.Padding(4, 7, 4, 7);
+            this.Dtproducto.Location = new System.Drawing.Point(142, 299);
+            this.Dtproducto.Margin = new System.Windows.Forms.Padding(6, 13, 6, 13);
             this.Dtproducto.MultiSelect = false;
             this.Dtproducto.Name = "Dtproducto";
             this.Dtproducto.ReadOnly = true;
             this.Dtproducto.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Dtproducto.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.Dtproducto.Size = new System.Drawing.Size(486, 126);
+            this.Dtproducto.Size = new System.Drawing.Size(851, 117);
             this.Dtproducto.TabIndex = 46;
             this.Dtproducto.Visible = false;
             this.Dtproducto.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Dtproducto_CellContentDoubleClick);
@@ -270,14 +275,14 @@
             this.Dtproveedor.AllowUserToDeleteRows = false;
             this.Dtproveedor.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.Dtproveedor.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.Dtproveedor.Location = new System.Drawing.Point(140, 0);
-            this.Dtproveedor.Margin = new System.Windows.Forms.Padding(4, 7, 4, 7);
+            this.Dtproveedor.Location = new System.Drawing.Point(173, 74);
+            this.Dtproveedor.Margin = new System.Windows.Forms.Padding(6, 13, 6, 13);
             this.Dtproveedor.MultiSelect = false;
             this.Dtproveedor.Name = "Dtproveedor";
             this.Dtproveedor.ReadOnly = true;
             this.Dtproveedor.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Dtproveedor.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.Dtproveedor.Size = new System.Drawing.Size(433, 70);
+            this.Dtproveedor.Size = new System.Drawing.Size(758, 74);
             this.Dtproveedor.TabIndex = 47;
             this.Dtproveedor.Visible = false;
             this.Dtproveedor.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.Dtproveedor_CellDoubleClick);
@@ -285,33 +290,24 @@
             // 
             // txtNombreProducto
             // 
-            this.txtNombreProducto.Location = new System.Drawing.Point(108, 23);
+            this.txtNombreProducto.Location = new System.Drawing.Point(132, 34);
+            this.txtNombreProducto.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.txtNombreProducto.Name = "txtNombreProducto";
-            this.txtNombreProducto.Size = new System.Drawing.Size(247, 30);
+            this.txtNombreProducto.Size = new System.Drawing.Size(429, 35);
             this.txtNombreProducto.TabIndex = 77;
             this.txtNombreProducto.TextChanged += new System.EventHandler(this.txtNombreProducto_TextChanged);
             this.txtNombreProducto.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtNombreProducto_KeyDown);
             this.txtNombreProducto.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNombreProducto_KeyPress);
-            // 
-            // LblDetalle
-            // 
-            this.LblDetalle.AutoSize = true;
-            this.LblDetalle.Location = new System.Drawing.Point(414, 28);
-            this.LblDetalle.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.LblDetalle.Name = "LblDetalle";
-            this.LblDetalle.Size = new System.Drawing.Size(27, 25);
-            this.LblDetalle.TabIndex = 45;
-            this.LblDetalle.Text = "...";
             // 
             // btnBuscarProd
             // 
             this.btnBuscarProd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnBuscarProd.Image = global::Capa_Presentacion.Properties.Resources.Search_15px;
             this.btnBuscarProd.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnBuscarProd.Location = new System.Drawing.Point(363, 21);
-            this.btnBuscarProd.Margin = new System.Windows.Forms.Padding(5, 7, 5, 7);
+            this.btnBuscarProd.Location = new System.Drawing.Point(575, 34);
+            this.btnBuscarProd.Margin = new System.Windows.Forms.Padding(9, 13, 9, 13);
             this.btnBuscarProd.Name = "btnBuscarProd";
-            this.btnBuscarProd.Size = new System.Drawing.Size(35, 34);
+            this.btnBuscarProd.Size = new System.Drawing.Size(39, 37);
             this.btnBuscarProd.TabIndex = 44;
             this.btnBuscarProd.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btnBuscarProd.UseVisualStyleBackColor = true;
@@ -321,44 +317,47 @@
             // 
             this.btnAgregar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAgregar.Image = global::Capa_Presentacion.Properties.Resources.Plus_15px;
-            this.btnAgregar.Location = new System.Drawing.Point(774, 29);
-            this.btnAgregar.Margin = new System.Windows.Forms.Padding(4);
+            this.btnAgregar.Location = new System.Drawing.Point(1850, 51);
+            this.btnAgregar.Margin = new System.Windows.Forms.Padding(6, 7, 6, 7);
             this.btnAgregar.Name = "btnAgregar";
-            this.btnAgregar.Size = new System.Drawing.Size(35, 30);
+            this.btnAgregar.Size = new System.Drawing.Size(61, 55);
             this.btnAgregar.TabIndex = 40;
             this.btnAgregar.UseVisualStyleBackColor = true;
+            this.btnAgregar.Visible = false;
             this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
             // 
             // txtcantidad
             // 
             this.txtcantidad.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtcantidad.Location = new System.Drawing.Point(704, 28);
-            this.txtcantidad.Margin = new System.Windows.Forms.Padding(4);
+            this.txtcantidad.Location = new System.Drawing.Point(1727, 49);
+            this.txtcantidad.Margin = new System.Windows.Forms.Padding(6, 7, 6, 7);
             this.txtcantidad.MaxLength = 8;
             this.txtcantidad.Multiline = true;
             this.txtcantidad.Name = "txtcantidad";
-            this.txtcantidad.Size = new System.Drawing.Size(66, 30);
+            this.txtcantidad.Size = new System.Drawing.Size(114, 53);
             this.txtcantidad.TabIndex = 39;
+            this.txtcantidad.Visible = false;
             this.txtcantidad.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtcantidad_KeyDown);
             // 
             // lblCntIngOegr
             // 
             this.lblCntIngOegr.AutoSize = true;
             this.lblCntIngOegr.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCntIngOegr.Location = new System.Drawing.Point(581, 30);
-            this.lblCntIngOegr.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblCntIngOegr.Location = new System.Drawing.Point(1512, 55);
+            this.lblCntIngOegr.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.lblCntIngOegr.Name = "lblCntIngOegr";
-            this.lblCntIngOegr.Size = new System.Drawing.Size(102, 25);
+            this.lblCntIngOegr.Size = new System.Drawing.Size(121, 29);
             this.lblCntIngOegr.TabIndex = 43;
             this.lblCntIngOegr.Text = "Cantidad :";
+            this.lblCntIngOegr.Visible = false;
             // 
             // lblNomProducto
             // 
             this.lblNomProducto.AutoSize = true;
-            this.lblNomProducto.Location = new System.Drawing.Point(11, 28);
-            this.lblNomProducto.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblNomProducto.Location = new System.Drawing.Point(11, 34);
+            this.lblNomProducto.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.lblNomProducto.Name = "lblNomProducto";
-            this.lblNomProducto.Size = new System.Drawing.Size(90, 25);
+            this.lblNomProducto.Size = new System.Drawing.Size(110, 29);
             this.lblNomProducto.TabIndex = 41;
             this.lblNomProducto.Text = "Producto";
             // 
@@ -389,14 +388,15 @@
             this.Cantidad1,
             this.StockActual1});
             this.dataListaMov.EnableHeadersVisualStyles = false;
-            this.dataListaMov.Location = new System.Drawing.Point(9, 223);
-            this.dataListaMov.Margin = new System.Windows.Forms.Padding(4, 7, 4, 7);
+            this.dataListaMov.Location = new System.Drawing.Point(12, 323);
+            this.dataListaMov.Margin = new System.Windows.Forms.Padding(6, 13, 6, 13);
             this.dataListaMov.MultiSelect = false;
             this.dataListaMov.Name = "dataListaMov";
             this.dataListaMov.RowHeadersWidth = 38;
-            this.dataListaMov.Size = new System.Drawing.Size(1378, 371);
+            this.dataListaMov.Size = new System.Drawing.Size(1228, 237);
             this.dataListaMov.TabIndex = 73;
             this.dataListaMov.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataListaMov_CellDoubleClick);
+            this.dataListaMov.DoubleClick += new System.EventHandler(this.dataListaMov_DoubleClick);
             // 
             // Codigo1
             // 
@@ -459,9 +459,9 @@
             this.panelHorizontal.Controls.Add(this.lblSistemaVenta);
             this.panelHorizontal.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelHorizontal.Location = new System.Drawing.Point(0, 0);
-            this.panelHorizontal.Margin = new System.Windows.Forms.Padding(4);
+            this.panelHorizontal.Margin = new System.Windows.Forms.Padding(6, 7, 6, 7);
             this.panelHorizontal.Name = "panelHorizontal";
-            this.panelHorizontal.Size = new System.Drawing.Size(1421, 37);
+            this.panelHorizontal.Size = new System.Drawing.Size(1284, 37);
             this.panelHorizontal.TabIndex = 64;
             this.panelHorizontal.DoubleClick += new System.EventHandler(this.panelHorizontal_DoubleClick);
             this.panelHorizontal.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panelHorizontal_MouseMove);
@@ -471,10 +471,10 @@
             this.btnMaximizar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnMaximizar.BackgroundImage = global::Capa_Presentacion.Properties.Resources.maximize_Checkbox_16px;
             this.btnMaximizar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnMaximizar.Location = new System.Drawing.Point(1343, 1);
-            this.btnMaximizar.Margin = new System.Windows.Forms.Padding(4);
+            this.btnMaximizar.Location = new System.Drawing.Point(1228, 4);
+            this.btnMaximizar.Margin = new System.Windows.Forms.Padding(6, 7, 6, 7);
             this.btnMaximizar.Name = "btnMaximizar";
-            this.btnMaximizar.Size = new System.Drawing.Size(29, 31);
+            this.btnMaximizar.Size = new System.Drawing.Size(22, 25);
             this.btnMaximizar.TabIndex = 5;
             this.btnMaximizar.TabStop = false;
             this.btnMaximizar.Click += new System.EventHandler(this.btnMaximizar_Click);
@@ -486,10 +486,10 @@
             this.btnRestaurar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnRestaurar.BackgroundImage = global::Capa_Presentacion.Properties.Resources.Restore_Window_20px;
             this.btnRestaurar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnRestaurar.Location = new System.Drawing.Point(1343, 1);
-            this.btnRestaurar.Margin = new System.Windows.Forms.Padding(4);
+            this.btnRestaurar.Location = new System.Drawing.Point(1229, 3);
+            this.btnRestaurar.Margin = new System.Windows.Forms.Padding(6, 7, 6, 7);
             this.btnRestaurar.Name = "btnRestaurar";
-            this.btnRestaurar.Size = new System.Drawing.Size(29, 31);
+            this.btnRestaurar.Size = new System.Drawing.Size(22, 25);
             this.btnRestaurar.TabIndex = 2;
             this.btnRestaurar.TabStop = false;
             this.btnRestaurar.Visible = false;
@@ -502,10 +502,10 @@
             this.btnMinimizar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnMinimizar.BackgroundImage = global::Capa_Presentacion.Properties.Resources.Minus_20px;
             this.btnMinimizar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnMinimizar.Location = new System.Drawing.Point(1299, 1);
-            this.btnMinimizar.Margin = new System.Windows.Forms.Padding(4);
+            this.btnMinimizar.Location = new System.Drawing.Point(1201, 3);
+            this.btnMinimizar.Margin = new System.Windows.Forms.Padding(6, 7, 6, 7);
             this.btnMinimizar.Name = "btnMinimizar";
-            this.btnMinimizar.Size = new System.Drawing.Size(29, 31);
+            this.btnMinimizar.Size = new System.Drawing.Size(22, 25);
             this.btnMinimizar.TabIndex = 1;
             this.btnMinimizar.TabStop = false;
             this.btnMinimizar.Click += new System.EventHandler(this.btnMinimizar_Click);
@@ -518,10 +518,10 @@
             this.btnCerrar.BackgroundImage = global::Capa_Presentacion.Properties.Resources.Delete_20px;
             this.btnCerrar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btnCerrar.ErrorImage = null;
-            this.btnCerrar.Location = new System.Drawing.Point(1387, 1);
-            this.btnCerrar.Margin = new System.Windows.Forms.Padding(4);
+            this.btnCerrar.Location = new System.Drawing.Point(1254, 3);
+            this.btnCerrar.Margin = new System.Windows.Forms.Padding(6, 7, 6, 7);
             this.btnCerrar.Name = "btnCerrar";
-            this.btnCerrar.Size = new System.Drawing.Size(29, 31);
+            this.btnCerrar.Size = new System.Drawing.Size(22, 25);
             this.btnCerrar.TabIndex = 0;
             this.btnCerrar.TabStop = false;
             this.btnCerrar.Click += new System.EventHandler(this.btnCerrar_Click);
@@ -536,10 +536,10 @@
             this.lblSistemaVenta.AutoSize = true;
             this.lblSistemaVenta.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSistemaVenta.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.lblSistemaVenta.Location = new System.Drawing.Point(4, 7);
-            this.lblSistemaVenta.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblSistemaVenta.Location = new System.Drawing.Point(1, 0);
+            this.lblSistemaVenta.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.lblSistemaVenta.Name = "lblSistemaVenta";
-            this.lblSistemaVenta.Size = new System.Drawing.Size(314, 28);
+            this.lblSistemaVenta.Size = new System.Drawing.Size(374, 36);
             this.lblSistemaVenta.TabIndex = 3;
             this.lblSistemaVenta.Text = "MOVIMIENTO DE STOCK    ";
             this.lblSistemaVenta.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -552,62 +552,60 @@
             this.tabControl2.Controls.Add(this.Agregar);
             this.tabControl2.Controls.Add(this.Lista);
             this.tabControl2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            this.tabControl2.Location = new System.Drawing.Point(10, 51);
+            this.tabControl2.Location = new System.Drawing.Point(8, 43);
+            this.tabControl2.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.tabControl2.Name = "tabControl2";
             this.tabControl2.SelectedIndex = 0;
-            this.tabControl2.Size = new System.Drawing.Size(1403, 698);
+            this.tabControl2.Size = new System.Drawing.Size(1262, 703);
             this.tabControl2.TabIndex = 77;
-            // 
-            // Lista
-            // 
-            this.Lista.Controls.Add(this.dataGridView1);
-            this.Lista.Controls.Add(this.btnExportarExcel);
-            this.Lista.Controls.Add(this.dataLista);
-            this.Lista.Controls.Add(this.btnBuscar);
-            this.Lista.Controls.Add(this.btnTodos);
-            this.Lista.Controls.Add(this.btnAnular);
-            this.Lista.Controls.Add(this.label1);
-            this.Lista.Controls.Add(this.lblFechaIni);
-            this.Lista.Controls.Add(this.dtpFechaFin);
-            this.Lista.Controls.Add(this.dtpFechaIni);
-            this.Lista.Location = new System.Drawing.Point(4, 34);
-            this.Lista.Name = "Lista";
-            this.Lista.Padding = new System.Windows.Forms.Padding(3);
-            this.Lista.Size = new System.Drawing.Size(1395, 660);
-            this.Lista.TabIndex = 1;
-            this.Lista.Text = "Lista";
-            this.Lista.UseVisualStyleBackColor = true;
             // 
             // Agregar
             // 
-            this.Agregar.Controls.Add(this.Dtproducto);
-            this.Agregar.Controls.Add(this.xuiCustomGroupbox2);
-            this.Agregar.Controls.Add(this.dataListaMov);
+            this.Agregar.Controls.Add(this.label3);
+            this.Agregar.Controls.Add(this.label7);
+            this.Agregar.Controls.Add(this.TxtCan);
+            this.Agregar.Controls.Add(this.TxtItems);
             this.Agregar.Controls.Add(this.button2);
+            this.Agregar.Controls.Add(this.Dtproducto);
             this.Agregar.Controls.Add(this.button1);
+            this.Agregar.Controls.Add(this.xuiCustomGroupbox2);
+            this.Agregar.Controls.Add(this.TxtcambioDv);
+            this.Agregar.Controls.Add(this.dataListaMov);
             this.Agregar.Controls.Add(this.rdbIngreso);
             this.Agregar.Controls.Add(this.rdbEgreso);
             this.Agregar.Controls.Add(this.xuiCustomGroupbox1);
-            this.Agregar.Location = new System.Drawing.Point(4, 34);
+            this.Agregar.Location = new System.Drawing.Point(4, 38);
+            this.Agregar.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.Agregar.Name = "Agregar";
-            this.Agregar.Padding = new System.Windows.Forms.Padding(3);
-            this.Agregar.Size = new System.Drawing.Size(1395, 660);
+            this.Agregar.Padding = new System.Windows.Forms.Padding(5, 6, 5, 6);
+            this.Agregar.Size = new System.Drawing.Size(1254, 661);
             this.Agregar.TabIndex = 0;
             this.Agregar.Text = "Agregar";
             this.Agregar.UseVisualStyleBackColor = true;
             // 
-            // rdbEgreso
+            // xuiCustomGroupbox2
             // 
-            this.rdbEgreso.Appearance = System.Windows.Forms.Appearance.Button;
-            this.rdbEgreso.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.rdbEgreso.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rdbEgreso.Location = new System.Drawing.Point(163, 9);
-            this.rdbEgreso.Name = "rdbEgreso";
-            this.rdbEgreso.Size = new System.Drawing.Size(150, 45);
-            this.rdbEgreso.TabIndex = 12;
-            this.rdbEgreso.TabStop = true;
-            this.rdbEgreso.Text = "Egreso";
-            this.rdbEgreso.UseVisualStyleBackColor = true;
+            this.xuiCustomGroupbox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.xuiCustomGroupbox2.BorderColor = System.Drawing.Color.DodgerBlue;
+            this.xuiCustomGroupbox2.BorderWidth = 1;
+            this.xuiCustomGroupbox2.Controls.Add(this.chkporcantidad);
+            this.xuiCustomGroupbox2.Controls.Add(this.txtNombreProducto);
+            this.xuiCustomGroupbox2.Controls.Add(this.lblNomProducto);
+            this.xuiCustomGroupbox2.Controls.Add(this.txtcantidad);
+            this.xuiCustomGroupbox2.Controls.Add(this.btnBuscarProd);
+            this.xuiCustomGroupbox2.Controls.Add(this.btnAgregar);
+            this.xuiCustomGroupbox2.Controls.Add(this.lblCntIngOegr);
+            this.xuiCustomGroupbox2.Location = new System.Drawing.Point(10, 226);
+            this.xuiCustomGroupbox2.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
+            this.xuiCustomGroupbox2.Name = "xuiCustomGroupbox2";
+            this.xuiCustomGroupbox2.Padding = new System.Windows.Forms.Padding(5, 6, 5, 6);
+            this.xuiCustomGroupbox2.ShowText = true;
+            this.xuiCustomGroupbox2.Size = new System.Drawing.Size(1234, 88);
+            this.xuiCustomGroupbox2.TabIndex = 78;
+            this.xuiCustomGroupbox2.TabStop = false;
+            this.xuiCustomGroupbox2.Text = "Items :";
+            this.xuiCustomGroupbox2.TextColor = System.Drawing.Color.DodgerBlue;
             // 
             // rdbIngreso
             // 
@@ -616,13 +614,28 @@
             this.rdbIngreso.FlatAppearance.CheckedBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.rdbIngreso.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.rdbIngreso.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rdbIngreso.Location = new System.Drawing.Point(7, 9);
+            this.rdbIngreso.Location = new System.Drawing.Point(12, 16);
+            this.rdbIngreso.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.rdbIngreso.Name = "rdbIngreso";
-            this.rdbIngreso.Size = new System.Drawing.Size(150, 45);
+            this.rdbIngreso.Size = new System.Drawing.Size(221, 48);
             this.rdbIngreso.TabIndex = 11;
             this.rdbIngreso.TabStop = true;
             this.rdbIngreso.Text = "Ingreso";
             this.rdbIngreso.UseVisualStyleBackColor = true;
+            // 
+            // rdbEgreso
+            // 
+            this.rdbEgreso.Appearance = System.Windows.Forms.Appearance.Button;
+            this.rdbEgreso.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.rdbEgreso.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rdbEgreso.Location = new System.Drawing.Point(243, 16);
+            this.rdbEgreso.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
+            this.rdbEgreso.Name = "rdbEgreso";
+            this.rdbEgreso.Size = new System.Drawing.Size(226, 48);
+            this.rdbEgreso.TabIndex = 12;
+            this.rdbEgreso.TabStop = true;
+            this.rdbEgreso.Text = "Egreso";
+            this.rdbEgreso.UseVisualStyleBackColor = true;
             // 
             // xuiCustomGroupbox1
             // 
@@ -630,6 +643,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.xuiCustomGroupbox1.BorderColor = System.Drawing.Color.DodgerBlue;
             this.xuiCustomGroupbox1.BorderWidth = 1;
+            this.xuiCustomGroupbox1.Controls.Add(this.Dtproveedor);
             this.xuiCustomGroupbox1.Controls.Add(this.LblDesprov);
             this.xuiCustomGroupbox1.Controls.Add(this.lblTComprobante);
             this.xuiCustomGroupbox1.Controls.Add(this.label2);
@@ -642,143 +656,85 @@
             this.xuiCustomGroupbox1.Controls.Add(this.lblCorrelativa);
             this.xuiCustomGroupbox1.Controls.Add(this.txtCorrelativa);
             this.xuiCustomGroupbox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.xuiCustomGroupbox1.Location = new System.Drawing.Point(7, 64);
+            this.xuiCustomGroupbox1.Location = new System.Drawing.Point(12, 76);
+            this.xuiCustomGroupbox1.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.xuiCustomGroupbox1.Name = "xuiCustomGroupbox1";
+            this.xuiCustomGroupbox1.Padding = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.xuiCustomGroupbox1.ShowText = true;
-            this.xuiCustomGroupbox1.Size = new System.Drawing.Size(1382, 82);
+            this.xuiCustomGroupbox1.Size = new System.Drawing.Size(1232, 148);
             this.xuiCustomGroupbox1.TabIndex = 13;
             this.xuiCustomGroupbox1.TabStop = false;
             this.xuiCustomGroupbox1.Text = "Registrar comprobante";
             this.xuiCustomGroupbox1.TextColor = System.Drawing.Color.DodgerBlue;
             // 
-            // txtProveedor
+            // LblDesprov
             // 
-            this.txtProveedor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtProveedor.Enabled = false;
-            this.txtProveedor.Location = new System.Drawing.Point(150, 31);
-            this.txtProveedor.Margin = new System.Windows.Forms.Padding(4);
-            this.txtProveedor.Multiline = true;
-            this.txtProveedor.Name = "txtProveedor";
-            this.txtProveedor.Size = new System.Drawing.Size(136, 30);
-            this.txtProveedor.TabIndex = 33;
-            this.txtProveedor.TextChanged += new System.EventHandler(this.txtProveedor_TextChanged);
-            this.txtProveedor.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtProveedor_KeyDown);
+            this.LblDesprov.Location = new System.Drawing.Point(510, 28);
+            this.LblDesprov.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.LblDesprov.Name = "LblDesprov";
+            this.LblDesprov.Size = new System.Drawing.Size(252, 46);
+            this.LblDesprov.TabIndex = 45;
+            this.LblDesprov.Text = "...";
             // 
-            // ChRegistrar
+            // lblTComprobante
             // 
-            this.ChRegistrar.AutoSize = true;
-            this.ChRegistrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ChRegistrar.Location = new System.Drawing.Point(16, 37);
-            this.ChRegistrar.Margin = new System.Windows.Forms.Padding(4);
-            this.ChRegistrar.Name = "ChRegistrar";
-            this.ChRegistrar.Size = new System.Drawing.Size(14, 13);
-            this.ChRegistrar.TabIndex = 37;
-            this.ChRegistrar.UseVisualStyleBackColor = true;
-            this.ChRegistrar.CheckedChanged += new System.EventHandler(this.ChRegistrar_CheckedChanged);
+            this.lblTComprobante.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTComprobante.Location = new System.Drawing.Point(14, 94);
+            this.lblTComprobante.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.lblTComprobante.Name = "lblTComprobante";
+            this.lblTComprobante.Size = new System.Drawing.Size(173, 26);
+            this.lblTComprobante.TabIndex = 43;
+            this.lblTComprobante.Text = "Tipo Com. :";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(36, 33);
+            this.label2.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(126, 29);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "Proveedor";
             // 
             // btnBuscarProv
             // 
             this.btnBuscarProv.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnBuscarProv.Image = global::Capa_Presentacion.Properties.Resources.Search_15px;
             this.btnBuscarProv.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnBuscarProv.Location = new System.Drawing.Point(288, 31);
-            this.btnBuscarProv.Margin = new System.Windows.Forms.Padding(5, 7, 5, 7);
+            this.btnBuscarProv.Location = new System.Drawing.Point(425, 33);
+            this.btnBuscarProv.Margin = new System.Windows.Forms.Padding(9, 13, 9, 13);
             this.btnBuscarProv.Name = "btnBuscarProv";
-            this.btnBuscarProv.Size = new System.Drawing.Size(35, 30);
+            this.btnBuscarProv.Size = new System.Drawing.Size(57, 37);
             this.btnBuscarProv.TabIndex = 44;
             this.btnBuscarProv.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btnBuscarProv.UseVisualStyleBackColor = true;
             this.btnBuscarProv.Click += new System.EventHandler(this.btnBuscarProv_Click);
             // 
-            // label2
+            // ChRegistrar
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(39, 33);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(102, 25);
-            this.label2.TabIndex = 0;
-            this.label2.Text = "Proveedor";
+            this.ChRegistrar.AutoSize = true;
+            this.ChRegistrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.ChRegistrar.Location = new System.Drawing.Point(8, 39);
+            this.ChRegistrar.Margin = new System.Windows.Forms.Padding(6, 7, 6, 7);
+            this.ChRegistrar.Name = "ChRegistrar";
+            this.ChRegistrar.Size = new System.Drawing.Size(17, 16);
+            this.ChRegistrar.TabIndex = 37;
+            this.ChRegistrar.UseVisualStyleBackColor = true;
+            this.ChRegistrar.CheckedChanged += new System.EventHandler(this.ChRegistrar_CheckedChanged);
             // 
-            // lblTComprobante
+            // txtProveedor
             // 
-            this.lblTComprobante.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTComprobante.Location = new System.Drawing.Point(474, 35);
-            this.lblTComprobante.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblTComprobante.Name = "lblTComprobante";
-            this.lblTComprobante.Size = new System.Drawing.Size(112, 30);
-            this.lblTComprobante.TabIndex = 43;
-            this.lblTComprobante.Text = "Tipo Com. :";
-            // 
-            // LblDesprov
-            // 
-            this.LblDesprov.Location = new System.Drawing.Point(333, 33);
-            this.LblDesprov.Name = "LblDesprov";
-            this.LblDesprov.Size = new System.Drawing.Size(144, 26);
-            this.LblDesprov.TabIndex = 45;
-            this.LblDesprov.Text = "...";
-            // 
-            // txtSerie
-            // 
-            this.txtSerie.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtSerie.Enabled = false;
-            this.txtSerie.Location = new System.Drawing.Point(916, 37);
-            this.txtSerie.Margin = new System.Windows.Forms.Padding(4);
-            this.txtSerie.MaxLength = 4;
-            this.txtSerie.Multiline = true;
-            this.txtSerie.Name = "txtSerie";
-            this.txtSerie.Size = new System.Drawing.Size(83, 30);
-            this.txtSerie.TabIndex = 39;
-            // 
-            // button1
-            // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(1064, 604);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(150, 37);
-            this.button1.TabIndex = 74;
-            this.button1.Text = "Guardar cambios";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // lblSerie
-            // 
-            this.lblSerie.AutoSize = true;
-            this.lblSerie.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSerie.Location = new System.Drawing.Point(815, 38);
-            this.lblSerie.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblSerie.Name = "lblSerie";
-            this.lblSerie.Size = new System.Drawing.Size(69, 25);
-            this.lblSerie.TabIndex = 41;
-            this.lblSerie.Text = "Serie :";
-            // 
-            // button2
-            // 
-            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button2.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button2.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(1234, 604);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(150, 37);
-            this.button2.TabIndex = 75;
-            this.button2.Text = "Cancelar";
-            this.button2.UseVisualStyleBackColor = false;
-            // 
-            // txtCorrelativa
-            // 
-            this.txtCorrelativa.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtCorrelativa.Enabled = false;
-            this.txtCorrelativa.Location = new System.Drawing.Point(1183, 37);
-            this.txtCorrelativa.Margin = new System.Windows.Forms.Padding(4);
-            this.txtCorrelativa.MaxLength = 8;
-            this.txtCorrelativa.Multiline = true;
-            this.txtCorrelativa.Name = "txtCorrelativa";
-            this.txtCorrelativa.Size = new System.Drawing.Size(123, 30);
-            this.txtCorrelativa.TabIndex = 40;
+            this.txtProveedor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtProveedor.Enabled = false;
+            this.txtProveedor.Location = new System.Drawing.Point(173, 31);
+            this.txtProveedor.Margin = new System.Windows.Forms.Padding(6, 7, 6, 7);
+            this.txtProveedor.Multiline = true;
+            this.txtProveedor.Name = "txtProveedor";
+            this.txtProveedor.Size = new System.Drawing.Size(237, 36);
+            this.txtProveedor.TabIndex = 33;
+            this.txtProveedor.TextChanged += new System.EventHandler(this.txtProveedor_TextChanged);
+            this.txtProveedor.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtProveedor_KeyDown);
             // 
             // cbTipoComprobante
             // 
@@ -792,59 +748,222 @@
             "BOLETA",
             "FACTURA",
             "REMITO"});
-            this.cbTipoComprobante.Location = new System.Drawing.Point(608, 33);
-            this.cbTipoComprobante.Margin = new System.Windows.Forms.Padding(4);
+            this.cbTipoComprobante.Location = new System.Drawing.Point(182, 94);
+            this.cbTipoComprobante.Margin = new System.Windows.Forms.Padding(6, 7, 6, 7);
             this.cbTipoComprobante.Name = "cbTipoComprobante";
-            this.cbTipoComprobante.Size = new System.Drawing.Size(179, 33);
+            this.cbTipoComprobante.Size = new System.Drawing.Size(275, 37);
             this.cbTipoComprobante.TabIndex = 38;
+            // 
+            // lblSerie
+            // 
+            this.lblSerie.AutoSize = true;
+            this.lblSerie.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSerie.Location = new System.Drawing.Point(510, 97);
+            this.lblSerie.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
+            this.lblSerie.Name = "lblSerie";
+            this.lblSerie.Size = new System.Drawing.Size(83, 29);
+            this.lblSerie.TabIndex = 41;
+            this.lblSerie.Text = "Serie :";
+            // 
+            // txtSerie
+            // 
+            this.txtSerie.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtSerie.Enabled = false;
+            this.txtSerie.Location = new System.Drawing.Point(1030, 92);
+            this.txtSerie.Margin = new System.Windows.Forms.Padding(6, 7, 6, 7);
+            this.txtSerie.MaxLength = 4;
+            this.txtSerie.Multiline = true;
+            this.txtSerie.Name = "txtSerie";
+            this.txtSerie.Size = new System.Drawing.Size(178, 42);
+            this.txtSerie.TabIndex = 39;
             // 
             // lblCorrelativa
             // 
             this.lblCorrelativa.AutoSize = true;
             this.lblCorrelativa.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCorrelativa.Location = new System.Drawing.Point(1023, 40);
-            this.lblCorrelativa.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblCorrelativa.Location = new System.Drawing.Point(877, 97);
+            this.lblCorrelativa.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.lblCorrelativa.Name = "lblCorrelativa";
-            this.lblCorrelativa.Size = new System.Drawing.Size(117, 25);
+            this.lblCorrelativa.Size = new System.Drawing.Size(141, 29);
             this.lblCorrelativa.TabIndex = 42;
             this.lblCorrelativa.Text = "Correlativa :";
             // 
-            // xuiCustomGroupbox2
+            // txtCorrelativa
             // 
-            this.xuiCustomGroupbox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.xuiCustomGroupbox2.BorderColor = System.Drawing.Color.DodgerBlue;
-            this.xuiCustomGroupbox2.BorderWidth = 1;
-            this.xuiCustomGroupbox2.Controls.Add(this.Dtproveedor);
-            this.xuiCustomGroupbox2.Controls.Add(this.txtNombreProducto);
-            this.xuiCustomGroupbox2.Controls.Add(this.lblNomProducto);
-            this.xuiCustomGroupbox2.Controls.Add(this.LblDetalle);
-            this.xuiCustomGroupbox2.Controls.Add(this.txtcantidad);
-            this.xuiCustomGroupbox2.Controls.Add(this.btnBuscarProd);
-            this.xuiCustomGroupbox2.Controls.Add(this.btnAgregar);
-            this.xuiCustomGroupbox2.Controls.Add(this.lblCntIngOegr);
-            this.xuiCustomGroupbox2.Location = new System.Drawing.Point(7, 149);
-            this.xuiCustomGroupbox2.Name = "xuiCustomGroupbox2";
-            this.xuiCustomGroupbox2.ShowText = true;
-            this.xuiCustomGroupbox2.Size = new System.Drawing.Size(1385, 71);
-            this.xuiCustomGroupbox2.TabIndex = 78;
-            this.xuiCustomGroupbox2.TabStop = false;
-            this.xuiCustomGroupbox2.Text = "Items :";
-            this.xuiCustomGroupbox2.TextColor = System.Drawing.Color.DodgerBlue;
+            this.txtCorrelativa.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtCorrelativa.Enabled = false;
+            this.txtCorrelativa.Location = new System.Drawing.Point(605, 92);
+            this.txtCorrelativa.Margin = new System.Windows.Forms.Padding(6, 7, 6, 7);
+            this.txtCorrelativa.MaxLength = 8;
+            this.txtCorrelativa.Multiline = true;
+            this.txtCorrelativa.Name = "txtCorrelativa";
+            this.txtCorrelativa.Size = new System.Drawing.Size(243, 36);
+            this.txtCorrelativa.TabIndex = 40;
+            // 
+            // Lista
+            // 
+            this.Lista.Controls.Add(this.dataGridView1);
+            this.Lista.Controls.Add(this.btnExportarExcel);
+            this.Lista.Controls.Add(this.dataLista);
+            this.Lista.Controls.Add(this.btnBuscar);
+            this.Lista.Controls.Add(this.btnTodos);
+            this.Lista.Controls.Add(this.btnAnular);
+            this.Lista.Controls.Add(this.label1);
+            this.Lista.Controls.Add(this.lblFechaIni);
+            this.Lista.Controls.Add(this.dtpFechaFin);
+            this.Lista.Controls.Add(this.dtpFechaIni);
+            this.Lista.Location = new System.Drawing.Point(4, 38);
+            this.Lista.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
+            this.Lista.Name = "Lista";
+            this.Lista.Padding = new System.Windows.Forms.Padding(5, 6, 5, 6);
+            this.Lista.Size = new System.Drawing.Size(1251, 686);
+            this.Lista.TabIndex = 1;
+            this.Lista.Text = "Lista";
+            this.Lista.UseVisualStyleBackColor = true;
+            // 
+            // TxtcambioDv
+            // 
+            this.TxtcambioDv.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.TxtcambioDv.Location = new System.Drawing.Point(841, 362);
+            this.TxtcambioDv.Margin = new System.Windows.Forms.Padding(6, 7, 6, 7);
+            this.TxtcambioDv.MaxLength = 8;
+            this.TxtcambioDv.Multiline = true;
+            this.TxtcambioDv.Name = "TxtcambioDv";
+            this.TxtcambioDv.Size = new System.Drawing.Size(207, 38);
+            this.TxtcambioDv.TabIndex = 39;
+            this.TxtcambioDv.Visible = false;
+            this.TxtcambioDv.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TxtcambioDv_KeyDown);
+            // 
+            // chkporcantidad
+            // 
+            this.chkporcantidad.AutoSize = true;
+            this.chkporcantidad.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.chkporcantidad.Location = new System.Drawing.Point(626, 37);
+            this.chkporcantidad.Name = "chkporcantidad";
+            this.chkporcantidad.Size = new System.Drawing.Size(191, 33);
+            this.chkporcantidad.TabIndex = 79;
+            this.chkporcantidad.Text = "F10 - Cantidad";
+            this.chkporcantidad.UseVisualStyleBackColor = true;
+            // 
+            // button2
+            // 
+            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.button2.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(144)))), ((int)(((byte)(247)))));
+            this.button2.ButtonImage = null;
+            this.button2.ButtonSmoothing = System.Drawing.Drawing2D.SmoothingMode.HighSpeed;
+            this.button2.ButtonStyle = XanderUI.XUISuperButton.Style.RoundedEdges;
+            this.button2.ButtonText = "Cancelar";
+            this.button2.CornerRadius = 5;
+            this.button2.Horizontal_Alignment = System.Drawing.StringAlignment.Center;
+            this.button2.HoverBackgroundColor = System.Drawing.Color.IndianRed;
+            this.button2.HoverTextColor = System.Drawing.Color.Yellow;
+            this.button2.ImagePosition = XanderUI.XUISuperButton.imgPosition.Left;
+            this.button2.Location = new System.Drawing.Point(1025, 579);
+            this.button2.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.button2.Name = "button2";
+            this.button2.SelectedBackColor = System.Drawing.Color.LimeGreen;
+            this.button2.SelectedTextColor = System.Drawing.Color.White;
+            this.button2.Size = new System.Drawing.Size(218, 70);
+            this.button2.SuperSelected = false;
+            this.button2.TabIndex = 112;
+            this.button2.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(245)))), ((int)(((byte)(255)))));
+            this.button2.Vertical_Alignment = System.Drawing.StringAlignment.Center;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // button1
+            // 
+            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.button1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(144)))), ((int)(((byte)(247)))));
+            this.button1.ButtonImage = null;
+            this.button1.ButtonSmoothing = System.Drawing.Drawing2D.SmoothingMode.HighSpeed;
+            this.button1.ButtonStyle = XanderUI.XUISuperButton.Style.RoundedEdges;
+            this.button1.ButtonText = "Guardar";
+            this.button1.CornerRadius = 5;
+            this.button1.Horizontal_Alignment = System.Drawing.StringAlignment.Center;
+            this.button1.HoverBackgroundColor = System.Drawing.Color.IndianRed;
+            this.button1.HoverTextColor = System.Drawing.Color.Yellow;
+            this.button1.ImagePosition = XanderUI.XUISuperButton.imgPosition.Left;
+            this.button1.Location = new System.Drawing.Point(789, 579);
+            this.button1.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.button1.Name = "button1";
+            this.button1.SelectedBackColor = System.Drawing.Color.LimeGreen;
+            this.button1.SelectedTextColor = System.Drawing.Color.White;
+            this.button1.Size = new System.Drawing.Size(218, 70);
+            this.button1.SuperSelected = false;
+            this.button1.TabIndex = 113;
+            this.button1.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(245)))), ((int)(((byte)(255)))));
+            this.button1.Vertical_Alignment = System.Drawing.StringAlignment.Center;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // TxtItems
+            // 
+            this.TxtItems.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.TxtItems.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(144)))), ((int)(((byte)(247)))));
+            this.TxtItems.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.TxtItems.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TxtItems.Location = new System.Drawing.Point(168, 596);
+            this.TxtItems.Margin = new System.Windows.Forms.Padding(4, 8, 4, 8);
+            this.TxtItems.Name = "TxtItems";
+            this.TxtItems.ReadOnly = true;
+            this.TxtItems.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.TxtItems.Size = new System.Drawing.Size(98, 37);
+            this.TxtItems.TabIndex = 115;
+            this.TxtItems.Text = "0,00";
+            // 
+            // TxtCan
+            // 
+            this.TxtCan.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.TxtCan.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(144)))), ((int)(((byte)(247)))));
+            this.TxtCan.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.TxtCan.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TxtCan.Location = new System.Drawing.Point(516, 594);
+            this.TxtCan.Margin = new System.Windows.Forms.Padding(4, 8, 4, 8);
+            this.TxtCan.Name = "TxtCan";
+            this.TxtCan.ReadOnly = true;
+            this.TxtCan.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.TxtCan.Size = new System.Drawing.Size(98, 37);
+            this.TxtCan.TabIndex = 115;
+            this.TxtCan.Text = "0,00";
+            // 
+            // label7
+            // 
+            this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(9, 603);
+            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(89, 28);
+            this.label7.TabIndex = 117;
+            this.label7.Text = "Items :";
+            // 
+            // label3
+            // 
+            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(355, 598);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(113, 28);
+            this.label3.TabIndex = 118;
+            this.label3.Text = "Totales : ";
             // 
             // FrmMovStock1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(14F, 29F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1421, 798);
+            this.ClientSize = new System.Drawing.Size(1284, 817);
             this.Controls.Add(this.tabControl2);
             this.Controls.Add(this.panelHorizontal);
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.KeyPreview = true;
-            this.Margin = new System.Windows.Forms.Padding(4);
+            this.Margin = new System.Windows.Forms.Padding(6, 7, 6, 7);
             this.Name = "FrmMovStock1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Load += new System.EventHandler(this.FrmMovStock1_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FrmMovStock1_KeyDown);
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.FrmMovStock1_MouseMove);
             this.Move += new System.EventHandler(this.FrmMovStock1_Move);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
@@ -862,13 +981,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.btnCerrar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource1)).EndInit();
             this.tabControl2.ResumeLayout(false);
-            this.Lista.ResumeLayout(false);
-            this.Lista.PerformLayout();
             this.Agregar.ResumeLayout(false);
-            this.xuiCustomGroupbox1.ResumeLayout(false);
-            this.xuiCustomGroupbox1.PerformLayout();
+            this.Agregar.PerformLayout();
             this.xuiCustomGroupbox2.ResumeLayout(false);
             this.xuiCustomGroupbox2.PerformLayout();
+            this.xuiCustomGroupbox1.ResumeLayout(false);
+            this.xuiCustomGroupbox1.PerformLayout();
+            this.Lista.ResumeLayout(false);
+            this.Lista.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -897,7 +1017,6 @@
         private System.Windows.Forms.Button btnExportarExcel;
         private System.Windows.Forms.DataGridView Dtproveedor;
         private System.Windows.Forms.DataGridView Dtproducto;
-        private System.Windows.Forms.Label LblDetalle;
         private System.Windows.Forms.Button btnBuscarProd;
         private System.Windows.Forms.Button btnAgregar;
         private System.Windows.Forms.TextBox txtcantidad;
@@ -917,9 +1036,7 @@
         private System.Windows.Forms.Label lblCorrelativa;
         private System.Windows.Forms.ComboBox cbTipoComprobante;
         private System.Windows.Forms.TextBox txtCorrelativa;
-        private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Label lblSerie;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.TextBox txtSerie;
         private XanderUI.XUICustomGroupbox xuiCustomGroupbox1;
         private System.Windows.Forms.Label LblDesprov;
@@ -932,5 +1049,13 @@
         private System.Windows.Forms.RadioButton rdbEgreso;
         private System.Windows.Forms.TabPage Lista;
         private XanderUI.XUICustomGroupbox xuiCustomGroupbox2;
+        private System.Windows.Forms.TextBox TxtcambioDv;
+        private System.Windows.Forms.CheckBox chkporcantidad;
+        private XanderUI.XUISuperButton button2;
+        private XanderUI.XUISuperButton button1;
+        public System.Windows.Forms.TextBox TxtCan;
+        public System.Windows.Forms.TextBox TxtItems;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label7;
     }
 }

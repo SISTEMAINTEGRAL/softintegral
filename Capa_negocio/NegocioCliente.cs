@@ -10,7 +10,7 @@ namespace Capa_negocio
 {
    public class NegocioCliente
     {
-        public static string insertar(string razonSocial, string direccion, long cuit,DateTime fechaNacimiento, long tel, long numDocumento, string email, string responsableanteiva, int idprovincia, int idlocalidad)
+        public static string insertar(string razonSocial, string direccion, long cuit, long tel, long numDocumento, string email, string responsableanteiva, int idprovincia, int idlocalidad)
         {
             DatosCliente cliente = new DatosCliente(razonSocial, direccion, cuit, tel, numDocumento, email, responsableanteiva, idprovincia, idlocalidad);
             
@@ -22,9 +22,20 @@ namespace Capa_negocio
             
             return cliente.eliminar(cliente);
 }
-        public static string editar(int idCliente, string razonSocial, string direccion, long cuit, DateTime fechaNacimiento, long tel, long numDocumento, string email, string responsableiva, int idprovincia, int idlocalidad)
+        public static string editar(int idCliente, string razonSocial, string direccion, long cuit, long tel, long numDocumento, string email, string responsableiva, int idprovincia, int idlocalidad)
         {
-            DatosCliente cliente = new DatosCliente(razonSocial,direccion,cuit,tel,numDocumento,email,responsableiva,idprovincia,idlocalidad);
+            DatosCliente cliente = new DatosCliente();
+            cliente.Idcliente = idCliente;
+            cliente.RazonSocial = razonSocial;
+            cliente.Direccion = direccion;
+            cliente.Cuit = cuit;
+            cliente.Tel = tel;
+            cliente.NumDocumento = numDocumento;
+            cliente.Email = email;
+            cliente.Responsableiva = responsableiva;
+            cliente.Idprovincia = idprovincia;
+            cliente.Idlocalidad = idlocalidad;
+
             return cliente.editar(cliente);
         }
         public static DataTable buscar(string texto)

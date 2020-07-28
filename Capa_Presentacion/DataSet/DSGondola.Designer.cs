@@ -299,6 +299,10 @@ namespace Capa_Presentacion.DataSet {
             
             private global::System.Data.DataColumn columnnombrearticulo;
             
+            private global::System.Data.DataColumn columntexto1;
+            
+            private global::System.Data.DataColumn columntexto2;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public REPORTE_GONDOLADataTable() {
@@ -414,6 +418,22 @@ namespace Capa_Presentacion.DataSet {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn texto1Column {
+                get {
+                    return this.columntexto1;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn texto2Column {
+                get {
+                    return this.columntexto2;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -449,7 +469,7 @@ namespace Capa_Presentacion.DataSet {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public REPORTE_GONDOLARow AddREPORTE_GONDOLARow(int idproducto, int idequipo, decimal precio_unidad, decimal preciopormayor, decimal preciopormayor2, decimal precio_oferta, int idcategoria, string codigobarraproducto, string nombrecategoria, string nombrearticulo) {
+            public REPORTE_GONDOLARow AddREPORTE_GONDOLARow(int idproducto, int idequipo, decimal precio_unidad, decimal preciopormayor, decimal preciopormayor2, decimal precio_oferta, int idcategoria, string codigobarraproducto, string nombrecategoria, string nombrearticulo, string texto1, string texto2) {
                 REPORTE_GONDOLARow rowREPORTE_GONDOLARow = ((REPORTE_GONDOLARow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         idproducto,
@@ -461,7 +481,9 @@ namespace Capa_Presentacion.DataSet {
                         idcategoria,
                         codigobarraproducto,
                         nombrecategoria,
-                        nombrearticulo};
+                        nombrearticulo,
+                        texto1,
+                        texto2};
                 rowREPORTE_GONDOLARow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowREPORTE_GONDOLARow);
                 return rowREPORTE_GONDOLARow;
@@ -494,6 +516,8 @@ namespace Capa_Presentacion.DataSet {
                 this.columncodigobarraproducto = base.Columns["codigobarraproducto"];
                 this.columnnombrecategoria = base.Columns["nombrecategoria"];
                 this.columnnombrearticulo = base.Columns["nombrearticulo"];
+                this.columntexto1 = base.Columns["texto1"];
+                this.columntexto2 = base.Columns["texto2"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -519,10 +543,18 @@ namespace Capa_Presentacion.DataSet {
                 base.Columns.Add(this.columnnombrecategoria);
                 this.columnnombrearticulo = new global::System.Data.DataColumn("nombrearticulo", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnnombrearticulo);
+                this.columntexto1 = new global::System.Data.DataColumn("texto1", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columntexto1);
+                this.columntexto2 = new global::System.Data.DataColumn("texto2", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columntexto2);
                 this.columncodigobarraproducto.MaxLength = 300;
                 this.columnnombrecategoria.AllowDBNull = false;
                 this.columnnombrecategoria.MaxLength = 50;
                 this.columnnombrearticulo.MaxLength = 100;
+                this.columntexto1.ReadOnly = true;
+                this.columntexto1.MaxLength = 11;
+                this.columntexto2.ReadOnly = true;
+                this.columntexto2.MaxLength = 12;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -822,6 +854,38 @@ namespace Capa_Presentacion.DataSet {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string texto1 {
+                get {
+                    try {
+                        return ((string)(this[this.tableREPORTE_GONDOLA.texto1Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'texto1\' de la tabla \'REPORTE_GONDOLA\' es DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableREPORTE_GONDOLA.texto1Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string texto2 {
+                get {
+                    try {
+                        return ((string)(this[this.tableREPORTE_GONDOLA.texto2Column]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'texto2\' de la tabla \'REPORTE_GONDOLA\' es DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableREPORTE_GONDOLA.texto2Column] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsidproductoNull() {
                 return this.IsNull(this.tableREPORTE_GONDOLA.idproductoColumn);
             }
@@ -926,6 +990,30 @@ namespace Capa_Presentacion.DataSet {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetnombrearticuloNull() {
                 this[this.tableREPORTE_GONDOLA.nombrearticuloColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Istexto1Null() {
+                return this.IsNull(this.tableREPORTE_GONDOLA.texto1Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Settexto1Null() {
+                this[this.tableREPORTE_GONDOLA.texto1Column] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool Istexto2Null() {
+                return this.IsNull(this.tableREPORTE_GONDOLA.texto2Column);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void Settexto2Null() {
+                this[this.tableREPORTE_GONDOLA.texto2Column] = global::System.Convert.DBNull;
             }
         }
         
@@ -1098,6 +1186,8 @@ namespace Capa_Presentacion.DataSet.DSGondolaTableAdapters {
             tableMapping.ColumnMappings.Add("codigobarraproducto", "codigobarraproducto");
             tableMapping.ColumnMappings.Add("nombrecategoria", "nombrecategoria");
             tableMapping.ColumnMappings.Add("nombrearticulo", "nombrearticulo");
+            tableMapping.ColumnMappings.Add("texto1", "texto1");
+            tableMapping.ColumnMappings.Add("texto2", "texto2");
             this._adapter.TableMappings.Add(tableMapping);
         }
         

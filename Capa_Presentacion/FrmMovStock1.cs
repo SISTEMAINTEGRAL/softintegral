@@ -21,6 +21,10 @@ namespace Capa_Presentacion
         private string cantidad;
         private string stockactual;
         private string proveedor = "";
+        private string preciocantidad;
+        private bool datagriddobleclic;
+        private bool encontrado;
+        private int index = -1;
 
         public FrmMovStock1()
         {
@@ -68,6 +72,44 @@ namespace Capa_Presentacion
             }
 
 
+        }
+
+        private void cambiartextbox()
+        {
+            Rectangle rec = dataListaMov.GetCellDisplayRectangle(dataListaMov.CurrentCell.ColumnIndex, dataListaMov.CurrentCell.RowIndex, false);
+            dataListaMov.Focus();
+
+            //if (dataListaMov.CurrentCell.ColumnIndex == 2)
+            //{
+            //    preciocantidad = "Cprecio";
+            //}
+
+             if (dataListaMov.CurrentCell.ColumnIndex == 4)
+            {
+                preciocantidad = "cantidad";
+            }
+
+            //else if (dataListaMov.CurrentCell.ColumnIndex == 4)
+            //{
+            //    preciocantidad = "subtotal";
+            //}
+
+            //else if (dataListaMov.CurrentCell.ColumnIndex == 5)
+            //{
+            //    preciocantidad = "descuento";
+            //}
+
+            //else if (dataListaMov.CurrentCell.ColumnIndex == 6)
+            //{
+            //    preciocantidad = "importe";
+            //}
+            TxtcambioDv.Location = new Point(rec.Location.X + dataListaMov.Location.X, rec.Location.Y + dataListaMov.Location.Y);
+
+            TxtcambioDv.Visible = true;
+            TxtcambioDv.Text = dataListaMov.CurrentCell.Value.ToString();
+            TxtcambioDv.Focus();
+
+           
         }
 
         private void Dtproveedor_KeyDown(object sender, KeyEventArgs e)
@@ -123,7 +165,7 @@ namespace Capa_Presentacion
         private void txtNombreProducto_KeyDown(object sender, KeyEventArgs e)
         {
             NegocioArticulo objart = new NegocioArticulo();
-
+            datagriddobleclic = false;
             if (e.KeyCode == Keys.Down && Dtproducto.Visible == true)
             {
                 //si se preciona la tecla hacia abajo se pasa el foco a la grilla
@@ -147,8 +189,25 @@ namespace Capa_Presentacion
                     extraerproducto(Convert.ToInt32(txtNombreProducto.Text));
                 }
 
+                if (index < 0)
+                {
+                    if (dataListaMov.Rows.Count != 0)
+                    {
+                        dataListaMov.Rows[dataListaMov.Rows.Count - 1].Cells[4].Selected = true;
+                    }
 
-                txtcantidad.Focus();
+                }
+                else
+                {
+                    dataListaMov.Rows[index].Cells[4].Selected = true;
+                }
+                txtNombreProducto.Focus();
+                if (chkporcantidad.Checked == true )
+                {
+                    cambiartextbox();
+                }
+
+
             }
         }
         private void extraerproducto(int idproducto)
@@ -161,7 +220,7 @@ namespace Capa_Presentacion
             if (midataproducto.Rows.Count != 0)
             {
                 DataRow row = midataproducto.Rows[0];
-                LblDetalle.Text = row["nombre"].ToString(); ;
+               
                 codigoproducto = row["idarticulo"].ToString();
                 producto = row["nombre"].ToString();
                 precio = row["precio_compra"].ToString();
@@ -171,27 +230,39 @@ namespace Capa_Presentacion
 
             }
 
+            if (totales(Convert.ToInt32(codigoproducto)) == false)
+            {
+                encontrado = false;
+                dataListaMov.Rows.Add(codigoproducto, producto, precio, precioventa, 1, stockactual);
+
+            }
+            else
+            {
+                encontrado = true;
+            }
+
         }
 
         private void txtcantidad_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Enter && LblDetalle.Text != "...")
-            {
+            
                 txtcantidad.Text = txtcantidad.Text == "" ? "1" : txtcantidad.Text;
+
                 if (totales(Convert.ToInt32(codigoproducto)) == false)
                 {
                     dataListaMov.Rows.Add(codigoproducto, producto, precio, precioventa, txtcantidad.Text, stockactual);
                 }
 
                 txtNombreProducto.Focus();
-            }
+            
         }
 
         private void Dtproducto_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
+            datagriddobleclic = false;
             extraerproducto(Convert.ToInt32(this.Dtproducto.CurrentRow.Cells["idarticulo"].Value));
             Dtproducto.Visible = false;
-            txtcantidad.Focus();
+            txtNombreProducto.Focus();
         }
 
         private void Dtproducto_KeyDown(object sender, KeyEventArgs e)
@@ -200,16 +271,15 @@ namespace Capa_Presentacion
             {
                 extraerproducto(Convert.ToInt32(this.Dtproducto.CurrentRow.Cells["idarticulo"].Value));
                 Dtproducto.Visible = false;
-                txtcantidad.Focus();
-                txtcantidad.SelectAll();
+                txtNombreProducto.Focus();
+                
                 txtNombreProducto.Text = string.Empty;
             }
         }
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
-            if (LblDetalle.Text != "...")
-            {
+            
                 txtcantidad.Text = txtcantidad.Text == "" ? "1" : txtcantidad.Text;
                 if (totales(Convert.ToInt32(codigoproducto)) == false)
                 {
@@ -217,7 +287,7 @@ namespace Capa_Presentacion
                 }
 
                 txtNombreProducto.Focus();
-            }
+            
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -302,53 +372,107 @@ namespace Capa_Presentacion
         private bool totales(int idproducto)
         {
             bool encontrado = false;
+            decimal TotalD = 0;
+            int cont = -1;
+            index = -1;
             foreach (DataGridViewRow row in dataListaMov.Rows)
             {
-                if (Convert.ToInt32(row.Cells["Codigo1"].Value) == idproducto)
+                cont++;
+                if (idproducto != 0)
                 {
-                    row.Cells["cantidad1"].Value = Convert.ToInt32(row.Cells["cantidad1"].Value) + Convert.ToInt32(txtcantidad.Text);
-                    encontrado = true;
+                    if (Convert.ToInt32(row.Cells["Codigo1"].Value) == idproducto)
+                    {
+                        row.Cells["cantidad1"].Value = Convert.ToDecimal(row.Cells["cantidad1"].Value) + 1;//+ Convert.ToDecimal(txtcantidad.Text);
+                        encontrado = true;
+                        index = cont;
+                        return encontrado;
+                    }
                 }
+                
+
+                TotalD = TotalD + Convert.ToDecimal(row.Cells["cantidad1"].Value);
             }
+
+            TxtCan.Text = TotalD.ToString();
+            TxtItems.Text = dataListaMov.Rows.Count.ToString();
             return encontrado;
         }
 
         private void dataListaMov_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            //Rectangle rec = dataListaMov.GetCellDisplayRectangle(dataListaMov.CurrentCell.ColumnIndex, dataListaMov.CurrentCell.RowIndex, false);
+            Rectangle rec = dataListaMov.GetCellDisplayRectangle(dataListaMov.CurrentCell.ColumnIndex, dataListaMov.CurrentCell.RowIndex, false);
+            datagriddobleclic = true;
+            //e.ColumnIndex == 2 || parametrizacion
+
+            if (dataListaMov.Rows.Count > 0)
+            {
+                if ((e.ColumnIndex == 2 && (NegocioConfigEmpresa.usuariosa == true ) || (e.ColumnIndex == 4 )))
+                {
+
+                    TxtcambioDv.Location = new Point(rec.Location.X + dataListaMov.Location.X, rec.Location.Y + dataListaMov.Location.Y);
+                    preciocantidad = "cantidad";
+                    TxtcambioDv.Visible = true;
+                    TxtcambioDv.Text = dataListaMov.CurrentCell.Value.ToString();
+                    TxtcambioDv.Focus();
+
+                   
 
 
-            //if (dataListaMov.Rows.Count > 0)
-            //{
-            //    if (e.ColumnIndex == 4)
-            //    {
-            //        TxtcambioDv.Location = new Point(rec.Location.X + dataListaMov.Location.X, rec.Location.Y + dataListaMov.Location.Y);
-            //        preciocantidad = "precio";
-            //        TxtcambioDv.Visible = true;
-            //        TxtcambioDv.Text = dataListaMov.CurrentCell.Value.ToString();
-            //        TxtcambioDv.Focus();
+                }
+
+                //if (e.ColumnIndex == 4)
+                //{
+                //    preciocantidad = "cantidad";
 
 
-            //    }
+                //}
+                //if (e.ColumnIndex == 2)
+                //{
+                //    preciocantidad = "Cprecio";
 
 
+                //}
 
+                //if (e.ColumnIndex == 5)
+                //{
+                //    preciocantidad = "descuento";
 
-            //}
+                //}
+
+                //if (e.ColumnIndex == 4)
+                //{
+                //    preciocantidad = "subtotal";
+                //}
+
+            }
         }
 
         private void TxtcambioDv_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
-                //dataListaMov.CurrentRow.Cells["cantidad1"].Value = TxtcambioDv.Text;
-                //TxtcambioDv.Visible = false;
+                if (preciocantidad == "cantidad")
+                {
+                    if (datagriddobleclic == true || encontrado == false)
+                    {
+
+                        dataListaMov.CurrentRow.Cells["Cantidad1"].Value = Convert.ToDecimal(TxtcambioDv.Text);
+                        datagriddobleclic = false;
+
+
+                    }
+                    else
+                    {
+                        dataListaMov.CurrentRow.Cells["Cantidad1"].Value = Convert.ToDecimal(TxtcambioDv.Text) + Convert.ToDecimal(dataListaMov.CurrentRow.Cells["Cantidad1"].Value);
+                    }
+
+                }
+                totales(0);
+                txtNombreProducto.Focus();
+                TxtcambioDv.Visible = false;
 
             }
-            if (e.KeyCode == Keys.Down)
-            {
-                // dataListaMov.CurrentRow.Cells["cantidad1"].RowIndex =  dataListaMov.CurrentRow.Cells["cantidad1"].RowIndex + 1;
-            }
+            
         }
 
         private void btnBuscarProv_Click(object sender, EventArgs e)
@@ -366,6 +490,7 @@ namespace Capa_Presentacion
 
         private void btnBuscarProd_Click(object sender, EventArgs e)
         {
+            datagriddobleclic = false;
             FrmAvanzadoArticulo objavanzado = new FrmAvanzadoArticulo("STOCK");
             objavanzado.Listadodearticulo = dataListaMov;
 
@@ -594,6 +719,27 @@ namespace Capa_Presentacion
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        private void dataListaMov_DoubleClick(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void FrmMovStock1_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.F10)
+            {
+                if (chkporcantidad.Checked == true)
+                { chkporcantidad.Checked = false; }
+                else
+                { chkporcantidad.Checked = true; }
+            }
         }
     }
 }

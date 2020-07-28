@@ -78,7 +78,8 @@ namespace Capa_Presentacion.Formreportes
                             miticket.table1.DataSource = midatatable;
                             reportViewer1.Report = miticket;
                             miticket.barcode1.Value = valorcodigobarra;
-                            miticket.barcode2.Value = valorventa;
+                           // miticket.barcode2.Value = valorventa;
+                            // miticket.barcode2.Value = valorventa;
                             
                             break;  
                    }
@@ -115,6 +116,7 @@ namespace Capa_Presentacion.Formreportes
                     ReportProcessor mireportprocesor = new ReportProcessor();
                     if (miprinterseting.IsDefaultPrinter == true)
                     {
+                        string st =  miprinterseting.PaperSizes.ToString();
                         mireportprocesor.PrintReport(reportViewer1.ReportSource, miprinterseting);
                     }
                     Close();

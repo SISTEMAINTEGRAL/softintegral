@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
             this.xuiFormDesign1 = new XanderUI.XUIFormDesign();
             this.xuiFlatTab1 = new XanderUI.XUIFlatTab();
             this.TabLista = new System.Windows.Forms.TabPage();
@@ -58,12 +58,13 @@
             this.xuiFormDesign1.ExitApplication = true;
             this.xuiFormDesign1.FormStyle = XanderUI.XUIFormDesign.Style.Material;
             this.xuiFormDesign1.Location = new System.Drawing.Point(0, 0);
+            this.xuiFormDesign1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.xuiFormDesign1.MaterialBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(0)))), ((int)(((byte)(170)))));
             this.xuiFormDesign1.MaterialForeColor = System.Drawing.Color.White;
             this.xuiFormDesign1.Name = "xuiFormDesign1";
             this.xuiFormDesign1.ShowMaximize = true;
             this.xuiFormDesign1.ShowMinimize = true;
-            this.xuiFormDesign1.Size = new System.Drawing.Size(1242, 624);
+            this.xuiFormDesign1.Size = new System.Drawing.Size(1397, 780);
             this.xuiFormDesign1.TabIndex = 0;
             this.xuiFormDesign1.TitleText = "STOCK";
             // 
@@ -72,9 +73,10 @@
             this.xuiFormDesign1.WorkingArea.BackColor = System.Drawing.Color.White;
             this.xuiFormDesign1.WorkingArea.Controls.Add(this.xuiFlatTab1);
             this.xuiFormDesign1.WorkingArea.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.xuiFormDesign1.WorkingArea.Location = new System.Drawing.Point(0, 74);
+            this.xuiFormDesign1.WorkingArea.Location = new System.Drawing.Point(0, 92);
+            this.xuiFormDesign1.WorkingArea.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.xuiFormDesign1.WorkingArea.Name = "WorkingArea";
-            this.xuiFormDesign1.WorkingArea.Size = new System.Drawing.Size(1242, 550);
+            this.xuiFormDesign1.WorkingArea.Size = new System.Drawing.Size(1397, 688);
             this.xuiFormDesign1.WorkingArea.TabIndex = 0;
             // 
             // xuiFlatTab1
@@ -92,11 +94,12 @@
             this.xuiFlatTab1.InActiveTextColor = System.Drawing.Color.White;
             this.xuiFlatTab1.ItemSize = new System.Drawing.Size(240, 16);
             this.xuiFlatTab1.Location = new System.Drawing.Point(0, 1);
+            this.xuiFlatTab1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.xuiFlatTab1.Name = "xuiFlatTab1";
             this.xuiFlatTab1.PageColor = System.Drawing.Color.White;
             this.xuiFlatTab1.SelectedIndex = 0;
             this.xuiFlatTab1.ShowBorder = true;
-            this.xuiFlatTab1.Size = new System.Drawing.Size(1242, 546);
+            this.xuiFlatTab1.Size = new System.Drawing.Size(1397, 682);
             this.xuiFlatTab1.TabIndex = 0;
             // 
             // TabLista
@@ -108,9 +111,10 @@
             this.TabLista.Controls.Add(this.TPfin);
             this.TabLista.Controls.Add(this.TPinicio);
             this.TabLista.Location = new System.Drawing.Point(4, 20);
+            this.TabLista.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.TabLista.Name = "TabLista";
-            this.TabLista.Padding = new System.Windows.Forms.Padding(3);
-            this.TabLista.Size = new System.Drawing.Size(1234, 522);
+            this.TabLista.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.TabLista.Size = new System.Drawing.Size(1389, 658);
             this.TabLista.TabIndex = 0;
             this.TabLista.Text = "Lista";
             // 
@@ -124,48 +128,50 @@
             this.gunaTextBox1.FocusedForeColor = System.Drawing.SystemColors.ControlText;
             this.gunaTextBox1.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.gunaTextBox1.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.gunaTextBox1.Location = new System.Drawing.Point(875, 13);
+            this.gunaTextBox1.Location = new System.Drawing.Point(984, 16);
+            this.gunaTextBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.gunaTextBox1.Name = "gunaTextBox1";
             this.gunaTextBox1.PasswordChar = '\0';
-            this.gunaTextBox1.Size = new System.Drawing.Size(160, 32);
+            this.gunaTextBox1.Size = new System.Drawing.Size(180, 42);
             this.gunaTextBox1.TabIndex = 5;
             // 
             // DTStock
             // 
             this.DTStock.AllowUserToAddRows = false;
             this.DTStock.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(229)))), ((int)(((byte)(251)))));
-            this.DTStock.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(229)))), ((int)(((byte)(251)))));
+            this.DTStock.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle7;
             this.DTStock.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.DTStock.BackgroundColor = System.Drawing.Color.White;
             this.DTStock.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.DTStock.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(169)))), ((int)(((byte)(243)))));
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 10.5F);
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DTStock.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(169)))), ((int)(((byte)(243)))));
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Segoe UI", 10.5F);
+            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DTStock.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle8;
             this.DTStock.ColumnHeadersHeight = 4;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(237)))), ((int)(((byte)(252)))));
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 10.5F);
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(197)))), ((int)(((byte)(247)))));
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.DTStock.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(237)))), ((int)(((byte)(252)))));
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Segoe UI", 10.5F);
+            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(197)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.DTStock.DefaultCellStyle = dataGridViewCellStyle9;
             this.DTStock.EnableHeadersVisualStyles = false;
             this.DTStock.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(230)))), ((int)(((byte)(251)))));
-            this.DTStock.Location = new System.Drawing.Point(8, 74);
+            this.DTStock.Location = new System.Drawing.Point(9, 92);
+            this.DTStock.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.DTStock.Name = "DTStock";
             this.DTStock.ReadOnly = true;
             this.DTStock.RowHeadersVisible = false;
             this.DTStock.RowTemplate.Height = 24;
             this.DTStock.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.DTStock.Size = new System.Drawing.Size(1218, 433);
+            this.DTStock.Size = new System.Drawing.Size(1370, 541);
             this.DTStock.TabIndex = 4;
             this.DTStock.Theme = Guna.UI.WinForms.GunaDataGridViewPresetThemes.LightBlue;
             this.DTStock.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(229)))), ((int)(((byte)(251)))));
@@ -207,7 +213,8 @@
             this.BtnBuscar.Image = null;
             this.BtnBuscar.ImageSize = new System.Drawing.Size(20, 20);
             this.BtnBuscar.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(58)))), ((int)(((byte)(170)))));
-            this.BtnBuscar.Location = new System.Drawing.Point(617, 13);
+            this.BtnBuscar.Location = new System.Drawing.Point(694, 16);
+            this.BtnBuscar.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.BtnBuscar.Name = "BtnBuscar";
             this.BtnBuscar.OnHoverBaseColor = System.Drawing.Color.FromArgb(((int)(((byte)(151)))), ((int)(((byte)(143)))), ((int)(((byte)(255)))));
             this.BtnBuscar.OnHoverBorderColor = System.Drawing.Color.Black;
@@ -215,7 +222,7 @@
             this.BtnBuscar.OnHoverImage = null;
             this.BtnBuscar.OnHoverLineColor = System.Drawing.Color.FromArgb(((int)(((byte)(66)))), ((int)(((byte)(58)))), ((int)(((byte)(170)))));
             this.BtnBuscar.OnPressedColor = System.Drawing.Color.Black;
-            this.BtnBuscar.Size = new System.Drawing.Size(180, 42);
+            this.BtnBuscar.Size = new System.Drawing.Size(202, 52);
             this.BtnBuscar.TabIndex = 3;
             this.BtnBuscar.Text = "Buscar";
             this.BtnBuscar.Click += new System.EventHandler(this.BtnBuscar_Click);
@@ -230,7 +237,8 @@
             this.TPfin.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.TPfin.ForeColor = System.Drawing.Color.Black;
             this.TPfin.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.TPfin.Location = new System.Drawing.Point(289, 13);
+            this.TPfin.Location = new System.Drawing.Point(325, 16);
+            this.TPfin.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.TPfin.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
             this.TPfin.MinDate = new System.DateTime(2019, 10, 31, 0, 0, 0, 0);
             this.TPfin.Name = "TPfin";
@@ -238,7 +246,7 @@
             this.TPfin.OnHoverBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
             this.TPfin.OnHoverForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
             this.TPfin.OnPressedColor = System.Drawing.Color.Black;
-            this.TPfin.Size = new System.Drawing.Size(273, 42);
+            this.TPfin.Size = new System.Drawing.Size(307, 52);
             this.TPfin.TabIndex = 1;
             this.TPfin.Text = "31/10/19";
             this.TPfin.Value = new System.DateTime(2019, 10, 31, 15, 27, 5, 57);
@@ -253,7 +261,8 @@
             this.TPinicio.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.TPinicio.ForeColor = System.Drawing.Color.Black;
             this.TPinicio.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.TPinicio.Location = new System.Drawing.Point(8, 13);
+            this.TPinicio.Location = new System.Drawing.Point(9, 16);
+            this.TPinicio.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.TPinicio.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
             this.TPinicio.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
             this.TPinicio.Name = "TPinicio";
@@ -261,7 +270,7 @@
             this.TPinicio.OnHoverBorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
             this.TPinicio.OnHoverForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
             this.TPinicio.OnPressedColor = System.Drawing.Color.Black;
-            this.TPinicio.Size = new System.Drawing.Size(266, 42);
+            this.TPinicio.Size = new System.Drawing.Size(299, 52);
             this.TPinicio.TabIndex = 0;
             this.TPinicio.Text = "31/10/19";
             this.TPinicio.Value = new System.DateTime(2019, 10, 31, 15, 26, 27, 409);
@@ -271,9 +280,10 @@
             this.TabVenta.BackColor = System.Drawing.Color.White;
             this.TabVenta.Controls.Add(this.gunaRadioButton1);
             this.TabVenta.Location = new System.Drawing.Point(4, 20);
+            this.TabVenta.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.TabVenta.Name = "TabVenta";
-            this.TabVenta.Padding = new System.Windows.Forms.Padding(3);
-            this.TabVenta.Size = new System.Drawing.Size(1234, 522);
+            this.TabVenta.Padding = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.TabVenta.Size = new System.Drawing.Size(1389, 658);
             this.TabVenta.TabIndex = 1;
             this.TabVenta.Text = "Venta";
             // 
@@ -283,20 +293,22 @@
             this.gunaRadioButton1.CheckedOffColor = System.Drawing.Color.Gray;
             this.gunaRadioButton1.CheckedOnColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
             this.gunaRadioButton1.FillColor = System.Drawing.Color.White;
-            this.gunaRadioButton1.Location = new System.Drawing.Point(21, 35);
+            this.gunaRadioButton1.Location = new System.Drawing.Point(24, 44);
+            this.gunaRadioButton1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.gunaRadioButton1.Name = "gunaRadioButton1";
-            this.gunaRadioButton1.Size = new System.Drawing.Size(141, 20);
+            this.gunaRadioButton1.Size = new System.Drawing.Size(168, 22);
             this.gunaRadioButton1.TabIndex = 3;
             this.gunaRadioButton1.Text = "gunaRadioButton1";
             // 
             // Frmstockmov
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(1242, 624);
+            this.ClientSize = new System.Drawing.Size(1397, 780);
             this.Controls.Add(this.xuiFormDesign1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "Frmstockmov";
             this.Text = "Frmstockmov";
             this.xuiFormDesign1.WorkingArea.ResumeLayout(false);

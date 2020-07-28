@@ -185,3 +185,4 @@ C:\Backup\Sistema de ventas\softintegral\SistemaVentas\bin\Debug\pt\Microsoft.Sq
 C:\Backup\Sistema de ventas\softintegral\SistemaVentas\bin\Debug\ru\Microsoft.SqlServer.Types.resources.dll
 C:\Backup\Sistema de ventas\softintegral\SistemaVentas\bin\Debug\zh-Hans\Microsoft.SqlServer.Types.resources.dll
 C:\Backup\Sistema de ventas\softintegral\SistemaVentas\bin\Debug\zh-Hant\Microsoft.SqlServer.Types.resources.dll
+C:\Backup\Sistema de ventas\softintegral\SistemaVentas\bin\Debug\Tulpep.NotificationWindow.dll
