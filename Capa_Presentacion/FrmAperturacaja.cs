@@ -34,7 +34,7 @@ namespace Capa_Presentacion
                 objcaja.extraercierre("cod_cierre",NegocioConfigEmpresa.nrocaja);
                 idcierre =  objcaja.Idcierre + 1;
                 
-                string msg = Negociocaja.insertarcierrecaja(idcierre, DateTime.Now.ToString() , NegocioConfigEmpresa.turno , objcaja.Ingreso, objcaja.Egreso, idturno, 0, 0,0 ,NegocioConfigEmpresa.idusuario, "APERTURA",NegocioConfigEmpresa.nrocaja);
+                string msg = Negociocaja.insertarcierrecaja(idcierre, DateTime.Now.ToString() , NegocioConfigEmpresa.turno , objcaja.Ingreso, objcaja.Egreso, idturno, 0, 0,0 ,NegocioConfigEmpresa.idusuario, "APERTURA",NegocioConfigEmpresa.nrocaja,0);
 
                 if (msg == "ok")
                 {

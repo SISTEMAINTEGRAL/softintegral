@@ -222,7 +222,8 @@ namespace Capa_Presentacion
                   totalPagar = (cantidadProducto * precioProducto) + (totalPagar);
                   agregardatagridview(objnart.IdArticulo.ToString(), objnart.Nombre.ToString(), objnart.Precio.ToString(), cantidadProducto.ToString(),
                       objnart.Precio.ToString(), "0", objnart.Precio.ToString(), "0", "Cantidad", objnart.Preciopormayor.ToString(), objnart.Cantidadpormayor.ToString(),
-                      objnart.Precio.ToString(),objnart.Iva.ToString("0,00"),"", objnart.Preciopormayor2.ToString(),objnart.Cantidadpormayor2.ToString(),"");
+                      objnart.Precio.ToString(),objnart.Iva.ToString("0,00"),"", objnart.Preciopormayor2.ToString(),objnart.Cantidadpormayor2.ToString(),"",
+                                        objnart.StockActual.ToString(), objnart.Stock_minimo.ToString(), "", "");
                   //DGVenta.Rows.Add(objnart.IdArticulo, objnart.Nombre, objnart.Precio, "0", cantidadProducto.ToString(),objnart.Preciopormayor,objnart.Cantidadpormayor);
 
                   txtTotalPagar.Text = totalPagar.ToString();
@@ -356,7 +357,8 @@ namespace Capa_Presentacion
                         agregardatagridview(objnart.IdArticulo.ToString(), objnart.Nombre,
                             precio.ToString(), cantidad.ToString(), subtotal.ToString(), "0", objnart.Precio.ToString(), pesable.ToString(),
                             calculo, objnart.Preciopormayor.ToString(), objnart.Cantidadpormayor.ToString(),
-                            objnart.Precio.ToString(), objnart.Iva.ToString(), manual,objnart.Preciopormayor2.ToString(),objnart.Cantidadpormayor2.ToString(),descpromo  );
+                            objnart.Precio.ToString(), objnart.Iva.ToString(), manual,objnart.Preciopormayor2.ToString(),objnart.Cantidadpormayor2.ToString(),descpromo,
+                                        objnart.StockActual.ToString(), objnart.Stock_minimo.ToString(), "", "");
                         //DGVenta.Rows.Add(objnart.IdArticulo, objnart.Nombre, cantidad, precio, "0", "0",pesable,"cantidad",objnart.Preciopormayor,objnart.Cantidadpormayor); 
 
                         
@@ -391,7 +393,8 @@ namespace Capa_Presentacion
         }
         public void agregardatagridview(string grididarticulo, string gridnombre, string gridprecio, string gridcantidad, string gridsubtotal, string griddescuento,
                                        string gridimporte, string gridpesable, string gridcalculo, string gridpreciomayorista, string gridcantidadmayorista,
-                                       string preciounidad, string iva, string manual,string preciopromo, string cantidadpromo, string descpromo)
+                                       string preciounidad, string iva, string manual,string preciopromo, string cantidadpromo, string descpromo,
+                                       string gridstockactual, string gridstockminimo, string gridpopupminimo, string gridpopupcero)
         {
             DGVenta.Rows.Add(grididarticulo, gridnombre , gridprecio, gridcantidad, gridsubtotal, griddescuento,
                              gridimporte, gridpesable, gridcalculo, gridpreciomayorista, gridcantidadmayorista, 
@@ -457,9 +460,11 @@ namespace Capa_Presentacion
                   decimal preciopormayor = 0;
                   decimal cantidadpormayor = 0;
                   decimal preciounidad = 0;
-                  
-               
-                
+                decimal stock_minimo = 0;
+                decimal stock_actual = 0;
+
+
+
 
                 if (DGVenta.RowCount != 0)
                   {
@@ -476,8 +481,54 @@ namespace Capa_Presentacion
                             descuento = Convert.ToDecimal(row.Cells["Descuento"].Value);
                             cantidadActual = Decimal.Round((Convert.ToDecimal(row.Cells["Cantidad"].Value)), 2);
                             preciounidad = Decimal.Round((Convert.ToDecimal(row.Cells["preciounidad"].Value)), 2);
+                        stock_minimo = Decimal.Round((Convert.ToDecimal(row.Cells["stock_minimo"].Value)), 2);
+                        stock_actual = Decimal.Round((Convert.ToDecimal(row.Cells["stock_actual"].Value)), 2);
 
-                            
+                        int kia = row.Index;
+
+                        decimal res = stock_actual - cantidadActual;
+
+                        if (res <= 0)
+                        {
+                            DGVenta.Rows[row.Index].DefaultCellStyle.BackColor = Color.FromArgb(183, 95, 77);
+                            DGVenta.Rows[row.Index].DefaultCellStyle.ForeColor = Color.White;
+                            if (row.Cells["popupcero"].Value == "")
+                            {
+                                UtilityFrm.notificacionpopup("ATENCION!", "ID = " + row.Cells["Codigo"].Value.ToString() + " SE ENCUENTRA EN CERO TU STOCK ACTUAL ES DE " + stock_actual, "peligro");
+                            }
+
+                            row.Cells["popupcero"].Value = "notificacion";
+
+                        }
+                        else
+                        {
+                            DGVenta.Rows[row.Index].DefaultCellStyle.BackColor = Color.White;
+                            DGVenta.Rows[row.Index].DefaultCellStyle.ForeColor = Color.Black;
+                            row.Cells["popupcero"].Value = "";
+                        }
+
+                        if (stock_minimo != 0 && row.Cells["popupcero"].Value == "")
+                        {
+                            if (res < stock_minimo)
+                            {
+                                DGVenta.Rows[row.Index].DefaultCellStyle.BackColor = Color.FromArgb(188, 162, 73);
+                                DGVenta.Rows[row.Index].DefaultCellStyle.ForeColor = Color.White;
+                                if (row.Cells["popupminimo"].Value == "")
+                                {
+                                    UtilityFrm.notificacionpopup("ATENCION!", "ID = " + row.Cells["Codigo"].Value.ToString() + " SE ENCUENTRA POR DEBAJO DEL STOCK MINIMO TU STOCK DISPONIBLE ES DE " + stock_actual, "precaucion");
+                                }
+
+                                row.Cells["popupminimo"].Value = "notificacion";
+                            }
+                            else
+                            {
+                                DGVenta.Rows[row.Index].DefaultCellStyle.BackColor = Color.White;
+                                DGVenta.Rows[row.Index].DefaultCellStyle.ForeColor = Color.Black;
+                                row.Cells["popupminimo"].Value = "";
+                            }
+
+                        }
+
 
 
 

@@ -14,7 +14,7 @@ namespace Capa_Datos
        static public long cuentacierrecaja = 9100002;
         private int codformapago;
        private string FechaD;
-
+        private float totaltarjeta;
        public string FechaD1
        {
            get { return FechaD; }
@@ -166,6 +166,19 @@ namespace Capa_Datos
             set
             {
                 codformapago = value;
+            }
+        }
+
+        public float Totaltarjeta
+        {
+            get
+            {
+                return totaltarjeta;
+            }
+
+            set
+            {
+                totaltarjeta = value;
             }
         }
 
@@ -622,7 +635,9 @@ namespace Capa_Datos
 
                     SqlParameter parimpreal = ProcAlmacenado.asignarParametros("@imp_real", SqlDbType.Decimal, caja.impreal);
                     comando.Parameters.Add(parimpreal);
-                
+
+                    SqlParameter parTotalTarjeta = ProcAlmacenado.asignarParametros("@total_tarjeta", SqlDbType.Decimal, caja.totaltarjeta);
+                    comando.Parameters.Add(parTotalTarjeta);
                 }
 
 

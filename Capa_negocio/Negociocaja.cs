@@ -127,7 +127,7 @@ namespace Capa_negocio
             return objcaja.agregar(objcaja);
         }
 
-        public static string insertarcierrecaja(long codcierre, string fecha, string turno, float totalingreso, float  totalegreso, long idturno, decimal impsistema, decimal impreal, long idcaja, int usuario, string aperturacierre, int nrocaja)
+        public static string insertarcierrecaja(long codcierre, string fecha, string turno, float totalingreso, float  totalegreso, long idturno, decimal impsistema, decimal impreal, long idcaja, int usuario, string aperturacierre, int nrocaja, float totaltarjeta)
         {
             DatosCaja objcaja = new DatosCaja();
 
@@ -143,6 +143,7 @@ namespace Capa_negocio
             objcaja.Idusuario = usuario;
             objcaja.Aperturacierre = aperturacierre;
             objcaja.Idcaja = nrocaja;
+            objcaja.Totaltarjeta = totaltarjeta;
             return objcaja.agregarcierre(objcaja);
         
         }

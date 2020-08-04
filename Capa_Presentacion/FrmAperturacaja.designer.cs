@@ -56,7 +56,7 @@
             this.lblNomProducto.Location = new System.Drawing.Point(140, 48);
             this.lblNomProducto.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.lblNomProducto.Name = "lblNomProducto";
-            this.lblNomProducto.Size = new System.Drawing.Size(92, 29);
+            this.lblNomProducto.Size = new System.Drawing.Size(78, 25);
             this.lblNomProducto.TabIndex = 27;
             this.lblNomProducto.Text = "Fecha :";
             // 
@@ -68,7 +68,7 @@
             this.label1.Location = new System.Drawing.Point(339, 48);
             this.label1.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(206, 29);
+            this.label1.Size = new System.Drawing.Size(169, 25);
             this.label1.TabIndex = 28;
             this.label1.Text = "Hora de apertura :";
             // 
@@ -78,7 +78,7 @@
             this.label2.Location = new System.Drawing.Point(13, 112);
             this.label2.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(97, 29);
+            this.label2.Size = new System.Drawing.Size(81, 25);
             this.label2.TabIndex = 29;
             this.label2.Text = "Cajero :";
             // 
@@ -88,7 +88,7 @@
             this.label4.Location = new System.Drawing.Point(13, 149);
             this.label4.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(156, 29);
+            this.label4.Size = new System.Drawing.Size(127, 25);
             this.label4.TabIndex = 31;
             this.label4.Text = "Saldo inicial :";
             // 
@@ -101,7 +101,7 @@
             this.lblTotalPagar.Location = new System.Drawing.Point(212, 48);
             this.lblTotalPagar.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblTotalPagar.Name = "lblTotalPagar";
-            this.lblTotalPagar.Size = new System.Drawing.Size(84, 28);
+            this.lblTotalPagar.Size = new System.Drawing.Size(71, 23);
             this.lblTotalPagar.TabIndex = 37;
             this.lblTotalPagar.Text = "Fecha";
             // 
@@ -113,7 +113,7 @@
             this.cbCajero.Location = new System.Drawing.Point(126, 104);
             this.cbCajero.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
             this.cbCajero.Name = "cbCajero";
-            this.cbCajero.Size = new System.Drawing.Size(270, 37);
+            this.cbCajero.Size = new System.Drawing.Size(270, 33);
             this.cbCajero.TabIndex = 71;
             // 
             // txtImporte
@@ -122,7 +122,7 @@
             this.txtImporte.Location = new System.Drawing.Point(126, 148);
             this.txtImporte.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
             this.txtImporte.Name = "txtImporte";
-            this.txtImporte.Size = new System.Drawing.Size(163, 35);
+            this.txtImporte.Size = new System.Drawing.Size(163, 30);
             this.txtImporte.TabIndex = 73;
             // 
             // label5
@@ -134,7 +134,7 @@
             this.label5.Location = new System.Drawing.Point(487, 49);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(67, 28);
+            this.label5.Size = new System.Drawing.Size(56, 23);
             this.label5.TabIndex = 74;
             this.label5.Text = "Hora";
             // 
@@ -187,7 +187,7 @@
             this.lblCaja.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.lblCaja.Location = new System.Drawing.Point(0, 0);
             this.lblCaja.Name = "lblCaja";
-            this.lblCaja.Size = new System.Drawing.Size(93, 33);
+            this.lblCaja.Size = new System.Drawing.Size(76, 29);
             this.lblCaja.TabIndex = 3;
             this.lblCaja.Text = "CAJA";
             // 
@@ -222,7 +222,7 @@
             // 
             // FrmAperturacaja
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(14F, 29F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.ClientSize = new System.Drawing.Size(689, 257);

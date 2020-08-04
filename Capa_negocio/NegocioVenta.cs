@@ -174,6 +174,7 @@ namespace Capa_negocio
             
             string mensaje = "";
             Dventa objventa = new Dventa(idventa,'A');
+            objventa.Fecha = DateTime.Now;
            mensaje = objventa.anular(objventa, stock);
 
 

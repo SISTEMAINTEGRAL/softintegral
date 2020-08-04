@@ -270,6 +270,10 @@ namespace Capa_Presentacion
 	                    {
                             estado = "NOTA DE CREDITO";
 	                    }
+                    else if (estado.Equals("A"))
+                    {
+                        estado = "ANULADO";
+                    }
                     else
                     {
                         estado = "PRESUPUESTADO";

@@ -91,14 +91,14 @@ namespace Capa_Presentacion
                       if (this.Text == "Cierre de turno")
                       {
                           
-                          Negociocaja.insertarcierrecaja(idcierre, objcaja.Fecha, NegocioConfigEmpresa.turno, objcaja.Ingreso, objcaja.Egreso, 1, Convert.ToDecimal (lblsaldoActual.Text), Convert.ToDecimal(TxtConcepto.Text), 1, NegocioConfigEmpresa.idusuario, "CIERRE", NegocioConfigEmpresa.nrocaja);
+                          Negociocaja.insertarcierrecaja(idcierre, objcaja.Fecha, NegocioConfigEmpresa.turno, objcaja.Ingreso, objcaja.Egreso, 1, Convert.ToDecimal (lblsaldoActual.Text), Convert.ToDecimal(TxtConcepto.Text), 1, NegocioConfigEmpresa.idusuario, "CIERRE", NegocioConfigEmpresa.nrocaja,Convert.ToSingle(TxtTarjeta.Text) );
                           
                       }
 
                       if (this.Text == "Cierre de caja")
                       {
 
-                          Negociocaja.insertarcierrecaja(idcierre, DateTime.Now.ToString(), NegocioConfigEmpresa.turno, objcaja.Ingreso, objcaja.Egreso, idturno, Convert.ToDecimal(lblsaldoActual.Text), Convert.ToDecimal(TxtConcepto.Text), 1, NegocioConfigEmpresa.idusuario, "CIERRE", NegocioConfigEmpresa.nrocaja);
+                          Negociocaja.insertarcierrecaja(idcierre, DateTime.Now.ToString(), NegocioConfigEmpresa.turno, objcaja.Ingreso, objcaja.Egreso, idturno, Convert.ToDecimal(lblsaldoActual.Text), Convert.ToDecimal(TxtConcepto.Text), 1, NegocioConfigEmpresa.idusuario, "CIERRE", NegocioConfigEmpresa.nrocaja, Convert.ToSingle(TxtTarjeta.Text));
 
                       }
 

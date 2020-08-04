@@ -655,3 +655,4 @@ C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\obj\Debug\Capa_Presen
 C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\obj\Debug\Capa_Presentacion.FrmGuardarVenta2.resources
 C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\bin\Debug\Tulpep.NotificationWindow.dll
 C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\obj\Debug\Capa_Presentacion.FrmProveedorCorregido.resources
+C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\obj\Debug\Capa_Presentacion.FrmImportArticulos.resources

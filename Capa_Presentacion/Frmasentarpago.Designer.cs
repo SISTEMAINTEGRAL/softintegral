@@ -93,7 +93,7 @@
             this.lblCaja.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.lblCaja.Location = new System.Drawing.Point(0, 0);
             this.lblCaja.Name = "lblCaja";
-            this.lblCaja.Size = new System.Drawing.Size(103, 33);
+            this.lblCaja.Size = new System.Drawing.Size(85, 29);
             this.lblCaja.TabIndex = 3;
             this.lblCaja.Text = "PAGO";
             // 
@@ -104,7 +104,7 @@
             this.txtSaldoapagar.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
             this.txtSaldoapagar.Name = "txtSaldoapagar";
             this.txtSaldoapagar.ReadOnly = true;
-            this.txtSaldoapagar.Size = new System.Drawing.Size(163, 35);
+            this.txtSaldoapagar.Size = new System.Drawing.Size(163, 30);
             this.txtSaldoapagar.TabIndex = 81;
             this.txtSaldoapagar.Text = "0";
             // 
@@ -118,7 +118,7 @@
             this.cbFormapago.Location = new System.Drawing.Point(195, 70);
             this.cbFormapago.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
             this.cbFormapago.Name = "cbFormapago";
-            this.cbFormapago.Size = new System.Drawing.Size(270, 37);
+            this.cbFormapago.Size = new System.Drawing.Size(270, 33);
             this.cbFormapago.TabIndex = 80;
             // 
             // label4
@@ -127,7 +127,7 @@
             this.label4.Location = new System.Drawing.Point(40, 126);
             this.label4.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(175, 29);
+            this.label4.Size = new System.Drawing.Size(145, 25);
             this.label4.TabIndex = 79;
             this.label4.Text = "Saldo a pagar :";
             // 
@@ -137,7 +137,7 @@
             this.label2.Location = new System.Drawing.Point(28, 70);
             this.label2.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(190, 29);
+            this.label2.Size = new System.Drawing.Size(155, 25);
             this.label2.TabIndex = 78;
             this.label2.Text = "Forma de pago :";
             // 
@@ -172,7 +172,7 @@
             this.txtPago.Location = new System.Drawing.Point(195, 166);
             this.txtPago.Margin = new System.Windows.Forms.Padding(6, 8, 6, 8);
             this.txtPago.Name = "txtPago";
-            this.txtPago.Size = new System.Drawing.Size(163, 35);
+            this.txtPago.Size = new System.Drawing.Size(163, 30);
             this.txtPago.TabIndex = 113;
             this.txtPago.Text = "0";
             // 
@@ -182,13 +182,13 @@
             this.label1.Location = new System.Drawing.Point(38, 168);
             this.label1.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(82, 29);
+            this.label1.Size = new System.Drawing.Size(69, 25);
             this.label1.TabIndex = 114;
             this.label1.Text = "Pago :";
             // 
             // Frmasentarpago
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(14F, 29F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(671, 323);
             this.Controls.Add(this.label1);
