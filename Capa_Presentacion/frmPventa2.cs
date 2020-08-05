@@ -492,39 +492,39 @@ namespace Capa_Presentacion
                         {
                             DGVenta.Rows[row.Index].DefaultCellStyle.BackColor = Color.FromArgb(183, 95, 77);
                             DGVenta.Rows[row.Index].DefaultCellStyle.ForeColor = Color.White;
-                            if (row.Cells["popupcero"].Value == "")
+                            if (row.Cells["popup_cero"].Value == "")
                             {
                                 UtilityFrm.notificacionpopup("ATENCION!", "ID = " + row.Cells["Codigo"].Value.ToString() + " SE ENCUENTRA EN CERO TU STOCK ACTUAL ES DE " + stock_actual, "peligro");
                             }
 
-                            row.Cells["popupcero"].Value = "notificacion";
+                            row.Cells["popup_cero"].Value = "notificacion";
 
                         }
                         else
                         {
                             DGVenta.Rows[row.Index].DefaultCellStyle.BackColor = Color.White;
                             DGVenta.Rows[row.Index].DefaultCellStyle.ForeColor = Color.Black;
-                            row.Cells["popupcero"].Value = "";
+                            row.Cells["popup_cero"].Value = "";
                         }
 
-                        if (stock_minimo != 0 && row.Cells["popupcero"].Value == "")
+                        if (stock_minimo != 0 && row.Cells["popup_cero"].Value == "")
                         {
                             if (res < stock_minimo)
                             {
                                 DGVenta.Rows[row.Index].DefaultCellStyle.BackColor = Color.FromArgb(188, 162, 73);
                                 DGVenta.Rows[row.Index].DefaultCellStyle.ForeColor = Color.White;
-                                if (row.Cells["popupminimo"].Value == "")
+                                if (row.Cells["popup_minimo"].Value == "")
                                 {
                                     UtilityFrm.notificacionpopup("ATENCION!", "ID = " + row.Cells["Codigo"].Value.ToString() + " SE ENCUENTRA POR DEBAJO DEL STOCK MINIMO TU STOCK DISPONIBLE ES DE " + stock_actual, "precaucion");
                                 }
 
-                                row.Cells["popupminimo"].Value = "notificacion";
+                                row.Cells["popup_minimo"].Value = "notificacion";
                             }
                             else
                             {
                                 DGVenta.Rows[row.Index].DefaultCellStyle.BackColor = Color.White;
                                 DGVenta.Rows[row.Index].DefaultCellStyle.ForeColor = Color.Black;
-                                row.Cells["popupminimo"].Value = "";
+                                row.Cells["popup_minimo"].Value = "";
                             }
 
                         }

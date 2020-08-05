@@ -39,6 +39,29 @@
             this.TxtcambioDv = new System.Windows.Forms.TextBox();
             this.Lblvendedor = new System.Windows.Forms.Label();
             this.DGVenta = new Guna.UI.WinForms.GunaDataGridView();
+            this.Codigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Producto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.P_Unidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Lista = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Cprecio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Subtotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Descuento = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Importe = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Dpesable = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Calculo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Preciopormayor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Cantidadpormayor = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.preciounidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Civa = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Manual = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Preciocantidad2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Precio2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Precio_Oferta = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Stock_Actual = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Stock_Minimo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PopupMinimo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.PopupCero = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label3 = new System.Windows.Forms.Label();
             this.txtItems = new System.Windows.Forms.TextBox();
             this.txtIva105 = new System.Windows.Forms.TextBox();
@@ -100,29 +123,6 @@
             this.btnAgregarPesable = new System.Windows.Forms.Button();
             this.btnConsultas = new System.Windows.Forms.Button();
             this.btnCalculadora = new System.Windows.Forms.Button();
-            this.Codigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Producto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.P_Unidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Lista = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Cprecio = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Subtotal = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Descuento = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Importe = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Dpesable = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Calculo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Preciopormayor = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Cantidadpormayor = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.preciounidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Civa = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Manual = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Preciocantidad2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Precio2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Precio_Oferta = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Stock_Actual = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Stock_Minimo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PopupMinimo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.PopupCero = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.grpboxProveedor.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DGVenta)).BeginInit();
             this.gbDetalleMovimento.SuspendLayout();
@@ -339,6 +339,143 @@
             this.DGVenta.RowsRemoved += new System.Windows.Forms.DataGridViewRowsRemovedEventHandler(this.DGVenta_RowsRemoved);
             this.DGVenta.KeyDown += new System.Windows.Forms.KeyEventHandler(this.DGVenta_KeyDown);
             this.DGVenta.MouseClick += new System.Windows.Forms.MouseEventHandler(this.DGVenta_MouseClick);
+            // 
+            // Codigo
+            // 
+            this.Codigo.FillWeight = 61.54822F;
+            this.Codigo.HeaderText = "Codigo";
+            this.Codigo.Name = "Codigo";
+            // 
+            // Producto
+            // 
+            this.Producto.FillWeight = 253.8071F;
+            this.Producto.HeaderText = "Producto";
+            this.Producto.Name = "Producto";
+            // 
+            // P_Unidad
+            // 
+            this.P_Unidad.FillWeight = 80F;
+            this.P_Unidad.HeaderText = "P.Minorista";
+            this.P_Unidad.Name = "P_Unidad";
+            // 
+            // Lista
+            // 
+            this.Lista.FillWeight = 50F;
+            this.Lista.HeaderText = "Lista";
+            this.Lista.Name = "Lista";
+            // 
+            // Cprecio
+            // 
+            this.Cprecio.FillWeight = 61.54822F;
+            this.Cprecio.HeaderText = "Precio";
+            this.Cprecio.Name = "Cprecio";
+            // 
+            // Cantidad
+            // 
+            this.Cantidad.FillWeight = 61.54822F;
+            this.Cantidad.HeaderText = "Cantidad";
+            this.Cantidad.Name = "Cantidad";
+            // 
+            // Subtotal
+            // 
+            this.Subtotal.FillWeight = 61.54822F;
+            this.Subtotal.HeaderText = "Subtotal";
+            this.Subtotal.Name = "Subtotal";
+            // 
+            // Descuento
+            // 
+            this.Descuento.HeaderText = "Descuento";
+            this.Descuento.Name = "Descuento";
+            this.Descuento.Visible = false;
+            // 
+            // Importe
+            // 
+            this.Importe.HeaderText = "Importe";
+            this.Importe.Name = "Importe";
+            // 
+            // Dpesable
+            // 
+            this.Dpesable.HeaderText = "Pesable";
+            this.Dpesable.Name = "Dpesable";
+            this.Dpesable.Visible = false;
+            // 
+            // Calculo
+            // 
+            this.Calculo.HeaderText = "Calculo";
+            this.Calculo.Name = "Calculo";
+            this.Calculo.Visible = false;
+            // 
+            // Preciopormayor
+            // 
+            this.Preciopormayor.HeaderText = "Preciopormayor";
+            this.Preciopormayor.Name = "Preciopormayor";
+            this.Preciopormayor.Visible = false;
+            // 
+            // Cantidadpormayor
+            // 
+            this.Cantidadpormayor.HeaderText = "Cantidadpormayor";
+            this.Cantidadpormayor.Name = "Cantidadpormayor";
+            this.Cantidadpormayor.Visible = false;
+            // 
+            // preciounidad
+            // 
+            this.preciounidad.HeaderText = "preciounidad";
+            this.preciounidad.Name = "preciounidad";
+            this.preciounidad.Visible = false;
+            // 
+            // Civa
+            // 
+            this.Civa.HeaderText = "iva";
+            this.Civa.Name = "Civa";
+            this.Civa.Visible = false;
+            // 
+            // Manual
+            // 
+            this.Manual.HeaderText = "Manual";
+            this.Manual.Name = "Manual";
+            this.Manual.Visible = false;
+            // 
+            // Preciocantidad2
+            // 
+            this.Preciocantidad2.HeaderText = "Preciocantidad2";
+            this.Preciocantidad2.Name = "Preciocantidad2";
+            this.Preciocantidad2.Visible = false;
+            // 
+            // Precio2
+            // 
+            this.Precio2.HeaderText = "Precio2";
+            this.Precio2.Name = "Precio2";
+            this.Precio2.Visible = false;
+            // 
+            // Precio_Oferta
+            // 
+            this.Precio_Oferta.HeaderText = "Precio oferta";
+            this.Precio_Oferta.Name = "Precio_Oferta";
+            this.Precio_Oferta.Visible = false;
+            // 
+            // Stock_Actual
+            // 
+            this.Stock_Actual.HeaderText = "Stock_Actual";
+            this.Stock_Actual.Name = "Stock_Actual";
+            this.Stock_Actual.Visible = false;
+            // 
+            // Stock_Minimo
+            // 
+            this.Stock_Minimo.HeaderText = "Stock_Minimo";
+            this.Stock_Minimo.Name = "Stock_Minimo";
+            this.Stock_Minimo.Visible = false;
+            // 
+            // PopupMinimo
+            // 
+            this.PopupMinimo.HeaderText = "PopupMinimo";
+            this.PopupMinimo.Name = "PopupMinimo";
+            this.PopupMinimo.Visible = false;
+            // 
+            // PopupCero
+            // 
+            this.PopupCero.HeaderText = "PopupCero";
+            this.PopupCero.Name = "PopupCero";
+            this.PopupCero.Visible = false;
             // 
             // label3
             // 
@@ -824,11 +961,11 @@
             this.RBPrecioOferta.AutoSize = true;
             this.RBPrecioOferta.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(144)))), ((int)(((byte)(247)))));
             this.RBPrecioOferta.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.RBPrecioOferta.Location = new System.Drawing.Point(1133, 25);
+            this.RBPrecioOferta.Location = new System.Drawing.Point(1128, 25);
             this.RBPrecioOferta.Name = "RBPrecioOferta";
-            this.RBPrecioOferta.Size = new System.Drawing.Size(118, 37);
+            this.RBPrecioOferta.Size = new System.Drawing.Size(123, 37);
             this.RBPrecioOferta.TabIndex = 67;
-            this.RBPrecioOferta.Text = "F9 - Oferta";
+            this.RBPrecioOferta.Text = "F9 - Distrib.";
             this.RBPrecioOferta.UseVisualStyleBackColor = false;
             // 
             // RBPreciomayorista1
@@ -853,12 +990,12 @@
             this.RBPrecioNormal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(144)))), ((int)(((byte)(247)))));
             this.RBPrecioNormal.Checked = true;
             this.RBPrecioNormal.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.RBPrecioNormal.Location = new System.Drawing.Point(715, 25);
+            this.RBPrecioNormal.Location = new System.Drawing.Point(710, 25);
             this.RBPrecioNormal.Name = "RBPrecioNormal";
-            this.RBPrecioNormal.Size = new System.Drawing.Size(143, 37);
+            this.RBPrecioNormal.Size = new System.Drawing.Size(148, 37);
             this.RBPrecioNormal.TabIndex = 67;
             this.RBPrecioNormal.TabStop = true;
-            this.RBPrecioNormal.Text = "F6 - Minorista";
+            this.RBPrecioNormal.Text = "F6 - P.Unitario";
             this.RBPrecioNormal.UseVisualStyleBackColor = false;
             // 
             // CHKPendientestock
@@ -1149,143 +1286,6 @@
             this.btnCalculadora.TabIndex = 58;
             this.btnCalculadora.UseVisualStyleBackColor = true;
             this.btnCalculadora.Click += new System.EventHandler(this.btnCalculadora_Click);
-            // 
-            // Codigo
-            // 
-            this.Codigo.FillWeight = 61.54822F;
-            this.Codigo.HeaderText = "Codigo";
-            this.Codigo.Name = "Codigo";
-            // 
-            // Producto
-            // 
-            this.Producto.FillWeight = 253.8071F;
-            this.Producto.HeaderText = "Producto";
-            this.Producto.Name = "Producto";
-            // 
-            // P_Unidad
-            // 
-            this.P_Unidad.FillWeight = 80F;
-            this.P_Unidad.HeaderText = "P.Minorista";
-            this.P_Unidad.Name = "P_Unidad";
-            // 
-            // Lista
-            // 
-            this.Lista.FillWeight = 50F;
-            this.Lista.HeaderText = "Lista";
-            this.Lista.Name = "Lista";
-            // 
-            // Cprecio
-            // 
-            this.Cprecio.FillWeight = 61.54822F;
-            this.Cprecio.HeaderText = "Precio";
-            this.Cprecio.Name = "Cprecio";
-            // 
-            // Cantidad
-            // 
-            this.Cantidad.FillWeight = 61.54822F;
-            this.Cantidad.HeaderText = "Cantidad";
-            this.Cantidad.Name = "Cantidad";
-            // 
-            // Subtotal
-            // 
-            this.Subtotal.FillWeight = 61.54822F;
-            this.Subtotal.HeaderText = "Subtotal";
-            this.Subtotal.Name = "Subtotal";
-            // 
-            // Descuento
-            // 
-            this.Descuento.HeaderText = "Descuento";
-            this.Descuento.Name = "Descuento";
-            this.Descuento.Visible = false;
-            // 
-            // Importe
-            // 
-            this.Importe.HeaderText = "Importe";
-            this.Importe.Name = "Importe";
-            // 
-            // Dpesable
-            // 
-            this.Dpesable.HeaderText = "Pesable";
-            this.Dpesable.Name = "Dpesable";
-            this.Dpesable.Visible = false;
-            // 
-            // Calculo
-            // 
-            this.Calculo.HeaderText = "Calculo";
-            this.Calculo.Name = "Calculo";
-            this.Calculo.Visible = false;
-            // 
-            // Preciopormayor
-            // 
-            this.Preciopormayor.HeaderText = "Preciopormayor";
-            this.Preciopormayor.Name = "Preciopormayor";
-            this.Preciopormayor.Visible = false;
-            // 
-            // Cantidadpormayor
-            // 
-            this.Cantidadpormayor.HeaderText = "Cantidadpormayor";
-            this.Cantidadpormayor.Name = "Cantidadpormayor";
-            this.Cantidadpormayor.Visible = false;
-            // 
-            // preciounidad
-            // 
-            this.preciounidad.HeaderText = "preciounidad";
-            this.preciounidad.Name = "preciounidad";
-            this.preciounidad.Visible = false;
-            // 
-            // Civa
-            // 
-            this.Civa.HeaderText = "iva";
-            this.Civa.Name = "Civa";
-            this.Civa.Visible = false;
-            // 
-            // Manual
-            // 
-            this.Manual.HeaderText = "Manual";
-            this.Manual.Name = "Manual";
-            this.Manual.Visible = false;
-            // 
-            // Preciocantidad2
-            // 
-            this.Preciocantidad2.HeaderText = "Preciocantidad2";
-            this.Preciocantidad2.Name = "Preciocantidad2";
-            this.Preciocantidad2.Visible = false;
-            // 
-            // Precio2
-            // 
-            this.Precio2.HeaderText = "Precio2";
-            this.Precio2.Name = "Precio2";
-            this.Precio2.Visible = false;
-            // 
-            // Precio_Oferta
-            // 
-            this.Precio_Oferta.HeaderText = "Precio oferta";
-            this.Precio_Oferta.Name = "Precio_Oferta";
-            this.Precio_Oferta.Visible = false;
-            // 
-            // Stock_Actual
-            // 
-            this.Stock_Actual.HeaderText = "Stock_Actual";
-            this.Stock_Actual.Name = "Stock_Actual";
-            this.Stock_Actual.Visible = false;
-            // 
-            // Stock_Minimo
-            // 
-            this.Stock_Minimo.HeaderText = "Stock_Minimo";
-            this.Stock_Minimo.Name = "Stock_Minimo";
-            this.Stock_Minimo.Visible = false;
-            // 
-            // PopupMinimo
-            // 
-            this.PopupMinimo.HeaderText = "PopupMinimo";
-            this.PopupMinimo.Name = "PopupMinimo";
-            this.PopupMinimo.Visible = false;
-            // 
-            // PopupCero
-            // 
-            this.PopupCero.HeaderText = "PopupCero";
-            this.PopupCero.Name = "PopupCero";
-            this.PopupCero.Visible = false;
             // 
             // frmPventa
             // 

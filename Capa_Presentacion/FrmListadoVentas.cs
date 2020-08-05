@@ -822,10 +822,16 @@ namespace Capa_Presentacion
                 {
                     if (objcaja.chequeocaja("", ref mensaje,NegocioConfigEmpresa.nrocaja))
                     {
-                        Negociocaja.insertarmovcaja(5230000, 0, Convert.ToSingle(row.Cells["Total"].Value), DateTime.Today.ToString(), NegocioConfigEmpresa.usuarioconectado, NegocioConfigEmpresa.idusuario, NegocioConfigEmpresa.turno, "ANULACION", Convert.ToInt32(row.Cells["Codigo"].Value), true,NegocioConfigEmpresa.nrocaja, Convert.ToInt32(row.Cells["Formadepago"].Value));
+                    mensaje =  Negociocaja.insertarmovcaja(5230000, 0, Convert.ToSingle(row.Cells["Total"].Value), DateTime.Today.ToString(), NegocioConfigEmpresa.usuarioconectado, NegocioConfigEmpresa.idusuario, NegocioConfigEmpresa.turno, "ANULACION", Convert.ToInt32(row.Cells["Codigo"].Value), true,NegocioConfigEmpresa.nrocaja, Convert.ToInt32(row.Cells["Formadepago"].Value));
                     }  
                 }
             }
+
+            if (mensaje.Equals("ok"))
+            {
+                UtilityFrm.notificacionpopup("ANULACION", "LA VENTA SE ANULO CORRECTAMENTE, SE RESTAURO EL STOCK");
+            }
+
             buscarPorFecha();
         }
 

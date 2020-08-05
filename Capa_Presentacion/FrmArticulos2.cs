@@ -383,7 +383,7 @@ namespace Capa_Presentacion
             if (txtNombre.Text != "")
             {
                 txtNombre.Text = txtNombre.TextLength == 12 && IsNumeric(txtNombre.Text) ? "0" + txtNombre.Text : txtNombre.Text;
-                if (txtNombre.TextLength >= 13 && IsNumeric(txtNombre.Text) == true)
+                if (txtNombre.TextLength >= 8 && IsNumeric(txtNombre.Text) == true)
                 {
                     dataLista.DataSource = NegocioArticulo.buscarCodigoBarra(txtNombre.Text);
 

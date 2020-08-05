@@ -177,7 +177,7 @@ namespace Capa_Presentacion
             if (e.KeyCode == Keys.Enter && IsNumeric(txtNombreProducto.Text) == true)
             {
                 txtNombreProducto.Text = txtNombreProducto.TextLength == 12 ? "0" + txtNombreProducto.Text : txtNombreProducto.Text;
-                if (txtNombreProducto.TextLength >= 13 && IsNumeric(txtNombreProducto.Text) == true)
+                if (txtNombreProducto.TextLength >= 8 && IsNumeric(txtNombreProducto.Text) == true)
                 {
                     objart.extraerdatos(0, "porbarra", txtNombreProducto.Text);
                     codigoproducto = objart.IdArticulo.ToString();
@@ -212,6 +212,7 @@ namespace Capa_Presentacion
         }
         private void extraerproducto(int idproducto)
         {
+            decimal TotalD = 0;
             DataTable midataproducto = new DataTable();
 
             midataproducto = NegocioArticulo.buscarIdProducto(idproducto.ToString());
@@ -240,6 +241,13 @@ namespace Capa_Presentacion
             {
                 encontrado = true;
             }
+            foreach (DataGridViewRow row in dataListaMov.Rows)
+            {
+                TotalD = TotalD + Convert.ToDecimal(row.Cells["cantidad1"].Value);
+            }
+
+            TxtCan.Text = TotalD.ToString();
+            TxtItems.Text = dataListaMov.Rows.Count.ToString();
 
         }
 
@@ -372,7 +380,7 @@ namespace Capa_Presentacion
         private bool totales(int idproducto)
         {
             bool encontrado = false;
-            decimal TotalD = 0;
+            
             int cont = -1;
             index = -1;
             foreach (DataGridViewRow row in dataListaMov.Rows)
@@ -382,19 +390,21 @@ namespace Capa_Presentacion
                 {
                     if (Convert.ToInt32(row.Cells["Codigo1"].Value) == idproducto)
                     {
-                        row.Cells["cantidad1"].Value = Convert.ToDecimal(row.Cells["cantidad1"].Value) + 1;//+ Convert.ToDecimal(txtcantidad.Text);
+                        if (chkporcantidad.Checked == false)
+                        {
+                            row.Cells["cantidad1"].Value = Convert.ToDecimal(row.Cells["cantidad1"].Value) + 1;//+ Convert.ToDecimal(txtcantidad.Text);
+                        }
+                        
                         encontrado = true;
                         index = cont;
                         return encontrado;
                     }
                 }
                 
-
-                TotalD = TotalD + Convert.ToDecimal(row.Cells["cantidad1"].Value);
+                
             }
 
-            TxtCan.Text = TotalD.ToString();
-            TxtItems.Text = dataListaMov.Rows.Count.ToString();
+           
             return encontrado;
         }
 

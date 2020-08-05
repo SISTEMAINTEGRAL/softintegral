@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.btnAnular = new System.Windows.Forms.Button();
             this.dataLista = new System.Windows.Forms.DataGridView();
@@ -68,7 +68,15 @@
             this.bindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.tabControl2 = new System.Windows.Forms.TabControl();
             this.Agregar = new System.Windows.Forms.TabPage();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.TxtCan = new System.Windows.Forms.TextBox();
+            this.TxtItems = new System.Windows.Forms.TextBox();
+            this.button2 = new XanderUI.XUISuperButton();
+            this.button1 = new XanderUI.XUISuperButton();
             this.xuiCustomGroupbox2 = new XanderUI.XUICustomGroupbox();
+            this.chkporcantidad = new System.Windows.Forms.CheckBox();
+            this.TxtcambioDv = new System.Windows.Forms.TextBox();
             this.rdbIngreso = new System.Windows.Forms.RadioButton();
             this.rdbEgreso = new System.Windows.Forms.RadioButton();
             this.xuiCustomGroupbox1 = new XanderUI.XUICustomGroupbox();
@@ -84,14 +92,6 @@
             this.lblCorrelativa = new System.Windows.Forms.Label();
             this.txtCorrelativa = new System.Windows.Forms.TextBox();
             this.Lista = new System.Windows.Forms.TabPage();
-            this.TxtcambioDv = new System.Windows.Forms.TextBox();
-            this.chkporcantidad = new System.Windows.Forms.CheckBox();
-            this.button2 = new XanderUI.XUISuperButton();
-            this.button1 = new XanderUI.XUISuperButton();
-            this.TxtItems = new System.Windows.Forms.TextBox();
-            this.TxtCan = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataLista)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
@@ -160,7 +160,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 379);
+            this.dataGridView1.Location = new System.Drawing.Point(12, 360);
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(6, 7, 6, 7);
             this.dataGridView1.MultiSelect = false;
             this.dataGridView1.Name = "dataGridView1";
@@ -176,10 +176,10 @@
             this.btnExportarExcel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnExportarExcel.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnExportarExcel.Image = global::Capa_Presentacion.Properties.Resources.Microsoft_Excel_20px;
-            this.btnExportarExcel.Location = new System.Drawing.Point(1170, 32);
+            this.btnExportarExcel.Location = new System.Drawing.Point(1189, 17);
             this.btnExportarExcel.Margin = new System.Windows.Forms.Padding(6, 7, 6, 7);
             this.btnExportarExcel.Name = "btnExportarExcel";
-            this.btnExportarExcel.Size = new System.Drawing.Size(61, 61);
+            this.btnExportarExcel.Size = new System.Drawing.Size(42, 41);
             this.btnExportarExcel.TabIndex = 30;
             this.btnExportarExcel.UseVisualStyleBackColor = true;
             // 
@@ -203,26 +203,26 @@
             this.label1.Location = new System.Drawing.Point(470, 29);
             this.label1.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(152, 36);
+            this.label1.Size = new System.Drawing.Size(128, 30);
             this.label1.TabIndex = 14;
             this.label1.Text = "Fecha Fin";
             // 
             // dtpFechaFin
             // 
             this.dtpFechaFin.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpFechaFin.Location = new System.Drawing.Point(478, 99);
+            this.dtpFechaFin.Location = new System.Drawing.Point(475, 72);
             this.dtpFechaFin.Margin = new System.Windows.Forms.Padding(6, 7, 6, 7);
             this.dtpFechaFin.Name = "dtpFechaFin";
-            this.dtpFechaFin.Size = new System.Drawing.Size(362, 35);
+            this.dtpFechaFin.Size = new System.Drawing.Size(362, 30);
             this.dtpFechaFin.TabIndex = 2;
             // 
             // dtpFechaIni
             // 
             this.dtpFechaIni.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpFechaIni.Location = new System.Drawing.Point(31, 99);
+            this.dtpFechaIni.Location = new System.Drawing.Point(42, 72);
             this.dtpFechaIni.Margin = new System.Windows.Forms.Padding(6, 7, 6, 7);
             this.dtpFechaIni.Name = "dtpFechaIni";
-            this.dtpFechaIni.Size = new System.Drawing.Size(362, 35);
+            this.dtpFechaIni.Size = new System.Drawing.Size(362, 30);
             this.dtpFechaIni.TabIndex = 1;
             // 
             // lblFechaIni
@@ -232,7 +232,7 @@
             this.lblFechaIni.Location = new System.Drawing.Point(37, 29);
             this.lblFechaIni.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.lblFechaIni.Name = "lblFechaIni";
-            this.lblFechaIni.Size = new System.Drawing.Size(191, 36);
+            this.lblFechaIni.Size = new System.Drawing.Size(160, 30);
             this.lblFechaIni.TabIndex = 7;
             this.lblFechaIni.Text = "Fecha Inicio";
             // 
@@ -240,10 +240,10 @@
             // 
             this.btnBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnBuscar.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBuscar.Location = new System.Drawing.Point(1472, 64);
+            this.btnBuscar.Location = new System.Drawing.Point(898, 72);
             this.btnBuscar.Margin = new System.Windows.Forms.Padding(6, 7, 6, 7);
             this.btnBuscar.Name = "btnBuscar";
-            this.btnBuscar.Size = new System.Drawing.Size(246, 88);
+            this.btnBuscar.Size = new System.Drawing.Size(165, 42);
             this.btnBuscar.TabIndex = 3;
             this.btnBuscar.Text = "Buscar";
             this.btnBuscar.UseVisualStyleBackColor = true;
@@ -255,7 +255,7 @@
             this.Dtproducto.AllowUserToDeleteRows = false;
             this.Dtproducto.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.Dtproducto.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.Dtproducto.Location = new System.Drawing.Point(142, 299);
+            this.Dtproducto.Location = new System.Drawing.Point(142, 293);
             this.Dtproducto.Margin = new System.Windows.Forms.Padding(6, 13, 6, 13);
             this.Dtproducto.MultiSelect = false;
             this.Dtproducto.Name = "Dtproducto";
@@ -275,7 +275,7 @@
             this.Dtproveedor.AllowUserToDeleteRows = false;
             this.Dtproveedor.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.Dtproveedor.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.Dtproveedor.Location = new System.Drawing.Point(173, 74);
+            this.Dtproveedor.Location = new System.Drawing.Point(173, 69);
             this.Dtproveedor.Margin = new System.Windows.Forms.Padding(6, 13, 6, 13);
             this.Dtproveedor.MultiSelect = false;
             this.Dtproveedor.Name = "Dtproveedor";
@@ -293,7 +293,7 @@
             this.txtNombreProducto.Location = new System.Drawing.Point(132, 34);
             this.txtNombreProducto.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.txtNombreProducto.Name = "txtNombreProducto";
-            this.txtNombreProducto.Size = new System.Drawing.Size(429, 35);
+            this.txtNombreProducto.Size = new System.Drawing.Size(429, 30);
             this.txtNombreProducto.TabIndex = 77;
             this.txtNombreProducto.TextChanged += new System.EventHandler(this.txtNombreProducto_TextChanged);
             this.txtNombreProducto.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtNombreProducto_KeyDown);
@@ -304,10 +304,10 @@
             this.btnBuscarProd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnBuscarProd.Image = global::Capa_Presentacion.Properties.Resources.Search_15px;
             this.btnBuscarProd.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnBuscarProd.Location = new System.Drawing.Point(575, 34);
+            this.btnBuscarProd.Location = new System.Drawing.Point(569, 34);
             this.btnBuscarProd.Margin = new System.Windows.Forms.Padding(9, 13, 9, 13);
             this.btnBuscarProd.Name = "btnBuscarProd";
-            this.btnBuscarProd.Size = new System.Drawing.Size(39, 37);
+            this.btnBuscarProd.Size = new System.Drawing.Size(35, 30);
             this.btnBuscarProd.TabIndex = 44;
             this.btnBuscarProd.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btnBuscarProd.UseVisualStyleBackColor = true;
@@ -346,7 +346,7 @@
             this.lblCntIngOegr.Location = new System.Drawing.Point(1512, 55);
             this.lblCntIngOegr.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.lblCntIngOegr.Name = "lblCntIngOegr";
-            this.lblCntIngOegr.Size = new System.Drawing.Size(121, 29);
+            this.lblCntIngOegr.Size = new System.Drawing.Size(102, 25);
             this.lblCntIngOegr.TabIndex = 43;
             this.lblCntIngOegr.Text = "Cantidad :";
             this.lblCntIngOegr.Visible = false;
@@ -357,7 +357,7 @@
             this.lblNomProducto.Location = new System.Drawing.Point(11, 34);
             this.lblNomProducto.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.lblNomProducto.Name = "lblNomProducto";
-            this.lblNomProducto.Size = new System.Drawing.Size(110, 29);
+            this.lblNomProducto.Size = new System.Drawing.Size(90, 25);
             this.lblNomProducto.TabIndex = 41;
             this.lblNomProducto.Text = "Producto";
             // 
@@ -371,14 +371,14 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataListaMov.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataListaMov.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataListaMov.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataListaMov.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.dataListaMov.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataListaMov.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Codigo1,
@@ -539,7 +539,7 @@
             this.lblSistemaVenta.Location = new System.Drawing.Point(1, 0);
             this.lblSistemaVenta.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.lblSistemaVenta.Name = "lblSistemaVenta";
-            this.lblSistemaVenta.Size = new System.Drawing.Size(374, 36);
+            this.lblSistemaVenta.Size = new System.Drawing.Size(314, 28);
             this.lblSistemaVenta.TabIndex = 3;
             this.lblSistemaVenta.Text = "MOVIMIENTO DE STOCK    ";
             this.lblSistemaVenta.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -574,14 +574,118 @@
             this.Agregar.Controls.Add(this.rdbIngreso);
             this.Agregar.Controls.Add(this.rdbEgreso);
             this.Agregar.Controls.Add(this.xuiCustomGroupbox1);
-            this.Agregar.Location = new System.Drawing.Point(4, 38);
+            this.Agregar.Location = new System.Drawing.Point(4, 34);
             this.Agregar.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.Agregar.Name = "Agregar";
             this.Agregar.Padding = new System.Windows.Forms.Padding(5, 6, 5, 6);
-            this.Agregar.Size = new System.Drawing.Size(1254, 661);
+            this.Agregar.Size = new System.Drawing.Size(1254, 665);
             this.Agregar.TabIndex = 0;
             this.Agregar.Text = "Agregar";
             this.Agregar.UseVisualStyleBackColor = true;
+            // 
+            // label3
+            // 
+            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(355, 598);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(95, 23);
+            this.label3.TabIndex = 118;
+            this.label3.Text = "Totales : ";
+            // 
+            // label7
+            // 
+            this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(9, 603);
+            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(75, 23);
+            this.label7.TabIndex = 117;
+            this.label7.Text = "Items :";
+            // 
+            // TxtCan
+            // 
+            this.TxtCan.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.TxtCan.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(144)))), ((int)(((byte)(247)))));
+            this.TxtCan.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.TxtCan.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TxtCan.Location = new System.Drawing.Point(516, 594);
+            this.TxtCan.Margin = new System.Windows.Forms.Padding(4, 8, 4, 8);
+            this.TxtCan.Name = "TxtCan";
+            this.TxtCan.ReadOnly = true;
+            this.TxtCan.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.TxtCan.Size = new System.Drawing.Size(98, 32);
+            this.TxtCan.TabIndex = 115;
+            this.TxtCan.Text = "0,00";
+            // 
+            // TxtItems
+            // 
+            this.TxtItems.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.TxtItems.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(144)))), ((int)(((byte)(247)))));
+            this.TxtItems.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.TxtItems.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TxtItems.Location = new System.Drawing.Point(168, 596);
+            this.TxtItems.Margin = new System.Windows.Forms.Padding(4, 8, 4, 8);
+            this.TxtItems.Name = "TxtItems";
+            this.TxtItems.ReadOnly = true;
+            this.TxtItems.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.TxtItems.Size = new System.Drawing.Size(98, 32);
+            this.TxtItems.TabIndex = 115;
+            this.TxtItems.Text = "0";
+            // 
+            // button2
+            // 
+            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.button2.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(144)))), ((int)(((byte)(247)))));
+            this.button2.ButtonImage = null;
+            this.button2.ButtonSmoothing = System.Drawing.Drawing2D.SmoothingMode.HighSpeed;
+            this.button2.ButtonStyle = XanderUI.XUISuperButton.Style.RoundedEdges;
+            this.button2.ButtonText = "Cancelar";
+            this.button2.CornerRadius = 5;
+            this.button2.Horizontal_Alignment = System.Drawing.StringAlignment.Center;
+            this.button2.HoverBackgroundColor = System.Drawing.Color.IndianRed;
+            this.button2.HoverTextColor = System.Drawing.Color.Yellow;
+            this.button2.ImagePosition = XanderUI.XUISuperButton.imgPosition.Left;
+            this.button2.Location = new System.Drawing.Point(1042, 594);
+            this.button2.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.button2.Name = "button2";
+            this.button2.SelectedBackColor = System.Drawing.Color.LimeGreen;
+            this.button2.SelectedTextColor = System.Drawing.Color.White;
+            this.button2.Size = new System.Drawing.Size(187, 47);
+            this.button2.SuperSelected = false;
+            this.button2.TabIndex = 112;
+            this.button2.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(245)))), ((int)(((byte)(255)))));
+            this.button2.Vertical_Alignment = System.Drawing.StringAlignment.Center;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // button1
+            // 
+            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.button1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(144)))), ((int)(((byte)(247)))));
+            this.button1.ButtonImage = null;
+            this.button1.ButtonSmoothing = System.Drawing.Drawing2D.SmoothingMode.HighSpeed;
+            this.button1.ButtonStyle = XanderUI.XUISuperButton.Style.RoundedEdges;
+            this.button1.ButtonText = "Guardar";
+            this.button1.CornerRadius = 5;
+            this.button1.Horizontal_Alignment = System.Drawing.StringAlignment.Center;
+            this.button1.HoverBackgroundColor = System.Drawing.Color.IndianRed;
+            this.button1.HoverTextColor = System.Drawing.Color.Yellow;
+            this.button1.ImagePosition = XanderUI.XUISuperButton.imgPosition.Left;
+            this.button1.Location = new System.Drawing.Point(830, 594);
+            this.button1.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.button1.Name = "button1";
+            this.button1.SelectedBackColor = System.Drawing.Color.LimeGreen;
+            this.button1.SelectedTextColor = System.Drawing.Color.White;
+            this.button1.Size = new System.Drawing.Size(204, 49);
+            this.button1.SuperSelected = false;
+            this.button1.TabIndex = 113;
+            this.button1.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(245)))), ((int)(((byte)(255)))));
+            this.button1.Vertical_Alignment = System.Drawing.StringAlignment.Center;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // xuiCustomGroupbox2
             // 
@@ -606,6 +710,30 @@
             this.xuiCustomGroupbox2.TabStop = false;
             this.xuiCustomGroupbox2.Text = "Items :";
             this.xuiCustomGroupbox2.TextColor = System.Drawing.Color.DodgerBlue;
+            // 
+            // chkporcantidad
+            // 
+            this.chkporcantidad.AutoSize = true;
+            this.chkporcantidad.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.chkporcantidad.Location = new System.Drawing.Point(626, 37);
+            this.chkporcantidad.Name = "chkporcantidad";
+            this.chkporcantidad.Size = new System.Drawing.Size(160, 29);
+            this.chkporcantidad.TabIndex = 79;
+            this.chkporcantidad.Text = "F10 - Cantidad";
+            this.chkporcantidad.UseVisualStyleBackColor = true;
+            // 
+            // TxtcambioDv
+            // 
+            this.TxtcambioDv.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.TxtcambioDv.Location = new System.Drawing.Point(841, 362);
+            this.TxtcambioDv.Margin = new System.Windows.Forms.Padding(6, 7, 6, 7);
+            this.TxtcambioDv.MaxLength = 8;
+            this.TxtcambioDv.Multiline = true;
+            this.TxtcambioDv.Name = "TxtcambioDv";
+            this.TxtcambioDv.Size = new System.Drawing.Size(207, 38);
+            this.TxtcambioDv.TabIndex = 39;
+            this.TxtcambioDv.Visible = false;
+            this.TxtcambioDv.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TxtcambioDv_KeyDown);
             // 
             // rdbIngreso
             // 
@@ -693,7 +821,7 @@
             this.label2.Location = new System.Drawing.Point(36, 33);
             this.label2.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(126, 29);
+            this.label2.Size = new System.Drawing.Size(102, 25);
             this.label2.TabIndex = 0;
             this.label2.Text = "Proveedor";
             // 
@@ -718,7 +846,7 @@
             this.ChRegistrar.Location = new System.Drawing.Point(8, 39);
             this.ChRegistrar.Margin = new System.Windows.Forms.Padding(6, 7, 6, 7);
             this.ChRegistrar.Name = "ChRegistrar";
-            this.ChRegistrar.Size = new System.Drawing.Size(17, 16);
+            this.ChRegistrar.Size = new System.Drawing.Size(14, 13);
             this.ChRegistrar.TabIndex = 37;
             this.ChRegistrar.UseVisualStyleBackColor = true;
             this.ChRegistrar.CheckedChanged += new System.EventHandler(this.ChRegistrar_CheckedChanged);
@@ -751,7 +879,7 @@
             this.cbTipoComprobante.Location = new System.Drawing.Point(182, 94);
             this.cbTipoComprobante.Margin = new System.Windows.Forms.Padding(6, 7, 6, 7);
             this.cbTipoComprobante.Name = "cbTipoComprobante";
-            this.cbTipoComprobante.Size = new System.Drawing.Size(275, 37);
+            this.cbTipoComprobante.Size = new System.Drawing.Size(275, 33);
             this.cbTipoComprobante.TabIndex = 38;
             // 
             // lblSerie
@@ -761,7 +889,7 @@
             this.lblSerie.Location = new System.Drawing.Point(510, 97);
             this.lblSerie.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.lblSerie.Name = "lblSerie";
-            this.lblSerie.Size = new System.Drawing.Size(83, 29);
+            this.lblSerie.Size = new System.Drawing.Size(69, 25);
             this.lblSerie.TabIndex = 41;
             this.lblSerie.Text = "Serie :";
             // 
@@ -784,7 +912,7 @@
             this.lblCorrelativa.Location = new System.Drawing.Point(877, 97);
             this.lblCorrelativa.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.lblCorrelativa.Name = "lblCorrelativa";
-            this.lblCorrelativa.Size = new System.Drawing.Size(141, 29);
+            this.lblCorrelativa.Size = new System.Drawing.Size(117, 25);
             this.lblCorrelativa.TabIndex = 42;
             this.lblCorrelativa.Text = "Correlativa :";
             // 
@@ -804,154 +932,26 @@
             // 
             this.Lista.Controls.Add(this.dataGridView1);
             this.Lista.Controls.Add(this.btnExportarExcel);
-            this.Lista.Controls.Add(this.dataLista);
             this.Lista.Controls.Add(this.btnBuscar);
+            this.Lista.Controls.Add(this.dataLista);
             this.Lista.Controls.Add(this.btnTodos);
             this.Lista.Controls.Add(this.btnAnular);
             this.Lista.Controls.Add(this.label1);
             this.Lista.Controls.Add(this.lblFechaIni);
             this.Lista.Controls.Add(this.dtpFechaFin);
             this.Lista.Controls.Add(this.dtpFechaIni);
-            this.Lista.Location = new System.Drawing.Point(4, 38);
+            this.Lista.Location = new System.Drawing.Point(4, 34);
             this.Lista.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.Lista.Name = "Lista";
             this.Lista.Padding = new System.Windows.Forms.Padding(5, 6, 5, 6);
-            this.Lista.Size = new System.Drawing.Size(1251, 686);
+            this.Lista.Size = new System.Drawing.Size(1254, 665);
             this.Lista.TabIndex = 1;
             this.Lista.Text = "Lista";
             this.Lista.UseVisualStyleBackColor = true;
             // 
-            // TxtcambioDv
-            // 
-            this.TxtcambioDv.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.TxtcambioDv.Location = new System.Drawing.Point(841, 362);
-            this.TxtcambioDv.Margin = new System.Windows.Forms.Padding(6, 7, 6, 7);
-            this.TxtcambioDv.MaxLength = 8;
-            this.TxtcambioDv.Multiline = true;
-            this.TxtcambioDv.Name = "TxtcambioDv";
-            this.TxtcambioDv.Size = new System.Drawing.Size(207, 38);
-            this.TxtcambioDv.TabIndex = 39;
-            this.TxtcambioDv.Visible = false;
-            this.TxtcambioDv.KeyDown += new System.Windows.Forms.KeyEventHandler(this.TxtcambioDv_KeyDown);
-            // 
-            // chkporcantidad
-            // 
-            this.chkporcantidad.AutoSize = true;
-            this.chkporcantidad.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.chkporcantidad.Location = new System.Drawing.Point(626, 37);
-            this.chkporcantidad.Name = "chkporcantidad";
-            this.chkporcantidad.Size = new System.Drawing.Size(191, 33);
-            this.chkporcantidad.TabIndex = 79;
-            this.chkporcantidad.Text = "F10 - Cantidad";
-            this.chkporcantidad.UseVisualStyleBackColor = true;
-            // 
-            // button2
-            // 
-            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button2.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(144)))), ((int)(((byte)(247)))));
-            this.button2.ButtonImage = null;
-            this.button2.ButtonSmoothing = System.Drawing.Drawing2D.SmoothingMode.HighSpeed;
-            this.button2.ButtonStyle = XanderUI.XUISuperButton.Style.RoundedEdges;
-            this.button2.ButtonText = "Cancelar";
-            this.button2.CornerRadius = 5;
-            this.button2.Horizontal_Alignment = System.Drawing.StringAlignment.Center;
-            this.button2.HoverBackgroundColor = System.Drawing.Color.IndianRed;
-            this.button2.HoverTextColor = System.Drawing.Color.Yellow;
-            this.button2.ImagePosition = XanderUI.XUISuperButton.imgPosition.Left;
-            this.button2.Location = new System.Drawing.Point(1025, 579);
-            this.button2.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.button2.Name = "button2";
-            this.button2.SelectedBackColor = System.Drawing.Color.LimeGreen;
-            this.button2.SelectedTextColor = System.Drawing.Color.White;
-            this.button2.Size = new System.Drawing.Size(218, 70);
-            this.button2.SuperSelected = false;
-            this.button2.TabIndex = 112;
-            this.button2.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(245)))), ((int)(((byte)(255)))));
-            this.button2.Vertical_Alignment = System.Drawing.StringAlignment.Center;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // button1
-            // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(144)))), ((int)(((byte)(247)))));
-            this.button1.ButtonImage = null;
-            this.button1.ButtonSmoothing = System.Drawing.Drawing2D.SmoothingMode.HighSpeed;
-            this.button1.ButtonStyle = XanderUI.XUISuperButton.Style.RoundedEdges;
-            this.button1.ButtonText = "Guardar";
-            this.button1.CornerRadius = 5;
-            this.button1.Horizontal_Alignment = System.Drawing.StringAlignment.Center;
-            this.button1.HoverBackgroundColor = System.Drawing.Color.IndianRed;
-            this.button1.HoverTextColor = System.Drawing.Color.Yellow;
-            this.button1.ImagePosition = XanderUI.XUISuperButton.imgPosition.Left;
-            this.button1.Location = new System.Drawing.Point(789, 579);
-            this.button1.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
-            this.button1.Name = "button1";
-            this.button1.SelectedBackColor = System.Drawing.Color.LimeGreen;
-            this.button1.SelectedTextColor = System.Drawing.Color.White;
-            this.button1.Size = new System.Drawing.Size(218, 70);
-            this.button1.SuperSelected = false;
-            this.button1.TabIndex = 113;
-            this.button1.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(245)))), ((int)(((byte)(255)))));
-            this.button1.Vertical_Alignment = System.Drawing.StringAlignment.Center;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // TxtItems
-            // 
-            this.TxtItems.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.TxtItems.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(144)))), ((int)(((byte)(247)))));
-            this.TxtItems.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.TxtItems.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TxtItems.Location = new System.Drawing.Point(168, 596);
-            this.TxtItems.Margin = new System.Windows.Forms.Padding(4, 8, 4, 8);
-            this.TxtItems.Name = "TxtItems";
-            this.TxtItems.ReadOnly = true;
-            this.TxtItems.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.TxtItems.Size = new System.Drawing.Size(98, 37);
-            this.TxtItems.TabIndex = 115;
-            this.TxtItems.Text = "0,00";
-            // 
-            // TxtCan
-            // 
-            this.TxtCan.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.TxtCan.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(144)))), ((int)(((byte)(247)))));
-            this.TxtCan.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.TxtCan.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TxtCan.Location = new System.Drawing.Point(516, 594);
-            this.TxtCan.Margin = new System.Windows.Forms.Padding(4, 8, 4, 8);
-            this.TxtCan.Name = "TxtCan";
-            this.TxtCan.ReadOnly = true;
-            this.TxtCan.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.TxtCan.Size = new System.Drawing.Size(98, 37);
-            this.TxtCan.TabIndex = 115;
-            this.TxtCan.Text = "0,00";
-            // 
-            // label7
-            // 
-            this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.label7.AutoSize = true;
-            this.label7.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(9, 603);
-            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(89, 28);
-            this.label7.TabIndex = 117;
-            this.label7.Text = "Items :";
-            // 
-            // label3
-            // 
-            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(355, 598);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(113, 28);
-            this.label3.TabIndex = 118;
-            this.label3.Text = "Totales : ";
-            // 
             // FrmMovStock1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(14F, 29F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1284, 817);
             this.Controls.Add(this.tabControl2);
