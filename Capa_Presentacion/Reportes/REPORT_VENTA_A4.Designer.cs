@@ -83,8 +83,8 @@ namespace Capa_Presentacion.Reportes
             this.textBox29 = new Telerik.Reporting.TextBox();
             this.textBox43 = new Telerik.Reporting.TextBox();
             this.textBox46 = new Telerik.Reporting.TextBox();
-            this.textBox57 = new Telerik.Reporting.TextBox();
             this.textBox58 = new Telerik.Reporting.TextBox();
+            this.textBox57 = new Telerik.Reporting.TextBox();
             this.textBox59 = new Telerik.Reporting.TextBox();
             this.textBox60 = new Telerik.Reporting.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
@@ -313,9 +313,9 @@ namespace Capa_Presentacion.Reportes
             // 
             // textBox40
             // 
-            this.textBox40.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(10.600000381469727D), Telerik.Reporting.Drawing.Unit.Cm(0.5D));
+            this.textBox40.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(10.200000762939453D), Telerik.Reporting.Drawing.Unit.Cm(0.5D));
             this.textBox40.Name = "textBox40";
-            this.textBox40.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(3.6000010967254639D), Telerik.Reporting.Drawing.Unit.Cm(0.80000007152557373D));
+            this.textBox40.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(4.2000007629394531D), Telerik.Reporting.Drawing.Unit.Cm(0.80000007152557373D));
             this.textBox40.Style.Font.Bold = true;
             this.textBox40.Style.Font.Size = Telerik.Reporting.Drawing.Unit.Point(15D);
             this.textBox40.Style.TextAlign = Telerik.Reporting.Drawing.HorizontalAlign.Left;
@@ -490,7 +490,7 @@ namespace Capa_Presentacion.Reportes
             this.textBox25.Name = "textBox25";
             this.textBox25.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(3.8666670322418213D), Telerik.Reporting.Drawing.Unit.Cm(0.39979955554008484D));
             this.textBox25.Style.Font.Size = Telerik.Reporting.Drawing.Unit.Point(9D);
-            this.textBox25.Value = "=Fields.cuitcliente";
+            this.textBox25.Value = "=Fields.clientecuit";
             // 
             // textBox24
             // 
@@ -588,7 +588,7 @@ namespace Capa_Presentacion.Reportes
             // 
             // textBox41
             // 
-            this.textBox41.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(7.7999997138977051D), Telerik.Reporting.Drawing.Unit.Cm(0.19999997317790985D));
+            this.textBox41.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(7.5D), Telerik.Reporting.Drawing.Unit.Cm(0.19999997317790985D));
             this.textBox41.Name = "textBox41";
             this.textBox41.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(2.2000000476837158D), Telerik.Reporting.Drawing.Unit.Cm(1.7998000383377075D));
             this.textBox41.Style.BorderStyle.Default = Telerik.Reporting.Drawing.BorderType.Solid;
@@ -739,6 +739,15 @@ namespace Capa_Presentacion.Reportes
             this.textBox46.StyleName = "";
             this.textBox46.Value = "=Fields.id_articulo";
             // 
+            // textBox58
+            // 
+            this.textBox58.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(16.684667587280273D), Telerik.Reporting.Drawing.Unit.Cm(4.3138322830200195D));
+            this.textBox58.Name = "textBox58";
+            this.textBox58.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(3.8842284679412842D), Telerik.Reporting.Drawing.Unit.Cm(0.39979955554008484D));
+            this.textBox58.Style.BorderStyle.Default = Telerik.Reporting.Drawing.BorderType.Solid;
+            this.textBox58.Style.Font.Size = Telerik.Reporting.Drawing.Unit.Point(9D);
+            this.textBox58.Value = "=Fields.IVA105";
+            // 
             // textBox57
             // 
             this.textBox57.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(13.594333648681641D), Telerik.Reporting.Drawing.Unit.Cm(4.3138322830200195D));
@@ -749,15 +758,6 @@ namespace Capa_Presentacion.Reportes
             this.textBox57.Style.Font.Size = Telerik.Reporting.Drawing.Unit.Point(9D);
             this.textBox57.Style.TextAlign = Telerik.Reporting.Drawing.HorizontalAlign.Right;
             this.textBox57.Value = "IVA 10.5 :";
-            // 
-            // textBox58
-            // 
-            this.textBox58.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(16.684667587280273D), Telerik.Reporting.Drawing.Unit.Cm(4.3138322830200195D));
-            this.textBox58.Name = "textBox58";
-            this.textBox58.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(3.8842284679412842D), Telerik.Reporting.Drawing.Unit.Cm(0.39979955554008484D));
-            this.textBox58.Style.BorderStyle.Default = Telerik.Reporting.Drawing.BorderType.Solid;
-            this.textBox58.Style.Font.Size = Telerik.Reporting.Drawing.Unit.Point(9D);
-            this.textBox58.Value = "=Fields.IVA105";
             // 
             // textBox59
             // 
@@ -821,8 +821,6 @@ namespace Capa_Presentacion.Reportes
         internal Telerik.Reporting.TextBox textBox19;
         internal Telerik.Reporting.TextBox textBox39;
         internal Telerik.Reporting.TextBox textBox38;
-        internal Telerik.Reporting.TextBox textBox37;
-        internal Telerik.Reporting.TextBox textBox36;
         internal Telerik.Reporting.TextBox textBox35;
         internal Telerik.Reporting.TextBox textBox33;
         internal Telerik.Reporting.TextBox textBox32;
@@ -878,5 +876,7 @@ namespace Capa_Presentacion.Reportes
         internal Telerik.Reporting.TextBox textBox57;
         internal Telerik.Reporting.TextBox textBox59;
         internal Telerik.Reporting.TextBox textBox60;
+        public Telerik.Reporting.TextBox textBox37;
+        public Telerik.Reporting.TextBox textBox36;
     }
 }

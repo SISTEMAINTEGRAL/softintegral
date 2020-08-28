@@ -175,6 +175,7 @@
             this.txtPago.Size = new System.Drawing.Size(163, 30);
             this.txtPago.TabIndex = 113;
             this.txtPago.Text = "0";
+            this.txtPago.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPago_KeyPress);
             // 
             // label1
             // 

@@ -107,12 +107,13 @@ namespace Capa_negocio
         }
 
         public string Insertar(int idcliente, DateTime fecha, string tipo_comprobante, string serie
-           , string varnrocomprobante, decimal iva,bool concaja,bool constock,string usuario, 
+           , string varnrocomprobante, decimal iva,bool concaja,string usuario, 
            DataTable dtDetalles, decimal descuento,  decimal total,decimal subtotal,
-           char estado,bool distock = false, int nroterminal = 0,
+           char estado, DataTable datamultipago, bool distock = false, int nroterminal = 0,
            int codtarjeta = 0, string cupon = "",string lote = "", decimal importe = 0, 
            int cuota = 0, int codformapago = 1, decimal totalneto = 0, decimal precioiva = 0,
-           string cae = "", string caefechavto = "",string numerotipofactura = "", string puntoventa = "", decimal iva105 = 0,decimal neto105 = 0)
+           string cae = "", string caefechavto = "",string numerotipofactura = "", string puntoventa = "", 
+           decimal iva105 = 0,decimal neto105 = 0)
        {
 
            string rpta = "";
@@ -145,6 +146,11 @@ namespace Capa_negocio
            objVenta.Puntoventa = puntoventa;
            objVenta.Precioiva105 = iva105;
            objVenta.Totalneto105 = neto105;
+            objVenta.Idusuario = NegocioConfigEmpresa.idusuario;
+            objVenta.Usuario = NegocioConfigEmpresa.usuarioconectado;
+            objVenta.Turno = NegocioConfigEmpresa.turno;
+            objVenta.Nrocaja = NegocioConfigEmpresa.nrocaja;
+
            List<DDetalle_Venta> detalles = new List<DDetalle_Venta>();
            
 
@@ -162,8 +168,16 @@ namespace Capa_negocio
                detalles.Add(detalle);
            }
 
-           //le paso como parametro la lista de detalles de ventas y el objeto venta previamente inicializado
-           rpta = objVenta.Insertar(objVenta, detalles,distock);
+            //le paso como parametro la lista de detalles de ventas y el objeto venta previamente inicializado
+
+            if (codformapago != 5)
+            {
+                rpta = objVenta.Insertar(objVenta, detalles, distock);
+            }
+            else
+            {
+               rpta =  objVenta.cargarventamultipago(datamultipago, dtDetalles, objVenta);
+            }
            this.idventa = objVenta.Idventa;
            
            return rpta;
@@ -289,6 +303,18 @@ namespace Capa_negocio
         {
             Dventa Obj = new Dventa(varidventa, 'a');
             return Obj.BuscarVenta(Obj);
+        }
+
+        public static string ingresarventamultipago(List<Dventa> listaventa, DataTable datadetalle, Dventa Venta)
+        {
+            //Dventa obj = new Dventa(idventa);
+            string mensaje = "";
+
+
+
+            return mensaje;
+
+
         }
         public static DataTable tarjeta(int modo = 9, int codigo = 0)
         {

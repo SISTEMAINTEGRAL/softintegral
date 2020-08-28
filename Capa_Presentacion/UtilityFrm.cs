@@ -186,6 +186,8 @@ namespace Capa_Presentacion
 
         }
 
+       
+
         public static bool mensajeopcionsiono(string mensaje)
         {
             bool siono = true;

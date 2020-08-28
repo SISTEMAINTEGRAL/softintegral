@@ -114,4 +114,12 @@ C:\Backup\Sistema de ventas\softintegral\Capa_negocio\bin\Debug\PlaceholderTextB
 C:\Backup\Sistema de ventas\softintegral\Capa_negocio\bin\Debug\Capa_Datos.pdb
 C:\Backup\Sistema de ventas\softintegral\Capa_negocio\obj\Debug\Capa_negocio.dll
 C:\Backup\Sistema de ventas\softintegral\Capa_negocio\obj\Debug\Capa_negocio.pdb
-C:\Backup\Sistema de ventas\softintegral\Capa_negocio\obj\Debug\Capa_negocio.csprojResolveAssemblyReference.cache
+C:\Backup\Sistema de ventas\softintegral\Capa_negocio\obj\Debug\Capa_negocio.csprojAssemblyReference.cache
+C:\Backup\Sistema de ventas\softintegral\Capa_negocio\obj\Debug\Capa_negocio.csproj.CoreCompileInputs.cache
+C:\Backup\Sistema de ventas\softintegral\Capa_negocio\obj\Debug\Capa_negocio.csproj.CopyComplete
+C:\Backup\Sistema de ventas\softintegral\Capa_negocio\bin\Debug\x86\sqlite3.dll
+C:\Backup\Sistema de ventas\softintegral\Capa_negocio\bin\Debug\x64\sqlite3.dll
+C:\Backup\Sistema de ventas\softintegral\Capa_negocio\bin\Debug\System.Data.SQLite.dll
+C:\Backup\Sistema de ventas\softintegral\Capa_negocio\bin\Debug\Capa_Datos.dll.config
+C:\Backup\Sistema de ventas\softintegral\Capa_negocio\bin\Debug\System.Data.SQLite.xml
+C:\Backup\Sistema de ventas\softintegral\Capa_negocio\bin\Debug\System.Data.SQLite.dll.config

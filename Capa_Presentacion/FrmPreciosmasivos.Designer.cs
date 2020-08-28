@@ -42,15 +42,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.cbcampoamodificar = new System.Windows.Forms.ComboBox();
             this.DGVenta = new System.Windows.Forms.DataGridView();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.Menudelete = new System.Windows.Forms.ToolStripMenuItem();
-            this.TxtcambioDv = new System.Windows.Forms.TextBox();
-            this.xuiCustomGroupbox1 = new XanderUI.XUICustomGroupbox();
-            this.BtnImprimir = new XanderUI.XUISuperButton();
-            this.btnAplicar = new XanderUI.XUISuperButton();
-            this.BtnCambiar = new XanderUI.XUISuperButton();
-            this.btnLimpiarG = new XanderUI.XUISuperButton();
-            this.btnCliente = new XanderUI.XUISuperButton();
             this.menucodarticulo = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.menunombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.menudescripcion = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -64,6 +55,16 @@
             this.preciopormayor2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.utilidadoferta = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.precio_oferta = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.Menudelete = new System.Windows.Forms.ToolStripMenuItem();
+            this.TxtcambioDv = new System.Windows.Forms.TextBox();
+            this.xuiCustomGroupbox1 = new XanderUI.XUICustomGroupbox();
+            this.BtnExportar = new XanderUI.XUISuperButton();
+            this.BtnImprimir = new XanderUI.XUISuperButton();
+            this.btnAplicar = new XanderUI.XUISuperButton();
+            this.BtnCambiar = new XanderUI.XUISuperButton();
+            this.btnLimpiarG = new XanderUI.XUISuperButton();
+            this.btnCliente = new XanderUI.XUISuperButton();
             this.panelHorizontal.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnMaximizar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnRestaurar)).BeginInit();
@@ -265,6 +266,97 @@
             this.DGVenta.Click += new System.EventHandler(this.DGVenta_Click);
             this.DGVenta.MouseClick += new System.Windows.Forms.MouseEventHandler(this.DGVenta_MouseClick);
             // 
+            // menucodarticulo
+            // 
+            this.menucodarticulo.FillWeight = 56.2305F;
+            this.menucodarticulo.HeaderText = "Codigo";
+            this.menucodarticulo.MinimumWidth = 6;
+            this.menucodarticulo.Name = "menucodarticulo";
+            // 
+            // menunombre
+            // 
+            this.menunombre.FillWeight = 345.1665F;
+            this.menunombre.HeaderText = "Nombre";
+            this.menunombre.MinimumWidth = 6;
+            this.menunombre.Name = "menunombre";
+            // 
+            // menudescripcion
+            // 
+            this.menudescripcion.FillWeight = 29.04725F;
+            this.menudescripcion.HeaderText = "Descripcion";
+            this.menudescripcion.MinimumWidth = 6;
+            this.menudescripcion.Name = "menudescripcion";
+            // 
+            // menupreciocompra
+            // 
+            this.menupreciocompra.FillWeight = 92.95119F;
+            this.menupreciocompra.HeaderText = "Preciocompra";
+            this.menupreciocompra.MinimumWidth = 6;
+            this.menupreciocompra.Name = "menupreciocompra";
+            // 
+            // menutilidad
+            // 
+            this.menutilidad.FillWeight = 92.95119F;
+            this.menutilidad.HeaderText = "Utilidad";
+            this.menutilidad.MinimumWidth = 6;
+            this.menutilidad.Name = "menutilidad";
+            // 
+            // menuflete
+            // 
+            this.menuflete.FillWeight = 32.99492F;
+            this.menuflete.HeaderText = "Flete";
+            this.menuflete.MinimumWidth = 6;
+            this.menuflete.Name = "menuflete";
+            // 
+            // menuprecioventa
+            // 
+            this.menuprecioventa.FillWeight = 92.95119F;
+            this.menuprecioventa.HeaderText = "Minorista";
+            this.menuprecioventa.MinimumWidth = 6;
+            this.menuprecioventa.Name = "menuprecioventa";
+            // 
+            // utilidadpormayor
+            // 
+            this.utilidadpormayor.FillWeight = 92.95119F;
+            this.utilidadpormayor.HeaderText = "UtilidadX6";
+            this.utilidadpormayor.MinimumWidth = 6;
+            this.utilidadpormayor.Name = "utilidadpormayor";
+            // 
+            // Preciopormayor
+            // 
+            this.Preciopormayor.FillWeight = 92.95119F;
+            this.Preciopormayor.HeaderText = "PrecioX6";
+            this.Preciopormayor.MinimumWidth = 6;
+            this.Preciopormayor.Name = "Preciopormayor";
+            // 
+            // utilidadpormayor2
+            // 
+            this.utilidadpormayor2.FillWeight = 92.95119F;
+            this.utilidadpormayor2.HeaderText = "UtilidadXCaja";
+            this.utilidadpormayor2.MinimumWidth = 6;
+            this.utilidadpormayor2.Name = "utilidadpormayor2";
+            // 
+            // preciopormayor2
+            // 
+            this.preciopormayor2.FillWeight = 92.95119F;
+            this.preciopormayor2.HeaderText = "PrecioXCaja";
+            this.preciopormayor2.MinimumWidth = 6;
+            this.preciopormayor2.Name = "preciopormayor2";
+            // 
+            // utilidadoferta
+            // 
+            this.utilidadoferta.FillWeight = 92.95119F;
+            this.utilidadoferta.HeaderText = "UtilidadOferta";
+            this.utilidadoferta.MinimumWidth = 6;
+            this.utilidadoferta.Name = "utilidadoferta";
+            // 
+            // precio_oferta
+            // 
+            this.precio_oferta.FillWeight = 92.95119F;
+            this.precio_oferta.HeaderText = "Precio_Oferta";
+            this.precio_oferta.MinimumWidth = 6;
+            this.precio_oferta.Name = "precio_oferta";
+            // 
             // contextMenuStrip1
             // 
             this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
@@ -301,6 +393,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.xuiCustomGroupbox1.BorderColor = System.Drawing.Color.DodgerBlue;
             this.xuiCustomGroupbox1.BorderWidth = 1;
+            this.xuiCustomGroupbox1.Controls.Add(this.BtnExportar);
             this.xuiCustomGroupbox1.Controls.Add(this.BtnImprimir);
             this.xuiCustomGroupbox1.Controls.Add(this.btnAplicar);
             this.xuiCustomGroupbox1.Controls.Add(this.BtnCambiar);
@@ -318,6 +411,31 @@
             this.xuiCustomGroupbox1.TabStop = false;
             this.xuiCustomGroupbox1.Text = "Precios";
             this.xuiCustomGroupbox1.TextColor = System.Drawing.Color.DodgerBlue;
+            // 
+            // BtnExportar
+            // 
+            this.BtnExportar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.BtnExportar.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(144)))), ((int)(((byte)(247)))));
+            this.BtnExportar.ButtonImage = global::Capa_Presentacion.Properties.Resources.Save_20px;
+            this.BtnExportar.ButtonSmoothing = System.Drawing.Drawing2D.SmoothingMode.HighSpeed;
+            this.BtnExportar.ButtonStyle = XanderUI.XUISuperButton.Style.RoundedEdges;
+            this.BtnExportar.ButtonText = "Exportar Productos";
+            this.BtnExportar.CornerRadius = 5;
+            this.BtnExportar.Horizontal_Alignment = System.Drawing.StringAlignment.Center;
+            this.BtnExportar.HoverBackgroundColor = System.Drawing.Color.IndianRed;
+            this.BtnExportar.HoverTextColor = System.Drawing.Color.Yellow;
+            this.BtnExportar.ImagePosition = XanderUI.XUISuperButton.imgPosition.Left;
+            this.BtnExportar.Location = new System.Drawing.Point(726, 20);
+            this.BtnExportar.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.BtnExportar.Name = "BtnExportar";
+            this.BtnExportar.SelectedBackColor = System.Drawing.Color.LimeGreen;
+            this.BtnExportar.SelectedTextColor = System.Drawing.Color.White;
+            this.BtnExportar.Size = new System.Drawing.Size(255, 61);
+            this.BtnExportar.SuperSelected = false;
+            this.BtnExportar.TabIndex = 136;
+            this.BtnExportar.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(245)))), ((int)(((byte)(255)))));
+            this.BtnExportar.Vertical_Alignment = System.Drawing.StringAlignment.Center;
+            this.BtnExportar.Click += new System.EventHandler(this.BtnExportar_Click);
             // 
             // BtnImprimir
             // 
@@ -442,84 +560,6 @@
             this.btnCliente.Vertical_Alignment = System.Drawing.StringAlignment.Center;
             this.btnCliente.Click += new System.EventHandler(this.btnCliente_Click);
             // 
-            // menucodarticulo
-            // 
-            this.menucodarticulo.FillWeight = 56.2305F;
-            this.menucodarticulo.HeaderText = "Codigo";
-            this.menucodarticulo.Name = "menucodarticulo";
-            // 
-            // menunombre
-            // 
-            this.menunombre.FillWeight = 345.1665F;
-            this.menunombre.HeaderText = "Nombre";
-            this.menunombre.Name = "menunombre";
-            // 
-            // menudescripcion
-            // 
-            this.menudescripcion.FillWeight = 29.04725F;
-            this.menudescripcion.HeaderText = "Descripcion";
-            this.menudescripcion.Name = "menudescripcion";
-            // 
-            // menupreciocompra
-            // 
-            this.menupreciocompra.FillWeight = 92.95119F;
-            this.menupreciocompra.HeaderText = "Preciocompra";
-            this.menupreciocompra.Name = "menupreciocompra";
-            // 
-            // menutilidad
-            // 
-            this.menutilidad.FillWeight = 92.95119F;
-            this.menutilidad.HeaderText = "Utilidad";
-            this.menutilidad.Name = "menutilidad";
-            // 
-            // menuflete
-            // 
-            this.menuflete.FillWeight = 32.99492F;
-            this.menuflete.HeaderText = "Flete";
-            this.menuflete.Name = "menuflete";
-            // 
-            // menuprecioventa
-            // 
-            this.menuprecioventa.FillWeight = 92.95119F;
-            this.menuprecioventa.HeaderText = "Minorista";
-            this.menuprecioventa.Name = "menuprecioventa";
-            // 
-            // utilidadpormayor
-            // 
-            this.utilidadpormayor.FillWeight = 92.95119F;
-            this.utilidadpormayor.HeaderText = "UtilidadX6";
-            this.utilidadpormayor.Name = "utilidadpormayor";
-            // 
-            // Preciopormayor
-            // 
-            this.Preciopormayor.FillWeight = 92.95119F;
-            this.Preciopormayor.HeaderText = "PrecioX6";
-            this.Preciopormayor.Name = "Preciopormayor";
-            // 
-            // utilidadpormayor2
-            // 
-            this.utilidadpormayor2.FillWeight = 92.95119F;
-            this.utilidadpormayor2.HeaderText = "UtilidadXCaja";
-            this.utilidadpormayor2.Name = "utilidadpormayor2";
-            // 
-            // preciopormayor2
-            // 
-            this.preciopormayor2.FillWeight = 92.95119F;
-            this.preciopormayor2.HeaderText = "PrecioXCaja";
-            this.preciopormayor2.Name = "preciopormayor2";
-            // 
-            // utilidadoferta
-            // 
-            this.utilidadoferta.FillWeight = 92.95119F;
-            this.utilidadoferta.HeaderText = "UtilidadOferta";
-            this.utilidadoferta.Name = "utilidadoferta";
-            // 
-            // precio_oferta
-            // 
-            this.precio_oferta.FillWeight = 92.95119F;
-            this.precio_oferta.HeaderText = "Precio_Oferta";
-            this.precio_oferta.Name = "precio_oferta";
-            // 
             // FrmPreciosmasivos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
@@ -590,5 +630,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn preciopormayor2;
         private System.Windows.Forms.DataGridViewTextBoxColumn utilidadoferta;
         private System.Windows.Forms.DataGridViewTextBoxColumn precio_oferta;
+        private XanderUI.XUISuperButton BtnExportar;
     }
 }

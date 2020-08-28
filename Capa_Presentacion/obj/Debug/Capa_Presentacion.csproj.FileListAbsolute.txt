@@ -514,7 +514,6 @@ C:\Backup\Sistema de ventas\Capa_Presentacion\bin\Debug\pt\Microsoft.ReportViewe
 C:\Backup\Sistema de ventas\Capa_Presentacion\bin\Debug\ru\Microsoft.ReportViewer.WinForms.resources.dll
 C:\Backup\Sistema de ventas\Capa_Presentacion\bin\Debug\zh-CHS\Microsoft.ReportViewer.WinForms.resources.dll
 C:\Backup\Sistema de ventas\Capa_Presentacion\bin\Debug\zh-CHT\Microsoft.ReportViewer.WinForms.resources.dll
-C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\obj\Debug\Capa_Presentacion.csprojResolveAssemblyReference.cache
 C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\obj\Debug\Interop.FiscalPrinterLib.dll
 C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\obj\Debug\Capa_Presentacion.csproj.ResolveComReference.cache
 C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\obj\Debug\Capa_Presentacion.Acerca.resources
@@ -656,3 +655,15 @@ C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\obj\Debug\Capa_Presen
 C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\bin\Debug\Tulpep.NotificationWindow.dll
 C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\obj\Debug\Capa_Presentacion.FrmProveedorCorregido.resources
 C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\obj\Debug\Capa_Presentacion.FrmImportArticulos.resources
+C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\bin\Debug\Capa_negocio.dll.config
+C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\bin\Debug\ComboBoxMultiColumns.dll.config
+C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\obj\Debug\Capa_Presentacion.csprojAssemblyReference.cache
+C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\obj\Debug\Capa_Presentacion.csproj.CoreCompileInputs.cache
+C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\obj\Debug\Capa_Presentacion.csproj.CopyComplete
+C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\bin\Debug\x86\sqlite3.dll
+C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\bin\Debug\x64\sqlite3.dll
+C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\bin\Debug\System.Data.SQLite.dll
+C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\bin\Debug\Capa_Datos.dll.config
+C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\bin\Debug\System.Data.SQLite.xml
+C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\bin\Debug\System.Data.SQLite.dll.config
+C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\obj\Debug\Capa_Presentacion.Formreportes.FrmReportPresup.resources

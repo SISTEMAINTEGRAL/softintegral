@@ -295,6 +295,7 @@ namespace Capa_Presentacion
             dt.Columns.Add("Precioneto", typeof(string));
             dt.Columns.Add("Pesable", typeof(int));
 
+
             DataTable DTOrdenpedido = new DataTable();
             DTOrdenpedido.Columns.Add("Codigo", typeof(string));
             DTOrdenpedido.Columns.Add("cantidadparcial", typeof(string));
@@ -318,8 +319,11 @@ namespace Capa_Presentacion
                 codformapago = 3;
             }
 
-            
-            
+            if (formapago == "multipago")
+            {
+                codformapago = 5;
+            }
+
             try
             {
 
@@ -365,7 +369,7 @@ namespace Capa_Presentacion
                         if (NegocioConfigEmpresa.marcafiscal != "")
                         {
                             msg = objcomprobante.factura(NegocioConfigEmpresa.marcafiscal, dt, Convert.ToDouble(txtTotalAPagar.Text), NegocioConfigEmpresa.modelofiscal, NegocioConfigEmpresa.puertofiscal,
-                                   1, razonsocial, razonsocial == "CONSUMIDOR FINAL" ? "99999999" : cuit, domicilio, tipofactura, responsableiva, tipofactura, tipofactura, Convert.ToDouble(neto), Convert.ToDouble(iva), Convert.ToDouble(this.neto105), Convert.ToDouble(this.iva105));
+                                   1, razonsocial, razonsocial == "CONSUMIDOR FINAL" ? "99999999" : cuit, domicilio, tipofactura, responsableiva, "FACTURA", tipofactura, Convert.ToDouble(neto), Convert.ToDouble(iva), Convert.ToDouble(this.neto105), Convert.ToDouble(this.iva105));
                         }
                         else
                         {
@@ -402,12 +406,21 @@ namespace Capa_Presentacion
                     oLog.Add(e.Message + e.StackTrace);
                     UtilityFrm.mensajeError(e.Message);
               }
+                //valida el stock
+                
+               this.constock =  NegocioConfigEmpresa.confsistema("stock").ToString() == this.Name && pendientedestock == false ? true : false;
+
+                if (tipo_comprobante == "PRESUPUESTO")
+                {
+                    constock = false;
+                }
+
               string Rta = objventa.Insertar(this.idCliente, DateTime.Now, Tipo_comprobante, 
                   objcomprobante.Puntoventa.PadLeft(5,'0'), msg.Substring(0, 2) == "ok" ? nrocomprobante.PadLeft(8, '0') : "0", 
-                  IVA, this.concaja, this.constock, NegocioConfigEmpresa.usuarioconectado, dt, 
+                  IVA, this.concaja, NegocioConfigEmpresa.usuarioconectado, dt, 
                   Convert.ToDecimal(txtBonificacion.Text == "" ? txtBonificacion.Text = "0" : txtBonificacion.Text),
-                  Convert.ToDecimal(txtTotalAPagar.Text), Convert.ToDecimal(lblsubtotal.Text), estadofactura,
-                  NegocioConfigEmpresa.confsistema("stock").ToString() == this.Name && pendientedestock == false ? true : false, nroterminal,
+                  Convert.ToDecimal(txtTotalAPagar.Text), Convert.ToDecimal(lblsubtotal.Text), estadofactura, llenarventasmultipagos(),
+                  this.constock, nroterminal,
                   codtarjeta, cupon, lote, importe, cuota, codformapago, neto,iva,objcomprobante.Cae,objcomprobante.Fechavto,
                   objcomprobante.Numerotipofactura.PadLeft (3,'0'),objcomprobante.Puntoventa.PadLeft (5,'0'),this.iva105,this.neto105);
                
@@ -420,7 +433,7 @@ namespace Capa_Presentacion
                         NegocioRetirodeMercaderia.insertar(DateTime.Now, this.idCliente, NegocioConfigEmpresa.idusuario, "VENTA", "PENDIENTE", "", DTOrdenpedido, this.idCliente, 1, objnum);
                     }
                     
-                    if (this.concaja == true)
+                    if (this.concaja == true && tipo_comprobante != "PRESUPUESTO")
                     {
 
                         Rta = Negociocaja.insertarmovcaja(4110107, Convert.ToSingle(txtTotalAPagar.Text), 0, Convert.ToString(DateTime.Now), NegocioConfigEmpresa.usuarioconectado , NegocioConfigEmpresa.idusuario , NegocioConfigEmpresa.turno, "Venta nro : " + objventa.Idventa.ToString(), objventa.Idventa, true,NegocioConfigEmpresa.nrocaja, codformapago);
@@ -435,52 +448,63 @@ namespace Capa_Presentacion
                         trans = Rta;
 
                         Reporteventa mireporteventa = new Reporteventa();
-                       // Frmimpnotaventa miformnotaventa = new Frmimpnotaventa();
+                        // Frmimpnotaventa miformnotaventa = new Frmimpnotaventa();
                         // Frmimpventicket miformticket = new Frmimpventicket();
 
-                        if (NegocioConfigEmpresa.confsistema("imprimirventa").ToString() == "True")
+                        if (tipo_comprobante != "PRESUPUESTO")
                         {
-                            if (NegocioConfigEmpresa.confsistema("tipoimpresion").ToString() == "tipocarro")
+                            if (NegocioConfigEmpresa.confsistema("imprimirventa").ToString() == "True")
                             {
-                                //con crystal report
-                              //  miformnotaventa.Tipoimp = Convert.ToString(NegocioConfigEmpresa.confsistema("modoimpventa"));
-                             //   miformnotaventa.Codventa = objventa.Idventa;
-                             //   miformnotaventa.Show();
-                             // con reportviewer
-                                mireporteventa.Idventa = objventa.Idventa;
-                                mireporteventa.ShowDialog ();
-
-                            }
-
-                            else
-                            {
-                                if (NegocioConfigEmpresa.marcafiscal == "elec" && tipofactura != "X" && tipofactura != "ERROR")
+                                if (NegocioConfigEmpresa.confsistema("tipoimpresion").ToString() == "tipocarro")
                                 {
-                                    if (opcionimpresion != "")
-                                    {
-                                        Ticketventa miticket = new Formreportes.Ticketventa(objventa.Idventa,opcionimpresion);
-                                        miticket.ShowDialog();
+                                    //con crystal report
+                                    //  miformnotaventa.Tipoimp = Convert.ToString(NegocioConfigEmpresa.confsistema("modoimpventa"));
+                                    //   miformnotaventa.Codventa = objventa.Idventa;
+                                    //   miformnotaventa.Show();
+                                    // con reportviewer
+                                     
+                                    mireporteventa.Idventa = objventa.Idventa;
+                                    mireporteventa.ShowDialog();
 
+                                }
+
+                                else
+                                {
+                                    if (NegocioConfigEmpresa.marcafiscal == "elec" && tipofactura != "X" && tipofactura != "ERROR")
+                                    {
+                                        if (opcionimpresion != "")
+                                        {
+                                            Ticketventa miticket = new Formreportes.Ticketventa(objventa.Idventa, opcionimpresion);
+                                            miticket.ShowDialog();
+
+
+                                        }
+                                    }
+                                    else if (tipofactura == "X")
+                                    {
+                                        if (opcionimpresion != "")
+                                        {
+                                            TicketProforma miticketproforma = new Formreportes.TicketProforma(objventa.Idventa, opcionimpresion);
+                                            miticketproforma.ShowDialog();
+                                        }
 
                                     }
+                                    //miformticket.Tipoimp = Convert.ToString(NegocioConfigEmpresa.confsistema("modoimpventa"));
+                                    //miformticket.Codventa = objventa.Idventa;
+                                    //miformticket.Show();
+
                                 }
-                                else if (tipofactura == "X")
-                                {
-                                    if (opcionimpresion != "")
-                                    {
-                                        TicketProforma miticketproforma = new Formreportes.TicketProforma(objventa.Idventa,opcionimpresion);
-                                        miticketproforma.ShowDialog();
-                                    }
-                                   
-                                }
-                                //miformticket.Tipoimp = Convert.ToString(NegocioConfigEmpresa.confsistema("modoimpventa"));
-                                //miformticket.Codventa = objventa.Idventa;
-                                //miformticket.Show();
+
 
                             }
-                           
-
                         }
+                        else if (tipo_comprobante == "PRESUPUESTO")
+                        {
+                            FrmReportPresup frmReportPresup = new FrmReportPresup(objventa.Idventa);
+                            frmReportPresup.ShowDialog();
+                        }
+
+                        
 
 
 
@@ -527,6 +551,8 @@ namespace Capa_Presentacion
 
            
         }
+
+       
         private void btnGuardar_Click(object sender, EventArgs e)
         {
             
@@ -538,7 +564,50 @@ namespace Capa_Presentacion
           
             
         }
+        private DataTable llenarventasmultipagos()
+        {
+            DataTable Dataventa = new DataTable();
 
+
+            Dataventa.Columns.Add("idcliente");
+            Dataventa.Columns.Add("tipo_comprobante");
+            Dataventa.Columns.Add("iva");
+            Dataventa.Columns.Add("concaja");
+            Dataventa.Columns.Add("constock");
+            Dataventa.Columns.Add("usuario");
+            Dataventa.Columns.Add("descuento");
+            Dataventa.Columns.Add("total");
+            Dataventa.Columns.Add("subtotal");
+            Dataventa.Columns.Add("estado");
+            Dataventa.Columns.Add("nroterminal");
+            Dataventa.Columns.Add("Codigotarjeta");
+            Dataventa.Columns.Add("cupon");
+            Dataventa.Columns.Add("lote");
+            Dataventa.Columns.Add("importe");
+            Dataventa.Columns.Add("cuota");
+            Dataventa.Columns.Add("codformapago");
+            Dataventa.Columns.Add("nrocomprobante");
+            Dataventa.Columns.Add("totalneto");
+            Dataventa.Columns.Add("precioiva");
+            Dataventa.Columns.Add("cae");
+            Dataventa.Columns.Add("caefechavencimiento");
+            Dataventa.Columns.Add("tipofactura");
+            Dataventa.Columns.Add("puntoventa");
+            Dataventa.Columns.Add("totalneto105");
+            Dataventa.Columns.Add("precioiva105");
+
+            foreach (DataGridViewRow dataGrid in DGMultiPago.Rows)
+            {
+                Dataventa.Rows.Add(idCliente, "NOTA DE VENTA", 0, this.Concaja, this.constock, NegocioConfigEmpresa.usuarioconectado,
+                   0, dataGrid.Cells["Importe"].Value, 1, 0, dataGrid.Cells["cCodTarjeta"].Value, dataGrid.Cells["cLote"].Value,
+                   dataGrid.Cells["cImporteCuota"].Value, dataGrid.Cells["cCuota"].Value,
+                   dataGrid.Cells["CodFormaPago"].Value, "0", "0", "0", "0",
+                   "0", "", NegocioConfigEmpresa.puntoventa.PadLeft(5, '0'), "0", "0", "0");
+            }
+
+            return Dataventa;
+
+        }
         private void txtAbono_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (Char.IsDigit(e.KeyChar))
@@ -788,6 +857,36 @@ namespace Capa_Presentacion
                 Top = Top + (e.Y - posY);
 
             }
+        }
+
+        private void BtnAgregar_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cbMCuota_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cbMCuota_SelectedValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cbTarjeta_SelectedValueChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void CbFormaPago_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void CbFormaPago_SelectedValueChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

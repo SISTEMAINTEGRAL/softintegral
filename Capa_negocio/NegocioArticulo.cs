@@ -170,7 +170,10 @@ namespace Capa_negocio
         {
             return new DatosArticulo().mostrar();
         }
-
+        public static DataTable mostrartodo()
+        {
+            return new DatosArticulo().mostrar(true);
+        }
         public static DataTable mostrarPesable()
         {
             //mostrar solo los productos pesables
@@ -360,6 +363,12 @@ namespace Capa_negocio
             return objart.consultaproductogondola();
             
         }
+        public static DataTable mostrarsqlite()
+        {
+            DatosArticulo objart = new DatosArticulo();
+            return objart.mostrarsqlite();
+
+        }
         public static DataTable consultafecha(DateTime fechadesde, DateTime fechahasta)
         {
             DatosArticulo objart = new DatosArticulo();
@@ -367,7 +376,45 @@ namespace Capa_negocio
             objart.Fechaedicionhasta = fechahasta;
             return objart.buscarTexto(objart, 4);
         }
-         
+        public static string ExportarProductos(DataTable Grillaproductos, bool todoslosproductos, string opcionsistema = "mayorista")
+        {
+
+            List<DatosArticulo> listaArticulo = new List<DatosArticulo>();
+
+            foreach (DataRow fila in Grillaproductos.Rows)
+            {
+                DatosArticulo dArticulo = new DatosArticulo();
+                dArticulo.IdArticulo = Convert.ToInt32(fila["idarticulo"].ToString());
+                dArticulo.Codigo = fila["Codigo"].ToString();
+                dArticulo.Precio = Convert.ToDecimal(fila["Precio"].ToString());
+                dArticulo.PrecioCompra = Convert.ToDecimal(fila["Precio_Compra"].ToString());
+                dArticulo.Nombre = fila["Nombre"].ToString();
+                dArticulo.Descripcion = fila["Descripcion"].ToString();
+                dArticulo.IdCategoria = Convert.ToInt32(fila["idcategoria"].ToString()) ;
+                dArticulo.Utilidad = Convert.ToDecimal(fila["Utilidad"].ToString());
+                dArticulo.Pesable = Convert.ToBoolean( fila["pesable"]) == false ? 0 : 1;
+                dArticulo.Flete = Convert.ToDecimal(fila["Flete"].ToString());
+                dArticulo.Stock_minimo = Convert.ToDecimal(fila["stock_minimo"].ToString());
+                if (opcionsistema == "mayorista")
+                {
+                    dArticulo.Utilidadpreciopormayor = Convert.ToDecimal(fila["Utilidadpormayor"].ToString());
+                    dArticulo.Preciopormayor = Convert.ToDecimal(fila["Preciopormayor"].ToString());
+                    dArticulo.Utilidadpreciopormayor2 = Convert.ToDecimal(fila["Utilidadpormayor2"].ToString());
+                    dArticulo.Preciopormayor2 = Convert.ToDecimal(fila["Preciopormayor2"].ToString());
+                    dArticulo.Utilidadoferta = Convert.ToDecimal(fila["Utilidadoferta"]);
+                    dArticulo.Precio_oferta = Convert.ToDecimal(fila["Precio_Oferta"]);
+                }
+
+                listaArticulo.Add(dArticulo);
+            }
+            
+            DatosArticulo datosArticulo = new DatosArticulo();
+            datosArticulo.insertararticulosqlite(listaArticulo);
+            return "";
+        }
+
+
+
         public Boolean Sindatos
         {
             get { return sindatos; }

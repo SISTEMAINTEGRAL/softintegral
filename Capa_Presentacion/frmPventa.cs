@@ -789,8 +789,9 @@ namespace Capa_Presentacion
                             subtotal = Decimal.Round (  Convert.ToDecimal(row.Cells["subtotal"].Value) ,2);
                             cantidadpormayor = Decimal.Round(Convert.ToDecimal(row.Cells["cantidadpormayor"].Value), 2);
                             preciopormayor= Decimal.Round(Convert.ToDecimal(row.Cells["preciopormayor"].Value), 2);
-                            
-                            precio = Decimal.Round ( Convert.ToDecimal(row.Cells["Cprecio"].Value),2);
+                          
+
+                        precio = Decimal.Round ( Convert.ToDecimal(row.Cells["Cprecio"].Value),2);
                             descuento = Convert.ToDecimal(row.Cells["Descuento"].Value);
                             cantidadActual = Decimal.Round((Convert.ToDecimal(row.Cells["Cantidad"].Value)), 2);
                             preciounidad = Decimal.Round((Convert.ToDecimal(row.Cells["preciounidad"].Value)), 2);
@@ -854,14 +855,17 @@ namespace Capa_Presentacion
                         {
                             precio = cantidadActual >= cantidadpormayor ? preciopormayor : preciounidad;
 
-                            if (precio2 > 0 && cantidadprecio2 != 0)
-                            {
-                                precio = cantidadActual >= cantidadprecio2 ? precio2 : precio;
-                            }
+                            
 
                         }
-                           
-                            row.Cells["Cprecio"].Value = precio;
+
+                        if (precio2 > 0 && cantidadprecio2 != 0 && row.Cells["Manual"].Value == "")
+                        {
+                            precio = cantidadActual >= cantidadprecio2 ? precio2 : precio;
+                        }
+
+
+                        row.Cells["Cprecio"].Value = precio;
                         if (rTarjeta.Checked == true)
                           {
                               porcentaje = Convert.ToDecimal(cbMCuota.SelectedValue);
@@ -1321,7 +1325,10 @@ namespace Capa_Presentacion
 
                 }
 
-                FrmGuardarVenta venta = new FrmGuardarVenta(decimal.Round(Convert.ToDecimal(txtTotalPagar.Text), 2), Convert.ToInt32(txtIdCliente.Text), decimal.Round(Convert.ToDecimal(txtIVA.Text), 2), decimal.Round(Convert.ToDecimal(txtNeto.Text), 2), formadepago, nombretarjeta, importecuota, cuota, Convert.ToInt32(cbTarjeta.SelectedValue), cuit, txtRazonSocial.Text, cbxCategoria.Text, riva, domicilio, Convert.ToDecimal(txtIva105.Text), Convert.ToDecimal(txtNeto105.Text), pendientedestock);
+                FrmGuardarVenta venta = new FrmGuardarVenta(decimal.Round(Convert.ToDecimal(txtTotalPagar.Text), 2), Convert.ToInt32(txtIdCliente.Text), 
+                    decimal.Round(Convert.ToDecimal(txtIVA.Text), 2), decimal.Round(Convert.ToDecimal(txtNeto.Text), 2), formadepago, nombretarjeta, importecuota,
+                   cuota, Convert.ToInt32(cbTarjeta.SelectedValue), cuit, txtRazonSocial.Text, cbxCategoria.Text, riva, domicilio,
+                   Convert.ToDecimal(txtIva105.Text), Convert.ToDecimal(txtNeto105.Text), pendientedestock);
                 venta.ListadoDeProducto = DGVenta;
                 venta.Tipo_comprobante = cbTipoComprobante.SelectedItem.ToString();
                 venta.Concaja = objcaja.chequeocaja(this.Name, ref mensaje, NegocioConfigEmpresa.nrocaja);
@@ -1329,7 +1336,7 @@ namespace Capa_Presentacion
                 // if (mensaje != "") { UtilityFrm.mensajeError(mensaje); } 
 
 
-                if (stockcero() && NegocioConfigEmpresa.confsistema ("stockventa").ToString() == "True")
+                if (stockcero() && NegocioConfigEmpresa.confsistema ("stockventa").ToString() == "True" && cbTipoComprobante.Text != "PRESUPUESTO")
                 {
                     UtilityFrm.mensajeError("USTED TIENE PRODUCTOS CON BAJO STOCK, CORRIJALO Y VUELVA A INTENTARLO");
                     return;
@@ -1340,7 +1347,15 @@ namespace Capa_Presentacion
                 {
 
                     //UtilityFrm.mensajeConfirm("La venta se realizó correctamente");
-                    UtilityFrm.notificacionpopup("VENTA", "LA VENTA SE REALIZO CORRECTAMENTE");
+                    if (cbTipoComprobante.SelectedItem.ToString() == "PRESUPUESTO")
+                    {
+                        UtilityFrm.notificacionpopup("PRESUPUESTO", "EL PRESUPUESTO SE REALIZO CORRECTAMENTE");
+                    }
+                    else
+                    {
+                        UtilityFrm.notificacionpopup("VENTA", "LA VENTA SE REALIZO CORRECTAMENTE");
+                    }
+                    
                     
                     UtilityFrm.limpiarTextbox(txtNombreProducto);
                     txtTotalPagar.Text = "0,00";
@@ -1349,6 +1364,7 @@ namespace Capa_Presentacion
                     Txtcuota.Text = "0,00";
                     txtIva105.Text = "0,00";
                     txtNeto105.Text = "0,00";
+                    txtItems.Text = "0,00";
                     //limpia la grilla de productos
                     DGVenta.Rows.Clear();
                     txtNombreProducto.Enabled = true;

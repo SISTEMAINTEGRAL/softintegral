@@ -217,30 +217,35 @@ namespace Capa_Presentacion
 
             midataproducto = NegocioArticulo.buscarIdProducto(idproducto.ToString());
 
-
-            if (midataproducto.Rows.Count != 0)
+            if (idproducto != 0)
             {
-                DataRow row = midataproducto.Rows[0];
-               
-                codigoproducto = row["idarticulo"].ToString();
-                producto = row["nombre"].ToString();
-                precio = row["precio_compra"].ToString();
-                precioventa = row["precio"].ToString();
-                stockactual = row["stock_actual"].ToString();
+                if (midataproducto.Rows.Count != 0)
+                {
+                    DataRow row = midataproducto.Rows[0];
+
+                    codigoproducto = row["idarticulo"].ToString();
+                    producto = row["nombre"].ToString();
+                    precio = row["precio_compra"].ToString();
+                    precioventa = row["precio"].ToString();
+                    stockactual = row["stock_actual"].ToString();
 
 
+                }
+
+                if (totales(Convert.ToInt32(codigoproducto)) == false)
+                {
+                    encontrado = false;
+                    dataListaMov.Rows.Add(codigoproducto, producto, precio, precioventa, 1, stockactual);
+
+                }
+                else
+                {
+                    encontrado = true;
+                }
             }
+            
 
-            if (totales(Convert.ToInt32(codigoproducto)) == false)
-            {
-                encontrado = false;
-                dataListaMov.Rows.Add(codigoproducto, producto, precio, precioventa, 1, stockactual);
 
-            }
-            else
-            {
-                encontrado = true;
-            }
             foreach (DataGridViewRow row in dataListaMov.Rows)
             {
                 TotalD = TotalD + Convert.ToDecimal(row.Cells["cantidad1"].Value);
@@ -337,7 +342,7 @@ namespace Capa_Presentacion
             }
             if (dataListaMov.RowCount != 0)
             {
-                respuesta = NegocioMovStock.insertar(Convert.ToInt32(proveedor), DateTime.Today,
+                respuesta = NegocioMovStock.insertar(Convert.ToInt32(proveedor == "" ? "0" : proveedor), DateTime.Today,
                serie, correlativa, comprobante, 0, "EMITIDO", ingresouegreso, dt);
             }
 
@@ -368,7 +373,8 @@ namespace Capa_Presentacion
             txtNombreProducto.Text = "";
             lblNomProducto.Text = "...";
             txtcantidad.Text = "";
-
+            TxtCan.Text = "0,00";
+            TxtItems.Text = "0";
 
         }
 
@@ -750,6 +756,51 @@ namespace Capa_Presentacion
                 else
                 { chkporcantidad.Checked = true; }
             }
+        }
+
+        private void dataListaMov_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                // DGVenta.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+               // mouse = true;
+                contextMenuStrip1.Show(dataListaMov, new Point(e.X, e.Y));
+
+            }
+        }
+        private void Menudeleteselect_Click(object sender, EventArgs e)
+        {
+            quitarProducto();
+        }
+        public void quitarProducto()
+        {
+            try
+            {
+                if (dataListaMov.Rows.Count > 0)
+                {
+
+
+                    //selecciono la primera "0" porque solo selecciono 1 row
+                    int rowSelected = dataListaMov.SelectedRows[0].Index;
+                    dataListaMov.Rows.RemoveAt(rowSelected);
+                    extraerproducto(0);
+                    
+                }
+                else
+                {
+
+                    UtilityFrm.mensajeError("No existe Producto seleccionado ");
+
+
+                }
+
+            }
+            catch (Exception ex)
+            {
+
+                UtilityFrm.mensajeError("Error: " + ex.Message);
+            }
+
         }
     }
 }

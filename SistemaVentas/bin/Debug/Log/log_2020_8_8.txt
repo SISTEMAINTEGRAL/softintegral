@@ -1,0 +1,5 @@
+08/08/2020 12:08:42 - Error message: La cadena de entrada no tiene el formato correcto. Stack trace:    en System.Number.StringToNumber(String str, NumberStyles options, NumberBuffer& number, NumberFormatInfo info, Boolean parseDecimal)
+   en System.Number.ParseInt32(String s, NumberStyles style, NumberFormatInfo info)
+   en System.Convert.ToInt32(String value)
+   en Capa_Presentacion.frmPventa.btnGuardar_Click(Object sender, EventArgs e) en C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\frmPventa.cs:línea 1328
+08/08/2020 12:18:55 - Referencia a objeto no establecida como instancia de un objeto.   en Capa_Presentacion.FrmGuardarVenta.guardarventa() en C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\FrmGuardarVenta.cs:línea 388

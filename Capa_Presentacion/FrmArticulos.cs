@@ -463,7 +463,7 @@ namespace Capa_Presentacion
         }
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-           
+            DataTable dataproducto = new DataTable();
             try
             {
                 string respuesta = "";
@@ -472,7 +472,8 @@ namespace Capa_Presentacion
 
                 //}
                 //si el string es nulo o vacio 
-                
+               
+
                 if (controlargroupbox () == true)
                 {
                     UtilityFrm.mensajeError("Hay Campos sin completar,rellene y vuelva a intentarlo");
@@ -488,6 +489,13 @@ namespace Capa_Presentacion
                     int pesable = cbxPesable.Checked == true ? 1 : 0;
                     if (isNuevo == true)
                     {
+                        dataproducto = NegocioArticulo.buscarCodigoBarra(txtCodigoBarra.Text);
+
+                        if (dataproducto.Rows.Count > 0)
+                        {
+                            UtilityFrm.mensajeError("El codigo de barra que intenta ingresar ya se encuentra agregado al sistema");
+                            return;
+                        }
                         //pesable es un bit que representa un producto si es pesable (KG) o no
                         DatosArticulo objarticulo = new DatosArticulo();
                         objarticulo.Nombre = txtNombreConfig.Text.Trim();
@@ -1312,15 +1320,36 @@ namespace Capa_Presentacion
                         hoja_trabajo.Cells[i + 3, 5] = dataLista.Rows[i].Cells["idcategoria"].Value.ToString();
                         hoja_trabajo.Cells[i + 3, 6] = dataLista.Rows[i].Cells["categoria"].Value.ToString();
                         hoja_trabajo.Cells[i + 3, 7] = dataLista.Rows[i].Cells["stock_actual"].Value;
-                        hoja_trabajo.Cells[i + 3, 8] = dataLista.Rows[i].Cells["utilidad"].Value;
-                        hoja_trabajo.Cells[i + 3, 9] = dataLista.Rows[i].Cells["precio_compra"].Value;
-                        hoja_trabajo.Cells[i + 3, 10] =dataLista.Rows[i].Cells["precio"].Value;
-        
+                        hoja_trabajo.Cells[i + 3, 8] = dataLista.Rows[i].Cells["precio_compra"].Value;
+                        hoja_trabajo.Cells[i + 3, 9] = dataLista.Rows[i].Cells["utilidad"].Value;
+                        hoja_trabajo.Cells[i + 3, 10] = dataLista.Rows[i].Cells["flete"].Value;
+                        hoja_trabajo.Cells[i + 3, 11] =dataLista.Rows[i].Cells["precio"].Value;
+                        hoja_trabajo.Cells[i + 3, 12] = dataLista.Rows[i].Cells["cantidadpormayor"].Value;
+                        hoja_trabajo.Cells[i + 3, 13] = dataLista.Rows[i].Cells["preciopormayor"].Value;
+                        hoja_trabajo.Cells[i + 3, 14] = dataLista.Rows[i].Cells["subcategoria"].Value;
+                        hoja_trabajo.Cells[i + 3, 15] = dataLista.Rows[i].Cells["idsubcategoria"].Value;
+                        hoja_trabajo.Cells[i + 3, 16] = dataLista.Rows[i].Cells["iva"].Value;
+                        hoja_trabajo.Cells[i + 3, 17] = dataLista.Rows[i].Cells["cantidadpormayor2"].Value;
+                        hoja_trabajo.Cells[i + 3, 18] = dataLista.Rows[i].Cells["preciopormayor2"].Value;
+                        hoja_trabajo.Cells[i + 3, 19] = dataLista.Rows[i].Cells["precio_oferta"].Value;
+                        hoja_trabajo.Cells[i + 3, 20] = dataLista.Rows[i].Cells["fechadeoferta"].Value;
+                        hoja_trabajo.Cells[i + 3, 21] = dataLista.Rows[i].Cells["habilitarfechaoferta"].Value;
+                        hoja_trabajo.Cells[i + 3, 22] = dataLista.Rows[i].Cells["bulto_cantidad"].Value;
+                        hoja_trabajo.Cells[i + 3, 23] = dataLista.Rows[i].Cells["bulto_codigobarra"].Value;
+                        hoja_trabajo.Cells[i + 3, 24] = dataLista.Rows[i].Cells["utilidadpormayor"].Value;
+                        hoja_trabajo.Cells[i + 3, 25] = dataLista.Rows[i].Cells["utilidadpormayor2"].Value;
+                        hoja_trabajo.Cells[i + 3, 26] = dataLista.Rows[i].Cells["utilidadoferta"].Value;
+                        hoja_trabajo.Cells[i + 3, 27] = dataLista.Rows[i].Cells["nombrecategoria"].Value;
+                        hoja_trabajo.Cells[i + 3, 28] = dataLista.Rows[i].Cells["pesable"].Value;
+                        hoja_trabajo.Cells[i + 3, 29] = dataLista.Rows[i].Cells["stock_minimo"].Value;
+                        
+
+
                     }
 
 
-         
-                   
+
+
 
                     //ajustar el tamaño de las celdas deacuerdo al tamaño de las columnas agregadas
                     hoja_trabajo.Cells.Columns.AutoFit();

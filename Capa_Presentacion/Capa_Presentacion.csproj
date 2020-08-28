@@ -156,6 +156,14 @@
     <Compile Include="DataSet\DSGondola.cs">
       <DependentUpon>DSGondola.xsd</DependentUpon>
     </Compile>
+    <Compile Include="DataSet\DSGondola2.cs">
+      <DependentUpon>DSGondola2.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="DataSet\DSGondola2.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DSGondola2.xsd</DependentUpon>
+    </Compile>
     <Compile Include="DataSet\Procedimientoventa.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -202,6 +210,12 @@
     </Compile>
     <Compile Include="Formreportes\FrmReporteRecibo.Designer.cs">
       <DependentUpon>FrmReporteRecibo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formreportes\FrmReportPresup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formreportes\FrmReportPresup.Designer.cs">
+      <DependentUpon>FrmReportPresup.cs</DependentUpon>
     </Compile>
     <Compile Include="Formreportes\FrmTicketRemito.cs">
       <SubType>Form</SubType>
@@ -720,6 +734,9 @@
     <EmbeddedResource Include="Formreportes\FrmReporteRecibo.resx">
       <DependentUpon>FrmReporteRecibo.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Formreportes\FrmReportPresup.resx">
+      <DependentUpon>FrmReportPresup.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Formreportes\FrmTicketRemito.resx">
       <DependentUpon>FrmTicketRemito.cs</DependentUpon>
     </EmbeddedResource>
@@ -1032,6 +1049,17 @@
     </None>
     <None Include="DataSet\DScodigoBarra.xss">
       <DependentUpon>DScodigoBarra.xsd</DependentUpon>
+    </None>
+    <None Include="DataSet\DSGondola2.xsc">
+      <DependentUpon>DSGondola2.xsd</DependentUpon>
+    </None>
+    <None Include="DataSet\DSGondola2.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DSGondola2.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DataSet\DSGondola2.xss">
+      <DependentUpon>DSGondola2.xsd</DependentUpon>
     </None>
     <None Include="DataSet\Procedimientoventa.xsc">
       <DependentUpon>Procedimientoventa.xsd</DependentUpon>

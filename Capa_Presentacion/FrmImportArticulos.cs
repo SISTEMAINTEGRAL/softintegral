@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Capa_negocio;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -118,6 +119,45 @@ namespace Capa_Presentacion
         private void btnCerrar_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void btnImportar_Click(object sender, EventArgs e)
+        {
+            dataLista.DataSource = NegocioArticulo.mostrarsqlite();
+        }
+
+        private void btnGuardar_Click(object sender, EventArgs e)
+        {
+            DataTable tablaArticulos = GrillaADataTable(dataLista);
+            string respuesta = NegocioArticulo.editarPrecioMasivo(tablaArticulos, NegocioConfigEmpresa.confsistema("opcionsistema").ToString());
+            UtilityFrm.mensajeConfirm("La actualizacion se realizo con exito");
+        }
+        public DataTable GrillaADataTable(DataGridView grillaACopiar)
+        {
+
+            DataTable table = new DataTable("articulo");
+            table.Columns.Add("Codigo");
+            table.Columns.Add("Producto");
+            table.Columns.Add("Utilidad");
+            table.Columns.Add("PrecioCompra");
+            table.Columns.Add("PrecioVenta");
+            table.Columns.Add("Flete");
+            table.Columns.Add("Utilidadpormayor");
+            table.Columns.Add("Preciopormayor");
+            table.Columns.Add("Utilidadpormayor2");
+            table.Columns.Add("Preciopormayor2");
+            table.Columns.Add("UtilidadprecioOferta");
+            table.Columns.Add("Precio_Oferta");
+
+            foreach (DataGridViewRow row in grillaACopiar.Rows)
+            {
+                table.Rows.Add(row.Cells["idarticulo"].Value, row.Cells["nombre"].Value, row.Cells["utilidad"].Value, row.Cells["precio_compra"].Value,
+                row.Cells["precio"].Value, row.Cells["flete"].Value, row.Cells["utilidadpormayor"].Value, row.Cells["preciopormayor"].Value, row.Cells["utilidadpormayor2"].Value,
+                row.Cells["preciopormayor2"].Value, row.Cells["utilidadoferta"].Value, row.Cells["precio_oferta"].Value);
+            }
+
+
+            return table;
         }
     }
 }

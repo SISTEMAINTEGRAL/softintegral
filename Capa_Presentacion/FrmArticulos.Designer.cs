@@ -164,9 +164,9 @@
             this.tabLista.Controls.Add(this.btnImprimir);
             this.tabLista.Controls.Add(this.btnBuscar);
             this.tabLista.Location = new System.Drawing.Point(4, 29);
-            this.tabLista.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabLista.Margin = new System.Windows.Forms.Padding(4);
             this.tabLista.Name = "tabLista";
-            this.tabLista.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabLista.Padding = new System.Windows.Forms.Padding(4);
             this.tabLista.Size = new System.Drawing.Size(1426, 756);
             this.tabLista.TabIndex = 0;
             this.tabLista.Text = "Lista";
@@ -213,6 +213,7 @@
             this.dataLista.MultiSelect = false;
             this.dataLista.Name = "dataLista";
             this.dataLista.RowHeadersVisible = false;
+            this.dataLista.RowHeadersWidth = 51;
             this.dataLista.RowTemplate.Height = 24;
             this.dataLista.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataLista.Size = new System.Drawing.Size(1392, 578);
@@ -248,6 +249,7 @@
             // DEliminar
             // 
             this.DEliminar.HeaderText = "Eliminar";
+            this.DEliminar.MinimumWidth = 6;
             this.DEliminar.Name = "DEliminar";
             this.DEliminar.Width = 112;
             // 
@@ -293,7 +295,7 @@
             this.txtDes.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtDes.Enabled = false;
             this.txtDes.Location = new System.Drawing.Point(740, 94);
-            this.txtDes.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtDes.Margin = new System.Windows.Forms.Padding(4);
             this.txtDes.Name = "txtDes";
             this.txtDes.Size = new System.Drawing.Size(235, 37);
             this.txtDes.TabIndex = 35;
@@ -303,7 +305,7 @@
             this.chkDescripcion.AutoSize = true;
             this.chkDescripcion.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.chkDescripcion.Location = new System.Drawing.Point(517, 95);
-            this.chkDescripcion.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.chkDescripcion.Margin = new System.Windows.Forms.Padding(4);
             this.chkDescripcion.Name = "chkDescripcion";
             this.chkDescripcion.Size = new System.Drawing.Size(215, 34);
             this.chkDescripcion.TabIndex = 34;
@@ -316,7 +318,7 @@
             this.chkcategoria.AutoSize = true;
             this.chkcategoria.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.chkcategoria.Location = new System.Drawing.Point(33, 87);
-            this.chkcategoria.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.chkcategoria.Margin = new System.Windows.Forms.Padding(4);
             this.chkcategoria.Name = "chkcategoria";
             this.chkcategoria.Size = new System.Drawing.Size(192, 34);
             this.chkcategoria.TabIndex = 32;
@@ -332,7 +334,7 @@
             this.cbCategoria.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cbCategoria.FormattingEnabled = true;
             this.cbCategoria.Location = new System.Drawing.Point(247, 89);
-            this.cbCategoria.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbCategoria.Margin = new System.Windows.Forms.Padding(4);
             this.cbCategoria.Name = "cbCategoria";
             this.cbCategoria.Size = new System.Drawing.Size(241, 38);
             this.cbCategoria.TabIndex = 31;
@@ -344,7 +346,7 @@
             this.btnExportarExcel.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnExportarExcel.Image = global::Capa_Presentacion.Properties.Resources.Microsoft_Excel_20px;
             this.btnExportarExcel.Location = new System.Drawing.Point(1358, 18);
-            this.btnExportarExcel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnExportarExcel.Margin = new System.Windows.Forms.Padding(4);
             this.btnExportarExcel.Name = "btnExportarExcel";
             this.btnExportarExcel.Size = new System.Drawing.Size(35, 34);
             this.btnExportarExcel.TabIndex = 30;
@@ -356,7 +358,7 @@
             this.btnEliminar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEliminar.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEliminar.Location = new System.Drawing.Point(804, 25);
-            this.btnEliminar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnEliminar.Margin = new System.Windows.Forms.Padding(4);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(140, 49);
             this.btnEliminar.TabIndex = 5;
@@ -380,7 +382,7 @@
             this.chkEliminar.AutoSize = true;
             this.chkEliminar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.chkEliminar.Location = new System.Drawing.Point(29, 143);
-            this.chkEliminar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.chkEliminar.Margin = new System.Windows.Forms.Padding(4);
             this.chkEliminar.Name = "chkEliminar";
             this.chkEliminar.Size = new System.Drawing.Size(203, 34);
             this.chkEliminar.TabIndex = 9;
@@ -393,7 +395,7 @@
             // 
             this.txtNombre.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtNombre.Location = new System.Drawing.Point(128, 32);
-            this.txtNombre.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtNombre.Margin = new System.Windows.Forms.Padding(4);
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(333, 37);
             this.txtNombre.TabIndex = 1;
@@ -405,7 +407,7 @@
             this.btnImprimir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnImprimir.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnImprimir.Location = new System.Drawing.Point(644, 25);
-            this.btnImprimir.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnImprimir.Margin = new System.Windows.Forms.Padding(4);
             this.btnImprimir.Name = "btnImprimir";
             this.btnImprimir.Size = new System.Drawing.Size(140, 49);
             this.btnImprimir.TabIndex = 6;
@@ -418,7 +420,7 @@
             this.btnBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnBuscar.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnBuscar.Location = new System.Drawing.Point(484, 25);
-            this.btnBuscar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnBuscar.Margin = new System.Windows.Forms.Padding(4);
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.Size = new System.Drawing.Size(140, 49);
             this.btnBuscar.TabIndex = 4;
@@ -430,7 +432,7 @@
             // 
             this.rbCategoria.AutoSize = true;
             this.rbCategoria.Location = new System.Drawing.Point(39, 53);
-            this.rbCategoria.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.rbCategoria.Margin = new System.Windows.Forms.Padding(4);
             this.rbCategoria.Name = "rbCategoria";
             this.rbCategoria.Size = new System.Drawing.Size(90, 21);
             this.rbCategoria.TabIndex = 20;
@@ -444,7 +446,7 @@
             this.txtDescripcion.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtDescripcion.Enabled = false;
             this.txtDescripcion.Location = new System.Drawing.Point(259, 192);
-            this.txtDescripcion.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtDescripcion.Margin = new System.Windows.Forms.Padding(4);
             this.txtDescripcion.Multiline = true;
             this.txtDescripcion.Name = "txtDescripcion";
             this.txtDescripcion.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
@@ -457,7 +459,7 @@
             this.txtNombreConfig.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtNombreConfig.Enabled = false;
             this.txtNombreConfig.Location = new System.Drawing.Point(259, 137);
-            this.txtNombreConfig.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtNombreConfig.Margin = new System.Windows.Forms.Padding(4);
             this.txtNombreConfig.MaxLength = 100;
             this.txtNombreConfig.Name = "txtNombreConfig";
             this.txtNombreConfig.Size = new System.Drawing.Size(293, 37);
@@ -470,7 +472,7 @@
             this.txtCodigo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtCodigo.Enabled = false;
             this.txtCodigo.Location = new System.Drawing.Point(259, 31);
-            this.txtCodigo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtCodigo.Margin = new System.Windows.Forms.Padding(4);
             this.txtCodigo.Name = "txtCodigo";
             this.txtCodigo.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.txtCodigo.Size = new System.Drawing.Size(224, 37);
@@ -540,9 +542,9 @@
             this.grpboxCategoria.Controls.Add(this.lblCodigo);
             this.grpboxCategoria.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.grpboxCategoria.Location = new System.Drawing.Point(4, 6);
-            this.grpboxCategoria.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.grpboxCategoria.Margin = new System.Windows.Forms.Padding(4);
             this.grpboxCategoria.Name = "grpboxCategoria";
-            this.grpboxCategoria.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.grpboxCategoria.Padding = new System.Windows.Forms.Padding(4);
             this.grpboxCategoria.Size = new System.Drawing.Size(1415, 748);
             this.grpboxCategoria.TabIndex = 0;
             this.grpboxCategoria.TabStop = false;
@@ -604,7 +606,7 @@
             this.TxtUtilidadOferta.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TxtUtilidadOferta.Enabled = false;
             this.TxtUtilidadOferta.Location = new System.Drawing.Point(340, 37);
-            this.TxtUtilidadOferta.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.TxtUtilidadOferta.Margin = new System.Windows.Forms.Padding(4);
             this.TxtUtilidadOferta.MaxLength = 60;
             this.TxtUtilidadOferta.Name = "TxtUtilidadOferta";
             this.TxtUtilidadOferta.Size = new System.Drawing.Size(119, 37);
@@ -619,7 +621,7 @@
             this.txtPrecioOferta.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtPrecioOferta.Enabled = false;
             this.txtPrecioOferta.Location = new System.Drawing.Point(340, 82);
-            this.txtPrecioOferta.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtPrecioOferta.Margin = new System.Windows.Forms.Padding(4);
             this.txtPrecioOferta.MaxLength = 60;
             this.txtPrecioOferta.Name = "txtPrecioOferta";
             this.txtPrecioOferta.Size = new System.Drawing.Size(119, 37);
@@ -689,7 +691,7 @@
             this.TxtPcompra.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TxtPcompra.Enabled = false;
             this.TxtPcompra.Location = new System.Drawing.Point(344, 36);
-            this.TxtPcompra.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.TxtPcompra.Margin = new System.Windows.Forms.Padding(4);
             this.TxtPcompra.MaxLength = 60;
             this.TxtPcompra.Name = "TxtPcompra";
             this.TxtPcompra.Size = new System.Drawing.Size(120, 37);
@@ -707,7 +709,7 @@
             this.txtUtilidad.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtUtilidad.Enabled = false;
             this.txtUtilidad.Location = new System.Drawing.Point(344, 82);
-            this.txtUtilidad.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtUtilidad.Margin = new System.Windows.Forms.Padding(4);
             this.txtUtilidad.MaxLength = 60;
             this.txtUtilidad.Name = "txtUtilidad";
             this.txtUtilidad.Size = new System.Drawing.Size(119, 37);
@@ -722,7 +724,7 @@
             // 
             this.Txtflete.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Txtflete.Location = new System.Drawing.Point(344, 128);
-            this.Txtflete.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Txtflete.Margin = new System.Windows.Forms.Padding(4);
             this.Txtflete.MaxLength = 60;
             this.Txtflete.Name = "Txtflete";
             this.Txtflete.Size = new System.Drawing.Size(119, 37);
@@ -748,7 +750,7 @@
             this.txtPrecio.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtPrecio.Enabled = false;
             this.txtPrecio.Location = new System.Drawing.Point(344, 172);
-            this.txtPrecio.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtPrecio.Margin = new System.Windows.Forms.Padding(4);
             this.txtPrecio.MaxLength = 60;
             this.txtPrecio.Name = "txtPrecio";
             this.txtPrecio.Size = new System.Drawing.Size(119, 37);
@@ -801,7 +803,7 @@
             "10,5",
             "21,0"});
             this.CBIVA.Location = new System.Drawing.Point(346, 223);
-            this.CBIVA.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.CBIVA.Margin = new System.Windows.Forms.Padding(4);
             this.CBIVA.Name = "CBIVA";
             this.CBIVA.Size = new System.Drawing.Size(119, 38);
             this.CBIVA.TabIndex = 27;
@@ -848,7 +850,7 @@
             this.TxtCodigobarraBulto.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TxtCodigobarraBulto.Enabled = false;
             this.TxtCodigobarraBulto.Location = new System.Drawing.Point(294, 105);
-            this.TxtCodigobarraBulto.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.TxtCodigobarraBulto.Margin = new System.Windows.Forms.Padding(4);
             this.TxtCodigobarraBulto.MaxLength = 60;
             this.TxtCodigobarraBulto.Name = "TxtCodigobarraBulto";
             this.TxtCodigobarraBulto.Size = new System.Drawing.Size(215, 37);
@@ -862,7 +864,7 @@
             this.TxtCantidadBulto.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TxtCantidadBulto.Enabled = false;
             this.TxtCantidadBulto.Location = new System.Drawing.Point(294, 51);
-            this.TxtCantidadBulto.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.TxtCantidadBulto.Margin = new System.Windows.Forms.Padding(4);
             this.TxtCantidadBulto.MaxLength = 60;
             this.TxtCantidadBulto.Name = "TxtCantidadBulto";
             this.TxtCantidadBulto.Size = new System.Drawing.Size(119, 37);
@@ -941,7 +943,7 @@
             this.TxtUtilidadXCaja.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TxtUtilidadXCaja.Enabled = false;
             this.TxtUtilidadXCaja.Location = new System.Drawing.Point(656, 45);
-            this.TxtUtilidadXCaja.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.TxtUtilidadXCaja.Margin = new System.Windows.Forms.Padding(4);
             this.TxtUtilidadXCaja.MaxLength = 60;
             this.TxtUtilidadXCaja.Name = "TxtUtilidadXCaja";
             this.TxtUtilidadXCaja.Size = new System.Drawing.Size(119, 37);
@@ -957,7 +959,7 @@
             this.TxtPrecio2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TxtPrecio2.Enabled = false;
             this.TxtPrecio2.Location = new System.Drawing.Point(656, 90);
-            this.TxtPrecio2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.TxtPrecio2.Margin = new System.Windows.Forms.Padding(4);
             this.TxtPrecio2.MaxLength = 60;
             this.TxtPrecio2.Name = "TxtPrecio2";
             this.TxtPrecio2.Size = new System.Drawing.Size(119, 37);
@@ -973,7 +975,7 @@
             this.TxtCantidad2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TxtCantidad2.Enabled = false;
             this.TxtCantidad2.Location = new System.Drawing.Point(656, 131);
-            this.TxtCantidad2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.TxtCantidad2.Margin = new System.Windows.Forms.Padding(4);
             this.TxtCantidad2.MaxLength = 60;
             this.TxtCantidad2.Name = "TxtCantidad2";
             this.TxtCantidad2.Size = new System.Drawing.Size(119, 37);
@@ -987,7 +989,7 @@
             this.txtUtilidadX6.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtUtilidadX6.Enabled = false;
             this.txtUtilidadX6.Location = new System.Drawing.Point(214, 44);
-            this.txtUtilidadX6.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtUtilidadX6.Margin = new System.Windows.Forms.Padding(4);
             this.txtUtilidadX6.MaxLength = 60;
             this.txtUtilidadX6.Name = "txtUtilidadX6";
             this.txtUtilidadX6.Size = new System.Drawing.Size(119, 37);
@@ -1003,7 +1005,7 @@
             this.txtPreciopormayor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtPreciopormayor.Enabled = false;
             this.txtPreciopormayor.Location = new System.Drawing.Point(215, 92);
-            this.txtPreciopormayor.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtPreciopormayor.Margin = new System.Windows.Forms.Padding(4);
             this.txtPreciopormayor.MaxLength = 60;
             this.txtPreciopormayor.Name = "txtPreciopormayor";
             this.txtPreciopormayor.Size = new System.Drawing.Size(119, 37);
@@ -1039,7 +1041,7 @@
             this.txtCantidadpormayor.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtCantidadpormayor.Enabled = false;
             this.txtCantidadpormayor.Location = new System.Drawing.Point(216, 136);
-            this.txtCantidadpormayor.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtCantidadpormayor.Margin = new System.Windows.Forms.Padding(4);
             this.txtCantidadpormayor.MaxLength = 60;
             this.txtCantidadpormayor.Name = "txtCantidadpormayor";
             this.txtCantidadpormayor.Size = new System.Drawing.Size(117, 37);
@@ -1166,7 +1168,7 @@
             this.CBSubcategoria.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.CBSubcategoria.FormattingEnabled = true;
             this.CBSubcategoria.Location = new System.Drawing.Point(259, 451);
-            this.CBSubcategoria.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.CBSubcategoria.Margin = new System.Windows.Forms.Padding(4);
             this.CBSubcategoria.Name = "CBSubcategoria";
             this.CBSubcategoria.Size = new System.Drawing.Size(224, 38);
             this.CBSubcategoria.TabIndex = 20;
@@ -1177,7 +1179,7 @@
             this.cbxPesable.Enabled = false;
             this.cbxPesable.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cbxPesable.Location = new System.Drawing.Point(388, 290);
-            this.cbxPesable.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbxPesable.Margin = new System.Windows.Forms.Padding(4);
             this.cbxPesable.Name = "cbxPesable";
             this.cbxPesable.Size = new System.Drawing.Size(125, 34);
             this.cbxPesable.TabIndex = 18;
@@ -1191,7 +1193,7 @@
             this.btnNuevoCodBar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnNuevoCodBar.Image = ((System.Drawing.Image)(resources.GetObject("btnNuevoCodBar.Image")));
             this.btnNuevoCodBar.Location = new System.Drawing.Point(554, 84);
-            this.btnNuevoCodBar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnNuevoCodBar.Margin = new System.Windows.Forms.Padding(4);
             this.btnNuevoCodBar.Name = "btnNuevoCodBar";
             this.btnNuevoCodBar.Size = new System.Drawing.Size(36, 38);
             this.btnNuevoCodBar.TabIndex = 25;
@@ -1204,7 +1206,7 @@
             this.txtStock_minimo.Enabled = false;
             this.txtStock_minimo.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.txtStock_minimo.Location = new System.Drawing.Point(259, 346);
-            this.txtStock_minimo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtStock_minimo.Margin = new System.Windows.Forms.Padding(4);
             this.txtStock_minimo.MaxLength = 50;
             this.txtStock_minimo.Name = "txtStock_minimo";
             this.txtStock_minimo.Size = new System.Drawing.Size(87, 37);
@@ -1218,7 +1220,7 @@
             this.txtCantInicial.Enabled = false;
             this.txtCantInicial.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.txtCantInicial.Location = new System.Drawing.Point(259, 283);
-            this.txtCantInicial.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtCantInicial.Margin = new System.Windows.Forms.Padding(4);
             this.txtCantInicial.MaxLength = 50;
             this.txtCantInicial.Name = "txtCantInicial";
             this.txtCantInicial.Size = new System.Drawing.Size(87, 37);
@@ -1266,7 +1268,7 @@
             this.cbxCategoria.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cbxCategoria.FormattingEnabled = true;
             this.cbxCategoria.Location = new System.Drawing.Point(259, 401);
-            this.cbxCategoria.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cbxCategoria.Margin = new System.Windows.Forms.Padding(4);
             this.cbxCategoria.Name = "cbxCategoria";
             this.cbxCategoria.Size = new System.Drawing.Size(224, 38);
             this.cbxCategoria.TabIndex = 19;
@@ -1279,7 +1281,7 @@
             this.txtCodigoBarra.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtCodigoBarra.Enabled = false;
             this.txtCodigoBarra.Location = new System.Drawing.Point(259, 84);
-            this.txtCodigoBarra.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtCodigoBarra.Margin = new System.Windows.Forms.Padding(4);
             this.txtCodigoBarra.MaxLength = 13;
             this.txtCodigoBarra.Name = "txtCodigoBarra";
             this.txtCodigoBarra.Size = new System.Drawing.Size(291, 37);
@@ -1303,9 +1305,9 @@
             this.tabConfiguracion.BackColor = System.Drawing.Color.White;
             this.tabConfiguracion.Controls.Add(this.grpboxCategoria);
             this.tabConfiguracion.Location = new System.Drawing.Point(4, 29);
-            this.tabConfiguracion.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabConfiguracion.Margin = new System.Windows.Forms.Padding(4);
             this.tabConfiguracion.Name = "tabConfiguracion";
-            this.tabConfiguracion.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabConfiguracion.Padding = new System.Windows.Forms.Padding(4);
             this.tabConfiguracion.Size = new System.Drawing.Size(1426, 756);
             this.tabConfiguracion.TabIndex = 1;
             this.tabConfiguracion.Text = "Agregar o Cambiar";
@@ -1322,7 +1324,7 @@
             this.tabControl1.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tabControl1.ItemSize = new System.Drawing.Size(45, 25);
             this.tabControl1.Location = new System.Drawing.Point(6, 90);
-            this.tabControl1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabControl1.Margin = new System.Windows.Forms.Padding(4);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(1434, 789);
@@ -1351,7 +1353,7 @@
             this.panelHorizontal.Controls.Add(this.lblSistemaVenta);
             this.panelHorizontal.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelHorizontal.Location = new System.Drawing.Point(0, 0);
-            this.panelHorizontal.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.panelHorizontal.Margin = new System.Windows.Forms.Padding(4);
             this.panelHorizontal.Name = "panelHorizontal";
             this.panelHorizontal.Size = new System.Drawing.Size(1455, 45);
             this.panelHorizontal.TabIndex = 64;
@@ -1380,7 +1382,7 @@
             this.btnMaximizar.BackgroundImage = global::Capa_Presentacion.Properties.Resources.maximize_Checkbox_16px;
             this.btnMaximizar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btnMaximizar.Location = new System.Drawing.Point(1376, 6);
-            this.btnMaximizar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnMaximizar.Margin = new System.Windows.Forms.Padding(4);
             this.btnMaximizar.Name = "btnMaximizar";
             this.btnMaximizar.Size = new System.Drawing.Size(29, 31);
             this.btnMaximizar.TabIndex = 5;
@@ -1395,7 +1397,7 @@
             this.btnRestaurar.BackgroundImage = global::Capa_Presentacion.Properties.Resources.Restore_Window_20px;
             this.btnRestaurar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btnRestaurar.Location = new System.Drawing.Point(1376, 6);
-            this.btnRestaurar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnRestaurar.Margin = new System.Windows.Forms.Padding(4);
             this.btnRestaurar.Name = "btnRestaurar";
             this.btnRestaurar.Size = new System.Drawing.Size(29, 31);
             this.btnRestaurar.TabIndex = 2;
@@ -1411,7 +1413,7 @@
             this.btnMinimizar.BackgroundImage = global::Capa_Presentacion.Properties.Resources.Minus_20px;
             this.btnMinimizar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btnMinimizar.Location = new System.Drawing.Point(1332, 6);
-            this.btnMinimizar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnMinimizar.Margin = new System.Windows.Forms.Padding(4);
             this.btnMinimizar.Name = "btnMinimizar";
             this.btnMinimizar.Size = new System.Drawing.Size(29, 31);
             this.btnMinimizar.TabIndex = 1;
@@ -1427,7 +1429,7 @@
             this.btnCerrar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
             this.btnCerrar.ErrorImage = null;
             this.btnCerrar.Location = new System.Drawing.Point(1420, 6);
-            this.btnCerrar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnCerrar.Margin = new System.Windows.Forms.Padding(4);
             this.btnCerrar.Name = "btnCerrar";
             this.btnCerrar.Size = new System.Drawing.Size(29, 31);
             this.btnCerrar.TabIndex = 0;
@@ -1455,7 +1457,7 @@
             this.btnGenerarCodigo.Font = new System.Drawing.Font("Century Gothic", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnGenerarCodigo.Image = global::Capa_Presentacion.Properties.Resources.Label_Printer_50px;
             this.btnGenerarCodigo.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnGenerarCodigo.Location = new System.Drawing.Point(1092, 47);
+            this.btnGenerarCodigo.Location = new System.Drawing.Point(1090, 50);
             this.btnGenerarCodigo.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnGenerarCodigo.Name = "btnGenerarCodigo";
             this.btnGenerarCodigo.Size = new System.Drawing.Size(344, 60);
@@ -1478,7 +1480,7 @@
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.KeyPreview = true;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MinimizeBox = false;
             this.Name = "FrmArticulos";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

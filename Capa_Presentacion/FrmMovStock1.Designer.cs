@@ -29,11 +29,15 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
             this.btnAnular = new System.Windows.Forms.Button();
-            this.dataLista = new System.Windows.Forms.DataGridView();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.btnExportarExcel = new System.Windows.Forms.Button();
             this.btnTodos = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
@@ -92,9 +96,11 @@
             this.lblCorrelativa = new System.Windows.Forms.Label();
             this.txtCorrelativa = new System.Windows.Forms.TextBox();
             this.Lista = new System.Windows.Forms.TabPage();
+            this.dataGridView1 = new Guna.UI.WinForms.GunaDataGridView();
+            this.dataLista = new Guna.UI.WinForms.GunaDataGridView();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.Menudeleteselect = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataLista)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Dtproducto)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Dtproveedor)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataListaMov)).BeginInit();
@@ -110,6 +116,9 @@
             this.xuiCustomGroupbox2.SuspendLayout();
             this.xuiCustomGroupbox1.SuspendLayout();
             this.Lista.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataLista)).BeginInit();
+            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // errorProvider1
@@ -128,47 +137,6 @@
             this.btnAnular.Text = "Anular";
             this.btnAnular.UseVisualStyleBackColor = true;
             this.btnAnular.Visible = false;
-            // 
-            // dataLista
-            // 
-            this.dataLista.AllowUserToAddRows = false;
-            this.dataLista.AllowUserToDeleteRows = false;
-            this.dataLista.AllowUserToOrderColumns = true;
-            this.dataLista.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.dataLista.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
-            this.dataLista.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataLista.Location = new System.Drawing.Point(12, 189);
-            this.dataLista.Margin = new System.Windows.Forms.Padding(6, 7, 6, 7);
-            this.dataLista.MultiSelect = false;
-            this.dataLista.Name = "dataLista";
-            this.dataLista.ReadOnly = true;
-            this.dataLista.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataLista.Size = new System.Drawing.Size(1218, 153);
-            this.dataLista.TabIndex = 6;
-            this.dataLista.RowLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataLista_RowLeave);
-            this.dataLista.SelectionChanged += new System.EventHandler(this.dataLista_SelectionChanged);
-            this.dataLista.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dataLista_MouseClick);
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.AllowUserToAddRows = false;
-            this.dataGridView1.AllowUserToDeleteRows = false;
-            this.dataGridView1.AllowUserToOrderColumns = true;
-            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 360);
-            this.dataGridView1.Margin = new System.Windows.Forms.Padding(6, 7, 6, 7);
-            this.dataGridView1.MultiSelect = false;
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.ReadOnly = true;
-            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(1218, 262);
-            this.dataGridView1.TabIndex = 31;
-            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // btnExportarExcel
             // 
@@ -240,7 +208,7 @@
             // 
             this.btnBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnBuscar.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBuscar.Location = new System.Drawing.Point(898, 72);
+            this.btnBuscar.Location = new System.Drawing.Point(849, 60);
             this.btnBuscar.Margin = new System.Windows.Forms.Padding(6, 7, 6, 7);
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.Size = new System.Drawing.Size(165, 42);
@@ -255,11 +223,12 @@
             this.Dtproducto.AllowUserToDeleteRows = false;
             this.Dtproducto.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.Dtproducto.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.Dtproducto.Location = new System.Drawing.Point(142, 293);
+            this.Dtproducto.Location = new System.Drawing.Point(142, 262);
             this.Dtproducto.Margin = new System.Windows.Forms.Padding(6, 13, 6, 13);
             this.Dtproducto.MultiSelect = false;
             this.Dtproducto.Name = "Dtproducto";
             this.Dtproducto.ReadOnly = true;
+            this.Dtproducto.RowHeadersWidth = 51;
             this.Dtproducto.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Dtproducto.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.Dtproducto.Size = new System.Drawing.Size(851, 117);
@@ -275,11 +244,12 @@
             this.Dtproveedor.AllowUserToDeleteRows = false;
             this.Dtproveedor.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.Dtproveedor.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.Dtproveedor.Location = new System.Drawing.Point(173, 69);
+            this.Dtproveedor.Location = new System.Drawing.Point(173, 62);
             this.Dtproveedor.Margin = new System.Windows.Forms.Padding(6, 13, 6, 13);
             this.Dtproveedor.MultiSelect = false;
             this.Dtproveedor.Name = "Dtproveedor";
             this.Dtproveedor.ReadOnly = true;
+            this.Dtproveedor.RowHeadersWidth = 51;
             this.Dtproveedor.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Dtproveedor.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.Dtproveedor.Size = new System.Drawing.Size(758, 74);
@@ -371,14 +341,14 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dataListaMov.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataListaMov.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataListaMov.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataListaMov.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataListaMov.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataListaMov.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Codigo1,
@@ -388,49 +358,57 @@
             this.Cantidad1,
             this.StockActual1});
             this.dataListaMov.EnableHeadersVisualStyles = false;
-            this.dataListaMov.Location = new System.Drawing.Point(12, 323);
+            this.dataListaMov.Location = new System.Drawing.Point(12, 286);
             this.dataListaMov.Margin = new System.Windows.Forms.Padding(6, 13, 6, 13);
             this.dataListaMov.MultiSelect = false;
             this.dataListaMov.Name = "dataListaMov";
             this.dataListaMov.RowHeadersWidth = 38;
-            this.dataListaMov.Size = new System.Drawing.Size(1228, 237);
+            this.dataListaMov.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataListaMov.Size = new System.Drawing.Size(1230, 287);
             this.dataListaMov.TabIndex = 73;
             this.dataListaMov.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataListaMov_CellDoubleClick);
             this.dataListaMov.DoubleClick += new System.EventHandler(this.dataListaMov_DoubleClick);
+            this.dataListaMov.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dataListaMov_MouseClick);
             // 
             // Codigo1
             // 
             this.Codigo1.HeaderText = "Codigo";
             this.Codigo1.MaxInputLength = 300;
+            this.Codigo1.MinimumWidth = 6;
             this.Codigo1.Name = "Codigo1";
             // 
             // Nombre
             // 
             this.Nombre.HeaderText = "Nombre";
+            this.Nombre.MinimumWidth = 6;
             this.Nombre.Name = "Nombre";
             // 
             // Preciocompra
             // 
             this.Preciocompra.HeaderText = "PrecioCompra";
             this.Preciocompra.MaxInputLength = 300;
+            this.Preciocompra.MinimumWidth = 6;
             this.Preciocompra.Name = "Preciocompra";
             // 
             // PrecioVenta1
             // 
             this.PrecioVenta1.HeaderText = "PrecioVenta";
             this.PrecioVenta1.MaxInputLength = 300;
+            this.PrecioVenta1.MinimumWidth = 6;
             this.PrecioVenta1.Name = "PrecioVenta1";
             // 
             // Cantidad1
             // 
             this.Cantidad1.HeaderText = "Cantidad";
             this.Cantidad1.MaxInputLength = 100;
+            this.Cantidad1.MinimumWidth = 6;
             this.Cantidad1.Name = "Cantidad1";
             // 
             // StockActual1
             // 
             this.StockActual1.HeaderText = "StockActual";
             this.StockActual1.MaxInputLength = 300;
+            this.StockActual1.MinimumWidth = 6;
             this.StockActual1.Name = "StockActual1";
             // 
             // errorIcono
@@ -461,7 +439,7 @@
             this.panelHorizontal.Location = new System.Drawing.Point(0, 0);
             this.panelHorizontal.Margin = new System.Windows.Forms.Padding(6, 7, 6, 7);
             this.panelHorizontal.Name = "panelHorizontal";
-            this.panelHorizontal.Size = new System.Drawing.Size(1284, 37);
+            this.panelHorizontal.Size = new System.Drawing.Size(1284, 18);
             this.panelHorizontal.TabIndex = 64;
             this.panelHorizontal.DoubleClick += new System.EventHandler(this.panelHorizontal_DoubleClick);
             this.panelHorizontal.MouseMove += new System.Windows.Forms.MouseEventHandler(this.panelHorizontal_MouseMove);
@@ -700,7 +678,7 @@
             this.xuiCustomGroupbox2.Controls.Add(this.btnBuscarProd);
             this.xuiCustomGroupbox2.Controls.Add(this.btnAgregar);
             this.xuiCustomGroupbox2.Controls.Add(this.lblCntIngOegr);
-            this.xuiCustomGroupbox2.Location = new System.Drawing.Point(10, 226);
+            this.xuiCustomGroupbox2.Location = new System.Drawing.Point(10, 196);
             this.xuiCustomGroupbox2.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.xuiCustomGroupbox2.Name = "xuiCustomGroupbox2";
             this.xuiCustomGroupbox2.Padding = new System.Windows.Forms.Padding(5, 6, 5, 6);
@@ -745,7 +723,7 @@
             this.rdbIngreso.Location = new System.Drawing.Point(12, 16);
             this.rdbIngreso.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.rdbIngreso.Name = "rdbIngreso";
-            this.rdbIngreso.Size = new System.Drawing.Size(221, 48);
+            this.rdbIngreso.Size = new System.Drawing.Size(221, 35);
             this.rdbIngreso.TabIndex = 11;
             this.rdbIngreso.TabStop = true;
             this.rdbIngreso.Text = "Ingreso";
@@ -759,7 +737,7 @@
             this.rdbEgreso.Location = new System.Drawing.Point(243, 16);
             this.rdbEgreso.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.rdbEgreso.Name = "rdbEgreso";
-            this.rdbEgreso.Size = new System.Drawing.Size(226, 48);
+            this.rdbEgreso.Size = new System.Drawing.Size(226, 37);
             this.rdbEgreso.TabIndex = 12;
             this.rdbEgreso.TabStop = true;
             this.rdbEgreso.Text = "Egreso";
@@ -784,12 +762,12 @@
             this.xuiCustomGroupbox1.Controls.Add(this.lblCorrelativa);
             this.xuiCustomGroupbox1.Controls.Add(this.txtCorrelativa);
             this.xuiCustomGroupbox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.xuiCustomGroupbox1.Location = new System.Drawing.Point(12, 76);
+            this.xuiCustomGroupbox1.Location = new System.Drawing.Point(12, 60);
             this.xuiCustomGroupbox1.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.xuiCustomGroupbox1.Name = "xuiCustomGroupbox1";
             this.xuiCustomGroupbox1.Padding = new System.Windows.Forms.Padding(5, 6, 5, 6);
             this.xuiCustomGroupbox1.ShowText = true;
-            this.xuiCustomGroupbox1.Size = new System.Drawing.Size(1232, 148);
+            this.xuiCustomGroupbox1.Size = new System.Drawing.Size(1232, 136);
             this.xuiCustomGroupbox1.TabIndex = 13;
             this.xuiCustomGroupbox1.TabStop = false;
             this.xuiCustomGroupbox1.Text = "Registrar comprobante";
@@ -830,10 +808,10 @@
             this.btnBuscarProv.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnBuscarProv.Image = global::Capa_Presentacion.Properties.Resources.Search_15px;
             this.btnBuscarProv.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnBuscarProv.Location = new System.Drawing.Point(425, 33);
+            this.btnBuscarProv.Location = new System.Drawing.Point(411, 31);
             this.btnBuscarProv.Margin = new System.Windows.Forms.Padding(9, 13, 9, 13);
             this.btnBuscarProv.Name = "btnBuscarProv";
-            this.btnBuscarProv.Size = new System.Drawing.Size(57, 37);
+            this.btnBuscarProv.Size = new System.Drawing.Size(32, 30);
             this.btnBuscarProv.TabIndex = 44;
             this.btnBuscarProv.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btnBuscarProv.UseVisualStyleBackColor = true;
@@ -859,7 +837,7 @@
             this.txtProveedor.Margin = new System.Windows.Forms.Padding(6, 7, 6, 7);
             this.txtProveedor.Multiline = true;
             this.txtProveedor.Name = "txtProveedor";
-            this.txtProveedor.Size = new System.Drawing.Size(237, 36);
+            this.txtProveedor.Size = new System.Drawing.Size(237, 30);
             this.txtProveedor.TabIndex = 33;
             this.txtProveedor.TextChanged += new System.EventHandler(this.txtProveedor_TextChanged);
             this.txtProveedor.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtProveedor_KeyDown);
@@ -897,12 +875,12 @@
             // 
             this.txtSerie.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtSerie.Enabled = false;
-            this.txtSerie.Location = new System.Drawing.Point(1030, 92);
+            this.txtSerie.Location = new System.Drawing.Point(999, 96);
             this.txtSerie.Margin = new System.Windows.Forms.Padding(6, 7, 6, 7);
             this.txtSerie.MaxLength = 4;
             this.txtSerie.Multiline = true;
             this.txtSerie.Name = "txtSerie";
-            this.txtSerie.Size = new System.Drawing.Size(178, 42);
+            this.txtSerie.Size = new System.Drawing.Size(178, 31);
             this.txtSerie.TabIndex = 39;
             // 
             // lblCorrelativa
@@ -925,15 +903,15 @@
             this.txtCorrelativa.MaxLength = 8;
             this.txtCorrelativa.Multiline = true;
             this.txtCorrelativa.Name = "txtCorrelativa";
-            this.txtCorrelativa.Size = new System.Drawing.Size(243, 36);
+            this.txtCorrelativa.Size = new System.Drawing.Size(243, 30);
             this.txtCorrelativa.TabIndex = 40;
             // 
             // Lista
             // 
             this.Lista.Controls.Add(this.dataGridView1);
+            this.Lista.Controls.Add(this.dataLista);
             this.Lista.Controls.Add(this.btnExportarExcel);
             this.Lista.Controls.Add(this.btnBuscar);
-            this.Lista.Controls.Add(this.dataLista);
             this.Lista.Controls.Add(this.btnTodos);
             this.Lista.Controls.Add(this.btnAnular);
             this.Lista.Controls.Add(this.label1);
@@ -948,6 +926,157 @@
             this.Lista.TabIndex = 1;
             this.Lista.Text = "Lista";
             this.Lista.UseVisualStyleBackColor = true;
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
+            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
+            this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
+            this.dataGridView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dataGridView1.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
+            this.dataGridView1.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.dataGridView1.ColumnHeadersHeight = 38;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle4;
+            this.dataGridView1.EnableHeadersVisualStyles = false;
+            this.dataGridView1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            this.dataGridView1.Location = new System.Drawing.Point(3, 494);
+            this.dataGridView1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
+            this.dataGridView1.RowHeadersVisible = false;
+            this.dataGridView1.RowHeadersWidth = 51;
+            this.dataGridView1.RowTemplate.Height = 24;
+            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridView1.Size = new System.Drawing.Size(1249, 160);
+            this.dataGridView1.TabIndex = 109;
+            this.dataGridView1.Theme = Guna.UI.WinForms.GunaDataGridViewPresetThemes.Guna;
+            this.dataGridView1.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
+            this.dataGridView1.ThemeStyle.AlternatingRowsStyle.Font = null;
+            this.dataGridView1.ThemeStyle.AlternatingRowsStyle.ForeColor = System.Drawing.Color.Empty;
+            this.dataGridView1.ThemeStyle.AlternatingRowsStyle.SelectionBackColor = System.Drawing.Color.Empty;
+            this.dataGridView1.ThemeStyle.AlternatingRowsStyle.SelectionForeColor = System.Drawing.Color.Empty;
+            this.dataGridView1.ThemeStyle.BackColor = System.Drawing.Color.White;
+            this.dataGridView1.ThemeStyle.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            this.dataGridView1.ThemeStyle.HeaderStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
+            this.dataGridView1.ThemeStyle.HeaderStyle.BorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
+            this.dataGridView1.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.dataGridView1.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.White;
+            this.dataGridView1.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
+            this.dataGridView1.ThemeStyle.HeaderStyle.Height = 38;
+            this.dataGridView1.ThemeStyle.ReadOnly = true;
+            this.dataGridView1.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.White;
+            this.dataGridView1.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
+            this.dataGridView1.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.dataGridView1.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            this.dataGridView1.ThemeStyle.RowsStyle.Height = 24;
+            this.dataGridView1.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            this.dataGridView1.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            // 
+            // dataLista
+            // 
+            this.dataLista.AllowUserToAddRows = false;
+            this.dataLista.AllowUserToDeleteRows = false;
+            this.dataLista.AllowUserToOrderColumns = true;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.White;
+            this.dataLista.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
+            this.dataLista.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dataLista.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataLista.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.dataLista.BackgroundColor = System.Drawing.Color.White;
+            this.dataLista.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dataLista.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
+            this.dataLista.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataLista.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
+            this.dataLista.ColumnHeadersHeight = 38;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataLista.DefaultCellStyle = dataGridViewCellStyle7;
+            this.dataLista.EnableHeadersVisualStyles = false;
+            this.dataLista.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            this.dataLista.Location = new System.Drawing.Point(7, 114);
+            this.dataLista.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.dataLista.MultiSelect = false;
+            this.dataLista.Name = "dataLista";
+            this.dataLista.RowHeadersVisible = false;
+            this.dataLista.RowHeadersWidth = 51;
+            this.dataLista.RowTemplate.Height = 24;
+            this.dataLista.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataLista.Size = new System.Drawing.Size(1241, 361);
+            this.dataLista.StandardTab = true;
+            this.dataLista.TabIndex = 107;
+            this.dataLista.Theme = Guna.UI.WinForms.GunaDataGridViewPresetThemes.Guna;
+            this.dataLista.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
+            this.dataLista.ThemeStyle.AlternatingRowsStyle.Font = null;
+            this.dataLista.ThemeStyle.AlternatingRowsStyle.ForeColor = System.Drawing.Color.Empty;
+            this.dataLista.ThemeStyle.AlternatingRowsStyle.SelectionBackColor = System.Drawing.Color.Empty;
+            this.dataLista.ThemeStyle.AlternatingRowsStyle.SelectionForeColor = System.Drawing.Color.Empty;
+            this.dataLista.ThemeStyle.BackColor = System.Drawing.Color.White;
+            this.dataLista.ThemeStyle.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            this.dataLista.ThemeStyle.HeaderStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
+            this.dataLista.ThemeStyle.HeaderStyle.BorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
+            this.dataLista.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.dataLista.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.White;
+            this.dataLista.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
+            this.dataLista.ThemeStyle.HeaderStyle.Height = 38;
+            this.dataLista.ThemeStyle.ReadOnly = false;
+            this.dataLista.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.White;
+            this.dataLista.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
+            this.dataLista.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F);
+            this.dataLista.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            this.dataLista.ThemeStyle.RowsStyle.Height = 24;
+            this.dataLista.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            this.dataLista.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            this.dataLista.RowLeave += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataLista_RowLeave);
+            this.dataLista.SelectionChanged += new System.EventHandler(this.dataLista_SelectionChanged);
+            this.dataLista.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dataLista_MouseClick);
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.Menudeleteselect});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(198, 28);
+            // 
+            // Menudeleteselect
+            // 
+            this.Menudeleteselect.Name = "Menudeleteselect";
+            this.Menudeleteselect.Size = new System.Drawing.Size(197, 24);
+            this.Menudeleteselect.Text = "Eliminar seleccion";
+            this.Menudeleteselect.Click += new System.EventHandler(this.Menudeleteselect_Click);
             // 
             // FrmMovStock1
             // 
@@ -967,8 +1096,6 @@
             this.MouseMove += new System.Windows.Forms.MouseEventHandler(this.FrmMovStock1_MouseMove);
             this.Move += new System.EventHandler(this.FrmMovStock1_Move);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataLista)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Dtproducto)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Dtproveedor)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataListaMov)).EndInit();
@@ -989,6 +1116,9 @@
             this.xuiCustomGroupbox1.PerformLayout();
             this.Lista.ResumeLayout(false);
             this.Lista.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataLista)).EndInit();
+            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -996,7 +1126,6 @@
         #endregion
 
         private System.Windows.Forms.ErrorProvider errorProvider1;
-        private System.Windows.Forms.DataGridView dataLista;
         private System.Windows.Forms.Label lblFechaIni;
         private System.Windows.Forms.Button btnAnular;
         private System.Windows.Forms.Button btnBuscar;
@@ -1030,7 +1159,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Cantidad1;
         private System.Windows.Forms.DataGridViewTextBoxColumn StockActual1;
         private System.Windows.Forms.TextBox txtNombreProducto;
-        private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.TabControl tabControl2;
         private System.Windows.Forms.TabPage Agregar;
         private System.Windows.Forms.Label lblCorrelativa;
@@ -1057,5 +1185,9 @@
         public System.Windows.Forms.TextBox TxtItems;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label7;
+        private Guna.UI.WinForms.GunaDataGridView dataLista;
+        private Guna.UI.WinForms.GunaDataGridView dataGridView1;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem Menudeleteselect;
     }
 }

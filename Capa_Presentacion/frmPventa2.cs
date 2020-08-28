@@ -377,7 +377,8 @@ namespace Capa_Presentacion
                 }
                 else
                 {
-                    FrmMensajeAutoCierre.Show("No es una clave valida", "Error", 1000);
+                    UtilityFrm.mensajeError("El codigo ingresado no pertenece a una clave valida");
+                    
                     txtNombreProducto.SelectAll();
 
                 }
@@ -398,7 +399,8 @@ namespace Capa_Presentacion
         {
             DGVenta.Rows.Add(grididarticulo, gridnombre , gridprecio, gridcantidad, gridsubtotal, griddescuento,
                              gridimporte, gridpesable, gridcalculo, gridpreciomayorista, gridcantidadmayorista, 
-                             preciounidad, iva, manual,preciopromo,cantidadpromo,descpromo);
+                             preciounidad, iva, manual,preciopromo,cantidadpromo,descpromo, 
+                             gridstockactual,  gridstockminimo, gridpopupminimo, gridpopupcero);
         }
         private string pluyprecio(string codigoproducto, string traerpluoprecio, string formatobalanza = "")
         {
@@ -481,8 +483,8 @@ namespace Capa_Presentacion
                             descuento = Convert.ToDecimal(row.Cells["Descuento"].Value);
                             cantidadActual = Decimal.Round((Convert.ToDecimal(row.Cells["Cantidad"].Value)), 2);
                             preciounidad = Decimal.Round((Convert.ToDecimal(row.Cells["preciounidad"].Value)), 2);
-                        stock_minimo = Decimal.Round((Convert.ToDecimal(row.Cells["stock_minimo"].Value)), 2);
-                        stock_actual = Decimal.Round((Convert.ToDecimal(row.Cells["stock_actual"].Value)), 2);
+                            stock_minimo = Decimal.Round((Convert.ToDecimal(row.Cells["stock_minimo"].Value)), 2);
+                            stock_actual = Decimal.Round((Convert.ToDecimal(row.Cells["stock_actual"].Value)), 2);
 
                         int kia = row.Index;
 
@@ -895,6 +897,10 @@ namespace Capa_Presentacion
             {
                 formadepago = "ctacte";
             }
+            else if (rMulPago.Checked == true)
+            {
+                formadepago = "multipago";
+            }
 
             if (CHKPendientestock.Visible == true)
             {
@@ -919,7 +925,14 @@ namespace Capa_Presentacion
                 //FrmPopup objpopup = new FrmPopup();
                 //objpopup.LblMensaje.Text = "LA VENTA SE REALIZO CORRECTAMENTE";
 
-                UtilityFrm.notificacionpopup("VENTA", "LA VENTA SE REALIZO CORRECTAMENTE");
+                if (cbTipoComprobante.SelectedItem.ToString() == "PRESUPUESTO")
+                {
+                    UtilityFrm.notificacionpopup("PRESUPUESTO", "EL PRESUPUESTO SE REALIZO CORRECTAMENTE");
+                }
+                else
+                {
+                    UtilityFrm.notificacionpopup("VENTA", "LA VENTA SE REALIZO CORRECTAMENTE");
+                }
                 //FrmMensajeAutoCierre.Show("VENTA", "LA VENTA SE REALIZO CORRECTAMENTE", 500);
                 UtilityFrm.limpiarTextbox(txtNombreProducto);
                     txtTotalPagar.Text = "0,00";

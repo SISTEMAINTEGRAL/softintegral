@@ -13,6 +13,8 @@ using Telerik.Reporting.Processing;
 using Telerik.Reporting;
 using System.Drawing.Printing;
 
+using Telerik.Reporting.Drawing;
+
 namespace Capa_Presentacion.Formreportes
 {
     public partial class TicketProforma : Form
@@ -53,6 +55,8 @@ namespace Capa_Presentacion.Formreportes
             REPORT_TICKET_PROFORMAX58 miticket1;
             REPORT_VENTA_A4 miticket2;
             PrintDocument documento;
+            
+            
             midatatable = NegocioVenta.Reporteventa(idventa);
             try
             {
@@ -62,11 +66,14 @@ namespace Capa_Presentacion.Formreportes
                         {
                             
                             miticket = new Reportes.REPORT_TICKET_PROFORMA();
+                            Unit ancho = miticket.PageSettings.PaperSize.Width;
+                            Unit alto = miticket.PageSettings.PaperSize.Height;
+                            miticket.PageSettings.PaperSize = new SizeU(ancho, alto + Unit.Cm(0.49 * midatatable.Rows.Count));
                             miticket.DataSource = midatatable;
                             if (midatatable.Rows.Count != 0)
                             {
                                 DataRow row = midatatable.Rows[0];
-                               miticket.barcode1.Value= UtilityFrm.calculoDigitoVerificador("", "", "", "", "", false, row["idventa"].ToString());
+                              // miticket.barcode1.Value= UtilityFrm.calculoDigitoVerificador("", "", "", "", "", false, row["idventa"].ToString());
                             }
                             documento = new PrintDocument();
                             miticket.table1.DataSource = midatatable;

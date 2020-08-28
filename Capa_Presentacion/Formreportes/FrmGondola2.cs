@@ -21,10 +21,36 @@ namespace Capa_Presentacion.Formreportes
 
         private void FrmGondola2_Load(object sender, EventArgs e)
         {
-            rEPORTE_GONDOLA2TableAdapter.Fill(dataSet1.REPORTE_GONDOLA2, 0, idequipo, 0, 0, 0, 0, 0, "consulta", "");
+            rEPORTE_GONDOLA2TableAdapter.Fill(dSGondola2.REPORTE_GONDOLA2, 0, idequipo, 0, 0, 0, 0, 0, "consulta", "");
             reportViewer1.SetDisplayMode(Microsoft.Reporting.WinForms.DisplayMode.PrintLayout);
             this.reportViewer1.RefreshReport();
            
+        }
+
+        private void fillToolStripButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+               // this.rEPORTE_GONDOLA2TableAdapter.Fill(this.dSGondola2.REPORTE_GONDOLA2, new System.Nullable<int>(((int)(System.Convert.ChangeType(@idarticuloToolStripTextBox.Text, typeof(int))))), new System.Nullable<int>(((int)(System.Convert.ChangeType(@idequipoToolStripTextBox.Text, typeof(int))))), new System.Nullable<decimal>(((decimal)(System.Convert.ChangeType(@precio_unidadToolStripTextBox.Text, typeof(decimal))))), new System.Nullable<decimal>(((decimal)(System.Convert.ChangeType(@preciopormayorToolStripTextBox.Text, typeof(decimal))))), new System.Nullable<decimal>(((decimal)(System.Convert.ChangeType(@preciopormayor2ToolStripTextBox.Text, typeof(decimal))))), new System.Nullable<decimal>(((decimal)(System.Convert.ChangeType(@precio_ofertaToolStripTextBox.Text, typeof(decimal))))), new System.Nullable<int>(((int)(System.Convert.ChangeType(@idcategoriaToolStripTextBox.Text, typeof(int))))), @modoToolStripTextBox.Text, @codigobarraproductoToolStripTextBox.Text);
+            }
+            catch (System.Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show(ex.Message);
+            }
+
+        }
+
+        private void fillToolStripButton_Click_1(object sender, EventArgs e)
+        {
+            try
+            {
+            //    this.rEPORTE_GONDOLA2TableAdapter.Fill(this.dSGondola2.REPORTE_GONDOLA2, new System.Nullable<int>(((int)(System.Convert.ChangeType(@idarticuloToolStripTextBox.Text, typeof(int))))), new System.Nullable<int>(((int)(System.Convert.ChangeType(@idequipoToolStripTextBox.Text, typeof(int))))), new System.Nullable<decimal>(((decimal)(System.Convert.ChangeType(@precio_unidadToolStripTextBox.Text, typeof(decimal))))), new System.Nullable<decimal>(((decimal)(System.Convert.ChangeType(@preciopormayorToolStripTextBox.Text, typeof(decimal))))), new System.Nullable<decimal>(((decimal)(System.Convert.ChangeType(@preciopormayor2ToolStripTextBox.Text, typeof(decimal))))), new System.Nullable<decimal>(((decimal)(System.Convert.ChangeType(@precio_ofertaToolStripTextBox.Text, typeof(decimal))))), new System.Nullable<int>(((int)(System.Convert.ChangeType(@idcategoriaToolStripTextBox.Text, typeof(int))))), @modoToolStripTextBox.Text, @codigobarraproductoToolStripTextBox.Text);
+            }
+            catch (System.Exception ex)
+            {
+                System.Windows.Forms.MessageBox.Show(ex.Message);
+            }
+
         }
     }
 }

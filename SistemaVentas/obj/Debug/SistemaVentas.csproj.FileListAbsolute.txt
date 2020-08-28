@@ -105,7 +105,6 @@ C:\Backup\Sistema de ventas\SistemaVentas\bin\Debug\ru\Microsoft.ReportViewer.Wi
 C:\Backup\Sistema de ventas\SistemaVentas\bin\Debug\zh-CHS\Microsoft.ReportViewer.WinForms.resources.dll
 C:\Backup\Sistema de ventas\SistemaVentas\bin\Debug\zh-CHT\Microsoft.ReportViewer.WinForms.resources.dll
 C:\Backup\Sistema de ventas\SistemaVentas\bin\Debug\es\Microsoft.TeamFoundation.Diff.resources.dll
-C:\Backup\Sistema de ventas\softintegral\SistemaVentas\obj\Debug\SistemaVentas.csprojResolveAssemblyReference.cache
 C:\Backup\Sistema de ventas\softintegral\SistemaVentas\obj\Debug\Interop.FiscalPrinterLib.dll
 C:\Backup\Sistema de ventas\softintegral\SistemaVentas\obj\Debug\SistemaVentas.csproj.ResolveComReference.cache
 C:\Backup\Sistema de ventas\softintegral\SistemaVentas\obj\Debug\SistemaVentas.Form1.resources
@@ -186,3 +185,15 @@ C:\Backup\Sistema de ventas\softintegral\SistemaVentas\bin\Debug\ru\Microsoft.Sq
 C:\Backup\Sistema de ventas\softintegral\SistemaVentas\bin\Debug\zh-Hans\Microsoft.SqlServer.Types.resources.dll
 C:\Backup\Sistema de ventas\softintegral\SistemaVentas\bin\Debug\zh-Hant\Microsoft.SqlServer.Types.resources.dll
 C:\Backup\Sistema de ventas\softintegral\SistemaVentas\bin\Debug\Tulpep.NotificationWindow.dll
+C:\Backup\Sistema de ventas\softintegral\SistemaVentas\bin\Debug\Capa_negocio.dll.config
+C:\Backup\Sistema de ventas\softintegral\SistemaVentas\bin\Debug\Capa_Presentacion.dll.config
+C:\Backup\Sistema de ventas\softintegral\SistemaVentas\bin\Debug\ComboBoxMultiColumns.dll.config
+C:\Backup\Sistema de ventas\softintegral\SistemaVentas\obj\Debug\SistemaVentas.csprojAssemblyReference.cache
+C:\Backup\Sistema de ventas\softintegral\SistemaVentas\obj\Debug\SistemaVentas.csproj.CoreCompileInputs.cache
+C:\Backup\Sistema de ventas\softintegral\SistemaVentas\obj\Debug\SistemaVentas.csproj.CopyComplete
+C:\Backup\Sistema de ventas\softintegral\SistemaVentas\bin\Debug\x86\sqlite3.dll
+C:\Backup\Sistema de ventas\softintegral\SistemaVentas\bin\Debug\x64\sqlite3.dll
+C:\Backup\Sistema de ventas\softintegral\SistemaVentas\bin\Debug\System.Data.SQLite.dll
+C:\Backup\Sistema de ventas\softintegral\SistemaVentas\bin\Debug\Capa_Datos.dll.config
+C:\Backup\Sistema de ventas\softintegral\SistemaVentas\bin\Debug\System.Data.SQLite.xml
+C:\Backup\Sistema de ventas\softintegral\SistemaVentas\bin\Debug\System.Data.SQLite.dll.config

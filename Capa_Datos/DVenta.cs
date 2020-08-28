@@ -11,7 +11,10 @@ using Capa_Datos;
     public class Dventa
     {
         private int cuotas;
-
+        SqlCommand comando;
+        private int idusuario;
+        private string turno;
+        private int nrocaja;
         public int Cuotas
         {
             get { return cuotas; }
@@ -377,6 +380,10 @@ using Capa_Datos;
             porpuntodeventa = value;
         }
     }
+
+    public int Idusuario { get => idusuario; set => idusuario = value; }
+    public string Turno { get => turno; set => turno = value; }
+    public int Nrocaja { get => nrocaja; set => nrocaja = value; }
 
     private int idequipo;
     private decimal totalneto;
@@ -1106,6 +1113,111 @@ using Capa_Datos;
             cn.Close();
         }
         return respuesta;
+    }
+
+    public string cargarventamultipago(DataTable dataventa,DataTable datadetalle , Dventa Venta)
+    {
+
+        //modo 9 para DB
+        SqlConnection cn = new SqlConnection(Conexion.conexion);
+
+        string respuesta = "";
+        try
+        {
+
+            cn.Open();
+            //abro conexion
+            SqlTransaction transaccion = cn.BeginTransaction();
+
+            respuesta = "ok";
+            
+
+            if (respuesta.Equals("ok"))
+            {
+                    comando = ProcAlmacenado.CrearProc(cn, "SP_VENTAMULTIPAGO", transaccion);
+                    
+                    
+                    comando.Parameters.AddWithValue("@idventa", SqlDbType.Int);
+                    comando.Parameters.AddWithValue("@idcliente", Venta.idcliente);
+                    comando.Parameters.AddWithValue("@tipo_comprobante",  Venta.tipo_comprobante);
+                    comando.Parameters.AddWithValue("@iva",  Venta.iva);
+                    comando.Parameters.AddWithValue("@concaja", Venta.concaja);
+                    comando.Parameters.AddWithValue("@constock", Venta.constock);
+                    comando.Parameters.AddWithValue("@usuario", Venta.Usuario);
+                    comando.Parameters.AddWithValue("@descuento", Venta.descuento);
+                    comando.Parameters.AddWithValue("@total", Venta.total);
+                    comando.Parameters.AddWithValue("@subtotal", Venta.subtotal);
+                    comando.Parameters.AddWithValue("@estado", Venta.estado);
+                    comando.Parameters.AddWithValue("@codformapago", Venta.codformapago);
+                    comando.Parameters.AddWithValue("@nrocomprobante", Venta.nrocomprobante);
+                    comando.Parameters.AddWithValue("@totalneto", Venta.totalneto);
+                    comando.Parameters.AddWithValue("@precioiva", Venta.precioiva);
+                    comando.Parameters.AddWithValue("@cae",  Venta.cae);
+                    comando.Parameters.AddWithValue("@caefechavencimiento", Venta.caevencimiento);
+                    comando.Parameters.AddWithValue("@tipofactura", Venta.numerotipofactura);
+                    comando.Parameters.AddWithValue("@puntoventa", Venta.puntoventa);
+                    comando.Parameters.AddWithValue("@totalneto105", Venta.Totalneto105);
+                    comando.Parameters.AddWithValue("@precioiva105", Venta.Precioiva105);
+                    comando.Parameters.AddWithValue("@idusuario", Venta.idusuario);
+                    comando.Parameters.AddWithValue("@turno", Venta.turno);
+                    comando.Parameters.AddWithValue("@Idmltpadre", 0);
+                comando.Parameters.AddWithValue("@id_caja", Venta.nrocaja);
+
+                var parametroventa = new SqlParameter("@venta",SqlDbType.Structured);
+                parametroventa.TypeName = "dbo.Venta_Temp";
+                parametroventa.Value = dataventa;
+                comando.Parameters.Add(parametroventa);
+
+                var parametroventadetalle = new SqlParameter("@venta_det", SqlDbType.Structured);
+                parametroventadetalle.TypeName = "dbo.VentaDet_Temp";
+                parametroventadetalle.Value = datadetalle;
+                comando.Parameters.Add(parametroventadetalle);
+
+
+                comando.ExecuteNonQuery();
+
+                Venta.Idventa = Convert.ToInt32(comando.Parameters["@Idmltpadre"].Value);
+
+                respuesta = "ok";
+
+
+            }
+            //actualizo los datos de los productos
+
+            //si ocurrio algun error hace un rollback
+            //o sino confirma la trasaccion con un commit
+            if (respuesta.Equals("ok"))
+            {
+
+                transaccion.Commit();
+            }
+            else
+            {
+                transaccion.Rollback();
+            }
+
+
+
+
+        }
+        catch (Exception ex)
+        {
+            respuesta = "error conexion: " + ex.Message;
+
+        }
+        finally
+        {
+            if (cn.State == ConnectionState.Open)
+            {
+
+                cn.Close();
+            }
+        }
+
+        return respuesta;
+
+
+
     }
 
 

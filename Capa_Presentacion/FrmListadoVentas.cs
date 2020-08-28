@@ -715,53 +715,63 @@ namespace Capa_Presentacion
             DataGridViewRow row = dataLista.CurrentRow;
             Reporteventa miformnotaventa = new Reporteventa();
             //Reporteventa mireporteventa = new Reporteventa();
-          //  Frmimpnotaventa mireporteventa = new Frmimpnotaventa();
-           // Frmimpventicket miformticket = new Frmimpventicket();
-
-            if (NegocioConfigEmpresa.confsistema("imprimirventa").ToString() == "True")
+            //  Frmimpnotaventa mireporteventa = new Frmimpnotaventa();
+            // Frmimpventicket miformticket = new Frmimpventicket();
+            if (row.Cells["tipo_comprobante"].Value.ToString() == "PRESUPUESTO" )
             {
-                if (NegocioConfigEmpresa.confsistema("tipoimpresion").ToString () == "tipocarro")
-                {
-                    //miformnotaventa.Tipoimp = Convert.ToString(NegocioConfigEmpresa.confsistema("modoimpventa"));
-                    miformnotaventa.Idventa = Convert.ToInt32(row.Cells["codigo"].Value.ToString()); 
-                    miformnotaventa.ShowDialog();
-                    //mireporteventa.Tipoimp = Convert.ToString(NegocioConfigEmpresa.confsistema("modoimpventa"));
-                    //mireporteventa.Codventa = Convert.ToInt32(row.Cells["codigo"].Value.ToString());
-                    //mireporteventa.Show();
-
-                }
-
-                else
-                {
-                    //  Ticketventa miticket = new Ticketventa(Convert.ToInt32(row.Cells["codigo"].Value.ToString()));
-                    //miticket.ShowDialog();
-                    Ticketventa miticket = new Formreportes.Ticketventa(Convert.ToInt32(row.Cells["codigo"].Value.ToString()));
-                    if (NegocioConfigEmpresa.marcafiscal == "elec" && row.Cells["Letra"].Value.ToString() != "X")
-                    {
-                         miticket = new Formreportes.Ticketventa(Convert.ToInt32( row.Cells["codigo"].Value.ToString()));
-                        miticket.ShowDialog();
-
-                    }
-                    else if (row.Cells["Letra"].Value.ToString() == "X")
-                    {   
-                        TicketProforma miticketproforma = new Formreportes.TicketProforma(Convert.ToInt32(row.Cells["codigo"].Value.ToString()));
-                        miticketproforma.ShowDialog();
-                    }
-                    
-                  
-
-                    // reportName is the Assembly Qualified Name of the report
-
-
-
-                    //       miformticket.Tipoimp = Convert.ToString(NegocioConfigEmpresa.confsistema("modoimpventa"));
-                    //     miformticket.Codventa = Convert.ToInt32(row.Cells["codigo"].Value.ToString());
-                    //   miformticket.Show();
-
-                }
-
-
+                
+                    FrmReportPresup frmReportPresup = new FrmReportPresup(Convert.ToInt32(row.Cells["codigo"].Value.ToString()));
+                    frmReportPresup.ShowDialog();
+                
             }
+            else
+            {
+                if (NegocioConfigEmpresa.confsistema("imprimirventa").ToString() == "True")
+                {
+                    if (NegocioConfigEmpresa.confsistema("tipoimpresion").ToString() == "tipocarro")
+                    {
+                        //miformnotaventa.Tipoimp = Convert.ToString(NegocioConfigEmpresa.confsistema("modoimpventa"));
+                        miformnotaventa.Idventa = Convert.ToInt32(row.Cells["codigo"].Value.ToString());
+                        miformnotaventa.ShowDialog();
+                        //mireporteventa.Tipoimp = Convert.ToString(NegocioConfigEmpresa.confsistema("modoimpventa"));
+                        //mireporteventa.Codventa = Convert.ToInt32(row.Cells["codigo"].Value.ToString());
+                        //mireporteventa.Show();
+
+                    }
+
+                    else
+                    {
+                        //  Ticketventa miticket = new Ticketventa(Convert.ToInt32(row.Cells["codigo"].Value.ToString()));
+                        //miticket.ShowDialog();
+                        Ticketventa miticket = new Formreportes.Ticketventa(Convert.ToInt32(row.Cells["codigo"].Value.ToString()));
+                        if (NegocioConfigEmpresa.marcafiscal == "elec" && row.Cells["Letra"].Value.ToString() != "X")
+                        {
+                            miticket = new Formreportes.Ticketventa(Convert.ToInt32(row.Cells["codigo"].Value.ToString()));
+                            miticket.ShowDialog();
+
+                        }
+                        else if (row.Cells["Letra"].Value.ToString() == "X")
+                        {
+                            TicketProforma miticketproforma = new Formreportes.TicketProforma(Convert.ToInt32(row.Cells["codigo"].Value.ToString()));
+                            miticketproforma.ShowDialog();
+                        }
+
+
+
+                        // reportName is the Assembly Qualified Name of the report
+
+
+
+                        //       miformticket.Tipoimp = Convert.ToString(NegocioConfigEmpresa.confsistema("modoimpventa"));
+                        //     miformticket.Codventa = Convert.ToInt32(row.Cells["codigo"].Value.ToString());
+                        //   miformticket.Show();
+
+                    }
+
+
+                }
+            }
+            
         }
 
         private void rdBVenta_Click(object sender, EventArgs e)

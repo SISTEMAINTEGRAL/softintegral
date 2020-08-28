@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data;
 using System.Data.SqlClient;
+using System.Data.SQLite;
+using System.ComponentModel.Design;
 
 namespace Capa_Datos
 {
@@ -788,7 +790,7 @@ namespace Capa_Datos
             }
             return dtResult;
         }
-        public DataTable mostrar()
+        public DataTable mostrar(bool mostrartodo = false)
         {
 
             //Modo 5 para DB
@@ -801,7 +803,7 @@ namespace Capa_Datos
 
                 SqlCommand comando = ProcAlmacenado.CrearProc(cn, "SP_ARTICULO");
                 //Modo 5 MOSTRAR
-                SqlParameter parModo = ProcAlmacenado.asignarParametros("@modo", SqlDbType.Int, 5);
+                SqlParameter parModo = ProcAlmacenado.asignarParametros("@modo", SqlDbType.Int, mostrartodo == false ? 5 : 16);
                 comando.Parameters.Add(parModo);
                 //Asigno al parametro @idcategoria, aunque no lo use
                 SqlParameter parIdArticulo = ProcAlmacenado.asignarParametros("@idarticulo", SqlDbType.Int);
@@ -1000,20 +1002,21 @@ namespace Capa_Datos
             SqlConnection cn = new SqlConnection(Conexion.conexion);
             cn.Open();
            
-            query = "SELECT a.idarticulo,a.codigo ,a.nombre ,a.descripcion ,a.idcategoria ,a.precio,a.stock_actual,a.pesable,a.cantidadpormayor, a.preciopormayor,a.iva,a.cantidadpormayor2,a.preciopormayor2,a.precio_oferta,a.fechadeoferta,a.habilitarfechaoferta ,a.bulto_cantidad ,a.bulto_codigobarra,c.nombre as nombrecategoria, a.stock_minimo FROM articulo A inner join categoria C on C.idcategoria = A.idcategoria  WHERE ";
+            query = "SELECT a.idarticulo,a.codigo ,a.nombre ,a.descripcion ,a.idcategoria ,a.precio,a.stock_actual,a.pesable,a.cantidadpormayor, a.preciopormayor,a.iva,a.cantidadpormayor2,a.preciopormayor2,a.precio_oferta,a.fechadeoferta,a.habilitarfechaoferta ,a.bulto_cantidad ,a.bulto_codigobarra,c.nombre as nombrecategoria, a.stock_minimo FROM articulo A inner join categoria C on C.idcategoria = A.idcategoria  WHERE estado = 1";
             if (tipo == "poridarticulo")
             {
-                query = query + " idarticulo = @id";
+                query = query + " and idarticulo = @id";
             }
             if (tipo == "porbarra")
             {
-                query = query + " codigo = @id";
+                query = query + "and codigo = @id";
             }
             if (tipo == "porbulto")
             {
-                query = query + " bulto_codigobarra = @id";
+                query = query + "and bulto_codigobarra = @id";
             }
 
+             
            
             SqlCommand cmd = new SqlCommand(query, cn);
             if (tipo == "porbarra" || tipo == "porbulto")
@@ -1558,6 +1561,80 @@ namespace Capa_Datos
                 throw ex;
             }
             return dtResult;
+
+        }
+        public DataTable mostrarsqlite ()
+        {
+            DataTable datadetalle = new DataTable();
+            SQLiteConnection cadenaconexion = new SQLiteConnection(ConexionSQLITE.cadenaconexion);
+
+            cadenaconexion.Open();
+            using (SQLiteCommand micomando = new SQLiteCommand("select * from articulo ",cadenaconexion))
+            {
+                SQLiteDataAdapter adapter = new SQLiteDataAdapter(micomando);
+                adapter.Fill(datadetalle);
+
+            }
+            cadenaconexion.Close();
+                return datadetalle;
+
+        }
+        
+        public void insertararticulosqlite(List<DatosArticulo> listaArticulo)
+        {
+            SQLiteConnection cadenaconexion = new SQLiteConnection(ConexionSQLITE.cadenaconexion);
+            ConexionSQLITE conexionSQLITE = new ConexionSQLITE();
+            string query1 = " delete from articulo";
+            conexionSQLITE.ExecuteQuery(query1);
+
+            cadenaconexion.Open();
+
+            foreach (DatosArticulo articulo in listaArticulo)
+                {
+                    bool articulopesable = articulo.pesable == 0 ? false : true;
+                    
+                   using (SQLiteCommand Comando = new SQLiteCommand("INSERT INTO articulo (idarticulo,codigo ,nombre ,descripcion,precio,precio_Compra " +
+                    " ,utilidad,pesable ,flete ,cantidadpormayor,preciopormayor,iva ,cantidadpormayor2 ,preciopormayor2,precio_oferta " +
+                    ",utilidadpormayor ,utilidadpormayor2,utilidadoferta,stock_minimo,stock_actual,idcategoria,estado,preciomanual,constock,idsubcategoria,bulto_cantidad,bulto_codigobarra) " +
+                    " VALUES (@idarticulo,@codigo,@nombre,@descripcion,@precio,@precio_compra,@utilidad,@pesable,@flete,@cantidadpormayor, " +
+                    " @preciopormayor,@iva,@cantidadpormayor2,@preciopormayor2,@precio_oferta,@utilidadpormayor,@utilidadpormayor2, " +
+                    " @utilidadoferta, @stock_minimo,@stock_actual,@idcategoria,@estado,@preciomanual, @constock, @idsubcategoria,@bulto_cantidad,@bulto_codigobarra)  ", cadenaconexion))
+                    {
+                        Comando.Parameters.AddWithValue("@idarticulo", articulo.idArticulo);
+                        Comando.Parameters.AddWithValue("@codigo", articulo.codigo);
+                        Comando.Parameters.AddWithValue("@nombre", articulo.nombre);
+                        Comando.Parameters.AddWithValue("@descripcion", articulo.descripcion);
+                        Comando.Parameters.AddWithValue("@precio", articulo.precio);
+                        Comando.Parameters.AddWithValue("@precio_compra", articulo.PrecioCompra);
+                        Comando.Parameters.AddWithValue("@utilidad", articulo.utilidad);
+                        Comando.Parameters.AddWithValue("@pesable", articulo.pesable == 0 ? false : true);
+                        Comando.Parameters.AddWithValue("@flete", articulo.flete);
+                        Comando.Parameters.AddWithValue("@cantidadpormayor", articulo.cantidadpormayor);
+                        Comando.Parameters.AddWithValue("@preciopormayor", articulo.preciopormayor);
+                        Comando.Parameters.AddWithValue("@iva", articulo.iva);
+                        Comando.Parameters.AddWithValue("@cantidadpormayor2", articulo.cantidadpormayor2);
+                        Comando.Parameters.AddWithValue("@preciopormayor2", articulo.preciopormayor2);
+                        Comando.Parameters.AddWithValue("@precio_oferta", articulo.precio_oferta);
+                        Comando.Parameters.AddWithValue("@utilidadpormayor", articulo.utilidadpreciopormayor);
+                        Comando.Parameters.AddWithValue("@utilidadpormayor2", articulo.utilidadpreciopormayor2);
+                        Comando.Parameters.AddWithValue("@utilidadoferta", articulo.utilidadoferta);
+                        Comando.Parameters.AddWithValue("@stock_minimo", articulo.stock_minimo);
+                        Comando.Parameters.AddWithValue("@stock_actual", 0);
+                        Comando.Parameters.AddWithValue("@idcategoria", articulo.idCategoria);
+                        Comando.Parameters.AddWithValue("@estado", 1);
+                        Comando.Parameters.AddWithValue("@preciomanual", 1);
+                        Comando.Parameters.AddWithValue("@constock", 1);
+                        Comando.Parameters.AddWithValue("@idsubcategoria", articulo.idsubcategoria);
+                        Comando.Parameters.AddWithValue("@bulto_cantidad", articulo.bulto_cantidad);
+                        Comando.Parameters.AddWithValue("@bulto_codigobarra", articulo.bulto_codigobarra);
+
+                    Comando.ExecuteNonQuery();
+                       
+                   }
+            }
+
+            cadenaconexion.Close();
+
 
         }
 

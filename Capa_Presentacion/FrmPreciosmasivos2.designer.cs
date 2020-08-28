@@ -54,6 +54,7 @@
             this.TxtcambioDv = new System.Windows.Forms.TextBox();
             this.xuiCustomGroupbox1 = new XanderUI.XUICustomGroupbox();
             this.BtnImprimir = new XanderUI.XUISuperButton();
+            this.BtnExportar = new XanderUI.XUISuperButton();
             this.btnAplicar = new XanderUI.XUISuperButton();
             this.BtnCambiar = new XanderUI.XUISuperButton();
             this.btnLimpiarG = new XanderUI.XUISuperButton();
@@ -158,7 +159,7 @@
             this.lblSistemaVenta.Location = new System.Drawing.Point(6, -1);
             this.lblSistemaVenta.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.lblSistemaVenta.Name = "lblSistemaVenta";
-            this.lblSistemaVenta.Size = new System.Drawing.Size(270, 36);
+            this.lblSistemaVenta.Size = new System.Drawing.Size(224, 28);
             this.lblSistemaVenta.TabIndex = 3;
             this.lblSistemaVenta.Text = "PRECIOS MASIVOS";
             this.lblSistemaVenta.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -166,10 +167,10 @@
             // txtPorcentaje
             // 
             this.txtPorcentaje.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtPorcentaje.Location = new System.Drawing.Point(347, 106);
+            this.txtPorcentaje.Location = new System.Drawing.Point(314, 106);
             this.txtPorcentaje.Margin = new System.Windows.Forms.Padding(6);
             this.txtPorcentaje.Name = "txtPorcentaje";
-            this.txtPorcentaje.Size = new System.Drawing.Size(91, 35);
+            this.txtPorcentaje.Size = new System.Drawing.Size(91, 30);
             this.txtPorcentaje.TabIndex = 62;
             // 
             // label1
@@ -178,7 +179,7 @@
             this.label1.Location = new System.Drawing.Point(135, 111);
             this.label1.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(169, 29);
+            this.label1.Size = new System.Drawing.Size(139, 25);
             this.label1.TabIndex = 61;
             this.label1.Text = "Porcentaje % :";
             // 
@@ -188,7 +189,7 @@
             this.label3.Location = new System.Drawing.Point(132, 43);
             this.label3.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(227, 29);
+            this.label3.Size = new System.Drawing.Size(186, 25);
             this.label3.TabIndex = 60;
             this.label3.Text = "Campo a modificar :";
             // 
@@ -203,10 +204,10 @@
             "Utilidad",
             "Precio_venta",
             "Flete"});
-            this.cbcampoamodificar.Location = new System.Drawing.Point(344, 32);
+            this.cbcampoamodificar.Location = new System.Drawing.Point(322, 42);
             this.cbcampoamodificar.Margin = new System.Windows.Forms.Padding(6);
             this.cbcampoamodificar.Name = "cbcampoamodificar";
-            this.cbcampoamodificar.Size = new System.Drawing.Size(360, 37);
+            this.cbcampoamodificar.Size = new System.Drawing.Size(197, 33);
             this.cbcampoamodificar.TabIndex = 59;
             // 
             // DGVenta
@@ -256,36 +257,43 @@
             // menucodarticulo
             // 
             this.menucodarticulo.HeaderText = "Codigo";
+            this.menucodarticulo.MinimumWidth = 6;
             this.menucodarticulo.Name = "menucodarticulo";
             // 
             // menunombre
             // 
             this.menunombre.HeaderText = "Nombre";
+            this.menunombre.MinimumWidth = 6;
             this.menunombre.Name = "menunombre";
             // 
             // menudescripcion
             // 
             this.menudescripcion.HeaderText = "Descripcion";
+            this.menudescripcion.MinimumWidth = 6;
             this.menudescripcion.Name = "menudescripcion";
             // 
             // menupreciocompra
             // 
             this.menupreciocompra.HeaderText = "Preciocompra";
+            this.menupreciocompra.MinimumWidth = 6;
             this.menupreciocompra.Name = "menupreciocompra";
             // 
             // menutilidad
             // 
             this.menutilidad.HeaderText = "Utilidad";
+            this.menutilidad.MinimumWidth = 6;
             this.menutilidad.Name = "menutilidad";
             // 
             // menuflete
             // 
             this.menuflete.HeaderText = "Flete";
+            this.menuflete.MinimumWidth = 6;
             this.menuflete.Name = "menuflete";
             // 
             // menuprecioventa
             // 
             this.menuprecioventa.HeaderText = "Precioventa";
+            this.menuprecioventa.MinimumWidth = 6;
             this.menuprecioventa.Name = "menuprecioventa";
             // 
             // contextMenuStrip1
@@ -294,12 +302,12 @@
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.Menudelete});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(175, 34);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(158, 28);
             // 
             // Menudelete
             // 
             this.Menudelete.Name = "Menudelete";
-            this.Menudelete.Size = new System.Drawing.Size(174, 30);
+            this.Menudelete.Size = new System.Drawing.Size(157, 24);
             this.Menudelete.Text = "Eliminar fila";
             this.Menudelete.Click += new System.EventHandler(this.Menudelete_Click);
             // 
@@ -310,7 +318,7 @@
             this.TxtcambioDv.Margin = new System.Windows.Forms.Padding(8, 14, 8, 14);
             this.TxtcambioDv.MaxLength = 10;
             this.TxtcambioDv.Name = "TxtcambioDv";
-            this.TxtcambioDv.Size = new System.Drawing.Size(268, 35);
+            this.TxtcambioDv.Size = new System.Drawing.Size(268, 30);
             this.TxtcambioDv.TabIndex = 71;
             this.TxtcambioDv.Text = "0";
             this.TxtcambioDv.Visible = false;
@@ -325,6 +333,7 @@
             this.xuiCustomGroupbox1.BorderColor = System.Drawing.Color.DodgerBlue;
             this.xuiCustomGroupbox1.BorderWidth = 1;
             this.xuiCustomGroupbox1.Controls.Add(this.BtnImprimir);
+            this.xuiCustomGroupbox1.Controls.Add(this.BtnExportar);
             this.xuiCustomGroupbox1.Controls.Add(this.btnAplicar);
             this.xuiCustomGroupbox1.Controls.Add(this.BtnCambiar);
             this.xuiCustomGroupbox1.Controls.Add(this.btnLimpiarG);
@@ -367,6 +376,31 @@
             this.BtnImprimir.Vertical_Alignment = System.Drawing.StringAlignment.Center;
             this.BtnImprimir.Click += new System.EventHandler(this.BtnImprimir_Click);
             // 
+            // BtnExportar
+            // 
+            this.BtnExportar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.BtnExportar.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(144)))), ((int)(((byte)(247)))));
+            this.BtnExportar.ButtonImage = global::Capa_Presentacion.Properties.Resources.Save_20px;
+            this.BtnExportar.ButtonSmoothing = System.Drawing.Drawing2D.SmoothingMode.HighSpeed;
+            this.BtnExportar.ButtonStyle = XanderUI.XUISuperButton.Style.RoundedEdges;
+            this.BtnExportar.ButtonText = "Exportar Productos";
+            this.BtnExportar.CornerRadius = 5;
+            this.BtnExportar.Horizontal_Alignment = System.Drawing.StringAlignment.Center;
+            this.BtnExportar.HoverBackgroundColor = System.Drawing.Color.IndianRed;
+            this.BtnExportar.HoverTextColor = System.Drawing.Color.Yellow;
+            this.BtnExportar.ImagePosition = XanderUI.XUISuperButton.imgPosition.Left;
+            this.BtnExportar.Location = new System.Drawing.Point(636, 58);
+            this.BtnExportar.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.BtnExportar.Name = "BtnExportar";
+            this.BtnExportar.SelectedBackColor = System.Drawing.Color.LimeGreen;
+            this.BtnExportar.SelectedTextColor = System.Drawing.Color.White;
+            this.BtnExportar.Size = new System.Drawing.Size(255, 61);
+            this.BtnExportar.SuperSelected = false;
+            this.BtnExportar.TabIndex = 134;
+            this.BtnExportar.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(245)))), ((int)(((byte)(255)))));
+            this.BtnExportar.Vertical_Alignment = System.Drawing.StringAlignment.Center;
+            this.BtnExportar.Click += new System.EventHandler(this.BtnExportar_Click);
+            // 
             // btnAplicar
             // 
             this.btnAplicar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
@@ -405,12 +439,12 @@
             this.BtnCambiar.HoverBackgroundColor = System.Drawing.Color.IndianRed;
             this.BtnCambiar.HoverTextColor = System.Drawing.Color.Yellow;
             this.BtnCambiar.ImagePosition = XanderUI.XUISuperButton.imgPosition.Left;
-            this.BtnCambiar.Location = new System.Drawing.Point(547, 95);
+            this.BtnCambiar.Location = new System.Drawing.Point(418, 100);
             this.BtnCambiar.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.BtnCambiar.Name = "BtnCambiar";
             this.BtnCambiar.SelectedBackColor = System.Drawing.Color.LimeGreen;
             this.BtnCambiar.SelectedTextColor = System.Drawing.Color.White;
-            this.BtnCambiar.Size = new System.Drawing.Size(157, 52);
+            this.BtnCambiar.Size = new System.Drawing.Size(103, 39);
             this.BtnCambiar.SuperSelected = false;
             this.BtnCambiar.TabIndex = 133;
             this.BtnCambiar.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(245)))), ((int)(((byte)(255)))));
@@ -467,7 +501,7 @@
             // 
             // FrmPreciosmasivos2
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(14F, 29F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1284, 813);
             this.ControlBox = false;
@@ -529,5 +563,6 @@
         private XanderUI.XUISuperButton btnAplicar;
         private XanderUI.XUISuperButton BtnCambiar;
         private XanderUI.XUISuperButton BtnImprimir;
+        private XanderUI.XUISuperButton BtnExportar;
     }
 }

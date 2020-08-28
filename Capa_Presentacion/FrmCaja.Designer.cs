@@ -85,7 +85,7 @@
             this.lblNomProducto.Location = new System.Drawing.Point(275, 33);
             this.lblNomProducto.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblNomProducto.Name = "lblNomProducto";
-            this.lblNomProducto.Size = new System.Drawing.Size(80, 29);
+            this.lblNomProducto.Size = new System.Drawing.Size(67, 25);
             this.lblNomProducto.TabIndex = 26;
             this.lblNomProducto.Text = "Fecha";
             // 
@@ -97,7 +97,7 @@
             this.label5.Location = new System.Drawing.Point(14, 589);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(189, 33);
+            this.label5.Size = new System.Drawing.Size(156, 29);
             this.label5.TabIndex = 74;
             this.label5.Text = "Saldo Inicial :";
             // 
@@ -109,7 +109,7 @@
             this.txtsaldoinicial.Location = new System.Drawing.Point(16, 631);
             this.txtsaldoinicial.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtsaldoinicial.Name = "txtsaldoinicial";
-            this.txtsaldoinicial.Size = new System.Drawing.Size(168, 40);
+            this.txtsaldoinicial.Size = new System.Drawing.Size(168, 34);
             this.txtsaldoinicial.TabIndex = 73;
             this.txtsaldoinicial.Text = "0";
             // 
@@ -119,7 +119,7 @@
             this.label4.Location = new System.Drawing.Point(9, 79);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(227, 29);
+            this.label4.Size = new System.Drawing.Size(182, 25);
             this.label4.TabIndex = 72;
             this.label4.Text = "Tipo de movimiento";
             // 
@@ -129,7 +129,7 @@
             this.label3.Location = new System.Drawing.Point(9, 164);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(117, 29);
+            this.label3.Size = new System.Drawing.Size(97, 25);
             this.label3.TabIndex = 72;
             this.label3.Text = "Concepto";
             // 
@@ -139,7 +139,7 @@
             this.TxtConcepto.Location = new System.Drawing.Point(222, 164);
             this.TxtConcepto.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.TxtConcepto.Name = "TxtConcepto";
-            this.TxtConcepto.Size = new System.Drawing.Size(241, 35);
+            this.TxtConcepto.Size = new System.Drawing.Size(241, 30);
             this.TxtConcepto.TabIndex = 71;
             // 
             // cbTipoMov
@@ -150,7 +150,7 @@
             this.cbTipoMov.Location = new System.Drawing.Point(221, 79);
             this.cbTipoMov.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.cbTipoMov.Name = "cbTipoMov";
-            this.cbTipoMov.Size = new System.Drawing.Size(327, 37);
+            this.cbTipoMov.Size = new System.Drawing.Size(327, 33);
             this.cbTipoMov.TabIndex = 70;
             this.cbTipoMov.SelectedIndexChanged += new System.EventHandler(this.cbTipoMov_SelectedIndexChanged);
             // 
@@ -161,7 +161,7 @@
             this.rbEgreso.Location = new System.Drawing.Point(134, 31);
             this.rbEgreso.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.rbEgreso.Name = "rbEgreso";
-            this.rbEgreso.Size = new System.Drawing.Size(138, 33);
+            this.rbEgreso.Size = new System.Drawing.Size(116, 29);
             this.rbEgreso.TabIndex = 68;
             this.rbEgreso.Text = "EGRESO";
             this.rbEgreso.UseVisualStyleBackColor = true;
@@ -175,7 +175,7 @@
             this.rbIngreso.Location = new System.Drawing.Point(7, 31);
             this.rbIngreso.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.rbIngreso.Name = "rbIngreso";
-            this.rbIngreso.Size = new System.Drawing.Size(146, 33);
+            this.rbIngreso.Size = new System.Drawing.Size(122, 29);
             this.rbIngreso.TabIndex = 67;
             this.rbIngreso.TabStop = true;
             this.rbIngreso.Text = "INGRESO";
@@ -188,7 +188,7 @@
             this.label2.Location = new System.Drawing.Point(10, 201);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(69, 29);
+            this.label2.Size = new System.Drawing.Size(58, 25);
             this.label2.TabIndex = 66;
             this.label2.Text = "Valor";
             // 
@@ -198,7 +198,7 @@
             this.textBox2.Location = new System.Drawing.Point(221, 204);
             this.textBox2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(110, 35);
+            this.textBox2.Size = new System.Drawing.Size(110, 30);
             this.textBox2.TabIndex = 65;
             // 
             // cbxPlanCuenta
@@ -209,7 +209,7 @@
             this.cbxPlanCuenta.Location = new System.Drawing.Point(221, 121);
             this.cbxPlanCuenta.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.cbxPlanCuenta.Name = "cbxPlanCuenta";
-            this.cbxPlanCuenta.Size = new System.Drawing.Size(327, 37);
+            this.cbxPlanCuenta.Size = new System.Drawing.Size(327, 33);
             this.cbxPlanCuenta.TabIndex = 62;
             // 
             // label1
@@ -218,7 +218,7 @@
             this.label1.Location = new System.Drawing.Point(8, 121);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(177, 29);
+            this.label1.Size = new System.Drawing.Size(147, 25);
             this.label1.TabIndex = 61;
             this.label1.Text = "Plan de Cuenta";
             // 
@@ -231,7 +231,7 @@
             this.txtTotal.Location = new System.Drawing.Point(700, 631);
             this.txtTotal.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtTotal.Name = "txtTotal";
-            this.txtTotal.Size = new System.Drawing.Size(215, 40);
+            this.txtTotal.Size = new System.Drawing.Size(215, 34);
             this.txtTotal.TabIndex = 60;
             this.txtTotal.Text = "0";
             // 
@@ -243,7 +243,7 @@
             this.lblTotal.Location = new System.Drawing.Point(696, 593);
             this.lblTotal.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblTotal.Name = "lblTotal";
-            this.lblTotal.Size = new System.Drawing.Size(104, 33);
+            this.lblTotal.Size = new System.Drawing.Size(87, 29);
             this.lblTotal.TabIndex = 59;
             this.lblTotal.Text = "Total $";
             // 
@@ -255,7 +255,7 @@
             this.txtTotalIngreso.Location = new System.Drawing.Point(465, 631);
             this.txtTotalIngreso.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtTotalIngreso.Name = "txtTotalIngreso";
-            this.txtTotalIngreso.Size = new System.Drawing.Size(168, 40);
+            this.txtTotalIngreso.Size = new System.Drawing.Size(168, 34);
             this.txtTotalIngreso.TabIndex = 58;
             this.txtTotalIngreso.Text = "0";
             // 
@@ -267,7 +267,7 @@
             this.txtToltaEgreso.Location = new System.Drawing.Point(241, 631);
             this.txtToltaEgreso.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.txtToltaEgreso.Name = "txtToltaEgreso";
-            this.txtToltaEgreso.Size = new System.Drawing.Size(168, 40);
+            this.txtToltaEgreso.Size = new System.Drawing.Size(168, 34);
             this.txtToltaEgreso.TabIndex = 57;
             this.txtToltaEgreso.Text = "0";
             // 
@@ -279,7 +279,7 @@
             this.lblTotalEgreso.Location = new System.Drawing.Point(462, 590);
             this.lblTotalEgreso.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblTotalEgreso.Name = "lblTotalEgreso";
-            this.lblTotalEgreso.Size = new System.Drawing.Size(196, 33);
+            this.lblTotalEgreso.Size = new System.Drawing.Size(164, 29);
             this.lblTotalEgreso.TabIndex = 56;
             this.lblTotalEgreso.Text = "Total Egreso :";
             // 
@@ -291,7 +291,7 @@
             this.lblTotalIngreso.Location = new System.Drawing.Point(241, 587);
             this.lblTotalIngreso.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblTotalIngreso.Name = "lblTotalIngreso";
-            this.lblTotalIngreso.Size = new System.Drawing.Size(201, 33);
+            this.lblTotalIngreso.Size = new System.Drawing.Size(167, 29);
             this.lblTotalIngreso.TabIndex = 55;
             this.lblTotalIngreso.Text = "Total Ingreso :";
             // 
@@ -302,7 +302,7 @@
             this.dtpFechaCaja.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.dtpFechaCaja.MinDate = new System.DateTime(1969, 12, 29, 0, 0, 0, 0);
             this.dtpFechaCaja.Name = "dtpFechaCaja";
-            this.dtpFechaCaja.Size = new System.Drawing.Size(240, 35);
+            this.dtpFechaCaja.Size = new System.Drawing.Size(240, 30);
             this.dtpFechaCaja.TabIndex = 53;
             this.dtpFechaCaja.ValueChanged += new System.EventHandler(this.dtpFechaCaja_ValueChanged);
             this.dtpFechaCaja.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dtpFechaCaja_KeyDown);
@@ -314,12 +314,12 @@
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.Menudelete});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(248, 34);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(217, 28);
             // 
             // Menudelete
             // 
             this.Menudelete.Name = "Menudelete";
-            this.Menudelete.Size = new System.Drawing.Size(247, 30);
+            this.Menudelete.Size = new System.Drawing.Size(216, 24);
             this.Menudelete.Text = "Eliminar movimiento";
             this.Menudelete.Click += new System.EventHandler(this.Menudelete_Click);
             // 
@@ -331,7 +331,7 @@
             this.lblCaja.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.lblCaja.Location = new System.Drawing.Point(0, 0);
             this.lblCaja.Name = "lblCaja";
-            this.lblCaja.Size = new System.Drawing.Size(93, 33);
+            this.lblCaja.Size = new System.Drawing.Size(76, 29);
             this.lblCaja.TabIndex = 3;
             this.lblCaja.Text = "CAJA";
             // 
@@ -637,7 +637,7 @@
             // 
             // FrmCaja
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(14F, 29F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.SystemColors.Control;

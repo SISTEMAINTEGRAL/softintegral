@@ -465,15 +465,16 @@ namespace Capa_Presentacion
         }
         private void btnGuardar_Click(object sender, EventArgs e)
         {
-           
+            DataTable dataproducto = new DataTable();
             try
             {
                 string respuesta = "";
                 //if (String.IsNullOrEmpty(txtPrecio.Text))
                 //{
-                    
+
                 //}
                 //si el string es nulo o vacio 
+                
                 if (String.IsNullOrEmpty(txtNombreConfig.Text) || String.IsNullOrEmpty(txtPrecio.Text) || String.IsNullOrEmpty(txtCantInicial.Text) || String.IsNullOrEmpty(txtUtilidad.Text) || String.IsNullOrEmpty(TxtPcompra.Text) || String.IsNullOrEmpty(Txtflete.Text) )
                 {
                     UtilityFrm.mensajeError("Hay Campos sin completar,rellene y vuelva a intentarlo");
@@ -489,6 +490,14 @@ namespace Capa_Presentacion
                     int pesable = cbxPesable.Checked == true ? 1 : 0;
                     if (isNuevo == true)
                     {
+                        dataproducto = NegocioArticulo.buscarCodigoBarra(txtCodigoBarra.Text);
+
+                        if (dataproducto.Rows.Count > 0)
+                        {
+                            UtilityFrm.mensajeError("El codigo de barra que intenta ingresar ya se encuentra agregado al sistema");
+                            return;
+                        }
+
                         objarticulo = new DatosArticulo();
                         //pesable es un bit que representa un producto si es pesable (KG) o no
                         objarticulo.Nombre = txtNombreConfig.Text.Trim();

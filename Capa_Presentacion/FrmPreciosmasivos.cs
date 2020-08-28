@@ -402,5 +402,22 @@ namespace Capa_Presentacion
                 DGVenta.Rows.Clear();
             }
         }
+
+        private void BtnExportar_Click(object sender, EventArgs e)
+        {
+
+            if (UtilityFrm.mensajeopcionsiono("Desea exportar todos los productos del sistema"))
+            {
+                NegocioArticulo.ExportarProductos(NegocioArticulo.mostrartodo(), true, "negocio");
+            }
+            else if (DGVenta.Rows.Count != 0)
+            {
+
+                NegocioArticulo.ExportarProductos(GrillaADataTable(DGVenta), false);
+            }
+
+            UtilityFrm.mensajeConfirm("La actualizacion se realizo con exito");
+            DGVenta.Rows.Clear();
+        }
     }
 }

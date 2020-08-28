@@ -156,13 +156,7 @@ namespace Capa_Presentacion
         private void button1_Click(object sender, EventArgs e)
         {
             //Notificacion.ShowBalloonTip(10);
-            PopupNotifier popup = new PopupNotifier();
-            popup.BodyColor = Color.FromArgb(0, 100, 200);
-            popup.TitleColor = Color.White;
-            popup.ContentColor = Color.White;
-            popup.TitleText = "VENTA";
-            popup.ContentText = "LA VENTA SE REALIZO CORRECTAMENTE";
-            popup.Popup();
+
             //FrmPopup popup = new FrmPopup("tu hermana en tanga", Color.FromArgb(0, 100, 200));
             //popup.Show();
             // FrmStockRetirodeMercaderia pedido = new FrmStockRetirodeMercaderia();
@@ -171,8 +165,8 @@ namespace Capa_Presentacion
             // miclase.comprobante_electronico(11, 31472915);
             //Application.StartupPath + @"\" + "Certificado"  + @"\" + "certificado.pfx"
 
-            // Frmserviciotecnico  objmasivo = new Frmserviciotecnico();
-            //objmasivo.ShowDialog();
+            FrmImportArticulos objmasivo = new FrmImportArticulos();
+            objmasivo.ShowDialog();
             // string algo = UtilityFrm.GetImpresoraDefecto();
         }
     }

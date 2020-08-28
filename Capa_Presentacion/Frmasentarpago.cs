@@ -96,7 +96,7 @@ namespace Capa_Presentacion
         {
             if (Convert.ToDecimal ( txtPago.Text) <= Convert.ToDecimal( txtSaldoapagar.Text) && Convert.ToDecimal(txtPago.Text) >= 0)
             {
-                this.importe = Convert.ToInt32(txtPago.Text);
+                this.importe = Convert.ToDecimal (txtPago.Text);
                 confirmarpago = true;
                 this.Close();
             }
@@ -132,6 +132,11 @@ namespace Capa_Presentacion
         private void btnCerrar_MouseMove(object sender, MouseEventArgs e)
         {
             btnCerrar.BackColor = Color.Red;
+        }
+
+        private void txtPago_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            UtilityFrm.NumDecTeclado(e, txtPago);
         }
     }
 }

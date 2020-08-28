@@ -142,7 +142,7 @@
             this.label1.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(200, 26);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(152, 36);
+            this.label1.Size = new System.Drawing.Size(128, 30);
             this.label1.TabIndex = 23;
             this.label1.Text = "Fecha Fin";
             // 
@@ -151,7 +151,7 @@
             this.dtpFechaFin.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtpFechaFin.Location = new System.Drawing.Point(204, 57);
             this.dtpFechaFin.Name = "dtpFechaFin";
-            this.dtpFechaFin.Size = new System.Drawing.Size(157, 35);
+            this.dtpFechaFin.Size = new System.Drawing.Size(157, 30);
             this.dtpFechaFin.TabIndex = 17;
             // 
             // dtpFechaIni
@@ -159,7 +159,7 @@
             this.dtpFechaIni.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtpFechaIni.Location = new System.Drawing.Point(13, 57);
             this.dtpFechaIni.Name = "dtpFechaIni";
-            this.dtpFechaIni.Size = new System.Drawing.Size(157, 35);
+            this.dtpFechaIni.Size = new System.Drawing.Size(157, 30);
             this.dtpFechaIni.TabIndex = 16;
             // 
             // lblFechaIni
@@ -168,7 +168,7 @@
             this.lblFechaIni.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblFechaIni.Location = new System.Drawing.Point(15, 26);
             this.lblFechaIni.Name = "lblFechaIni";
-            this.lblFechaIni.Size = new System.Drawing.Size(191, 36);
+            this.lblFechaIni.Size = new System.Drawing.Size(160, 30);
             this.lblFechaIni.TabIndex = 22;
             this.lblFechaIni.Text = "Fecha Inicio";
             // 
@@ -183,7 +183,7 @@
             this.txtTotal.Name = "txtTotal";
             this.txtTotal.ReadOnly = true;
             this.txtTotal.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.txtTotal.Size = new System.Drawing.Size(235, 57);
+            this.txtTotal.Size = new System.Drawing.Size(235, 48);
             this.txtTotal.TabIndex = 61;
             this.txtTotal.Text = "0,00";
             // 
@@ -195,7 +195,7 @@
             this.lblTotal.Location = new System.Drawing.Point(892, 738);
             this.lblTotal.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblTotal.Name = "lblTotal";
-            this.lblTotal.Size = new System.Drawing.Size(115, 28);
+            this.lblTotal.Size = new System.Drawing.Size(96, 23);
             this.lblTotal.TabIndex = 60;
             this.lblTotal.Text = "TOTAL $ :";
             // 
@@ -243,7 +243,7 @@
             this.rdBVenta.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.rdBVenta.Location = new System.Drawing.Point(474, 55);
             this.rdBVenta.Name = "rdBVenta";
-            this.rdBVenta.Size = new System.Drawing.Size(109, 33);
+            this.rdBVenta.Size = new System.Drawing.Size(95, 29);
             this.rdBVenta.TabIndex = 35;
             this.rdBVenta.TabStop = true;
             this.rdBVenta.Text = "Venta :";
@@ -256,7 +256,7 @@
             this.rdBPresupuesto.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.rdBPresupuesto.Location = new System.Drawing.Point(474, 20);
             this.rdBPresupuesto.Name = "rdBPresupuesto";
-            this.rdBPresupuesto.Size = new System.Drawing.Size(184, 33);
+            this.rdBPresupuesto.Size = new System.Drawing.Size(152, 29);
             this.rdBPresupuesto.TabIndex = 34;
             this.rdBPresupuesto.Text = "  Presupuesto";
             this.rdBPresupuesto.UseVisualStyleBackColor = true;
@@ -270,7 +270,7 @@
             this.ChkFactura.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.ChkFactura.Location = new System.Drawing.Point(730, 55);
             this.ChkFactura.Name = "ChkFactura";
-            this.ChkFactura.Size = new System.Drawing.Size(167, 33);
+            this.ChkFactura.Size = new System.Drawing.Size(139, 29);
             this.ChkFactura.TabIndex = 32;
             this.ChkFactura.Text = "P. de factura";
             this.ChkFactura.UseVisualStyleBackColor = true;
@@ -283,7 +283,7 @@
             this.Chkcaja.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.Chkcaja.Location = new System.Drawing.Point(581, 55);
             this.Chkcaja.Name = "Chkcaja";
-            this.Chkcaja.Size = new System.Drawing.Size(140, 33);
+            this.Chkcaja.Size = new System.Drawing.Size(116, 29);
             this.Chkcaja.TabIndex = 31;
             this.Chkcaja.Text = "P. de caja";
             this.Chkcaja.UseVisualStyleBackColor = true;
@@ -379,7 +379,7 @@
             this.lblSistemaVenta.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.lblSistemaVenta.Location = new System.Drawing.Point(3, 6);
             this.lblSistemaVenta.Name = "lblSistemaVenta";
-            this.lblSistemaVenta.Size = new System.Drawing.Size(239, 36);
+            this.lblSistemaVenta.Size = new System.Drawing.Size(200, 28);
             this.lblSistemaVenta.TabIndex = 3;
             this.lblSistemaVenta.Text = "LISTA DE VENTAS";
             this.lblSistemaVenta.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -479,7 +479,7 @@
             this.chartRankingVentas.ChartAreas.Add(chartArea1);
             legend1.Name = "Legend1";
             this.chartRankingVentas.Legends.Add(legend1);
-            this.chartRankingVentas.Location = new System.Drawing.Point(12, 216);
+            this.chartRankingVentas.Location = new System.Drawing.Point(11, 217);
             this.chartRankingVentas.Name = "chartRankingVentas";
             series1.ChartArea = "ChartArea1";
             series1.Legend = "Legend1";
@@ -499,26 +499,26 @@
             this.menureimpresion,
             this.MenuAnular});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(212, 94);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(185, 76);
             // 
             // menuconfventa
             // 
             this.menuconfventa.Name = "menuconfventa";
-            this.menuconfventa.Size = new System.Drawing.Size(211, 30);
+            this.menuconfventa.Size = new System.Drawing.Size(184, 24);
             this.menuconfventa.Text = "Confirmar venta";
             this.menuconfventa.Click += new System.EventHandler(this.menuconfventa_Click);
             // 
             // menureimpresion
             // 
             this.menureimpresion.Name = "menureimpresion";
-            this.menureimpresion.Size = new System.Drawing.Size(211, 30);
+            this.menureimpresion.Size = new System.Drawing.Size(184, 24);
             this.menureimpresion.Text = "Re-imprimir";
             this.menureimpresion.Click += new System.EventHandler(this.menureimpresion_Click);
             // 
             // MenuAnular
             // 
             this.MenuAnular.Name = "MenuAnular";
-            this.MenuAnular.Size = new System.Drawing.Size(211, 30);
+            this.MenuAnular.Size = new System.Drawing.Size(184, 24);
             this.MenuAnular.Text = "Anular";
             this.MenuAnular.Click += new System.EventHandler(this.MenuAnular_Click);
             // 
@@ -531,7 +531,7 @@
             reportDataSource1.Value = this.REPORTE_VENTAPRODUCTOBindingSource;
             this.reportViewer1.LocalReport.DataSources.Add(reportDataSource1);
             this.reportViewer1.LocalReport.ReportEmbeddedResource = "Capa_Presentacion.Reporteproductoventa.rdlc";
-            this.reportViewer1.Location = new System.Drawing.Point(10, 218);
+            this.reportViewer1.Location = new System.Drawing.Point(15, 214);
             this.reportViewer1.Name = "reportViewer1";
             this.reportViewer1.Size = new System.Drawing.Size(1256, 369);
             this.reportViewer1.TabIndex = 67;
@@ -579,7 +579,7 @@
             this.txtPuntoventa.Location = new System.Drawing.Point(424, 119);
             this.txtPuntoventa.Margin = new System.Windows.Forms.Padding(4, 8, 4, 8);
             this.txtPuntoventa.Name = "txtPuntoventa";
-            this.txtPuntoventa.Size = new System.Drawing.Size(88, 35);
+            this.txtPuntoventa.Size = new System.Drawing.Size(88, 30);
             this.txtPuntoventa.TabIndex = 39;
             this.txtPuntoventa.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtPuntoventa_KeyDown);
             // 
@@ -589,7 +589,7 @@
             this.txtIdVenta.Location = new System.Drawing.Point(108, 118);
             this.txtIdVenta.Margin = new System.Windows.Forms.Padding(4, 8, 4, 8);
             this.txtIdVenta.Name = "txtIdVenta";
-            this.txtIdVenta.Size = new System.Drawing.Size(120, 35);
+            this.txtIdVenta.Size = new System.Drawing.Size(120, 30);
             this.txtIdVenta.TabIndex = 39;
             this.txtIdVenta.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtIdVenta_KeyDown);
             // 
@@ -599,7 +599,7 @@
             this.label4.Location = new System.Drawing.Point(15, 122);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(106, 29);
+            this.label4.Size = new System.Drawing.Size(90, 25);
             this.label4.TabIndex = 38;
             this.label4.Text = "Nº Venta";
             // 
@@ -609,7 +609,7 @@
             this.label2.Location = new System.Drawing.Point(236, 124);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(204, 29);
+            this.label2.Size = new System.Drawing.Size(169, 25);
             this.label2.TabIndex = 38;
             this.label2.Text = "Nº Punto de venta";
             // 
@@ -619,7 +619,7 @@
             this.label3.Location = new System.Drawing.Point(542, 120);
             this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(190, 29);
+            this.label3.Size = new System.Drawing.Size(155, 25);
             this.label3.TabIndex = 38;
             this.label3.Text = "Forma de pago :";
             // 
@@ -637,7 +637,7 @@
             "CTACTE"});
             this.cbFormapago.Location = new System.Drawing.Point(714, 119);
             this.cbFormapago.Name = "cbFormapago";
-            this.cbFormapago.Size = new System.Drawing.Size(197, 37);
+            this.cbFormapago.Size = new System.Drawing.Size(197, 33);
             this.cbFormapago.TabIndex = 37;
             // 
             // xuiCustomGroupbox2
@@ -735,6 +735,7 @@
             this.dataLista.MultiSelect = false;
             this.dataLista.Name = "dataLista";
             this.dataLista.RowHeadersVisible = false;
+            this.dataLista.RowHeadersWidth = 51;
             this.dataLista.RowTemplate.Height = 24;
             this.dataLista.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataLista.Size = new System.Drawing.Size(1263, 361);
@@ -773,113 +774,133 @@
             // 
             this.Codigo.FillWeight = 61.54822F;
             this.Codigo.HeaderText = "Codigo";
+            this.Codigo.MinimumWidth = 6;
             this.Codigo.Name = "Codigo";
             // 
             // razon_social
             // 
             this.razon_social.FillWeight = 253.8071F;
             this.razon_social.HeaderText = "Razon_social";
+            this.razon_social.MinimumWidth = 6;
             this.razon_social.Name = "razon_social";
             // 
             // Fecha
             // 
             this.Fecha.FillWeight = 61.54822F;
             this.Fecha.HeaderText = "Fecha";
+            this.Fecha.MinimumWidth = 6;
             this.Fecha.Name = "Fecha";
             // 
             // Tipo_comprobante
             // 
             this.Tipo_comprobante.FillWeight = 61.54822F;
             this.Tipo_comprobante.HeaderText = "Tipo_comprobante";
+            this.Tipo_comprobante.MinimumWidth = 6;
             this.Tipo_comprobante.Name = "Tipo_comprobante";
             // 
             // Total
             // 
             this.Total.FillWeight = 61.54822F;
             this.Total.HeaderText = "Total";
+            this.Total.MinimumWidth = 6;
             this.Total.Name = "Total";
             // 
             // Estado
             // 
             this.Estado.HeaderText = "Estado";
+            this.Estado.MinimumWidth = 6;
             this.Estado.Name = "Estado";
             // 
             // Caja
             // 
             this.Caja.HeaderText = "caja";
+            this.Caja.MinimumWidth = 6;
             this.Caja.Name = "Caja";
             // 
             // idcliente
             // 
             this.idcliente.HeaderText = "idcliente";
+            this.idcliente.MinimumWidth = 6;
             this.idcliente.Name = "idcliente";
             // 
             // Cuit
             // 
             this.Cuit.HeaderText = "cuit";
+            this.Cuit.MinimumWidth = 6;
             this.Cuit.Name = "Cuit";
             // 
             // Nrocomprobante
             // 
             this.Nrocomprobante.HeaderText = "Nrocomprobante";
+            this.Nrocomprobante.MinimumWidth = 6;
             this.Nrocomprobante.Name = "Nrocomprobante";
             // 
             // Letra
             // 
             this.Letra.HeaderText = "Letra";
+            this.Letra.MinimumWidth = 6;
             this.Letra.Name = "Letra";
             // 
             // Neto21
             // 
             this.Neto21.HeaderText = "Neto21";
+            this.Neto21.MinimumWidth = 6;
             this.Neto21.Name = "Neto21";
             this.Neto21.Visible = false;
             // 
             // Totaliva21
             // 
             this.Totaliva21.HeaderText = "Totaliva21";
+            this.Totaliva21.MinimumWidth = 6;
             this.Totaliva21.Name = "Totaliva21";
             this.Totaliva21.Visible = false;
             // 
             // Total_neto105
             // 
             this.Total_neto105.HeaderText = "Total_neto105";
+            this.Total_neto105.MinimumWidth = 6;
             this.Total_neto105.Name = "Total_neto105";
             this.Total_neto105.Visible = false;
             // 
             // Totaliva105
             // 
             this.Totaliva105.HeaderText = "Totaliva105";
+            this.Totaliva105.MinimumWidth = 6;
             this.Totaliva105.Name = "Totaliva105";
             this.Totaliva105.Visible = false;
             // 
             // CAE
             // 
             this.CAE.HeaderText = "CAE";
+            this.CAE.MinimumWidth = 6;
             this.CAE.Name = "CAE";
             this.CAE.Visible = false;
             // 
             // CAE_Fechavencimiento
             // 
             this.CAE_Fechavencimiento.HeaderText = "Caefechavencimiento";
+            this.CAE_Fechavencimiento.MinimumWidth = 6;
             this.CAE_Fechavencimiento.Name = "CAE_Fechavencimiento";
             this.CAE_Fechavencimiento.Visible = false;
             // 
             // Stock
             // 
             this.Stock.HeaderText = "enstock";
+            this.Stock.MinimumWidth = 6;
             this.Stock.Name = "Stock";
             this.Stock.Visible = false;
             // 
             // formadepago
             // 
             this.formadepago.HeaderText = "Forma de pago";
+            this.formadepago.MinimumWidth = 6;
             this.formadepago.Name = "formadepago";
             this.formadepago.Visible = false;
             // 
             // Pago
             // 
             this.Pago.HeaderText = "Pago";
+            this.Pago.MinimumWidth = 6;
             this.Pago.Name = "Pago";
             // 
             // DTDetalleventa
@@ -919,6 +940,7 @@
             this.DTDetalleventa.Name = "DTDetalleventa";
             this.DTDetalleventa.ReadOnly = true;
             this.DTDetalleventa.RowHeadersVisible = false;
+            this.DTDetalleventa.RowHeadersWidth = 51;
             this.DTDetalleventa.RowTemplate.Height = 24;
             this.DTDetalleventa.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.DTDetalleventa.Size = new System.Drawing.Size(1249, 100);
@@ -948,7 +970,7 @@
             // 
             // FrmListadoVentas
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(14F, 29F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.ClientSize = new System.Drawing.Size(1284, 790);

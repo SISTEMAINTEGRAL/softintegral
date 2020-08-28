@@ -11,6 +11,7 @@ using System.IO;
 using System.Configuration;
 using System.Globalization;
 
+
 namespace Capa_negocio
 {
     class NegocioFEpson
@@ -126,9 +127,9 @@ namespace Capa_negocio
         const int ID_RESPONSABILIDAD_IVA_NINGUNO = 0;
         const int ID_RESPONSABILIDAD_IVA_RESPONSABLE_INSCRIPTO = 1;
         const int ID_RESPONSABILIDAD_IVA_NO_RESPONSABLE = 3;
-        const int ID_RESPONSABILIDAD_IVA_MONOTRIBUTISTA = 4;
+        const int ID_RESPONSABILIDAD_IVA_MONOTRIBUTISTA = 6;//4
         const int ID_RESPONSABILIDAD_IVA_CONSUMIDOR_FINAL = 5;
-        const int ID_RESPONSABILIDAD_IVA_EXENTO = 6;
+        const int ID_RESPONSABILIDAD_IVA_EXENTO = 4; //6
         const int ID_RESPONSABILIDAD_IVA_NO_CATEGORIZADO = 7;
         const int ID_RESPONSABILIDAD_IVA_MONOTRIBUTISTA_SOCIAL = 8;
         const int ID_RESPONSABILIDAD_IVA_CONTRIBUYENTE_EVENTUAL = 9;
@@ -413,11 +414,13 @@ namespace Capa_negocio
             return msg;
         }
 
-        private string abrirticketfactura (string tipodocumento = "FACTURA")
+        private string abrirticketfactura (string tipodocumento = "FACTURA" )
         {
                 string msg = "ok";
+            //cuit.Length == 11 ? ID_TIPO_DOCUMENTO_CUIT : ID_TIPO_DOCUMENTO_DNI
             //cargar datos del cliente
-            retorno = CargarDatosCliente(razonsocial, "",domicilio, "", "", ID_TIPO_DOCUMENTO_CUIT, cuit, tipocontribuyente);
+          //retorno= CargarDatosCliente("Nombre Comprador #1", "Nombre Comprador #2", "Domicilio Comprador #1", "Domicilio Comprador #2", "Domicilio Comprador #3", ID_TIPO_DOCUMENTO_CUIT, "24272242549", ID_RESPONSABILIDAD_IVA_MONOTRIBUTISTA);
+            retorno = CargarDatosCliente(razonsocial, "",domicilio, "", "", cuit.Length == 11 ? ID_TIPO_DOCUMENTO_CUIT : ID_TIPO_DOCUMENTO_DNI, cuit, tipocontribuyente);
             if (retorno != ERROR_NINGUNO )
             {
                msg = mostrarmensaje(retorno, "Problema en la carga de cliente");

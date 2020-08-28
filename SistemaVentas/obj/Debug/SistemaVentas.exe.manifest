@@ -16,14 +16,14 @@
       <requestedPrivileges xmlns="urn:schemas-microsoft-com:asm.v3">
         <!--
           Opciones del manifiesto de Control de cuentas de usuario
-          Si desea cambiar el nivel de Control de cuentas de usuario de Windows, reemplace el 
+          Si quiere cambiar el nivel de Control de cuentas de usuario de Windows, reemplace el
           nodo requestedExecutionLevel por alguno de los siguientes.
 
         <requestedExecutionLevel  level="asInvoker" uiAccess="false" />
         <requestedExecutionLevel  level="requireAdministrator" uiAccess="false" />
         <requestedExecutionLevel  level="highestAvailable" uiAccess="false" />
 
-         Si desea usar la virtualización de archivos y del Registro para la 
+         Si desea usar la virtualización de archivos y del Registro para la
          compatibilidad con versiones anteriores, elimine el nodo requestedExecutionLevel.
     -->
         <requestedExecutionLevel level="asInvoker" uiAccess="false" />
@@ -40,41 +40,6 @@
   <dependency>
     <dependentAssembly dependencyType="preRequisite" allowDelayedBinding="true">
       <assemblyIdentity name="Microsoft.Windows.CommonLanguageRuntime" version="4.0.30319.0" />
-    </dependentAssembly>
-  </dependency>
-  <dependency>
-    <dependentAssembly dependencyType="preRequisite" allowDelayedBinding="true">
-      <assemblyIdentity name="log4net" version="1.2.10.0" publicKeyToken="692FBEA5521E1304" language="neutral" processorArchitecture="amd64" />
-    </dependentAssembly>
-  </dependency>
-  <dependency>
-    <dependentAssembly dependencyType="preRequisite" allowDelayedBinding="true">
-      <assemblyIdentity name="Microsoft.ReportViewer.Common" version="12.0.0.0" publicKeyToken="89845DCD8080CC91" language="neutral" processorArchitecture="msil" />
-    </dependentAssembly>
-  </dependency>
-  <dependency>
-    <dependentAssembly dependencyType="preRequisite" allowDelayedBinding="true">
-      <assemblyIdentity name="Microsoft.ReportViewer.DataVisualization" version="11.0.0.0" publicKeyToken="89845DCD8080CC91" language="neutral" processorArchitecture="msil" />
-    </dependentAssembly>
-  </dependency>
-  <dependency>
-    <dependentAssembly dependencyType="preRequisite" allowDelayedBinding="true">
-      <assemblyIdentity name="Microsoft.ReportViewer.DataVisualization" version="12.0.0.0" publicKeyToken="89845DCD8080CC91" language="neutral" processorArchitecture="msil" />
-    </dependentAssembly>
-  </dependency>
-  <dependency>
-    <dependentAssembly dependencyType="preRequisite" allowDelayedBinding="true">
-      <assemblyIdentity name="Microsoft.ReportViewer.ProcessingObjectModel" version="12.0.0.0" publicKeyToken="89845DCD8080CC91" language="neutral" processorArchitecture="msil" />
-    </dependentAssembly>
-  </dependency>
-  <dependency>
-    <dependentAssembly dependencyType="preRequisite" allowDelayedBinding="true">
-      <assemblyIdentity name="Microsoft.SqlServer.Types" version="11.0.0.0" publicKeyToken="89845DCD8080CC91" language="neutral" processorArchitecture="msil" />
-    </dependentAssembly>
-  </dependency>
-  <dependency>
-    <dependentAssembly dependencyType="preRequisite" allowDelayedBinding="true">
-      <assemblyIdentity name="Microsoft.VisualStudio.ExtensibilityHosting" version="11.0.0.0" publicKeyToken="B03F5F7F11D50A3A" language="neutral" processorArchitecture="msil" />
     </dependentAssembly>
   </dependency>
   <dependency>
@@ -102,38 +67,38 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Capa_Datos.dll" size="113152">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Capa_Datos.dll" size="118272">
       <assemblyIdentity name="Capa_Datos" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>iXRb8vOv+JSjVM6Xaj8wy9DgxC/YD4wxAuaBB+U4/rI=</dsig:DigestValue>
+        <dsig:DigestValue>qet6Jj24eNxI8NuAY+4g2fHUx5CsESO/aH11G864h7E=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Capa_negocio.dll" size="208384">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Capa_negocio.dll" size="209920">
       <assemblyIdentity name="Capa_negocio" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>HULIBjcmdLhH3ZZgfoEctgPpodWWL1FHLd8qWYFQtWg=</dsig:DigestValue>
+        <dsig:DigestValue>QtyNHXna6DcPUzBJkBW44Oi0Q9fazeZntmT0aeM/rWw=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Capa_Presentacion.dll" size="3189248">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Capa_Presentacion.dll" size="3244544">
       <assemblyIdentity name="Capa_Presentacion" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>fQrkzMME03MAXE2Fu0feMYLa5oaKomaVEdltc7UZyV8=</dsig:DigestValue>
+        <dsig:DigestValue>Cq7eghwAMzAZDtN3Y/21ZoK0cx9lV8mC3+agVraczLo=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -145,7 +110,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>X49EpPM8tv8UDvvaeIwlomGV85tcgc8nMC+/r9C081Y=</dsig:DigestValue>
+        <dsig:DigestValue>JoMhengqefVPwr/6ozK7VCbyjz8gt1iOuB7CmXyw5s0=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -697,19 +662,31 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>k9JXUTwNCLJC07xX9H2H8D8c5qhQOCh6dt9lds3nw1o=</dsig:DigestValue>
+        <dsig:DigestValue>ufiNGLNk0PQFFDheRtRY/qMrYoh5w1DG3LaKXqVkL1E=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="stdole.dll" size="32192">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="stdole.dll" size="25480">
       <assemblyIdentity name="stdole" version="7.0.3300.0" publicKeyToken="B03F5F7F11D50A3A" language="neutral" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-        <dsig:DigestValue>cIq9imgoDt+GxOFQczv6npUQ3lA/YBrtHKrixl+0mfw=</dsig:DigestValue>
+        <dsig:DigestValue>8NH3BZ5cLdMCKORMtY3Iiue1vqbeB39/PlIKXRO/mec=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="System.Data.SQLite.dll" size="364032">
+      <assemblyIdentity name="System.Data.SQLite" version="1.0.113.0" publicKeyToken="DB937BC2D44FF139" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>bBVvfPMKbB4lOOjuh0T2QaknDps6HVsTyEhuqLjNWwM=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -881,13 +858,13 @@
       <dsig:DigestValue>KQZ9VcDq9cHLZgP/U6rqlTUlf6caOYOG/NujIYEwak8=</dsig:DigestValue>
     </hash>
   </file>
-  <file name="SistemaVentas.exe.config" size="588">
+  <file name="SistemaVentas.exe.config" size="991">
     <hash>
       <dsig:Transforms>
         <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
-      <dsig:DigestValue>rZm5T3GNF8Lkkx707JgIAnY/U59PJfN2637E4x0erdg=</dsig:DigestValue>
+      <dsig:DigestValue>eDXc9ToRVr1sIFHomzpxCBDpaz9c9AS+F+iw224lqaE=</dsig:DigestValue>
     </hash>
   </file>
   <file name="softIntegralIcon.ico" size="268286">

@@ -31,10 +31,12 @@
             this.components = new System.ComponentModel.Container();
             Microsoft.Reporting.WinForms.ReportDataSource reportDataSource1 = new Microsoft.Reporting.WinForms.ReportDataSource();
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
-            this.dataSet1 = new Capa_Presentacion.DataSet1();
+            this.dSGondola2 = new Capa_Presentacion.DataSet.DSGondola2();
+            this.dSGondola2BindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.rEPORTEGONDOLA2BindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.rEPORTE_GONDOLA2TableAdapter = new Capa_Presentacion.DataSet1TableAdapters.REPORTE_GONDOLA2TableAdapter();
-            ((System.ComponentModel.ISupportInitialize)(this.dataSet1)).BeginInit();
+            this.rEPORTE_GONDOLA2TableAdapter = new Capa_Presentacion.DataSet.DSGondola2TableAdapters.REPORTE_GONDOLA2TableAdapter();
+            ((System.ComponentModel.ISupportInitialize)(this.dSGondola2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dSGondola2BindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.rEPORTEGONDOLA2BindingSource)).BeginInit();
             this.SuspendLayout();
             // 
@@ -50,15 +52,20 @@
             this.reportViewer1.Size = new System.Drawing.Size(996, 502);
             this.reportViewer1.TabIndex = 0;
             // 
-            // dataSet1
+            // dSGondola2
             // 
-            this.dataSet1.DataSetName = "DataSet1";
-            this.dataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            this.dSGondola2.DataSetName = "DSGondola2";
+            this.dSGondola2.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // dSGondola2BindingSource
+            // 
+            this.dSGondola2BindingSource.DataSource = this.dSGondola2;
+            this.dSGondola2BindingSource.Position = 0;
             // 
             // rEPORTEGONDOLA2BindingSource
             // 
             this.rEPORTEGONDOLA2BindingSource.DataMember = "REPORTE_GONDOLA2";
-            this.rEPORTEGONDOLA2BindingSource.DataSource = this.dataSet1;
+            this.rEPORTEGONDOLA2BindingSource.DataSource = this.dSGondola2BindingSource;
             // 
             // rEPORTE_GONDOLA2TableAdapter
             // 
@@ -73,7 +80,8 @@
             this.Name = "FrmGondola2";
             this.Text = "FrmGondola2";
             this.Load += new System.EventHandler(this.FrmGondola2_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dataSet1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dSGondola2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dSGondola2BindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.rEPORTEGONDOLA2BindingSource)).EndInit();
             this.ResumeLayout(false);
 
@@ -83,7 +91,8 @@
 
         private Microsoft.Reporting.WinForms.ReportViewer reportViewer1;
         private System.Windows.Forms.BindingSource rEPORTEGONDOLA2BindingSource;
-        private DataSet1 dataSet1;
-        private DataSet1TableAdapters.REPORTE_GONDOLA2TableAdapter rEPORTE_GONDOLA2TableAdapter;
+        private System.Windows.Forms.BindingSource dSGondola2BindingSource;
+        private DataSet.DSGondola2 dSGondola2;
+        private DataSet.DSGondola2TableAdapters.REPORTE_GONDOLA2TableAdapter rEPORTE_GONDOLA2TableAdapter;
     }
 }
