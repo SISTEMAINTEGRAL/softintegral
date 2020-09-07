@@ -351,39 +351,40 @@ namespace Capa_Presentacion
 
                             if (preciobalanza == true)
                                     {
-                        if (objnart.Precio != 0)
-                        {
-                            cantidad = Decimal.Round((subtotal / objnart.Precio), 2);
-                        }
+                                if (objnart.Precio != 0)
+                                {
+                                    cantidad = Decimal.Round((subtotal / objnart.Precio), 2);
+                                    precio = subtotal;
+                                }
                                        
 
-                                    }
+                            }
                                     pesable = objnart.Pesable;
                                     encontrado = false;
 
                    
                             if (!recorrerDGventaencontraridarticulo(codproducto, ref indice, precio, descuento, cantidadActual, cantidadbulto, cantidad, importe,preciobalanza,subtotal) )
                             {
-                        //si no se encuentra cantidad 
-                        preciobase = decimal.Round(objnart.Precio, 2);
+                                //si no se encuentra cantidad 
+                                preciobase = decimal.Round(objnart.Precio, 2);
                         
-                        precio = decimal.Round(objnart.Precio, 2);
+                                precio = decimal.Round(objnart.Precio, 2);
                                         
-                        precio = cambiarpreciosegunlista(ref lista, ref manual, RBPrecioNormal.Checked,
-                        RBPreciomayorista1.Checked, RBPreciomayorista2.Checked, RBPrecioOferta.Checked,
-                        objnart.Fechadeoferta, objnart.Precio_oferta, objnart.Preciopormayor, objnart.Preciopormayor2);
-                        precio = precio == 0 ? preciobase : precio;
+                                precio = cambiarpreciosegunlista(ref lista, ref manual, RBPrecioNormal.Checked,
+                                RBPreciomayorista1.Checked, RBPreciomayorista2.Checked, RBPrecioOferta.Checked,
+                                objnart.Fechadeoferta, objnart.Precio_oferta, objnart.Preciopormayor, objnart.Preciopormayor2);
+                                precio = precio == 0 ? preciobase : precio;
                         
-                        if (preciobalanza == true)
-                        {
-                            if (objnart.Precio != 0)
-                            {
-                                cantidad = Decimal.Round((subtotal / precio), 2);
-                            }
+                                if (preciobalanza == true)
+                                {
+                                    if (objnart.Precio != 0)
+                                    {
+                                        cantidad = Decimal.Round((subtotal / precio), 2);
+                                    }
                            
                             
-                            calculo = "subtotal";
-                        }
+                                    calculo = "subtotal";
+                                }
                         
                                     
                                    
@@ -618,19 +619,13 @@ namespace Capa_Presentacion
                     {
 
                         encontrado = true;
-                        precio = Convert.ToDecimal(row.Cells["Cprecio"].Value);
+                       
+                        
                         descuento = Convert.ToDecimal(row.Cells["Descuento"].Value);
                         cantidadActual = cantidadbulto > 0 ? cantidadbulto : (Convert.ToDecimal(row.Cells["Cantidad"].Value));
 
                         //incremento la cantidad del producto agregado
-
-
-                        //if ((NegocioConfigEmpresa.balanzapuerto != "" && CHKHabilitarbalanza.Checked == true) || preciobalanza == true)
-                        //{
-                        //    cantidadActual = cantidad;
-
-                        //}
-                        //else
+                                         
 
                         if (chkporcantidad.Checked == false)
                         {
@@ -639,7 +634,16 @@ namespace Capa_Presentacion
 
                         row.Cells["Cantidad"].Value = cantidadActual;
                         //calculo el precio con descuento incluido * la cantidad de articulos agregados
-                        subtotal = precio * cantidadActual;
+                        if (preciobalanza == true)
+                        {
+                            subtotal = precio + Convert.ToDecimal(row.Cells["subtotal"].Value);
+                        }
+                        else
+                        {
+                            precio = Convert.ToDecimal(row.Cells["Cprecio"].Value);
+                            subtotal = precio * cantidadActual;
+                        }
+                        
 
                         importe = subtotal - ((subtotal * descuento) / 100);
                         row.Cells["subtotal"].Value = decimal.Round(subtotal, 2);

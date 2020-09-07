@@ -97,6 +97,7 @@ namespace Capa_Presentacion
             iva21 = decimal.Round(Convert.ToDecimal(rowventa["Totaliva21"].ToString()), 2);
             neto105 = decimal.Round(Convert.ToDecimal(rowventa["Total_Neto105"].ToString()), 2);
             iva105 = decimal.Round(Convert.ToDecimal(rowventa["TotalIva105"].ToString()), 2);
+            int varidventa = 0;
 
             DataTable dt = detalleventa(row["responsabilidadiva"].ToString());
 
@@ -112,8 +113,16 @@ namespace Capa_Presentacion
                 if (msg.Substring(0, 2) != "ok")
                 {
                     UtilityFrm.mensajeError(msg);
-                    UtilityFrm.mensajeConfirm("Se guardara la venta como pendiente de factura la puede encontrar en lista de ventas");
-                    estadofactura = 'P';
+                    if (tipocomprobante == "FACTURA")
+                    {
+                        UtilityFrm.mensajeConfirm("Se guardara la venta como pendiente de factura la puede encontrar en lista de ventas");
+                        estadofactura = 'P';
+                        
+                    }
+                    else
+                    {
+                        UtilityFrm.mensajeConfirm("La nota de credito no se pudo realizar");
+                    }
                     return;
                 }
                 else
@@ -138,20 +147,40 @@ namespace Capa_Presentacion
             {
                 estadofactura = 'P';
             }
-            string mensaje = "";
+            string mensaje = "ok";
             if (cbxCategoria.Text != "X")
             {
-                mensaje = NegocioVenta.cambiarestadoventa(Convert.ToInt32(txtCodigo.Text), estadofactura, nrocomprobante.PadLeft(8, '0'), objcomprobante.Cae, objcomprobante.Fechavto, objcomprobante.Puntoventa.PadLeft(5, '0'), objcomprobante.Numerotipofactura.PadLeft(3, '0'));
+                try
+                {
+                    varidventa = NegocioVenta.cambiarestadoventa(Convert.ToInt32(txtCodigo.Text), estadofactura, nrocomprobante.PadLeft(8, '0'), objcomprobante.Cae,
+                         objcomprobante.Fechavto, objcomprobante.Puntoventa.PadLeft(5, '0'), objcomprobante.Numerotipofactura.PadLeft(3, '0'));
+                }
+                catch (Exception ex)
+                {
+
+                    mensaje = ex.ToString();
+                }
+               
+                
             }
             else
             {
-                UtilityFrm.mensajeError("PARA PODER REALIZAR LA FACTURA TIENE QUE CAMBIAR EL NUMERO DE LETRA DE LA FACTURA");
+                UtilityFrm.mensajeError("PARA PODER REALIZAR LA FACTURA TIENE QUE CAMBIAR EL NUMERO DE LETRA");
                 return;
             }
 
             if (mensaje.Equals("ok"))
             {
-                UtilityFrm.mensajeConfirm("La facturación se realizó Correctamente");
+                if (tipocomprobante == "FACTURA")
+                {
+                    UtilityFrm.notificacionpopup("FACTURACION","LA FACTURACION SE REALIZO CORRECTAMENTE");
+ //                   UtilityFrm.mensajeConfirm("La facturación se realizó Correctamente");
+                }
+                else
+                {
+                    UtilityFrm.mensajeConfirm("La nota de credito se realizo correctamente");
+                }
+
                 Close();
             }
             else

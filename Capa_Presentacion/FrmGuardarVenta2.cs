@@ -590,7 +590,7 @@ namespace Capa_Presentacion
             Dataventa.Columns.Add("puntoventa", typeof(string));
             Dataventa.Columns.Add("total_neto105", typeof(decimal));
             Dataventa.Columns.Add("precio_iva105", typeof(decimal)) ;
-            Dataventa.Columns.Add("idmltpadre", typeof(int));
+           // Dataventa.Columns.Add("idmltpadre", typeof(int));
             Dataventa.Columns.Add("idcupon", typeof(int));
             Dataventa.Columns.Add("nroterminal", typeof(int));
             Dataventa.Columns.Add("Codtarjeta", typeof(int));
@@ -619,7 +619,7 @@ namespace Capa_Presentacion
 
                 Dataventa.Rows.Add(count,idCliente, DateTime.Now,"NOTA DE VENTA", 0,"P","0", this.Concaja, this.constock, NegocioConfigEmpresa.usuarioconectado,
                    0,dataGrid.Cells["Importe"].Value, "0",codformap, "0", 0,"0","0","","0", NegocioConfigEmpresa.puntoventa.PadLeft(5, '0'), "0", "0",
-                   "0", "0", "0", dataGrid.Cells["cCodTarjeta"].Value, dataGrid.Cells["cCupon"].Value, dataGrid.Cells["cLote"].Value,
+                    "0", "0", dataGrid.Cells["cCodTarjeta"].Value, dataGrid.Cells["cCupon"].Value, dataGrid.Cells["cLote"].Value,
                     dataGrid.Cells["cImporteCuota"].Value,dataGrid.Cells["cCuota"].Value ) ;
                 count++;
             }

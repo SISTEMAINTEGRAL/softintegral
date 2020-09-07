@@ -40,6 +40,15 @@
             this.lblEstado = new System.Windows.Forms.Label();
             this.txtCodigo = new System.Windows.Forms.TextBox();
             this.gbDetalleMovimento = new System.Windows.Forms.GroupBox();
+            this.dataLista = new Guna.UI.WinForms.GunaDataGridView();
+            this.Codigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Producto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Precio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Descuento = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Importe = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btncredito = new XanderUI.XUISuperButton();
+            this.btnPagarMovimiento = new XanderUI.XUISuperButton();
             this.cbxCategoria = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.txtcuit = new System.Windows.Forms.TextBox();
@@ -58,23 +67,14 @@
             this.btnMinimizar = new System.Windows.Forms.PictureBox();
             this.btnCerrar = new System.Windows.Forms.PictureBox();
             this.lblSistemaVenta = new System.Windows.Forms.Label();
-            this.btnPagarMovimiento = new XanderUI.XUISuperButton();
-            this.btncredito = new XanderUI.XUISuperButton();
-            this.dataLista = new Guna.UI.WinForms.GunaDataGridView();
-            this.Codigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Producto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Precio = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Descuento = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Cantidad = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Importe = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.gbDetalleMovimento.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataLista)).BeginInit();
             this.gbxHerramientas.SuspendLayout();
             this.panelHorizontal.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnMaximizar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnRestaurar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnMinimizar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnCerrar)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataLista)).BeginInit();
             this.SuspendLayout();
             // 
             // txtTotal
@@ -199,6 +199,170 @@
             this.gbDetalleMovimento.TabStop = false;
             this.gbDetalleMovimento.Text = "Detalles ";
             this.gbDetalleMovimento.Enter += new System.EventHandler(this.gbDetalleMovimento_Enter);
+            // 
+            // dataLista
+            // 
+            this.dataLista.AllowUserToAddRows = false;
+            this.dataLista.AllowUserToDeleteRows = false;
+            this.dataLista.AllowUserToOrderColumns = true;
+            this.dataLista.AllowUserToResizeRows = false;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
+            this.dataLista.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.dataLista.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.dataLista.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataLista.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.dataLista.BackgroundColor = System.Drawing.Color.White;
+            this.dataLista.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dataLista.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
+            this.dataLista.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataLista.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.dataLista.ColumnHeadersHeight = 38;
+            this.dataLista.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Codigo,
+            this.Producto,
+            this.Precio,
+            this.Descuento,
+            this.Cantidad,
+            this.Importe});
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataLista.DefaultCellStyle = dataGridViewCellStyle3;
+            this.dataLista.EnableHeadersVisualStyles = false;
+            this.dataLista.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            this.dataLista.Location = new System.Drawing.Point(12, 159);
+            this.dataLista.MultiSelect = false;
+            this.dataLista.Name = "dataLista";
+            this.dataLista.RowHeadersVisible = false;
+            this.dataLista.RowHeadersWidth = 51;
+            this.dataLista.RowTemplate.Height = 24;
+            this.dataLista.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataLista.Size = new System.Drawing.Size(981, 414);
+            this.dataLista.StandardTab = true;
+            this.dataLista.TabIndex = 137;
+            this.dataLista.Theme = Guna.UI.WinForms.GunaDataGridViewPresetThemes.Guna;
+            this.dataLista.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
+            this.dataLista.ThemeStyle.AlternatingRowsStyle.Font = null;
+            this.dataLista.ThemeStyle.AlternatingRowsStyle.ForeColor = System.Drawing.Color.Empty;
+            this.dataLista.ThemeStyle.AlternatingRowsStyle.SelectionBackColor = System.Drawing.Color.Empty;
+            this.dataLista.ThemeStyle.AlternatingRowsStyle.SelectionForeColor = System.Drawing.Color.Empty;
+            this.dataLista.ThemeStyle.BackColor = System.Drawing.Color.White;
+            this.dataLista.ThemeStyle.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            this.dataLista.ThemeStyle.HeaderStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
+            this.dataLista.ThemeStyle.HeaderStyle.BorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
+            this.dataLista.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataLista.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.White;
+            this.dataLista.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
+            this.dataLista.ThemeStyle.HeaderStyle.Height = 38;
+            this.dataLista.ThemeStyle.ReadOnly = false;
+            this.dataLista.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.White;
+            this.dataLista.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
+            this.dataLista.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataLista.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            this.dataLista.ThemeStyle.RowsStyle.Height = 24;
+            this.dataLista.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            this.dataLista.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            // 
+            // Codigo
+            // 
+            this.Codigo.FillWeight = 61.54822F;
+            this.Codigo.HeaderText = "Codigo";
+            this.Codigo.MinimumWidth = 6;
+            this.Codigo.Name = "Codigo";
+            // 
+            // Producto
+            // 
+            this.Producto.FillWeight = 253.8071F;
+            this.Producto.HeaderText = "Producto";
+            this.Producto.MinimumWidth = 6;
+            this.Producto.Name = "Producto";
+            // 
+            // Precio
+            // 
+            this.Precio.HeaderText = "Precio";
+            this.Precio.MinimumWidth = 6;
+            this.Precio.Name = "Precio";
+            // 
+            // Descuento
+            // 
+            this.Descuento.HeaderText = "Descuento";
+            this.Descuento.MinimumWidth = 6;
+            this.Descuento.Name = "Descuento";
+            // 
+            // Cantidad
+            // 
+            this.Cantidad.HeaderText = "Cantidad";
+            this.Cantidad.MinimumWidth = 6;
+            this.Cantidad.Name = "Cantidad";
+            // 
+            // Importe
+            // 
+            this.Importe.HeaderText = "Importe";
+            this.Importe.MinimumWidth = 6;
+            this.Importe.Name = "Importe";
+            // 
+            // btncredito
+            // 
+            this.btncredito.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btncredito.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(144)))), ((int)(((byte)(247)))));
+            this.btncredito.ButtonImage = null;
+            this.btncredito.ButtonSmoothing = System.Drawing.Drawing2D.SmoothingMode.HighSpeed;
+            this.btncredito.ButtonStyle = XanderUI.XUISuperButton.Style.RoundedEdges;
+            this.btncredito.ButtonText = "Nota de credito";
+            this.btncredito.CornerRadius = 5;
+            this.btncredito.Horizontal_Alignment = System.Drawing.StringAlignment.Center;
+            this.btncredito.HoverBackgroundColor = System.Drawing.Color.IndianRed;
+            this.btncredito.HoverTextColor = System.Drawing.Color.Yellow;
+            this.btncredito.ImagePosition = XanderUI.XUISuperButton.imgPosition.Left;
+            this.btncredito.Location = new System.Drawing.Point(274, 588);
+            this.btncredito.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btncredito.Name = "btncredito";
+            this.btncredito.SelectedBackColor = System.Drawing.Color.LimeGreen;
+            this.btncredito.SelectedTextColor = System.Drawing.Color.White;
+            this.btncredito.Size = new System.Drawing.Size(255, 61);
+            this.btncredito.SuperSelected = false;
+            this.btncredito.TabIndex = 136;
+            this.btncredito.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(245)))), ((int)(((byte)(255)))));
+            this.btncredito.Vertical_Alignment = System.Drawing.StringAlignment.Center;
+            this.btncredito.Click += new System.EventHandler(this.btncredito_Click);
+            // 
+            // btnPagarMovimiento
+            // 
+            this.btnPagarMovimiento.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnPagarMovimiento.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(144)))), ((int)(((byte)(247)))));
+            this.btnPagarMovimiento.ButtonImage = null;
+            this.btnPagarMovimiento.ButtonSmoothing = System.Drawing.Drawing2D.SmoothingMode.HighSpeed;
+            this.btnPagarMovimiento.ButtonStyle = XanderUI.XUISuperButton.Style.RoundedEdges;
+            this.btnPagarMovimiento.ButtonText = "Facturar";
+            this.btnPagarMovimiento.CornerRadius = 5;
+            this.btnPagarMovimiento.Horizontal_Alignment = System.Drawing.StringAlignment.Center;
+            this.btnPagarMovimiento.HoverBackgroundColor = System.Drawing.Color.IndianRed;
+            this.btnPagarMovimiento.HoverTextColor = System.Drawing.Color.Yellow;
+            this.btnPagarMovimiento.ImagePosition = XanderUI.XUISuperButton.imgPosition.Left;
+            this.btnPagarMovimiento.Location = new System.Drawing.Point(7, 588);
+            this.btnPagarMovimiento.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.btnPagarMovimiento.Name = "btnPagarMovimiento";
+            this.btnPagarMovimiento.SelectedBackColor = System.Drawing.Color.LimeGreen;
+            this.btnPagarMovimiento.SelectedTextColor = System.Drawing.Color.White;
+            this.btnPagarMovimiento.Size = new System.Drawing.Size(255, 61);
+            this.btnPagarMovimiento.SuperSelected = false;
+            this.btnPagarMovimiento.TabIndex = 135;
+            this.btnPagarMovimiento.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(245)))), ((int)(((byte)(255)))));
+            this.btnPagarMovimiento.Vertical_Alignment = System.Drawing.StringAlignment.Center;
+            this.btnPagarMovimiento.Click += new System.EventHandler(this.btnPagarMovimiento_Click);
             // 
             // cbxCategoria
             // 
@@ -414,163 +578,6 @@
             this.lblSistemaVenta.Size = new System.Drawing.Size(100, 23);
             this.lblSistemaVenta.TabIndex = 6;
             // 
-            // btnPagarMovimiento
-            // 
-            this.btnPagarMovimiento.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnPagarMovimiento.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(144)))), ((int)(((byte)(247)))));
-            this.btnPagarMovimiento.ButtonImage = null;
-            this.btnPagarMovimiento.ButtonSmoothing = System.Drawing.Drawing2D.SmoothingMode.HighSpeed;
-            this.btnPagarMovimiento.ButtonStyle = XanderUI.XUISuperButton.Style.RoundedEdges;
-            this.btnPagarMovimiento.ButtonText = "Facturar";
-            this.btnPagarMovimiento.CornerRadius = 5;
-            this.btnPagarMovimiento.Horizontal_Alignment = System.Drawing.StringAlignment.Center;
-            this.btnPagarMovimiento.HoverBackgroundColor = System.Drawing.Color.IndianRed;
-            this.btnPagarMovimiento.HoverTextColor = System.Drawing.Color.Yellow;
-            this.btnPagarMovimiento.ImagePosition = XanderUI.XUISuperButton.imgPosition.Left;
-            this.btnPagarMovimiento.Location = new System.Drawing.Point(7, 588);
-            this.btnPagarMovimiento.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.btnPagarMovimiento.Name = "btnPagarMovimiento";
-            this.btnPagarMovimiento.SelectedBackColor = System.Drawing.Color.LimeGreen;
-            this.btnPagarMovimiento.SelectedTextColor = System.Drawing.Color.White;
-            this.btnPagarMovimiento.Size = new System.Drawing.Size(255, 61);
-            this.btnPagarMovimiento.SuperSelected = false;
-            this.btnPagarMovimiento.TabIndex = 135;
-            this.btnPagarMovimiento.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(245)))), ((int)(((byte)(255)))));
-            this.btnPagarMovimiento.Vertical_Alignment = System.Drawing.StringAlignment.Center;
-            this.btnPagarMovimiento.Click += new System.EventHandler(this.btnPagarMovimiento_Click);
-            // 
-            // btncredito
-            // 
-            this.btncredito.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btncredito.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(144)))), ((int)(((byte)(247)))));
-            this.btncredito.ButtonImage = null;
-            this.btncredito.ButtonSmoothing = System.Drawing.Drawing2D.SmoothingMode.HighSpeed;
-            this.btncredito.ButtonStyle = XanderUI.XUISuperButton.Style.RoundedEdges;
-            this.btncredito.ButtonText = "Nota de venta";
-            this.btncredito.CornerRadius = 5;
-            this.btncredito.Horizontal_Alignment = System.Drawing.StringAlignment.Center;
-            this.btncredito.HoverBackgroundColor = System.Drawing.Color.IndianRed;
-            this.btncredito.HoverTextColor = System.Drawing.Color.Yellow;
-            this.btncredito.ImagePosition = XanderUI.XUISuperButton.imgPosition.Left;
-            this.btncredito.Location = new System.Drawing.Point(274, 588);
-            this.btncredito.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.btncredito.Name = "btncredito";
-            this.btncredito.SelectedBackColor = System.Drawing.Color.LimeGreen;
-            this.btncredito.SelectedTextColor = System.Drawing.Color.White;
-            this.btncredito.Size = new System.Drawing.Size(255, 61);
-            this.btncredito.SuperSelected = false;
-            this.btncredito.TabIndex = 136;
-            this.btncredito.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(245)))), ((int)(((byte)(255)))));
-            this.btncredito.Vertical_Alignment = System.Drawing.StringAlignment.Center;
-            this.btncredito.Click += new System.EventHandler(this.btncredito_Click);
-            // 
-            // dataLista
-            // 
-            this.dataLista.AllowUserToAddRows = false;
-            this.dataLista.AllowUserToDeleteRows = false;
-            this.dataLista.AllowUserToOrderColumns = true;
-            this.dataLista.AllowUserToResizeRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
-            this.dataLista.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.dataLista.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.dataLista.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataLista.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
-            this.dataLista.BackgroundColor = System.Drawing.Color.White;
-            this.dataLista.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dataLista.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
-            this.dataLista.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataLista.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
-            this.dataLista.ColumnHeadersHeight = 38;
-            this.dataLista.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Codigo,
-            this.Producto,
-            this.Precio,
-            this.Descuento,
-            this.Cantidad,
-            this.Importe});
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataLista.DefaultCellStyle = dataGridViewCellStyle3;
-            this.dataLista.EnableHeadersVisualStyles = false;
-            this.dataLista.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            this.dataLista.Location = new System.Drawing.Point(12, 159);
-            this.dataLista.MultiSelect = false;
-            this.dataLista.Name = "dataLista";
-            this.dataLista.RowHeadersVisible = false;
-            this.dataLista.RowTemplate.Height = 24;
-            this.dataLista.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataLista.Size = new System.Drawing.Size(981, 414);
-            this.dataLista.StandardTab = true;
-            this.dataLista.TabIndex = 137;
-            this.dataLista.Theme = Guna.UI.WinForms.GunaDataGridViewPresetThemes.Guna;
-            this.dataLista.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.White;
-            this.dataLista.ThemeStyle.AlternatingRowsStyle.Font = null;
-            this.dataLista.ThemeStyle.AlternatingRowsStyle.ForeColor = System.Drawing.Color.Empty;
-            this.dataLista.ThemeStyle.AlternatingRowsStyle.SelectionBackColor = System.Drawing.Color.Empty;
-            this.dataLista.ThemeStyle.AlternatingRowsStyle.SelectionForeColor = System.Drawing.Color.Empty;
-            this.dataLista.ThemeStyle.BackColor = System.Drawing.Color.White;
-            this.dataLista.ThemeStyle.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            this.dataLista.ThemeStyle.HeaderStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
-            this.dataLista.ThemeStyle.HeaderStyle.BorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
-            this.dataLista.ThemeStyle.HeaderStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dataLista.ThemeStyle.HeaderStyle.ForeColor = System.Drawing.Color.White;
-            this.dataLista.ThemeStyle.HeaderStyle.HeaightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.EnableResizing;
-            this.dataLista.ThemeStyle.HeaderStyle.Height = 38;
-            this.dataLista.ThemeStyle.ReadOnly = false;
-            this.dataLista.ThemeStyle.RowsStyle.BackColor = System.Drawing.Color.White;
-            this.dataLista.ThemeStyle.RowsStyle.BorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
-            this.dataLista.ThemeStyle.RowsStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.dataLista.ThemeStyle.RowsStyle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            this.dataLista.ThemeStyle.RowsStyle.Height = 24;
-            this.dataLista.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            this.dataLista.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            // 
-            // Codigo
-            // 
-            this.Codigo.FillWeight = 61.54822F;
-            this.Codigo.HeaderText = "Codigo";
-            this.Codigo.Name = "Codigo";
-            // 
-            // Producto
-            // 
-            this.Producto.FillWeight = 253.8071F;
-            this.Producto.HeaderText = "Producto";
-            this.Producto.Name = "Producto";
-            // 
-            // Precio
-            // 
-            this.Precio.HeaderText = "Precio";
-            this.Precio.Name = "Precio";
-            // 
-            // Descuento
-            // 
-            this.Descuento.HeaderText = "Descuento";
-            this.Descuento.Name = "Descuento";
-            // 
-            // Cantidad
-            // 
-            this.Cantidad.HeaderText = "Cantidad";
-            this.Cantidad.Name = "Cantidad";
-            // 
-            // Importe
-            // 
-            this.Importe.HeaderText = "Importe";
-            this.Importe.Name = "Importe";
-            // 
             // FrmDetalleVentas
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
@@ -587,6 +594,7 @@
             this.Load += new System.EventHandler(this.FrmDetalleVentas_Load);
             this.gbDetalleMovimento.ResumeLayout(false);
             this.gbDetalleMovimento.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataLista)).EndInit();
             this.gbxHerramientas.ResumeLayout(false);
             this.panelHorizontal.ResumeLayout(false);
             this.panelHorizontal.PerformLayout();
@@ -594,7 +602,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.btnRestaurar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnMinimizar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnCerrar)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataLista)).EndInit();
             this.ResumeLayout(false);
 
         }

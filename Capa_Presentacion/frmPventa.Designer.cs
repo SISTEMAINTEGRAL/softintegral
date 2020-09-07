@@ -91,7 +91,6 @@
             this.Txtcuota = new System.Windows.Forms.TextBox();
             this.rctacte = new System.Windows.Forms.RadioButton();
             this.label6 = new System.Windows.Forms.Label();
-            this.cbMCuota = new ComboBoxMultiColumns.ComboBoxMultiColumns();
             this.cbTarjeta = new System.Windows.Forms.ComboBox();
             this.rTarjeta = new System.Windows.Forms.RadioButton();
             this.rContado = new System.Windows.Forms.RadioButton();
@@ -123,6 +122,7 @@
             this.btnAgregarPesable = new System.Windows.Forms.Button();
             this.btnConsultas = new System.Windows.Forms.Button();
             this.btnCalculadora = new System.Windows.Forms.Button();
+            this.cbMCuota = new ComboBoxMultiColumns.ComboBoxMultiColumns();
             this.grpboxProveedor.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.DGVenta)).BeginInit();
             this.gbDetalleMovimento.SuspendLayout();
@@ -305,6 +305,7 @@
             this.DGVenta.MultiSelect = false;
             this.DGVenta.Name = "DGVenta";
             this.DGVenta.RowHeadersVisible = false;
+            this.DGVenta.RowHeadersWidth = 51;
             this.DGVenta.RowTemplate.Height = 24;
             this.DGVenta.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.DGVenta.Size = new System.Drawing.Size(1254, 414);
@@ -344,136 +345,159 @@
             // 
             this.Codigo.FillWeight = 61.54822F;
             this.Codigo.HeaderText = "Codigo";
+            this.Codigo.MinimumWidth = 6;
             this.Codigo.Name = "Codigo";
             // 
             // Producto
             // 
             this.Producto.FillWeight = 253.8071F;
             this.Producto.HeaderText = "Producto";
+            this.Producto.MinimumWidth = 6;
             this.Producto.Name = "Producto";
             // 
             // P_Unidad
             // 
             this.P_Unidad.FillWeight = 80F;
             this.P_Unidad.HeaderText = "P.Minorista";
+            this.P_Unidad.MinimumWidth = 6;
             this.P_Unidad.Name = "P_Unidad";
             // 
             // Lista
             // 
             this.Lista.FillWeight = 50F;
             this.Lista.HeaderText = "Lista";
+            this.Lista.MinimumWidth = 6;
             this.Lista.Name = "Lista";
             // 
             // Cprecio
             // 
             this.Cprecio.FillWeight = 61.54822F;
             this.Cprecio.HeaderText = "Precio";
+            this.Cprecio.MinimumWidth = 6;
             this.Cprecio.Name = "Cprecio";
             // 
             // Cantidad
             // 
             this.Cantidad.FillWeight = 61.54822F;
             this.Cantidad.HeaderText = "Cantidad";
+            this.Cantidad.MinimumWidth = 6;
             this.Cantidad.Name = "Cantidad";
             // 
             // Subtotal
             // 
             this.Subtotal.FillWeight = 61.54822F;
             this.Subtotal.HeaderText = "Subtotal";
+            this.Subtotal.MinimumWidth = 6;
             this.Subtotal.Name = "Subtotal";
             // 
             // Descuento
             // 
             this.Descuento.HeaderText = "Descuento";
+            this.Descuento.MinimumWidth = 6;
             this.Descuento.Name = "Descuento";
             this.Descuento.Visible = false;
             // 
             // Importe
             // 
             this.Importe.HeaderText = "Importe";
+            this.Importe.MinimumWidth = 6;
             this.Importe.Name = "Importe";
             // 
             // Dpesable
             // 
             this.Dpesable.HeaderText = "Pesable";
+            this.Dpesable.MinimumWidth = 6;
             this.Dpesable.Name = "Dpesable";
             this.Dpesable.Visible = false;
             // 
             // Calculo
             // 
             this.Calculo.HeaderText = "Calculo";
+            this.Calculo.MinimumWidth = 6;
             this.Calculo.Name = "Calculo";
             this.Calculo.Visible = false;
             // 
             // Preciopormayor
             // 
             this.Preciopormayor.HeaderText = "Preciopormayor";
+            this.Preciopormayor.MinimumWidth = 6;
             this.Preciopormayor.Name = "Preciopormayor";
             this.Preciopormayor.Visible = false;
             // 
             // Cantidadpormayor
             // 
             this.Cantidadpormayor.HeaderText = "Cantidadpormayor";
+            this.Cantidadpormayor.MinimumWidth = 6;
             this.Cantidadpormayor.Name = "Cantidadpormayor";
             this.Cantidadpormayor.Visible = false;
             // 
             // preciounidad
             // 
             this.preciounidad.HeaderText = "preciounidad";
+            this.preciounidad.MinimumWidth = 6;
             this.preciounidad.Name = "preciounidad";
             this.preciounidad.Visible = false;
             // 
             // Civa
             // 
             this.Civa.HeaderText = "iva";
+            this.Civa.MinimumWidth = 6;
             this.Civa.Name = "Civa";
             this.Civa.Visible = false;
             // 
             // Manual
             // 
             this.Manual.HeaderText = "Manual";
+            this.Manual.MinimumWidth = 6;
             this.Manual.Name = "Manual";
             this.Manual.Visible = false;
             // 
             // Preciocantidad2
             // 
             this.Preciocantidad2.HeaderText = "Preciocantidad2";
+            this.Preciocantidad2.MinimumWidth = 6;
             this.Preciocantidad2.Name = "Preciocantidad2";
             this.Preciocantidad2.Visible = false;
             // 
             // Precio2
             // 
             this.Precio2.HeaderText = "Precio2";
+            this.Precio2.MinimumWidth = 6;
             this.Precio2.Name = "Precio2";
             this.Precio2.Visible = false;
             // 
             // Precio_Oferta
             // 
             this.Precio_Oferta.HeaderText = "Precio oferta";
+            this.Precio_Oferta.MinimumWidth = 6;
             this.Precio_Oferta.Name = "Precio_Oferta";
             this.Precio_Oferta.Visible = false;
             // 
             // Stock_Actual
             // 
             this.Stock_Actual.HeaderText = "Stock_Actual";
+            this.Stock_Actual.MinimumWidth = 6;
             this.Stock_Actual.Name = "Stock_Actual";
             this.Stock_Actual.Visible = false;
             // 
             // Stock_Minimo
             // 
             this.Stock_Minimo.HeaderText = "Stock_Minimo";
+            this.Stock_Minimo.MinimumWidth = 6;
             this.Stock_Minimo.Name = "Stock_Minimo";
             this.Stock_Minimo.Visible = false;
             // 
             // PopupMinimo
             // 
             this.PopupMinimo.HeaderText = "PopupMinimo";
+            this.PopupMinimo.MinimumWidth = 6;
             this.PopupMinimo.Name = "PopupMinimo";
             this.PopupMinimo.Visible = false;
             // 
             // PopupCero
             // 
             this.PopupCero.HeaderText = "PopupCero";
+            this.PopupCero.MinimumWidth = 6;
             this.PopupCero.Name = "PopupCero";
             this.PopupCero.Visible = false;
             // 
@@ -784,11 +808,12 @@
             this.DGCliente.AllowUserToDeleteRows = false;
             this.DGCliente.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DGCliente.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.DGCliente.Location = new System.Drawing.Point(100, 2);
+            this.DGCliente.Location = new System.Drawing.Point(100, 6);
             this.DGCliente.Margin = new System.Windows.Forms.Padding(4, 8, 4, 8);
             this.DGCliente.MultiSelect = false;
             this.DGCliente.Name = "DGCliente";
             this.DGCliente.ReadOnly = true;
+            this.DGCliente.RowHeadersWidth = 51;
             this.DGCliente.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.DGCliente.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.DGCliente.Size = new System.Drawing.Size(406, 90);
@@ -827,11 +852,12 @@
             this.dataGridView1.AllowUserToDeleteRows = false;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.dataGridView1.Location = new System.Drawing.Point(94, 3);
+            this.dataGridView1.Location = new System.Drawing.Point(95, 3);
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(4, 8, 4, 8);
             this.dataGridView1.MultiSelect = false;
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
+            this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Century Gothic", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(576, 90);
@@ -880,18 +906,6 @@
             this.label6.Size = new System.Drawing.Size(101, 23);
             this.label6.TabIndex = 75;
             this.label6.Text = "CUOTAS :";
-            // 
-            // cbMCuota
-            // 
-            this.cbMCuota.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.cbMCuota.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cbMCuota.Location = new System.Drawing.Point(378, 68);
-            this.cbMCuota.Margin = new System.Windows.Forms.Padding(2);
-            this.cbMCuota.Name = "cbMCuota";
-            this.cbMCuota.Size = new System.Drawing.Size(120, 33);
-            this.cbMCuota.TabIndex = 79;
-            this.cbMCuota.SelectedIndexChanged += new System.EventHandler(this.cbMCuota_SelectedIndexChanged);
-            this.cbMCuota.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cbMCuota_KeyDown);
             // 
             // cbTarjeta
             // 
@@ -1286,6 +1300,18 @@
             this.btnCalculadora.TabIndex = 58;
             this.btnCalculadora.UseVisualStyleBackColor = true;
             this.btnCalculadora.Click += new System.EventHandler(this.btnCalculadora_Click);
+            // 
+            // cbMCuota
+            // 
+            this.cbMCuota.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.cbMCuota.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cbMCuota.Location = new System.Drawing.Point(378, 68);
+            this.cbMCuota.Margin = new System.Windows.Forms.Padding(2);
+            this.cbMCuota.Name = "cbMCuota";
+            this.cbMCuota.Size = new System.Drawing.Size(120, 33);
+            this.cbMCuota.TabIndex = 79;
+            this.cbMCuota.SelectedIndexChanged += new System.EventHandler(this.cbMCuota_SelectedIndexChanged);
+            this.cbMCuota.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cbMCuota_KeyDown);
             // 
             // frmPventa
             // 

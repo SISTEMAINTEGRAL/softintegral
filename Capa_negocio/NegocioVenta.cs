@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using System.Data;
 using System.Data.SqlClient;
 using Capa_Datos;
+using System.Runtime.CompilerServices;
+
 namespace Capa_negocio
 {
     public class NegocioVenta
@@ -183,18 +185,22 @@ namespace Capa_negocio
            return rpta;
 
        }
-        public static string anular(int idventa, bool stock)
+        public static int anular(int idventa, bool stock, char estado)
         {
-            
-            string mensaje = "";
-            Dventa objventa = new Dventa(idventa,'A');
-            objventa.Fecha = DateTime.Now;
-           mensaje = objventa.anular(objventa, stock);
+            int varidventa = 0;
+           try
+           {
+                string mensaje = "";
+                Dventa objventa = new Dventa(idventa, estado);
+                objventa.Fecha = DateTime.Now;
+                varidventa = objventa.anular(objventa, stock);
+           }
+           catch (Exception)
+           {
 
-
-
-
-            return mensaje;
+                throw;
+           }
+            return varidventa;
         }
         public static string actualizarestadostock(int idventa, bool stock)
         {
@@ -235,7 +241,7 @@ namespace Capa_negocio
             string tipocomprobante, int idventa, string puntoventa, int codformapago, bool porventa, bool porformadepago, bool porpuntodeventa )
         {
             Dventa Obj = new Dventa(estado,concaja, tipocomprobante);
-            Obj.Estado = estado;
+            Obj.Estado = tipocomprobante == "NOTA DE CREDITO" ? 'N' : estado;
             Obj.Concaja = concaja;
             Obj.Idventa = idventa;
             Obj.Puntoventa = puntoventa;
@@ -251,9 +257,12 @@ namespace Capa_negocio
 
         }
 
-        public static string cambiarestadoventa(int idVenta,char estado, string varnrocomprobante = "0", string varcae = "", string varvtocae = "", string varpuntoventa = "0001",string vartipofactura = "") {
+        public static int cambiarestadoventa(int varidVenta,char estado, string varnrocomprobante = "0", string varcae = "", string varvtocae = "", string varpuntoventa = "0001",string vartipofactura = "") 
+        
+        {
+            
             Dventa Obj = new Dventa();
-            Obj.Idventa = idVenta;
+            Obj.Idventa = varidVenta;
             Obj.Estado = estado;
             Obj.Nrocomprobante = varnrocomprobante;
             Obj.Cae = varcae;
@@ -262,7 +271,9 @@ namespace Capa_negocio
             Obj.Numerotipofactura = vartipofactura;
             Obj.Fecha = DateTime.Now;
 
+            
             return Obj.CambiarEstadoVenta(Obj);
+             
         }
 
         public static void cambiarestadoventa(int idventa, bool concaja, bool constock)

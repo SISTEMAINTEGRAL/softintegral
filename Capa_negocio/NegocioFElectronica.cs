@@ -105,7 +105,7 @@ namespace Capa_negocio
                 int nrocomprobante = last + 1;
 
                 det.CbteFch = DateTime.Now.ToString("yyyyMMdd");
-                if (tipocomprobante == 1 || tipocomprobante == 6)
+                if (tipocomprobante == TIPOCOMPROBANTE_FACTURA_A || tipocomprobante == TIPOCOMPROBANTE_FACTURA_B || tipocomprobante == TIPOCOMPROBANTE_NOTADECREDITO_A || tipocomprobante == TIPOCOMPROBANTE_NOTADECREDITO_B)
                 {
                     decimal totalneto = decimal.Round ( Convert.ToDecimal(neto21 + neto105),2);
                     decimal totaliva = decimal.Round ( Convert.ToDecimal(civa21 + civa105),2);
@@ -128,7 +128,7 @@ namespace Capa_negocio
                 det.MonCotiz = 1;
                 int tipoalicuota = ID_TASA_IVA_NINGUNO;
                 AlicIva alicuota = new AlicIva();
-                if (tipocomprobante == TIPOCOMPROBANTE_FACTURA_A || tipocomprobante == TIPOCOMPROBANTE_FACTURA_B)
+                if (tipocomprobante == TIPOCOMPROBANTE_FACTURA_A || tipocomprobante == TIPOCOMPROBANTE_FACTURA_B || tipocomprobante == TIPOCOMPROBANTE_NOTADECREDITO_A || tipocomprobante == TIPOCOMPROBANTE_NOTADECREDITO_B)
                 {
                     if (neto21 > 0)
                     {

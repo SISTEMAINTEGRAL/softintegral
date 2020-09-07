@@ -145,6 +145,7 @@ namespace Capa_negocio
         // VER QUE NUMERO ES = const int TIPOCOMPROBANTE_NOTACREDITO_C = 1;
         const int TIPOCOMPROBANTE_NOTACREDITO_A = 3;
         const int TIPOCOMPROBANTE_NOTACREDITO_B = 8;
+        const int TIPOCOMPROBANTE_NOTACREDITO_C = 13;
 
 
         NegocioFHasar objhasar = new NegocioFHasar();
@@ -179,27 +180,54 @@ namespace Capa_negocio
                         {
                             NegocioFElectronica miclase = new Capa_negocio.NegocioFElectronica();
                             int tiponumerofactura = 0;
-                            switch (tipofactura)
+
+                            if (tipocomprobante == "FACTURA")
                             {
-                                case "A":
-                                    {
-                                        tiponumerofactura = TIPOCOMPROBANTE_FACTURA_A;
-                                        break;
-                                    }
-                                case "B":
-                                    {
-                                        tiponumerofactura = TIPOCOMPROBANTE_FACTURA_B;
-                                        break;
-                                    }
-                                case "C":
-                                    {
-                                        tiponumerofactura = TIPOCOMPROBANTE_FACTURA_C;
-                                        break;
-                                    }
-                                   
+                                switch (tipofactura)
+                                {
+                                    case "A":
+                                        {
+                                            tiponumerofactura = TIPOCOMPROBANTE_FACTURA_A;
+                                            break;
+                                        }
+                                    case "B":
+                                        {
+                                            tiponumerofactura = TIPOCOMPROBANTE_FACTURA_B;
+                                            break;
+                                        }
+                                    case "C":
+                                        {
+                                            tiponumerofactura = TIPOCOMPROBANTE_FACTURA_C;
+                                            break;
+                                        }
+
+                                }
+
                             }
-                            
-                         msg =   miclase.comprobante_electronico(tiponumerofactura,Convert.ToInt64 (cuit),total,neto21,civa21,neto105,civa105, ref cae, ref fechavto, ref numerotipofactura, ref puntoventa );
+                            else
+                            {
+                                switch (tipofactura)
+                                {
+                                    case "A":
+                                        {
+                                            tiponumerofactura = TIPOCOMPROBANTE_NOTACREDITO_A;
+                                            break;
+                                        }
+                                    case "B":
+                                        {
+                                            tiponumerofactura = TIPOCOMPROBANTE_NOTACREDITO_B;
+                                            break;
+                                        }
+                                    case "C":
+                                        {
+                                            tiponumerofactura = TIPOCOMPROBANTE_NOTACREDITO_C;
+                                            break;
+                                        }
+
+                                }
+                            }
+
+                            msg =   miclase.comprobante_electronico(tiponumerofactura,Convert.ToInt64 (cuit),total,neto21,civa21,neto105,civa105, ref cae, ref fechavto, ref numerotipofactura, ref puntoventa );
                             break;
                         }
                 }

@@ -241,17 +241,23 @@ namespace Capa_Presentacion
                         codformapago = 3;
                         break;
                     }
-
+                case "MULTIPLESPAGOS":
+                    {
+                        codformapago = 5;
+                        break;
+                    }
                 default:
                     break;
             }
             dataLista.Rows.Clear();
             try
             {
+                
                 DataTable dt = NegocioVenta.BuscarFechas(dtpFechaIni.Value.ToString("dd/MM/yyyy") + " 00:00:00", dtpFechaFin.Value.ToString("dd/MM/yyyy") + " 23:59:59",
-                    ChkFactura.Checked == true ? 'P' : 'F',Chkcaja.Checked == true ? false : true, rdBPresupuesto.Checked == true ? "PRESUPUESTO" : "NOTA DE VENTA" ,
+                    ChkFactura.Checked == true ? 'P' : 'F',Chkcaja.Checked == true ? false : true, Factura() ,
                     txtIdVenta.Text != "" ? Convert.ToInt32(txtIdVenta.Text) : 0,  txtPuntoventa.Text.PadLeft(5, '0'), codformapago,
                     txtIdVenta.Text != "" ? true : false,cbFormapago.Text != "TODO" ? true : false, txtPuntoventa.Text != "" ? true : false );
+               
                 foreach (DataRow venta in dt.Rows)
                 {
 
@@ -292,6 +298,29 @@ namespace Capa_Presentacion
             }
            
            
+
+        }
+
+        private string Factura()
+        {
+            string fact = "";
+            if (rdBPresupuesto.Checked == true)
+            {
+                fact = "PRESUPUESTO";
+
+            }
+            else if (rdBVenta.Checked == true)
+            {
+                fact = "NOTA DE VENTA";
+            }
+            else if  (RdNc.Checked == true)
+            {
+                fact = "NOTA DE CREDITO";
+            }
+           
+
+            return fact;
+
 
         }
 
@@ -427,22 +456,23 @@ namespace Capa_Presentacion
         private void dataLista_CellMouseDoubleClick_1(object sender, DataGridViewCellMouseEventArgs e)
         {
                if (dataLista.Rows.Count > 0)
-                {
+               {
                     DateTime date = Convert.ToDateTime(this.dataLista.CurrentRow.Cells["fecha"].Value);
                     
                     FrmDetalleVentas venta = new FrmDetalleVentas(Convert.ToString(this.dataLista.CurrentRow.Cells["codigo"].Value),
-                        Convert.ToString(this.dataLista.CurrentRow.Cells["Razon_social"].Value),
-                        date.ToShortDateString(),
-                         Convert.ToString(this.dataLista.CurrentRow.Cells["tipo_comprobante"].Value),
-                        Convert.ToString(this.dataLista.CurrentRow.Cells["estado"].Value),
-                        Convert.ToString(Decimal.Round(Convert.ToDecimal(this.dataLista.CurrentRow.Cells["total"].Value), 2))
-                        , Convert.ToString(this.dataLista.CurrentRow.Cells["idcliente"].Value), 
-                        Convert.ToString(this.dataLista.CurrentRow.Cells["cuit"].Value),
-                        Convert.ToString(this.dataLista.CurrentRow.Cells["letra"].Value));
+                    Convert.ToString(this.dataLista.CurrentRow.Cells["Razon_social"].Value),
+                    date.ToShortDateString(),
+                    Convert.ToString(this.dataLista.CurrentRow.Cells["tipo_comprobante"].Value),
+                    Convert.ToString(this.dataLista.CurrentRow.Cells["estado"].Value),
+                    Convert.ToString(Decimal.Round(Convert.ToDecimal(this.dataLista.CurrentRow.Cells["total"].Value), 2)),
+                    Convert.ToString(this.dataLista.CurrentRow.Cells["idcliente"].Value), 
+                    Convert.ToString(this.dataLista.CurrentRow.Cells["cuit"].Value),
+                    Convert.ToString(this.dataLista.CurrentRow.Cells["letra"].Value));
                     venta.ShowDialog();
-                  
-                }
-           
+                    this.buscarPorFecha();
+                    this.actualizarTotal();
+               }
+                     
            
            
         }
@@ -816,31 +846,41 @@ namespace Capa_Presentacion
 
         private void MenuAnular_Click(object sender, EventArgs e)
         {
-            string mensaje = "";
+            string mensaje = "ok";
             Negociocaja objcaja = new Negociocaja();
             DataGridViewRow row = dataLista.CurrentRow;
-           
-          mensaje = NegocioVenta.anular(Convert.ToInt32(row.Cells["Codigo"].Value), Convert.ToBoolean(row.Cells["stock"].Value));
-          
-            if (!mensaje.Equals("ok") )
+            try
             {
-                UtilityFrm.mensajeError(mensaje);
-            }
-            else
-            {
+                NegocioVenta.anular(Convert.ToInt32(row.Cells["Codigo"].Value), Convert.ToBoolean(row.Cells["stock"].Value), 'A');
+
                 if (Convert.ToBoolean(row.Cells["caja"].Value))
                 {
-                    if (objcaja.chequeocaja("", ref mensaje,NegocioConfigEmpresa.nrocaja))
+                    if (objcaja.chequeocaja("", ref mensaje, NegocioConfigEmpresa.nrocaja))
                     {
-                    mensaje =  Negociocaja.insertarmovcaja(5230000, 0, Convert.ToSingle(row.Cells["Total"].Value), DateTime.Today.ToString(), NegocioConfigEmpresa.usuarioconectado, NegocioConfigEmpresa.idusuario, NegocioConfigEmpresa.turno, "ANULACION", Convert.ToInt32(row.Cells["Codigo"].Value), true,NegocioConfigEmpresa.nrocaja, Convert.ToInt32(row.Cells["Formadepago"].Value));
-                    }  
+                        mensaje = Negociocaja.insertarmovcaja(5230000, 0, Convert.ToSingle(row.Cells["Total"].Value), DateTime.Today.ToString(), NegocioConfigEmpresa.usuarioconectado, NegocioConfigEmpresa.idusuario, NegocioConfigEmpresa.turno, "ANULACION", Convert.ToInt32(row.Cells["Codigo"].Value), true, NegocioConfigEmpresa.nrocaja, Convert.ToInt32(row.Cells["Formadepago"].Value));
+                        if (mensaje != "ok")
+                        {
+                            UtilityFrm.mensajeError("Error al querer guardar en caja");
+                        }
+                    }
                 }
-            }
+                
+                    UtilityFrm.notificacionpopup("ANULACION", "LA VENTA SE ANULO CORRECTAMENTE, SE RESTAURO EL STOCK");
+                
 
-            if (mensaje.Equals("ok"))
-            {
-                UtilityFrm.notificacionpopup("ANULACION", "LA VENTA SE ANULO CORRECTAMENTE, SE RESTAURO EL STOCK");
             }
+            catch (Exception ex)
+            {
+
+                UtilityFrm.mensajeError(ex.ToString());
+            }
+             
+            
+            
+            
+                
+
+           
 
             buscarPorFecha();
         }

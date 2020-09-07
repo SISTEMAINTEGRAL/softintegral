@@ -443,70 +443,65 @@ using Capa_Datos;
 
     //Metodo
 
-    public string anular(Dventa Venta,bool distock = false)
+    public int anular(Dventa Venta,bool distock = false)
     {
-        string mensaje = "";
+        int varidventa = 0;
         SqlConnection sqlcon = new SqlConnection();
         DataTable midatatable = new DataTable();
         DatosMovStock objstock = new Capa_Datos.DatosMovStock();
         SqlTransaction sqltra ;
         try
         {
-          mensaje =  CambiarEstadoVenta(Venta);
             midatatable = MostrarDetalle(Venta.idventa.ToString());
-            if (mensaje.Equals("OK") || mensaje .Equals("ok"))
-            {
+            varidventa =  CambiarEstadoVenta(Venta);
+            
+
+           
                 sqlcon.ConnectionString = Conexion.conexion;
                 sqlcon.Open();
 
                 sqltra = sqlcon.BeginTransaction();
 
-               // Venta.Idventa = Convert.ToInt32(sqlcmd.Parameters["@idventa"].Value);
+                // Venta.Idventa = Convert.ToInt32(sqlcmd.Parameters["@idventa"].Value);
 
-
-                foreach (DataRow midatarow in midatatable.Rows)
+                try
                 {
-                   
-                   
+                    foreach (DataRow midatarow in midatatable.Rows)
+                    {
 
-                    
                         //actualizamos el stock
-                        if (distock == true && Convert.ToInt32(midatarow["idarticulo"]) != 0) { mensaje = objstock.Modificarstock( Convert.ToInt32(midatarow["idarticulo"]) ,Convert.ToDecimal(midatarow["cantidad"]), ref sqlcon, ref sqltra, "ingreso"); }
-                        if ( !mensaje.Equals("ok"))
-                        {
-                            break;
+                        if (distock == true && Convert.ToInt32(midatarow["idarticulo"]) != 0) {  objstock.Modificarstock(Convert.ToInt32(midatarow["idarticulo"]), Convert.ToDecimal(midatarow["cantidad"]), ref sqlcon, ref sqltra, "ingreso"); }
+                       
 
-                        }
-                    
 
+                    }
+
+                    sqltra.Commit();
                 }
-
-                if (mensaje.Equals("OK") || mensaje.Equals("ok"))
-                {
-
-                     sqltra.Commit();
-                }
-                else
+                catch (Exception)
                 {
                     sqltra.Rollback();
+                    throw;
                 }
-            }
+                
 
            
 
         }
         catch (Exception e)
         {
-
-            mensaje = e.Message;
             
+            throw e;
+           
+
         }
 
         finally
         {
+           
             if (sqlcon.State == ConnectionState.Open) sqlcon.Close();
         }
-        return mensaje;
+        return varidventa;
     }
 
         public string Insertar(Dventa Venta, List <DDetalle_Venta> Detalle, bool distock = false)
@@ -786,23 +781,23 @@ using Capa_Datos;
 
                 SqlCommand sqlcmd = ProcAlmacenado.CrearProc(sqlcon, "SP_VENTA");
 
-            //modo 2 para la busqueda
-            sqlcmd.Parameters.AddWithValue("modo", 2);
-            sqlcmd.Parameters.AddWithValue("textobuscar", TextoBuscar);
-            sqlcmd.Parameters.AddWithValue("textobuscar2", TextoBuscar2);
-            sqlcmd.Parameters.AddWithValue("estado", venta.estado);
-            sqlcmd.Parameters.AddWithValue("concaja", venta.concaja);
-            sqlcmd.Parameters.AddWithValue("tipo_comprobante", venta.tipo_comprobante);
+                //modo 2 para la busqueda
+                sqlcmd.Parameters.AddWithValue("modo", 2);
+                sqlcmd.Parameters.AddWithValue("textobuscar", TextoBuscar);
+                sqlcmd.Parameters.AddWithValue("textobuscar2", TextoBuscar2);
+                sqlcmd.Parameters.AddWithValue("estado", venta.estado);
+                sqlcmd.Parameters.AddWithValue("concaja", venta.concaja);
+                sqlcmd.Parameters.AddWithValue("tipo_comprobante", venta.tipo_comprobante);
 
-            sqlcmd.Parameters.AddWithValue("puntoventa", venta.puntoventa);
-            sqlcmd.Parameters.AddWithValue("codformapago", venta.codformapago);
-            sqlcmd.Parameters.AddWithValue("idventa", venta.idventa);
-            sqlcmd.Parameters.AddWithValue("porventa", venta.Porventa);
-            sqlcmd.Parameters.AddWithValue("porpuntoventa", venta.Porpuntodeventa);
-            sqlcmd.Parameters.AddWithValue("porformadepago", venta.Porformadepago);
+                sqlcmd.Parameters.AddWithValue("puntoventa", venta.puntoventa);
+                sqlcmd.Parameters.AddWithValue("codformapago", venta.codformapago);
+                sqlcmd.Parameters.AddWithValue("idventa", venta.idventa);
+                sqlcmd.Parameters.AddWithValue("porventa", venta.Porventa);
+                sqlcmd.Parameters.AddWithValue("porpuntoventa", venta.Porpuntodeventa);
+                sqlcmd.Parameters.AddWithValue("porformadepago", venta.Porformadepago);
 
-            SqlDataAdapter sqldat = new SqlDataAdapter(sqlcmd);
-                sqldat.Fill(DtResultado);
+                SqlDataAdapter sqldat = new SqlDataAdapter(sqlcmd);
+                    sqldat.Fill(DtResultado);
 
             }
             catch (Exception ex)
@@ -877,65 +872,72 @@ using Capa_Datos;
             return dtResultado;
         }
 
-        public string CambiarEstadoVenta(Dventa venta, int mod = 6)
+        public int CambiarEstadoVenta(Dventa venta, int mod = 6)
         {
-        string resultado = "";
 
+            int varidventa = 0;
 
-        try
-        {
-            SqlConnection cn = new SqlConnection(Conexion.conexion);
-            cn.Open();
-            SqlCommand comando = ProcAlmacenado.CrearProc(cn, "SP_VENTA");
-
-            //modo 6
-            SqlParameter parModo = ProcAlmacenado.asignarParametros("modo", SqlDbType.Int, mod);
-            comando.Parameters.Add(parModo);
-
-            SqlParameter parIdVenta = ProcAlmacenado.asignarParametros("idventa", SqlDbType.Int, venta.Idventa);
-            comando.Parameters.Add(parIdVenta);
-
-            if (mod == 6)
+            try
             {
+                SqlConnection cn = new SqlConnection(Conexion.conexion);
+                cn.Open();
+                SqlCommand comando = ProcAlmacenado.CrearProc(cn, "SP_VENTA");
+
+                //modo 6
+                SqlParameter parModo = ProcAlmacenado.asignarParametros("modo", SqlDbType.Int, mod);
+                comando.Parameters.Add(parModo);
+
+                SqlParameter parIdVenta = ProcAlmacenado.asignarParametros("@idventain", SqlDbType.Int, venta.Idventa);
+                comando.Parameters.Add(parIdVenta);
+
+                if (mod == 6)
+                {
+                SqlParameter paridventa = ProcAlmacenado.asignarParametros("@idventa", SqlDbType.Int);
+                comando.Parameters.Add(paridventa);
                 SqlParameter parEstado = ProcAlmacenado.asignarParametros("estado", SqlDbType.VarChar, venta.Estado);
-                comando.Parameters.Add(parEstado);
-                SqlParameter parComprobante = ProcAlmacenado.asignarParametros("nrocomprobante", SqlDbType.VarChar, venta.nrocomprobante);
-                comando.Parameters.Add(parComprobante);
-                SqlParameter parCAE = ProcAlmacenado.asignarParametros("@CAE", SqlDbType.VarChar, venta.cae);
-                comando.Parameters.Add(parCAE);
-                SqlParameter parCAEVTO = ProcAlmacenado.asignarParametros("@caefechavencimiento", SqlDbType.VarChar, venta.caevencimiento);
-                comando.Parameters.Add(parCAEVTO);
+                    comando.Parameters.Add(parEstado);
+                    SqlParameter parComprobante = ProcAlmacenado.asignarParametros("nrocomprobante", SqlDbType.VarChar, venta.nrocomprobante);
+                    comando.Parameters.Add(parComprobante);
+                    SqlParameter parCAE = ProcAlmacenado.asignarParametros("@CAE", SqlDbType.VarChar, venta.cae);
+                    comando.Parameters.Add(parCAE);
+                    SqlParameter parCAEVTO = ProcAlmacenado.asignarParametros("@caefechavencimiento", SqlDbType.VarChar, venta.caevencimiento);
+                    comando.Parameters.Add(parCAEVTO);
 
-                SqlParameter parpuntoventa = ProcAlmacenado.asignarParametros("@puntoventa", SqlDbType.VarChar, venta.puntoventa);
-                comando.Parameters.Add(parpuntoventa);
+                    SqlParameter parpuntoventa = ProcAlmacenado.asignarParametros("@puntoventa", SqlDbType.VarChar, venta.puntoventa);
+                    comando.Parameters.Add(parpuntoventa);
 
-                SqlParameter partipofactura = ProcAlmacenado.asignarParametros("@tipofactura", SqlDbType.VarChar, venta.numerotipofactura);
-                comando.Parameters.Add(partipofactura);
+                    SqlParameter partipofactura = ProcAlmacenado.asignarParametros("@tipofactura", SqlDbType.VarChar, venta.numerotipofactura);
+                    comando.Parameters.Add(partipofactura);
 
-                SqlParameter parfecha = ProcAlmacenado.asignarParametros("@fecha", SqlDbType.DateTime, venta.fecha);
-                comando.Parameters.Add(parfecha);
+                    SqlParameter parfecha = ProcAlmacenado.asignarParametros("@fecha", SqlDbType.DateTime, venta.fecha);
+                    comando.Parameters.Add(parfecha);
 
-            }
-            else
+                }
+                else
+                {
+                    SqlParameter parCaja = ProcAlmacenado.asignarParametros("concaja", SqlDbType.Bit, venta.concaja);
+                    comando.Parameters.Add(parCaja);
+                    SqlParameter parStock = ProcAlmacenado.asignarParametros("constock", SqlDbType.Bit, venta.constock);
+                    comando.Parameters.Add(parStock);
+
+                }
+
+                 comando.ExecuteNonQuery() ;
+
+            if (venta.estado == 'N')
             {
-                SqlParameter parCaja = ProcAlmacenado.asignarParametros("concaja", SqlDbType.Bit, venta.concaja);
-                comando.Parameters.Add(parCaja);
-                SqlParameter parStock = ProcAlmacenado.asignarParametros("constock", SqlDbType.Bit, venta.constock);
-                comando.Parameters.Add(parStock);
+                varidventa = Convert.ToInt32(comando.Parameters["@idventa"].Value);
+            }
+                
+        }
+            catch (Exception ex)
+            {
 
+              throw ex;
             }
 
-            resultado = comando.ExecuteNonQuery() == 1 ? "ok" : "Error";
-
+            return varidventa;
         }
-        catch (Exception ex)
-        {
-
-            resultado = "Error: " + ex.Message;
-        }
-
-        return resultado;
-    }
         public DataTable Tarjeta(int modo = 9, int codigotarjeta = 0)
         {
             try
@@ -1161,7 +1163,7 @@ using Capa_Datos;
                     comando.Parameters.AddWithValue("@idusuario", Venta.idusuario);
                     comando.Parameters.AddWithValue("@turno", Venta.turno);
                     comando.Parameters.AddWithValue("@Idmltpadre", 0);
-                comando.Parameters.AddWithValue("@id_caja", Venta.nrocaja);
+                    comando.Parameters.AddWithValue("@id_caja", Venta.nrocaja);
 
                 var parametroventa = new SqlParameter("@venta",SqlDbType.Structured);
                 parametroventa.TypeName = "dbo.Venta_Temp";
@@ -1176,7 +1178,7 @@ using Capa_Datos;
 
                 comando.ExecuteNonQuery();
 
-                Venta.Idventa = Convert.ToInt32(comando.Parameters["@Idmltpadre"].Value);
+                Venta.Idventa = Convert.ToInt32(comando.Parameters["@idventa"].Value);
 
                 respuesta = "ok";
 
