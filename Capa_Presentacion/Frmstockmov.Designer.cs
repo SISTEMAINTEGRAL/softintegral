@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.xuiFormDesign1 = new XanderUI.XUIFormDesign();
             this.xuiFlatTab1 = new XanderUI.XUIFlatTab();
             this.TabLista = new System.Windows.Forms.TabPage();
@@ -72,9 +72,9 @@
             this.xuiFormDesign1.WorkingArea.BackColor = System.Drawing.Color.White;
             this.xuiFormDesign1.WorkingArea.Controls.Add(this.xuiFlatTab1);
             this.xuiFormDesign1.WorkingArea.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.xuiFormDesign1.WorkingArea.Location = new System.Drawing.Point(0, 59);
+            this.xuiFormDesign1.WorkingArea.Location = new System.Drawing.Point(0, 74);
             this.xuiFormDesign1.WorkingArea.Name = "WorkingArea";
-            this.xuiFormDesign1.WorkingArea.Size = new System.Drawing.Size(1242, 565);
+            this.xuiFormDesign1.WorkingArea.Size = new System.Drawing.Size(1242, 550);
             this.xuiFormDesign1.WorkingArea.TabIndex = 0;
             // 
             // xuiFlatTab1
@@ -96,7 +96,7 @@
             this.xuiFlatTab1.PageColor = System.Drawing.Color.White;
             this.xuiFlatTab1.SelectedIndex = 0;
             this.xuiFlatTab1.ShowBorder = true;
-            this.xuiFlatTab1.Size = new System.Drawing.Size(1242, 561);
+            this.xuiFlatTab1.Size = new System.Drawing.Size(1242, 546);
             this.xuiFlatTab1.TabIndex = 0;
             // 
             // TabLista
@@ -109,8 +109,8 @@
             this.TabLista.Controls.Add(this.TPinicio);
             this.TabLista.Location = new System.Drawing.Point(4, 20);
             this.TabLista.Name = "TabLista";
-            this.TabLista.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
-            this.TabLista.Size = new System.Drawing.Size(1234, 537);
+            this.TabLista.Padding = new System.Windows.Forms.Padding(3);
+            this.TabLista.Size = new System.Drawing.Size(1234, 522);
             this.TabLista.TabIndex = 0;
             this.TabLista.Text = "Lista";
             // 
@@ -134,29 +134,29 @@
             // 
             this.DTStock.AllowUserToAddRows = false;
             this.DTStock.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(229)))), ((int)(((byte)(251)))));
-            this.DTStock.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(180)))), ((int)(((byte)(229)))), ((int)(((byte)(251)))));
+            this.DTStock.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.DTStock.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.DTStock.BackgroundColor = System.Drawing.Color.White;
             this.DTStock.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.DTStock.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(169)))), ((int)(((byte)(243)))));
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 10.5F);
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DTStock.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(3)))), ((int)(((byte)(169)))), ((int)(((byte)(243)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 10.5F);
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DTStock.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.DTStock.ColumnHeadersHeight = 4;
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(237)))), ((int)(((byte)(252)))));
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Segoe UI", 10.5F);
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(197)))), ((int)(((byte)(247)))));
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.DTStock.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(205)))), ((int)(((byte)(237)))), ((int)(((byte)(252)))));
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 10.5F);
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(87)))), ((int)(((byte)(197)))), ((int)(((byte)(247)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.DTStock.DefaultCellStyle = dataGridViewCellStyle3;
             this.DTStock.EnableHeadersVisualStyles = false;
             this.DTStock.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(179)))), ((int)(((byte)(230)))), ((int)(((byte)(251)))));
             this.DTStock.Location = new System.Drawing.Point(8, 74);
@@ -273,8 +273,8 @@
             this.TabVenta.Controls.Add(this.gunaRadioButton1);
             this.TabVenta.Location = new System.Drawing.Point(4, 20);
             this.TabVenta.Name = "TabVenta";
-            this.TabVenta.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
-            this.TabVenta.Size = new System.Drawing.Size(1234, 522);
+            this.TabVenta.Padding = new System.Windows.Forms.Padding(3);
+            this.TabVenta.Size = new System.Drawing.Size(1234, 537);
             this.TabVenta.TabIndex = 1;
             this.TabVenta.Text = "Venta";
             // 

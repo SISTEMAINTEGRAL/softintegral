@@ -28,6 +28,7 @@ namespace SistemaVentas
         int InicialconsultasY;
         int InicialVentasY;
         int InicialConfiguracionY;
+
         private FrmArticulos objformarticulo = null;
         private FrmArticulos2 objformarticulo2 = null;
         private frmPventa objformventa = null;
@@ -540,6 +541,7 @@ namespace SistemaVentas
         int stockY;
         int consultasY;
         int configuracionY;
+        int recibosY;
 
         private void btnProductos_Click(object sender, EventArgs e)
         {
@@ -609,7 +611,7 @@ namespace SistemaVentas
             //valor constante que se tienen que mover los botones
             int movimiento = 100;
 
-            if (btnGenerarVenta.Visible == false && btnListaVenta.Visible == false)
+            if (btnGenerarVenta.Visible == false && btnListaVenta.Visible == false && BtnRecibo.Visible == false)
             {
               
                 if (isProductoDesplegado == true || isStockDesplegado == true)
@@ -628,12 +630,14 @@ namespace SistemaVentas
                 stockY = btnStock.Location.Y;
                 consultasY = btnConsultas.Location.Y;
                 configuracionY = btnConfiguracion.Location.Y;
+                recibosY = BtnRecibo.Location.Y;
 
                 btnGenerarVenta.Visible = true;
                 btnListaVenta.Visible = true;
                 pnGenerarVenta.Visible = true;
                 pnListaVenta.Visible = true;
                 pnConfig.Visible = true;
+                BtnRecibo.Visible = true;
                
 
                 //al hacer click en producto se desplaza los submenus
@@ -857,6 +861,7 @@ namespace SistemaVentas
 
         private void btnListaVenta_Click(object sender, EventArgs e)
         {
+            
             FrmListadoVentas listadoVentas = this.Forminstancialistadoventa;
             listadoVentas.Show();
             listadoVentas.WindowState = FormWindowState.Maximized;
@@ -877,6 +882,7 @@ namespace SistemaVentas
             isProductoDesplegado = false;
             isStockDesplegado = false;
 
+            BtnRecibo.Visible = false;
             btnCategoria.Visible = false;
             btnListaProducto.Visible = false;
             pnCategoria.Visible = false;
@@ -906,6 +912,7 @@ namespace SistemaVentas
             btnProveedor.Location = new System.Drawing.Point(0, InicialproveedorY);
             btnStock.Location = new System.Drawing.Point(0, (InicialstockY));
             btnConfiguracion.Location = new System.Drawing.Point(0, (InicialConfiguracionY));
+
 
             //paneles
             pnVentas.Location = new System.Drawing.Point(0, InicialVentasY);
@@ -996,6 +1003,12 @@ namespace SistemaVentas
         {
             FrmTarjeta objtarjeta = new FrmTarjeta();
             objtarjeta.Show();
+        }
+
+        private void BtnRecibo_Click(object sender, EventArgs e)
+        {
+            FrmListaRecibos objrecibo = new FrmListaRecibos();
+            objrecibo.Show();
         }
     }
 }

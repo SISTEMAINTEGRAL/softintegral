@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Capa_negocio;
 using Capa_Datos;
+using System.Globalization;
 
 namespace Capa_Presentacion
 {
@@ -313,6 +314,7 @@ namespace Capa_Presentacion
         private void calcularutilidadgrid( )
         {
 
+
             DGVenta.CurrentRow.Cells[6].Value = UtilityFrm.formateodecimal(UtilityFrm.calcularventa(Convert.ToDecimal(DGVenta.CurrentRow.Cells[3].Value), Convert.ToDecimal(DGVenta.CurrentRow.Cells[4].Value), Convert.ToDecimal(DGVenta.CurrentRow.Cells[5].Value), Convert.ToDecimal(DGVenta.CurrentRow.Cells[6].Value)), 2);
             
 
@@ -358,7 +360,7 @@ namespace Capa_Presentacion
                         if (cbcampoamodificar.Text == "Precio_venta")
                         {
 
-                            row.Cells[6].Value = UtilityFrm.formateodecimal(UtilityFrm.calcularpreciocosto(Convert.ToDecimal(row.Cells[6].Value), Convert.ToDecimal(txtPorcentaje.Text)), 2);
+                            row.Cells[6].Value = UtilityFrm.formateodecimal(UtilityFrm.calcularventa(Convert.ToDecimal(row.Cells[6].Value), Convert.ToDecimal(txtPorcentaje.Text)), 2);
                         }
                     }
 
@@ -391,12 +393,13 @@ namespace Capa_Presentacion
 
         private void DGVenta_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
-                 DGVenta.Rows[e.RowIndex].Cells[3].Value.ToString();
-                
-                    this.DGVenta.Columns[3].DefaultCellStyle.Format = String.Format("$###,##0.00");
-                    
+
             
-          
+           
+            DGVenta.CurrentRow.Cells[3].Value = UtilityFrm.GetdigitFromString(DGVenta.CurrentRow.Cells[3].Value.ToString(),true);
+            DGVenta.CurrentRow.Cells[4].Value = UtilityFrm.GetdigitFromString(DGVenta.CurrentRow.Cells[4].Value.ToString(), true);
+            DGVenta.CurrentRow.Cells[5].Value = UtilityFrm.GetdigitFromString(DGVenta.CurrentRow.Cells[5].Value.ToString(), true);
+
             calcularutilidadgrid();
             DGVenta.CurrentRow.Cells[3].Value = UtilityFrm.formateodecimal(Convert.ToDecimal ( DGVenta.CurrentRow.Cells[3].Value), 2);
             DGVenta.CurrentRow.Cells[4].Value = UtilityFrm.formateodecimal(Convert.ToDecimal(DGVenta.CurrentRow.Cells[4].Value), 2);
@@ -440,6 +443,26 @@ namespace Capa_Presentacion
             
             UtilityFrm.mensajeConfirm("La actualizacion se realizo con exito");
             DGVenta.Rows.Clear();
+        }
+
+        private void DGVenta_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            //UtilityFrm.Validar_DatagridPress(sender, e, DGVenta);
+        }
+
+        private void BtnExportarbalanza_Click(object sender, EventArgs e)
+        {
+            string mensaje = "";
+            mensaje =  UtilityFrm.archivotxtbalanza(NegocioArticulo.mostrartodo(true));
+           
+            if (mensaje == "")
+            {
+                UtilityFrm.notificacionpopup("Exportacion Archivo", "La exportacion del archivo se realizo con exito");
+            }
+            else
+            {
+                UtilityFrm.mensajeError("La exportacion no se realizo correctamente" + mensaje);
+            }
         }
     }
 }

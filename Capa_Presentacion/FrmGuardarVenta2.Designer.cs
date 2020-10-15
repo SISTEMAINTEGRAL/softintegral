@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmGuardarVenta2));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle16 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnGuardar = new System.Windows.Forms.Button();
             this.lblTotal = new System.Windows.Forms.Label();
             this.lblEfectivo = new System.Windows.Forms.Label();
@@ -85,9 +85,10 @@
             this.CodFormaPago = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label12 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
+            this.TxtTotalcuota = new System.Windows.Forms.TextBox();
             this.Txtcuota = new System.Windows.Forms.TextBox();
+            this.label15 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
-            this.cbMCuota = new ComboBoxMultiColumns.ComboBoxMultiColumns();
             this.cbTarjeta = new System.Windows.Forms.ComboBox();
             this.CbFormaPago = new System.Windows.Forms.ComboBox();
             this.TxtLote2 = new System.Windows.Forms.TextBox();
@@ -96,6 +97,7 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.TxtSaldo = new System.Windows.Forms.TextBox();
+            this.cbMCuota = new ComboBoxMultiColumns.ComboBoxMultiColumns();
             this.panel1.SuspendLayout();
             this.tbEfectivo.SuspendLayout();
             this.gbxEfectivo.SuspendLayout();
@@ -572,7 +574,9 @@
             this.PanelMultipago.Controls.Add(this.DGMultiPago);
             this.PanelMultipago.Controls.Add(this.label12);
             this.PanelMultipago.Controls.Add(this.label11);
+            this.PanelMultipago.Controls.Add(this.TxtTotalcuota);
             this.PanelMultipago.Controls.Add(this.Txtcuota);
+            this.PanelMultipago.Controls.Add(this.label15);
             this.PanelMultipago.Controls.Add(this.label8);
             this.PanelMultipago.Controls.Add(this.cbMCuota);
             this.PanelMultipago.Controls.Add(this.cbTarjeta);
@@ -594,7 +598,7 @@
             // 
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(308, 167);
+            this.label14.Location = new System.Drawing.Point(249, 167);
             this.label14.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(94, 23);
@@ -605,7 +609,7 @@
             // 
             this.label13.AutoSize = true;
             this.label13.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label13.Location = new System.Drawing.Point(98, 163);
+            this.label13.Location = new System.Drawing.Point(6, 163);
             this.label13.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(66, 23);
@@ -625,12 +629,12 @@
             this.BtnAgregar.HoverBackgroundColor = System.Drawing.Color.IndianRed;
             this.BtnAgregar.HoverTextColor = System.Drawing.Color.Yellow;
             this.BtnAgregar.ImagePosition = XanderUI.XUISuperButton.imgPosition.Left;
-            this.BtnAgregar.Location = new System.Drawing.Point(410, 90);
+            this.BtnAgregar.Location = new System.Drawing.Point(453, 162);
             this.BtnAgregar.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.BtnAgregar.Name = "BtnAgregar";
             this.BtnAgregar.SelectedBackColor = System.Drawing.Color.LimeGreen;
             this.BtnAgregar.SelectedTextColor = System.Drawing.Color.White;
-            this.BtnAgregar.Size = new System.Drawing.Size(118, 69);
+            this.BtnAgregar.Size = new System.Drawing.Size(93, 32);
             this.BtnAgregar.SuperSelected = false;
             this.BtnAgregar.TabIndex = 116;
             this.BtnAgregar.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(245)))), ((int)(((byte)(255)))));
@@ -643,8 +647,8 @@
             this.DGMultiPago.AllowUserToDeleteRows = false;
             this.DGMultiPago.AllowUserToOrderColumns = true;
             this.DGMultiPago.AllowUserToResizeRows = false;
-            dataGridViewCellStyle16.BackColor = System.Drawing.Color.White;
-            this.DGMultiPago.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle16;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
+            this.DGMultiPago.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
             this.DGMultiPago.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -654,14 +658,14 @@
             this.DGMultiPago.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.DGMultiPago.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.DGMultiPago.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
-            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle17.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle17.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle17.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle17.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle17.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle17.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DGMultiPago.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle17;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DGMultiPago.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.DGMultiPago.ColumnHeadersHeight = 38;
             this.DGMultiPago.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.FPago,
@@ -674,14 +678,14 @@
             this.Importesininteres,
             this.Eliminar,
             this.CodFormaPago});
-            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle18.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle18.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle18.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle18.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle18.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle18.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.DGMultiPago.DefaultCellStyle = dataGridViewCellStyle18;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.DGMultiPago.DefaultCellStyle = dataGridViewCellStyle6;
             this.DGMultiPago.EnableHeadersVisualStyles = false;
             this.DGMultiPago.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.DGMultiPago.Location = new System.Drawing.Point(3, 198);
@@ -795,7 +799,7 @@
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(64, 90);
+            this.label12.Location = new System.Drawing.Point(6, 90);
             this.label12.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(100, 23);
@@ -806,12 +810,26 @@
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(21, 8);
+            this.label11.Location = new System.Drawing.Point(6, 8);
             this.label11.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(135, 23);
             this.label11.TabIndex = 84;
             this.label11.Text = "F. DE PAGO :";
+            // 
+            // TxtTotalcuota
+            // 
+            this.TxtTotalcuota.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(144)))), ((int)(((byte)(247)))));
+            this.TxtTotalcuota.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.TxtTotalcuota.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TxtTotalcuota.Location = new System.Drawing.Point(451, 124);
+            this.TxtTotalcuota.Margin = new System.Windows.Forms.Padding(4, 8, 4, 8);
+            this.TxtTotalcuota.Name = "TxtTotalcuota";
+            this.TxtTotalcuota.ReadOnly = true;
+            this.TxtTotalcuota.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.TxtTotalcuota.Size = new System.Drawing.Size(95, 32);
+            this.TxtTotalcuota.TabIndex = 81;
+            this.TxtTotalcuota.Text = "0,00";
             // 
             // Txtcuota
             // 
@@ -819,39 +837,36 @@
             this.Txtcuota.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Txtcuota.Enabled = false;
             this.Txtcuota.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Txtcuota.Location = new System.Drawing.Point(321, 124);
+            this.Txtcuota.Location = new System.Drawing.Point(213, 122);
             this.Txtcuota.Margin = new System.Windows.Forms.Padding(4, 8, 4, 8);
             this.Txtcuota.Name = "Txtcuota";
             this.Txtcuota.ReadOnly = true;
             this.Txtcuota.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.Txtcuota.Size = new System.Drawing.Size(76, 32);
+            this.Txtcuota.Size = new System.Drawing.Size(68, 32);
             this.Txtcuota.TabIndex = 81;
             this.Txtcuota.Text = "0,00";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.Location = new System.Drawing.Point(286, 128);
+            this.label15.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(163, 23);
+            this.label15.TabIndex = 80;
+            this.label15.Text = "TOTAL CUOTAS :";
             // 
             // label8
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(7, 125);
+            this.label8.Location = new System.Drawing.Point(6, 124);
             this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(157, 23);
+            this.label8.Size = new System.Drawing.Size(106, 23);
             this.label8.TabIndex = 80;
-            this.label8.Text = "CAN. CUOTAS :";
-            // 
-            // cbMCuota
-            // 
-            this.cbMCuota.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.cbMCuota.Enabled = false;
-            this.cbMCuota.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cbMCuota.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cbMCuota.Location = new System.Drawing.Point(196, 122);
-            this.cbMCuota.Margin = new System.Windows.Forms.Padding(2);
-            this.cbMCuota.Name = "cbMCuota";
-            this.cbMCuota.Size = new System.Drawing.Size(107, 31);
-            this.cbMCuota.TabIndex = 83;
-            this.cbMCuota.SelectedIndexChanged += new System.EventHandler(this.cbMCuota_SelectedIndexChanged);
-            this.cbMCuota.SelectedValueChanged += new System.EventHandler(this.cbMCuota_SelectedValueChanged);
+            this.label8.Text = "CUOTAS  :";
             // 
             // cbTarjeta
             // 
@@ -859,12 +874,12 @@
             this.cbTarjeta.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbTarjeta.Enabled = false;
             this.cbTarjeta.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cbTarjeta.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbTarjeta.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbTarjeta.FormattingEnabled = true;
-            this.cbTarjeta.Location = new System.Drawing.Point(195, 87);
+            this.cbTarjeta.Location = new System.Drawing.Point(152, 87);
             this.cbTarjeta.Margin = new System.Windows.Forms.Padding(2);
             this.cbTarjeta.Name = "cbTarjeta";
-            this.cbTarjeta.Size = new System.Drawing.Size(204, 31);
+            this.cbTarjeta.Size = new System.Drawing.Size(274, 28);
             this.cbTarjeta.TabIndex = 82;
             this.cbTarjeta.SelectedValueChanged += new System.EventHandler(this.cbTarjeta_SelectedValueChanged);
             // 
@@ -876,7 +891,7 @@
             "EFECTIVO",
             "TARJETA",
             "CTACTE"});
-            this.CbFormaPago.Location = new System.Drawing.Point(196, 9);
+            this.CbFormaPago.Location = new System.Drawing.Point(153, 9);
             this.CbFormaPago.Name = "CbFormaPago";
             this.CbFormaPago.Size = new System.Drawing.Size(207, 31);
             this.CbFormaPago.TabIndex = 57;
@@ -889,10 +904,10 @@
             this.TxtLote2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TxtLote2.Enabled = false;
             this.TxtLote2.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TxtLote2.Location = new System.Drawing.Point(195, 161);
+            this.TxtLote2.Location = new System.Drawing.Point(154, 161);
             this.TxtLote2.Margin = new System.Windows.Forms.Padding(4);
             this.TxtLote2.Name = "TxtLote2";
-            this.TxtLote2.Size = new System.Drawing.Size(100, 32);
+            this.TxtLote2.Size = new System.Drawing.Size(75, 32);
             this.TxtLote2.TabIndex = 56;
             this.TxtLote2.Text = "0";
             this.TxtLote2.Click += new System.EventHandler(this.TxtLote2_Click);
@@ -903,10 +918,10 @@
             this.Txtcupon2.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.Txtcupon2.Enabled = false;
             this.Txtcupon2.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Txtcupon2.Location = new System.Drawing.Point(414, 163);
+            this.Txtcupon2.Location = new System.Drawing.Point(355, 163);
             this.Txtcupon2.Margin = new System.Windows.Forms.Padding(4);
             this.Txtcupon2.Name = "Txtcupon2";
-            this.Txtcupon2.Size = new System.Drawing.Size(100, 32);
+            this.Txtcupon2.Size = new System.Drawing.Size(71, 32);
             this.Txtcupon2.TabIndex = 56;
             this.Txtcupon2.Text = "0";
             this.Txtcupon2.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Txtcupon2_KeyDown);
@@ -915,7 +930,7 @@
             // 
             this.TxtImporte.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.TxtImporte.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.TxtImporte.Location = new System.Drawing.Point(197, 47);
+            this.TxtImporte.Location = new System.Drawing.Point(154, 47);
             this.TxtImporte.Margin = new System.Windows.Forms.Padding(4);
             this.TxtImporte.Name = "TxtImporte";
             this.TxtImporte.Size = new System.Drawing.Size(100, 32);
@@ -928,7 +943,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(38, 49);
+            this.label6.Location = new System.Drawing.Point(6, 49);
             this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(120, 23);
@@ -959,6 +974,20 @@
             this.TxtSaldo.Size = new System.Drawing.Size(92, 32);
             this.TxtSaldo.TabIndex = 53;
             this.TxtSaldo.Text = "0.0";
+            // 
+            // cbMCuota
+            // 
+            this.cbMCuota.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.cbMCuota.Enabled = false;
+            this.cbMCuota.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.cbMCuota.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbMCuota.Location = new System.Drawing.Point(153, 122);
+            this.cbMCuota.Margin = new System.Windows.Forms.Padding(2);
+            this.cbMCuota.Name = "cbMCuota";
+            this.cbMCuota.Size = new System.Drawing.Size(57, 31);
+            this.cbMCuota.TabIndex = 83;
+            this.cbMCuota.SelectedIndexChanged += new System.EventHandler(this.cbMCuota_SelectedIndexChanged);
+            this.cbMCuota.SelectedValueChanged += new System.EventHandler(this.cbMCuota_SelectedValueChanged);
             // 
             // FrmGuardarVenta2
             // 
@@ -1076,5 +1105,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Importesininteres;
         private System.Windows.Forms.DataGridViewButtonColumn Eliminar;
         private System.Windows.Forms.DataGridViewTextBoxColumn CodFormaPago;
+        public System.Windows.Forms.TextBox TxtTotalcuota;
+        private System.Windows.Forms.Label label15;
     }
 }

@@ -1484,7 +1484,7 @@
             this.MinimizeBox = false;
             this.Name = "FrmArticulos";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "FrmArticulos";
+            this.Text = "3.3.2";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.Load += new System.EventHandler(this.FrmArticulos_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.FrmArticulos_KeyDown);

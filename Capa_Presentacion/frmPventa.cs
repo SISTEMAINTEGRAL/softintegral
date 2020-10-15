@@ -139,7 +139,7 @@ namespace Capa_Presentacion
 
       
           public void Buscar_Cliente(int codCliente)
-        {
+          {
             try
             {
                 if (codCliente > 0)
@@ -219,7 +219,7 @@ namespace Capa_Presentacion
 
             }
 
-        }
+          }
           public void agregar_producto(int codproducto, decimal  precioProducto,decimal  descuentoProducto)
           {
               try
@@ -1082,7 +1082,15 @@ namespace Capa_Presentacion
             {
                 DGCliente.Focus();
             }
-          
+
+            if (e.KeyCode == Keys.Down && dataGridView1.Visible == true)
+            {
+                //si se preciona la tecla hacia abajo se pasa el foco a la grilla
+
+                DGCliente.Focus();
+
+            }
+
         }
 
         public void clienteIncorrecto(){
@@ -2041,6 +2049,10 @@ namespace Capa_Presentacion
                 DGCliente.Columns[5].Visible = false;
                 DGCliente.Columns[6].Visible = false;
             }
+            else
+            {
+                DGCliente.Visible = false;
+            }
         }
 
         private void dataGridView1_KeyPress(object sender, KeyPressEventArgs e)
@@ -2858,9 +2870,13 @@ namespace Capa_Presentacion
 
         private void DGCliente_KeyDown(object sender, KeyEventArgs e)
         {
-            Buscar_Cliente(Convert.ToInt32(DGCliente.CurrentRow.Cells["idcliente"].Value));
-            DGCliente.Visible = false;
-            txtNombreProducto.Focus();
+            if (e.KeyCode == Keys.Enter)
+            {
+                Buscar_Cliente(Convert.ToInt32(DGCliente.CurrentRow.Cells["idcliente"].Value));
+                DGCliente.Visible = false;
+                txtNombreProducto.Focus();
+            }
+            
         }
 
         private void DGCliente_CellContentClick(object sender, DataGridViewCellEventArgs e)

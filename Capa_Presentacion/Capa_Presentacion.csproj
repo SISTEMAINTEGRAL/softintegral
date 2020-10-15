@@ -259,6 +259,24 @@
     <Compile Include="FrmImportArticulos.Designer.cs">
       <DependentUpon>FrmImportArticulos.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmListadoPresup.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmListadoPresup.Designer.cs">
+      <DependentUpon>FrmListadoPresup.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmListadoVentasAvanzadas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmListadoVentasAvanzadas.Designer.cs">
+      <DependentUpon>FrmListadoVentasAvanzadas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmListaRecibos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmListaRecibos.Designer.cs">
+      <DependentUpon>FrmListaRecibos.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmProveedorCorregido.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -757,6 +775,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmImportArticulos.resx">
       <DependentUpon>FrmImportArticulos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmListadoPresup.resx">
+      <DependentUpon>FrmListadoPresup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmListadoVentasAvanzadas.resx">
+      <DependentUpon>FrmListadoVentasAvanzadas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmListaRecibos.resx">
+      <DependentUpon>FrmListaRecibos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FrmProveedorCorregido.resx">
       <DependentUpon>FrmProveedorCorregido.cs</DependentUpon>

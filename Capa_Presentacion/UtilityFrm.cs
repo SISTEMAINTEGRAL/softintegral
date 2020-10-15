@@ -252,6 +252,7 @@ namespace Capa_Presentacion
 
 
         }
+       
         /// <summary>
         /// Permite solo valores numerico en textbox
         /// </summary>
@@ -787,50 +788,60 @@ namespace Capa_Presentacion
             
         }
         // toma solo numeros y puntos
-      private  static string GetdigitFromString(string str)
-        {
-            try
+          public  static string GetdigitFromString(string str, bool validarcomas = false)
             {
-                
-                int contarpunto = 0;
-                char[] refArray = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '.' };
-                char[] inputArray = str.ToCharArray();
-                string ext = string.Empty;
-                foreach (char item in inputArray)
+                try
                 {
-                    
-
-                    if (refArray.Contains(item))
+                
+                    int contarpunto = 0;
+                    char[] refArray = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '.' };
+                    char[] inputArray = str.ToCharArray();
+                    string ext = string.Empty;
+                    foreach (char item in inputArray)
                     {
-                        
-                            if (item.ToString() == ".")
+
+                        if (validarcomas == false)
+                        {
+                            if (refArray.Contains(item))
                             {
-                                ++contarpunto;
+
+                                if (item.ToString() == ".")
+                                {
+                                    ++contarpunto;
+                                }
+                                if (contarpunto >= 1)
+                                {
+                                    ext += item.ToString() == "." ? "," : item.ToString();
+                                }
+
+
+                                //else if (contarpunto > 4)
+                                //{
+                                //    break;
+                                //}
+
+
+
                             }
-                            if (contarpunto >= 1)
-                            {
-                                ext += item.ToString() == "." ? "," : item.ToString();
-                            }
+
+                        }
+                        else
+                        {
+                             ext += item.ToString() == "." ? "," : item.ToString();
+                        }
                         
-                       
-                        //else if (contarpunto > 4)
-                        //{
-                        //    break;
-                        //}
-
-
-
                     }
+                    return ext;
                 }
-                return ext;
-            }
-            catch (Exception)
-            {
+                catch (Exception)
+                {
 
-                throw;
-            }
+                    throw;
+                }
 
-        }
+          }
+
+        
         /**
 *
 * @param txtCuit CUIT del EMISOR del comprobante sin guiones
@@ -944,7 +955,38 @@ namespace Capa_Presentacion
         }
 
         //generar un log en el instalador 
+        public static string archivotxtbalanza(DataTable dataproductobalanza)
+        {
+            string mensaje = "";
+            try
+            {
+                string ruta = "";
+                ruta = System.AppDomain.CurrentDomain.BaseDirectory + @"Balanza\balanza.txt";
+                StreamWriter sw = new StreamWriter(ruta);
+                if (dataproductobalanza.Rows.Count != 0)
+                {
+                    //  DataRow row = dataproductobalanza.Rows[0];
 
+                    // string cliente = row["razon_social"].ToString();
+                    foreach (DataRow row in dataproductobalanza.Rows)
+                    {
+                        sw.WriteLine(row["codigo"].ToString() + "@" + row["codigo"].ToString() + "@" + row["nombre"].ToString() + "@" + row["nombre"].ToString() + "@1@1@" + row["precio"].ToString() + "@P@1");
+                    }
+
+                }
+
+
+
+                sw.Close();
+            }
+            catch (Exception ex)
+            {
+
+                mensaje = ex.ToString();
+            }
+
+            return mensaje;
+        }
         public class Log
         {
             private string Path = "";
@@ -974,6 +1016,7 @@ namespace Capa_Presentacion
             }
 
             #region HELPER
+            
             private string GetNameFile()
             {
                 string nombre = "";

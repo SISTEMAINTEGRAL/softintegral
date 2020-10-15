@@ -170,7 +170,7 @@ namespace Capa_Presentacion
 
         private void FrmClienteCtaCte_Load(object sender, EventArgs e)
         {
-            DGListado.DataSource = NegocioCliente.buscarporcodigoctacte(this.codcliente, DateTime.Now.ToString("dd/MM/yyyy"), DateTime.Now.ToString("dd/MM/yyyy"));
+            DGListado.DataSource = NegocioCliente.buscarporcodigoctacte(this.codcliente);
         }
         private decimal traersaldo()
         {
@@ -216,6 +216,6 @@ namespace Capa_Presentacion
         }
         private void btnBuscar_Click(object sender, EventArgs e)
         {
-            DGListado.DataSource = NegocioCliente.buscarporcodigoctacte(this.codcliente, dtpFechaIni.Value.ToString("dd/MM/yyyy") + " 00:00:00", dtpFechaFin.Value.ToString("dd/MM/yyyy") + " 23:59:59");        }
+            DGListado.DataSource = NegocioCliente.buscarporcodigoctacte(this.codcliente);        }
     }
 }

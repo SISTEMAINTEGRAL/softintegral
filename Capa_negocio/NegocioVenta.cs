@@ -185,13 +185,13 @@ namespace Capa_negocio
            return rpta;
 
        }
-        public static int anular(int idventa, bool stock, char estado)
+        public static int anular(int idventa, bool stock, char estado, int codformapago)
         {
             int varidventa = 0;
            try
            {
                 string mensaje = "";
-                Dventa objventa = new Dventa(idventa, estado);
+                Dventa objventa = new Dventa(idventa, estado, codformapago);
                 objventa.Fecha = DateTime.Now;
                 varidventa = objventa.anular(objventa, stock);
            }
@@ -238,7 +238,8 @@ namespace Capa_negocio
         }
 
         public static DataTable BuscarFechas(string textobuscar, string textobuscar2, char estado, bool concaja, 
-            string tipocomprobante, int idventa, string puntoventa, int codformapago, bool porventa, bool porformadepago, bool porpuntodeventa )
+            string tipocomprobante, int idventa, string puntoventa, int codformapago, bool porventa, bool porformadepago,
+            bool porpuntodeventa, bool porcaja,int idcliente = 0, string usuario = "" )
         {
             Dventa Obj = new Dventa(estado,concaja, tipocomprobante);
             Obj.Estado = tipocomprobante == "NOTA DE CREDITO" ? 'N' : estado;
@@ -249,11 +250,26 @@ namespace Capa_negocio
             Obj.Porpuntodeventa = porpuntodeventa;
             Obj.Porventa = porventa;
             Obj.Codformapago = codformapago;
-            
+            Obj.Idcliente = idcliente;
+            Obj.Usuario = usuario;
+            Obj.Porcaja = porcaja;
+
             Obj.Tipo_comprobante = tipocomprobante;
 
 
             return Obj.BuscarFechas(textobuscar, textobuscar2,Obj);
+
+        }
+
+        public static DataTable BuscarFechasPresupuesto(string textobuscar, string textobuscar2, char estado,
+             int idventa, int idcliente)
+        {
+            Dventa Obj = new Dventa();
+           
+            Obj.Idventa = idventa;
+            Obj.Estado = estado;
+            Obj.Idcliente = idcliente;
+            return Obj.BuscarFechasPresupuesto(textobuscar, textobuscar2, Obj);
 
         }
 

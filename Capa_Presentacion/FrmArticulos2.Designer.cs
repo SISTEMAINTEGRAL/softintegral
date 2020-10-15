@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmArticulos2));
             this.ttMensajeAyuda = new System.Windows.Forms.ToolTip(this.components);
             this.btnNuevo = new System.Windows.Forms.Button();
@@ -50,7 +50,6 @@
             this.lblTotal = new System.Windows.Forms.Label();
             this.chkEliminar = new System.Windows.Forms.CheckBox();
             this.txtNombre = new System.Windows.Forms.TextBox();
-            this.btnImprimir = new System.Windows.Forms.Button();
             this.btnBuscar = new System.Windows.Forms.Button();
             this.rbCategoria = new System.Windows.Forms.RadioButton();
             this.txtDescripcion = new System.Windows.Forms.TextBox();
@@ -63,6 +62,8 @@
             this.btnGuardar = new System.Windows.Forms.Button();
             this.btnEditar = new System.Windows.Forms.Button();
             this.grpboxCategoria = new System.Windows.Forms.GroupBox();
+            this.txtStock_minimo = new System.Windows.Forms.TextBox();
+            this.label19 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.CBIVA = new System.Windows.Forms.ComboBox();
             this.label9 = new System.Windows.Forms.Label();
@@ -104,8 +105,9 @@
             this.btnCerrar = new System.Windows.Forms.PictureBox();
             this.lblSistemaVenta = new System.Windows.Forms.Label();
             this.btnGenerarCodigo = new System.Windows.Forms.Button();
-            this.txtStock_minimo = new System.Windows.Forms.TextBox();
-            this.label19 = new System.Windows.Forms.Label();
+            this.label13 = new System.Windows.Forms.Label();
+            this.TxtCodinterno = new System.Windows.Forms.TextBox();
+            this.ChkCodInterno = new System.Windows.Forms.CheckBox();
             this.tabLista.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataLista)).BeginInit();
             this.grpboxCategoria.SuspendLayout();
@@ -140,6 +142,7 @@
             // tabLista
             // 
             this.tabLista.BackColor = System.Drawing.Color.White;
+            this.tabLista.Controls.Add(this.ChkCodInterno);
             this.tabLista.Controls.Add(this.dataLista);
             this.tabLista.Controls.Add(this.textBox1);
             this.tabLista.Controls.Add(this.label5);
@@ -153,7 +156,6 @@
             this.tabLista.Controls.Add(this.lblTotal);
             this.tabLista.Controls.Add(this.chkEliminar);
             this.tabLista.Controls.Add(this.txtNombre);
-            this.tabLista.Controls.Add(this.btnImprimir);
             this.tabLista.Controls.Add(this.btnBuscar);
             this.tabLista.Location = new System.Drawing.Point(4, 29);
             this.tabLista.Margin = new System.Windows.Forms.Padding(4);
@@ -169,8 +171,8 @@
             this.dataLista.AllowUserToAddRows = false;
             this.dataLista.AllowUserToDeleteRows = false;
             this.dataLista.AllowUserToOrderColumns = true;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
-            this.dataLista.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
+            this.dataLista.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dataLista.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -180,31 +182,32 @@
             this.dataLista.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dataLista.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.dataLista.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dataLista.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataLista.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dataLista.ColumnHeadersHeight = 38;
             this.dataLista.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.DEliminar});
-            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle6.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle6.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
-            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataLista.DefaultCellStyle = dataGridViewCellStyle6;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Century Gothic", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(71)))), ((int)(((byte)(69)))), ((int)(((byte)(94)))));
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataLista.DefaultCellStyle = dataGridViewCellStyle3;
             this.dataLista.EnableHeadersVisualStyles = false;
             this.dataLista.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(231)))), ((int)(((byte)(229)))), ((int)(((byte)(255)))));
             this.dataLista.Location = new System.Drawing.Point(16, 193);
             this.dataLista.MultiSelect = false;
             this.dataLista.Name = "dataLista";
             this.dataLista.RowHeadersVisible = false;
+            this.dataLista.RowHeadersWidth = 51;
             this.dataLista.RowTemplate.Height = 24;
             this.dataLista.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataLista.Size = new System.Drawing.Size(1233, 412);
@@ -240,6 +243,7 @@
             // DEliminar
             // 
             this.DEliminar.HeaderText = "Eliminar";
+            this.DEliminar.MinimumWidth = 6;
             this.DEliminar.Name = "DEliminar";
             this.DEliminar.Width = 112;
             // 
@@ -347,7 +351,7 @@
             // 
             this.btnEliminar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEliminar.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEliminar.Location = new System.Drawing.Point(804, 25);
+            this.btnEliminar.Location = new System.Drawing.Point(631, 26);
             this.btnEliminar.Margin = new System.Windows.Forms.Padding(4);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(140, 49);
@@ -392,19 +396,6 @@
             this.txtNombre.TextChanged += new System.EventHandler(this.txtNombre_TextChanged);
             this.txtNombre.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtNombre_KeyDown);
             // 
-            // btnImprimir
-            // 
-            this.btnImprimir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnImprimir.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnImprimir.Location = new System.Drawing.Point(644, 25);
-            this.btnImprimir.Margin = new System.Windows.Forms.Padding(4);
-            this.btnImprimir.Name = "btnImprimir";
-            this.btnImprimir.Size = new System.Drawing.Size(140, 49);
-            this.btnImprimir.TabIndex = 6;
-            this.btnImprimir.Text = "Imprimir";
-            this.btnImprimir.UseVisualStyleBackColor = true;
-            this.btnImprimir.Click += new System.EventHandler(this.btnImprimir_Click);
-            // 
             // btnBuscar
             // 
             this.btnBuscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -435,7 +426,7 @@
             // 
             this.txtDescripcion.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtDescripcion.Enabled = false;
-            this.txtDescripcion.Location = new System.Drawing.Point(259, 234);
+            this.txtDescripcion.Location = new System.Drawing.Point(259, 282);
             this.txtDescripcion.Margin = new System.Windows.Forms.Padding(4);
             this.txtDescripcion.Multiline = true;
             this.txtDescripcion.Name = "txtDescripcion";
@@ -448,7 +439,7 @@
             // 
             this.txtNombreConfig.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtNombreConfig.Enabled = false;
-            this.txtNombreConfig.Location = new System.Drawing.Point(259, 160);
+            this.txtNombreConfig.Location = new System.Drawing.Point(259, 220);
             this.txtNombreConfig.Margin = new System.Windows.Forms.Padding(4);
             this.txtNombreConfig.MaxLength = 100;
             this.txtNombreConfig.Name = "txtNombreConfig";
@@ -472,7 +463,7 @@
             // lblDescripcion
             // 
             this.lblDescripcion.AutoSize = true;
-            this.lblDescripcion.Location = new System.Drawing.Point(24, 256);
+            this.lblDescripcion.Location = new System.Drawing.Point(24, 304);
             this.lblDescripcion.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblDescripcion.Name = "lblDescripcion";
             this.lblDescripcion.Size = new System.Drawing.Size(155, 30);
@@ -482,7 +473,7 @@
             // lblNomArticulo
             // 
             this.lblNomArticulo.AutoSize = true;
-            this.lblNomArticulo.Location = new System.Drawing.Point(24, 171);
+            this.lblNomArticulo.Location = new System.Drawing.Point(24, 224);
             this.lblNomArticulo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblNomArticulo.Name = "lblNomArticulo";
             this.lblNomArticulo.Size = new System.Drawing.Size(110, 30);
@@ -578,7 +569,9 @@
             this.grpboxCategoria.Controls.Add(this.lblPrecio);
             this.grpboxCategoria.Controls.Add(this.lblCategoria);
             this.grpboxCategoria.Controls.Add(this.cbxCategoria);
+            this.grpboxCategoria.Controls.Add(this.TxtCodinterno);
             this.grpboxCategoria.Controls.Add(this.txtCodigoBarra);
+            this.grpboxCategoria.Controls.Add(this.label13);
             this.grpboxCategoria.Controls.Add(this.lblCodigoBar);
             this.grpboxCategoria.Controls.Add(this.txtDescripcion);
             this.grpboxCategoria.Controls.Add(this.txtNombreConfig);
@@ -599,6 +592,30 @@
             this.grpboxCategoria.TabIndex = 0;
             this.grpboxCategoria.TabStop = false;
             this.grpboxCategoria.Text = "Articulos";
+            // 
+            // txtStock_minimo
+            // 
+            this.txtStock_minimo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtStock_minimo.Enabled = false;
+            this.txtStock_minimo.ImeMode = System.Windows.Forms.ImeMode.NoControl;
+            this.txtStock_minimo.Location = new System.Drawing.Point(259, 423);
+            this.txtStock_minimo.Margin = new System.Windows.Forms.Padding(4);
+            this.txtStock_minimo.MaxLength = 50;
+            this.txtStock_minimo.Name = "txtStock_minimo";
+            this.txtStock_minimo.Size = new System.Drawing.Size(67, 37);
+            this.txtStock_minimo.TabIndex = 42;
+            this.txtStock_minimo.Text = "0";
+            this.txtStock_minimo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtStock_minimo_KeyPress);
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Location = new System.Drawing.Point(27, 430);
+            this.label19.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(181, 30);
+            this.label19.TabIndex = 43;
+            this.label19.Text = "Stock Minimo ";
             // 
             // label10
             // 
@@ -836,7 +853,7 @@
             this.cbxPesable.AutoSize = true;
             this.cbxPesable.Enabled = false;
             this.cbxPesable.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.cbxPesable.Location = new System.Drawing.Point(388, 347);
+            this.cbxPesable.Location = new System.Drawing.Point(388, 373);
             this.cbxPesable.Margin = new System.Windows.Forms.Padding(4);
             this.cbxPesable.Name = "cbxPesable";
             this.cbxPesable.Size = new System.Drawing.Size(125, 34);
@@ -863,7 +880,7 @@
             this.txtCantInicial.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtCantInicial.Enabled = false;
             this.txtCantInicial.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.txtCantInicial.Location = new System.Drawing.Point(259, 340);
+            this.txtCantInicial.Location = new System.Drawing.Point(259, 366);
             this.txtCantInicial.Margin = new System.Windows.Forms.Padding(4);
             this.txtCantInicial.MaxLength = 50;
             this.txtCantInicial.Name = "txtCantInicial";
@@ -877,7 +894,7 @@
             // lblCantInicial
             // 
             this.lblCantInicial.AutoSize = true;
-            this.lblCantInicial.Location = new System.Drawing.Point(24, 351);
+            this.lblCantInicial.Location = new System.Drawing.Point(24, 377);
             this.lblCantInicial.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblCantInicial.Name = "lblCantInicial";
             this.lblCantInicial.Size = new System.Drawing.Size(157, 30);
@@ -913,7 +930,7 @@
             // lblCategoria
             // 
             this.lblCategoria.AutoSize = true;
-            this.lblCategoria.Location = new System.Drawing.Point(27, 459);
+            this.lblCategoria.Location = new System.Drawing.Point(27, 479);
             this.lblCategoria.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblCategoria.Name = "lblCategoria";
             this.lblCategoria.Size = new System.Drawing.Size(134, 30);
@@ -927,7 +944,7 @@
             this.cbxCategoria.Enabled = false;
             this.cbxCategoria.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.cbxCategoria.FormattingEnabled = true;
-            this.cbxCategoria.Location = new System.Drawing.Point(259, 456);
+            this.cbxCategoria.Location = new System.Drawing.Point(259, 476);
             this.cbxCategoria.Margin = new System.Windows.Forms.Padding(4);
             this.cbxCategoria.Name = "cbxCategoria";
             this.cbxCategoria.Size = new System.Drawing.Size(224, 38);
@@ -1127,29 +1144,37 @@
             this.btnGenerarCodigo.UseVisualStyleBackColor = false;
             this.btnGenerarCodigo.Click += new System.EventHandler(this.btnGenerarCodigo_Click);
             // 
-            // txtStock_minimo
+            // label13
             // 
-            this.txtStock_minimo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtStock_minimo.Enabled = false;
-            this.txtStock_minimo.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.txtStock_minimo.Location = new System.Drawing.Point(259, 397);
-            this.txtStock_minimo.Margin = new System.Windows.Forms.Padding(4);
-            this.txtStock_minimo.MaxLength = 50;
-            this.txtStock_minimo.Name = "txtStock_minimo";
-            this.txtStock_minimo.Size = new System.Drawing.Size(67, 37);
-            this.txtStock_minimo.TabIndex = 42;
-            this.txtStock_minimo.Text = "0";
-            this.txtStock_minimo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtStock_minimo_KeyPress);
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(24, 162);
+            this.label13.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(162, 30);
+            this.label13.TabIndex = 17;
+            this.label13.Text = "Cod. interno";
             // 
-            // label19
+            // TxtCodinterno
             // 
-            this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(27, 404);
-            this.label19.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(181, 30);
-            this.label19.TabIndex = 43;
-            this.label19.Text = "Stock Minimo ";
+            this.TxtCodinterno.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.TxtCodinterno.Enabled = false;
+            this.TxtCodinterno.Location = new System.Drawing.Point(259, 160);
+            this.TxtCodinterno.Margin = new System.Windows.Forms.Padding(4);
+            this.TxtCodinterno.MaxLength = 13;
+            this.TxtCodinterno.Name = "TxtCodinterno";
+            this.TxtCodinterno.Size = new System.Drawing.Size(291, 37);
+            this.TxtCodinterno.TabIndex = 14;
+            this.TxtCodinterno.Text = "0";
+            // 
+            // ChkCodInterno
+            // 
+            this.ChkCodInterno.AutoSize = true;
+            this.ChkCodInterno.Location = new System.Drawing.Point(799, 28);
+            this.ChkCodInterno.Name = "ChkCodInterno";
+            this.ChkCodInterno.Size = new System.Drawing.Size(211, 34);
+            this.ChkCodInterno.TabIndex = 109;
+            this.ChkCodInterno.Text = "codigo interno";
+            this.ChkCodInterno.UseVisualStyleBackColor = true;
             // 
             // FrmArticulos2
             // 
@@ -1224,7 +1249,6 @@
         private System.Windows.Forms.PictureBox btnCerrar;
         private System.Windows.Forms.Button btnGenerarCodigo;
         private System.Windows.Forms.TextBox txtNombre;
-        private System.Windows.Forms.Button btnImprimir;
         private System.Windows.Forms.Button btnEliminar;
         private System.Windows.Forms.Button btnBuscar;
         private System.Windows.Forms.RadioButton rbCategoria;
@@ -1266,5 +1290,8 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.TextBox txtStock_minimo;
         private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.TextBox TxtCodinterno;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.CheckBox ChkCodInterno;
     }
 }

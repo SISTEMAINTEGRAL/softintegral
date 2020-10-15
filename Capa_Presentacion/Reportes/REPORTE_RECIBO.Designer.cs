@@ -123,6 +123,7 @@ namespace Capa_Presentacion.Reportes
             // 
             // textBox17
             // 
+            this.textBox17.Format = "{0:N2}";
             this.textBox17.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(0.80019986629486084D), Telerik.Reporting.Drawing.Unit.Cm(0.988433837890625D));
             this.textBox17.Name = "textBox17";
             this.textBox17.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(5.19980001449585D), Telerik.Reporting.Drawing.Unit.Cm(0.60000002384185791D));

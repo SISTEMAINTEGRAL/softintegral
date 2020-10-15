@@ -41,7 +41,7 @@ namespace Capa_Presentacion
             
             Chkcaja.Enabled = checkradiobuton();
             ChkFactura.Enabled = checkradiobuton();
-            this.reportViewer1.RefreshReport();
+           
             
         }
 
@@ -73,13 +73,7 @@ namespace Capa_Presentacion
             //mensaje de ayuda del boton listar ventas
             this.ttMensajeAyuda.SetToolTip(this.btnTodos, "Listar todas las ventas");
             //mensaje de ayuda del boton exportar excel
-            this.ttMensajeAyuda.SetToolTip(this.btnExportarExcel,"Exportar a excel");
-            //mensaje de ayuda del boton torta
-            this.ttMensajeAyuda.SetToolTip(this.btnVisualizadorTorta, "Visualizar en forma de Pastel los 5 productos mas vendidos");
-            //mensaje de ayuda del boton area
-            this.ttMensajeAyuda.SetToolTip(this.btnVisualizadorArea, "Visualizar en forma de area los 5 productos mas vendidos");
-            //mensaje de ayuda del boton grafico
-            this.ttMensajeAyuda.SetToolTip(this.btnVisualizarGrafico, "Visualizar en forma de columnas los 5 productos mas vendidos");
+          
         }
 
         public void mostrar()
@@ -207,7 +201,7 @@ namespace Capa_Presentacion
                 {
                     totalVendido = totalVendido+ decimal.Round( Convert.ToDecimal( venta.Cells["Total"].Value),2);
                 }
-                txtTotal.Text = totalVendido.ToString();
+                txtTotal.Text = totalVendido.ToString("0.00");
             }
             else {
 
@@ -256,7 +250,7 @@ namespace Capa_Presentacion
                 DataTable dt = NegocioVenta.BuscarFechas(dtpFechaIni.Value.ToString("dd/MM/yyyy") + " 00:00:00", dtpFechaFin.Value.ToString("dd/MM/yyyy") + " 23:59:59",
                     ChkFactura.Checked == true ? 'P' : 'F',Chkcaja.Checked == true ? false : true, Factura() ,
                     txtIdVenta.Text != "" ? Convert.ToInt32(txtIdVenta.Text) : 0,  txtPuntoventa.Text.PadLeft(5, '0'), codformapago,
-                    txtIdVenta.Text != "" ? true : false,cbFormapago.Text != "TODO" ? true : false, txtPuntoventa.Text != "" ? true : false );
+                    txtIdVenta.Text != "" ? true : false,cbFormapago.Text != "TODO" ? true : false, txtPuntoventa.Text != "" ? true : false,true );
                
                 foreach (DataRow venta in dt.Rows)
                 {
@@ -507,111 +501,26 @@ namespace Capa_Presentacion
 
         private void btnVisualizarLista_Click(object sender, EventArgs e)
         {
-            if (dataLista.Visible == false && chartRankingVentas.Visible == true)
-            {
-                dataLista.Visible = true;
-                chartRankingVentas.Visible = false;
-                txtTotal.Visible = true;
-                lblTotal.Visible = true;
-            }
-
-            if (reportViewer1.Visible == true)
-            {
-                
-                reportViewer1.Visible = false;
-            }
+           
         }
 
         private void btnVisualizarGrafico_Click(object sender, EventArgs e)
         {
-            chartRankingVentas.Series["Ventas"].ChartType = SeriesChartType.Column;
-
-            if (reportViewer1.Visible == true)
-            {
-                reportViewer1.Visible = false;
-            }
-
-            if (dataLista.Visible == true&&chartRankingVentas.Visible==false)
-            {
-                dataLista.Visible = false;
-                txtTotal.Visible = false;
-                lblTotal.Visible = false;
-                mostrarRanking5Producto();
-               
-            }
+            
         }
 
         private void btnVisualizadorTorta_Click(object sender, EventArgs e)
         {
-            chartRankingVentas.Series["Ventas"].ChartType = SeriesChartType.Pie;
-            if (dataLista.Visible == true && chartRankingVentas.Visible == false)
-            {
-                dataLista.Visible = false;
-                txtTotal.Visible = false;
-                lblTotal.Visible = false;
-      
-                mostrarRanking5Producto();
-
-            }
-            if (reportViewer1.Visible == true)
-            {
-                reportViewer1.Visible = false;
-            }
+            
         }
 
         private void btnVisualizadorArea_Click(object sender, EventArgs e)
         {
 
-            if (reportViewer1.Visible == true )
-            {
-                reportViewer1.Visible = false;
-            }
-            chartRankingVentas.Series["Ventas"].ChartType = SeriesChartType.Area; 
-            if (dataLista.Visible == true && chartRankingVentas.Visible == false)
-            {
-                dataLista.Visible = false;
-                txtTotal.Visible = false;
-                lblTotal.Visible = false;
-
-
-                mostrarRanking5Producto();
-
-            }
+            
         }
         public void mostrarRanking5Producto(){
-            try
-            {
-                DataTable dt = NegocioVenta.MostrarRanking5Productos();
-                if (dt.Rows.Count > 0)
-                {
-                    chartRankingVentas.Series["Ventas"].Points.Clear();
-
-                    foreach (DataRow row in dt.Rows)
-                    {
-                        chartRankingVentas.Series["Ventas"].Points.AddXY(row["nombre"], row["cantidad"]);
-                    }
-
-
-                    //ejemplo: chartRankingVentas.Series["Ventas"].Points.AddXY("Producto2", 50);
-                    //chartRankingVentas.Series["Ventas"].Points.AddXY("Producto3", 20);
-                    //chartRankingVentas.Series["Ventas"].Points.AddXY("Producto4", 70);
-                    //chartRankingVentas.Series["Ventas"].Points.AddXY("Producto5", 1000);
-                    chartRankingVentas.Visible = true;
-
-                }
-                else
-                {
-
-                    UtilityFrm.mensajeError("No existen ventas en este momento");
-                    chartRankingVentas.Visible = true;
-                }
-
-            }
-            catch (Exception ex)
-            {
-
-                UtilityFrm.mensajeError("Error: "+ex.Message);
-            }
+            
            
         }
 
@@ -761,8 +670,8 @@ namespace Capa_Presentacion
                     if (NegocioConfigEmpresa.confsistema("tipoimpresion").ToString() == "tipocarro")
                     {
                         //miformnotaventa.Tipoimp = Convert.ToString(NegocioConfigEmpresa.confsistema("modoimpventa"));
-                        miformnotaventa.Idventa = Convert.ToInt32(row.Cells["codigo"].Value.ToString());
-                        miformnotaventa.ShowDialog();
+                        //miformnotaventa.Idventa = Convert.ToInt32(row.Cells["codigo"].Value.ToString());
+                        //miformnotaventa.ShowDialog();
                         //mireporteventa.Tipoimp = Convert.ToString(NegocioConfigEmpresa.confsistema("modoimpventa"));
                         //mireporteventa.Codventa = Convert.ToInt32(row.Cells["codigo"].Value.ToString());
                         //mireporteventa.Show();
@@ -782,7 +691,7 @@ namespace Capa_Presentacion
                         }
                         else if (row.Cells["Letra"].Value.ToString() == "X")
                         {
-                            TicketProforma miticketproforma = new Formreportes.TicketProforma(Convert.ToInt32(row.Cells["codigo"].Value.ToString()));
+                            TicketProforma miticketproforma = new Formreportes.TicketProforma(Convert.ToInt32(row.Cells["codigo"].Value.ToString()),"visor", row.Cells["PAGO"].Value.ToString());
                             miticketproforma.ShowDialog();
                         }
 
@@ -826,9 +735,7 @@ namespace Capa_Presentacion
             parametros[1] = new ReportParameter("fechafin", dtpFechaFin.Text);
             REPORTE_VENTAPRODUCTOTableAdapter.Fill(DVentaproducto.REPORTE_VENTAPRODUCTO, Convert.ToDateTime(dtpFechaIni.Text + " 00:00:00"), Convert.ToDateTime(dtpFechaFin.Text + " 23:59:59"));
             
-            reportViewer1.LocalReport.SetParameters(parametros);
-            this.reportViewer1.RefreshReport();
-            reportViewer1.Visible = true;
+           
             
         }
 
@@ -846,26 +753,35 @@ namespace Capa_Presentacion
 
         private void MenuAnular_Click(object sender, EventArgs e)
         {
+            NegocioUsuario objusuario = new NegocioUsuario();
             string mensaje = "ok";
             Negociocaja objcaja = new Negociocaja();
             DataGridViewRow row = dataLista.CurrentRow;
             try
             {
-                NegocioVenta.anular(Convert.ToInt32(row.Cells["Codigo"].Value), Convert.ToBoolean(row.Cells["stock"].Value), 'A');
-
-                if (Convert.ToBoolean(row.Cells["caja"].Value))
+                if (NegocioConfigEmpresa.usuariosa == true || objusuario.TieneRegla("47") == true)
                 {
-                    if (objcaja.chequeocaja("", ref mensaje, NegocioConfigEmpresa.nrocaja))
+                    NegocioVenta.anular(Convert.ToInt32(row.Cells["Codigo"].Value), Convert.ToBoolean(row.Cells["stock"].Value), 'A', Convert.ToInt32(row.Cells["Formadepago"].Value));
+
+                    if (Convert.ToBoolean(row.Cells["caja"].Value))
                     {
-                        mensaje = Negociocaja.insertarmovcaja(5230000, 0, Convert.ToSingle(row.Cells["Total"].Value), DateTime.Today.ToString(), NegocioConfigEmpresa.usuarioconectado, NegocioConfigEmpresa.idusuario, NegocioConfigEmpresa.turno, "ANULACION", Convert.ToInt32(row.Cells["Codigo"].Value), true, NegocioConfigEmpresa.nrocaja, Convert.ToInt32(row.Cells["Formadepago"].Value));
-                        if (mensaje != "ok")
+                        if (objcaja.chequeocaja("", ref mensaje, NegocioConfigEmpresa.nrocaja))
                         {
-                            UtilityFrm.mensajeError("Error al querer guardar en caja");
+                            mensaje = Negociocaja.insertarmovcaja(5230000, 0, Convert.ToSingle(row.Cells["Total"].Value), DateTime.Today.ToString(), NegocioConfigEmpresa.usuarioconectado, NegocioConfigEmpresa.idusuario, NegocioConfigEmpresa.turno, "ANULACION", Convert.ToInt32(row.Cells["Codigo"].Value), true, NegocioConfigEmpresa.nrocaja, Convert.ToInt32(row.Cells["Formadepago"].Value));
+                            if (mensaje != "ok")
+                            {
+                                UtilityFrm.mensajeError("Error al querer guardar en caja");
+                            }
                         }
                     }
+
+                    UtilityFrm.notificacionpopup("ANULACION", "LA VENTA SE ANULO CORRECTAMENTE, SE RESTAURO EL STOCK");
+                }
+                else
+                {
+                    UtilityFrm.mensajeError("No tiene los privilegios para poder anular una venta");
                 }
                 
-                    UtilityFrm.notificacionpopup("ANULACION", "LA VENTA SE ANULO CORRECTAMENTE, SE RESTAURO EL STOCK");
                 
 
             }

@@ -38,11 +38,6 @@
             this.gbDetalleMovimento = new System.Windows.Forms.GroupBox();
             this.btnLimpiar = new System.Windows.Forms.Button();
             this.dataLista = new System.Windows.Forms.DataGridView();
-            this.Codigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CodigoDeBarra = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Producto = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Precio = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Categoria = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnProducto = new System.Windows.Forms.Button();
             this.lblNomProducto = new System.Windows.Forms.Label();
             this.txtProducto = new System.Windows.Forms.TextBox();
@@ -53,6 +48,12 @@
             this.btnMinimizar = new System.Windows.Forms.PictureBox();
             this.btnCerrar = new System.Windows.Forms.PictureBox();
             this.lblSistemaVenta = new System.Windows.Forms.Label();
+            this.Codigo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.CodigoDeBarra = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Producto = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Precio = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Categoria = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Stock_Actual = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.grpboxConsulta.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.gbDetalleMovimento.SuspendLayout();
@@ -200,7 +201,8 @@
             this.CodigoDeBarra,
             this.Producto,
             this.Precio,
-            this.Categoria});
+            this.Categoria,
+            this.Stock_Actual});
             this.dataLista.Cursor = System.Windows.Forms.Cursors.Hand;
             this.dataLista.Location = new System.Drawing.Point(17, 86);
             this.dataLista.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
@@ -214,46 +216,6 @@
             this.dataLista.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataLista_CellDoubleClick);
             this.dataLista.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataLista_CellMouseClick);
             this.dataLista.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dataLista_KeyDown);
-            // 
-            // Codigo
-            // 
-            this.Codigo.FillWeight = 80F;
-            this.Codigo.HeaderText = "Codigo";
-            this.Codigo.MaxInputLength = 100;
-            this.Codigo.MinimumWidth = 50;
-            this.Codigo.Name = "Codigo";
-            this.Codigo.ReadOnly = true;
-            // 
-            // CodigoDeBarra
-            // 
-            this.CodigoDeBarra.HeaderText = "Codigo De Barra";
-            this.CodigoDeBarra.MaxInputLength = 100;
-            this.CodigoDeBarra.Name = "CodigoDeBarra";
-            this.CodigoDeBarra.ReadOnly = true;
-            // 
-            // Producto
-            // 
-            this.Producto.FillWeight = 150F;
-            this.Producto.HeaderText = "Producto";
-            this.Producto.MaxInputLength = 100;
-            this.Producto.MinimumWidth = 100;
-            this.Producto.Name = "Producto";
-            this.Producto.ReadOnly = true;
-            // 
-            // Precio
-            // 
-            this.Precio.HeaderText = "Precio";
-            this.Precio.MaxInputLength = 100;
-            this.Precio.Name = "Precio";
-            this.Precio.ReadOnly = true;
-            // 
-            // Categoria
-            // 
-            this.Categoria.FillWeight = 80F;
-            this.Categoria.HeaderText = "Categoria";
-            this.Categoria.MaxInputLength = 100;
-            this.Categoria.Name = "Categoria";
-            this.Categoria.ReadOnly = true;
             // 
             // btnProducto
             // 
@@ -384,6 +346,56 @@
             this.lblSistemaVenta.Text = "Consultas";
             this.lblSistemaVenta.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // Codigo
+            // 
+            this.Codigo.FillWeight = 80F;
+            this.Codigo.HeaderText = "Codigo";
+            this.Codigo.MaxInputLength = 100;
+            this.Codigo.MinimumWidth = 50;
+            this.Codigo.Name = "Codigo";
+            this.Codigo.ReadOnly = true;
+            // 
+            // CodigoDeBarra
+            // 
+            this.CodigoDeBarra.HeaderText = "Codigo De Barra";
+            this.CodigoDeBarra.MaxInputLength = 100;
+            this.CodigoDeBarra.MinimumWidth = 6;
+            this.CodigoDeBarra.Name = "CodigoDeBarra";
+            this.CodigoDeBarra.ReadOnly = true;
+            // 
+            // Producto
+            // 
+            this.Producto.FillWeight = 150F;
+            this.Producto.HeaderText = "Producto";
+            this.Producto.MaxInputLength = 100;
+            this.Producto.MinimumWidth = 100;
+            this.Producto.Name = "Producto";
+            this.Producto.ReadOnly = true;
+            // 
+            // Precio
+            // 
+            this.Precio.HeaderText = "Precio";
+            this.Precio.MaxInputLength = 100;
+            this.Precio.MinimumWidth = 6;
+            this.Precio.Name = "Precio";
+            this.Precio.ReadOnly = true;
+            // 
+            // Categoria
+            // 
+            this.Categoria.FillWeight = 80F;
+            this.Categoria.HeaderText = "Categoria";
+            this.Categoria.MaxInputLength = 100;
+            this.Categoria.MinimumWidth = 6;
+            this.Categoria.Name = "Categoria";
+            this.Categoria.ReadOnly = true;
+            // 
+            // Stock_Actual
+            // 
+            this.Stock_Actual.HeaderText = "Stock_Actual";
+            this.Stock_Actual.MinimumWidth = 6;
+            this.Stock_Actual.Name = "Stock_Actual";
+            this.Stock_Actual.ReadOnly = true;
+            // 
             // FrmConsulta
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
@@ -432,16 +444,17 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label lblProducto;
         private System.Windows.Forms.TextBox txtProductoNombre;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Codigo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn CodigoDeBarra;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Producto;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Precio;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Categoria;
         private System.Windows.Forms.Panel panelHorizontal;
         private System.Windows.Forms.Label lblSistemaVenta;
         private System.Windows.Forms.PictureBox btnMinimizar;
         private System.Windows.Forms.PictureBox btnCerrar;
         private System.Windows.Forms.PictureBox btnMaximizar;
         private System.Windows.Forms.PictureBox btnRestaurar;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Codigo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn CodigoDeBarra;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Producto;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Precio;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Categoria;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Stock_Actual;
     }
 }

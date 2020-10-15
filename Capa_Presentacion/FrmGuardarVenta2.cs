@@ -353,7 +353,7 @@ namespace Capa_Presentacion
                   
                   //Math.Round(decValue, 2, MidpointRounding.AwayFromZero)
                  // var = Math.Round(var, 2, MidpointRounding.AwayFromZero);
-
+                 
                  precioneto  = var.ToString("0.0000",nfi);
                  //var = Convert.ToDecimal(fila.Cells["Cantidad"].Value);
                  //cantidad = var.ToString("0.00", nfi);
@@ -466,8 +466,8 @@ namespace Capa_Presentacion
                                     //   miformnotaventa.Codventa = objventa.Idventa;
                                     //   miformnotaventa.Show();
                                     // con reportviewer
-                                    mireporteventa.Idventa = objventa.Idventa;
-                                    mireporteventa.ShowDialog();
+                                   // mireporteventa.Idventa = objventa.Idventa;
+                                   // mireporteventa.ShowDialog();
 
                                 }
 
@@ -487,7 +487,7 @@ namespace Capa_Presentacion
                                     {
                                         if (opcionimpresion != "")
                                         {
-                                            TicketProforma miticketproforma = new Formreportes.TicketProforma(objventa.Idventa, opcionimpresion);
+                                            TicketProforma miticketproforma = new Formreportes.TicketProforma(objventa.Idventa, opcionimpresion, formapago);
                                             miticketproforma.ShowDialog();
                                         }
 
@@ -502,7 +502,13 @@ namespace Capa_Presentacion
                             }
 
                         }
-
+                        
+                        else if (tipo_comprobante == "PRESUPUESTO")
+                        {
+                                FrmReportPresup frmReportPresup = new FrmReportPresup(objventa.Idventa);
+                                frmReportPresup.ShowDialog();
+                        }
+                        
 
 
 
@@ -690,6 +696,7 @@ namespace Capa_Presentacion
                     cbTarjeta.SelectedIndex = 1;
                     txtTotalAPagar.Text = "0";
                     TxtSaldo.Text = totalAPagar.ToString();
+                    TxtImporte.Text = TxtSaldo.Text;
                     
                 }
                 else
@@ -879,11 +886,12 @@ namespace Capa_Presentacion
         {
            
         }
-
+        int posY = 0;
+        int posX = 0;
         private void panelHorizontal_MouseMove(object sender, MouseEventArgs e)
         {
-            int posY = 0;
-            int posX = 0;
+            
+            //mientra no se apreta el boton izquierdo del mouse actualiza el valor posX Y posY 
             //mientra no se apreta el boton izquierdo del mouse actualiza el valor posX Y posY 
             if (e.Button != MouseButtons.Left)
             {
@@ -938,14 +946,13 @@ namespace Capa_Presentacion
                 decimal importe = 0;
                 decimal saldo = 0;
 
-
-                if (TxtImporte.Text == "0" || TxtImporte.Text == "")
+                importe = Convert.ToDecimal(TxtImporte.Text == "" ? "0" : TxtImporte.Text);
+                
+                if (importe == 0)
                 {
                     agregaralgrid = false;
                 }
-                importe = Convert.ToDecimal(TxtImporte.Text);
-
-
+                
                 saldo = Convert.ToDecimal(TxtSaldo.Text) - importe;
 
                 if (saldo < 0)
@@ -959,6 +966,11 @@ namespace Capa_Presentacion
                     {
                         agregaralgrid = false;
                     }
+                    
+
+                        agregaralgrid = TxtLote2.Text == "0" ? false : true;
+                        agregaralgrid = Txtcupon2.Text == "0" ? false : true;
+
                     if (agregaralgrid == true)
                     {
                         CalcularCuota();
@@ -967,7 +979,8 @@ namespace Capa_Presentacion
                     }
                     else
                     {
-                        UtilityFrm.mensajeError("Hay campos que no se encuentran completados");
+                        UtilityFrm.mensajeError("Hay campos que no se encuentran completos o con importe 0");
+                        return;
                     }
 
                 }
@@ -996,8 +1009,23 @@ namespace Capa_Presentacion
             TxtLote2.Text = "0";
             Txtcupon2.Text = "0";
             Txtcuota.Text = "0,00";
-            TxtImporte.Text = "0";
+           // TxtImporte.Text = "0";
+            TxtTotalcuota.Text = "0,00";
         }
+
+        //private bool recorrerdatagrid(string varformapago ,  )
+        //{
+        //    bool encontrado = false;
+        //    foreach (DataGridViewRow row in DGMultiPago.Rows)
+        //    {
+
+
+
+        //    }
+
+        //    return encontrado;
+            
+        //}
         private void totalesdgmultipago()
         {
             decimal importe = 0;
@@ -1024,7 +1052,7 @@ namespace Capa_Presentacion
             txtTotalAPagar.Text = total.ToString();
             TxtSaldo.Text = saldo.ToString();
             lblsubtotal.Text = total.ToString();
-            
+            TxtImporte.Text = TxtSaldo.Text;
         }
 
         private void cbMCuota_SelectedValueChanged(object sender, EventArgs e)
@@ -1047,8 +1075,8 @@ namespace Capa_Presentacion
             decimal porcentaje = 0;
             decimal importe = 0;
             decimal importecuota = 0;
-
-            porcentaje = Convert.ToDecimal(cbMCuota.SelectedValue);
+            decimal totalcuota = 0;
+            porcentaje =  Convert.ToDecimal(cbMCuota.SelectedValue);
             importe = Convert.ToDecimal(TxtImporte.Text);
 
             if (porcentaje != 0)
@@ -1056,7 +1084,9 @@ namespace Capa_Presentacion
                 importe = importe + ((importe * porcentaje) / 100);
             }
 
-            importecuota = importe / Convert.ToDecimal(cbMCuota.Text);
+            importecuota = decimal.Round ( importe / Convert.ToDecimal(cbMCuota.Text),2);
+            totalcuota = decimal.Round ( importecuota * Convert.ToDecimal(cbMCuota.Text),2);
+            TxtTotalcuota.Text = totalcuota.ToString();
             Txtcuota.Text = importecuota.ToString();
         }
         private void CbFormaPago_SelectedIndexChanged(object sender, EventArgs e)
@@ -1113,6 +1143,7 @@ namespace Capa_Presentacion
             }
             if (e.KeyCode == Keys.Enter)
             {
+
                 if (CbFormaPago.Text == "TARJETA")
                 {
                     CalcularCuota();
@@ -1120,6 +1151,7 @@ namespace Capa_Presentacion
                 }
                 if (CbFormaPago.Text == "EFECTIVO" || CbFormaPago.Text == "CTACTE")
                 {
+
                     agregardatagridmultipago();
                     TxtImporte.Focus();
                     TxtImporte.SelectAll();

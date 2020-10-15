@@ -51,12 +51,12 @@ namespace Capa_negocio
            return dMovStock.anular(dMovStock);
        }
 
-       public static DataTable buscarFecha(string textoBuscar1, string textoBuscar2)
+       public static DataTable buscarFecha(string textoBuscar1, string textoBuscar2, int idproveedor = 0)
        {
            DatosMovStock dMovStock = new DatosMovStock();
+            dMovStock.IdProveedor = idproveedor;
 
-
-           return dMovStock.buscarTexto(textoBuscar1, textoBuscar2);
+           return dMovStock.buscarTexto(textoBuscar1, textoBuscar2, dMovStock);
        }
         public static DataTable mostrar()
         {

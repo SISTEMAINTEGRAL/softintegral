@@ -59,7 +59,30 @@ namespace Capa_Presentacion
                 //    CHKHabilitarBalanza.Visible = true;
 
                 //}
+
+                if (NegocioConfigEmpresa.confsistema("presupuesto").ToString() == "True")
+                {
+                    label9.Visible = true;
+                    TxtPresup.Visible = true;
+                    BtnPresup.Visible = true;
+                }
+                else
+                {
+                    label9.Visible = false;
+                    TxtPresup.Visible = false;
+                    BtnPresup.Visible = false;
+                }
+
+                if (NegocioConfigEmpresa.confsistema("stockcolumna").ToString() == "True")
+                {
+                    DGVenta.Columns["Stock_Actual"].Visible = true;
+                } 
+                else
+                {
+                    DGVenta.Columns["Stock_Actual"].Visible = false;
+                }
                 
+
                 lblcant.Enabled = chkporcantidad.Checked;
                 txtcant.Enabled = chkporcantidad.Checked;
                 cbTipoComprobante.Items.Add("PRESUPUESTO");
@@ -77,6 +100,16 @@ namespace Capa_Presentacion
                     CHKPendientestock.Visible = false;
                 }
 
+                if (NegocioConfigEmpresa.confsistema("codigointernoproducto").ToString() == "True")
+                {
+                    ChkCodigointerno.Visible = true;
+                    ChkCodigointerno.Checked = true;
+                }
+                else
+                {
+                    ChkCodigointerno.Visible = false;
+                    
+                }
                 //if (NegocioConfigEmpresa.confsistema("facturar").ToString() == "True")
                 //{
 
@@ -103,7 +136,7 @@ namespace Capa_Presentacion
                 DGVenta.Columns["Importe"].DefaultCellStyle.Format = String.Format("$###,##0.00");
                 Lblvendedor.Text = NegocioConfigEmpresa.nombreusuario;
                 DGVenta.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
-               
+                cbxCategoria.SelectedIndex = 2;
                 //foreach (DataGridViewColumn c in DGVenta.Columns)
                 //{
                     
@@ -138,13 +171,23 @@ namespace Capa_Presentacion
         }
 
       
-          public void Buscar_Cliente(int codCliente)
+          public void Buscar_Cliente(string codCliente)
         {
             try
             {
-                if (codCliente > 0)
+                if (codCliente != "")
                 {
-                    DataTable dt = NegocioCliente.buscarCodigoCliente(codCliente.ToString());
+                    DataTable dt;
+                    if (NegocioConfigEmpresa.confsistema("codigointernocliente").ToString() == "True" && codCliente != "1")
+                    {
+                        dt = NegocioCliente.buscarCodigoCliente(codCliente.ToString(),11);
+                    }
+                    else
+                    {
+                        dt = NegocioCliente.buscarCodigoCliente(codCliente.ToString());
+                    }
+                     
+
                     if (dt.Rows.Count != 0)
                     {
                         DataRow row = dt.Rows[0];
@@ -152,7 +195,7 @@ namespace Capa_Presentacion
                         cuit = row["cuit"].ToString();
                         riva = row["responsabilidadiva"].ToString();
                         domicilio =     row["direccion"].ToString();
-                       
+                        txtIdCliente.Text = row["idcliente"].ToString();
                         // UtilityFrm.mensajeConfirm("Se encontro el Cliente " + cliente);
                         txtRazonSocial.Text = cliente;
                         cbTipoComprobante.SelectedIndex = 1;
@@ -174,8 +217,11 @@ namespace Capa_Presentacion
 
                             btnAgregarPesable.Enabled = true;
                             txtNombreProducto.Enabled = true;
-                            txtNombreProducto.Focus();
+                            
+
                         }
+                        txtNombreProducto.Focus();
+                        cbxCategoria.Text = "X";
 
                     }
                     else
@@ -710,7 +756,7 @@ namespace Capa_Presentacion
             {
                 try
                 {
-                    Buscar_Cliente(Convert.ToInt32(txtIdCliente.Text));
+                    Buscar_Cliente(txtIdCliente.Text);
                    
                 }
                 catch (Exception ex)
@@ -723,7 +769,14 @@ namespace Capa_Presentacion
 
 
             }
-          
+            if (e.KeyCode == Keys.Down && DGCliente.Visible == true)
+            {
+                //si se preciona la tecla hacia abajo se pasa el foco a la grilla
+
+                DGCliente.Focus();
+
+            }
+
         }
 
         public void clienteIncorrecto(){
@@ -745,10 +798,11 @@ namespace Capa_Presentacion
               if (e.KeyCode == Keys.F1) {
                 try
                 {
-                    Buscar_Cliente(1);
+                    Buscar_Cliente("1");
                     //consumidor final es 1
                     txtIdCliente.Text = "1";
-                   
+                    cbxCategoria.Text = "X";
+
                 }
 
                 catch (Exception ex)
@@ -914,6 +968,11 @@ namespace Capa_Presentacion
             venta.Tipo_comprobante = cbTipoComprobante.SelectedItem.ToString();
             venta.Concaja = objcaja.chequeocaja (this.Name,ref mensaje,NegocioConfigEmpresa.nrocaja);
 
+            if (NegocioConfigEmpresa.confsistema("controlarcaja").ToString() == "True" && venta.Concaja == false)
+            {
+                UtilityFrm.mensajeError(mensaje);
+                return;
+            }
            // if (mensaje != "") { UtilityFrm.mensajeError(mensaje); } 
           
             
@@ -949,8 +1008,13 @@ namespace Capa_Presentacion
                     btnProducto.Enabled = true;
                     btnAgregarPesable.Enabled = true;
                     txtNombreProducto.Focus();
-                   
-                }
+                     Buscar_Cliente("1");
+                //consumidor final es 1
+                   txtIdCliente.Text = "1";
+                   cbxCategoria.Text = "X";
+                   rContado.Checked = true;
+
+            }
                 else
                 {
                     UtilityFrm.mensajeError("Ha ocurrido un error: "+venta.Trans);
@@ -977,7 +1041,7 @@ namespace Capa_Presentacion
                     dataGridView1.Columns[3].Visible = false;
                     dataGridView1.Columns[4].Visible = false;
                     dataGridView1.Columns[5].Visible = false;
-                    dataGridView1.Columns[6].Visible = false;
+                    dataGridView1.Columns[6].Visible = true;
 
 
 
@@ -1194,7 +1258,23 @@ namespace Capa_Presentacion
                
                 try
                 {
-                    txtNombreProducto.Text = txtNombreProducto.TextLength == 12 && IsNumeric(txtNombreProducto.Text) == true ? "0" + txtNombreProducto.Text : txtNombreProducto.Text;  
+
+
+                    txtNombreProducto.Text = txtNombreProducto.TextLength == 12 && IsNumeric(txtNombreProducto.Text) == true ? "0" + txtNombreProducto.Text : txtNombreProducto.Text;
+                    
+                   
+                    
+                    if (ChkCodigointerno.Checked == true)
+                    {
+                        objnart.extraerdatos(0, "porcodigointerno", txtNombreProducto.Text);
+                        if (objnart.Sindatos == true)
+                        {
+                            txtNombreProducto.Text = objnart.IdArticulo.ToString();
+                        }
+                        
+                        
+                    }
+
                     if (txtNombreProducto.TextLength >= 8 && IsNumeric(txtNombreProducto.Text) == true)
                     {
                         if (!promo(Convert.ToInt64(txtNombreProducto.Text), "porbarra", txtNombreProducto.Text, 1,ref index)) 
@@ -1508,7 +1588,7 @@ namespace Capa_Presentacion
 
                    
                    
-                        if (index < 0)
+                    if (index < 0)
                     {
                         DGVenta.Rows[DGVenta.Rows.Count - 1].Cells[3].Selected = true;
                     }
@@ -1523,11 +1603,7 @@ namespace Capa_Presentacion
                     }
 
                 }
-                else
-                {
-                     
-                   
-                }
+               
 
             }
             catch (Exception ex)
@@ -1542,7 +1618,27 @@ namespace Capa_Presentacion
       
         private void txtIdCliente_TextChanged(object sender, EventArgs e)
         {
-           
+            if (txtIdCliente.TextLength > 3 && !IsNumeric(txtIdCliente.Text))
+            {
+
+
+                DGCliente.Visible = true;
+
+
+                DGCliente.DataSource = NegocioCliente.buscar(txtIdCliente.Text);
+
+                DGCliente.Columns[0].Visible = false;
+                DGCliente.Columns[1].Width = 350;
+                DGCliente.Columns[2].Visible = false;
+                DGCliente.Columns[3].Visible = false;
+                DGCliente.Columns[4].Visible = false;
+                DGCliente.Columns[5].Visible = false;
+                DGCliente.Columns[6].Visible = false;
+            }
+            else
+            {
+                DGCliente.Visible = false;
+            }
         }
 
         private void dataGridView1_KeyPress(object sender, KeyPressEventArgs e)
@@ -1890,7 +1986,7 @@ namespace Capa_Presentacion
 
             if (DGVenta.Rows.Count > 0)
             {
-                if ((e.ColumnIndex == 2 && (NegocioConfigEmpresa.usuariosa == true || objusuario.TieneRegla("45") == true)) || e.ColumnIndex == 3 || e.ColumnIndex == 5 || (e.ColumnIndex == 4 && Convert .ToInt16 ( DGVenta.CurrentRow.Cells["Dpesable"].Value) == 1))
+                if ((e.ColumnIndex == 2 && (NegocioConfigEmpresa.usuariosa == true || objusuario.TieneRegla("45") == true)) || e.ColumnIndex == 3 || (e.ColumnIndex == 5 && NegocioConfigEmpresa.usuariosa == true || objusuario.TieneRegla("49") == true) || (e.ColumnIndex == 4 && Convert .ToInt16 ( DGVenta.CurrentRow.Cells["Dpesable"].Value) == 1) && (NegocioConfigEmpresa.usuariosa == true || objusuario.TieneRegla("46") == true))
                 {
                     
                     TxtcambioDv.Location = new Point(rec.Location.X + DGVenta.Location.X, rec.Location.Y + DGVenta.Location.Y);
@@ -1920,11 +2016,11 @@ namespace Capa_Presentacion
 
                 }
 
-                if (e.ColumnIndex == 5)
-                {
-                    preciocantidad = "descuento";
+                //if (e.ColumnIndex == 5)
+                //{
+                //    preciocantidad = "descuento";
                   
-                }
+                //}
 
                 if (e.ColumnIndex == 4)
                 {
@@ -2001,20 +2097,24 @@ namespace Capa_Presentacion
 
                 else if (DGVenta.CurrentCell.ColumnIndex == 3  )
                 {
-                    if ( pesable == 1)
+                    if ( pesable == 1 && (NegocioConfigEmpresa.usuariosa == true || objusuario.TieneRegla("46") == true))
                     {
                         DGVenta.Rows[DGVenta.CurrentCell.RowIndex].Cells[4].Selected = true;
                     }
                     else
                     {
-                        DGVenta.Rows[DGVenta.CurrentCell.RowIndex].Cells[5].Selected = true;
+                        DGVenta.Rows[DGVenta.CurrentCell.RowIndex].Cells[6].Selected = true;
                     }
                 }
 
                 else if (DGVenta.CurrentCell.ColumnIndex == 4  )
                 {
+                    
+                    
+                        DGVenta.Rows[DGVenta.CurrentCell.RowIndex].Cells[6].Selected = true;
+                    
 
-                    DGVenta.Rows[DGVenta.CurrentCell.RowIndex].Cells[5].Selected = true;
+                    
                 }
                 else if (DGVenta.CurrentCell.ColumnIndex == 5 )
                 {
@@ -2433,6 +2533,93 @@ namespace Capa_Presentacion
             
             
             
+        }
+
+        private void BtnPresup_Click(object sender, EventArgs e)
+        {
+            FrmListadoPresup frmListadoPresup = new FrmListadoPresup();
+            frmListadoPresup.ShowDialog();
+
+            if (frmListadoPresup.IsCerro == false)
+            {
+                traerpresupuesto(frmListadoPresup.Idpresupuesto);
+            }
+
+        }
+
+        private void traerpresupuesto (int idpresupuesto)
+        {
+            DataTable dataventa = new DataTable();
+            DataTable dataventadetalle = new DataTable();
+            dataventa = NegocioVenta.buscarventa(idpresupuesto);
+            dataventadetalle = NegocioVenta.MostrarDetalle(idpresupuesto.ToString());
+
+            if (dataventa.Rows.Count != 0)
+            {
+                DataRow row = dataventa.Rows[0];
+                string cliente = row["razon_social"].ToString();
+                txtRazonSocial.Text = cliente;
+                cuit = row["cuit"].ToString();
+                //riva = row["responsabilidadiva"].ToString();
+                //domicilio = row["direccion"].ToString();
+                txtIdCliente.Text = row["idcliente"].ToString();
+
+                Buscar_Cliente( txtIdCliente.Text);
+                //consumidor final es 1
+                
+                cbxCategoria.Text = "X";
+            }
+
+            if (dataventadetalle.Rows.Count != 0)
+            {
+                foreach (DataRow venta in dataventadetalle.Rows)
+                {
+                    Buscar_producto(Convert.ToInt64(venta["idarticulo"]), "poridarticulo", true, Convert.ToInt32(venta["cantidad"]));
+                }
+
+
+
+            } 
+        }
+
+        private void TxtPresup_Leave(object sender, EventArgs e)
+        {
+
+        }
+
+        private void TxtPresup_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                if (TxtPresup.Text != "")
+                {
+                    traerpresupuesto(Convert.ToInt32( TxtPresup.Text));
+                }
+            }
+        }
+
+        private void DGCliente_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+               
+                    Buscar_Cliente(DGCliente.CurrentRow.Cells["idcliente"].Value.ToString());
+                    DGCliente.Visible = false;
+                    txtNombreProducto.Focus();
+                
+            }
+        }
+
+        private void DGCliente_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            Buscar_Cliente(DGCliente.CurrentRow.Cells["idcliente"].Value.ToString());
+            DGCliente.Visible = false;
+            txtNombreProducto.Focus();
+        }
+
+        private void grpboxProveedor_Enter(object sender, EventArgs e)
+        {
+
         }
     }
 }

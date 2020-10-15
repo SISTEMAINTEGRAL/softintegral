@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmPreciosmasivos));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panelHorizontal = new System.Windows.Forms.Panel();
             this.btnMaximizar = new System.Windows.Forms.PictureBox();
             this.btnRestaurar = new System.Windows.Forms.PictureBox();
@@ -59,12 +59,14 @@
             this.Menudelete = new System.Windows.Forms.ToolStripMenuItem();
             this.TxtcambioDv = new System.Windows.Forms.TextBox();
             this.xuiCustomGroupbox1 = new XanderUI.XUICustomGroupbox();
+            this.BtnImproducto = new XanderUI.XUISuperButton();
             this.BtnExportar = new XanderUI.XUISuperButton();
             this.BtnImprimir = new XanderUI.XUISuperButton();
             this.btnAplicar = new XanderUI.XUISuperButton();
             this.BtnCambiar = new XanderUI.XUISuperButton();
             this.btnLimpiarG = new XanderUI.XUISuperButton();
             this.btnCliente = new XanderUI.XUISuperButton();
+            this.BtnExportarbalanza = new XanderUI.XUISuperButton();
             this.panelHorizontal.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnMaximizar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnRestaurar)).BeginInit();
@@ -213,7 +215,7 @@
             this.cbcampoamodificar.Location = new System.Drawing.Point(344, 32);
             this.cbcampoamodificar.Margin = new System.Windows.Forms.Padding(6);
             this.cbcampoamodificar.Name = "cbcampoamodificar";
-            this.cbcampoamodificar.Size = new System.Drawing.Size(360, 33);
+            this.cbcampoamodificar.Size = new System.Drawing.Size(261, 33);
             this.cbcampoamodificar.TabIndex = 59;
             // 
             // DGVenta
@@ -227,14 +229,14 @@
             this.DGVenta.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.DGVenta.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.DGVenta.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.DGVenta.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.DGVenta.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.DGVenta.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.DGVenta.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.menucodarticulo,
@@ -393,6 +395,8 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.xuiCustomGroupbox1.BorderColor = System.Drawing.Color.DodgerBlue;
             this.xuiCustomGroupbox1.BorderWidth = 1;
+            this.xuiCustomGroupbox1.Controls.Add(this.BtnExportarbalanza);
+            this.xuiCustomGroupbox1.Controls.Add(this.BtnImproducto);
             this.xuiCustomGroupbox1.Controls.Add(this.BtnExportar);
             this.xuiCustomGroupbox1.Controls.Add(this.BtnImprimir);
             this.xuiCustomGroupbox1.Controls.Add(this.btnAplicar);
@@ -412,6 +416,31 @@
             this.xuiCustomGroupbox1.Text = "Precios";
             this.xuiCustomGroupbox1.TextColor = System.Drawing.Color.DodgerBlue;
             // 
+            // BtnImproducto
+            // 
+            this.BtnImproducto.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.BtnImproducto.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(144)))), ((int)(((byte)(247)))));
+            this.BtnImproducto.ButtonImage = global::Capa_Presentacion.Properties.Resources.Save_20px;
+            this.BtnImproducto.ButtonSmoothing = System.Drawing.Drawing2D.SmoothingMode.HighSpeed;
+            this.BtnImproducto.ButtonStyle = XanderUI.XUISuperButton.Style.RoundedEdges;
+            this.BtnImproducto.ButtonText = "Importar Productos";
+            this.BtnImproducto.CornerRadius = 5;
+            this.BtnImproducto.Horizontal_Alignment = System.Drawing.StringAlignment.Center;
+            this.BtnImproducto.HoverBackgroundColor = System.Drawing.Color.IndianRed;
+            this.BtnImproducto.HoverTextColor = System.Drawing.Color.Yellow;
+            this.BtnImproducto.ImagePosition = XanderUI.XUISuperButton.imgPosition.Left;
+            this.BtnImproducto.Location = new System.Drawing.Point(886, 101);
+            this.BtnImproducto.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.BtnImproducto.Name = "BtnImproducto";
+            this.BtnImproducto.SelectedBackColor = System.Drawing.Color.LimeGreen;
+            this.BtnImproducto.SelectedTextColor = System.Drawing.Color.White;
+            this.BtnImproducto.Size = new System.Drawing.Size(177, 61);
+            this.BtnImproducto.SuperSelected = false;
+            this.BtnImproducto.TabIndex = 136;
+            this.BtnImproducto.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(245)))), ((int)(((byte)(255)))));
+            this.BtnImproducto.Vertical_Alignment = System.Drawing.StringAlignment.Center;
+            this.BtnImproducto.Click += new System.EventHandler(this.BtnImproducto_Click);
+            // 
             // BtnExportar
             // 
             this.BtnExportar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
@@ -425,12 +454,12 @@
             this.BtnExportar.HoverBackgroundColor = System.Drawing.Color.IndianRed;
             this.BtnExportar.HoverTextColor = System.Drawing.Color.Yellow;
             this.BtnExportar.ImagePosition = XanderUI.XUISuperButton.imgPosition.Left;
-            this.BtnExportar.Location = new System.Drawing.Point(726, 20);
+            this.BtnExportar.Location = new System.Drawing.Point(883, 26);
             this.BtnExportar.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.BtnExportar.Name = "BtnExportar";
             this.BtnExportar.SelectedBackColor = System.Drawing.Color.LimeGreen;
             this.BtnExportar.SelectedTextColor = System.Drawing.Color.White;
-            this.BtnExportar.Size = new System.Drawing.Size(255, 61);
+            this.BtnExportar.Size = new System.Drawing.Size(180, 64);
             this.BtnExportar.SuperSelected = false;
             this.BtnExportar.TabIndex = 136;
             this.BtnExportar.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(245)))), ((int)(((byte)(255)))));
@@ -450,12 +479,12 @@
             this.BtnImprimir.HoverBackgroundColor = System.Drawing.Color.IndianRed;
             this.BtnImprimir.HoverTextColor = System.Drawing.Color.Yellow;
             this.BtnImprimir.ImagePosition = XanderUI.XUISuperButton.imgPosition.Left;
-            this.BtnImprimir.Location = new System.Drawing.Point(989, 20);
+            this.BtnImprimir.Location = new System.Drawing.Point(1071, 26);
             this.BtnImprimir.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.BtnImprimir.Name = "BtnImprimir";
             this.BtnImprimir.SelectedBackColor = System.Drawing.Color.LimeGreen;
             this.BtnImprimir.SelectedTextColor = System.Drawing.Color.White;
-            this.BtnImprimir.Size = new System.Drawing.Size(264, 63);
+            this.BtnImprimir.Size = new System.Drawing.Size(181, 64);
             this.BtnImprimir.SuperSelected = false;
             this.BtnImprimir.TabIndex = 134;
             this.BtnImprimir.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(245)))), ((int)(((byte)(255)))));
@@ -475,12 +504,12 @@
             this.btnAplicar.HoverBackgroundColor = System.Drawing.Color.IndianRed;
             this.btnAplicar.HoverTextColor = System.Drawing.Color.Yellow;
             this.btnAplicar.ImagePosition = XanderUI.XUISuperButton.imgPosition.Left;
-            this.btnAplicar.Location = new System.Drawing.Point(989, 93);
+            this.btnAplicar.Location = new System.Drawing.Point(1072, 101);
             this.btnAplicar.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnAplicar.Name = "btnAplicar";
             this.btnAplicar.SelectedBackColor = System.Drawing.Color.LimeGreen;
             this.btnAplicar.SelectedTextColor = System.Drawing.Color.White;
-            this.btnAplicar.Size = new System.Drawing.Size(264, 73);
+            this.btnAplicar.Size = new System.Drawing.Size(179, 62);
             this.btnAplicar.SuperSelected = false;
             this.btnAplicar.TabIndex = 134;
             this.btnAplicar.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(245)))), ((int)(((byte)(255)))));
@@ -500,12 +529,12 @@
             this.BtnCambiar.HoverBackgroundColor = System.Drawing.Color.IndianRed;
             this.BtnCambiar.HoverTextColor = System.Drawing.Color.Yellow;
             this.BtnCambiar.ImagePosition = XanderUI.XUISuperButton.imgPosition.Left;
-            this.BtnCambiar.Location = new System.Drawing.Point(547, 95);
+            this.BtnCambiar.Location = new System.Drawing.Point(451, 94);
             this.BtnCambiar.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.BtnCambiar.Name = "BtnCambiar";
             this.BtnCambiar.SelectedBackColor = System.Drawing.Color.LimeGreen;
             this.BtnCambiar.SelectedTextColor = System.Drawing.Color.White;
-            this.BtnCambiar.Size = new System.Drawing.Size(157, 52);
+            this.BtnCambiar.Size = new System.Drawing.Size(145, 46);
             this.BtnCambiar.SuperSelected = false;
             this.BtnCambiar.TabIndex = 133;
             this.BtnCambiar.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(245)))), ((int)(((byte)(255)))));
@@ -559,6 +588,31 @@
             this.btnCliente.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(245)))), ((int)(((byte)(255)))));
             this.btnCliente.Vertical_Alignment = System.Drawing.StringAlignment.Center;
             this.btnCliente.Click += new System.EventHandler(this.btnCliente_Click);
+            // 
+            // BtnExportarbalanza
+            // 
+            this.BtnExportarbalanza.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.BtnExportarbalanza.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(144)))), ((int)(((byte)(247)))));
+            this.BtnExportarbalanza.ButtonImage = global::Capa_Presentacion.Properties.Resources.Save_20px;
+            this.BtnExportarbalanza.ButtonSmoothing = System.Drawing.Drawing2D.SmoothingMode.HighSpeed;
+            this.BtnExportarbalanza.ButtonStyle = XanderUI.XUISuperButton.Style.RoundedEdges;
+            this.BtnExportarbalanza.ButtonText = "Exportar Balanza";
+            this.BtnExportarbalanza.CornerRadius = 5;
+            this.BtnExportarbalanza.Horizontal_Alignment = System.Drawing.StringAlignment.Center;
+            this.BtnExportarbalanza.HoverBackgroundColor = System.Drawing.Color.IndianRed;
+            this.BtnExportarbalanza.HoverTextColor = System.Drawing.Color.Yellow;
+            this.BtnExportarbalanza.ImagePosition = XanderUI.XUISuperButton.imgPosition.Left;
+            this.BtnExportarbalanza.Location = new System.Drawing.Point(703, 26);
+            this.BtnExportarbalanza.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.BtnExportarbalanza.Name = "BtnExportarbalanza";
+            this.BtnExportarbalanza.SelectedBackColor = System.Drawing.Color.LimeGreen;
+            this.BtnExportarbalanza.SelectedTextColor = System.Drawing.Color.White;
+            this.BtnExportarbalanza.Size = new System.Drawing.Size(172, 61);
+            this.BtnExportarbalanza.SuperSelected = false;
+            this.BtnExportarbalanza.TabIndex = 138;
+            this.BtnExportarbalanza.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(245)))), ((int)(((byte)(255)))));
+            this.BtnExportarbalanza.Vertical_Alignment = System.Drawing.StringAlignment.Center;
+            this.BtnExportarbalanza.Click += new System.EventHandler(this.BtnExportarbalanza_Click);
             // 
             // FrmPreciosmasivos
             // 
@@ -631,5 +685,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn utilidadoferta;
         private System.Windows.Forms.DataGridViewTextBoxColumn precio_oferta;
         private XanderUI.XUISuperButton BtnExportar;
+        private XanderUI.XUISuperButton BtnImproducto;
+        private XanderUI.XUISuperButton BtnExportarbalanza;
     }
 }

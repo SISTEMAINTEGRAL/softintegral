@@ -10,9 +10,9 @@ namespace Capa_negocio
 {
    public class NegocioCliente
     {
-        public static string insertar(string razonSocial, string direccion, long cuit, long tel, long numDocumento, string email, string responsableanteiva, int idprovincia, int idlocalidad)
+        public static string insertar(string razonSocial, string direccion, long cuit, long tel, long numDocumento, string email, string responsableanteiva, int idprovincia, int idlocalidad, string codigointerno)
         {
-            DatosCliente cliente = new DatosCliente(razonSocial, direccion, cuit, tel, numDocumento, email, responsableanteiva, idprovincia, idlocalidad);
+            DatosCliente cliente = new DatosCliente(razonSocial, direccion, cuit, tel, numDocumento, email, responsableanteiva, idprovincia, idlocalidad, codigointerno);
             
             return cliente.agregar(cliente);
         }
@@ -22,7 +22,7 @@ namespace Capa_negocio
             
             return cliente.eliminar(cliente);
 }
-        public static string editar(int idCliente, string razonSocial, string direccion, long cuit, long tel, long numDocumento, string email, string responsableiva, int idprovincia, int idlocalidad)
+        public static string editar(int idCliente, string razonSocial, string direccion, long cuit, long tel, long numDocumento, string email, string responsableiva, int idprovincia, int idlocalidad, string codinterno)
         {
             DatosCliente cliente = new DatosCliente();
             cliente.Idcliente = idCliente;
@@ -35,15 +35,15 @@ namespace Capa_negocio
             cliente.Responsableiva = responsableiva;
             cliente.Idprovincia = idprovincia;
             cliente.Idlocalidad = idlocalidad;
-
+            cliente.Codinterno = codinterno;
             return cliente.editar(cliente);
         }
-        public static DataTable buscar(string texto)
+        public static DataTable buscar(string texto, int modo = 4)
         {
             DatosCliente cliente = new DatosCliente();
            
                 cliente.BuscarCliente= texto;
-                return cliente.buscarTexto(cliente);
+                return cliente.buscarTexto(cliente,modo);
         }
         public static DataTable buscarCodigoCliente(string texto, int modo = 6)
         {
@@ -83,9 +83,9 @@ namespace Capa_negocio
             return objcliente.agregaromodificarctacte(objcliente);
         }
 
-        public static DataTable buscarporcodigoctacte (int codcliente, string fechaD, string fechaH)
+        public static DataTable buscarporcodigoctacte (int codcliente,string estado = "pendiente")
         {
-            DatosCliente objcliente = new DatosCliente(codcliente, fechaD,fechaH);
+            DatosCliente objcliente = new DatosCliente(codcliente, estado);
             return objcliente.buscarporcodigoctacte(objcliente);
 
         }
@@ -115,6 +115,23 @@ namespace Capa_negocio
             DatosCliente objcliente = new DatosCliente();
             return objcliente.modificarcajarecibo(codrecibo,"cerrartransaccion");
 
+
+        }
+
+        public static DataTable BuscarFechasRecibo(string textobuscar, string textobuscar2,bool porcaja, bool concaja,
+            int codcliente, int codrecibo)
+        {
+            DatosCliente Obj = new DatosCliente();
+            Obj.Porcaja = porcaja;
+            Obj.Concaja = concaja;
+            Obj.Idcliente = codcliente;
+            Obj.Codrecibo = codrecibo;
+
+            
+            
+
+
+            return Obj.BuscarFechasRecibo(textobuscar, textobuscar2, Obj);
 
         }
 

@@ -35,6 +35,9 @@ namespace Capa_Datos
         private string  fechaD;
         private string fechaH;
         private int codrecibo;
+        private string codinterno;
+        private bool concaja;
+        private bool porcaja;
         public string BuscarCliente
         {
             get
@@ -230,6 +233,11 @@ namespace Capa_Datos
             }
         }
 
+        public string Codinterno { get => codinterno; set => codinterno = value; }
+        public bool Concaja { get => concaja; set => concaja = value; }
+        public bool Porcaja { get => porcaja; set => porcaja = value; }
+        public int Codrecibo { get => codrecibo; set => codrecibo = value; }
+
         //     @Codcliente as int = 0,
         //   @Codventa as int = 0,
         //   @Estado as nvarchar(50) = 'Pendiente',
@@ -247,11 +255,10 @@ namespace Capa_Datos
         public DatosCliente() { 
         
         }
-        public DatosCliente(int varcodcliente, string  varfechaD, string varfechaH)
+        public DatosCliente(int varcodcliente, string  varestado)
         {
             this.Idcliente = varcodcliente;
-            this.fechaD = varfechaD;
-            this.fechaH = varfechaH;
+            this.estado = varestado;
         }
         public DatosCliente(ref SqlConnection miconexion, ref SqlTransaction mitransaccion,int varcodcliente, int varcodventa, decimal varsaldo, decimal vartotal, decimal varpagado, string varestado, string varmodoctacte)
 
@@ -266,7 +273,7 @@ namespace Capa_Datos
             this.estado = varestado;
             this.modoctacte = varmodoctacte;
         }
-        public DatosCliente(string razonSocial,string direccion,long cuit,long tel,long numDocumento,string email, string responsableiva, int varidprovincia, int varidlocalidad)
+        public DatosCliente(string razonSocial,string direccion,long cuit,long tel,long numDocumento,string email, string responsableiva, int varidprovincia, int varidlocalidad, string varcodinterno)
         {
             
            this.RazonSocial=razonSocial;
@@ -278,6 +285,7 @@ namespace Capa_Datos
             this.Responsableiva = responsableiva;
             this.Idprovincia = varidprovincia;
             this.Idlocalidad = varidlocalidad;
+            this.codinterno = varcodinterno;
          }
 
         public DatosCliente(int varidcliente)
@@ -349,6 +357,9 @@ namespace Capa_Datos
                 SqlParameter parIdlocalidad = ProcAlmacenado.asignarParametros("@idlocalidad", SqlDbType.Int, cliente.Idlocalidad);
                 comando.Parameters.Add(parIdlocalidad);
 
+                SqlParameter parCodinterno = ProcAlmacenado.asignarParametros("@codigointerno", SqlDbType.NVarChar, cliente.codinterno);
+                comando.Parameters.Add(parCodinterno);
+
                 if (comando.ExecuteNonQuery() == 1)
                 {
                     respuesta = "ok";
@@ -416,6 +427,10 @@ namespace Capa_Datos
                 
                 SqlParameter parIdlocalidad = ProcAlmacenado.asignarParametros("@idlocalidad", SqlDbType.Int, cliente.Idlocalidad);
                 comando.Parameters.Add(parIdlocalidad);
+
+                SqlParameter parCodinterno = ProcAlmacenado.asignarParametros("@codigointerno", SqlDbType.NVarChar, cliente.codinterno);
+                comando.Parameters.Add(parCodinterno);
+
                 if (comando.ExecuteNonQuery() == 1)
                 {
                     respuesta = "ok";
@@ -470,7 +485,7 @@ namespace Capa_Datos
             return respuesta;
 
         }
-        public DataTable buscarTexto(DatosCliente cliente)
+        public DataTable buscarTexto(DatosCliente cliente, int modo = 4)
         {
             //Modo 4 para DB
              cn = new SqlConnection(Conexion.conexion);
@@ -487,7 +502,7 @@ namespace Capa_Datos
                 //le paso al comando el parametro
                 comando.Parameters.Add(parBuscarTexto);
                 //modo buscar
-                SqlParameter parModo = ProcAlmacenado.asignarParametros("@modo", SqlDbType.Int, 4);
+                SqlParameter parModo = ProcAlmacenado.asignarParametros("@modo", SqlDbType.Int, modo);
                 comando.Parameters.Add(parModo);
 
                 SqlParameter parIdCliente = ProcAlmacenado.asignarParametros("@idcliente", SqlDbType.Int, cliente.Idcliente);
@@ -563,6 +578,11 @@ namespace Capa_Datos
 
                 SqlParameter parIdCliente = ProcAlmacenado.asignarParametros("@idcliente", SqlDbType.Int, cliente.Idcliente);
                 comando.Parameters.Add(parIdCliente);
+                if (modo == 11)
+                {
+                    SqlParameter parCodigointerno = ProcAlmacenado.asignarParametros("@codigointerno", SqlDbType.NVarChar, cliente.buscarCliente);
+                    comando.Parameters.Add(parCodigointerno);
+                }
                 //creo el objeto adapter del data provider le paso el sqlcommand
                 SqlDataAdapter datosResult = new SqlDataAdapter(comando);
                 //los resultados los actualizo en el datatable dtResult
@@ -858,10 +878,8 @@ namespace Capa_Datos
                 sqlcmd.Parameters.Add(parModo);
                 SqlParameter parcodcliente = ProcAlmacenado.asignarParametros("@codcliente", SqlDbType.Int, Idcliente);
                 sqlcmd.Parameters.Add(parcodcliente);
-                SqlParameter parfechaD = ProcAlmacenado.asignarParametros("@fechaD", SqlDbType.NVarChar, fechaD);
-                sqlcmd.Parameters.Add(parfechaD);
-                SqlParameter parfechaH = ProcAlmacenado.asignarParametros("@FechaH", SqlDbType.NVarChar, fechaH);
-                sqlcmd.Parameters.Add(parfechaH);
+                SqlParameter parestadocliente = ProcAlmacenado.asignarParametros("@estado", SqlDbType.NVarChar, estado);
+                sqlcmd.Parameters.Add(parestadocliente);
                 SqlDataAdapter sqldat = new SqlDataAdapter(sqlcmd);
                 sqldat.Fill(DtResultado);
             }
@@ -1021,6 +1039,8 @@ namespace Capa_Datos
                 //le paso al sqlcommand los parametros asignados
                 comando.Parameters.Add(parcodrecibo);
 
+
+
                
 
                 if (comando.ExecuteNonQuery() == 1)
@@ -1058,6 +1078,43 @@ namespace Capa_Datos
                 throw;
             }
         }
+         
+        public DataTable BuscarFechasRecibo(string TextoBuscar, string TextoBuscar2, DatosCliente Cliente)
+        {
+            DataTable DtResultado = new DataTable("cliente");
+            SqlConnection sqlcon = new SqlConnection(Conexion.conexion);
+            try
+            {
+
+
+                SqlCommand sqlcmd = ProcAlmacenado.CrearProc(sqlcon, "SP_CLIENTE_CTACTE");
+
+                //modo 2 para la busqueda
+                sqlcmd.Parameters.AddWithValue("@modo", "buscarrecibo");
+                sqlcmd.Parameters.AddWithValue("@fechad", TextoBuscar);
+                sqlcmd.Parameters.AddWithValue("@fechah", TextoBuscar2);
+                
+                sqlcmd.Parameters.AddWithValue("@concaja", Cliente.Concaja);
+                sqlcmd.Parameters.AddWithValue("@codcliente", Cliente.idcliente);
+                sqlcmd.Parameters.AddWithValue("@codrecibo", Cliente.codrecibo);
+                sqlcmd.Parameters.AddWithValue("@porcaja", Cliente.porcaja);
+
+                SqlDataAdapter sqldat = new SqlDataAdapter(sqlcmd);
+                sqldat.Fill(DtResultado);
+
+            }
+            catch (Exception ex)
+            {
+                DtResultado = null;
+                sqlcon.Close();
+                //lanzo una excepcion en el caso de problemas con bd
+                throw ex;
+            }
+
+            return DtResultado;
+        }
+
+       
 
     }
 }

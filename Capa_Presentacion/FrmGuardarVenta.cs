@@ -566,43 +566,65 @@ namespace Capa_Presentacion
         }
         private DataTable llenarventasmultipagos()
         {
+            int codformap = 0;
+            int count = 1;
             DataTable Dataventa = new DataTable();
 
+            Dataventa.Columns.Add("idventa", typeof(int));
+            Dataventa.Columns.Add("idcliente", typeof(int));
+            Dataventa.Columns.Add("fecha", typeof(DateTime));
+            Dataventa.Columns.Add("tipo_comprobante", typeof(string));
+            Dataventa.Columns.Add("iva", typeof(decimal));
+            Dataventa.Columns.Add("estado", typeof(string));
+            Dataventa.Columns.Add("categoria", typeof(int));
+            Dataventa.Columns.Add("encaja", typeof(bool));
+            Dataventa.Columns.Add("enstock", typeof(bool));
+            Dataventa.Columns.Add("usuario", typeof(string));
+            Dataventa.Columns.Add("descuento", typeof(decimal));
+            Dataventa.Columns.Add("total", typeof(decimal));
+            Dataventa.Columns.Add("subtotal", typeof(decimal));
+            Dataventa.Columns.Add("codformapago", typeof(int));
+            Dataventa.Columns.Add("nrocomprobante", typeof(string));
+            Dataventa.Columns.Add("total_neto", typeof(decimal));
+            Dataventa.Columns.Add("precio_iva", typeof(decimal));
+            Dataventa.Columns.Add("cae", typeof(string));
+            Dataventa.Columns.Add("cae_fechavencimiento", typeof(string));
+            Dataventa.Columns.Add("tipofactura", typeof(string));
+            Dataventa.Columns.Add("puntoventa", typeof(string));
+            Dataventa.Columns.Add("total_neto105", typeof(decimal));
+            Dataventa.Columns.Add("precio_iva105", typeof(decimal));
+            // Dataventa.Columns.Add("idmltpadre", typeof(int));
+            Dataventa.Columns.Add("idcupon", typeof(int));
+            Dataventa.Columns.Add("nroterminal", typeof(int));
+            Dataventa.Columns.Add("Codtarjeta", typeof(int));
+            Dataventa.Columns.Add("cupon", typeof(string));
+            Dataventa.Columns.Add("lote", typeof(string));
+            Dataventa.Columns.Add("importe", typeof(decimal));
+            Dataventa.Columns.Add("cuotas", typeof(int));
 
-            Dataventa.Columns.Add("idcliente");
-            Dataventa.Columns.Add("tipo_comprobante");
-            Dataventa.Columns.Add("iva");
-            Dataventa.Columns.Add("concaja");
-            Dataventa.Columns.Add("constock");
-            Dataventa.Columns.Add("usuario");
-            Dataventa.Columns.Add("descuento");
-            Dataventa.Columns.Add("total");
-            Dataventa.Columns.Add("subtotal");
-            Dataventa.Columns.Add("estado");
-            Dataventa.Columns.Add("nroterminal");
-            Dataventa.Columns.Add("Codigotarjeta");
-            Dataventa.Columns.Add("cupon");
-            Dataventa.Columns.Add("lote");
-            Dataventa.Columns.Add("importe");
-            Dataventa.Columns.Add("cuota");
-            Dataventa.Columns.Add("codformapago");
-            Dataventa.Columns.Add("nrocomprobante");
-            Dataventa.Columns.Add("totalneto");
-            Dataventa.Columns.Add("precioiva");
-            Dataventa.Columns.Add("cae");
-            Dataventa.Columns.Add("caefechavencimiento");
-            Dataventa.Columns.Add("tipofactura");
-            Dataventa.Columns.Add("puntoventa");
-            Dataventa.Columns.Add("totalneto105");
-            Dataventa.Columns.Add("precioiva105");
+
 
             foreach (DataGridViewRow dataGrid in DGMultiPago.Rows)
             {
-                Dataventa.Rows.Add(idCliente, "NOTA DE VENTA", 0, this.Concaja, this.constock, NegocioConfigEmpresa.usuarioconectado,
-                   0, dataGrid.Cells["Importe"].Value, 1, 0, dataGrid.Cells["cCodTarjeta"].Value, dataGrid.Cells["cLote"].Value,
-                   dataGrid.Cells["cImporteCuota"].Value, dataGrid.Cells["cCuota"].Value,
-                   dataGrid.Cells["CodFormaPago"].Value, "0", "0", "0", "0",
-                   "0", "", NegocioConfigEmpresa.puntoventa.PadLeft(5, '0'), "0", "0", "0");
+                if (dataGrid.Cells["FPago"].Value.ToString() == "EFECTIVO")
+                {
+                    codformap = 1;
+                }
+                if (dataGrid.Cells["FPago"].Value.ToString() == "TARJETA")
+                {
+                    codformap = 2;
+                }
+                if (dataGrid.Cells["FPago"].Value.ToString() == "CTACTE")
+                {
+                    codformap = 3;
+                }
+
+
+                Dataventa.Rows.Add(count, idCliente, DateTime.Now, "NOTA DE VENTA", 0, "P", "0", this.Concaja, this.constock, NegocioConfigEmpresa.usuarioconectado,
+                   0, dataGrid.Cells["Importe"].Value, "0", codformap, "0", 0, "0", "0", "", "0", NegocioConfigEmpresa.puntoventa.PadLeft(5, '0'), "0", "0",
+                    "0", "0", dataGrid.Cells["cCodTarjeta"].Value, dataGrid.Cells["cCupon"].Value, dataGrid.Cells["cLote"].Value,
+                    dataGrid.Cells["cImporteCuota"].Value, dataGrid.Cells["cCuota"].Value);
+                count++;
             }
 
             return Dataventa;
@@ -887,6 +909,160 @@ namespace Capa_Presentacion
         private void CbFormaPago_SelectedValueChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void TxtImporte_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.E)
+            {
+                CbFormaPago.SelectedIndex = 0;
+            }
+            if (e.KeyCode == Keys.T)
+            {
+                CbFormaPago.SelectedIndex = 1;
+            }
+            if (e.KeyCode == Keys.C)
+            {
+                CbFormaPago.SelectedIndex = 2;
+            }
+            if (e.KeyCode == Keys.Enter)
+            {
+                if (CbFormaPago.Text == "TARJETA")
+                {
+                    CalcularCuota();
+                    cbTarjeta.Focus();
+                }
+                if (CbFormaPago.Text == "EFECTIVO" || CbFormaPago.Text == "CTACTE")
+                {
+                    agregardatagridmultipago();
+                    TxtImporte.Focus();
+                    TxtImporte.SelectAll();
+                }
+
+            }
+        }
+
+        private void agregardatagridmultipago()
+        {
+            try
+            {
+                bool agregaralgrid = true;
+                decimal importe = 0;
+                decimal saldo = 0;
+
+
+                if (TxtImporte.Text == "0" || TxtImporte.Text == "")
+                {
+                    agregaralgrid = false;
+                }
+                importe = Convert.ToDecimal(TxtImporte.Text);
+
+
+                saldo = Convert.ToDecimal(TxtSaldo.Text) - importe;
+
+                if (saldo < 0)
+                {
+                    UtilityFrm.mensajeError("El importe que se desea pagar esta por debajo del saldo");
+                    return;
+                }
+                if (CbFormaPago.Text == "TARJETA")
+                {
+                    if (TxtLote2.Text == "" || Txtcupon2.Text == "" || cbMCuota.Text == "" || Txtcuota.Text == "" || cbTarjeta.Text == "")
+                    {
+                        agregaralgrid = false;
+                    }
+
+
+                    agregaralgrid = TxtLote2.Text == "0" ? false : true;
+                    agregaralgrid = Txtcupon2.Text == "0" ? false : true;
+
+                    if (agregaralgrid == true)
+                    {
+                        CalcularCuota();
+                        importe = Convert.ToDecimal(Txtcuota.Text) * Convert.ToDecimal(cbMCuota.Text);
+                        DGMultiPago.Rows.Add(CbFormaPago.Text, importe.ToString(), TxtLote2.Text, Txtcupon2.Text, cbMCuota.Text, Txtcuota.Text, cbTarjeta.SelectedValue, TxtImporte.Text);
+                    }
+                    else
+                    {
+                        UtilityFrm.mensajeError("Hay campos que no se encuentran completados");
+                    }
+
+                }
+                else if (CbFormaPago.Text == "")
+                {
+                    UtilityFrm.mensajeError("Elija la forma de pago");
+                }
+                else
+                {
+
+                    DGMultiPago.Rows.Add(CbFormaPago.Text, TxtImporte.Text, "0", "0", "0", "0", "0", TxtImporte.Text);
+                }
+                totalesdgmultipago();
+                inicializarcontroles();
+                TxtImporte.Focus();
+            }
+            catch (Exception ex)
+            {
+
+                UtilityFrm.mensajeError("");
+            }
+        }
+        private void inicializarcontroles()
+        {
+            TxtLote2.Text = "0";
+            Txtcupon2.Text = "0";
+            Txtcuota.Text = "0,00";
+            TxtImporte.Text = "0";
+        }
+        private void totalesdgmultipago()
+        {
+            decimal importe = 0;
+            decimal total = 0;
+            decimal totalsininteres = 0;
+            decimal importesininteres = 0;
+            decimal porcentaje = 0;
+            decimal saldo = 0;
+
+            if (DGMultiPago.Rows.Count != 0)
+            {
+                foreach (DataGridViewRow row in DGMultiPago.Rows)
+                {
+
+                    importesininteres = Convert.ToDecimal(row.Cells["Importesininteres"].Value);
+                    importe = Convert.ToDecimal(row.Cells["Importe"].Value);
+                    //totalsininteres = Convert.ToDecimal(row.Cells["Importesininteres"].Value);
+                    total = total + importe;
+                    totalsininteres = totalsininteres + importesininteres;
+
+                }
+            }
+            saldo = totalAPagar - totalsininteres;
+            txtTotalAPagar.Text = total.ToString();
+            TxtSaldo.Text = saldo.ToString();
+            lblsubtotal.Text = total.ToString();
+
+        }
+
+        private void CalcularCuota()
+        {
+            decimal porcentaje = 0;
+            decimal importe = 0;
+            decimal importecuota = 0;
+
+            porcentaje = Convert.ToDecimal(cbMCuota.SelectedValue);
+            importe = Convert.ToDecimal(TxtImporte.Text);
+
+            if (porcentaje != 0)
+            {
+                importe = importe + ((importe * porcentaje) / 100);
+            }
+
+            importecuota = importe / Convert.ToDecimal(cbMCuota.Text);
+            Txtcuota.Text = importecuota.ToString();
+        }
+        private void TxtImporte_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            UtilityFrm.NumDecTeclado(e, TxtImporte);
         }
     }
 }

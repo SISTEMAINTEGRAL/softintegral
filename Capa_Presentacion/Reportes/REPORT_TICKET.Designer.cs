@@ -48,6 +48,7 @@ namespace Capa_Presentacion.Reportes
             this.textBox40 = new Telerik.Reporting.TextBox();
             this.textBox41 = new Telerik.Reporting.TextBox();
             this.textBox44 = new Telerik.Reporting.TextBox();
+            this.txtNC = new Telerik.Reporting.TextBox();
             this.detail = new Telerik.Reporting.DetailSection();
             this.reportHeaderSection1 = new Telerik.Reporting.ReportHeaderSection();
             this.table1 = new Telerik.Reporting.Table();
@@ -70,7 +71,6 @@ namespace Capa_Presentacion.Reportes
             this.barcode1 = new Telerik.Reporting.Barcode();
             this.textBox31 = new Telerik.Reporting.TextBox();
             this.textBox29 = new Telerik.Reporting.TextBox();
-            this.txtNC = new Telerik.Reporting.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             // 
             // textBox4
@@ -216,8 +216,9 @@ namespace Capa_Presentacion.Reportes
             // 
             this.textBox20.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(0.696500837802887D), Telerik.Reporting.Drawing.Unit.Cm(4.8000001907348633D));
             this.textBox20.Name = "textBox20";
-            this.textBox20.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(2.0999999046325684D), Telerik.Reporting.Drawing.Unit.Cm(0.39979955554008484D));
+            this.textBox20.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(2.0718533992767334D), Telerik.Reporting.Drawing.Unit.Cm(0.39979955554008484D));
             this.textBox20.Style.Font.Bold = true;
+            this.textBox20.Style.Font.Name = "Arial";
             this.textBox20.Style.Font.Size = Telerik.Reporting.Drawing.Unit.Point(8D);
             this.textBox20.Style.TextAlign = Telerik.Reporting.Drawing.HorizontalAlign.Right;
             this.textBox20.Value = "Razon social :";
@@ -381,6 +382,16 @@ namespace Capa_Presentacion.Reportes
             this.textBox44.Style.TextAlign = Telerik.Reporting.Drawing.HorizontalAlign.Center;
             this.textBox44.Value = "=Fields.Telefono";
             // 
+            // txtNC
+            // 
+            this.txtNC.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(4.1525835990905762D), Telerik.Reporting.Drawing.Unit.Cm(1.699799656867981D));
+            this.txtNC.Name = "txtNC";
+            this.txtNC.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(3.3000004291534424D), Telerik.Reporting.Drawing.Unit.Cm(0.40020036697387695D));
+            this.txtNC.Style.Font.Bold = true;
+            this.txtNC.Style.Font.Size = Telerik.Reporting.Drawing.Unit.Point(8D);
+            this.txtNC.Style.Visible = false;
+            this.txtNC.Value = "NOTA DE CREDITO";
+            // 
             // detail
             // 
             this.detail.Height = Telerik.Reporting.Drawing.Unit.Cm(0.10583343356847763D);
@@ -411,8 +422,8 @@ namespace Capa_Presentacion.Reportes
             // 
             // table1
             // 
-            this.table1.Body.Columns.Add(new Telerik.Reporting.TableBodyColumn(Telerik.Reporting.Drawing.Unit.Cm(0.96415066719055176D)));
-            this.table1.Body.Columns.Add(new Telerik.Reporting.TableBodyColumn(Telerik.Reporting.Drawing.Unit.Cm(4.3558425903320312D)));
+            this.table1.Body.Columns.Add(new Telerik.Reporting.TableBodyColumn(Telerik.Reporting.Drawing.Unit.Cm(0.964150607585907D)));
+            this.table1.Body.Columns.Add(new Telerik.Reporting.TableBodyColumn(Telerik.Reporting.Drawing.Unit.Cm(4.355842113494873D)));
             this.table1.Body.Columns.Add(new Telerik.Reporting.TableBodyColumn(Telerik.Reporting.Drawing.Unit.Cm(1.03267502784729D)));
             this.table1.Body.Columns.Add(new Telerik.Reporting.TableBodyColumn(Telerik.Reporting.Drawing.Unit.Cm(1.4073337316513062D)));
             this.table1.Body.Rows.Add(new Telerik.Reporting.TableBodyRow(Telerik.Reporting.Drawing.Unit.Cm(0.39999997615814209D)));
@@ -618,16 +629,6 @@ namespace Capa_Presentacion.Reportes
             this.textBox29.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(3D), Telerik.Reporting.Drawing.Unit.Cm(0.39849764108657837D));
             this.textBox29.Style.Font.Size = Telerik.Reporting.Drawing.Unit.Point(8D);
             this.textBox29.Value = "Fecha de vencimiento";
-            // 
-            // txtNC
-            // 
-            this.txtNC.Location = new Telerik.Reporting.Drawing.PointU(Telerik.Reporting.Drawing.Unit.Cm(4.1525835990905762D), Telerik.Reporting.Drawing.Unit.Cm(1.699799656867981D));
-            this.txtNC.Name = "txtNC";
-            this.txtNC.Size = new Telerik.Reporting.Drawing.SizeU(Telerik.Reporting.Drawing.Unit.Cm(3.3000004291534424D), Telerik.Reporting.Drawing.Unit.Cm(0.40020036697387695D));
-            this.txtNC.Style.Font.Bold = true;
-            this.txtNC.Style.Font.Size = Telerik.Reporting.Drawing.Unit.Point(8D);
-            this.txtNC.Style.Visible = false;
-            this.txtNC.Value = "NOTA DE CREDITO";
             // 
             // REPORT_TICKET
             // 

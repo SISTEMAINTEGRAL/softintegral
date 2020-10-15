@@ -15,6 +15,7 @@ using Capa_Datos;
         private int idusuario;
         private string turno;
         private int nrocaja;
+        private bool porcaja;
         public int Cuotas
         {
             get { return cuotas; }
@@ -384,6 +385,7 @@ using Capa_Datos;
     public int Idusuario { get => idusuario; set => idusuario = value; }
     public string Turno { get => turno; set => turno = value; }
     public int Nrocaja { get => nrocaja; set => nrocaja = value; }
+    public bool Porcaja { get => porcaja; set => porcaja = value; }
 
     private int idequipo;
     private decimal totalneto;
@@ -409,10 +411,11 @@ using Capa_Datos;
 
         public Dventa()
         { }
-       public Dventa(int varidventa, char varestado)
+       public Dventa(int varidventa, char varestado, int varcodformapago)
        {
         this.idventa = varidventa;
         this.estado = varestado;
+        this.codformapago = varcodformapago;
     }
         public Dventa(int trabajador, int idventa, int idcliente, DateTime fecha, string tipo_comprobante, string serie,string varnrocomprobante, decimal iva)
         {
@@ -772,7 +775,7 @@ using Capa_Datos;
         return DtResultado;
     }
     public DataTable  BuscarFechas(string TextoBuscar, string TextoBuscar2, Dventa venta)
-        {
+      {
             DataTable DtResultado = new DataTable("venta");
             SqlConnection sqlcon = new SqlConnection(Conexion.conexion);
             try
@@ -788,14 +791,16 @@ using Capa_Datos;
                 sqlcmd.Parameters.AddWithValue("estado", venta.estado);
                 sqlcmd.Parameters.AddWithValue("concaja", venta.concaja);
                 sqlcmd.Parameters.AddWithValue("tipo_comprobante", venta.tipo_comprobante);
-
+                
                 sqlcmd.Parameters.AddWithValue("puntoventa", venta.puntoventa);
                 sqlcmd.Parameters.AddWithValue("codformapago", venta.codformapago);
                 sqlcmd.Parameters.AddWithValue("idventa", venta.idventa);
                 sqlcmd.Parameters.AddWithValue("porventa", venta.Porventa);
                 sqlcmd.Parameters.AddWithValue("porpuntoventa", venta.Porpuntodeventa);
                 sqlcmd.Parameters.AddWithValue("porformadepago", venta.Porformadepago);
-
+                sqlcmd.Parameters.AddWithValue("idcliente", venta.idcliente);
+                sqlcmd.Parameters.AddWithValue("usuario", venta.usuario);
+                sqlcmd.Parameters.AddWithValue("porcaja", venta.porcaja);
                 SqlDataAdapter sqldat = new SqlDataAdapter(sqlcmd);
                     sqldat.Fill(DtResultado);
 
@@ -809,8 +814,41 @@ using Capa_Datos;
             }
 
             return DtResultado;
+       }
+
+    public DataTable BuscarFechasPresupuesto(string TextoBuscar, string TextoBuscar2, Dventa venta)
+    {
+        DataTable DtResultado = new DataTable("venta");
+        SqlConnection sqlcon = new SqlConnection(Conexion.conexion);
+        try
+        {
+
+
+            SqlCommand sqlcmd = ProcAlmacenado.CrearProc(sqlcon, "SP_VENTA");
+
+            //modo 2 para la busqueda
+            sqlcmd.Parameters.AddWithValue("modo", 17);
+            sqlcmd.Parameters.AddWithValue("textobuscar", TextoBuscar);
+            sqlcmd.Parameters.AddWithValue("textobuscar2", TextoBuscar2);
+            sqlcmd.Parameters.AddWithValue("estado", venta.estado);
+            sqlcmd.Parameters.AddWithValue("idventa", venta.idventa);
+            sqlcmd.Parameters.AddWithValue("porventa", venta.Porventa);
+            sqlcmd.Parameters.AddWithValue("@idcliente", venta.idcliente);
+            SqlDataAdapter sqldat = new SqlDataAdapter(sqlcmd);
+            sqldat.Fill(DtResultado);
+
         }
-        public DataTable MostrarDetalle(string TextoBuscar)
+        catch (Exception ex)
+        {
+            DtResultado = null;
+            sqlcon.Close();
+            //lanzo una excepcion en el caso de problemas con bd
+            throw ex;
+        }
+
+        return DtResultado;
+    }
+    public DataTable MostrarDetalle(string TextoBuscar)
         {
             DataTable DtResultado = new DataTable("detalle_venta");
             SqlConnection sqlcon = new SqlConnection(Conexion.conexion);
@@ -912,8 +950,12 @@ using Capa_Datos;
                     SqlParameter parfecha = ProcAlmacenado.asignarParametros("@fecha", SqlDbType.DateTime, venta.fecha);
                     comando.Parameters.Add(parfecha);
 
-                }
-                else
+                    SqlParameter parCodformapago = ProcAlmacenado.asignarParametros("@codformapago", SqlDbType.Int, venta.codformapago);
+                    comando.Parameters.Add(parCodformapago);
+
+
+            }
+            else
                 {
                     SqlParameter parCaja = ProcAlmacenado.asignarParametros("concaja", SqlDbType.Bit, venta.concaja);
                     comando.Parameters.Add(parCaja);
@@ -1137,9 +1179,10 @@ using Capa_Datos;
             if (respuesta.Equals("ok"))
             {
                     comando = ProcAlmacenado.CrearProc(cn, "SP_VENTAMULTIPAGO", transaccion);
-                    
-                    
-                    comando.Parameters.AddWithValue("@idventa", SqlDbType.Int);
+
+                SqlParameter paridventa = ProcAlmacenado.asignarParametros("@idventa", SqlDbType.Int);
+                comando.Parameters.Add(paridventa);
+                
                     comando.Parameters.AddWithValue("@idcliente", Venta.idcliente);
                     comando.Parameters.AddWithValue("@tipo_comprobante",  Venta.tipo_comprobante);
                     comando.Parameters.AddWithValue("@iva",  Venta.iva);

@@ -667,3 +667,6 @@ C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\bin\Debug\Capa_Datos.
 C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\bin\Debug\System.Data.SQLite.xml
 C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\bin\Debug\System.Data.SQLite.dll.config
 C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\obj\Debug\Capa_Presentacion.Formreportes.FrmReportPresup.resources
+C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\obj\Debug\Capa_Presentacion.FrmListadoPresup.resources
+C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\obj\Debug\Capa_Presentacion.FrmListadoVentasAvanzadas.resources
+C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\obj\Debug\Capa_Presentacion.FrmListaRecibos.resources

@@ -171,7 +171,7 @@ namespace Capa_Presentacion
 
             foreach (DataRow producto in data.Rows)
             {
-                dataLista.Rows.Add(producto["idarticulo"], producto["codigo"], producto["nombre"], producto["precio"], producto["categoria"]);
+                dataLista.Rows.Add(producto["idarticulo"], producto["codigo"], producto["nombre"], producto["precio"], producto["categoria"], producto["stock_actual"]);
             }
 
         }
@@ -181,7 +181,7 @@ namespace Capa_Presentacion
             dataLista.Rows.Clear();
             foreach (DataRow producto in data.Rows)
             {
-                dataLista.Rows.Add(producto["idarticulo"], producto["codigo"], producto["nombre"], producto["precio"], producto["categoria"]);
+                dataLista.Rows.Add(producto["idarticulo"], producto["codigo"], producto["nombre"], producto["precio"], producto["categoria"], producto["stock_actual"]);
             }
         }
         public void BuscarCodigo()
@@ -190,7 +190,7 @@ namespace Capa_Presentacion
             dataLista.Rows.Clear();
             foreach (DataRow producto in data.Rows)
             {
-                dataLista.Rows.Add(producto["idarticulo"], producto["codigo"], producto["nombre"], producto["precio"], producto["categoria"]);
+                dataLista.Rows.Add(producto["idarticulo"], producto["codigo"], producto["nombre"], producto["precio"], producto["categoria"],producto["stock_actual"]);
             }
         }
 
@@ -200,7 +200,7 @@ namespace Capa_Presentacion
             dataLista.Rows.Clear();
             foreach (DataRow producto in data.Rows)
             {
-                dataLista.Rows.Add(producto["idarticulo"], producto["codigo"], producto["nombre"], producto["precio"], producto["categoria"]);
+                dataLista.Rows.Add(producto["idarticulo"], producto["codigo"], producto["nombre"], producto["precio"], producto["categoria"], producto["stock_actual"]);
             }
         }
         private void dataLista_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -295,6 +295,7 @@ namespace Capa_Presentacion
         }
         private void btnCerrar_Click(object sender, EventArgs e)
         {
+            IsCerro = true;
             //cierra
             this.Close();
         }

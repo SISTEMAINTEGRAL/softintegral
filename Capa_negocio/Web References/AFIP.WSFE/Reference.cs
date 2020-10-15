@@ -2727,6 +2727,8 @@ namespace Capa_negocio.AFIP.WSFE {
         
         private Comprador[] compradoresField;
         
+        private Periodo periodoAsocField;
+        
         /// <remarks/>
         public int Concepto {
             get {
@@ -2944,6 +2946,16 @@ namespace Capa_negocio.AFIP.WSFE {
             }
             set {
                 this.compradoresField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public Periodo PeriodoAsoc {
+            get {
+                return this.periodoAsocField;
+            }
+            set {
+                this.periodoAsocField = value;
             }
         }
     }
@@ -3205,6 +3217,39 @@ namespace Capa_negocio.AFIP.WSFE {
             }
             set {
                 this.porcentajeField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://ar.gov.afip.dif.FEV1/")]
+    public partial class Periodo {
+        
+        private string fchDesdeField;
+        
+        private string fchHastaField;
+        
+        /// <remarks/>
+        public string FchDesde {
+            get {
+                return this.fchDesdeField;
+            }
+            set {
+                this.fchDesdeField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string FchHasta {
+            get {
+                return this.fchHastaField;
+            }
+            set {
+                this.fchHastaField = value;
             }
         }
     }

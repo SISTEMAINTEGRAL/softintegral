@@ -49,9 +49,18 @@ namespace Capa_Presentacion
         }
         private void FrmArticulos_Load(object sender, EventArgs e)
         {
+            if (NegocioConfigEmpresa.confsistema("codigointernoproducto").ToString() == "True")
+            {
+                ChkCodInterno.Visible = true;
+                ChkCodInterno.Checked = true;
+            }
+            else
+            {
+                ChkCodInterno.Visible = false;
 
-            
-           llenarComboBoxCategoria(cbxCategoria,"idcategoria","nombre", NegocioCategoria.mostrar());
+            }
+
+            llenarComboBoxCategoria(cbxCategoria,"idcategoria","nombre", NegocioCategoria.mostrar());
            llenarComboBoxCategoria(cbCategoria,"idcategoria","nombre", NegocioCategoria.mostrar());
            dataLista.DefaultCellStyle.WrapMode = DataGridViewTriState.True;
            
@@ -360,7 +369,7 @@ namespace Capa_Presentacion
             //mensaje de ayuda del boton eliminar
             this.ttMensajeAyuda.SetToolTip(this.btnEliminar, "Borrar articulo");
             //mensaje de ayuda del boton Imprimir
-            this.ttMensajeAyuda.SetToolTip(this.btnImprimir, "imprime la lista de articulos");
+            //this.ttMensajeAyuda.SetToolTip(this.btnImprimir, "imprime la lista de articulos");
             //mensaje de ayuda del boton nuevo codbar
             this.ttMensajeAyuda.SetToolTip(this.btnNuevoCodBar, "Crear un nuevo Codigo de barra");
             //mensaje de ayuda del boton nuevo codbar
@@ -383,7 +392,19 @@ namespace Capa_Presentacion
             if (txtNombre.Text != "")
             {
                 txtNombre.Text = txtNombre.TextLength == 12 && IsNumeric(txtNombre.Text) ? "0" + txtNombre.Text : txtNombre.Text;
-                if (txtNombre.TextLength >= 8 && IsNumeric(txtNombre.Text) == true)
+                if (ChkCodInterno.Checked == true)
+                {
+                    //por codigointerno
+                    dataLista.DataSource = NegocioArticulo.buscarCodigoBarra(txtNombre.Text,17);
+
+                    txtNombre.Focus();
+                    txtNombre.SelectAll();
+                    if (dataLista.Rows.Count != 0)
+                    {
+                        textBox1.Text = decimal.Round(Convert.ToDecimal(this.dataLista.CurrentRow.Cells["Precio"].Value), 2).ToString();
+                    }
+                }
+                else if (txtNombre.TextLength >= 8 && IsNumeric(txtNombre.Text) == true)
                 {
                     dataLista.DataSource = NegocioArticulo.buscarCodigoBarra(txtNombre.Text);
 
@@ -520,6 +541,7 @@ namespace Capa_Presentacion
                         objarticulo.Preciopormayor2 = Convert.ToDecimal(TxtPrecioPromo.Text);
                         objarticulo.Modo = 1;
                         objarticulo.Stock_minimo = Convert.ToDecimal(txtStock_minimo.Text);
+                        objarticulo.Codigointerno = TxtCodinterno.Text;
                         respuesta = objarticulo.agregar(objarticulo, NegocioConfigEmpresa.confsistema("opcionsistema").ToString());
                         //respuesta = NegocioArticulo.insertar(txtNombreConfig.Text.Trim(), txtCodigoBarra.Text.Trim(), txtDescripcion.Text.Trim(),
                         //    Convert.ToInt32(cbxCategoria.SelectedValue), Convert.ToDecimal(txtPrecio.Text.Trim()),
@@ -571,6 +593,7 @@ namespace Capa_Presentacion
                         objarticulo.Idsubcategoria = Convert.ToInt32(CBSubcategoria.SelectedValue);
                         objarticulo.Iva = Convert.ToDecimal(CBIVA.Text);
                         objarticulo.Stock_minimo = Convert.ToDecimal(txtStock_minimo.Text);
+                        objarticulo.Codigointerno = TxtCodinterno.Text;
                         objarticulo.Modo = 2;
 
                       respuesta =  objarticulo.editar(objarticulo, "negocio");
@@ -675,6 +698,7 @@ namespace Capa_Presentacion
             this.btnGuardar.Enabled = var2;
             this.CBIVA.Enabled = var2;
             txtStock_minimo.Enabled = var2;
+            TxtCodinterno.Enabled = var2;
 
             this.txtCantInicial.Enabled = habcantinicial;
         }
@@ -826,7 +850,7 @@ namespace Capa_Presentacion
                 txtUtilidad.Text = Convert.ToString(decimal.Round(Convert.ToDecimal(this.dataLista.CurrentRow.Cells["utilidad"].Value), 2));
                 TxtPcompra.Text = Convert.ToString(decimal.Round(Convert.ToDecimal(this.dataLista.CurrentRow.Cells["precio_compra"].Value), 2));
                 txtStock_minimo.Text = Convert.ToString(decimal.Round(Convert.ToDecimal(this.dataLista.CurrentRow.Cells["stock_minimo"].Value), 2));
-
+                TxtCodinterno.Text = this.dataLista.CurrentRow.Cells["codigointerno"].Value.ToString();
                 decimal precio = 0;
                 precio = Convert.ToDecimal(this.dataLista.CurrentRow.Cells["precio"].Value);
                 string iva  =Convert.ToString( UtilityFrm.formateodecimal ( Convert.ToDecimal(this.dataLista.CurrentRow.Cells["iva"].Value), 2));
@@ -1264,8 +1288,10 @@ namespace Capa_Presentacion
                         hoja_trabajo.Cells[i + 3, 7] = dataLista.Rows[i].Cells["stock_actual"].Value;
                         hoja_trabajo.Cells[i + 3, 8] = dataLista.Rows[i].Cells["utilidad"].Value;
                         hoja_trabajo.Cells[i + 3, 9] = dataLista.Rows[i].Cells["precio_compra"].Value;
-                        hoja_trabajo.Cells[i + 3, 10] =dataLista.Rows[i].Cells["precio"].Value;
-        
+                        hoja_trabajo.Cells[i + 3, 10] =dataLista.Rows[i].Cells["flete"].Value;
+                        hoja_trabajo.Cells[i + 3, 11] = dataLista.Rows[i].Cells["precio"].Value;
+
+
                     }
 
 

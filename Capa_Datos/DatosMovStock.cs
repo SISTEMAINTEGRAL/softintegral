@@ -225,7 +225,7 @@ namespace Capa_Datos
             return respuesta;
 
         }
-        public DataTable buscarTexto(string textoBuscar, string textoBuscar2)
+        public DataTable buscarTexto(string textoBuscar, string textoBuscar2, DatosMovStock datosMovStock)
         {
             //Modo 4 para DB
             SqlConnection cn = new SqlConnection(Conexion.conexion);
@@ -253,7 +253,11 @@ namespace Capa_Datos
                 SqlParameter parBuscarTexto2 = ProcAlmacenado.asignarParametros("@buscarTextoFecha2", SqlDbType.VarChar, textoBuscar2, 50);
                 //le paso al comando el parametro
                 comando.Parameters.Add(parBuscarTexto2);
-               
+
+                SqlParameter parIdProveedor = ProcAlmacenado.asignarParametros("@idproveedor", SqlDbType.Int, datosMovStock.idProveedor);
+                //le paso al comando el parametro
+                comando.Parameters.Add(parIdProveedor);
+
 
                 //creo el objeto adapter del data provider le paso el sqlcommand
                 SqlDataAdapter datosResult = new SqlDataAdapter(comando);

@@ -46,12 +46,36 @@ namespace Capa_Presentacion
                 Dtproveedor.Columns[5].Visible = false;
                 Dtproveedor.Columns[6].Visible = false;
             }
+            else
+            {
+                Dtproveedor.Visible = false;
+            }
         }
         public bool IsNumeric(string input)
         {
             long test;
 
             return long.TryParse(input, out test);
+        }
+
+        private void extraerproveedortab2(int idproveedor)
+        {
+            DataTable dataproveedor = new DataTable();
+            proveedor = idproveedor.ToString();
+            dataproveedor = NegocioProveedor.buscar(idproveedor.ToString(), 6);
+            DataRow row = dataproveedor.Rows[0];
+
+            if (dataproveedor.Rows.Count != 0)
+            {
+                LblRazonsocial.Text = row["razon_social"].ToString();
+                LblIdProveedor.Text = row["idproveedor"].ToString();
+            }
+            else
+            {
+                LblRazonsocial.Text = "...";
+                LblIdProveedor.Text = "...";
+                proveedor = "0";
+            }
         }
 
         private void extraerproveedor(int idproveedor)
@@ -61,6 +85,7 @@ namespace Capa_Presentacion
             proveedor = idproveedor.ToString();
             dataproveedor = NegocioProveedor.buscar(idproveedor.ToString(), 6);
             DataRow row = dataproveedor.Rows[0];
+            
             if (dataproveedor.Rows.Count != 0)
             {
                 LblDesprov.Text = row["razon_social"].ToString();
@@ -494,14 +519,19 @@ namespace Capa_Presentacion
         private void btnBuscarProv_Click(object sender, EventArgs e)
         {
             proveedor = "";
-            FrmProveedor objproveedor = new FrmProveedor();
+            FrmProveedorCorregido objproveedor = new FrmProveedorCorregido();
             objproveedor.Opcionvista = 2;
             objproveedor.ShowDialog();
-            proveedor = objproveedor.Codigoproveedor.ToString();
-            if (proveedor != string.Empty)
+
+            if (objproveedor.Iscerrar == false)
             {
-                extraerproveedor(Convert.ToInt32(proveedor));
+                proveedor = objproveedor.Codigoproveedor.ToString();
+                if (proveedor != string.Empty)
+                {
+                    extraerproveedor(Convert.ToInt32(proveedor));
+                }
             }
+
         }
 
         private void btnBuscarProd_Click(object sender, EventArgs e)
@@ -684,7 +714,7 @@ namespace Capa_Presentacion
         {
             NegocioMovStock objstock = new NegocioMovStock();
 
-            dataLista.DataSource = NegocioMovStock.buscarFecha(dtpFechaIni.Text, dtpFechaFin.Text);
+            dataLista.DataSource = NegocioMovStock.buscarFecha(dtpFechaIni.Text, dtpFechaFin.Text, ChkProveedor.Checked == true ? Convert.ToInt32( LblIdProveedor.Text) : 0);
         }
 
         private void panelHorizontal_MouseMove(object sender, MouseEventArgs e)
@@ -801,6 +831,81 @@ namespace Capa_Presentacion
                 UtilityFrm.mensajeError("Error: " + ex.Message);
             }
 
+        }
+
+        private void ChkProveedor_CheckedChanged(object sender, EventArgs e)
+        {
+            txtIdProveedor.Enabled = ChkProveedor.Checked;
+            btnProveedor.Enabled = ChkProveedor.Checked;
+            LblIdProveedor.Enabled = ChkProveedor.Checked;
+            LblRazonsocial.Enabled = ChkProveedor.Checked;
+        }
+
+        private void btnProveedor_Click(object sender, EventArgs e)
+        {
+            proveedor = "";
+            FrmProveedorCorregido objproveedor = new FrmProveedorCorregido();
+            objproveedor.Opcionvista = 2;
+            objproveedor.ShowDialog();
+
+            if (objproveedor.Iscerrar == false)
+            {
+                proveedor = objproveedor.Codigoproveedor.ToString();
+                if (proveedor != string.Empty)
+                {
+                    extraerproveedortab2(Convert.ToInt32(proveedor));
+                }
+            }
+        }
+
+        private void txtIdProveedor_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Down && DGProveedor.Visible == true)
+            {
+                //si se preciona la tecla hacia abajo se pasa el foco a la grilla
+                DGProveedor.Focus();
+
+            }
+
+            if (e.KeyCode == Keys.Enter && IsNumeric(txtProveedor.Text) == true)
+            {
+                extraerproveedortab2(Convert.ToInt32(txtIdProveedor.Text));
+            }
+        }
+
+        private void txtIdProveedor_TextChanged(object sender, EventArgs e)
+        {
+            if (txtIdProveedor.TextLength >= 2 && IsNumeric(txtIdProveedor.Text) != true)
+            {
+                DGProveedor.Visible = true;
+                DGProveedor.DataSource = NegocioProveedor.buscar(txtIdProveedor.Text);
+
+                DGProveedor.Columns[0].Visible = false;
+                DGProveedor.Columns[1].Visible = false;
+                DGProveedor.Columns[2].Width = 350;
+                DGProveedor.Columns[3].Visible = false;
+                DGProveedor.Columns[4].Visible = false;
+                DGProveedor.Columns[5].Visible = false;
+                DGProveedor.Columns[6].Visible = false;
+            }
+            else
+            {
+                DGProveedor.Visible = false;
+            }
+        }
+
+        private void DGProveedor_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                extraerproveedortab2(Convert.ToInt32(this.DGProveedor.CurrentRow.Cells["idproveedor"].Value));
+                Dtproveedor.Visible = false;
+            }
+        }
+
+        private void DGProveedor_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            extraerproveedortab2(Convert.ToInt32(this.DGProveedor.CurrentRow.Cells["idproveedor"].Value));
         }
     }
 }

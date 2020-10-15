@@ -89,11 +89,11 @@ namespace Capa_Presentacion
         {
             this.Close();
         }
-
+        int posY = 0;
+        int posX = 0;
         private void panelHorizontal_MouseMove(object sender, MouseEventArgs e)
         {
-            int posY = 0;
-            int posX = 0;
+           
             //mientra no se apreta el boton izquierdo del mouse actualiza el valor posX Y posY 
             if (e.Button != MouseButtons.Left)
             {

@@ -54,6 +54,7 @@
             this.TxtcambioDv = new System.Windows.Forms.TextBox();
             this.xuiCustomGroupbox1 = new XanderUI.XUICustomGroupbox();
             this.BtnImprimir = new XanderUI.XUISuperButton();
+            this.BtnExportarbalanza = new XanderUI.XUISuperButton();
             this.BtnExportar = new XanderUI.XUISuperButton();
             this.btnAplicar = new XanderUI.XUISuperButton();
             this.BtnCambiar = new XanderUI.XUISuperButton();
@@ -250,6 +251,7 @@
             this.DGVenta.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DGVenta_CellContentClick);
             this.DGVenta.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DGVenta_CellContentDoubleClick);
             this.DGVenta.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.DGVenta_CellEndEdit);
+            this.DGVenta.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.DGVenta_CellValueChanged);
             this.DGVenta.SelectionChanged += new System.EventHandler(this.DGVenta_SelectionChanged);
             this.DGVenta.Click += new System.EventHandler(this.DGVenta_Click);
             this.DGVenta.MouseClick += new System.Windows.Forms.MouseEventHandler(this.DGVenta_MouseClick);
@@ -333,6 +335,7 @@
             this.xuiCustomGroupbox1.BorderColor = System.Drawing.Color.DodgerBlue;
             this.xuiCustomGroupbox1.BorderWidth = 1;
             this.xuiCustomGroupbox1.Controls.Add(this.BtnImprimir);
+            this.xuiCustomGroupbox1.Controls.Add(this.BtnExportarbalanza);
             this.xuiCustomGroupbox1.Controls.Add(this.BtnExportar);
             this.xuiCustomGroupbox1.Controls.Add(this.btnAplicar);
             this.xuiCustomGroupbox1.Controls.Add(this.BtnCambiar);
@@ -376,6 +379,31 @@
             this.BtnImprimir.Vertical_Alignment = System.Drawing.StringAlignment.Center;
             this.BtnImprimir.Click += new System.EventHandler(this.BtnImprimir_Click);
             // 
+            // BtnExportarbalanza
+            // 
+            this.BtnExportarbalanza.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.BtnExportarbalanza.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(52)))), ((int)(((byte)(144)))), ((int)(((byte)(247)))));
+            this.BtnExportarbalanza.ButtonImage = global::Capa_Presentacion.Properties.Resources.Save_20px;
+            this.BtnExportarbalanza.ButtonSmoothing = System.Drawing.Drawing2D.SmoothingMode.HighSpeed;
+            this.BtnExportarbalanza.ButtonStyle = XanderUI.XUISuperButton.Style.RoundedEdges;
+            this.BtnExportarbalanza.ButtonText = "Exportar Balanza";
+            this.BtnExportarbalanza.CornerRadius = 5;
+            this.BtnExportarbalanza.Horizontal_Alignment = System.Drawing.StringAlignment.Center;
+            this.BtnExportarbalanza.HoverBackgroundColor = System.Drawing.Color.IndianRed;
+            this.BtnExportarbalanza.HoverTextColor = System.Drawing.Color.Yellow;
+            this.BtnExportarbalanza.ImagePosition = XanderUI.XUISuperButton.imgPosition.Left;
+            this.BtnExportarbalanza.Location = new System.Drawing.Point(740, 100);
+            this.BtnExportarbalanza.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.BtnExportarbalanza.Name = "BtnExportarbalanza";
+            this.BtnExportarbalanza.SelectedBackColor = System.Drawing.Color.LimeGreen;
+            this.BtnExportarbalanza.SelectedTextColor = System.Drawing.Color.White;
+            this.BtnExportarbalanza.Size = new System.Drawing.Size(255, 61);
+            this.BtnExportarbalanza.SuperSelected = false;
+            this.BtnExportarbalanza.TabIndex = 134;
+            this.BtnExportarbalanza.TextColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(245)))), ((int)(((byte)(255)))));
+            this.BtnExportarbalanza.Vertical_Alignment = System.Drawing.StringAlignment.Center;
+            this.BtnExportarbalanza.Click += new System.EventHandler(this.BtnExportarbalanza_Click);
+            // 
             // BtnExportar
             // 
             this.BtnExportar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
@@ -389,7 +417,7 @@
             this.BtnExportar.HoverBackgroundColor = System.Drawing.Color.IndianRed;
             this.BtnExportar.HoverTextColor = System.Drawing.Color.Yellow;
             this.BtnExportar.ImagePosition = XanderUI.XUISuperButton.imgPosition.Left;
-            this.BtnExportar.Location = new System.Drawing.Point(636, 58);
+            this.BtnExportar.Location = new System.Drawing.Point(740, 24);
             this.BtnExportar.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.BtnExportar.Name = "BtnExportar";
             this.BtnExportar.SelectedBackColor = System.Drawing.Color.LimeGreen;
@@ -564,5 +592,6 @@
         private XanderUI.XUISuperButton BtnCambiar;
         private XanderUI.XUISuperButton BtnImprimir;
         private XanderUI.XUISuperButton BtnExportar;
+        private XanderUI.XUISuperButton BtnExportarbalanza;
     }
 }

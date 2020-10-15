@@ -20,6 +20,7 @@ namespace Capa_Presentacion
          bool isNuevo = false;
          int posY = 0;
          int posX = 0;
+        private decimal totalsaldo;
 
         public bool Modoshowdialog
         {
@@ -54,6 +55,7 @@ namespace Capa_Presentacion
 
         private void FrmClientes_Load(object sender, EventArgs e)
         {
+            cbFormapago.SelectedIndex = 2;
             isEditar = false;
             isNuevo = false;
             this.txtNombre.Focus();
@@ -71,6 +73,8 @@ namespace Capa_Presentacion
             Cbprovincia.DisplayMember = "provincia";
             Cbprovincia.SelectedValue = 5;
            
+
+
             //Cbprovincia.SelectedIndex  = 4;
            
         }
@@ -81,6 +85,10 @@ namespace Capa_Presentacion
             try
             {
                 this.dataLista.DataSource = NegocioCliente.mostrar();
+                if (dataLista.Rows.Count != 0)
+                {
+                    dataLista.Columns["saldo"].DefaultCellStyle.Format = String.Format("$###,##0.00");
+                }
             }
             catch (Exception ex)
             {
@@ -104,7 +112,15 @@ namespace Capa_Presentacion
         {
             try
             {
-                this.dataLista.DataSource = NegocioCliente.buscar(this.txtNombre.Text);
+                if (Chkcodinterno.Checked == true)
+                {
+                    this.dataLista.DataSource = NegocioCliente.buscar(this.txtNombre.Text,11);
+                }
+                else
+                {
+                    this.dataLista.DataSource = NegocioCliente.buscar(this.txtNombre.Text);
+                }
+                
             }
 
             catch (Exception ex)
@@ -184,6 +200,7 @@ namespace Capa_Presentacion
             this.txtRazonSocial.Enabled = false;
             this.txtTelefono.Enabled = false;
             this.dtimeFechaNacimiento.Enabled = false;
+            Txtcodinterno.Enabled = false;
             //limpio textbox
             UtilityFrm.limpiarTextbox(txtDireccion, txtRazonSocial, txtNombre, txtCodigo, txtCuit, txtDocumento);
             UtilityFrm.limpiarTextbox(txtTelefono, txtEmail);
@@ -230,7 +247,7 @@ namespace Capa_Presentacion
 
                         }
 
-                        respuesta = NegocioCliente.insertar(txtRazonSocial.Text.Trim(), txtDireccion.Text.Trim(), Convert.ToInt64(txtCuit.Text.Trim()), txtTelefono.Text.Trim() != "" ? Convert.ToInt64(txtTelefono.Text.Trim()) : 0, Convert.ToInt64(txtDocumento.Text.Trim()), txtEmail.Text.Trim(), cbrespiva.SelectedValue.ToString(), Convert.ToInt32(Cbprovincia.SelectedValue), Convert.ToInt32(CBlocalidad.SelectedValue));
+                        respuesta = NegocioCliente.insertar(txtRazonSocial.Text.Trim(), txtDireccion.Text.Trim(), Convert.ToInt64(txtCuit.Text.Trim()), txtTelefono.Text.Trim() != "" ? Convert.ToInt64(txtTelefono.Text.Trim()) : 0, Convert.ToInt64(txtDocumento.Text.Trim()), txtEmail.Text.Trim(), cbrespiva.SelectedValue.ToString(), Convert.ToInt32(Cbprovincia.SelectedValue), Convert.ToInt32(CBlocalidad.SelectedValue),Txtcodinterno.Text);
 
                         if (respuesta.Equals("ok"))
                         {
@@ -249,7 +266,7 @@ namespace Capa_Presentacion
                     {
 
                         //respuesta = NegocioArticulo.editar(Convert.ToInt32(txtCodigo.Text.Trim()), Convert.ToString(txtNombreConfig.Text.Trim()), txtCodigoBarra.Text.Trim(), Convert.ToString(txtDescripcion.Text.Trim()), Convert.ToInt32(cbxCategoria.SelectedValue));
-                        respuesta = NegocioCliente.editar(Convert.ToInt32(txtCodigo.Text.Trim()), txtRazonSocial.Text.Trim(), txtDireccion.Text.Trim(), Convert.ToInt64(txtCuit.Text.Trim()), txtTelefono.Text.Trim() != "" ? Convert.ToInt64(txtTelefono.Text.Trim()) : 0, Convert.ToInt64(txtDocumento.Text.Trim()), txtEmail.Text.Trim(), cbrespiva.SelectedValue.ToString(), Convert.ToInt32(Cbprovincia.SelectedValue), Convert.ToInt32(CBlocalidad.SelectedValue));
+                        respuesta = NegocioCliente.editar(Convert.ToInt32(txtCodigo.Text.Trim()), txtRazonSocial.Text.Trim(), txtDireccion.Text.Trim(), Convert.ToInt64(txtCuit.Text.Trim()), txtTelefono.Text.Trim() != "" ? Convert.ToInt64(txtTelefono.Text.Trim()) : 0, Convert.ToInt64(txtDocumento.Text.Trim()), txtEmail.Text.Trim(), cbrespiva.SelectedValue.ToString(), Convert.ToInt32(Cbprovincia.SelectedValue), Convert.ToInt32(CBlocalidad.SelectedValue), Txtcodinterno.Text);
 
                         if (respuesta.Equals("ok"))
                         {
@@ -300,36 +317,36 @@ namespace Capa_Presentacion
         private void btnMaximizar_Click(object sender, EventArgs e)
         {
             //maximizar
-            this.btnRestaurar.Visible = true;
-            this.btnMaximizar.Visible = false;
+            //this.btnRestaurar.Visible = true;
+            //this.btnMaximizar.Visible = false;
             this.WindowState = FormWindowState.Maximized;
         }
 
         private void btnCerrar_MouseLeave(object sender, EventArgs e)
         {
-            btnCerrar.BackColor = Color.FromArgb(0, 100, 200);
+            //btnCerrar.BackColor = Color.FromArgb(0, 100, 200);
         }
 
         private void btnCerrar_MouseMove(object sender, MouseEventArgs e)
         {
-            btnCerrar.BackColor = Color.Red;
+            //btnCerrar.BackColor = Color.Red;
         }
 
         private void btnMaximizar_MouseLeave(object sender, EventArgs e)
         {
-           btnMaximizar.BackColor = Color.FromArgb(0, 100, 200);
+           //btnMaximizar.BackColor = Color.FromArgb(0, 100, 200);
         }
 
         private void btnMaximizar_MouseMove(object sender, MouseEventArgs e)
         {
-            btnMaximizar.BackColor = Color.FromArgb(65, 39, 60);
+            //btnMaximizar.BackColor = Color.FromArgb(65, 39, 60);
         }
 
         private void btnRestaurar_Click(object sender, EventArgs e)
         {
             //restaurar
-            this.btnRestaurar.Visible = false;
-            this.btnMaximizar.Visible = true;
+            //this.btnRestaurar.Visible = false;
+            //this.btnMaximizar.Visible = true;
             this.WindowState = FormWindowState.Normal;
         }
 
@@ -341,12 +358,12 @@ namespace Capa_Presentacion
 
         private void btnMinimizar_MouseLeave(object sender, EventArgs e)
         {
-            btnMinimizar.BackColor = Color.FromArgb(0, 100, 200);
+            //btnMinimizar.BackColor = Color.FromArgb(0, 100, 200);
         }
 
         private void btnMinimizar_MouseMove(object sender, MouseEventArgs e)
         {
-            btnMinimizar.BackColor = Color.FromArgb(65, 39, 60);
+            //btnMinimizar.BackColor = Color.FromArgb(65, 39, 60);
         }
 
         private void panelHorizontal_MouseMove(object sender, MouseEventArgs e)
@@ -370,21 +387,21 @@ namespace Capa_Presentacion
 
         private void panelHorizontal_DoubleClick(object sender, EventArgs e)
         {
-            if (btnRestaurar.Visible == false || btnMaximizar.Visible == true)
-            {
-                //maximizar
-                this.btnRestaurar.Visible = true;
-                this.btnMaximizar.Visible = false;
-                this.WindowState = FormWindowState.Maximized;
+            //if (btnRestaurar.Visible == false || btnMaximizar.Visible == true)
+            //{
+            //    //maximizar
+            //    this.btnRestaurar.Visible = true;
+            //    this.btnMaximizar.Visible = false;
+            //    this.WindowState = FormWindowState.Maximized;
 
-            }
-            else
-            {
-                //restaurar
-                this.btnRestaurar.Visible = false;
-                this.btnMaximizar.Visible = true;
-                this.WindowState = FormWindowState.Normal;
-            }
+            //}
+            //else
+            //{
+            //    //restaurar
+            //    this.btnRestaurar.Visible = false;
+            //    this.btnMaximizar.Visible = true;
+            //    this.WindowState = FormWindowState.Normal;
+            //}
         }
 
         private void dataLista_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -419,6 +436,7 @@ namespace Capa_Presentacion
             this.cbrespiva.Enabled = var1;
             this.CBlocalidad.Enabled = var1;
             this.Cbprovincia.Enabled = var1;
+            this.Txtcodinterno.Enabled = var1;
 
             isEditar = editar;
             isNuevo = nuevo;
@@ -445,13 +463,16 @@ namespace Capa_Presentacion
                 txtDireccion.Text = Convert.ToString(this.dataLista.CurrentRow.Cells["direccion"].Value);
                 txtTelefono.Text = Convert.ToString(this.dataLista.CurrentRow.Cells["telefono"].Value);
                 txtEmail.Text = Convert.ToString(this.dataLista.CurrentRow.Cells["email"].Value);
-                txtDocumento.Text = Convert.ToString(this.dataLista.CurrentRow.Cells["num_documento"].Value);
+                txtDocumento.Text = "0";
                 categoriaiva = Convert.ToString(this.dataLista.CurrentRow.Cells["responsabilidadiva"].Value);
                 LblRespiva.Text = Convert.ToString(this.dataLista.CurrentRow.Cells["responsabilidadiva"].Value);
                 Cbprovincia.SelectedValue = Convert.ToInt32(this.dataLista.CurrentRow.Cells["idprovincia"].Value);
                 CBlocalidad.SelectedValue = Convert.ToInt32(this.dataLista.CurrentRow.Cells["idlocalidad"].Value);
                 idcliente = Convert.ToInt32(this.dataLista.CurrentRow.Cells["idcliente"].Value);
-
+                totalsaldo = Convert.ToDecimal( this.dataLista.CurrentRow.Cells["saldo"].Value.ToString());
+                TxtSaldoTotal.Text = totalsaldo.ToString("0.00");
+                
+               
                 if (categoriaiva == "CF")
                 {
                     cbrespiva.SelectedIndex = 2;
@@ -474,6 +495,8 @@ namespace Capa_Presentacion
                 habilitarbotones(true, false, false, false);
                 this.tabControl1.SelectedTab = tabAgregarOcambiar;
                 buscarctacte(Convert.ToInt32(this.dataLista.CurrentRow.Cells["idcliente"].Value));
+                
+                
 
 
             }
@@ -597,12 +620,12 @@ namespace Capa_Presentacion
 
         private void btnRestaurar_MouseLeave(object sender, EventArgs e)
         {
-            btnRestaurar.BackColor = Color.FromArgb(0, 100, 200);
+            //btnRestaurar.BackColor = Color.FromArgb(0, 100, 200);
         }
 
         private void btnRestaurar_MouseMove(object sender, MouseEventArgs e)
         {
-            btnRestaurar.BackColor = Color.FromArgb(65, 39, 60);
+            //btnRestaurar.BackColor = Color.FromArgb(65, 39, 60);
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -661,6 +684,8 @@ namespace Capa_Presentacion
             decimal saldo = 0;
             int  codrecibo = 0;
             string mensaje = "";
+            
+            DataTable datacliente = new DataTable();
             midata = new DataTable();
             Negociocaja objcaja = new Negociocaja();
 
@@ -670,6 +695,14 @@ namespace Capa_Presentacion
             midata.Columns.Add("total", typeof(decimal));
             midata.Columns.Add("estado", typeof(string));
             midata.Columns.Add("grabar", typeof(string));
+
+            
+
+            if (NegocioConfigEmpresa.confsistema("controlarcaja").ToString() == "True" && objcaja.chequeocaja(this.Name, ref mensaje, NegocioConfigEmpresa.nrocaja) == false)
+            {
+                UtilityFrm.mensajeError(mensaje);
+                return;
+            }
 
             if ( traerpagototal(false) != 0)
             {
@@ -698,6 +731,17 @@ namespace Capa_Presentacion
                     formrecibo.ShowDialog();
                     UtilityFrm.mensajeConfirm("El pago se guardo con exito");
                     buscarctacte(Convert.ToInt32(txtCodigo.Text == string.Empty ? "0" : txtCodigo.Text));
+                    mostrar();
+                    datacliente = NegocioCliente.buscarCodigoCliente(LblCodcliente.Text);
+                    
+                    if (datacliente.Rows.Count != 0)
+                    {
+                        DataRow row = datacliente.Rows[0];
+                        totalsaldo = Convert.ToDecimal( row["saldo"].ToString());
+                        TxtSaldoTotal.Text =   totalsaldo.ToString("0.00");
+                    }
+                       
+                    
                 }
 
 
@@ -707,6 +751,103 @@ namespace Capa_Presentacion
             {
                 UtilityFrm.mensajeError("No hay saldo");
             }
+        }
+        public void buscarPorFecha(int codcliente)
+        {
+            int codformapago = 0;
+            switch (cbFormapago.Text)
+            {
+                case "EFECTIVO":
+                    {
+                        codformapago = 1;
+                        break;
+                    }
+                case "TARJETA":
+                    {
+                        codformapago = 2;
+                        break;
+                    }
+                case "CTACTE":
+                    {
+                        codformapago = 3;
+                        break;
+                    }
+                case "MULTIPLESPAGOS":
+                    {
+                        codformapago = 5;
+                        break;
+                    }
+                default:
+                    break;
+            }
+            DgCliente.Rows.Clear();
+            try
+            {
+
+                DataTable dt = NegocioVenta.BuscarFechas(dtpFechaIni.Value.ToString("dd/MM/yyyy") + " 00:00:00", dtpFechaFin.Value.ToString("dd/MM/yyyy") + " 23:59:59",
+                    'T', true, Factura(),
+                     0, "0", codformapago,
+                   false, cbFormapago.Text != "TODO" ? true : false, false,false,codcliente);
+
+                foreach (DataRow venta in dt.Rows)
+                {
+
+                    string estado = venta["estado"].ToString();
+                    
+                   
+
+                    if (estado.Equals("F"))
+                    {
+                        estado = "FACTURADO";
+
+                    }
+                    else if (estado.Equals("P"))
+                    {
+                        estado = "PENDIENTE";
+                    }
+                    else if (estado.Equals("N"))
+                    {
+                        estado = "NOTA DE CREDITO";
+                    }
+                    else if (estado.Equals("A"))
+                    {
+                        estado = "ANULADO";
+                    }
+                    else
+                    {
+                        estado = "PRESUPUESTADO";
+                    }
+
+                    if (estado != "PRESUPUESTADO")
+                    {
+                        DgCliente.Rows.Add(venta["idventa"], venta["razon_social"], venta["fecha"], venta["tipo_comprobante"], venta["total"], estado, venta["caja"], venta["idcliente"],
+                        venta["cuit"], venta["Nrocomprobante"], venta["factura"], venta["Neto21"], venta["Totaliva21"], venta["Total_Neto105"], venta["Totaliva105"], venta["CAE"],
+                        venta["CAE_Fechavencimiento"], venta["enstock"], venta["PAGO"]);
+                    }
+                   
+                    
+                }
+
+            }
+
+            catch (Exception ex)
+            {
+                UtilityFrm.mensajeError("Error Con Base de Datos :" + ex.Message);
+
+            }
+
+
+
+        }
+        private string Factura()
+        {
+            string fact = "NOTA DE VENTA";
+            
+
+
+            return fact;
+
+
         }
 
         private decimal traerpagototal(bool cargardatatable)
@@ -775,12 +916,14 @@ namespace Capa_Presentacion
         {
             if (varcodcliente != 0)
             {
-                DGListado.DataSource = NegocioCliente.buscarporcodigoctacte(varcodcliente, dtpFechaIni.Value.ToString("dd/MM/yyyy"), dtpFechaFin.Value.ToString("dd/MM/yyyy"));
+                DGListado.DataSource = NegocioCliente.buscarporcodigoctacte(varcodcliente);
             }
 
             DGListado.Columns["saldo"].DefaultCellStyle.Format = String.Format("$###,##0.00");
             DGListado.Columns["pagado"].DefaultCellStyle.Format = String.Format("$###,##0.00");
             DGListado.Columns["total"].DefaultCellStyle.Format = String.Format("$###,##0.00");
+
+
         }
 
         private void DGListado_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -838,6 +981,21 @@ namespace Capa_Presentacion
         private void txtTelefono_KeyPress(object sender, KeyPressEventArgs e)
         {
             UtilityFrm.NumDecTeclado(e, txtTelefono);
+        }
+
+        private void BtnBuscarCTACTE_Click_1(object sender, EventArgs e)
+        {
+            buscarPorFecha(Convert.ToInt32( LblCodcliente.Text));
+        }
+
+        private void DgCliente_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            DTDetalleventa.DataSource = NegocioVenta.MostrarDetalle(DgCliente.CurrentRow.Cells["Codigo"].Value.ToString());
+        }
+
+        private void DgCliente_RowLeave(object sender, DataGridViewCellEventArgs e)
+        {
+            DTDetalleventa.DataSource = NegocioVenta.MostrarDetalle(DgCliente.CurrentRow.Cells["Codigo"].Value.ToString());
         }
     }
 }

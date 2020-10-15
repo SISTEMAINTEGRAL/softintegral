@@ -15,6 +15,7 @@ namespace Capa_Presentacion
     {
         bool isEditar = false;
         bool isNuevo = false;
+        bool iscerrar = true;
         private int opcionvista;
         private int codigoproveedor;
 
@@ -28,6 +29,8 @@ namespace Capa_Presentacion
             get { return opcionvista; }
             set { opcionvista = value; }
         }
+
+        public bool Iscerrar { get => iscerrar; set => iscerrar = value; }
 
         public FrmProveedorCorregido()
         {
@@ -523,6 +526,7 @@ namespace Capa_Presentacion
             }
             else if (opcionvista == 2)
             {
+                iscerrar = false;
                 codigoproveedor = Convert.ToInt32(this.dataLista.CurrentRow.Cells["idproveedor"].Value);
                 this.Close();
             }
@@ -531,12 +535,8 @@ namespace Capa_Presentacion
 
         private void btnCerrar_Click(object sender, EventArgs e)
         {
+            
             this.Close();
-        }
-
-        private void btnMaximizar_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void Cbprovincia_SelectedValueChanged(object sender, EventArgs e)
@@ -557,42 +557,42 @@ namespace Capa_Presentacion
 
         private void btnMinimizar_MouseLeave(object sender, EventArgs e)
         {
-            btnMinimizar.BackColor = Color.FromArgb(0, 100, 200);
+           // btnMinimizar.BackColor = Color.FromArgb(0, 100, 200);
         }
 
         private void btnMinimizar_MouseMove(object sender, MouseEventArgs e)
         {
-            btnMinimizar.BackColor = Color.FromArgb(65, 39, 60);
+            //btnMinimizar.BackColor = Color.FromArgb(65, 39, 60);
         }
 
         private void btnMaximizar_MouseLeave(object sender, EventArgs e)
         {
-            btnMinimizar.BackColor = Color.FromArgb(0, 100, 200);
+            //btnMinimizar.BackColor = Color.FromArgb(0, 100, 200);
         }
 
         private void btnMaximizar_MouseMove(object sender, MouseEventArgs e)
         {
-            btnMinimizar.BackColor = Color.FromArgb(65, 39, 60);
+            //btnMinimizar.BackColor = Color.FromArgb(65, 39, 60);
         }
 
         private void btnCerrar_MouseLeave(object sender, EventArgs e)
         {
-            btnMinimizar.BackColor = Color.FromArgb(0, 100, 200);
+            //btnMinimizar.BackColor = Color.FromArgb(0, 100, 200);
         }
 
         private void btnCerrar_MouseMove(object sender, MouseEventArgs e)
         {
-            btnCerrar.BackColor = Color.Red;
+            //btnCerrar.BackColor = Color.Red;
         }
 
         private void btnRestaurar_MouseLeave(object sender, EventArgs e)
         {
-            btnMinimizar.BackColor = Color.FromArgb(0, 100, 200);
+            //btnMinimizar.BackColor = Color.FromArgb(0, 100, 200);
         }
 
         private void btnRestaurar_MouseMove(object sender, MouseEventArgs e)
         {
-            btnMinimizar.BackColor = Color.FromArgb(65, 39, 60);
+            //btnMinimizar.BackColor = Color.FromArgb(65, 39, 60);
         }
 
         private void txtNombre_KeyDown(object sender, KeyEventArgs e)
@@ -603,6 +603,34 @@ namespace Capa_Presentacion
                 UtilityFrm.limpiarTextbox(txtDireccion, txtRazonSocial, txtCodigo, txtCuit, txtDocumento);
                 UtilityFrm.limpiarTextbox(txtTelefono, txtEmail);
             }
+        }
+        int posY = 0;
+        int posX = 0;
+
+        private void panelHorizontal_MouseMove(object sender, MouseEventArgs e)
+        {
+            
+                //mientra no se apreta el boton izquierdo del mouse actualiza el valor posX Y posY 
+                if (e.Button != MouseButtons.Left)
+                {
+                    posY = e.Y;
+                    posX = e.X;
+
+                }
+                else
+                {
+                    //Left tiene la distancia que hay entre el borde izq y el fondo de la pantalla
+                    Left = Left + (e.X - posX);
+                    //top tiene la distancia que hay entre el borde sup y el fondo de la pantalla
+                    Top = Top + (e.Y - posY);
+
+                }
+            
+        }
+
+        private void FrmProveedorCorregido_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            
         }
     }
 }

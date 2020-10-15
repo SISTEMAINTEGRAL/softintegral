@@ -22,6 +22,7 @@ namespace Capa_Presentacion.Formreportes
         private int idventa;
         private string codigobarraidventa;
         private string opcion ;
+        private string formapago;
 
         public int Idventa
         {
@@ -40,11 +41,12 @@ namespace Capa_Presentacion.Formreportes
             InitializeComponent();
         }
 
-        public TicketProforma(int varidventa, string varopcion = "visor")
+        public TicketProforma(int varidventa, string varopcion = "visor", string formadepago = "CTACTE")
         {
             InitializeComponent();
             idventa = varidventa;
             opcion = varopcion;
+            formapago = formadepago;
         }
 
         public void imprimir()
@@ -83,14 +85,32 @@ namespace Capa_Presentacion.Formreportes
                         }
                     case "A4":
                         {
-
+                            
                             miticket2 = new REPORT_VENTA_A4();
                             miticket2.DataSource = midatatable;
                             reportViewer1.Report = miticket2;
+                            
+                            if (formapago == "CTACTE" || formapago == "ctacte")
+                            {
+                                miticket2.textBox10.Visible = false;
+                                miticket2.textBox11.Visible = false;
+
+                            }
+                            else
+                            {
+                                miticket2.textBox10.Visible = true;
+                                miticket2.textBox11.Visible = true;
+                            }
                             miticket2.table1.DataSource = midatatable;
                             miticket2.textBox40.Visible = false;
                             miticket2.textBox50.Visible = false;
                             miticket2.textBox51.Visible = false;
+                            miticket2.textBox14.Visible = false;
+                            miticket2.textBox15.Visible = false;
+                            miticket2.textBox57.Visible = false;
+                            miticket2.textBox58.Visible = false;
+                            miticket2.textBox59.Visible = false;
+                            miticket2.textBox60.Visible = false;
                             miticket2.textBox48.Value = "DOCUMENTO NO VALIDO COMO FACTURA";
                             miticket2.pictureBox1.Visible = false;
                             //miticket2.barcode1.Value = valorcodigobarra;

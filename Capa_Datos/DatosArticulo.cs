@@ -49,7 +49,7 @@ namespace Capa_Datos
         private decimal utilidadpreciopormayor2;
         private decimal utilidadoferta;
         private decimal stock_minimo;
-
+        private string codigointerno;
         private string opcionsistema;
 
         private DateTime fechaediciondesde;
@@ -430,6 +430,8 @@ namespace Capa_Datos
             }
         }
 
+        public string Codigointerno { get => codigointerno; set => codigointerno = value; }
+
 
 
 
@@ -444,7 +446,8 @@ namespace Capa_Datos
             string varlugaredicion = "", int varidsubcategoria = 0,decimal varcantidadpormayor = 0, decimal varpreciopormayor = 0, 
             decimal iva = 0, decimal varcantidadpormayor2 = 0, decimal varpreciopormayor2 = 0, decimal varprecio_oferta = 0,
              bool varhabilitarfechaoferta = false, decimal varbulto_cantidad = 0, string varbulto_codigobarra = "",
-             decimal varutilidadpormayor = 0, decimal varutilidadpormayor2 = 0,decimal varutilidadoferta = 0, string varopcionsistema = "mayorista")
+             decimal varutilidadpormayor = 0, decimal varutilidadpormayor2 = 0,decimal varutilidadoferta = 0, 
+             string varopcionsistema = "mayorista", string varcodigointerno = "")
         {
             this.idCategoria = idCategoria;
             this.nombre = nombre;
@@ -474,6 +477,7 @@ namespace Capa_Datos
             this.utilidadpreciopormayor2 = varutilidadpormayor2;
             this.utilidadoferta = varutilidadoferta;
             this.opcionsistema = varopcionsistema;
+            this.codigointerno = varcodigointerno;
 
          }
         public DatosArticulo(string nombre, string codigo, string descripcion, int idCategoria, decimal precio, decimal cantInicial, int pesable, decimal varpreciocompra, decimal varutilidad, decimal varflete, DateTime varfecha, int varedicionusuario = 0, string varlugaredicion = "", int varidsubcategoria = 0, decimal varcantidadpormayor = 0, decimal varpreciopormayor = 0, decimal iva = 0, string varopcionsistema ="")
@@ -554,7 +558,11 @@ namespace Capa_Datos
             comando.Parameters.AddWithValue("@cantidadpormayor2", varobjarticulo.cantidadpormayor2);
             comando.Parameters.AddWithValue("@preciopormayor2", varobjarticulo.preciopormayor2);
             comando.Parameters.AddWithValue("@stock_minimo", varobjarticulo.stock_minimo);
-
+            comando.Parameters.AddWithValue("@codigointerno", varobjarticulo.codigointerno);
+            if (varobjarticulo.idArticulo == 1198)
+            {
+                int CONT = 0;
+            }
             if (opcionsistema == "mayorista")
             {
                
@@ -720,7 +728,7 @@ namespace Capa_Datos
             return respuesta;
 
         }
-        public DataTable buscarTexto(DatosArticulo articulo,int buscarTexto)
+        public DataTable buscarTexto(DatosArticulo articulo,int buscarTexto, int modo = 6)
         {
             //Modo 4 para DB
             SqlConnection cn = new SqlConnection(Conexion.conexion);
@@ -746,7 +754,7 @@ namespace Capa_Datos
                 }
                 else if(buscarTexto==1) {
                     //busca por codigo de barra del producto
-                    comando.Parameters.AddWithValue("@modo", 6);
+                    comando.Parameters.AddWithValue("@modo", modo);
                     
                 }
                 else if (buscarTexto == 2)
@@ -790,7 +798,7 @@ namespace Capa_Datos
             }
             return dtResult;
         }
-        public DataTable mostrar(bool mostrartodo = false)
+        public DataTable mostrar(bool mostrartodo = false, bool solopesable = false)
         {
 
             //Modo 5 para DB
@@ -808,6 +816,10 @@ namespace Capa_Datos
                 //Asigno al parametro @idcategoria, aunque no lo use
                 SqlParameter parIdArticulo = ProcAlmacenado.asignarParametros("@idarticulo", SqlDbType.Int);
                 comando.Parameters.Add(parIdArticulo);
+
+                SqlParameter parsolopesable = ProcAlmacenado.asignarParametros("@solopesable", SqlDbType.Bit,solopesable);
+                comando.Parameters.Add(parsolopesable);
+
 
                 //creo el objeto adapter del data provider le paso el sqlcommand
                 SqlDataAdapter datosResult = new SqlDataAdapter(comando);
@@ -1015,7 +1027,10 @@ namespace Capa_Datos
             {
                 query = query + "and bulto_codigobarra = @id";
             }
-
+            if (tipo == "porcodigointerno")
+            {
+                query = query + "and codigointerno = @id";
+            }
              
            
             SqlCommand cmd = new SqlCommand(query, cn);
@@ -1023,9 +1038,13 @@ namespace Capa_Datos
             {
                 cmd.Parameters.AddWithValue("@id", codbarra);
             }
-            else
+            else if (tipo != "porcodigointerno")
             {
                 cmd.Parameters.AddWithValue("@id", codArticulo);
+            }
+            else
+            {
+                cmd.Parameters.AddWithValue("@id", codbarra);
             }
             
              //Convert.ToInt64(codArticulo));
@@ -1202,12 +1221,13 @@ namespace Capa_Datos
             SqlConnection cn = new SqlConnection(Conexion.conexion);
             
             string respuesta = "";
+            cn.Open();
+            //abro conexion
+            SqlTransaction transaccion = cn.BeginTransaction();
             try
             {
 
-                cn.Open();
-                //abro conexion
-                SqlTransaction transaccion = cn.BeginTransaction();
+                
 
                 
                
@@ -1275,15 +1295,11 @@ namespace Capa_Datos
                     }
                     //si ocurrio algun error hace un rollback
                     //o sino confirma la trasaccion con un commit
-                    if (respuesta.Equals("ok") )
-                    {
+                    
 
                         transaccion.Commit();
-                    }
-                    else
-                    {
-                        transaccion.Rollback();
-                    }
+                    
+                   
                
                
 
@@ -1292,6 +1308,7 @@ namespace Capa_Datos
             catch (Exception ex)
             {
                 respuesta = "error conexion: " + ex.Message;
+                transaccion.Rollback();
 
             }
             finally

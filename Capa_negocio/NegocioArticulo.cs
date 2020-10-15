@@ -119,7 +119,10 @@ namespace Capa_negocio
                     dArticulo.Utilidadoferta = Convert.ToDecimal(fila["Utilidadpreciooferta"]);
                     dArticulo.Precio_oferta = Convert.ToDecimal(fila["Precio_Oferta"]);
                 }
-               
+                if (dArticulo.IdArticulo == 1198)
+                {
+                    int CON = 0;
+                }
                listaArticulo.Add(dArticulo);
 	            }
             DatosArticulo datosArticulo = new DatosArticulo();
@@ -141,13 +144,13 @@ namespace Capa_negocio
             //si el booleano que le paso es verdadero busca por nombre o sino por codigo de barra
             return dArticulo.buscarTexto(dArticulo,buscarNombre);
         }
-        public static DataTable buscarCodigoBarra(string texto)
+        public static DataTable buscarCodigoBarra(string texto, int modo = 6 )
         {
             DatosArticulo dArticulo = new DatosArticulo();
             dArticulo.BuscarArticulo = texto;
             int buscarCodigoBarra = 1;
             //si el booleano buscarNombre que le paso es verdadero busca por nombre o sino por codigo de barra
-            return dArticulo.buscarTexto(dArticulo,buscarCodigoBarra);
+            return dArticulo.buscarTexto(dArticulo,buscarCodigoBarra,modo);
         }
        
         public static DataTable buscarCategoria(string texto)
@@ -170,9 +173,9 @@ namespace Capa_negocio
         {
             return new DatosArticulo().mostrar();
         }
-        public static DataTable mostrartodo()
+        public static DataTable mostrartodo(bool solopesable = false)
         {
-            return new DatosArticulo().mostrar(true);
+            return new DatosArticulo().mostrar(true,solopesable);
         }
         public static DataTable mostrarPesable()
         {

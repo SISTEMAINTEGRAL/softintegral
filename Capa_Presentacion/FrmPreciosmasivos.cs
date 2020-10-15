@@ -349,7 +349,7 @@ namespace Capa_Presentacion
                         if (cbcampoamodificar.Text == "Precio_venta")
                         {
 
-                            row.Cells[6].Value = UtilityFrm.formateodecimal(UtilityFrm.calcularpreciocosto(Convert.ToDecimal(row.Cells[6].Value), Convert.ToDecimal(txtPorcentaje.Text)), 2);
+                            row.Cells[6].Value = UtilityFrm.formateodecimal(UtilityFrm.calcularventa(Convert.ToDecimal(row.Cells[6].Value), Convert.ToDecimal(txtPorcentaje.Text)), 2);
                         }
                     }
 
@@ -380,11 +380,12 @@ namespace Capa_Presentacion
         private void DGVenta_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
                  DGVenta.Rows[e.RowIndex].Cells[3].Value.ToString();
-                
-                    this.DGVenta.Columns[3].DefaultCellStyle.Format = String.Format("$###,##0.00");
-                    
-            
-          
+
+            DGVenta.CurrentRow.Cells[3].Value = UtilityFrm.GetdigitFromString(DGVenta.CurrentRow.Cells[3].Value.ToString(), true);
+            DGVenta.CurrentRow.Cells[4].Value = UtilityFrm.GetdigitFromString(DGVenta.CurrentRow.Cells[4].Value.ToString(), true);
+            DGVenta.CurrentRow.Cells[5].Value = UtilityFrm.GetdigitFromString(DGVenta.CurrentRow.Cells[5].Value.ToString(), true);
+
+
             calcularutilidadgrid();
             DGVenta.CurrentRow.Cells[3].Value = UtilityFrm.formateodecimal(Convert.ToDecimal ( DGVenta.CurrentRow.Cells[3].Value), 2);
             DGVenta.CurrentRow.Cells[4].Value = UtilityFrm.formateodecimal(Convert.ToDecimal(DGVenta.CurrentRow.Cells[4].Value), 2);
@@ -408,7 +409,7 @@ namespace Capa_Presentacion
 
             if (UtilityFrm.mensajeopcionsiono("Desea exportar todos los productos del sistema"))
             {
-                NegocioArticulo.ExportarProductos(NegocioArticulo.mostrartodo(), true, "negocio");
+                NegocioArticulo.ExportarProductos(NegocioArticulo.mostrartodo(), true, NegocioConfigEmpresa.confsistema("opcionsistema").ToString());
             }
             else if (DGVenta.Rows.Count != 0)
             {
@@ -418,6 +419,27 @@ namespace Capa_Presentacion
 
             UtilityFrm.mensajeConfirm("La actualizacion se realizo con exito");
             DGVenta.Rows.Clear();
+        }
+
+        private void BtnImproducto_Click(object sender, EventArgs e)
+        {
+            FrmImportArticulos importArticulos = new FrmImportArticulos();
+            importArticulos.ShowDialog();
+        }
+
+        private void BtnExportarbalanza_Click(object sender, EventArgs e)
+        {
+            string mensaje = "";
+            mensaje = UtilityFrm.archivotxtbalanza(NegocioArticulo.mostrartodo(true));
+
+            if (mensaje == "")
+            {
+                UtilityFrm.notificacionpopup("Exportacion Archivo", "La exportacion del archivo se realizo con exito");
+            }
+            else
+            {
+                UtilityFrm.mensajeError("La exportacion no se realizo correctamente" + mensaje);
+            }
         }
     }
 }

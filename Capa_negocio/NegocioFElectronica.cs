@@ -127,6 +127,7 @@ namespace Capa_negocio
                 det.MonId = "PES";
                 det.MonCotiz = 1;
                 int tipoalicuota = ID_TASA_IVA_NINGUNO;
+
                 AlicIva alicuota = new AlicIva();
                 if (tipocomprobante == TIPOCOMPROBANTE_FACTURA_A || tipocomprobante == TIPOCOMPROBANTE_FACTURA_B || tipocomprobante == TIPOCOMPROBANTE_NOTADECREDITO_A || tipocomprobante == TIPOCOMPROBANTE_NOTADECREDITO_B)
                 {
@@ -162,7 +163,7 @@ namespace Capa_negocio
                     }
                     
                 }
-                else
+                else if (tipocomprobante != TIPOCOMPROBANTE_FACTURA_C)
                 {
                     alicuota.Id = tipoalicuota;
                     alicuota.BaseImp = 0;

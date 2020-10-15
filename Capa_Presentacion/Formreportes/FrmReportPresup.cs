@@ -54,6 +54,12 @@ namespace Capa_Presentacion.Formreportes
                 miticket2.textBox37.Value = NegocioConfigEmpresa.puntoventa.PadLeft(5, '0');
                 miticket2.textBox50.Visible = false;
                 miticket2.textBox51.Visible = false;
+                miticket2.textBox14.Visible = false;
+                miticket2.textBox15.Visible = false;
+                miticket2.textBox57.Visible = false;
+                miticket2.textBox58.Visible = false;
+                miticket2.textBox59.Visible = false;
+                miticket2.textBox60.Visible = false;
                 miticket2.textBox48.Value = "DOCUMENTO NO VALIDO COMO FACTURA";
                 miticket2.pictureBox1.Visible = false;
                 reportViewer1.RefreshReport();

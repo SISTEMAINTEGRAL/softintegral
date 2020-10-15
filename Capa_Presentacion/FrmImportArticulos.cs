@@ -131,6 +131,8 @@ namespace Capa_Presentacion
             DataTable tablaArticulos = GrillaADataTable(dataLista);
             string respuesta = NegocioArticulo.editarPrecioMasivo(tablaArticulos, NegocioConfigEmpresa.confsistema("opcionsistema").ToString());
             UtilityFrm.mensajeConfirm("La actualizacion se realizo con exito");
+          //  dataLista.Rows.Clear();
+
         }
         public DataTable GrillaADataTable(DataGridView grillaACopiar)
         {
