@@ -1,0 +1,237 @@
+C:\Users\leo\Downloads\Sistema de ventas\Capa_Presentacion\bin\Release\Capa_Presentacion.dll
+C:\Users\leo\Downloads\Sistema de ventas\Capa_Presentacion\bin\Release\Capa_Presentacion.pdb
+C:\Users\leo\Downloads\Sistema de ventas\Capa_Presentacion\bin\Release\BarcodeLib.dll
+C:\Users\leo\Downloads\Sistema de ventas\Capa_Presentacion\bin\Release\Capa_negocio.dll
+C:\Users\leo\Downloads\Sistema de ventas\Capa_Presentacion\bin\Release\PlaceholderTextBox.dll
+C:\Users\leo\Downloads\Sistema de ventas\Capa_Presentacion\bin\Release\Capa_Datos.dll
+C:\Users\leo\Downloads\Sistema de ventas\Capa_Presentacion\bin\Release\Capa_negocio.pdb
+C:\Users\leo\Downloads\Sistema de ventas\Capa_Presentacion\bin\Release\Capa_Datos.pdb
+C:\Users\leo\Downloads\Sistema de ventas\Capa_Presentacion\obj\Release\Capa_Presentacion.csprojResolveAssemblyReference.cache
+C:\Users\leo\Downloads\Sistema de ventas\Capa_Presentacion\obj\Release\Capa_Presentacion.csproj.ResolveComReference.cache
+C:\Users\leo\Downloads\Sistema de ventas\Capa_Presentacion\obj\Release\Capa_Presentacion.Acerca.resources
+C:\Users\leo\Downloads\Sistema de ventas\Capa_Presentacion\obj\Release\Capa_Presentacion.FrmArticulos.resources
+C:\Users\leo\Downloads\Sistema de ventas\Capa_Presentacion\obj\Release\Capa_Presentacion.FrmAsignarPrecio.resources
+C:\Users\leo\Downloads\Sistema de ventas\Capa_Presentacion\obj\Release\Capa_Presentacion.FrmBusquedaAvaArticulo.resources
+C:\Users\leo\Downloads\Sistema de ventas\Capa_Presentacion\obj\Release\Capa_Presentacion.FrmBusquedaAvaCliente.resources
+C:\Users\leo\Downloads\Sistema de ventas\Capa_Presentacion\obj\Release\Capa_Presentacion.FrmBusquedaAvaProveedor.resources
+C:\Users\leo\Downloads\Sistema de ventas\Capa_Presentacion\obj\Release\Capa_Presentacion.FrmCaja.resources
+C:\Users\leo\Downloads\Sistema de ventas\Capa_Presentacion\obj\Release\Capa_Presentacion.FrmCambiarPrecio.resources
+C:\Users\leo\Downloads\Sistema de ventas\Capa_Presentacion\obj\Release\Capa_Presentacion.FrmCategoria.resources
+C:\Users\leo\Downloads\Sistema de ventas\Capa_Presentacion\obj\Release\Capa_Presentacion.FrmClientes.resources
+C:\Users\leo\Downloads\Sistema de ventas\Capa_Presentacion\obj\Release\Capa_Presentacion.FrmCodigoBarraExistente.resources
+C:\Users\leo\Downloads\Sistema de ventas\Capa_Presentacion\obj\Release\Capa_Presentacion.FrmDetallesDeStock.resources
+C:\Users\leo\Downloads\Sistema de ventas\Capa_Presentacion\obj\Release\Capa_Presentacion.FrmEtiquetas.resources
+C:\Users\leo\Downloads\Sistema de ventas\Capa_Presentacion\obj\Release\Capa_Presentacion.FrmGuardarVenta.resources
+C:\Users\leo\Downloads\Sistema de ventas\Capa_Presentacion\obj\Release\Capa_Presentacion.FrmImpArticulo.resources
+C:\Users\leo\Downloads\Sistema de ventas\Capa_Presentacion\obj\Release\Capa_Presentacion.FrmImpEtiquetas.resources
+C:\Users\leo\Downloads\Sistema de ventas\Capa_Presentacion\obj\Release\Capa_Presentacion.FrmMovStock1.resources
+C:\Users\leo\Downloads\Sistema de ventas\Capa_Presentacion\obj\Release\Capa_Presentacion.frmPventa.resources
+C:\Users\leo\Downloads\Sistema de ventas\Capa_Presentacion\obj\Release\Capa_Presentacion.FrmSeleccionarProductos.resources
+C:\Users\leo\Downloads\Sistema de ventas\Capa_Presentacion\obj\Release\Capa_Presentacion.FrmProveedor.resources
+C:\Users\leo\Downloads\Sistema de ventas\Capa_Presentacion\obj\Release\Capa_Presentacion.FrmUnidades.resources
+C:\Users\leo\Downloads\Sistema de ventas\Capa_Presentacion\obj\Release\Capa_Presentacion.Properties.Resources.resources
+C:\Users\leo\Downloads\Sistema de ventas\Capa_Presentacion\obj\Release\Capa_Presentacion.csproj.GenerateResource.Cache
+C:\Users\leo\Downloads\Sistema de ventas\Capa_Presentacion\obj\Release\Capa_Presentacion.dll
+C:\Users\leo\Downloads\Sistema de ventas\Capa_Presentacion\obj\Release\Capa_Presentacion.pdb
+C:\Users\leo\Downloads\Sistema de ventas\Capa_Presentacion\obj\Release\Capa_Presentacion.FrmConfig.resources
+C:\Users\leo\Downloads\Sistema de ventas\Capa_Presentacion\obj\Release\Capa_Presentacion.FrmConsulta.resources
+C:\Users\leo\Downloads\Sistema de ventas\Capa_Presentacion\obj\Release\Capa_Presentacion.FrmUsuario.resources
+C:\Users\leo\Downloads\Sistema de ventas (Ultimo)\Sistema de ventas\Capa_Presentacion\bin\Release\Capa_Presentacion.dll.config
+C:\Users\leo\Downloads\Sistema de ventas (Ultimo)\Sistema de ventas\Capa_Presentacion\bin\Release\Capa_Presentacion.dll
+C:\Users\leo\Downloads\Sistema de ventas (Ultimo)\Sistema de ventas\Capa_Presentacion\bin\Release\Capa_Presentacion.pdb
+C:\Users\leo\Downloads\Sistema de ventas (Ultimo)\Sistema de ventas\Capa_Presentacion\bin\Release\BarcodeLib.dll
+C:\Users\leo\Downloads\Sistema de ventas (Ultimo)\Sistema de ventas\Capa_Presentacion\bin\Release\Capa_Datos.dll
+C:\Users\leo\Downloads\Sistema de ventas (Ultimo)\Sistema de ventas\Capa_Presentacion\bin\Release\Capa_negocio.dll
+C:\Users\leo\Downloads\Sistema de ventas (Ultimo)\Sistema de ventas\Capa_Presentacion\bin\Release\PlaceholderTextBox.dll
+C:\Users\leo\Downloads\Sistema de ventas (Ultimo)\Sistema de ventas\Capa_Presentacion\bin\Release\Capa_Datos.pdb
+C:\Users\leo\Downloads\Sistema de ventas (Ultimo)\Sistema de ventas\Capa_Presentacion\bin\Release\Capa_negocio.pdb
+C:\Users\leo\Downloads\Sistema de ventas (Ultimo)\Sistema de ventas\Capa_Presentacion\obj\Release\Capa_Presentacion.csprojResolveAssemblyReference.cache
+C:\Users\leo\Downloads\Sistema de ventas (Ultimo)\Sistema de ventas\Capa_Presentacion\obj\Release\Interop.FiscalPrinterLib.dll
+C:\Users\leo\Downloads\Sistema de ventas (Ultimo)\Sistema de ventas\Capa_Presentacion\obj\Release\Capa_Presentacion.csproj.ResolveComReference.cache
+C:\Users\leo\Downloads\Sistema de ventas (Ultimo)\Sistema de ventas\Capa_Presentacion\obj\Release\Capa_Presentacion.Acerca.resources
+C:\Users\leo\Downloads\Sistema de ventas (Ultimo)\Sistema de ventas\Capa_Presentacion\obj\Release\Capa_Presentacion.FrmAperturacaja.resources
+C:\Users\leo\Downloads\Sistema de ventas (Ultimo)\Sistema de ventas\Capa_Presentacion\obj\Release\Capa_Presentacion.FrmArticulos.resources
+C:\Users\leo\Downloads\Sistema de ventas (Ultimo)\Sistema de ventas\Capa_Presentacion\obj\Release\Capa_Presentacion.FrmAsignarPrecio.resources
+C:\Users\leo\Downloads\Sistema de ventas (Ultimo)\Sistema de ventas\Capa_Presentacion\obj\Release\Capa_Presentacion.FrmAsignarValores.resources
+C:\Users\leo\Downloads\Sistema de ventas (Ultimo)\Sistema de ventas\Capa_Presentacion\obj\Release\Capa_Presentacion.FrmBusquedaAvaArticulo.resources
+C:\Users\leo\Downloads\Sistema de ventas (Ultimo)\Sistema de ventas\Capa_Presentacion\obj\Release\Capa_Presentacion.FrmBusquedaAvaCliente.resources
+C:\Users\leo\Downloads\Sistema de ventas (Ultimo)\Sistema de ventas\Capa_Presentacion\obj\Release\Capa_Presentacion.FrmBusquedaAvaProveedor.resources
+C:\Users\leo\Downloads\Sistema de ventas (Ultimo)\Sistema de ventas\Capa_Presentacion\obj\Release\Capa_Presentacion.FrmCaja.resources
+C:\Users\leo\Downloads\Sistema de ventas (Ultimo)\Sistema de ventas\Capa_Presentacion\obj\Release\Capa_Presentacion.FrmCambiarPrecio.resources
+C:\Users\leo\Downloads\Sistema de ventas (Ultimo)\Sistema de ventas\Capa_Presentacion\obj\Release\Capa_Presentacion.FrmCambiarPrecioSel.resources
+C:\Users\leo\Downloads\Sistema de ventas (Ultimo)\Sistema de ventas\Capa_Presentacion\obj\Release\Capa_Presentacion.FrmCategoria.resources
+C:\Users\leo\Downloads\Sistema de ventas (Ultimo)\Sistema de ventas\Capa_Presentacion\obj\Release\Capa_Presentacion.FrmCerrarCaja.resources
+C:\Users\leo\Downloads\Sistema de ventas (Ultimo)\Sistema de ventas\Capa_Presentacion\obj\Release\Capa_Presentacion.FrmClientes.resources
+C:\Users\leo\Downloads\Sistema de ventas (Ultimo)\Sistema de ventas\Capa_Presentacion\obj\Release\Capa_Presentacion.FrmCodigoBarraExistente.resources
+C:\Users\leo\Downloads\Sistema de ventas (Ultimo)\Sistema de ventas\Capa_Presentacion\obj\Release\Capa_Presentacion.FrmConfig.resources
+C:\Users\leo\Downloads\Sistema de ventas (Ultimo)\Sistema de ventas\Capa_Presentacion\obj\Release\Capa_Presentacion.FrmDetallesDeStock.resources
+C:\Users\leo\Downloads\Sistema de ventas (Ultimo)\Sistema de ventas\Capa_Presentacion\obj\Release\Capa_Presentacion.FrmEtiquetas.resources
+C:\Users\leo\Downloads\Sistema de ventas (Ultimo)\Sistema de ventas\Capa_Presentacion\obj\Release\Capa_Presentacion.FrmGuardarVenta.resources
+C:\Users\leo\Downloads\Sistema de ventas (Ultimo)\Sistema de ventas\Capa_Presentacion\obj\Release\Capa_Presentacion.FrmImpArticulo.resources
+C:\Users\leo\Downloads\Sistema de ventas (Ultimo)\Sistema de ventas\Capa_Presentacion\obj\Release\Capa_Presentacion.FrmImpEtiquetas.resources
+C:\Users\leo\Downloads\Sistema de ventas (Ultimo)\Sistema de ventas\Capa_Presentacion\obj\Release\Capa_Presentacion.FrmImpVenta.resources
+C:\Users\leo\Downloads\Sistema de ventas (Ultimo)\Sistema de ventas\Capa_Presentacion\obj\Release\Capa_Presentacion.FrmMovStock1.resources
+C:\Users\leo\Downloads\Sistema de ventas (Ultimo)\Sistema de ventas\Capa_Presentacion\obj\Release\Capa_Presentacion.FrmConsulta.resources
+C:\Users\leo\Downloads\Sistema de ventas (Ultimo)\Sistema de ventas\Capa_Presentacion\obj\Release\Capa_Presentacion.frmPventa.resources
+C:\Users\leo\Downloads\Sistema de ventas (Ultimo)\Sistema de ventas\Capa_Presentacion\obj\Release\Capa_Presentacion.FrmSeleccionarProductos.resources
+C:\Users\leo\Downloads\Sistema de ventas (Ultimo)\Sistema de ventas\Capa_Presentacion\obj\Release\Capa_Presentacion.FrmProveedor.resources
+C:\Users\leo\Downloads\Sistema de ventas (Ultimo)\Sistema de ventas\Capa_Presentacion\obj\Release\Capa_Presentacion.FrmUnidades.resources
+C:\Users\leo\Downloads\Sistema de ventas (Ultimo)\Sistema de ventas\Capa_Presentacion\obj\Release\Capa_Presentacion.FrmUsuario.resources
+C:\Users\leo\Downloads\Sistema de ventas (Ultimo)\Sistema de ventas\Capa_Presentacion\obj\Release\Capa_Presentacion.Properties.Resources.resources
+C:\Users\leo\Downloads\Sistema de ventas (Ultimo)\Sistema de ventas\Capa_Presentacion\obj\Release\Capa_Presentacion.csproj.GenerateResource.Cache
+C:\Users\leo\Downloads\Sistema de ventas (Ultimo)\Sistema de ventas\Capa_Presentacion\obj\Release\Capa_Presentacion.dll
+C:\Users\leo\Downloads\Sistema de ventas (Ultimo)\Sistema de ventas\Capa_Presentacion\obj\Release\Capa_Presentacion.pdb
+C:\Users\LEOX\Downloads\Sistema de ventas (Ultimo)\Sistema de ventas\Capa_Presentacion\bin\Release\Capa_Presentacion.dll.config
+C:\Users\LEOX\Downloads\Sistema de ventas (Ultimo)\Sistema de ventas\Capa_Presentacion\bin\Release\Capa_Presentacion.dll
+C:\Users\LEOX\Downloads\Sistema de ventas (Ultimo)\Sistema de ventas\Capa_Presentacion\bin\Release\Capa_Presentacion.pdb
+C:\Users\LEOX\Downloads\Sistema de ventas (Ultimo)\Sistema de ventas\Capa_Presentacion\bin\Release\BarcodeLib.dll
+C:\Users\LEOX\Downloads\Sistema de ventas (Ultimo)\Sistema de ventas\Capa_Presentacion\bin\Release\Capa_Datos.dll
+C:\Users\LEOX\Downloads\Sistema de ventas (Ultimo)\Sistema de ventas\Capa_Presentacion\bin\Release\Capa_negocio.dll
+C:\Users\LEOX\Downloads\Sistema de ventas (Ultimo)\Sistema de ventas\Capa_Presentacion\bin\Release\PlaceholderTextBox.dll
+C:\Users\LEOX\Downloads\Sistema de ventas (Ultimo)\Sistema de ventas\Capa_Presentacion\bin\Release\Capa_Datos.pdb
+C:\Users\LEOX\Downloads\Sistema de ventas (Ultimo)\Sistema de ventas\Capa_Presentacion\bin\Release\Capa_negocio.pdb
+C:\Users\LEOX\Downloads\Sistema de ventas (Ultimo)\Sistema de ventas\Capa_Presentacion\obj\Release\Capa_Presentacion.csprojResolveAssemblyReference.cache
+C:\Users\LEOX\Downloads\Sistema de ventas (Ultimo)\Sistema de ventas\Capa_Presentacion\obj\Release\Capa_Presentacion.csproj.ResolveComReference.cache
+C:\Users\LEOX\Downloads\Sistema de ventas (Ultimo)\Sistema de ventas\Capa_Presentacion\obj\Release\Capa_Presentacion.Acerca.resources
+C:\Users\LEOX\Downloads\Sistema de ventas (Ultimo)\Sistema de ventas\Capa_Presentacion\obj\Release\Capa_Presentacion.FrmAperturacaja.resources
+C:\Users\LEOX\Downloads\Sistema de ventas (Ultimo)\Sistema de ventas\Capa_Presentacion\obj\Release\Capa_Presentacion.FrmArticulos.resources
+C:\Users\LEOX\Downloads\Sistema de ventas (Ultimo)\Sistema de ventas\Capa_Presentacion\obj\Release\Capa_Presentacion.FrmAsignarPrecio.resources
+C:\Users\LEOX\Downloads\Sistema de ventas (Ultimo)\Sistema de ventas\Capa_Presentacion\obj\Release\Capa_Presentacion.FrmAsignarValores.resources
+C:\Users\LEOX\Downloads\Sistema de ventas (Ultimo)\Sistema de ventas\Capa_Presentacion\obj\Release\Capa_Presentacion.FrmBusquedaAvaArticulo.resources
+C:\Users\LEOX\Downloads\Sistema de ventas (Ultimo)\Sistema de ventas\Capa_Presentacion\obj\Release\Capa_Presentacion.FrmBusquedaAvaCliente.resources
+C:\Users\LEOX\Downloads\Sistema de ventas (Ultimo)\Sistema de ventas\Capa_Presentacion\obj\Release\Capa_Presentacion.FrmBusquedaAvaProveedor.resources
+C:\Users\LEOX\Downloads\Sistema de ventas (Ultimo)\Sistema de ventas\Capa_Presentacion\obj\Release\Capa_Presentacion.FrmCaja.resources
+C:\Users\LEOX\Downloads\Sistema de ventas (Ultimo)\Sistema de ventas\Capa_Presentacion\obj\Release\Capa_Presentacion.FrmCambiarPrecio.resources
+C:\Users\LEOX\Downloads\Sistema de ventas (Ultimo)\Sistema de ventas\Capa_Presentacion\obj\Release\Capa_Presentacion.FrmCambiarPrecioSel.resources
+C:\Users\LEOX\Downloads\Sistema de ventas (Ultimo)\Sistema de ventas\Capa_Presentacion\obj\Release\Capa_Presentacion.FrmCategoria.resources
+C:\Users\LEOX\Downloads\Sistema de ventas (Ultimo)\Sistema de ventas\Capa_Presentacion\obj\Release\Capa_Presentacion.FrmCerrarCaja.resources
+C:\Users\LEOX\Downloads\Sistema de ventas (Ultimo)\Sistema de ventas\Capa_Presentacion\obj\Release\Capa_Presentacion.FrmClientes.resources
+C:\Users\LEOX\Downloads\Sistema de ventas (Ultimo)\Sistema de ventas\Capa_Presentacion\obj\Release\Capa_Presentacion.FrmCodigoBarraExistente.resources
+C:\Users\LEOX\Downloads\Sistema de ventas (Ultimo)\Sistema de ventas\Capa_Presentacion\obj\Release\Capa_Presentacion.FrmConfig.resources
+C:\Users\LEOX\Downloads\Sistema de ventas (Ultimo)\Sistema de ventas\Capa_Presentacion\obj\Release\Capa_Presentacion.FrmDetallesDeStock.resources
+C:\Users\LEOX\Downloads\Sistema de ventas (Ultimo)\Sistema de ventas\Capa_Presentacion\obj\Release\Capa_Presentacion.FrmDetalleVentas.resources
+C:\Users\LEOX\Downloads\Sistema de ventas (Ultimo)\Sistema de ventas\Capa_Presentacion\obj\Release\Capa_Presentacion.FrmEtiquetas.resources
+C:\Users\LEOX\Downloads\Sistema de ventas (Ultimo)\Sistema de ventas\Capa_Presentacion\obj\Release\Capa_Presentacion.FrmGuardarVenta.resources
+C:\Users\LEOX\Downloads\Sistema de ventas (Ultimo)\Sistema de ventas\Capa_Presentacion\obj\Release\Capa_Presentacion.FrmImpArticulo.resources
+C:\Users\LEOX\Downloads\Sistema de ventas (Ultimo)\Sistema de ventas\Capa_Presentacion\obj\Release\Capa_Presentacion.FrmImpEtiquetas.resources
+C:\Users\LEOX\Downloads\Sistema de ventas (Ultimo)\Sistema de ventas\Capa_Presentacion\obj\Release\Capa_Presentacion.FrmImpVenta.resources
+C:\Users\LEOX\Downloads\Sistema de ventas (Ultimo)\Sistema de ventas\Capa_Presentacion\obj\Release\Capa_Presentacion.FrmListadoVentas.resources
+C:\Users\LEOX\Downloads\Sistema de ventas (Ultimo)\Sistema de ventas\Capa_Presentacion\obj\Release\Capa_Presentacion.FrmMensajeAutoCierre.resources
+C:\Users\LEOX\Downloads\Sistema de ventas (Ultimo)\Sistema de ventas\Capa_Presentacion\obj\Release\Capa_Presentacion.FrmMovStock1.resources
+C:\Users\LEOX\Downloads\Sistema de ventas (Ultimo)\Sistema de ventas\Capa_Presentacion\obj\Release\Capa_Presentacion.FrmConsulta.resources
+C:\Users\LEOX\Downloads\Sistema de ventas (Ultimo)\Sistema de ventas\Capa_Presentacion\obj\Release\Capa_Presentacion.frmPventa.resources
+C:\Users\LEOX\Downloads\Sistema de ventas (Ultimo)\Sistema de ventas\Capa_Presentacion\obj\Release\Capa_Presentacion.FrmSeleccionarProductos.resources
+C:\Users\LEOX\Downloads\Sistema de ventas (Ultimo)\Sistema de ventas\Capa_Presentacion\obj\Release\Capa_Presentacion.FrmProveedor.resources
+C:\Users\LEOX\Downloads\Sistema de ventas (Ultimo)\Sistema de ventas\Capa_Presentacion\obj\Release\Capa_Presentacion.FrmUnidades.resources
+C:\Users\LEOX\Downloads\Sistema de ventas (Ultimo)\Sistema de ventas\Capa_Presentacion\obj\Release\Capa_Presentacion.FrmUsuario.resources
+C:\Users\LEOX\Downloads\Sistema de ventas (Ultimo)\Sistema de ventas\Capa_Presentacion\obj\Release\Capa_Presentacion.Properties.Resources.resources
+C:\Users\LEOX\Downloads\Sistema de ventas (Ultimo)\Sistema de ventas\Capa_Presentacion\obj\Release\Capa_Presentacion.csproj.GenerateResource.Cache
+C:\Users\LEOX\Downloads\Sistema de ventas (Ultimo)\Sistema de ventas\Capa_Presentacion\obj\Release\Capa_Presentacion.dll
+C:\Users\LEOX\Downloads\Sistema de ventas (Ultimo)\Sistema de ventas\Capa_Presentacion\obj\Release\Capa_Presentacion.pdb
+C:\Users\LEOX\Downloads\Sistema de ventas (Ultimo)\Sistema de ventas\Capa_Presentacion\obj\Release\Capa_Presentacion.FrmAvanzadoArticulo.resources
+D:\Desarrollo\SOFTINTEGRAL 20-05-2019\Sistema de ventas (Ultimo)\Sistema de ventas\Capa_Presentacion\bin\Release\Capa_Presentacion.dll
+D:\Desarrollo\SOFTINTEGRAL 20-05-2019\Sistema de ventas (Ultimo)\Sistema de ventas\Capa_Presentacion\bin\Release\Capa_Presentacion.pdb
+D:\Desarrollo\SOFTINTEGRAL 20-05-2019\Sistema de ventas (Ultimo)\Sistema de ventas\Capa_Presentacion\bin\Release\BarcodeLib.dll
+D:\Desarrollo\SOFTINTEGRAL 20-05-2019\Sistema de ventas (Ultimo)\Sistema de ventas\Capa_Presentacion\bin\Release\Capa_Datos.dll
+D:\Desarrollo\SOFTINTEGRAL 20-05-2019\Sistema de ventas (Ultimo)\Sistema de ventas\Capa_Presentacion\bin\Release\Capa_negocio.dll
+D:\Desarrollo\SOFTINTEGRAL 20-05-2019\Sistema de ventas (Ultimo)\Sistema de ventas\Capa_Presentacion\bin\Release\PlaceholderTextBox.dll
+D:\Desarrollo\SOFTINTEGRAL 20-05-2019\Sistema de ventas (Ultimo)\Sistema de ventas\Capa_Presentacion\bin\Release\Capa_Datos.pdb
+D:\Desarrollo\SOFTINTEGRAL 20-05-2019\Sistema de ventas (Ultimo)\Sistema de ventas\Capa_Presentacion\bin\Release\Capa_negocio.pdb
+D:\Desarrollo\SOFTINTEGRAL 20-05-2019\Sistema de ventas (Ultimo)\Sistema de ventas\Capa_Presentacion\obj\Release\Capa_Presentacion.csprojResolveAssemblyReference.cache
+D:\Desarrollo\SOFTINTEGRAL 20-05-2019\Sistema de ventas (Ultimo)\Sistema de ventas\Capa_Presentacion\obj\Release\Capa_Presentacion.csproj.ResolveComReference.cache
+D:\Desarrollo\SOFTINTEGRAL 20-05-2019\Sistema de ventas (Ultimo)\Sistema de ventas\Capa_Presentacion\obj\Release\Capa_Presentacion.Acerca.resources
+D:\Desarrollo\SOFTINTEGRAL 20-05-2019\Sistema de ventas (Ultimo)\Sistema de ventas\Capa_Presentacion\obj\Release\Capa_Presentacion.FrmAperturacaja.resources
+D:\Desarrollo\SOFTINTEGRAL 20-05-2019\Sistema de ventas (Ultimo)\Sistema de ventas\Capa_Presentacion\obj\Release\Capa_Presentacion.FrmArticulos.resources
+D:\Desarrollo\SOFTINTEGRAL 20-05-2019\Sistema de ventas (Ultimo)\Sistema de ventas\Capa_Presentacion\obj\Release\Capa_Presentacion.FrmAsignarPrecio.resources
+D:\Desarrollo\SOFTINTEGRAL 20-05-2019\Sistema de ventas (Ultimo)\Sistema de ventas\Capa_Presentacion\obj\Release\Capa_Presentacion.FrmAsignarValores.resources
+D:\Desarrollo\SOFTINTEGRAL 20-05-2019\Sistema de ventas (Ultimo)\Sistema de ventas\Capa_Presentacion\obj\Release\Capa_Presentacion.FrmAvanzadoArticulo.resources
+D:\Desarrollo\SOFTINTEGRAL 20-05-2019\Sistema de ventas (Ultimo)\Sistema de ventas\Capa_Presentacion\obj\Release\Capa_Presentacion.FrmBusquedaAvaArticulo.resources
+D:\Desarrollo\SOFTINTEGRAL 20-05-2019\Sistema de ventas (Ultimo)\Sistema de ventas\Capa_Presentacion\obj\Release\Capa_Presentacion.FrmBusquedaAvaCliente.resources
+D:\Desarrollo\SOFTINTEGRAL 20-05-2019\Sistema de ventas (Ultimo)\Sistema de ventas\Capa_Presentacion\obj\Release\Capa_Presentacion.FrmBusquedaAvaProveedor.resources
+D:\Desarrollo\SOFTINTEGRAL 20-05-2019\Sistema de ventas (Ultimo)\Sistema de ventas\Capa_Presentacion\obj\Release\Capa_Presentacion.FrmCaja.resources
+D:\Desarrollo\SOFTINTEGRAL 20-05-2019\Sistema de ventas (Ultimo)\Sistema de ventas\Capa_Presentacion\obj\Release\Capa_Presentacion.FrmCambiarPrecio.resources
+D:\Desarrollo\SOFTINTEGRAL 20-05-2019\Sistema de ventas (Ultimo)\Sistema de ventas\Capa_Presentacion\obj\Release\Capa_Presentacion.FrmCambiarPrecioSel.resources
+D:\Desarrollo\SOFTINTEGRAL 20-05-2019\Sistema de ventas (Ultimo)\Sistema de ventas\Capa_Presentacion\obj\Release\Capa_Presentacion.FrmCategoria.resources
+D:\Desarrollo\SOFTINTEGRAL 20-05-2019\Sistema de ventas (Ultimo)\Sistema de ventas\Capa_Presentacion\obj\Release\Capa_Presentacion.FrmCerrarCaja.resources
+D:\Desarrollo\SOFTINTEGRAL 20-05-2019\Sistema de ventas (Ultimo)\Sistema de ventas\Capa_Presentacion\obj\Release\Capa_Presentacion.FrmClientes.resources
+D:\Desarrollo\SOFTINTEGRAL 20-05-2019\Sistema de ventas (Ultimo)\Sistema de ventas\Capa_Presentacion\obj\Release\Capa_Presentacion.FrmCodigoBarraExistente.resources
+D:\Desarrollo\SOFTINTEGRAL 20-05-2019\Sistema de ventas (Ultimo)\Sistema de ventas\Capa_Presentacion\obj\Release\Capa_Presentacion.FrmConfig.resources
+D:\Desarrollo\SOFTINTEGRAL 20-05-2019\Sistema de ventas (Ultimo)\Sistema de ventas\Capa_Presentacion\obj\Release\Capa_Presentacion.FrmDetallesDeStock.resources
+D:\Desarrollo\SOFTINTEGRAL 20-05-2019\Sistema de ventas (Ultimo)\Sistema de ventas\Capa_Presentacion\obj\Release\Capa_Presentacion.FrmDetalleVentas.resources
+D:\Desarrollo\SOFTINTEGRAL 20-05-2019\Sistema de ventas (Ultimo)\Sistema de ventas\Capa_Presentacion\obj\Release\Capa_Presentacion.FrmEtiquetas.resources
+D:\Desarrollo\SOFTINTEGRAL 20-05-2019\Sistema de ventas (Ultimo)\Sistema de ventas\Capa_Presentacion\obj\Release\Capa_Presentacion.FrmGuardarVenta.resources
+D:\Desarrollo\SOFTINTEGRAL 20-05-2019\Sistema de ventas (Ultimo)\Sistema de ventas\Capa_Presentacion\obj\Release\Capa_Presentacion.FrmImpArticulo.resources
+D:\Desarrollo\SOFTINTEGRAL 20-05-2019\Sistema de ventas (Ultimo)\Sistema de ventas\Capa_Presentacion\obj\Release\Capa_Presentacion.FrmImpEtiquetas.resources
+D:\Desarrollo\SOFTINTEGRAL 20-05-2019\Sistema de ventas (Ultimo)\Sistema de ventas\Capa_Presentacion\obj\Release\Capa_Presentacion.FrmImpVenta.resources
+D:\Desarrollo\SOFTINTEGRAL 20-05-2019\Sistema de ventas (Ultimo)\Sistema de ventas\Capa_Presentacion\obj\Release\Capa_Presentacion.Frmimpventicket.resources
+D:\Desarrollo\SOFTINTEGRAL 20-05-2019\Sistema de ventas (Ultimo)\Sistema de ventas\Capa_Presentacion\obj\Release\Capa_Presentacion.FrmListadoVentas.resources
+D:\Desarrollo\SOFTINTEGRAL 20-05-2019\Sistema de ventas (Ultimo)\Sistema de ventas\Capa_Presentacion\obj\Release\Capa_Presentacion.FrmMensajeAutoCierre.resources
+D:\Desarrollo\SOFTINTEGRAL 20-05-2019\Sistema de ventas (Ultimo)\Sistema de ventas\Capa_Presentacion\obj\Release\Capa_Presentacion.FrmMovStock1.resources
+D:\Desarrollo\SOFTINTEGRAL 20-05-2019\Sistema de ventas (Ultimo)\Sistema de ventas\Capa_Presentacion\obj\Release\Capa_Presentacion.FrmConsulta.resources
+D:\Desarrollo\SOFTINTEGRAL 20-05-2019\Sistema de ventas (Ultimo)\Sistema de ventas\Capa_Presentacion\obj\Release\Capa_Presentacion.frmPventa.resources
+D:\Desarrollo\SOFTINTEGRAL 20-05-2019\Sistema de ventas (Ultimo)\Sistema de ventas\Capa_Presentacion\obj\Release\Capa_Presentacion.FrmSeleccionarProductos.resources
+D:\Desarrollo\SOFTINTEGRAL 20-05-2019\Sistema de ventas (Ultimo)\Sistema de ventas\Capa_Presentacion\obj\Release\Capa_Presentacion.FrmProveedor.resources
+D:\Desarrollo\SOFTINTEGRAL 20-05-2019\Sistema de ventas (Ultimo)\Sistema de ventas\Capa_Presentacion\obj\Release\Capa_Presentacion.FrmUnidades.resources
+D:\Desarrollo\SOFTINTEGRAL 20-05-2019\Sistema de ventas (Ultimo)\Sistema de ventas\Capa_Presentacion\obj\Release\Capa_Presentacion.FrmUsuario.resources
+D:\Desarrollo\SOFTINTEGRAL 20-05-2019\Sistema de ventas (Ultimo)\Sistema de ventas\Capa_Presentacion\obj\Release\Capa_Presentacion.Properties.Resources.resources
+D:\Desarrollo\SOFTINTEGRAL 20-05-2019\Sistema de ventas (Ultimo)\Sistema de ventas\Capa_Presentacion\obj\Release\Capa_Presentacion.csproj.GenerateResource.Cache
+D:\Desarrollo\SOFTINTEGRAL 20-05-2019\Sistema de ventas (Ultimo)\Sistema de ventas\Capa_Presentacion\obj\Release\Capa_Presentacion.dll
+D:\Desarrollo\SOFTINTEGRAL 20-05-2019\Sistema de ventas (Ultimo)\Sistema de ventas\Capa_Presentacion\obj\Release\Capa_Presentacion.pdb
+C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\obj\Release\Capa_Presentacion.csprojResolveAssemblyReference.cache
+C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\obj\Release\Interop.FiscalPrinterLib.dll
+C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\obj\Release\Capa_Presentacion.csproj.ResolveComReference.cache
+C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\obj\Release\Capa_Presentacion.Acerca.resources
+C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\obj\Release\Capa_Presentacion.FrmAltasvarios.resources
+C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\obj\Release\Capa_Presentacion.FrmAperturacaja.resources
+C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\obj\Release\Capa_Presentacion.FrmArticulos.resources
+C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\obj\Release\Capa_Presentacion.FrmAsignarPrecio.resources
+C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\obj\Release\Capa_Presentacion.FrmAsignarValores.resources
+C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\obj\Release\Capa_Presentacion.FrmAvanzadoArticulo.resources
+C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\obj\Release\Capa_Presentacion.FrmBusquedaAvaArticulo.resources
+C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\obj\Release\Capa_Presentacion.FrmBusquedaAvaCliente.resources
+C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\obj\Release\Capa_Presentacion.FrmBusquedaAvaProveedor.resources
+C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\obj\Release\Capa_Presentacion.FrmCaja.resources
+C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\obj\Release\Capa_Presentacion.FrmCambiarPrecio.resources
+C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\obj\Release\Capa_Presentacion.FrmCambiarPrecioSel.resources
+C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\obj\Release\Capa_Presentacion.FrmCategoria.resources
+C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\obj\Release\Capa_Presentacion.FrmCerrarCaja.resources
+C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\obj\Release\Capa_Presentacion.FrmClientes.resources
+C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\obj\Release\Capa_Presentacion.FrmCodigoBarraExistente.resources
+C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\obj\Release\Capa_Presentacion.FrmConfig.resources
+C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\obj\Release\Capa_Presentacion.FrmDetallesDeStock.resources
+C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\obj\Release\Capa_Presentacion.FrmDetalleVentas.resources
+C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\obj\Release\Capa_Presentacion.FrmEquipo.resources
+C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\obj\Release\Capa_Presentacion.Frmetiquetareport.resources
+C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\obj\Release\Capa_Presentacion.FrmEtiquetas.resources
+C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\obj\Release\Capa_Presentacion.FrmFactura.resources
+C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\obj\Release\Capa_Presentacion.FrmGuardarVenta.resources
+C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\obj\Release\Capa_Presentacion.FrmImpArticulo.resources
+C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\obj\Release\Capa_Presentacion.FrmImpEtiquetas.resources
+C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\obj\Release\Capa_Presentacion.Frmimpnotaventa.resources
+C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\obj\Release\Capa_Presentacion.FrmImportarExel.resources
+C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\obj\Release\Capa_Presentacion.FrmImpresora.resources
+C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\obj\Release\Capa_Presentacion.FrmImpVenta.resources
+C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\obj\Release\Capa_Presentacion.Frmimpventicket.resources
+C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\obj\Release\Capa_Presentacion.FrmListadoVentas.resources
+C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\obj\Release\Capa_Presentacion.FrmMensajeAutoCierre.resources
+C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\obj\Release\Capa_Presentacion.FrmMovStock1.resources
+C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\obj\Release\Capa_Presentacion.FrmConsulta.resources
+C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\obj\Release\Capa_Presentacion.FrmPreciosmasivos.resources
+C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\obj\Release\Capa_Presentacion.Frmprivilegio.resources
+C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\obj\Release\Capa_Presentacion.frmPventa.resources
+C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\obj\Release\Capa_Presentacion.FrmReporteCaja.resources
+C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\obj\Release\Capa_Presentacion.FrmSeleccionarProductos.resources
+C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\obj\Release\Capa_Presentacion.FrmProveedor.resources
+C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\obj\Release\Capa_Presentacion.Frmserviciotecnico.resources
+C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\obj\Release\Capa_Presentacion.Frmstockmov.resources
+C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\obj\Release\Capa_Presentacion.FrmUnidades.resources
+C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\obj\Release\Capa_Presentacion.FrmUsuario.resources
+C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\obj\Release\Capa_Presentacion.FrmUsuariolista.resources
+C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\obj\Release\Capa_Presentacion.Properties.Resources.resources
+C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\obj\Release\Capa_Presentacion.Reporteventa.resources
+C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\obj\Release\Capa_Presentacion.csproj.GenerateResource.Cache
+C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\obj\Release\Capa_Presentacion.dll
+C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\obj\Release\Capa_Presentacion.pdb
+C:\Backup\Sistema de ventas\softintegral\SistemaVentas\bin\Debug\Capa_Presentacion.dll.config
+C:\Backup\Sistema de ventas\softintegral\SistemaVentas\bin\Debug\Capa_Presentacion.dll
+C:\Backup\Sistema de ventas\softintegral\SistemaVentas\bin\Debug\Capa_Presentacion.pdb

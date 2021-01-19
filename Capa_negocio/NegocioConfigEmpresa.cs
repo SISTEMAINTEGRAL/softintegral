@@ -5,6 +5,8 @@ using System.Text;
 using System.Threading.Tasks;
 using Capa_Datos;
 using System.Data;
+using System.Data.SqlClient;
+
 namespace Capa_negocio
 {
     public static class NegocioConfigEmpresa
@@ -101,15 +103,20 @@ namespace Capa_negocio
         }
 
 
-        public static string modificar(string razonSocial, string condicionFrenteIVA, Int64 cuit, Byte[] logo)
+        public static string modificar(string razonSocial, string condicionFrenteIVA, Int64 cuit, Byte[] logo, string localidad, string provincia, string domicilio, string telefono)
         {
-
+            //, Byte[] logo
 
             DatosConfigEmpresa empresa = new DatosConfigEmpresa();
             empresa.Cuit = cuit;
             empresa.CondicionFrenteIVA = condicionFrenteIVA;
             empresa.RazonSocial = razonSocial;
+            empresa.Localidad = localidad;
+            empresa.Provincia = provincia;
+            empresa.Domicilio = domicilio;
+            empresa.Telefono = telefono;
             empresa.Logo = logo;
+            
             return empresa.ModificarEmpresa(empresa);
 
 
@@ -232,5 +239,39 @@ namespace Capa_negocio
             return objemp.configsistema(nombre);
 
         }
+
+        public static string actualizarequipofiscal(int varpuertofiscal, string varmarcafiscal, string varpuntoventa)
+        {
+            DatosConfigEmpresa objemp = new DatosConfigEmpresa();
+            objemp.Puertofiscal = varpuertofiscal;
+            objemp.Marcafiscal = varmarcafiscal;
+            objemp.Puntoventa = varpuntoventa;
+            return objemp.Actualizarequipofiscal(objemp);
+                       
+        }
+
+        public static SqlDataReader mostrarformatoimpresora(int varidareaimpresion )
+        {
+
+            DatosConfigEmpresa objemp = new DatosConfigEmpresa();
+            objemp.Idareaimpresion = varidareaimpresion;
+            objemp.Idequipo = NegocioConfigEmpresa.idequipo;
+            return objemp.MostrarFormatoimpresora(objemp);
+
+           
+        }
+
+        public static string actualizarformatoimpresion(string varimpresora, string varformatoimpresion, int varidareaimpresion)
+        {
+            string msg = "";
+            DatosConfigEmpresa objemp = new DatosConfigEmpresa();
+            objemp.Idequipo = NegocioConfigEmpresa.idequipo;
+            objemp.Impresora = varimpresora;
+            objemp.Formatoimpresion = varformatoimpresion;
+            objemp.Idareaimpresion = varidareaimpresion;
+            objemp.ActualizarFormatoImpresion(objemp);
+            return msg;
+        }
+
     }
 }

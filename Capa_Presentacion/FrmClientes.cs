@@ -158,7 +158,8 @@ namespace Capa_Presentacion
             //limpio textbox
             UtilityFrm.limpiarTextbox(txtDireccion, txtRazonSocial, txtNombre, txtCodigo, txtCuit, txtDocumento);
             UtilityFrm.limpiarTextbox(txtTelefono, txtEmail);
-
+            TxtCtaCTe.Text = "";
+                     
             habilitarbotones(false, true, false, true);
             cbrespiva.SelectedIndex = 2;
             //habilitar botones
@@ -203,7 +204,7 @@ namespace Capa_Presentacion
             Txtcodinterno.Enabled = false;
             //limpio textbox
             UtilityFrm.limpiarTextbox(txtDireccion, txtRazonSocial, txtNombre, txtCodigo, txtCuit, txtDocumento);
-            UtilityFrm.limpiarTextbox(txtTelefono, txtEmail);
+            UtilityFrm.limpiarTextbox(txtTelefono, txtEmail,TxtCtaCTe);
             limpiarformularioctacte();
 
             isEditar = false;
@@ -247,7 +248,7 @@ namespace Capa_Presentacion
 
                         }
 
-                        respuesta = NegocioCliente.insertar(txtRazonSocial.Text.Trim(), txtDireccion.Text.Trim(), Convert.ToInt64(txtCuit.Text.Trim()), txtTelefono.Text.Trim() != "" ? Convert.ToInt64(txtTelefono.Text.Trim()) : 0, Convert.ToInt64(txtDocumento.Text.Trim()), txtEmail.Text.Trim(), cbrespiva.SelectedValue.ToString(), Convert.ToInt32(Cbprovincia.SelectedValue), Convert.ToInt32(CBlocalidad.SelectedValue),Txtcodinterno.Text);
+                        respuesta = NegocioCliente.insertar(txtRazonSocial.Text.Trim(), txtDireccion.Text.Trim(), Convert.ToInt64(txtCuit.Text.Trim()), txtTelefono.Text.Trim() != "" ? Convert.ToInt64(txtTelefono.Text.Trim()) : 0, Convert.ToInt64(txtDocumento.Text.Trim()), txtEmail.Text.Trim(), cbrespiva.SelectedValue.ToString(), Convert.ToInt32(Cbprovincia.SelectedValue), Convert.ToInt32(CBlocalidad.SelectedValue),Txtcodinterno.Text,ChkHabilitarctacte.Checked,Convert.ToDecimal(TxtCtaCTe.Text == "" ? "0" : TxtCtaCTe.Text) );
 
                         if (respuesta.Equals("ok"))
                         {
@@ -266,7 +267,7 @@ namespace Capa_Presentacion
                     {
 
                         //respuesta = NegocioArticulo.editar(Convert.ToInt32(txtCodigo.Text.Trim()), Convert.ToString(txtNombreConfig.Text.Trim()), txtCodigoBarra.Text.Trim(), Convert.ToString(txtDescripcion.Text.Trim()), Convert.ToInt32(cbxCategoria.SelectedValue));
-                        respuesta = NegocioCliente.editar(Convert.ToInt32(txtCodigo.Text.Trim()), txtRazonSocial.Text.Trim(), txtDireccion.Text.Trim(), Convert.ToInt64(txtCuit.Text.Trim()), txtTelefono.Text.Trim() != "" ? Convert.ToInt64(txtTelefono.Text.Trim()) : 0, Convert.ToInt64(txtDocumento.Text.Trim()), txtEmail.Text.Trim(), cbrespiva.SelectedValue.ToString(), Convert.ToInt32(Cbprovincia.SelectedValue), Convert.ToInt32(CBlocalidad.SelectedValue), Txtcodinterno.Text);
+                        respuesta = NegocioCliente.editar(Convert.ToInt32(txtCodigo.Text.Trim()), txtRazonSocial.Text.Trim(), txtDireccion.Text.Trim(), Convert.ToInt64(txtCuit.Text.Trim()), txtTelefono.Text.Trim() != "" ? Convert.ToInt64(txtTelefono.Text.Trim()) : 0, Convert.ToInt64(txtDocumento.Text.Trim()), txtEmail.Text.Trim(), cbrespiva.SelectedValue.ToString(), Convert.ToInt32(Cbprovincia.SelectedValue), Convert.ToInt32(CBlocalidad.SelectedValue), Txtcodinterno.Text,ChkHabilitarctacte.Checked,Convert.ToDecimal( TxtCtaCTe.Text));
 
                         if (respuesta.Equals("ok"))
                         {
@@ -437,6 +438,8 @@ namespace Capa_Presentacion
             this.CBlocalidad.Enabled = var1;
             this.Cbprovincia.Enabled = var1;
             this.Txtcodinterno.Enabled = var1;
+            this.TxtCtaCTe.Enabled = var1;
+            this.ChkHabilitarctacte.Enabled = var1;
 
             isEditar = editar;
             isNuevo = nuevo;
@@ -470,6 +473,8 @@ namespace Capa_Presentacion
                 CBlocalidad.SelectedValue = Convert.ToInt32(this.dataLista.CurrentRow.Cells["idlocalidad"].Value);
                 idcliente = Convert.ToInt32(this.dataLista.CurrentRow.Cells["idcliente"].Value);
                 totalsaldo = Convert.ToDecimal( this.dataLista.CurrentRow.Cells["saldo"].Value.ToString());
+                ChkHabilitarctacte.Checked = Convert.ToBoolean(this.dataLista.CurrentRow.Cells["habilitarctacte"].Value);
+                TxtCtaCTe.Text = this.dataLista.CurrentRow.Cells["limitedectacte"].Value.ToString();
                 TxtSaldoTotal.Text = totalsaldo.ToString("0.00");
                 
                
@@ -676,6 +681,7 @@ namespace Capa_Presentacion
             LblCuitCtaCte.Text = "...";
             LblRazonSocialCTACTE.Text = "...";
             LblRespiva.Text = "...";
+            TxtCtaCTe.Text = "0";
             //DGListado.Rows.Clear();
         }
         private void BtnAsentarpago_Click(object sender, EventArgs e)
@@ -996,6 +1002,98 @@ namespace Capa_Presentacion
         private void DgCliente_RowLeave(object sender, DataGridViewCellEventArgs e)
         {
             DTDetalleventa.DataSource = NegocioVenta.MostrarDetalle(DgCliente.CurrentRow.Cells["Codigo"].Value.ToString());
+        }
+
+        private void xuiSuperButton1_Click(object sender, EventArgs e)
+        {
+            DgRecibos.DataSource = NegocioCliente.BuscarFechasRecibo(DTDesdeRec.Value.ToString("dd/MM/yyyy") + " 00:00:00", DTHastaRec.Value.ToString("dd/MM/yyyy") + " 23:59:59", false, false, idcliente, TxtNroRecibo.Text == "" ? 0 : Convert.ToInt32(TxtNroRecibo.Text));
+        }
+
+        private void TxtCtaCTe_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            UtilityFrm.NumDecTeclado(e, TxtCtaCTe);
+        }
+
+        private void ChkHabilitarctacte_CheckedChanged(object sender, EventArgs e)
+        {
+            TxtCtaCTe.Enabled = ChkHabilitarctacte.Checked;
+        }
+
+        private void DGListado_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            DataTable dt = NegocioVenta.BuscarIdVenta(Convert.ToInt32( this.DGListado.CurrentRow.Cells["codventa"].Value));
+            if (dt.Rows.Count != 0)
+            {
+                DataRow row = dt.Rows[0];
+                DateTime date = Convert.ToDateTime(row["fecha"].ToString());
+
+                FrmDetalleVentas venta = new FrmDetalleVentas(Convert.ToString(row["idventa"]),
+                Convert.ToString(row["Razon_social"]),
+                date.ToShortDateString(),
+                Convert.ToString(row["tipo_comprobante"]),
+                estadoventa(Convert.ToString(row["estado"])),
+                Convert.ToString(Decimal.Round(Convert.ToDecimal(row["total"]), 2)),
+                Convert.ToString(row["idcliente"]),
+                Convert.ToString(row["cuit"]),
+                Convert.ToString(row["factura"]),
+                Convert.ToString(row["pago"]),
+                Convert.ToString(row["Multipago"]),"");
+                venta.ShowDialog();
+
+
+            }
+
+        }
+
+        private void DgCliente_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            DataTable dt = NegocioVenta.BuscarIdVenta(Convert.ToInt32(this.DgCliente.CurrentRow.Cells["codigo"].Value));
+            if (dt.Rows.Count != 0)
+            {
+                DataRow row = dt.Rows[0];
+                DateTime date = Convert.ToDateTime(row["fecha"].ToString());
+
+                FrmDetalleVentas venta = new FrmDetalleVentas(Convert.ToString(row["idventa"]),
+                Convert.ToString(row["Razon_social"]),
+                date.ToShortDateString(),
+                Convert.ToString(row["tipo_comprobante"]),
+                estadoventa(Convert.ToString(row["estado"])),
+                Convert.ToString(Decimal.Round(Convert.ToDecimal(row["total"]), 2)),
+                Convert.ToString(row["idcliente"]),
+                Convert.ToString(row["cuit"]),
+                Convert.ToString(row["factura"]),
+                Convert.ToString(row["pago"]),
+                Convert.ToString(row["Multipago"]), "");
+                venta.ShowDialog();
+
+
+            }
+        }
+
+        private string estadoventa(string estado)
+        {
+            if (estado.Equals("F"))
+            {
+                estado = "FACTURADO";
+
+            }
+            else if (estado.Equals("P"))
+            {
+                estado = "PENDIENTE";
+            }
+            else if (estado.Equals("N"))
+            {
+                estado = "NOTA DE CREDITO";
+            }
+            else if (estado.Equals("A"))
+            {
+                estado = "ANULADO";
+            }
+            else
+            {
+                estado = "PRESUPUESTADO";
+            }
+            return estado;
         }
     }
 }

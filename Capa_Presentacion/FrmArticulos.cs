@@ -227,7 +227,7 @@ namespace Capa_Presentacion
         {
             try
             {
-                this.dataLista.DataSource = NegocioArticulo.buscarNombre(this.txtNombre.Text,chkDescripcion.Checked == true ? txtDes.Text:"",chkcategoria.Checked == true ? cbCategoria.Text: "");
+                this.dataLista.DataSource = NegocioArticulo.buscarNombre(this.txtNombre.Text,chkDescripcion.Checked == true ? txtDes.Text:"",chkcategoria.Checked == true ? cbCategoria.Text: "", ChkFiltroBalanza.Checked);
                 pintarProductoSinStock();
             }
 
@@ -379,43 +379,52 @@ namespace Capa_Presentacion
 
 
             txtNombre.Text = txtNombre.TextLength == 12 && IsNumeric (txtNombre.Text)? "0" + txtNombre.Text : txtNombre.Text;
-            if (txtNombre.TextLength >= 13 && IsNumeric(txtNombre.Text) == true)
-                    {
-                        dataLista.DataSource = NegocioArticulo.buscarCodigoBarra(txtNombre.Text);
-                        
-                        txtNombre.Focus();
-                        txtNombre.SelectAll();
-                if (dataLista.RowCount != 0)
-                {
-                    textBox1.Text = decimal.Round(Convert.ToDecimal(this.dataLista.CurrentRow.Cells["Precio"].Value), 2).ToString();
-                }
-                        
-            }
-            else if (IsNumeric(txtNombre.Text) == true)
+            if (txtNombre.Text != "")
             {
-                dataLista.DataSource = NegocioArticulo.buscarIdProducto(txtNombre.Text);
-                txtNombre.Focus();
-                txtNombre.SelectAll();
+                if (txtNombre.TextLength >= 13 && IsNumeric(txtNombre.Text) == true)
+                {
+                    dataLista.DataSource = NegocioArticulo.buscarCodigoBarra(txtNombre.Text);
+
+                    txtNombre.Focus();
+                    txtNombre.SelectAll();
+                    if (dataLista.RowCount != 0)
+                    {
+                        textBox1.Text = decimal.Round(Convert.ToDecimal(this.dataLista.CurrentRow.Cells["Precio"].Value), 2).ToString();
+                    }
+
+                }
+                else if (IsNumeric(txtNombre.Text) == true)
+                {
+                    dataLista.DataSource = NegocioArticulo.buscarIdProducto(txtNombre.Text);
+                    txtNombre.Focus();
+                    txtNombre.SelectAll();
+                    if (dataLista.RowCount != 0)
+                    {
+                        textBox1.Text = decimal.Round(Convert.ToDecimal(this.dataLista.CurrentRow.Cells["Precio"].Value), 2).ToString();
+                    }
+
+                }
+
+                else
+                {
+                    this.BuscarNombre();
+                }
+
                 if (dataLista.RowCount != 0)
                 {
-                    textBox1.Text = decimal.Round(Convert.ToDecimal(this.dataLista.CurrentRow.Cells["Precio"].Value), 2).ToString();
+                    this.dataLista.Columns["precio_compra"].DefaultCellStyle.Format = String.Format("$###,##0.00");
+                    this.dataLista.Columns["precio"].DefaultCellStyle.Format = String.Format("$###,##0.00");
+                    this.dataLista.Columns["stock_actual"].DefaultCellStyle.Format = String.Format("###,##0.00");
+                    //this.dataLista.Columns["flete"].DefaultCellStyle.Format = String.Format("%0.00");
+                    // this.dataLista.Columns["utilidad"].DefaultCellStyle.Format = String.Format("%0.00");
                 }
-               
             }
-
-            else
+            else if (ChkFiltroBalanza.Checked == true)
             {
                 this.BuscarNombre();
             }
 
-            if (dataLista.RowCount != 0)
-            {
-                this.dataLista.Columns["precio_compra"].DefaultCellStyle.Format = String.Format("$###,##0.00");
-                this.dataLista.Columns["precio"].DefaultCellStyle.Format = String.Format("$###,##0.00");
-                this.dataLista.Columns["stock_actual"].DefaultCellStyle.Format = String.Format("###,##0.00");
-                //this.dataLista.Columns["flete"].DefaultCellStyle.Format = String.Format("%0.00");
-               // this.dataLista.Columns["utilidad"].DefaultCellStyle.Format = String.Format("%0.00");
-            }
+                
            
         }
         /*Botones*/
@@ -525,6 +534,7 @@ namespace Capa_Presentacion
                         objarticulo.Utilidadpreciopormayor2 = Convert.ToDecimal(TxtUtilidadXCaja.Text);
                         objarticulo.Utilidadoferta = Convert.ToDecimal(TxtUtilidadOferta.Text);
                         objarticulo.Stock_minimo = Convert.ToDecimal(txtStock_minimo.Text);
+                        objarticulo.Tipobalanza = Convert.ToBoolean(ChkBalanza.Checked);
                         objarticulo.Modo = 1;
                         respuesta = objarticulo.agregar(objarticulo, NegocioConfigEmpresa.confsistema("opcionsistema").ToString());
 
@@ -587,6 +597,7 @@ namespace Capa_Presentacion
                         objarticulo.Utilidadpreciopormayor2 = Convert.ToDecimal(TxtUtilidadXCaja.Text);
                         objarticulo.Utilidadoferta = Convert.ToDecimal(TxtUtilidadOferta.Text);
                         objarticulo.Stock_minimo  = Convert.ToDecimal(txtStock_minimo.Text);
+                        objarticulo.Tipobalanza = Convert.ToBoolean(ChkBalanza.Checked);
                         objarticulo.Modo = 2;
 
                         respuesta = objarticulo.editar(objarticulo,NegocioConfigEmpresa.confsistema("opcionsistema").ToString());
@@ -646,6 +657,10 @@ namespace Capa_Presentacion
             {
                 TxtCodigobarraBulto.Text = "0";
             }
+            if (txtCodigo.Text == "")
+            {
+                txtCodigo.Text = "0";
+            }
             if (UtilityFrm.controlartextbox(xuiCustomGroupbox1))
             {
                 return true;
@@ -690,12 +705,10 @@ namespace Capa_Presentacion
         }
         private void btnEditar_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Seguro que desea Editar?", "Editar"
-                , MessageBoxButtons.YesNo, MessageBoxIcon.Hand) == DialogResult.Yes)
-            {
+           
                 habilitarcontroles(false, true);
                 
-            }
+            
         }
 
         private void habilitarcontroles(bool var1, bool var2, bool habcantinicial = false)
@@ -724,6 +737,7 @@ namespace Capa_Presentacion
             this.btnCancelar.Enabled = var2;
             this.btnGuardar.Enabled = var2;
             this.CBIVA.Enabled = var2;
+            ChkBalanza.Enabled = var2;
 
             this.txtCantInicial.Enabled = habcantinicial;
             habilitarodesabilitartextbox(var2);
@@ -887,6 +901,7 @@ namespace Capa_Presentacion
                 TxtUtilidadOferta.Text = Convert.ToString(this.dataLista.CurrentRow.Cells["utilidadoferta"].Value);
                 TxtPrecio2.Text = Convert.ToString(this.dataLista.CurrentRow.Cells["preciopormayor2"].Value);
                 cbxPesable.Checked = Convert.ToBoolean( this.dataLista.CurrentRow.Cells["pesable"].Value);
+                ChkBalanza.Checked = Convert.ToBoolean(this.dataLista.CurrentRow.Cells["balanza"].Value);
                 txtStock_minimo.Text = Convert.ToString(decimal.Round(Convert.ToDecimal(this.dataLista.CurrentRow.Cells["stock_minimo"].Value), 2));
                 decimal precio = 0;
                 precio = Convert.ToDecimal(this.dataLista.CurrentRow.Cells["precio"].Value);
@@ -1441,7 +1456,7 @@ namespace Capa_Presentacion
             txtPrecio.Text = Convert.ToString(decimal.Round(UtilityFrm.calcularventa(compra, utilidad, flete, precio), 2));
             TxtPcompra.Text = decimal.Round(compra,2).ToString();
             txtUtilidad.Text = decimal.Round(utilidad,2).ToString();
-            Txtflete.Text = decimal.Round(utilidad,2).ToString();
+            Txtflete.Text = decimal.Round(flete,2).ToString();
         }
         private void calcularpreciomayorista1(decimal compra, decimal utilidad, decimal precio)
         {
@@ -1709,6 +1724,11 @@ namespace Capa_Presentacion
         private void txtStock_minimo_KeyPress(object sender, KeyPressEventArgs e)
         {
             UtilityFrm.NumDecTeclado(e, txtStock_minimo);
+        }
+
+        private void txtUtilidad_TextChanged(object sender, EventArgs e)
+        {
+
         }
 
         private void Txtflete_KeyPress(object sender, KeyPressEventArgs e)

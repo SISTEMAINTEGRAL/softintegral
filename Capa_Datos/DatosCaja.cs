@@ -15,6 +15,7 @@ namespace Capa_Datos
         private int codformapago;
        private string FechaD;
         private float totaltarjeta;
+        private string estadocierre;
        public string FechaD1
        {
            get { return FechaD; }
@@ -182,7 +183,9 @@ namespace Capa_Datos
             }
         }
 
-        public DataTable metbuscarfecha( string fechah, string fechad, int nrocaja)
+        public string Estadocierre { get => estadocierre; set => estadocierre = value; }
+
+        public DataTable metbuscarfecha( string fechah, string fechad, int nrocaja, int modo = 7, long idcierre = 0, long idturno = 0, bool porfecha = true)
         {
             string rpta = "";
             SqlConnection cn = new SqlConnection(Conexion.conexion);
@@ -194,17 +197,34 @@ namespace Capa_Datos
 
                 SqlCommand comando = ProcAlmacenado.CrearProc(cn, "SP_CAJA");
 
-                SqlParameter parModo = ProcAlmacenado.asignarParametros("@modo", SqlDbType.Int, 7);
+                SqlParameter parModo = ProcAlmacenado.asignarParametros("@modo", SqlDbType.Int, modo);
                 comando.Parameters.Add(parModo);
 
-                SqlParameter parfecha = ProcAlmacenado.asignarParametros("@FechaD", SqlDbType.DateTime,fechah );
-                comando.Parameters.Add(parfecha);
+                if (porfecha == true)
+                {
+                    SqlParameter parfecha = ProcAlmacenado.asignarParametros("@FechaD", SqlDbType.DateTime, fechah);
+                    comando.Parameters.Add(parfecha);
 
-                SqlParameter parfecha1 = ProcAlmacenado.asignarParametros("@FechaH", SqlDbType.DateTime, fechad);
-                comando.Parameters.Add(parfecha1);
+                    SqlParameter parfecha1 = ProcAlmacenado.asignarParametros("@FechaH", SqlDbType.DateTime, fechad);
+                    comando.Parameters.Add(parfecha1);
+
+                    SqlParameter parporfecha = ProcAlmacenado.asignarParametros("@porfecha", SqlDbType.Bit, porfecha);
+                    comando.Parameters.Add(parporfecha);
+
+
+
+                }
+
+
 
                 SqlParameter parnrocaja = ProcAlmacenado.asignarParametros("@id_caja", SqlDbType.Int, nrocaja);
                 comando.Parameters.Add(parnrocaja);
+
+                SqlParameter paridcierre = ProcAlmacenado.asignarParametros("@cod_cierre", SqlDbType.Int, idcierre);
+                comando.Parameters.Add(paridcierre);
+
+                SqlParameter paridturno = ProcAlmacenado.asignarParametros("@id_turno", SqlDbType.Int, idturno);
+                comando.Parameters.Add(paridturno);
 
                 //creo el objeto adapter del data provider le paso el sqlcommand
                 SqlDataAdapter datosResult = new SqlDataAdapter(comando);
@@ -372,9 +392,7 @@ namespace Capa_Datos
             }
             return respuesta;
         }
-       
-
-        public void Extestadocaja(int modo,string fecha, long turno, bool ingreso = false, int nrocaja = 1)
+        public void Extestadoturno(int modo, string fecha, int nrocaja = 1, long idcierre = 0, long idturno = 0)
         {
             try
             {
@@ -385,24 +403,125 @@ namespace Capa_Datos
 
                 if (modo == 1)
                 {
-                    query = " SELECT TOP 1 cod_mov,Cod_cuenta ,Ingreso ,Egreso ,Fecha,Usuario ,Idusuario ,Turno ,Concepto ,Comprobante ,Estado FROM fondo_mov_caja where (cod_cuenta = 9100001 or cod_cuenta = 9100002) and nrocaja = " + nrocaja + " order by cod_mov desc";
+                                       
+                    query = " SELECT top 1 Cod_cierre ,Fecha_Apertura ,Turno ,Total_ingreso ,Total_egreso ,Id_turno ,Imp_sistema ,Imp_real ,Id_Caja ,Id_Usuario ,Fecha_cierre ,Total_Tarjeta ,Estado FROM fondo_cierre where cod_cierre = " + idcierre + " and id_caja = " + nrocaja + " order by id_turno desc";
+                
+                }
+                if (modo == 2)
+                {
+                    
+                        query = " select ISNULL ( sum (Ingreso),0) as ingreso, ISNULL ( sum (Egreso),0) as egreso from fondo_mov_caja where cod_cierre = " + idcierre +  " and id_turno = " + idturno + " and nrocaja = " + nrocaja + " and Codformapago = 1";
+                   
+                    //not Codcuenta = '9100001' 
+                }
+
+               
+                //idcierre segun la apertura de fecha 
+                if (modo == 4)
+                {
+                    query = " SELECT TOP 1 cod_mov,Cod_cuenta ,Ingreso ,Egreso ,Fecha,Usuario ,Idusuario ,Turno ,Concepto ,Comprobante ,Estado FROM fondo_mov_caja where cod_cuenta = 9100001 or cod_cuenta = 9100002 and nrocaja = " + nrocaja + " order by cod_mov desc";
+                }
+                if (modo == 5)
+                {
+                    query = " select ISNULL ( sum (Ingreso),0) as ingreso, ISNULL ( sum (Egreso),0) as egreso from fondo_mov_caja where Fecha between @fecha +' 00:00:00' and @fecha + ' 23:59:59' and nrocaja = " + nrocaja + "and Codformapago = 2";
+                }
+
+                SqlCommand cmd = new SqlCommand(query, cn);
+                if (modo == 2 || modo == 5)
+                {
+                    cmd.Parameters.AddWithValue("@Fecha", Convert.ToString(fecha));
+                }
+                if (modo == 3)
+                {
+                    cmd.Parameters.AddWithValue("@id_turno", Convert.ToInt32(turno));
+                }
+
+
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                if (modo == 1)
+                {
+                    if (reader.Read())
+                    {
+                        this.estadocierre = Convert.ToString(reader["estado"]);
+                        this.idturno = Convert.ToInt64(reader["id_turno"]);
+                                                
+                    }
+                    else
+                    {
+                        this.estadocierre = "CERRADO";
+                        this.idturno = 1;
+                    }
+                }
+
+                if ((modo == 2) != (modo == 3))
+                {
+                    if (reader.Read())
+                    {
+
+                        this.ingreso = Convert.ToSingle(reader["Ingreso"]);
+                        this.egreso = Convert.ToSingle(reader["Egreso"]);
+
+                    }
+
+                }
+                if (modo == 5)
+                {
+                    if (reader.Read())
+                    {
+                        this.ingreso = Convert.ToSingle(reader["Ingreso"]);
+                    }
+                    else
+                    {
+                        this.ingreso = 0;
+                    }
+                }
+
+                cn.Close();
+
+
+            }
+            catch (Exception e)
+            {
+                
+                
+                    throw;
+                
+            }
+
+
+        }
+
+        public void Extestadocaja(int modo,string fecha, long turno, bool ingreso = false, int nrocaja = 1, long varidcierre = 0)
+        {
+            try
+            {
+                string query;
+                query = "";
+                SqlConnection cn = new SqlConnection(Conexion.conexion);
+                cn.Open();
+
+                if (modo == 1)
+                {
+
+                    query = " SELECT TOP 1 cod_mov,Cod_cuenta ,Ingreso ,Egreso ,Fecha,Usuario ,Idusuario ,Turno ,Concepto ,Comprobante ,Estado, idcierre FROM fondo_mov_caja where (cod_cuenta = 9100001 or cod_cuenta = 9100002) and nrocaja = " + nrocaja + " order by cod_mov desc";
                 }
                 if (modo == 2)
                 {
                     if (ingreso == false)
                     {
-                        query = " select ISNULL ( sum (Ingreso),0) as ingreso, ISNULL ( sum (Egreso),0) as egreso from fondo_mov_caja where Fecha between @fecha +' 00:00:00' and @fecha + ' 23:59:59' and nrocaja = " + nrocaja + "and Codformapago = 1";
+                        query = " select ISNULL ( sum (Ingreso),0) as ingreso, ISNULL ( sum (Egreso),0) as egreso from fondo_mov_caja where Fecha between @fecha +' 00:00:00' and @fecha + ' 23:59:59' and nrocaja = " + nrocaja + " and Codformapago = 1";
                     }
                     else
                     {
-                        query = " select ISNULL ( sum (Ingreso),0) as ingreso, ISNULL ( sum (Egreso),0) as egreso from fondo_mov_caja where Fecha between @fecha +' 00:00:00' and @fecha + ' 23:59:59' and not Cod_cuenta = '9100001' and nrocaja = " + nrocaja;
+                        query = " select ISNULL ( sum (Ingreso),0) as ingreso, ISNULL ( sum (Egreso),0) as egreso from fondo_mov_caja where Fecha between @fecha +' 00:00:00' and @fecha + ' 23:59:59' and not Cod_cuenta = '9100001' and Codformapago = 1 and nrocaja = " + nrocaja;
                     }
                     //not Codcuenta = '9100001' 
                 }
 
                 if (modo == 3)
                 {
-                    query = " select sum (Ingreso) as ingreso, sum (Egreso) as egreso from fondo_mov_caja where idturno = @id_turno and nrocaja = " + nrocaja;
+                    query = " select ISNULL ( sum (Ingreso),0) as ingreso, ISNULL ( sum (Egreso),0) as egreso from fondo_mov_caja where idturno = @id_turno and idcierre = " + varidcierre + " and nrocaja = " + nrocaja + " and Codformapago = 1";
 
                 }
                 //idcierre segun la apertura de fecha 
@@ -422,7 +541,7 @@ namespace Capa_Datos
                 }
                 if (modo == 3)
                 {
-                    cmd.Parameters.AddWithValue("@id_turno", Convert.ToInt32(idturno));
+                    cmd.Parameters.AddWithValue("@id_turno", Convert.ToInt32(turno));
                 }
 
 
@@ -483,15 +602,24 @@ namespace Capa_Datos
             
         }
 
-        public void Extcierrecaja(string opcion, int nrocaja)
+        public bool Extcierrecaja(string opcion, int nrocaja, long idcierre = 0)
         {
 
             string query;
             query = "";
+            bool encontrado = true;
             SqlConnection cn = new SqlConnection(Conexion.conexion);
             cn.Open();
 
-             query = "SELECT TOP 1 " + opcion + " FROM fondo_cierre where id_caja = " + nrocaja + " order by Cod_cierre desc";
+            if (opcion == "cod_cierre")
+            {
+                query = "SELECT TOP 1 " + opcion + " FROM fondo_cierre_caja where id_caja = " + nrocaja + " order by Cod_cierre desc";
+            }
+            else
+            {
+                query = "SELECT TOP 1 " + opcion + " FROM fondo_cierre where cod_cierre = " + idcierre + " and id_caja = " + nrocaja + " order by id_turno desc";
+            }
+            
 
             //cmd.Parameters.AddWithValue("@id", Convert.ToString  (codArticulo));
 
@@ -514,6 +642,7 @@ namespace Capa_Datos
             }
             else
             {
+                encontrado = false;
                 if (opcion == "cod_cierre")
                 {
                     this.idcierre = 1;
@@ -528,7 +657,7 @@ namespace Capa_Datos
                 
 
             cn.Close();
-
+            return encontrado;
 
         }
         public string eliminarcaja(DatosCaja  caja)
@@ -611,18 +740,11 @@ namespace Capa_Datos
                 SqlParameter paridcaja = ProcAlmacenado.asignarParametros("@id_caja", SqlDbType.Int, caja.idcaja);
                 comando.Parameters.Add(paridcaja);
 
+                SqlParameter parturno = ProcAlmacenado.asignarParametros("@turno", SqlDbType.VarChar, caja.turno);
+                comando.Parameters.Add(parturno);
 
 
-                if (aperturacierre == "APERTURA")
-                {
-
-                    SqlParameter parturno = ProcAlmacenado.asignarParametros("@turno", SqlDbType.VarChar, caja.turno);
-                    comando.Parameters.Add(parturno);
-
-                    
-
-                }
-                else
+                 if (aperturacierre == "CIERRE" || aperturacierre == "CIERRE TURNO")
                 {
                     SqlParameter parIngreso = ProcAlmacenado.asignarParametros("@ingreso", SqlDbType.Float, caja.ingreso);
                     comando.Parameters.Add(parIngreso);
@@ -641,7 +763,7 @@ namespace Capa_Datos
                 }
 
 
-                if (comando.ExecuteNonQuery() == 1)
+                if (comando.ExecuteNonQuery() >= 1)
                 {
                     respuesta = "ok";
 
@@ -660,6 +782,137 @@ namespace Capa_Datos
             }
             return respuesta;
         }
+        public DataTable metbuscarfechacierre(string fechad, string fechah, int nrocaja, string tipocierre, int idturno, int idcierre )
+        {
+            string rpta = "";
+            SqlConnection cn = new SqlConnection(Conexion.conexion);
+            //le asigno en el constructor el nombre de la tabla
+            DataTable dtResult = new DataTable("fondo_cierre_caja");
+            int modo = 10;
+            if (tipocierre == "CAJA")
+            {
+                modo = 10;
+            }
+            else if (tipocierre == "TURNO")
+            {
+                modo = 11;
+            }
+            try
+            {
+                cn.Open();
+
+                SqlCommand comando = ProcAlmacenado.CrearProc(cn, "SP_CAJA");
+
+
+                SqlParameter parModo = ProcAlmacenado.asignarParametros("@modo", SqlDbType.Int, modo);
+                comando.Parameters.Add(parModo);
+
+                if (fechad != "")
+                {
+                    SqlParameter parfecha = ProcAlmacenado.asignarParametros("@FechaD", SqlDbType.DateTime, fechad);
+                    comando.Parameters.Add(parfecha);
+
+                    SqlParameter parfecha1 = ProcAlmacenado.asignarParametros("@FechaH", SqlDbType.DateTime, fechah);
+                    comando.Parameters.Add(parfecha1);
+                }
+                
+
+                SqlParameter parnrocaja = ProcAlmacenado.asignarParametros("@id_caja", SqlDbType.Int, nrocaja);
+                comando.Parameters.Add(parnrocaja);
+
+                SqlParameter paridturno = ProcAlmacenado.asignarParametros("@id_turno", SqlDbType.Int, idturno);
+                comando.Parameters.Add(paridturno);
+
+                SqlParameter parcierre = ProcAlmacenado.asignarParametros("@cod_cierre", SqlDbType.Int, idcierre);
+                comando.Parameters.Add(parcierre);
+
+
+
+
+                //creo el objeto adapter del data provider le paso el sqlcommand
+                SqlDataAdapter datosResult = new SqlDataAdapter(comando);
+                //los resultados los actualizo en el datatable dtResult
+                datosResult.Fill(dtResult);
+
+                //foreach (DataRow lista in dtResult.Rows)
+                //{
+                //    string fechahora = "";
+
+                //    fechahora = lista["Fecha"].ToString(); ;
+
+
+                //}
+
+
+
+
+            }
+            catch (Exception ex)
+            {
+                dtResult = null;
+                rpta = ex.Message;
+                //throw ex;
+            }
+            return dtResult;
+
+
+        }
+
+        //public DataTable metbuscarfechacierre(string fechah, string fechad, int nrocaja)
+        //{
+        //    string rpta = "";
+        //    SqlConnection cn = new SqlConnection(Conexion.conexion);
+        //    //le asigno en el constructor el nombre de la tabla
+        //    DataTable dtResult = new DataTable("fondo_mov_caja");
+        //    try
+        //    {
+        //        cn.Open();
+
+        //        SqlCommand comando = ProcAlmacenado.CrearProc(cn, "SP_CAJA");
+
+        //        SqlParameter parModo = ProcAlmacenado.asignarParametros("@modo", SqlDbType.Int, 11);
+        //        comando.Parameters.Add(parModo);
+
+        //        SqlParameter parfecha = ProcAlmacenado.asignarParametros("@FechaD", SqlDbType.DateTime, fechad);
+        //        comando.Parameters.Add(parfecha);
+
+        //        SqlParameter parfecha1 = ProcAlmacenado.asignarParametros("@FechaH", SqlDbType.DateTime, fechah);
+        //        comando.Parameters.Add(parfecha1);
+
+        //        SqlParameter parnrocaja = ProcAlmacenado.asignarParametros("@id_caja", SqlDbType.Int, nrocaja);
+        //        comando.Parameters.Add(parnrocaja);
+
+
+
+
+        //        //creo el objeto adapter del data provider le paso el sqlcommand
+        //        SqlDataAdapter datosResult = new SqlDataAdapter(comando);
+        //        //los resultados los actualizo en el datatable dtResult
+        //        datosResult.Fill(dtResult);
+
+        //        foreach (DataRow lista in dtResult.Rows)
+        //        {
+        //            string fechahora = "";
+
+        //            fechahora = lista["Fecha"].ToString(); ;
+
+
+        //        }
+
+
+
+
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        dtResult = null;
+        //        rpta = ex.Message;
+        //        //throw ex;
+        //    }
+        //    return dtResult;
+
+
+        //}
 
     }
 }

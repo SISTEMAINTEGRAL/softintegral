@@ -22,11 +22,13 @@ namespace Capa_negocio
         
 
 
-        public static string eliminar(int idCategoria)
+        public static string eliminar(int idCategoria, int idsubcategoria, string opcioncategoria)
         {
             DatosCategoria dcategoria = new DatosCategoria();
             dcategoria.IdCategoria = idCategoria;
-            return dcategoria.eliminar(dcategoria);
+            dcategoria.Idsubcategoria = idsubcategoria;
+
+            return dcategoria.eliminar(dcategoria,opcioncategoria);
 }
         public static string editar(int idCategoria,string nombre, string descripcion,int idsubcategoria = 0)
         {

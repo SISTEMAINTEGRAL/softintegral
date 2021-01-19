@@ -178,22 +178,27 @@ namespace Capa_negocio
             }
             else
             {
-               rpta =  objVenta.cargarventamultipago(datamultipago, dtDetalles, objVenta);
+               rpta =  objVenta.cargarventamultipago(datamultipago, dtDetalles, objVenta,distock);
             }
            this.idventa = objVenta.Idventa;
            
            return rpta;
 
        }
-        public static int anular(int idventa, bool stock, char estado, int codformapago)
+        public static int anular(int idventa, bool stock, char estado, int codformapago, bool concaja)
         {
             int varidventa = 0;
            try
            {
+
                 string mensaje = "";
                 Dventa objventa = new Dventa(idventa, estado, codformapago);
                 objventa.Fecha = DateTime.Now;
+                objventa.Concaja = concaja;
+                objventa.Nrocaja = NegocioConfigEmpresa.nrocaja;
                 varidventa = objventa.anular(objventa, stock);
+
+
            }
            catch (Exception)
            {
@@ -236,6 +241,17 @@ namespace Capa_negocio
 
 
         }
+        public static DataTable BuscarIdVenta(int idventa)
+        {
+            Dventa Obj = new Dventa();
+            
+            Obj.Idventa = idventa;
+            Obj.Porventa = true;
+
+
+            return Obj.BuscarIdVenta( Obj);
+
+        }
 
         public static DataTable BuscarFechas(string textobuscar, string textobuscar2, char estado, bool concaja, 
             string tipocomprobante, int idventa, string puntoventa, int codformapago, bool porventa, bool porformadepago,
@@ -258,6 +274,13 @@ namespace Capa_negocio
 
 
             return Obj.BuscarFechas(textobuscar, textobuscar2,Obj);
+
+        }
+        public static DataTable BuscarIdMultipago(int varidventamultipago)
+        {
+            Dventa Obj = new Dventa();
+            Obj.Idventa = varidventamultipago;
+            return Obj.BuscarIdMultipago(Obj);
 
         }
 
@@ -322,6 +345,12 @@ namespace Capa_negocio
             Dventa obj = new Dventa(idventa,NegocioConfigEmpresa.idequipo);
             return obj.reporteventa(obj);
         }
+        public static DataTable Reporteventadetallecategoria(string texto1, string texto2)
+        {
+            Dventa obj = new Dventa();
+            return obj.reporteventadetalleporcategoria(obj,texto1,texto2);
+        }
+
         public static DataTable MostrarRanking5Productos(){
 
             return new Dventa().mostrarRanking5Productos();

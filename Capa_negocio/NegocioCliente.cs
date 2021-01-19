@@ -10,9 +10,9 @@ namespace Capa_negocio
 {
    public class NegocioCliente
     {
-        public static string insertar(string razonSocial, string direccion, long cuit, long tel, long numDocumento, string email, string responsableanteiva, int idprovincia, int idlocalidad, string codigointerno)
+        public static string insertar(string razonSocial, string direccion, long cuit, long tel, long numDocumento, string email, string responsableanteiva, int idprovincia, int idlocalidad, string codigointerno, bool habilitarctacte, decimal limitectacte)
         {
-            DatosCliente cliente = new DatosCliente(razonSocial, direccion, cuit, tel, numDocumento, email, responsableanteiva, idprovincia, idlocalidad, codigointerno);
+            DatosCliente cliente = new DatosCliente(razonSocial, direccion, cuit, tel, numDocumento, email, responsableanteiva, idprovincia, idlocalidad, codigointerno,limitectacte,habilitarctacte);
             
             return cliente.agregar(cliente);
         }
@@ -22,7 +22,7 @@ namespace Capa_negocio
             
             return cliente.eliminar(cliente);
 }
-        public static string editar(int idCliente, string razonSocial, string direccion, long cuit, long tel, long numDocumento, string email, string responsableiva, int idprovincia, int idlocalidad, string codinterno)
+        public static string editar(int idCliente, string razonSocial, string direccion, long cuit, long tel, long numDocumento, string email, string responsableiva, int idprovincia, int idlocalidad, string codinterno,bool habilitarctacte,decimal limitectacte)
         {
             DatosCliente cliente = new DatosCliente();
             cliente.Idcliente = idCliente;
@@ -36,6 +36,8 @@ namespace Capa_negocio
             cliente.Idprovincia = idprovincia;
             cliente.Idlocalidad = idlocalidad;
             cliente.Codinterno = codinterno;
+            cliente.Habilitarlimitectacte = habilitarctacte;
+            cliente.Limitectacte = limitectacte;
             return cliente.editar(cliente);
         }
         public static DataTable buscar(string texto, int modo = 4)

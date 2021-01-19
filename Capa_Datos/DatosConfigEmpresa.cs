@@ -25,7 +25,14 @@ namespace Capa_Datos
         private string formatoimpremito;
         private string certificado;
         private int nrocaja;
-
+        private int idareaimpresion;
+        private string impresora;
+        private string formatoimpresion;
+        private string provincia;
+        private string localidad;
+        private string telefono;
+        private string domicilio;
+        
         private string[] ReglasUsuario { get; set; }
         //Equipo
 
@@ -281,6 +288,14 @@ namespace Capa_Datos
             }
         }
 
+        public int Idareaimpresion { get => idareaimpresion; set => idareaimpresion = value; }
+        public string Impresora { get => impresora; set => impresora = value; }
+        public string Formatoimpresion { get => formatoimpresion; set => formatoimpresion = value; }
+        public string Provincia { get => provincia; set => provincia = value; }
+        public string Localidad { get => localidad; set => localidad = value; }
+        public string Telefono { get => telefono; set => telefono = value; }
+        public string Domicilio { get => domicilio; set => domicilio = value; }
+
         public DataTable mostrar()
         {
 
@@ -479,14 +494,28 @@ namespace Capa_Datos
                 SqlParameter parRazonSocial = ProcAlmacenado.asignarParametros("@razon_social", SqlDbType.VarChar, configEmpresa.RazonSocial);
                 comando.Parameters.Add(parRazonSocial);
 
-                SqlParameter parCuit = ProcAlmacenado.asignarParametros("@cuit", SqlDbType.Int, configEmpresa.Cuit);
+                SqlParameter parCuit = ProcAlmacenado.asignarParametros("@cuit", SqlDbType.BigInt, configEmpresa.Cuit);
                 comando.Parameters.Add(parCuit);
 
                 SqlParameter parCondicion = ProcAlmacenado.asignarParametros("@condicion_frente_iva", SqlDbType.VarChar, configEmpresa.CondicionFrenteIVA);
                 comando.Parameters.Add(parCondicion);
 
+                SqlParameter parProvincia = ProcAlmacenado.asignarParametros("@provincia", SqlDbType.VarChar, configEmpresa.provincia);
+                comando.Parameters.Add(parProvincia);
+
+                SqlParameter parLocalidad = ProcAlmacenado.asignarParametros("@localidad", SqlDbType.VarChar, configEmpresa.localidad);
+                comando.Parameters.Add(parLocalidad);
+
+                SqlParameter parTelefono = ProcAlmacenado.asignarParametros("@telefono", SqlDbType.VarChar, configEmpresa.telefono);
+                comando.Parameters.Add(parTelefono);
+
+                SqlParameter parDomicilio = ProcAlmacenado.asignarParametros("@domicilio", SqlDbType.VarChar, configEmpresa.domicilio);
+                comando.Parameters.Add(parDomicilio);
+                
                 SqlParameter parLogo = ProcAlmacenado.asignarParametros("@logo", SqlDbType.Image, configEmpresa.Logo);
                 comando.Parameters.Add(parLogo);
+
+
                 //creo el objeto adapter del data provider le paso el sqlcommand
                 SqlDataAdapter datosResult = new SqlDataAdapter(comando);
                 //los resultados los actualizo en el datatable dtResult
@@ -723,6 +752,161 @@ namespace Capa_Datos
             return valor;
 
         }
+
+        public string Actualizarequipofiscal(DatosConfigEmpresa configEmpresa)
+        {
+            string respuesta = "";
+            //Modo 1 para DB
+            SqlConnection cn = new SqlConnection(Conexion.conexion);
+            //le asigno en el constructor el nombre de la tabla
+            DataTable dtResult = new DataTable("config_empresa");
+            try
+            {
+                cn.Open();
+
+                SqlCommand comando = ProcAlmacenado.CrearProc(cn, "SP_CONFIG_EMPRESA");
+                //Modo 2 modificar
+                SqlParameter parCodempresa = ProcAlmacenado.asignarParametros("@cod_empresa", SqlDbType.Int);
+                comando.Parameters.Add(parCodempresa);
+
+                SqlParameter parModo = ProcAlmacenado.asignarParametros("@modo", SqlDbType.Int, 8);
+                comando.Parameters.Add(parModo);
+
+                SqlParameter parPuertofiscal = ProcAlmacenado.asignarParametros("@puertofiscal", SqlDbType.Int,configEmpresa.puertofiscal);
+                comando.Parameters.Add(parPuertofiscal);
+
+                SqlParameter parPV = ProcAlmacenado.asignarParametros("@Puntoventa", SqlDbType.NVarChar, configEmpresa.puntoventa);
+                comando.Parameters.Add(parPV);
+
+                SqlParameter parMarcafiscal = ProcAlmacenado.asignarParametros("@marcafiscal", SqlDbType.NVarChar, configEmpresa.marcafiscal);
+                comando.Parameters.Add(parMarcafiscal);
+                                
+                //creo el objeto adapter del data provider le paso el sqlcommand
+                SqlDataAdapter datosResult = new SqlDataAdapter(comando);
+                //los resultados los actualizo en el datatable dtResult
+                datosResult.Fill(dtResult);
+
+
+                if (comando.ExecuteNonQuery() == 1)
+                {
+                    respuesta = "ok";
+                }
+                else
+                {
+
+                    respuesta = "error";
+                }
+                cn.Close();
+
+            }
+            catch (Exception ex)
+            {
+                dtResult = null;
+                throw ex;
+            }
+            return respuesta;
+        }
+
+        public SqlDataReader MostrarFormatoimpresora( DatosConfigEmpresa datosConfigEmpresa)
+        {
+            bool login = true;
+            SqlDataReader dr;
+
+            try
+            {
+                SqlConnection cn = new SqlConnection(Conexion.conexion);
+                cn.Open();
+                SqlCommand comando = ProcAlmacenado.CrearProc(cn, "SP_CONFIG_EMPRESA");
+
+                SqlParameter parModo = ProcAlmacenado.asignarParametros("@MODO", SqlDbType.Int, 9);
+                comando.Parameters.Add(parModo);
+
+                SqlParameter parCodempresa = ProcAlmacenado.asignarParametros("@cod_empresa", SqlDbType.Int);
+                comando.Parameters.Add(parCodempresa);
+
+                SqlParameter parIdequipo = ProcAlmacenado.asignarParametros("@idequipo", SqlDbType.Int, datosConfigEmpresa.idequipo);
+                comando.Parameters.Add(parIdequipo);
+
+                SqlParameter parIdareaimpresion = ProcAlmacenado.asignarParametros("@idareaimpresion", SqlDbType.Int, datosConfigEmpresa.idareaimpresion);
+                comando.Parameters.Add(parIdareaimpresion);
+
+
+                 dr = comando.ExecuteReader();
+
+               
+                
+            }
+            catch (Exception ex)
+            {
+
+                throw;
+
+            }
+
+
+
+            return dr;
+
+
+        }
+
+        public string ActualizarFormatoImpresion(DatosConfigEmpresa configEmpresa)
+        {
+            string respuesta = "";
+            //Modo 1 para DB
+            SqlConnection cn = new SqlConnection(Conexion.conexion);
+            //le asigno en el constructor el nombre de la tabla
+            DataTable dtResult = new DataTable("config_empresa");
+            try
+            {
+                cn.Open();
+
+                SqlCommand comando = ProcAlmacenado.CrearProc(cn, "SP_CONFIG_EMPRESA");
+                //Modo 2 modificar
+                SqlParameter parModo = ProcAlmacenado.asignarParametros("@modo", SqlDbType.Int, 10);
+                comando.Parameters.Add(parModo);
+
+                SqlParameter parIdequipo = ProcAlmacenado.asignarParametros("@idequipo", SqlDbType.Int, configEmpresa.idequipo);
+                comando.Parameters.Add(parIdequipo);
+
+                SqlParameter parImpresora = ProcAlmacenado.asignarParametros("@impresora", SqlDbType.NVarChar, configEmpresa.impresora);
+                comando.Parameters.Add(parImpresora);
+
+                SqlParameter parFormatoimpresion = ProcAlmacenado.asignarParametros("@formatoimpresion", SqlDbType.NVarChar, configEmpresa.formatoimpresion);
+                comando.Parameters.Add(parFormatoimpresion);
+
+                SqlParameter parIdareaimpresion = ProcAlmacenado.asignarParametros("@idareaimpresion", SqlDbType.Int, configEmpresa.idareaimpresion);
+                comando.Parameters.Add(parIdareaimpresion);
+
+                SqlParameter parCodempresa = ProcAlmacenado.asignarParametros("@cod_empresa", SqlDbType.Int);
+                comando.Parameters.Add(parCodempresa);
+
+                //creo el objeto adapter del data provider le paso el sqlcommand
+                SqlDataAdapter datosResult = new SqlDataAdapter(comando);
+                //los resultados los actualizo en el datatable dtResult
+                datosResult.Fill(dtResult);
+
+
+                if (comando.ExecuteNonQuery() >= 1)
+                {
+                    respuesta = "ok";
+                }
+                else
+                {
+
+                    respuesta = "error";
+                }
+                cn.Close();
+
+            }
+            catch (Exception ex)
+            {
+                dtResult = null;
+                throw ex;
+            }
+            return respuesta;
+        }
+
 
 
 

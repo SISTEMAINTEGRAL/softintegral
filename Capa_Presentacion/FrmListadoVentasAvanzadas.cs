@@ -13,6 +13,9 @@ using System.Windows.Forms.DataVisualization.Charting;
 using Microsoft.Reporting.WinForms;
 using Capa_Presentacion.Formreportes;
 using Telerik.Reporting.Processing;
+using Telerik.Reporting;
+using Capa_Presentacion.Reportes;
+
 
 
 namespace Capa_Presentacion
@@ -42,6 +45,7 @@ namespace Capa_Presentacion
             Chkcaja.Enabled = checkradiobuton();
             ChkFactura.Enabled = checkradiobuton();
             this.reportViewer1.RefreshReport();
+            UtilityFrm.completarcombobox(CbUsuario, "idusuario", "usuario", NegocioUsuario.mostrarusuario(""));
             
         }
 
@@ -468,7 +472,7 @@ namespace Capa_Presentacion
                     Convert.ToString(Decimal.Round(Convert.ToDecimal(this.dataLista.CurrentRow.Cells["total"].Value), 2)),
                     Convert.ToString(this.dataLista.CurrentRow.Cells["idcliente"].Value), 
                     Convert.ToString(this.dataLista.CurrentRow.Cells["cuit"].Value),
-                    Convert.ToString(this.dataLista.CurrentRow.Cells["letra"].Value));
+                    Convert.ToString(this.dataLista.CurrentRow.Cells["letra"].Value),"0","0");
                     venta.ShowDialog();
                     this.buscarPorFecha();
                     this.actualizarTotal();
@@ -497,7 +501,7 @@ namespace Capa_Presentacion
                          Convert.ToString(this.dataLista.CurrentRow.Cells["tipo_comprobante"].Value),
                         Convert.ToString(this.dataLista.CurrentRow.Cells["estado"].Value),
                         Convert.ToString(Decimal.Round(Convert.ToDecimal(this.dataLista.CurrentRow.Cells["total"].Value), 2))
-                        , Convert.ToString(this.dataLista.CurrentRow.Cells["idcliente"].Value), Convert.ToString(this.dataLista.CurrentRow.Cells["cuit"].Value), Convert.ToString(this.dataLista.CurrentRow.Cells["letra"].Value));
+                        , Convert.ToString(this.dataLista.CurrentRow.Cells["idcliente"].Value), Convert.ToString(this.dataLista.CurrentRow.Cells["cuit"].Value), Convert.ToString(this.dataLista.CurrentRow.Cells["letra"].Value),"0","0");
                     venta.ShowDialog();
                    
                 }
@@ -521,6 +525,7 @@ namespace Capa_Presentacion
                 
                 reportViewer1.Visible = false;
             }
+            ReportTelerik.Visible = false;
         }
 
         private void btnVisualizarGrafico_Click(object sender, EventArgs e)
@@ -540,6 +545,7 @@ namespace Capa_Presentacion
                 mostrarRanking5Producto();
                
             }
+            ReportTelerik.Visible = false;
         }
 
         private void btnVisualizadorTorta_Click(object sender, EventArgs e)
@@ -558,6 +564,7 @@ namespace Capa_Presentacion
             {
                 reportViewer1.Visible = false;
             }
+            ReportTelerik.Visible = false;
         }
 
         private void btnVisualizadorArea_Click(object sender, EventArgs e)
@@ -578,6 +585,7 @@ namespace Capa_Presentacion
                 mostrarRanking5Producto();
 
             }
+            ReportTelerik.Visible = false;
         }
         public void mostrarRanking5Producto(){
             try
@@ -819,17 +827,18 @@ namespace Capa_Presentacion
 
         private void button1_Click(object sender, EventArgs e)
         {
+
+            Microsoft.Reporting.WinForms.ReportParameter[] parametros = new Microsoft.Reporting.WinForms.ReportParameter[2];
             
-            ReportParameter[] parametros = new ReportParameter[2];
             
-            
-            parametros[0] = new ReportParameter("fechaini", dtpFechaIni.Text);
-            parametros[1] = new ReportParameter("fechafin", dtpFechaFin.Text);
+            parametros[0] = new Microsoft.Reporting.WinForms.ReportParameter("fechaini", dtpFechaIni.Text);
+            parametros[1] = new Microsoft.Reporting.WinForms.ReportParameter("fechafin", dtpFechaFin.Text);
             REPORTE_VENTAPRODUCTOTableAdapter.Fill(DVentaproducto.REPORTE_VENTAPRODUCTO, Convert.ToDateTime(dtpFechaIni.Text + " 00:00:00"), Convert.ToDateTime(dtpFechaFin.Text + " 23:59:59"));
             
             reportViewer1.LocalReport.SetParameters(parametros);
             this.reportViewer1.RefreshReport();
             reportViewer1.Visible = true;
+            ReportTelerik.Visible = false;
             
         }
 
@@ -847,43 +856,43 @@ namespace Capa_Presentacion
 
         private void MenuAnular_Click(object sender, EventArgs e)
         {
-            NegocioUsuario objusuario = new NegocioUsuario();
-            string mensaje = "ok";
-            Negociocaja objcaja = new Negociocaja();
-            DataGridViewRow row = dataLista.CurrentRow;
-            try
-            {
-                if (NegocioConfigEmpresa.usuariosa == true || objusuario.TieneRegla("47") == true)
-                {
-                    NegocioVenta.anular(Convert.ToInt32(row.Cells["Codigo"].Value), Convert.ToBoolean(row.Cells["stock"].Value), 'A', Convert.ToInt32 (row.Cells["formadepago"].Value));
+            //NegocioUsuario objusuario = new NegocioUsuario();
+            //string mensaje = "ok";
+            //Negociocaja objcaja = new Negociocaja();
+            //DataGridViewRow row = dataLista.CurrentRow;
+            //try
+            //{
+            //    if (NegocioConfigEmpresa.usuariosa == true || objusuario.TieneRegla("47") == true)
+            //    {
+            //        NegocioVenta.anular(Convert.ToInt32(row.Cells["Codigo"].Value), Convert.ToBoolean(row.Cells["stock"].Value), 'A', Convert.ToInt32 (row.Cells["formadepago"].Value));
 
-                    if (Convert.ToBoolean(row.Cells["caja"].Value))
-                    {
-                        if (objcaja.chequeocaja("", ref mensaje, NegocioConfigEmpresa.nrocaja))
-                        {
-                            mensaje = Negociocaja.insertarmovcaja(5230000, 0, Convert.ToSingle(row.Cells["Total"].Value), DateTime.Today.ToString(), NegocioConfigEmpresa.usuarioconectado, NegocioConfigEmpresa.idusuario, NegocioConfigEmpresa.turno, "ANULACION", Convert.ToInt32(row.Cells["Codigo"].Value), true, NegocioConfigEmpresa.nrocaja, Convert.ToInt32(row.Cells["Formadepago"].Value));
-                            if (mensaje != "ok")
-                            {
-                                UtilityFrm.mensajeError("Error al querer guardar en caja");
-                            }
-                        }
-                    }
+            //        if (Convert.ToBoolean(row.Cells["caja"].Value))
+            //        {
+            //            if (objcaja.chequeocaja("", ref mensaje, NegocioConfigEmpresa.nrocaja))
+            //            {
+            //                mensaje = Negociocaja.insertarmovcaja(5230000, 0, Convert.ToSingle(row.Cells["Total"].Value), DateTime.Today.ToString(), NegocioConfigEmpresa.usuarioconectado, NegocioConfigEmpresa.idusuario, NegocioConfigEmpresa.turno, "ANULACION", Convert.ToInt32(row.Cells["Codigo"].Value), true, NegocioConfigEmpresa.nrocaja, Convert.ToInt32(row.Cells["Formadepago"].Value));
+            //                if (mensaje != "ok")
+            //                {
+            //                    UtilityFrm.mensajeError("Error al querer guardar en caja");
+            //                }
+            //            }
+            //        }
 
-                    UtilityFrm.notificacionpopup("ANULACION", "LA VENTA SE ANULO CORRECTAMENTE, SE RESTAURO EL STOCK");
-                }
-                else
-                {
-                    UtilityFrm.mensajeError("No tiene los privilegios para poder anular una venta");
-                }
+            //        UtilityFrm.notificacionpopup("ANULACION", "LA VENTA SE ANULO CORRECTAMENTE, SE RESTAURO EL STOCK");
+            //    }
+            //    else
+            //    {
+            //        UtilityFrm.mensajeError("No tiene los privilegios para poder anular una venta");
+            //    }
                 
                 
 
-            }
-            catch (Exception ex)
-            {
+            //}
+            //catch (Exception ex)
+            //{
 
-                UtilityFrm.mensajeError(ex.ToString());
-            }
+            //    UtilityFrm.mensajeError(ex.ToString());
+            //}
              
             
             
@@ -892,7 +901,7 @@ namespace Capa_Presentacion
 
            
 
-            buscarPorFecha();
+            //buscarPorFecha();
         }
 
         private void reportViewer1_Load(object sender, EventArgs e)
@@ -1130,6 +1139,18 @@ namespace Capa_Presentacion
             //lo que se muestra
             this.CbUsuario.DisplayMember = "usuario";
 
+        }
+
+        private void BtnReporteVentaCategoria_Click(object sender, EventArgs e)
+        {
+            REPORT_LISTAVENTACATEGORIA miticket = new REPORT_LISTAVENTACATEGORIA();
+            DataTable midatatable = new DataTable();
+            midatatable = NegocioVenta.Reporteventadetallecategoria(dtpFechaIni.Value.ToString("dd/MM/yyyy") + " 00:00:00", dtpFechaFin.Value.ToString("dd/MM/yyyy") + " 23:59:59");
+            miticket.DataSource = midatatable;
+            miticket.table1.DataSource = midatatable;
+            ReportTelerik.Report = miticket;
+            ReportTelerik.Visible = true;
+            ReportTelerik.RefreshReport();
         }
     }
 }

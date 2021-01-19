@@ -7,6 +7,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Data.SQLite;
 using System.ComponentModel.Design;
+using MySql.Data.MySqlClient;
 
 namespace Capa_Datos
 {
@@ -33,6 +34,8 @@ namespace Capa_Datos
         private string tipo;
         private decimal iva;
         private int modo;
+        private bool tipobalanza;
+        private bool preciomanual;
 
         private decimal preciopormayor;
         private decimal cantidadpormayor;
@@ -51,6 +54,8 @@ namespace Capa_Datos
         private decimal stock_minimo;
         private string codigointerno;
         private string opcionsistema;
+        private bool estado;
+        private bool pesableflag;
 
         private DateTime fechaediciondesde;
         private DateTime fechaedicionhasta;
@@ -431,6 +436,10 @@ namespace Capa_Datos
         }
 
         public string Codigointerno { get => codigointerno; set => codigointerno = value; }
+        public bool Tipobalanza { get => tipobalanza; set => tipobalanza = value; }
+        public bool Estado { get => estado; set => estado = value; }
+        public bool Preciomanual { get => preciomanual; set => preciomanual = value; }
+        public bool Pesableflag { get => pesableflag; set => pesableflag = value; }
 
 
 
@@ -559,6 +568,7 @@ namespace Capa_Datos
             comando.Parameters.AddWithValue("@preciopormayor2", varobjarticulo.preciopormayor2);
             comando.Parameters.AddWithValue("@stock_minimo", varobjarticulo.stock_minimo);
             comando.Parameters.AddWithValue("@codigointerno", varobjarticulo.codigointerno);
+            comando.Parameters.AddWithValue("@tipobalanza", varobjarticulo.tipobalanza);
             if (varobjarticulo.idArticulo == 1198)
             {
                 int CONT = 0;
@@ -739,6 +749,7 @@ namespace Capa_Datos
                 
 
                  comando = ProcAlmacenado.CrearProc(cn, "SP_ARTICULO");
+                 comando.Parameters.AddWithValue("@tipobalanza", articulo.tipobalanza);
                 //MODO 4 buscartexto
 
                 //buscartexto=0 busca por nombre
@@ -798,7 +809,7 @@ namespace Capa_Datos
             }
             return dtResult;
         }
-        public DataTable mostrar(bool mostrartodo = false, bool solopesable = false)
+        public DataTable mostrar(bool mostrartodo = false, bool solobalanza = false)
         {
 
             //Modo 5 para DB
@@ -817,7 +828,7 @@ namespace Capa_Datos
                 SqlParameter parIdArticulo = ProcAlmacenado.asignarParametros("@idarticulo", SqlDbType.Int);
                 comando.Parameters.Add(parIdArticulo);
 
-                SqlParameter parsolopesable = ProcAlmacenado.asignarParametros("@solopesable", SqlDbType.Bit,solopesable);
+                SqlParameter parsolopesable = ProcAlmacenado.asignarParametros("@tipobalanza", SqlDbType.Bit, solobalanza);
                 comando.Parameters.Add(parsolopesable);
 
 
@@ -975,7 +986,7 @@ namespace Capa_Datos
         {
          
             int idArticulo=0;
-            string queryObtenerIdArticulo = "select  IDENT_CURRENT('articulo')+1 as [idArticulo]";
+            string queryObtenerIdArticulo = "select top 1  idarticulo  from articulo order by idarticulo desc";
                 //(obtiene el ultimo valor del idarticulo)
 
             SqlConnection con = new SqlConnection(Conexion.conexion);
@@ -1225,11 +1236,7 @@ namespace Capa_Datos
             //abro conexion
             SqlTransaction transaccion = cn.BeginTransaction();
             try
-            {
-
-                
-
-                
+            {             
                
 
                 respuesta = "ok";
@@ -1242,68 +1249,19 @@ namespace Capa_Datos
                         comando.Parameters.AddWithValue("@modo", 9);
                         agregarparametros(articulo, opcionsistema);
 
-                    //    SqlParameter parIdArticulo = ProcAlmacenado.asignarParametros("@idarticulo", SqlDbType.Int, articulo.IdArticulo);
-                    //    //le paso al sqlcommand los parametros asignados
-                    //    comando.Parameters.Add(parIdArticulo);
-
-                    //    SqlParameter parPrecio = ProcAlmacenado.asignarParametros("@precio", SqlDbType.Money, articulo.Precio);
-                    //    comando.Parameters.Add(parPrecio);
+                   
 
 
-                    //    SqlParameter parUtilidad = ProcAlmacenado.asignarParametros("@utilidad", SqlDbType.Decimal, articulo.Utilidad);
-                    //    comando.Parameters.Add(parUtilidad);
-
-                    //    SqlParameter parFlete = ProcAlmacenado.asignarParametros("@flete", SqlDbType.Decimal, articulo.Flete);
-                    //    comando.Parameters.Add(parFlete);
-                       
-                    //    SqlParameter parCosto = ProcAlmacenado.asignarParametros("@precio_compra", SqlDbType.Decimal, articulo.PrecioCompra);
-                    //    comando.Parameters.Add(parCosto);
-
-                    //SqlParameter parutilidadpormayor = ProcAlmacenado.asignarParametros("@utilidadpormayor", SqlDbType.Decimal, articulo.Utilidadpreciopormayor);
-                    //comando.Parameters.Add(parutilidadpormayor);
-
-                    //SqlParameter parutilidadpormayor2 = ProcAlmacenado.asignarParametros("@utilidadpormayor2", SqlDbType.Decimal, articulo.Utilidadpreciopormayor2);
-                    //comando.Parameters.Add(parutilidadpormayor2);
-
-                    //SqlParameter parutilidadoferta = ProcAlmacenado.asignarParametros("@utilidadoferta", SqlDbType.Decimal, articulo.Utilidadoferta);
-                    //comando.Parameters.Add(parutilidadoferta);
-
-                    //SqlParameter parpreciopormayor= ProcAlmacenado.asignarParametros("@preciopormayor", SqlDbType.Decimal, articulo.Preciopormayor);
-                    //comando.Parameters.Add(parpreciopormayor);
-
-                    //SqlParameter parpreciopormayor2 = ProcAlmacenado.asignarParametros("@preciopormayor2", SqlDbType.Decimal, articulo.Preciopormayor2);
-                    //comando.Parameters.Add(parpreciopormayor2);
-
-                    //SqlParameter parprecio_oferta = ProcAlmacenado.asignarParametros("@precio_oferta", SqlDbType.Decimal, articulo.Precio_oferta);
-                    //comando.Parameters.Add(parprecio_oferta);
-
-
-
-                    if (comando.ExecuteNonQuery() == 1)
+                        if (comando.ExecuteNonQuery() == 1)
                         {
-                            respuesta = "ok";
+                                respuesta = "ok";
                         }
-                        else
-                        {
-                            //si ocurre un error sale del foreach
-                            respuesta = "error en la edición";
-                            break;
-                        }
-
-
-                       
+                              
                     }
                     //si ocurrio algun error hace un rollback
                     //o sino confirma la trasaccion con un commit
-                    
-
+             
                         transaccion.Commit();
-                    
-                   
-               
-               
-
-            
             }
             catch (Exception ex)
             {
@@ -1596,7 +1554,24 @@ namespace Capa_Datos
                 return datadetalle;
 
         }
-        
+        public DataTable mostrarmysql()
+        {
+            DataTable datadetalle = new DataTable();
+            MySqlConnection cadenaconexion = new MySqlConnection(ConexionSQLITE.cadenaconexionmysql);
+
+            cadenaconexion.Open();
+            using (MySqlCommand micomando = new MySqlCommand("select * from articulo ", cadenaconexion))
+            {
+                MySqlDataAdapter adapter = new MySqlDataAdapter(micomando);
+                adapter.Fill(datadetalle);
+
+            }
+            cadenaconexion.Close();
+            return datadetalle;
+
+        }
+
+
         public void insertararticulosqlite(List<DatosArticulo> listaArticulo)
         {
             SQLiteConnection cadenaconexion = new SQLiteConnection(ConexionSQLITE.cadenaconexion);
@@ -1612,10 +1587,10 @@ namespace Capa_Datos
                     
                    using (SQLiteCommand Comando = new SQLiteCommand("INSERT INTO articulo (idarticulo,codigo ,nombre ,descripcion,precio,precio_Compra " +
                     " ,utilidad,pesable ,flete ,cantidadpormayor,preciopormayor,iva ,cantidadpormayor2 ,preciopormayor2,precio_oferta " +
-                    ",utilidadpormayor ,utilidadpormayor2,utilidadoferta,stock_minimo,stock_actual,idcategoria,estado,preciomanual,constock,idsubcategoria,bulto_cantidad,bulto_codigobarra) " +
+                    ",utilidadpormayor ,utilidadpormayor2,utilidadoferta,stock_minimo,stock_actual,idcategoria,estado,preciomanual,constock,idsubcategoria,bulto_cantidad,bulto_codigobarra,tipoarticulo,edicionusuario,balanza) " +
                     " VALUES (@idarticulo,@codigo,@nombre,@descripcion,@precio,@precio_compra,@utilidad,@pesable,@flete,@cantidadpormayor, " +
                     " @preciopormayor,@iva,@cantidadpormayor2,@preciopormayor2,@precio_oferta,@utilidadpormayor,@utilidadpormayor2, " +
-                    " @utilidadoferta, @stock_minimo,@stock_actual,@idcategoria,@estado,@preciomanual, @constock, @idsubcategoria,@bulto_cantidad,@bulto_codigobarra)  ", cadenaconexion))
+                    " @utilidadoferta, @stock_minimo,@stock_actual,@idcategoria,@estado,@preciomanual, @constock, @idsubcategoria,@bulto_cantidad,@bulto_codigobarra,@tipoarticulo,@edicionusuario,@balanza)  ", cadenaconexion))
                     {
                         Comando.Parameters.AddWithValue("@idarticulo", articulo.idArticulo);
                         Comando.Parameters.AddWithValue("@codigo", articulo.codigo);
@@ -1644,6 +1619,11 @@ namespace Capa_Datos
                         Comando.Parameters.AddWithValue("@idsubcategoria", articulo.idsubcategoria);
                         Comando.Parameters.AddWithValue("@bulto_cantidad", articulo.bulto_cantidad);
                         Comando.Parameters.AddWithValue("@bulto_codigobarra", articulo.bulto_codigobarra);
+                        Comando.Parameters.AddWithValue("@tipoarticulo", "");
+                        Comando.Parameters.AddWithValue("@edicionusuario", "");
+                        Comando.Parameters.AddWithValue("@balanza", articulo.tipobalanza);
+                       
+
 
                     Comando.ExecuteNonQuery();
                        
@@ -1651,6 +1631,70 @@ namespace Capa_Datos
             }
 
             cadenaconexion.Close();
+
+
+        }
+
+        public void insertararticulomysql(List<DatosArticulo> listaArticulo)
+        {
+            MySqlConnection mySqlConnection = new MySqlConnection(ConexionSQLITE.cadenaconexionmysql);
+           
+            ConexionMYSQL conexionmysql = new ConexionMYSQL();
+            string query1 = " delete from articulo";
+            conexionmysql.ExecuteQuery(query1);
+
+            mySqlConnection.Open();
+
+            foreach (DatosArticulo articulo in listaArticulo)
+            {
+                bool articulopesable = articulo.pesable == 0 ? false : true;
+
+                using (MySqlCommand Comando = new MySqlCommand("INSERT INTO articulo (idarticulo,codigo ,nombre ,descripcion,precio,precio_Compra " +
+                 " ,utilidad,pesable ,flete ,cantidadpormayor,preciopormayor,iva ,cantidadpormayor2 ,preciopormayor2,precio_oferta " +
+                 ",utilidadpormayor ,utilidadpormayor2,utilidadoferta,stock_minimo,stock_actual,idcategoria,estado,preciomanual,constock,idsubcategoria,bulto_cantidad,bulto_codigobarra,tipoarticulo,edicionusuario,balanza) " +
+                 " VALUES (@idarticulo,@codigo,@nombre,@descripcion,@precio,@precio_compra,@utilidad,@pesable,@flete,@cantidadpormayor, " +
+                 " @preciopormayor,@iva,@cantidadpormayor2,@preciopormayor2,@precio_oferta,@utilidadpormayor,@utilidadpormayor2, " +
+                 " @utilidadoferta, @stock_minimo,@stock_actual,@idcategoria,@estado,@preciomanual, @constock, @idsubcategoria,@bulto_cantidad,@bulto_codigobarra,@tipoarticulo,@edicionusuario,@balanza)  ", mySqlConnection))
+                {
+                    Comando.Parameters.AddWithValue("@idarticulo", articulo.idArticulo);
+                    Comando.Parameters.AddWithValue("@codigo", articulo.codigo);
+                    Comando.Parameters.AddWithValue("@nombre", articulo.nombre);
+                    Comando.Parameters.AddWithValue("@descripcion", articulo.descripcion);
+                    Comando.Parameters.AddWithValue("@precio", articulo.precio);
+                    Comando.Parameters.AddWithValue("@precio_compra", articulo.PrecioCompra);
+                    Comando.Parameters.AddWithValue("@utilidad", articulo.utilidad);
+                    Comando.Parameters.AddWithValue("@pesable", articulo.pesable == 0 ? false : true);
+                    Comando.Parameters.AddWithValue("@flete", articulo.flete);
+                    Comando.Parameters.AddWithValue("@cantidadpormayor", articulo.cantidadpormayor);
+                    Comando.Parameters.AddWithValue("@preciopormayor", articulo.preciopormayor);
+                    Comando.Parameters.AddWithValue("@iva", articulo.iva);
+                    Comando.Parameters.AddWithValue("@cantidadpormayor2", articulo.cantidadpormayor2);
+                    Comando.Parameters.AddWithValue("@preciopormayor2", articulo.preciopormayor2);
+                    Comando.Parameters.AddWithValue("@precio_oferta", articulo.precio_oferta);
+                    Comando.Parameters.AddWithValue("@utilidadpormayor", articulo.utilidadpreciopormayor);
+                    Comando.Parameters.AddWithValue("@utilidadpormayor2", articulo.utilidadpreciopormayor2);
+                    Comando.Parameters.AddWithValue("@utilidadoferta", articulo.utilidadoferta);
+                    Comando.Parameters.AddWithValue("@stock_minimo", articulo.stock_minimo);
+                    Comando.Parameters.AddWithValue("@stock_actual", 0);
+                    Comando.Parameters.AddWithValue("@idcategoria", articulo.idCategoria);
+                    Comando.Parameters.AddWithValue("@estado", 1);
+                    Comando.Parameters.AddWithValue("@preciomanual", 1);
+                    Comando.Parameters.AddWithValue("@constock", 1);
+                    Comando.Parameters.AddWithValue("@idsubcategoria", articulo.idsubcategoria);
+                    Comando.Parameters.AddWithValue("@bulto_cantidad", articulo.bulto_cantidad);
+                    Comando.Parameters.AddWithValue("@bulto_codigobarra", articulo.bulto_codigobarra);
+                    Comando.Parameters.AddWithValue("@tipoarticulo", "");
+                    Comando.Parameters.AddWithValue("@edicionusuario", 1);
+                    Comando.Parameters.AddWithValue("@balanza", articulo.tipobalanza);
+
+
+
+                    Comando.ExecuteNonQuery();
+
+                }
+            }
+
+            mySqlConnection.Close();
 
 
         }

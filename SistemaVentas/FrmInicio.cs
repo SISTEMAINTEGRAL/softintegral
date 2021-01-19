@@ -542,6 +542,7 @@ namespace SistemaVentas
         int consultasY;
         int configuracionY;
         int recibosY;
+        int estadisticaventaY;
 
         private void btnProductos_Click(object sender, EventArgs e)
         {
@@ -611,7 +612,7 @@ namespace SistemaVentas
             //valor constante que se tienen que mover los botones
             int movimiento = 100;
 
-            if (btnGenerarVenta.Visible == false && btnListaVenta.Visible == false && BtnRecibo.Visible == false)
+            if (btnGenerarVenta.Visible == false && btnListaVenta.Visible == false && BtnRecibo.Visible == false && BtnEstadisticaVenta.Visible == false)
             {
               
                 if (isProductoDesplegado == true || isStockDesplegado == true)
@@ -631,6 +632,7 @@ namespace SistemaVentas
                 consultasY = btnConsultas.Location.Y;
                 configuracionY = btnConfiguracion.Location.Y;
                 recibosY = BtnRecibo.Location.Y;
+                estadisticaventaY = BtnEstadisticaVenta.Location.Y;
 
                 btnGenerarVenta.Visible = true;
                 btnListaVenta.Visible = true;
@@ -638,6 +640,7 @@ namespace SistemaVentas
                 pnListaVenta.Visible = true;
                 pnConfig.Visible = true;
                 BtnRecibo.Visible = true;
+                BtnEstadisticaVenta.Visible = true;
                
 
                 //al hacer click en producto se desplaza los submenus
@@ -882,6 +885,7 @@ namespace SistemaVentas
             isProductoDesplegado = false;
             isStockDesplegado = false;
 
+            BtnEstadisticaVenta.Visible = false;
             BtnRecibo.Visible = false;
             btnCategoria.Visible = false;
             btnListaProducto.Visible = false;
@@ -1009,6 +1013,12 @@ namespace SistemaVentas
         {
             FrmListaRecibos objrecibo = new FrmListaRecibos();
             objrecibo.Show();
+        }
+
+        private void BtnEstadisticaVenta_Click(object sender, EventArgs e)
+        {
+            FrmListadoVentasAvanzadas objventa = new FrmListadoVentasAvanzadas();
+            objventa.Show();
         }
     }
 }

@@ -111,7 +111,7 @@ namespace Capa_Datos
            return respuesta;
 
        }
-       public string eliminar(DatosCategoria categoria)
+       public string eliminar(DatosCategoria categoria, string opcioncategoria = "CATEGORIA")
        {
            //modo 3 para DB
            SqlConnection cn = new SqlConnection(Conexion.conexion);
@@ -122,19 +122,22 @@ namespace Capa_Datos
                    //abro conexion
                    SqlCommand comando = ProcAlmacenado.CrearProc(cn, "SP_CATEGORIA");
                    
-                   SqlParameter parModo = ProcAlmacenado.asignarParametros("@modo", SqlDbType.Int, 3);
+                   SqlParameter parModo = ProcAlmacenado.asignarParametros("@modo", SqlDbType.NVarChar,"eliminar");
                    comando.Parameters.Add(parModo);
 
                    SqlParameter parIdCategoria = ProcAlmacenado.asignarParametros("@idcategoria", SqlDbType.Int, categoria.idCategoria);
                    comando.Parameters.Add(parIdCategoria);
-                   if (comando.ExecuteNonQuery() == 1)
-                   {
-                       respuesta = "ok";
-                   }
-                   else
-                   {
-                       respuesta = "error: no se ha podido eliminar";
-                   }
+
+                    SqlParameter parIdSubcategoria = ProcAlmacenado.asignarParametros("@idsubcategoria", SqlDbType.Int, categoria.idsubcategoria);
+                    comando.Parameters.Add(parIdSubcategoria);
+
+                    SqlParameter paropcioncategoria = ProcAlmacenado.asignarParametros("@opcioncategoria", SqlDbType.NVarChar, opcioncategoria);
+                    comando.Parameters.Add(paropcioncategoria);
+
+
+                comando.ExecuteNonQuery();
+              
+                   
                
            }
            catch (Exception ex)

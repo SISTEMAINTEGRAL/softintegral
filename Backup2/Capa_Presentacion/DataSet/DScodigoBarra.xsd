@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="DataSet1" targetNamespace="http://tempuri.org/DataSet1.xsd" xmlns:mstns="http://tempuri.org/DataSet1.xsd" xmlns="http://tempuri.org/DataSet1.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="DataSet1" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="DataSet1" msprop:Generator_UserDSName="DataSet1">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="CodigoDeBarra" msprop:Generator_TableClassName="CodigoDeBarraDataTable" msprop:Generator_TableVarName="tableCodigoDeBarra" msprop:Generator_TablePropName="CodigoDeBarra" msprop:Generator_RowDeletingName="CodigoDeBarraRowDeleting" msprop:Generator_RowChangingName="CodigoDeBarraRowChanging" msprop:Generator_RowEvHandlerName="CodigoDeBarraRowChangeEventHandler" msprop:Generator_RowDeletedName="CodigoDeBarraRowDeleted" msprop:Generator_UserTableName="CodigoDeBarra" msprop:Generator_RowChangedName="CodigoDeBarraRowChanged" msprop:Generator_RowEvArgName="CodigoDeBarraRowChangeEvent" msprop:Generator_RowClassName="CodigoDeBarraRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="CodigoArt" msdata:Caption="Codigo" msprop:Generator_ColumnVarNameInTable="columnCodigoArt" msprop:Generator_ColumnPropNameInRow="CodigoArt" msprop:Generator_ColumnPropNameInTable="CodigoArtColumn" msprop:Generator_UserColumnName="CodigoArt" type="xs:string" minOccurs="0" />
+              <xs:element name="CodigoBarra" msprop:Generator_ColumnVarNameInTable="columnCodigoBarra" msprop:Generator_ColumnPropNameInRow="CodigoBarra" msprop:Generator_ColumnPropNameInTable="CodigoBarraColumn" msprop:Generator_UserColumnName="CodigoBarra" type="xs:string" minOccurs="0" />
+              <xs:element name="NombreArt" msprop:Generator_ColumnVarNameInTable="columnNombreArt" msprop:Generator_ColumnPropNameInRow="NombreArt" msprop:Generator_ColumnPropNameInTable="NombreArtColumn" msprop:Generator_UserColumnName="NombreArt" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

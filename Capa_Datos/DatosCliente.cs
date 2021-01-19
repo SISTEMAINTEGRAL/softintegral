@@ -38,6 +38,8 @@ namespace Capa_Datos
         private string codinterno;
         private bool concaja;
         private bool porcaja;
+        private decimal limitectacte;
+        private bool habilitarlimitectacte;
         public string BuscarCliente
         {
             get
@@ -237,6 +239,8 @@ namespace Capa_Datos
         public bool Concaja { get => concaja; set => concaja = value; }
         public bool Porcaja { get => porcaja; set => porcaja = value; }
         public int Codrecibo { get => codrecibo; set => codrecibo = value; }
+        public decimal Limitectacte { get => limitectacte; set => limitectacte = value; }
+        public bool Habilitarlimitectacte { get => habilitarlimitectacte; set => habilitarlimitectacte = value; }
 
         //     @Codcliente as int = 0,
         //   @Codventa as int = 0,
@@ -273,7 +277,7 @@ namespace Capa_Datos
             this.estado = varestado;
             this.modoctacte = varmodoctacte;
         }
-        public DatosCliente(string razonSocial,string direccion,long cuit,long tel,long numDocumento,string email, string responsableiva, int varidprovincia, int varidlocalidad, string varcodinterno)
+        public DatosCliente(string razonSocial,string direccion,long cuit,long tel,long numDocumento,string email, string responsableiva, int varidprovincia, int varidlocalidad, string varcodinterno, decimal varlimitectacte, bool varhabilitarctacte)
         {
             
            this.RazonSocial=razonSocial;
@@ -286,6 +290,8 @@ namespace Capa_Datos
             this.Idprovincia = varidprovincia;
             this.Idlocalidad = varidlocalidad;
             this.codinterno = varcodinterno;
+            this.limitectacte = varlimitectacte;
+            this.habilitarlimitectacte = varhabilitarctacte;
          }
 
         public DatosCliente(int varidcliente)
@@ -360,6 +366,13 @@ namespace Capa_Datos
                 SqlParameter parCodinterno = ProcAlmacenado.asignarParametros("@codigointerno", SqlDbType.NVarChar, cliente.codinterno);
                 comando.Parameters.Add(parCodinterno);
 
+                SqlParameter parhabilitarctacte = ProcAlmacenado.asignarParametros("@habilitarctacte", SqlDbType.Bit, cliente.habilitarlimitectacte);
+                comando.Parameters.Add(parhabilitarctacte);
+
+                SqlParameter parlimitectacte = ProcAlmacenado.asignarParametros("@limitedectacte", SqlDbType.Decimal, cliente.limitectacte);
+                comando.Parameters.Add(parlimitectacte);
+
+
                 if (comando.ExecuteNonQuery() == 1)
                 {
                     respuesta = "ok";
@@ -431,6 +444,11 @@ namespace Capa_Datos
                 SqlParameter parCodinterno = ProcAlmacenado.asignarParametros("@codigointerno", SqlDbType.NVarChar, cliente.codinterno);
                 comando.Parameters.Add(parCodinterno);
 
+                SqlParameter parlimitectacte = ProcAlmacenado.asignarParametros("@limitedectacte", SqlDbType.Decimal, cliente.limitectacte);
+                comando.Parameters.Add(parlimitectacte);
+
+                SqlParameter parhabilitarctacte = ProcAlmacenado.asignarParametros("@habilitarctacte", SqlDbType.Bit, cliente.habilitarlimitectacte);
+                comando.Parameters.Add(parhabilitarctacte);
                 if (comando.ExecuteNonQuery() == 1)
                 {
                     respuesta = "ok";

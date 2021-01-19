@@ -17,11 +17,14 @@ namespace Capa_Presentacion
     {
         private string idcliente;
         private string letra;
+        private string nrorefmultipagopadre;
+        private string vista;
+        
         public FrmDetalleVentas()
         {
             InitializeComponent();
         }
-        public FrmDetalleVentas(string codigoVenta,string razon_social,string fecha,string tipo_comprobante,string estado,string total, string varidcliente, string cuit, string varletra)
+        public FrmDetalleVentas(string codigoVenta,string razon_social,string fecha,string tipo_comprobante,string estado,string total, string varidcliente, string cuit, string varletra, string varformadepago, string varnromultipagopadre, string varvista = "listadoventa")
         {
             InitializeComponent();
             txtCodigo.Text = codigoVenta;
@@ -33,6 +36,9 @@ namespace Capa_Presentacion
             txtcuit.Text = cuit;
             idcliente = varidcliente;
             letra = varletra;
+            TxtFPago.Text = varformadepago;
+            nrorefmultipagopadre = varnromultipagopadre;
+            vista = varvista;
 
             mostrar();
         }
@@ -45,6 +51,34 @@ namespace Capa_Presentacion
 
             btnPagarMovimiento.Enabled = txtEstado.Text == "PENDIENTE" ? true : false;
             btncredito.Enabled = txtEstado.Text == "FACTURADO" ? true : false;
+            TxtNroReferencia.Text = nrorefmultipagopadre;
+            if (vista != "listadoventa")
+            {
+                btncredito.Visible = false;
+                btnPagarMovimiento.Visible = false;
+            }
+
+
+            if (nrorefmultipagopadre == "" || nrorefmultipagopadre == "0")
+            {
+                LblNroReferencia.Visible = false;
+                TxtNroReferencia.Visible = false;
+                BtnVerMultipagoPadre.Visible = false;
+                if (TxtFPago.Text == "MULTIPAGO")
+                {
+                    BtnVentaMultipago.Visible = true;
+                }
+            }
+            else
+            {
+                LblNroReferencia.Visible = true;
+                TxtNroReferencia.Visible = true;
+                btnPagarMovimiento.Enabled = false;
+                btnPagarMovimiento.Enabled = false;
+                txtEstado.Text = "MULTIPAGO HIJO";
+                BtnVentaMultipago.Visible = false;
+                BtnVerMultipagoPadre.Visible = true;
+            }
 
             if (NegocioConfigEmpresa.emciva == "MN")
             {
@@ -408,6 +442,9 @@ namespace Capa_Presentacion
         }
         int posY = 0;
         int posX = 0;
+
+        public string Nrorefmultipagopadre { get => nrorefmultipagopadre; set => nrorefmultipagopadre = value; }
+
         private void panelHorizontal_MouseMove(object sender, MouseEventArgs e)
         {
             //mientra no se apreta el boton izquierdo del mouse actualiza el valor posX Y posY 
@@ -423,6 +460,61 @@ namespace Capa_Presentacion
                 Left = Left + (e.X - posX);
                 //top tiene la distancia que hay entre el borde sup y el fondo de la pantalla
                 Top = Top + (e.Y - posY);
+
+            }
+        }
+
+        private void BtnVentaMultipago_Click(object sender, EventArgs e)
+        {
+            if (BtnVentaMultipago.ButtonText == "Ver venta multipago")
+            {
+                DataVentaMultipago.Rows.Clear();
+                DataTable dt = NegocioVenta.BuscarIdMultipago(Convert.ToInt32(txtCodigo.Text));
+
+                foreach (DataRow venta in dt.Rows)
+                {
+                    DataVentaMultipago.Rows.Add(venta["idventa"], venta["PAGO"], venta["total"]);
+                }
+
+                BtnVentaMultipago.ButtonText = "Ocultar venta multipago";
+                BtnVentaMultipago.BackgroundColor = Color.Gray;
+                DataVentaMultipago.Visible = true;
+            }
+            else
+            {
+                BtnVentaMultipago.ButtonText = "Ver venta multipago";
+                BtnVentaMultipago.BackgroundColor = Color.FromArgb(52, 144, 247);
+                DataVentaMultipago.Visible = false;
+            }
+
+           
+
+
+
+        }
+
+        private void BtnVerMultipagoPadre_Click(object sender, EventArgs e)
+        {
+            
+            DataTable dt = NegocioVenta.BuscarIdVenta(Convert.ToInt32(TxtNroReferencia.Text));
+            if (dt.Rows.Count != 0)
+            {
+                DataRow row = dt.Rows[0];
+                DateTime date = Convert.ToDateTime(row["fecha"].ToString());
+
+                FrmDetalleVentas venta = new FrmDetalleVentas(Convert.ToString(row["idventa"]),
+                Convert.ToString(row["Razon_social"]),
+                date.ToShortDateString(),
+                Convert.ToString(row["tipo_comprobante"]),
+                Convert.ToString(row["estado"]),
+                Convert.ToString(Decimal.Round(Convert.ToDecimal(row["total"]), 2)),
+                Convert.ToString(row["idcliente"]),
+                Convert.ToString(row["cuit"]),
+                Convert.ToString(row["factura"]),
+                Convert.ToString(row["pago"]),
+                Convert.ToString(row["Multipago"]), vista);
+                venta.ShowDialog();
+
 
             }
         }

@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Capa_Presentacion</RootNamespace>
     <AssemblyName>Capa_Presentacion</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
   </PropertyGroup>
@@ -105,10 +105,10 @@
     <Reference Include="zxing">
       <HintPath>..\SistemaVentas\bin\Debug\zxing.dll</HintPath>
     </Reference>
-    <Reference Include="Telerik.Reporting, Version=10.0.16.204, Culture=neutral, PublicKeyToken=a9d7983dfcc261be">
+    <Reference Include="Telerik.Reporting, Version=13.0.19.116, Culture=neutral, PublicKeyToken=a9d7983dfcc261be">
       <SpecificVersion>True</SpecificVersion>
     </Reference>
-    <Reference Include="Telerik.ReportViewer.WinForms, Version=10.0.16.204, Culture=neutral, PublicKeyToken=a9d7983dfcc261be">
+    <Reference Include="Telerik.ReportViewer.WinForms, Version=13.0.19.116, Culture=neutral, PublicKeyToken=a9d7983dfcc261be">
       <SpecificVersion>True</SpecificVersion>
     </Reference>
   </ItemGroup>
@@ -182,6 +182,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DSGondola.xsd</DependentUpon>
     </Compile>
+    <Compile Include="DVentaproducto.cs">
+      <DependentUpon>DVentaproducto.xsd</DependentUpon>
+    </Compile>
     <Compile Include="DVentaproducto.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -223,6 +226,12 @@
     <Compile Include="Formreportes\FrmTicketRemito.Designer.cs">
       <DependentUpon>FrmTicketRemito.cs</DependentUpon>
     </Compile>
+    <Compile Include="Reportes\REPORT_LISTAVENTACATEGORIA.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reportes\REPORT_LISTAVENTACATEGORIA.Designer.cs">
+      <DependentUpon>REPORT_LISTAVENTACATEGORIA.cs</DependentUpon>
+    </Compile>
     <Compile Include="Formreportes\TicketProforma.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -246,6 +255,24 @@
     </Compile>
     <Compile Include="FrmAperturacaja.designer.cs">
       <DependentUpon>FrmAperturacaja.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmCajaHistorial.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmCajaHistorial.Designer.cs">
+      <DependentUpon>FrmCajaHistorial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmConexion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmConexion.Designer.cs">
+      <DependentUpon>FrmConexion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmEmpresa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmEmpresa.Designer.cs">
+      <DependentUpon>FrmEmpresa.cs</DependentUpon>
     </Compile>
     <Compile Include="FrmGuardarVenta2.cs">
       <SubType>Form</SubType>
@@ -770,6 +797,15 @@
     <EmbeddedResource Include="FrmAperturacaja.resx">
       <DependentUpon>FrmAperturacaja.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmCajaHistorial.resx">
+      <DependentUpon>FrmCajaHistorial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmConexion.resx">
+      <DependentUpon>FrmConexion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmEmpresa.resx">
+      <DependentUpon>FrmEmpresa.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmGuardarVenta2.resx">
       <DependentUpon>FrmGuardarVenta2.cs</DependentUpon>
     </EmbeddedResource>
@@ -994,6 +1030,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes\REPORT_GONDOLA.rdlc" />
     <EmbeddedResource Include="Reportes\REPORT_GONDOLA2.rdlc" />
+    <EmbeddedResource Include="Reportes\REPORT_LISTAVENTACATEGORIA.resx">
+      <DependentUpon>REPORT_LISTAVENTACATEGORIA.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Reportes\REPORT_TICKET.resx">
       <DependentUpon>REPORT_TICKET.cs</DependentUpon>
     </EmbeddedResource>

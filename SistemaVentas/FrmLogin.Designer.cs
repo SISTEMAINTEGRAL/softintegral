@@ -54,7 +54,7 @@
             this.txtContraseña.MaxLength = 50;
             this.txtContraseña.Name = "txtContraseña";
             this.txtContraseña.PasswordChar = '*';
-            this.txtContraseña.Size = new System.Drawing.Size(204, 26);
+            this.txtContraseña.Size = new System.Drawing.Size(204, 30);
             this.txtContraseña.TabIndex = 73;
             this.txtContraseña.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtContraseña_KeyDown);
             // 
@@ -65,7 +65,7 @@
             this.label2.Location = new System.Drawing.Point(20, 242);
             this.label2.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(92, 20);
+            this.label2.Size = new System.Drawing.Size(114, 25);
             this.label2.TabIndex = 72;
             this.label2.Text = "Contraseña";
             // 
@@ -76,7 +76,7 @@
             this.lblNomUsuario.Location = new System.Drawing.Point(48, 193);
             this.lblNomUsuario.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
             this.lblNomUsuario.Name = "lblNomUsuario";
-            this.lblNomUsuario.Size = new System.Drawing.Size(64, 20);
+            this.lblNomUsuario.Size = new System.Drawing.Size(79, 25);
             this.lblNomUsuario.TabIndex = 71;
             this.lblNomUsuario.Text = "Usuario";
             // 
@@ -86,7 +86,7 @@
             this.txtUsuario.Margin = new System.Windows.Forms.Padding(6, 9, 6, 9);
             this.txtUsuario.MaxLength = 50;
             this.txtUsuario.Name = "txtUsuario";
-            this.txtUsuario.Size = new System.Drawing.Size(204, 26);
+            this.txtUsuario.Size = new System.Drawing.Size(204, 30);
             this.txtUsuario.TabIndex = 70;
             this.txtUsuario.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtUsuario_KeyDown);
             // 
@@ -111,7 +111,7 @@
             this.lblSistemaVenta.ForeColor = System.Drawing.SystemColors.ControlLightLight;
             this.lblSistemaVenta.Location = new System.Drawing.Point(165, 1);
             this.lblSistemaVenta.Name = "lblSistemaVenta";
-            this.lblSistemaVenta.Size = new System.Drawing.Size(84, 32);
+            this.lblSistemaVenta.Size = new System.Drawing.Size(104, 40);
             this.lblSistemaVenta.TabIndex = 3;
             this.lblSistemaVenta.Text = "Login";
             this.lblSistemaVenta.MouseMove += new System.Windows.Forms.MouseEventHandler(this.lblSistemaVenta_MouseMove);
@@ -191,10 +191,11 @@
             this.button1.Size = new System.Drawing.Size(34, 26);
             this.button1.TabIndex = 78;
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // FrmLogin
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::SistemaVentas.Properties.Resources.fondo;
             this.ClientSize = new System.Drawing.Size(406, 415);

@@ -99,6 +99,50 @@ namespace Capa_negocio
             DatosArticulo dArticulo = new DatosArticulo(idArticulo, precio);
             return dArticulo.editarPrecio(dArticulo,opcionsistema);
         }
+        public static string importarproducto(DataTable Grillaproductos, string opcionsistema)
+        {
+            List<DatosArticulo> listaArticulo = new List<DatosArticulo>();
+            foreach (DataRow fila in Grillaproductos.Rows)
+            {
+                DatosArticulo dArticulo = new DatosArticulo();
+                             
+                dArticulo.IdArticulo = Convert.ToInt32(fila["idarticulo"].ToString());
+                dArticulo.Codigo = fila["codigo"].ToString();
+                dArticulo.Nombre = fila["nombre"].ToString();
+                dArticulo.Descripcion = fila["descripcion"].ToString();
+                dArticulo.IdCategoria = Convert.ToInt32( fila["idcategoria"].ToString());
+                dArticulo.Idsubcategoria = Convert.ToInt32(fila["idsubcategoria"].ToString());
+                dArticulo.Precio = Convert.ToDecimal(fila["Precio"].ToString());
+                dArticulo.StockActual = Convert.ToDecimal(fila["stock_actual"].ToString());
+                dArticulo.PrecioCompra = Convert.ToDecimal(fila["PrecioCompra"].ToString());
+                dArticulo.Pesableflag = Convert.ToBoolean(fila["pesable"]);
+                dArticulo.Preciomanual = Convert.ToBoolean(fila["preciomanual"].ToString());
+                dArticulo.Flete = Convert.ToDecimal(fila["Flete"].ToString());
+                dArticulo.Stock_minimo = Convert.ToDecimal(fila["stock_minimo"].ToString());
+                dArticulo.Tipobalanza = Convert.ToBoolean(fila["balanza"].ToString());
+                dArticulo.Utilidad = Convert.ToDecimal(fila["Utilidad"].ToString());
+                dArticulo.Iva = Convert.ToDecimal(fila["iva"].ToString());
+                
+                
+
+                if (opcionsistema == "mayorista")
+                {
+                    dArticulo.Utilidadpreciopormayor = Convert.ToDecimal(fila["Utilidadpormayor"].ToString());
+                    dArticulo.Preciopormayor = Convert.ToDecimal(fila["Preciopormayor"].ToString());
+                    dArticulo.Utilidadpreciopormayor2 = Convert.ToDecimal(fila["Utilidadpormayor2"].ToString());
+                    dArticulo.Preciopormayor2 = Convert.ToDecimal(fila["Preciopormayor2"].ToString());
+                    dArticulo.Utilidadoferta = Convert.ToDecimal(fila["Utilidadoferta"]);
+                    dArticulo.Precio_oferta = Convert.ToDecimal(fila["Precio_Oferta"]);
+                }
+                if (dArticulo.IdArticulo == 1198)
+                {
+                    int CON = 0;
+                }
+                listaArticulo.Add(dArticulo);
+            }
+            DatosArticulo datosArticulo = new DatosArticulo();
+            return datosArticulo.editarPrecioMasivo(listaArticulo, opcionsistema);
+        }
         public static string editarPrecioMasivo(DataTable Grillaproductos, string opcionsistema)
         {
              List<DatosArticulo> listaArticulo= new List<DatosArticulo>();
@@ -110,6 +154,10 @@ namespace Capa_negocio
                dArticulo.PrecioCompra = Convert.ToDecimal(fila["PrecioCompra"].ToString());
                dArticulo.Utilidad= Convert.ToDecimal(fila["Utilidad"].ToString());
                dArticulo.Flete = Convert.ToDecimal(fila["Flete"].ToString());
+               dArticulo.Nombre = fila["producto"].ToString();
+               dArticulo.Descripcion = fila["descripcion"].ToString();
+                dArticulo.Codigo = fila["codigobarra"].ToString();
+
                 if (opcionsistema == "mayorista")
                 {
                     dArticulo.Utilidadpreciopormayor = Convert.ToDecimal(fila["Utilidadpormayor"].ToString());
@@ -134,12 +182,13 @@ namespace Capa_negocio
             DatosArticulo dArticulo = new DatosArticulo(idArticulo, precio,precioCompra,utilidad);
             return dArticulo.editarPrecio(dArticulo,opcionsistema);
         }
-        public static DataTable buscarNombre(string texto,string descripcion = "",string nombrecategoria="" )
+        public static DataTable buscarNombre(string texto,string descripcion = "",string nombrecategoria="", bool tipobalanza = false )
         {
             DatosArticulo dArticulo = new DatosArticulo();
             dArticulo.BuscarArticulo= texto;
             dArticulo.Descripcion = descripcion;
             dArticulo.Nombrecategoria = nombrecategoria;
+            dArticulo.Tipobalanza = tipobalanza;
             int buscarNombre=0;
             //si el booleano que le paso es verdadero busca por nombre o sino por codigo de barra
             return dArticulo.buscarTexto(dArticulo,buscarNombre);
@@ -372,6 +421,12 @@ namespace Capa_negocio
             return objart.mostrarsqlite();
 
         }
+        public static DataTable mostrarmysql()
+        {
+            DatosArticulo objart = new DatosArticulo();
+            return objart.mostrarmysql();
+
+        }
         public static DataTable consultafecha(DateTime fechadesde, DateTime fechahasta)
         {
             DatosArticulo objart = new DatosArticulo();
@@ -379,25 +434,34 @@ namespace Capa_negocio
             objart.Fechaedicionhasta = fechahasta;
             return objart.buscarTexto(objart, 4);
         }
-        public static string ExportarProductos(DataTable Grillaproductos, bool todoslosproductos, string opcionsistema = "mayorista")
+        public static string ExportarProductos(DataTable Grillaproductos, bool todoslosproductos, string opcionsistema = "mayorista", string opcionexportacion = "nube")
         {
 
             List<DatosArticulo> listaArticulo = new List<DatosArticulo>();
 
             foreach (DataRow fila in Grillaproductos.Rows)
             {
+                //stock_actual,estado,constock,preciomanual,cantidadpormayor, idsubcategoria,iva, cantidadpormayor2, fechadeoferta,habilitarfechaoferta,
+                //bulto_cantidad,bulto_codigobarra,edicionfecha,codigointerno,balanza
+                
                 DatosArticulo dArticulo = new DatosArticulo();
                 dArticulo.IdArticulo = Convert.ToInt32(fila["idarticulo"].ToString());
                 dArticulo.Codigo = fila["Codigo"].ToString();
-                dArticulo.Precio = Convert.ToDecimal(fila["Precio"].ToString());
-                dArticulo.PrecioCompra = Convert.ToDecimal(fila["Precio_Compra"].ToString());
                 dArticulo.Nombre = fila["Nombre"].ToString();
                 dArticulo.Descripcion = fila["Descripcion"].ToString();
-                dArticulo.IdCategoria = Convert.ToInt32(fila["idcategoria"].ToString()) ;
+                dArticulo.IdCategoria = Convert.ToInt32(fila["idcategoria"].ToString());
+                dArticulo.Idsubcategoria = Convert.ToInt32(fila["idsubcategoria"].ToString());
+                dArticulo.Precio = Convert.ToDecimal(fila["Precio"].ToString());
+                dArticulo.StockActual = Convert.ToDecimal(fila["stock_actual"].ToString());
+                dArticulo.PrecioCompra = Convert.ToDecimal(fila["Precio_Compra"].ToString());
                 dArticulo.Utilidad = Convert.ToDecimal(fila["Utilidad"].ToString());
+                dArticulo.Estado = Convert.ToBoolean(fila["estado"].ToString());
                 dArticulo.Pesable = Convert.ToBoolean( fila["pesable"]) == false ? 0 : 1;
+                //dArticulo.Preciomanual = Convert.ToBoolean(fila["preciomanual"].ToString());
                 dArticulo.Flete = Convert.ToDecimal(fila["Flete"].ToString());
                 dArticulo.Stock_minimo = Convert.ToDecimal(fila["stock_minimo"].ToString());
+                dArticulo.Tipobalanza = Convert.ToBoolean(fila["balanza"].ToString());
+
                 if (opcionsistema == "mayorista")
                 {
                     dArticulo.Utilidadpreciopormayor = Convert.ToDecimal(fila["Utilidadpormayor"].ToString());
@@ -412,7 +476,15 @@ namespace Capa_negocio
             }
             
             DatosArticulo datosArticulo = new DatosArticulo();
-            datosArticulo.insertararticulosqlite(listaArticulo);
+            if (opcionexportacion   == "nube")
+            {
+                datosArticulo.insertararticulomysql(listaArticulo);
+            }
+            else if (opcionexportacion == "archivo")
+            {
+                datosArticulo.insertararticulosqlite(listaArticulo);
+            }
+
             return "";
         }
 

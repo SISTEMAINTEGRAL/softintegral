@@ -464,20 +464,35 @@ using Capa_Datos;
                 sqlcon.Open();
 
                 sqltra = sqlcon.BeginTransaction();
-
+                 
                 // Venta.Idventa = Convert.ToInt32(sqlcmd.Parameters["@idventa"].Value);
 
                 try
                 {
+                        if (codformapago == 5)
+                        {
+                            SqlCommand comando = ProcAlmacenado.CrearProc(sqlcon, "SP_VENTAMULTIPAGO_ANULACION",sqltra);
+
+                            SqlParameter parIdVenta = ProcAlmacenado.asignarParametros("@idventa", SqlDbType.Int, Venta.Idventa);
+                            comando.Parameters.Add(parIdVenta);
+                            SqlParameter parCaja = ProcAlmacenado.asignarParametros("@concaja", SqlDbType.Bit, Venta.concaja);
+                            comando.Parameters.Add(parCaja);
+                            SqlParameter paridcaja = ProcAlmacenado.asignarParametros("@id_caja", SqlDbType.Bit, Venta.nrocaja);
+                            comando.Parameters.Add(paridcaja);
+
+                            comando.ExecuteNonQuery();
+                        }
+                    
+
                     foreach (DataRow midatarow in midatatable.Rows)
-                    {
+                       {
 
                         //actualizamos el stock
-                        if (distock == true && Convert.ToInt32(midatarow["idarticulo"]) != 0) {  objstock.Modificarstock(Convert.ToInt32(midatarow["idarticulo"]), Convert.ToDecimal(midatarow["cantidad"]), ref sqlcon, ref sqltra, "ingreso"); }
+                             if (distock == true && Convert.ToInt32(midatarow["idarticulo"]) != 0) {  objstock.Modificarstock(Convert.ToInt32(midatarow["idarticulo"]), Convert.ToDecimal(midatarow["cantidad"]), ref sqlcon, ref sqltra, "ingreso"); }
                        
 
 
-                    }
+                       }
 
                     sqltra.Commit();
                 }
@@ -774,8 +789,65 @@ using Capa_Datos;
 
         return DtResultado;
     }
+    public DataTable BuscarIdMultipago( Dventa venta)
+    {
+        DataTable DtResultado = new DataTable("venta");
+        SqlConnection sqlcon = new SqlConnection(Conexion.conexion);
+        try
+        {
+
+
+            SqlCommand sqlcmd = ProcAlmacenado.CrearProc(sqlcon, "SP_VENTA");
+
+            //modo 2 para la busqueda
+            sqlcmd.Parameters.AddWithValue("@modo", 18);
+           
+            sqlcmd.Parameters.AddWithValue("@nromultipagopadre", venta.idventa);
+            SqlDataAdapter sqldat = new SqlDataAdapter(sqlcmd);
+            sqldat.Fill(DtResultado);
+
+        }
+        catch (Exception ex)
+        {
+            DtResultado = null;
+            sqlcon.Close();
+            //lanzo una excepcion en el caso de problemas con bd
+            throw ex;
+        }
+
+        return DtResultado;
+    }
+    public DataTable BuscarIdVenta(Dventa venta)
+    {
+        DataTable DtResultado = new DataTable("venta");
+        SqlConnection sqlcon = new SqlConnection(Conexion.conexion);
+        try
+        {
+
+
+            SqlCommand sqlcmd = ProcAlmacenado.CrearProc(sqlcon, "SP_VENTA");
+
+            //modo 2 para la busqueda
+            sqlcmd.Parameters.AddWithValue("modo", 2);
+            
+            sqlcmd.Parameters.AddWithValue("idventa", venta.idventa);
+            sqlcmd.Parameters.AddWithValue("porventa", venta.porventa);
+            SqlDataAdapter sqldat = new SqlDataAdapter(sqlcmd);
+            sqldat.Fill(DtResultado);
+
+        }
+        catch (Exception ex)
+        {
+            DtResultado = null;
+            sqlcon.Close();
+            //lanzo una excepcion en el caso de problemas con bd
+            throw ex;
+        }
+
+        return DtResultado;
+    }
     public DataTable  BuscarFechas(string TextoBuscar, string TextoBuscar2, Dventa venta)
-      {
+    {
             DataTable DtResultado = new DataTable("venta");
             SqlConnection sqlcon = new SqlConnection(Conexion.conexion);
             try
@@ -814,7 +886,7 @@ using Capa_Datos;
             }
 
             return DtResultado;
-       }
+    }
 
     public DataTable BuscarFechasPresupuesto(string TextoBuscar, string TextoBuscar2, Dventa venta)
     {
@@ -1041,6 +1113,35 @@ using Capa_Datos;
         }
 
     }
+    public DataTable reporteventadetalleporcategoria(Dventa parventa,string TextoBuscar, string TextoBuscar2)
+    {
+        try
+        {
+            SqlConnection cn = new SqlConnection(Conexion.conexion);
+            DataTable midata = new DataTable();
+            cn.Open();
+            SqlCommand comando = ProcAlmacenado.CrearProc(cn, "REPORTE_VENTAPRODUCTOCATEGORIA");
+
+            SqlParameter parfechad = ProcAlmacenado.asignarParametros("@FechaD", SqlDbType.NVarChar, TextoBuscar);
+            comando.Parameters.Add(parfechad);
+
+            SqlParameter parfechah = ProcAlmacenado.asignarParametros("@FechaH", SqlDbType.NVarChar, TextoBuscar2);
+            comando.Parameters.Add(parfechah);
+
+            SqlDataAdapter datosResult = new SqlDataAdapter(comando);
+            //los resultados los actualizo en el datatable dtResult
+
+            datosResult.Fill(midata);
+            cn.Close();
+            return midata;
+        }
+        catch (Exception)
+        {
+
+            throw;
+        }
+
+    }
     public string cambiarestadostock(int codventa, bool stock)
     {
         //devuelve la cantidad actual
@@ -1159,7 +1260,7 @@ using Capa_Datos;
         return respuesta;
     }
 
-    public string cargarventamultipago(DataTable dataventa,DataTable datadetalle , Dventa Venta)
+    public string cargarventamultipago(DataTable dataventa,DataTable datadetalle , Dventa Venta, bool distock)
     {
 
         //modo 9 para DB
@@ -1172,7 +1273,7 @@ using Capa_Datos;
             cn.Open();
             //abro conexion
             SqlTransaction transaccion = cn.BeginTransaction();
-
+            DatosMovStock objstock = new Capa_Datos.DatosMovStock();
             respuesta = "ok";
             
 
@@ -1225,6 +1326,25 @@ using Capa_Datos;
 
                 respuesta = "ok";
 
+                DataRow row = datadetalle.Rows[0];
+                if (datadetalle.Rows.Count != 0)
+                {
+                    foreach (DataRow det in datadetalle.Rows)
+                    {
+                        //actualizamos el stock
+                        if (distock == true && Convert.ToInt32(det["Codigo"]) != 0) { respuesta = objstock.Modificarstock(Convert.ToInt32( det["Codigo"]), Convert.ToDecimal(det["cantidad"]), ref cn, ref transaccion, "egreso"); }
+                        if (!respuesta.Equals("OK") && !respuesta.Equals("ok"))
+                        {
+                            break;
+
+                        }
+                    }
+
+
+
+                }
+
+                
 
             }
             //actualizo los datos de los productos

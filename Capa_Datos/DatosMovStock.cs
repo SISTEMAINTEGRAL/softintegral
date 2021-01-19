@@ -188,16 +188,18 @@ namespace Capa_Datos
             }
             return rpta;
         }
-        public string anular(DatosMovStock detalleMovStock)
+        public string anular(DatosMovStock detalleMovStock,DatosMovStock movStock, List<DatosArticulo> listaArticulos)
         {
             //modo 3 para DB
             SqlConnection cn = new SqlConnection(Conexion.conexion);
+            cn.Open();
+            SqlTransaction transaccion = cn.BeginTransaction();
             string respuesta = "";
             try
             {
-                cn.Open();
+                
                 //abro conexion
-                SqlCommand comando = ProcAlmacenado.CrearProc(cn, "SP_MOVSTOCK");
+                SqlCommand comando = ProcAlmacenado.CrearProc(cn, "SP_MOVSTOCK",transaccion);
                 //MODO 3 ELIMINAR
                 SqlParameter parModo = ProcAlmacenado.asignarParametros("@modo", SqlDbType.Int, 2);
                 comando.Parameters.Add(parModo);
@@ -207,18 +209,27 @@ namespace Capa_Datos
                 comando.Parameters.Add(parIdMovStock);
 
 
-                if (comando.ExecuteNonQuery() == 1)
-                {
-                    respuesta = "ok";
-                }
-                else
-                {
-                    respuesta = "error: no se ha podido anular";
-                }
+                comando.ExecuteNonQuery();
+                respuesta = "ok";
+                    foreach (DatosArticulo articulos in listaArticulos)
+                    {
+                        //le paso el string de movimiento realizado para diferencia entre egreso y egreso
+                        //respuesta2 = articulos.actualizarPrecioStock(articulos,ref cn,ref transaccion,movStock.Movimiento);
+                        respuesta = Modificarstock(articulos.IdArticulo, articulos.StockActual, ref cn, ref transaccion, movStock.movimiento);
+                        if (!respuesta.Equals("ok"))
+                        {
+                            break;
+
+                        }
+                    }
+                
+                
+                transaccion.Commit();
                 cn.Close();
             }
             catch (Exception ex)
             {
+                transaccion.Rollback();
                 cn.Close();
                 respuesta = "error conexion: " + ex.Message;
             }

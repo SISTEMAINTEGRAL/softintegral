@@ -239,7 +239,7 @@ namespace Capa_Presentacion
         {
             try
             {
-                this.dataLista.DataSource = NegocioArticulo.buscarNombre(this.txtNombre.Text,chkDescripcion.Checked == true ? txtDes.Text:"",chkcategoria.Checked == true ? cbCategoria.Text: "");
+                this.dataLista.DataSource = NegocioArticulo.buscarNombre(this.txtNombre.Text,chkDescripcion.Checked == true ? txtDes.Text:"",chkcategoria.Checked == true ? cbCategoria.Text: "",ChkFiltroBalanza.Checked);
                 pintarProductoSinStock();
             }
 
@@ -439,7 +439,18 @@ namespace Capa_Presentacion
                 }
 
             }
-
+            else if (ChkFiltroBalanza.Checked == true)
+            {
+                this.BuscarNombre();
+            }
+            else if (txtNombre.Text == "")
+            {
+                if (UtilityFrm.mensajeopcionsiono("Desea buscar todos los productos"))
+                {
+                    dataLista.DataSource = NegocioArticulo.mostrar();
+                } 
+                
+            }
         }
         /*Botones*/
         private void btnBuscar_Click(object sender, EventArgs e)
@@ -542,6 +553,7 @@ namespace Capa_Presentacion
                         objarticulo.Modo = 1;
                         objarticulo.Stock_minimo = Convert.ToDecimal(txtStock_minimo.Text);
                         objarticulo.Codigointerno = TxtCodinterno.Text;
+                        objarticulo.Tipobalanza = ChkBalanza.Checked;
                         respuesta = objarticulo.agregar(objarticulo, NegocioConfigEmpresa.confsistema("opcionsistema").ToString());
                         //respuesta = NegocioArticulo.insertar(txtNombreConfig.Text.Trim(), txtCodigoBarra.Text.Trim(), txtDescripcion.Text.Trim(),
                         //    Convert.ToInt32(cbxCategoria.SelectedValue), Convert.ToDecimal(txtPrecio.Text.Trim()),
@@ -594,6 +606,7 @@ namespace Capa_Presentacion
                         objarticulo.Iva = Convert.ToDecimal(CBIVA.Text);
                         objarticulo.Stock_minimo = Convert.ToDecimal(txtStock_minimo.Text);
                         objarticulo.Codigointerno = TxtCodinterno.Text;
+                        objarticulo.Tipobalanza = ChkBalanza.Checked;
                         objarticulo.Modo = 2;
 
                       respuesta =  objarticulo.editar(objarticulo, "negocio");
@@ -699,7 +712,7 @@ namespace Capa_Presentacion
             this.CBIVA.Enabled = var2;
             txtStock_minimo.Enabled = var2;
             TxtCodinterno.Enabled = var2;
-
+            ChkBalanza.Enabled = var2;
             this.txtCantInicial.Enabled = habcantinicial;
         }
         private void btnEliminar_Click(object sender, EventArgs e)
@@ -851,6 +864,7 @@ namespace Capa_Presentacion
                 TxtPcompra.Text = Convert.ToString(decimal.Round(Convert.ToDecimal(this.dataLista.CurrentRow.Cells["precio_compra"].Value), 2));
                 txtStock_minimo.Text = Convert.ToString(decimal.Round(Convert.ToDecimal(this.dataLista.CurrentRow.Cells["stock_minimo"].Value), 2));
                 TxtCodinterno.Text = this.dataLista.CurrentRow.Cells["codigointerno"].Value.ToString();
+                ChkBalanza.Checked = Convert.ToBoolean( this.dataLista.CurrentRow.Cells["balanza"].Value);
                 decimal precio = 0;
                 precio = Convert.ToDecimal(this.dataLista.CurrentRow.Cells["precio"].Value);
                 string iva  =Convert.ToString( UtilityFrm.formateodecimal ( Convert.ToDecimal(this.dataLista.CurrentRow.Cells["iva"].Value), 2));

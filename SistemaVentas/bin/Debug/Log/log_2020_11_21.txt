@@ -1,0 +1,3 @@
+21/11/2020 11:16:33 - Error message: Intento de dividir por cero. Stack trace:    en System.Decimal.FCallDivide(Decimal& d1, Decimal& d2)
+   en System.Decimal.op_Division(Decimal d1, Decimal d2)
+   en Capa_Presentacion.frmPventa.totales() en C:\Backup\Sistema de ventas\softintegral\Capa_Presentacion\frmPventa.cs:línea 893

@@ -44,11 +44,28 @@ namespace Capa_negocio
 
            return dMovStock.agregar(dMovStock,lista_detalleMovStock,listaArticulo);
        }
-       public static string anular(int idMovStock)
+       public static string anular(int idMovStock,string movimiento)
        {
+            DataTable detalle_movStock = new DataTable();
            DatosMovStock dMovStock = new DatosMovStock();
+            detalle_movStock = NegocioMovStock.mostrarDetalleMovStock(idMovStock);
            dMovStock.IdmovStock = idMovStock;
-           return dMovStock.anular(dMovStock);
+            dMovStock.Movimiento = movimiento;
+            List<DatosArticulo> listaArticulo = new List<DatosArticulo>();
+            foreach (DataRow fila in detalle_movStock.Rows)
+            {
+                //creo un objeto dDetalleMovStock para agregar a la lista de los detalles
+                
+                DatosArticulo dArticulo = new DatosArticulo();
+                
+
+                dArticulo.IdArticulo = Convert.ToInt32(fila["idarticulo"].ToString());
+                dArticulo.StockActual = Convert.ToDecimal(fila["Cantidad"].ToString());
+                
+                listaArticulo.Add(dArticulo);
+            }
+
+            return dMovStock.anular(dMovStock,dMovStock,listaArticulo);
        }
 
        public static DataTable buscarFecha(string textoBuscar1, string textoBuscar2, int idproveedor = 0)
